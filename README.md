@@ -1,0 +1,3 @@
+# VectevaMaja-Java
+
+# Stāsts.
