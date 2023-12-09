@@ -21,6 +21,7 @@ public class Main {
             varonaKustiba();
             
             Rooms.istabasIzvade();
+            // Rooms.testIstabasIzvade(); // Istabas testa skats.
 
             // Spēles beigas.
             if (Laiks.spelesLaiks >= 1000) { // Kad beidzas laiks, tad notīras ekrāns un beidzas spēle.
@@ -45,12 +46,38 @@ public class Main {
         System.out.flush(); // Kaut kas ar kursora pozīciju.
     }
 
-    public static void istabasVirziens() {
+    public static void istabasVirziens() { // Nosākuma pārbauda, kurā istabā atrodas varonis un pēc tam viņa virzienu.
         // Skatoties kurā istabā atrodas varons ir pieejami citi skati.
+
+        // Gultas istaba.
         if (atrasanasVieta[atrasanasSkaitlis].equals("Gulta")) {
+            if (virziens[virzienaSkaitlis].equals("Prieksa")) {
+                Rooms.aktualasIstabasParrakstisana(Rooms.gultasPrieksa);
 
+            } else if (virziens[virzienaSkaitlis].equals("LabaP")) {
+                Rooms.aktualasIstabasParrakstisana(Rooms.gultasLaba);
+
+            } else if (virziens[virzienaSkaitlis].equals("Zeme")) {
+                Rooms.aktualasIstabasParrakstisana(Rooms.gultasZeme);
+
+            } else if (virziens[virzienaSkaitlis].equals("KreisaP")) {
+                Rooms.aktualasIstabasParrakstisana(Rooms.gultasKreisa);
+            }
+        // Dīvāna istaba.
         } else if (atrasanasVieta[atrasanasSkaitlis].equals("Divans")) {
+            if (virziens[virzienaSkaitlis].equals("Prieksa")) {
+                Rooms.aktualasIstabasParrakstisana(Rooms.divanaPrieksa);
 
+            } else if (virziens[virzienaSkaitlis].equals("LabaP")) {
+                Rooms.aktualasIstabasParrakstisana(Rooms.divanaLaba);
+
+            } else if (virziens[virzienaSkaitlis].equals("Zeme")) {
+                Rooms.aktualasIstabasParrakstisana(Rooms.divanaZeme);
+
+            } else if (virziens[virzienaSkaitlis].equals("KreisaP")) {
+                Rooms.aktualasIstabasParrakstisana(Rooms.divanaKreisa);
+            }
+        // Durvju istaba.    
         } else if (atrasanasVieta[atrasanasSkaitlis].equals("Durvis")) {
             // Skatoties uz masīva elementu var noteikt, uz kuru pusi skatās varonis.
             if (virziens[virzienaSkaitlis].equals("Prieksa")) {
@@ -65,6 +92,7 @@ public class Main {
             } else if (virziens[virzienaSkaitlis].equals("KreisaP")) {
                 Rooms.aktualasIstabasParrakstisana(Rooms.durvisKreisa);
             }
+        // Virtuves istaba.
         } else if (atrasanasVieta[atrasanasSkaitlis].equals("Virtuve")) {
             if (virziens[virzienaSkaitlis].equals("Prieksa")) {
                 Rooms.aktualasIstabasParrakstisana(Rooms.virtuvePrieksa);
@@ -119,14 +147,18 @@ public class Main {
         if (tagadejaIstaba.equals("Gulta")) {
             if (tagadejaisVirziens.equals("LabaP")) {
                 atrasanasSkaitlis++;
+                virzienaSkaitlis = 0; // Skats uz divana logu.
             } else if (tagadejaisVirziens.equals("Zeme")) {
                 atrasanasSkaitlis = 3; // Ieiet virtuves istabā (3. jeb pēdējais elements).
+                virzienaSkaitlis = 3; // Skats uz logu.
             }
         } else if (tagadejaIstaba.equals("Divans")) {
             if (tagadejaisVirziens.equals("LabaP")) {
-                atrasanasSkaitlis++; // OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                atrasanasSkaitlis++;
+                virzienaSkaitlis = 0; // Skats uz durvīm.
             } else if (tagadejaisVirziens.equals("Zeme")) {
                 atrasanasSkaitlis--;
+                virzienaSkaitlis = 3; // Skats uz spoguli.
             }
         } else if (tagadejaIstaba.equals("Durvis")) {
             if (tagadejaisVirziens.equals("LabaP")) {
@@ -134,10 +166,12 @@ public class Main {
                 virzienaSkaitlis = 0; // Priekša
             } else if (tagadejaisVirziens.equals("Zeme")) {
                 atrasanasSkaitlis--;
+                virzienaSkaitlis = 3; // Skats uz dīvānu.
             }
         } else if (tagadejaIstaba.equals("Virtuve")) {
             if (tagadejaisVirziens.equals("LabaP")) {
                 atrasanasSkaitlis = 0; // Ieiet gultas istabā (0. elements).
+                virzienaSkaitlis = 0; // Skats uz gultu.
             } else if (tagadejaisVirziens.equals("Zeme")) {
                 atrasanasSkaitlis--; // Vajadzēs virzienu mirorot.!!!!!!!!!!!!!!!!!!!!
                 virzienaSkaitlis = 3; // Skats uz logu no virtuves puses.
