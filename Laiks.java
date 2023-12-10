@@ -4,8 +4,15 @@ public class Laiks extends Thread {
     @Override
     public void run() {
         while (Main.speleSakas) {
-            Laiks.spelesLaiks++;
-
+            Laiks.spelesLaiks++; // Spēles laiks palielinas, katru sekundi.
+            // Loga spoka kustības katru sekundi.
+            if (Spoki.logaSpoksAktivs && Spoki.logaRandomKustibasCipars < Spoki.maxLogaSpokaAgresivitate) {
+                Spoki.logaSpokaDrosibasSkaitlis--;
+                if (Spoki.logaSpokaDrosibasSkaitlis <= 0) {
+                    Spoki.logaSpokaFazesIndeks++;
+                }
+            }
+            
             // Gulēšana līdz nākamam kadram.
             try {
                 Thread.sleep(1000);
