@@ -10,12 +10,11 @@ public class Main {
         // Jaunie rīki.
         Laiks laiks = new Laiks(); // Izveido jaunu Thredu, kas vienlaicīgi pildās
         Ievade ievadesLasitajs = new Ievade(); // Arī threads, bet šis lasa ievadi.
-        // Mainīgie jeb objekti.
-        
+        // Mainīgie jeb objekti. // ¯¯¯ 
         // Sākas atsevišķās darbības.
         laiks.start();
         ievadesLasitajs.start();
-
+        
         // -------------------------------------- Sākas spēles kods ------------------------------------------------------ //
         while (speleSakas) {
             tiritEkranu();
