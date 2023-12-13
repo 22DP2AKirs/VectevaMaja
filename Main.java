@@ -6,26 +6,34 @@ public class Main {
     static volatile int virzienaSkaitlis = 3;
     static volatile int atrasanasSkaitlis = 3; // 2, jo testā sāku no durvju istabas. 3, no virtuves istabas.
     public static boolean testesana = false;
+    public static boolean pagrabaGaismaON = false;
+
+    public static int spelesAtrums = 500; // Pēc cik ilga laika ekrāns "refrešojas".
     public static void main(String[] args) throws InterruptedException {
+
         // Jaunie rīki.
         Laiks laiks = new Laiks(); // Izveido jaunu Thredu, kas vienlaicīgi pildās
         Ievade ievadesLasitajs = new Ievade(); // Arī threads, bet šis lasa ievadi.
-        // Mainīgie jeb objekti. // ¯¯¯ 
+
         // Sākas atsevišķās darbības.
         laiks.start();
         ievadesLasitajs.start();
         
         // -------------------------------------- Sākas spēles kods ------------------------------------------------------ //
         while (speleSakas) {
+
             tiritEkranu();
             varonaKustiba();
-            // Spoki.testSpokaIzvade(Spoki.virtuvesLogaSpokaFazes);
-            Rooms.istabasIzvade();
-            System.out.println("Random cipars: " + Spoki.logaRandomKustibasCipars + ", Fazes skaitlis: " +  Spoki.logaSpokaFazesIndeks + ", Spoka drosibas skaitlis: " + Spoki.logaSpokaDrosibasSkaitlis);
+            Rooms.istabasIzvade(); // Bildes izvade.
 
             // Rooms.testIstabasIzvade(); // Istabas testa skats.
-            if (testesana) {
-                Spoki.logaSpoks(Spoki.virtuvesLogaSpokaFazes);
+            if (testesana) { // Testēšanas režīma funkcijas.
+                System.out.println("Random cipars: " + Spoki.logaRandomKustibasCipars + ", Fazes skaitlis: " +  Spoki.logaSpokaFazesIndeks + ", Spoka drosibas skaitlis: " + Spoki.logaSpokaDrosibasSkaitlis);
+                if (pagrabaGaismaON) {
+                    Spoki.logaSpoks(Spoki.virtuvesLogaSpokaFazes);
+                } else {
+                    Spoki.logaSpoks(Spoki.virtuvesTumsaLogaSpokaFazes);
+                }
             }
             // Spēles beigas.
             if (Laiks.spelesLaiks >= 1000) { // Kad beidzas laiks, tad notīras ekrāns un beidzas spēle.
@@ -35,11 +43,13 @@ public class Main {
             }
             // Spēle apstājas uz brīdi.
             try {
-                Thread.sleep(1000);
+                Thread.sleep(spelesAtrums);
+                tiritEkranu();
             } catch (Exception e) {
                 // handle exception
                 System.out.println("Ak nē! Kaut kas notika ar laiku!");
             }
+            
         }
         laiks.join();
         ievadesLasitajs.join();

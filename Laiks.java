@@ -15,7 +15,7 @@ public class Laiks extends Thread {
             
             // Gulēšana līdz nākamam kadram.
             try {
-                Thread.sleep(1000);
+                Thread.sleep(Main.spelesAtrums);
             } catch (Exception e) {
                 // handle exception
                 System.out.println("Ak nē! Kaut kas notika ar laiku!");
