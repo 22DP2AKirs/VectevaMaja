@@ -6,7 +6,7 @@ public class Main {
     static volatile int virzienaSkaitlis = 3;
     static volatile int atrasanasSkaitlis = 3; // 2, jo testā sāku no durvju istabas. 3, no virtuves istabas.
     public static boolean testesana = false;
-    public static boolean pagrabaGaismaON = false;
+    public volatile static boolean pagrabaGaismaON = false;
 
     public static int spelesAtrums = 500; // Pēc cik ilga laika ekrāns "refrešojas".
     public static void main(String[] args) throws InterruptedException {
@@ -21,19 +21,25 @@ public class Main {
         
         // -------------------------------------- Sākas spēles kods ------------------------------------------------------ //
         while (speleSakas) {
-
             tiritEkranu();
+            Spoki.logaSpoks();
+            Rooms.virtKreisasPusesSagatavosana();
+            
+            
+            
+            
+
             varonaKustiba();
             Rooms.istabasIzvade(); // Bildes izvade.
 
             // Rooms.testIstabasIzvade(); // Istabas testa skats.
             if (testesana) { // Testēšanas režīma funkcijas.
                 System.out.println("Random cipars: " + Spoki.logaRandomKustibasCipars + ", Fazes skaitlis: " +  Spoki.logaSpokaFazesIndeks + ", Spoka drosibas skaitlis: " + Spoki.logaSpokaDrosibasSkaitlis);
-                if (pagrabaGaismaON) {
-                    Spoki.logaSpoks(Spoki.virtuvesLogaSpokaFazes);
-                } else {
-                    Spoki.logaSpoks(Spoki.virtuvesTumsaLogaSpokaFazes);
-                }
+                // if (pagrabaGaismaON) {
+                //     Spoki.logaSpoks(Spoki.virtuvesLogaSpokaFazes);
+                // } else {
+                //     Spoki.logaSpoks(Spoki.virtuvesTumsaLogaSpokaFazes);
+                // }
             }
             // Spēles beigas.
             if (Laiks.spelesLaiks >= 1000) { // Kad beidzas laiks, tad notīras ekrāns un beidzas spēle.
@@ -121,7 +127,7 @@ public class Main {
                 Rooms.aktualasIstabasParrakstisana(Rooms.virtuveZeme);
 
             } else if (virziens[virzienaSkaitlis].equals("KreisaP")) {
-                Rooms.aktualasIstabasParrakstisana(Rooms.virtuveKreisa);
+                Rooms.aktualasIstabasParrakstisana(Rooms.modificetasVirtKreisasPusesIzvade()); // Izvada modificētu jeb pavisam jaunu istabu.
             }
         }
         Ievade.notiritIevadi();
@@ -139,6 +145,10 @@ public class Main {
                 ietUzPrieksu(atrasanasVieta[atrasanasSkaitlis], virziens[virzienaSkaitlis]);
             } else if (Ievade.ievade.equals("t")) {
                 testesana = true;
+            } else if (Ievade.ievade.equals("g")) {
+                pagrabaGaismaON = true;
+            } else if (Ievade.ievade.equals("f")) {
+                pagrabaGaismaON = false;
             }
         } catch (Exception e) {
             // : handle exception

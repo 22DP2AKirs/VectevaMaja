@@ -13,32 +13,32 @@ public class Spoki {
     public static int maxLogaSpokaAgresivitate = 20; // Kustās, ja kustības random skaitlis ir zemāks par norādīto. Atņem vienu, jo rand cipars ir no 0 līdz 20 neieskaitot.
     
     // Visas virtuves loga spoka fāzes vienā masīvā.
-    public static String[][] virtuvesLogaSpokaFazes = {
-        Rooms.virtuvesLogaSpoks1, 
-        Rooms.virtuvesLogaSpoks2, 
-        Rooms.virtuvesLogaSpoks3, 
-        Rooms.virtuvesLogaSpoks4, 
-        Rooms.virtuvesLogaSpoks5, 
-        Rooms.virtuvesLogaSpoks6, 
-        Rooms.virtuvesLogaSpoks7, 
-        Rooms.virtuvesLogaSpoks8}; 
+    // public static String[][] virtuvesLogaSpokaFazes = {
+    //     Rooms.virtuvesLogaSpoks1, 
+    //     Rooms.virtuvesLogaSpoks2, 
+    //     Rooms.virtuvesLogaSpoks3, 
+    //     Rooms.virtuvesLogaSpoks4, 
+    //     Rooms.virtuvesLogaSpoks5, 
+    //     Rooms.virtuvesLogaSpoks6, 
+    //     Rooms.virtuvesLogaSpoks7, 
+    //     Rooms.virtuvesLogaSpoks8}; 
 
     // Visas virtuves loga spoka fāzes ar izslēgtu pagraba gaismu.
-    public static String[][] virtuvesTumsaLogaSpokaFazes = {
-        Rooms.virtuvesTumsLogaSpoks1, 
-        Rooms.virtuvesTumsLogaSpoks2, 
-        Rooms.virtuvesTumsLogaSpoks3, 
-        Rooms.virtuvesTumsLogaSpoks4, 
-        Rooms.virtuvesTumsLogaSpoks5, 
-        Rooms.virtuvesTumsLogaSpoks6, 
-        Rooms.virtuvesTumsLogaSpoks7, 
-        Rooms.virtuvesTumsLogaSpoks8}; 
+    // public static String[][] virtuvesTumsaLogaSpokaFazes = {
+    //     Rooms.virtuvesTumsLogaSpoks1, 
+    //     Rooms.virtuvesTumsLogaSpoks2, 
+    //     Rooms.virtuvesTumsLogaSpoks3, 
+    //     Rooms.virtuvesTumsLogaSpoks4, 
+    //     Rooms.virtuvesTumsLogaSpoks5, 
+    //     Rooms.virtuvesTumsLogaSpoks6, 
+    //     Rooms.virtuvesTumsLogaSpoks7, 
+    //     Rooms.virtuvesTumsLogaSpoks8}; 
 
     public static volatile int logaSpokaFazesIndeks = -1; // Nosaka, kurā fāzē ir spoks.
     public static int logaRandomKustibasCipars = 20; // 20 = garantēti nekustās pirmo reizi.
     public static int logaSpokaDrosibasSkaitlis = 3; // Cik kustības iespējas spoks būs neaktīvs.
 
-    public static void logaSpoks(String[][] fazes) {
+    public static void logaSpoks() {
         // Random izvēle, kurā istabā parādīsies spoks.
 
 
@@ -53,10 +53,10 @@ public class Spoki {
                 logaSpokaFazesIndeks = 0;
                 logaSpoksAktivs = false;
             }
-            if (logaSpoksAktivs) {
-                String[] faze = fazes[logaSpokaFazesIndeks];
-                Rooms.virtuveKreisa = faze;   
-            }
+            // if (logaSpoksAktivs) {
+            //     String[] faze = fazes[logaSpokaFazesIndeks];
+            //     Rooms.virtuveKreisa = faze;   
+            //}
             if (logaSpokaFazesIndeks == 6) {
                 logaSpokaDrosibasSkaitlis = 10; // Lai varonis paspētu aizvērt logu.
             } else {
