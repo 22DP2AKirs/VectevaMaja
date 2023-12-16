@@ -157,7 +157,7 @@ public class Main {
                 pagrieztiesPaLabi();
             } else if (Ievade.ievade.equals("w")) {
                 ietUzPrieksu(atrasanasVieta[atrasanasSkaitlis], virziens[virzienaSkaitlis]);
-            } else if (Ievade.ievade.equals("t")) {
+            } else if (Ievade.ievade.equals("info")) {
                 testesana = true;
             } else if (Ievade.ievade.equals("g")) {
                 // "Toggle gaismu ON vai OFF"

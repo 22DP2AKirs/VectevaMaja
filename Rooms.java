@@ -313,7 +313,7 @@ public class Rooms {
 
     // -------------------------------------------------------------------------------- Virtuves loga spoks -------------------------------------------------------------------------------- //
     // Normāla virt. loga izskats.
-    static String[] virtLogs = {
+    static String[] virtParastaisLogs = {
         "| | .   \\                || |",
         "| | \\       .  /    \\  / || |",
         "| |    .  \\      .       || |",
@@ -399,7 +399,7 @@ public class Rooms {
     public static void noteiktVirtSpokaFazesSkatu() {
         // Skatoties uz loga spoka fāzes indeksu nosaka kādu bildi izvadīs.
         if (Spoki.logaSpokaFazesIndeks == -1) {
-            virtLogaSpokaFazesBilde = virtLogs;
+            virtLogaSpokaFazesBilde = virtParastaisLogs;
         } else if (Spoki.logaSpokaFazesIndeks == 0) {
             virtLogaSpokaFazesBilde = virtLogaSpoks0; // Nomaina visas jaunā array vērtības.
         } else if (Spoki.logaSpokaFazesIndeks == 1) {
@@ -906,10 +906,10 @@ public class Rooms {
         } 
     }
 
-    static String[] virtLogaSpokaFazesBilde = new String[6]; // Definē jauno array.
-    static String[] divanaLogaSpokaFazesBilde = new String[6]; // Definē jauno array.
-    static String[] gultLogaSpokaFazesBilde = new String[6]; // Definē jauno array.
-    static String[] durLogaSpokaFazesBilde = new String[7]; // Definē jauno array.
+    static String[] virtLogaSpokaFazesBilde = virtParastaisLogs; // Definē jauno array.
+    static String[] divanaLogaSpokaFazesBilde = divanaParastaisLogs; // Definē jauno array.
+    static String[] gultLogaSpokaFazesBilde = gultParastaisLogs; // Definē jauno array.
+    static String[] durLogaSpokaFazesBilde = durParastaisLogs; // Definē jauno array.
 
     // Loga spoka fāzes nosakošā metode.
     public static void noteiktLogaSpokaFazesBildi(String logaSpokaEsosaIstaba) {
@@ -922,7 +922,7 @@ public class Rooms {
         } else if (logaSpokaEsosaIstaba.equals("Virtuve")) {
             noteiktVirtSpokaFazesSkatu();
         } else {
-            
+
         }
         
     }
