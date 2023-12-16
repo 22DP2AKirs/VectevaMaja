@@ -1,5 +1,4 @@
-import java.lang.reflect.Array;
-import java.util.Arrays;
+
 
 public class Rooms {
     // Durju istabas parastie skati jeb stāvokļi.
@@ -164,24 +163,24 @@ public class Rooms {
 
 
     // Gultas istaba.
-    static String[] gultasPrieksa = {
-            " 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0" , 
-            " 1             |                         ________________________  |",  
-            " 2             |                        | |  .        .       || | |", 
-            " 3             |                        | |       \\       \\   || | | |\\" , 
-            " 4             |                        | |   /  .    \\     . || | | | \\" , 
-            " 5             |_                       | |  .        .       || | | |  \\" , 
-            " 6             ( )                      | |     .        /    || | | ||\\_|" , 
-            " 7         ____| |                      | | /       /       . || | | |\\ /|" , 
-            " 8    _   /    | |                   _  | |___________________|| | | | | |" , 
-            " 9   ( ) /     | |                  ( ) |/______________________\\| | | | |" , 
-            "10   | |/      |_|__________________| | ^   _________________      |  \\  |" , 
-            "11   | |      / /                   | |$|==|_|___|__|__|___|_|     |   \\ |" , 
-            "12   | |    /  /              _   / | | |  |_________________|     |    \\|" , 
-            "13   | |  /    |             ( )/   | |_|____|_____________|_______|" , 
-            "14   | |/_____/______________| |    | |                             \\" , 
-            "15   | |      |              | |  / |_|                              \\" , 
-            "16   | |______|______________| |/                                     \\"};
+    // static String[] gultasPrieksa = {
+    //         " 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0" , 
+    //         " 1             |                         ________________________  |",  
+    //         " 2             |                        | ||  .      ||.       | | |", 
+    //         " 3             |                        | ||       \\ ||    \\   | | | |\\" , 
+    //         " 4             |                        | ||   /  .  ||\\     . | | | | \\" , 
+    //         " 5             |_                       | ||  .      ||.       | | | |  \\" , 
+    //         " 6             ( )                      | ||     .   ||   /    | | | ||\\_|" , 
+    //         " 7         ____| |                      | || /       ||      . | | | |\\ /|" , 
+    //         " 8    _   /    | |                   _  | ||_________||________| | | | | |" , 
+    //         " 9   ( ) /     | |                  ( ) |/______________________\\| | | | |" , 
+    //         "10   | |/      |_|__________________| | ^   _________________      |  \\  |" , 
+    //         "11   | |      / /                   | |$|==|_|___|__|__|___|_|     |   \\ |" , 
+    //         "12   | |    /  /              _   / | | |  |_________________|     |    \\|" , 
+    //         "13   | |  /    |             ( )/   | |_|____|_____________|_______|" , 
+    //         "14   | |/_____/______________| |    | |                             \\" , 
+    //         "15   | |      |              | |  / |_|                              \\" , 
+    //         "16   | |______|______________| |/                                     \\"};
 
     static String[] gultasKreisa = {
             " 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0" , 
@@ -230,21 +229,21 @@ public class Rooms {
             " 5   /. || |   |   |  \\  /  |               |                | |=| |  / | \\" , 
             " 6  /   || |   |   |   ||   |               |                | |_| | / /|  \\" , 
             " 7 / .  || |   |   |   ||   |               |                |     | |\\ |   \\" , 
-            " 8/ \\ / || |   |   |________|    _________  |                |     | | \\| | |" , 
-            " 9      ||_|   |                |         | |                |     | |/ | | |" , 
-            "10. /   |/ /   |                |_________| |                |     | |  |   |" , 
-            "11    \\ / /    |                |  _____  | |                |     | | / \\  |" , 
-            "12  .  / / __  |                | |  |  | | |                |     | |/   \\ |" ,
-            "13    / / / /| |________________| | -O- | |_|                |_____|       \\|" ,
-            "14 \\ / / /|/ |/                 | |__|__| |                         \\" ,
-            "15  / / / / //                  |_________|                          \\" ,
-            "16 / / /|/ /|                                                         \\"};
+            " 8/|\\ / || |   |   |________|    _________  |                |     | | \\| | |" , 
+            " 9||    ||_|   |                |         | |                |     | |/ | | |" , 
+            "10||/   |/ /   |                |_________| |                |     | |  |   |" , 
+            "11||  \\ / /    |                |  _____  | |                |     | | / \\  |" , 
+            "12||.  / / __  |                | |  |  | | |                |     | |/   \\ |" ,
+            "13||  / / / /| |________________| | -O- | |_|                |_____|       \\|" ,
+            "14|| / / /|/ |/                 | |__|__| |                         \\" ,
+            "15||/ / / / //                  |_________|                          \\" ,
+            "16|/ / /|/ /|                                                         \\"};
 
     // Virtuve.
     static String[] virtuvePrieksa = { 
        " 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3",
-       " 1    |    _________________                                    |      |      |        ",
-       " 2    |   |                 |                                   |   ( )|( )   |    __  ",
+       " 1    |      __.-------.__                                      |      |      |        ",
+       " 2    |   .--             --.                                   |   ( )|( )   |    __  ",
        " 3/|  |   |                 |   _                               |______|______|   /  \\ ",
        " 4 |  |   |                 |  |=|                              |_____________|  |    \\",
        " 5 |  |   |                 |  |_|                              |      |      |  |     ",
@@ -259,25 +258,25 @@ public class Rooms {
        "14   /                       |__________________________________|_____________|  |     ",
        "15  /                                                                          \\ |     ",
        "16 /                                                                            \\|     "};
+
     // Parastais kreisās puses virtuves izskats.
-    // static String[] parastaVirtuveKreisa = { 
     // " 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 ",
     // " 1            /              /|                                       |          ",
     // " 2           /_____________ / |        ___________________________    |   ______   ",
-    // " 3   ___    |  ____   ____ |  |       | | .   \\                || |   |  /      \\    ",
-    // " 4__/   \\   | |    | |    ||  |       | | \\       .  /    \\  / || |   | |        \\ ",
-    // " 5      |   | |    | |    ||  |       | |    .  \\      .       || |   | |         \\",
-    // " 6      |   | |    | |    ||  |       | |           \\   /    . || |   | |          ",
-    // " 7      |   | |    | |    ||  ||      | | .   /   .        \\   || |   | |          ",
+    // " 3   ___    |  ____   ____ |  |       | | .   \                || |   |  /      \    ",
+    // " 4__/   \   | |    | |    ||  |       | | \       .  /    \  / || |   | |        \ ",
+    // " 5      |   | |    | |    ||  |       | |    .  \      .       || |   | |         \",
+    // " 6      |   | |    | |    ||  |       | |           \   /    . || |   | |          ",
+    // " 7      |   | |    | |    ||  ||      | | .   /   .        \   || |   | |          ",
     // " 8      |   | |    | |    || |/|      | |______________________|| |   | |          ",
-    // " 9      |   | | ( )| |( ) || | |      |/_________________________\\|   | |          ",
+    // " 9      |   | | ( )| |( ) || | |      |/_________________________\|   | |          ",
     // "10      |   | |    | |    || |/| ____                                 | |          ",
     // "11      |   | |    | |    || | /     /                                | |          ",
     // "12      |   | |    | |    || |/____ /|                                | |          ",
     // "13      |   | |____| |____|| |_|___|_|________________________________| |          ",
-    // "14      |   |              | |     |                                   \\|          ",
+    // "14      |   |              | |     |                                   \|          ",
     // "15      |   |______________|/|     |                                               ",
-    // "16      |  /                                                                       "};
+    // "16      |  /                                                                       "
     
     // Virtuves durvju izskati.
     static String[] izslegtsPagrabsVirtuveKreisa = { // Tumš pagrabs.
@@ -310,7 +309,9 @@ public class Rooms {
             virtKreisaPusesPagrabaSkats = izslegtsPagrabsVirtuveKreisa;
         }
     }
-    
+    // ==================================================================================== Loga spoks ===================================================================================== //
+
+    // -------------------------------------------------------------------------------- Virtuves loga spoks -------------------------------------------------------------------------------- //
     // Normāla virt. loga izskats.
     static String[] virtLogs = {
         "| | .   \\                || |",
@@ -321,8 +322,8 @@ public class Rooms {
         "| |______________________|| |",
     };
 
-    // Loga spoka fāzes.
-    static String[] virtLogaSpoks1 = {
+    // Virtuves loga spoka fāzes.
+    static String[] virtLogaSpoks0 = {
         "| | .   \\                || |",
         "| | \\       .  /    \\  / || |",
         "| |    .  \\      .       || |",
@@ -331,7 +332,7 @@ public class Rooms {
         "| |______________________|| |",
     };
     
-    static String[] virtLogaSpoks2 = {
+    static String[] virtLogaSpoks1 = {
         "| | .   \\                || |",
         "| | \\       .  /    \\  / || |",
         "| |    .  \\      .       || |",
@@ -340,7 +341,7 @@ public class Rooms {
         "| |______________________|| |"
     };
 
-    static String[] virtLogaSpoks3 = {
+    static String[] virtLogaSpoks2 = {
         "| | .   \\                || |",
         "| | \\       .  /    \\  / || |",
         "| |    .  \\      .       || |",
@@ -349,7 +350,7 @@ public class Rooms {
         "| |______________________|| |"
     };
 
-    static String[] virtLogaSpoks4 = {
+    static String[] virtLogaSpoks3 = {
         "| | .   \\                || |",
         "| | \\       .  /    \\  / || |",
         "| |    .  \\      .      (|| |",
@@ -358,7 +359,7 @@ public class Rooms {
         "| |______________________|| |",
     };
 
-    static String[] virtLogaSpoks5 = {
+    static String[] virtLogaSpoks4 = {
         "| | .   \\             ||  | |",
         "| | \\       .  /    \\ ||  | |",
         "| |    .  \\      .   (||) | |",
@@ -367,7 +368,7 @@ public class Rooms {
         "| |___________________||__| |"
     };
 
-    static String[] virtLogaSpoks6 = {
+    static String[] virtLogaSpoks5 = {
         "| | .   \\        ||       | |",
         "| | \\       .  / ||^ ^    | |",
         "| |    .  \\     (||)O _O  | |",
@@ -376,7 +377,7 @@ public class Rooms {
         "| |______________||_______| |"
     };
 
-    static String[] virtLogaSpoks7 = {
+    static String[] virtLogaSpoks6 = {
         "| | .   \\  ||  ^       ^  | |",
         "| | \\      || / \\ ___ / \\ | |",
         "| |    .  (||)\\ (0)_(0) / | |",
@@ -385,7 +386,7 @@ public class Rooms {
         "| |________||____^___^___(| |"
     };
 
-    static String[] virtLogaSpoks8 = {
+    static String[] virtLogaSpoks7 = {
         "| | .   \\  ||             | |",
         "| | \\      ||             | |",
         "| |    .  \\||             | |",
@@ -394,33 +395,32 @@ public class Rooms {
         "| |________||_____________| |"
     };
 
-    static String[] virtLogaSpokaFazesBilde = new String[6]; // Definē jauno array.
+    
     public static void noteiktVirtSpokaFazesSkatu() {
+        // Skatoties uz loga spoka fāzes indeksu nosaka kādu bildi izvadīs.
         if (Spoki.logaSpokaFazesIndeks == -1) {
             virtLogaSpokaFazesBilde = virtLogs;
         } else if (Spoki.logaSpokaFazesIndeks == 0) {
-            virtLogaSpokaFazesBilde = virtLogaSpoks1; // Nomaina visas jaunā array vērtības.
+            virtLogaSpokaFazesBilde = virtLogaSpoks0; // Nomaina visas jaunā array vērtības.
         } else if (Spoki.logaSpokaFazesIndeks == 1) {
-            virtLogaSpokaFazesBilde = virtLogaSpoks2; // Nomaina visas jaunā array vērtības.
+            virtLogaSpokaFazesBilde = virtLogaSpoks1; // Nomaina visas jaunā array vērtības.
         } else if (Spoki.logaSpokaFazesIndeks == 2) {
+            virtLogaSpokaFazesBilde = virtLogaSpoks2; // Nomaina visas jaunā array vērtības.
+        } else if (Spoki.logaSpokaFazesIndeks == 3){
             virtLogaSpokaFazesBilde = virtLogaSpoks3; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 3) {
-            virtLogaSpokaFazesBilde = virtLogaSpoks4; // Nomaina visas jaunā array vērtības.
         } else if (Spoki.logaSpokaFazesIndeks == 4) {
-            virtLogaSpokaFazesBilde = virtLogaSpoks5; // Nomaina visas jaunā array vērtības.
+            virtLogaSpokaFazesBilde = virtLogaSpoks4; // Nomaina visas jaunā array vērtības.
         } else if (Spoki.logaSpokaFazesIndeks == 5) {
-            virtLogaSpokaFazesBilde = virtLogaSpoks6; // Nomaina visas jaunā array vērtības.
+            virtLogaSpokaFazesBilde = virtLogaSpoks5; // Nomaina visas jaunā array vērtības.
         } else if (Spoki.logaSpokaFazesIndeks == 6) {
-            virtLogaSpokaFazesBilde = virtLogaSpoks7; // Nomaina visas jaunā array vērtības.
+            virtLogaSpokaFazesBilde = virtLogaSpoks6; // Nomaina visas jaunā array vērtības.
         } else if (Spoki.logaSpokaFazesIndeks == 7) {
-            virtLogaSpokaFazesBilde = virtLogaSpoks8; // Nomaina visas jaunā array vērtības.
+            virtLogaSpokaFazesBilde = virtLogaSpoks7; // Nomaina visas jaunā array vērtības.
         } 
-        
-        
-        
     }
 
     public static String[] modificetasVirtKreisasPusesIzvade() {
+        // Modificētā, galējā bilde.
         String[] virtuveKreisa = { // Izveido jaunu array ar cita array elementiem katru reizi, kad izsauc šo metodi.
             " 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 ",
             " 1            /              /|                                       |          ",
@@ -439,24 +439,499 @@ public class Rooms {
             "14      |   |              | |     |                                   \\|" + virtKreisaPusesPagrabaSkats[4],
             "15      |   |______________|/|     |                                       " + virtKreisaPusesPagrabaSkats[5],
             "16      |  /                                                                 " + virtKreisaPusesPagrabaSkats[6]};
-        return virtuveKreisa;
+        return virtuveKreisa; // Atgriež tikko izveidoto array jeb masīvu izvadei.
     }
     
-    
+    // Sagatavo virtuves kreiso pusi izvadei.
     public static void virtKreisasPusesSagatavosana() {
-        noteiktVirtSpokaFazesSkatu();
-        virtKreisasPusesPagrabs();
+        // noteiktVirtSpokaFazesSkatu(); // Sagatavo loga spoku.
+        virtKreisasPusesPagrabs(); // Sagatavo pagraba skatu.
     }
 
-    // Modificētā, galējā bilde.
+    // ------------------------------------------------------------------------------ Gultas loga spoks ------------------------------------------------------------------------ //
     
+    // " 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0" , 
+    // " 1             |                         ________________________  |",  
+    // " 2             |                        | ||  .      ||.       | | |", 
+    // " 3             |                        | ||       \ ||    \   | | | |\\" , 
+    // " 4             |                        | ||   /  .  ||\     . | | | | \\" , 
+    // " 5             |_                       | ||  .      ||.       | | | |  \\" , 
+    // " 6             ( )                      | ||     .   ||   /    | | | ||\\_|" , 
+    // " 7         ____| |                      | || /       ||      . | | | |\\ /|" , 
+    // " 8    _   /    | |                   _  | ||_________||________| | | | | |" , 
+    // " 9   ( ) /     | |                  ( ) |/______________________\\| | | | |" , 
+    // "10   | |/      |_|__________________| | ^   _________________      |  \\  |" , 
+    // "11   | |      / /                   | |$|==|_|___|__|__|___|_|     |   \\ |" , 
+    // "12   | |    /  /              _   / | | |  |_________________|     |    \\|" , 
+    // "13   | |  /    |             ( )/   | |_|____|_____________|_______|" , 
+    // "14   | |/_____/______________| |    | |                             \\" , 
+    // "15   | |      |              | |  / |_|                              \\" , 
+    // "16   | |______|______________| |/                                     \\"};  
+
+    static String[] gultParastaisLogs = {
+        "| ||  .      ||.       | |",
+        "| ||       \\ ||    \\   | |",
+        "| ||   /  .  ||\\     . | |",
+        "| ||  .      ||.       | |",
+        "| ||     .   ||   /    | |",
+        "| || /       ||      . | |",
+        "| ||_________||________| |"
+    };
+
+    static String[] gultLogaSpoks0 = {
+        "| ||  .      ||.       | |",
+        "| ||   ..  \\ ||    \\   | |",
+        "| ||   /  .  ||\\     . | |",
+        "| ||  .      ||.       | |",
+        "| ||     .   ||   /    | |",
+        "| || /       ||      . | |",
+        "| ||_________||________| |"};
+
+    static String[] gultLogaSpoks1 = {
+        "| ||  .      ||.       | |",
+        "| ||  o o  \\ ||    \\   | |",
+        "| ||   /  .  ||\\     . | |",
+        "| ||  .      ||.       | |",
+        "| ||     .   ||   /    | |",
+        "| || /       ||      . | |",
+        "| ||_________||________| |"};
+
+    static String[] gultLogaSpoks2 = {
+        "| ||  .      ||.       | |",
+        "| ||  O _ O\\ ||    \\   | |",
+        "| ||   /-v . ||\\     . | |",
+        "| ||  .      ||.       | |",
+        "| ||     .   ||   /    | |",
+        "| || /       ||      . | |",
+        "| ||_________||________| |"};
+
+    static String[] gultLogaSpoks3 = {
+        "| ||  .      ||.       | |",
+        "| ||       \\ ||    \\   | |",
+        "| ||   /  .  ||\\     . | |",
+        "| ||  .      ||.       | |",
+        "| ||     .   ||   /    | |",
+        "| || /       ||      . | |",
+        "| ||_mn___nm_||________| |"};
+
+    static String[] gultLogaSpoks4 = {
+        "| ||  .      ||.       | |",
+        "| ||       \\ ||    \\   | |",
+        "| ||   /  .  ||\\     . | |",
+        "| ||  .      ||.       | |",
+        "| ||     .   ||   /    | |",
+        "| ||_mn___nm_||      . | |",
+        "| |_/_/___\\_\\_|________| |"};
+
+    static String[] gultLogaSpoks5 = {
+        "| ||  .      ||.       | |",
+        "| ||       \\ ||    \\   | |",
+        "| ||   /  .  ||\\     . | |",
+        "| ||_nnnn____||.       | |",
+        "| |----       |   /    | |",
+        "| | ^       ^ |      . | |",
+        "| |/_\\     /_\\|________| |"};
+
+    static String[] gultLogaSpoks6 = {
+        "| ||  .      ||.       | |",
+        "| ||_________||    \\   | |",
+        "| | ^       ^ |\\     . | |",
+        "| |/ \\ ___ / \\|.       | |",
+        "| |\\ (0)_(0) /|   /    | |",
+        "| |  \\ _V_ /  |      . | |",
+        "| |nm^V-~-V^_(|________| |"};
+
+    static String[] gultLogaSpoks7 = {
+        "| ||  .      ||.       | |",
+        "| ||_________||    \\   | |",
+        "| |           |\\     . | |",
+        "| |           |.       | |",
+        "| |           |   /    | |",
+        "| |           |      . | |",
+        "| |___________|________| |"};
+
+    
+
+    public static void noteiktGultSpokaFazesSkatu() {
+        // Skatoties uz loga spoka fāzes indeksu nosaka kādu bildi izvadīs.
+        if (Spoki.logaSpokaFazesIndeks == -1) {
+            gultLogaSpokaFazesBilde = gultParastaisLogs;
+        } else if (Spoki.logaSpokaFazesIndeks == 0) {
+            gultLogaSpokaFazesBilde = gultLogaSpoks0; // Nomaina visas jaunā array vērtības.
+        } else if (Spoki.logaSpokaFazesIndeks == 1) {
+            gultLogaSpokaFazesBilde = gultLogaSpoks1; // Nomaina visas jaunā array vērtības.
+        } else if (Spoki.logaSpokaFazesIndeks == 2) {
+            gultLogaSpokaFazesBilde = gultLogaSpoks2; // Nomaina visas jaunā array vērtības.
+        } else if (Spoki.logaSpokaFazesIndeks == 3) {
+            gultLogaSpokaFazesBilde = gultLogaSpoks3; // Nomaina visas jaunā array vērtības.
+        } else if (Spoki.logaSpokaFazesIndeks == 4) {
+            gultLogaSpokaFazesBilde = gultLogaSpoks4; // Nomaina visas jaunā array vērtības.
+        } else if (Spoki.logaSpokaFazesIndeks == 5) {
+            gultLogaSpokaFazesBilde = gultLogaSpoks5; // Nomaina visas jaunā array vērtības.
+        } else if (Spoki.logaSpokaFazesIndeks == 6) {
+            gultLogaSpokaFazesBilde = gultLogaSpoks6; // Nomaina visas jaunā array vērtības.
+        } else if (Spoki.logaSpokaFazesIndeks == 7) {
+            gultLogaSpokaFazesBilde = gultLogaSpoks7; // Nomaina visas jaunā array vērtības.
+        } 
+    }
+
+    public static String[] modificetasGultPrieksasIzvade() {
+    String[] gultPrieksa = {   
+        " 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0" , 
+        " 1             |                         ________________________  |",  
+        " 2             |                        " + gultLogaSpokaFazesBilde[0] + " |", 
+        " 3             |                        " + gultLogaSpokaFazesBilde[1] + " | |\\" , 
+        " 4             |                        " + gultLogaSpokaFazesBilde[2] + " | | \\" , 
+        " 5             |_                       " + gultLogaSpokaFazesBilde[3] + " | |  \\" , 
+        " 6             ( )                      " + gultLogaSpokaFazesBilde[4] + " | ||\\_|" , 
+        " 7         ____| |                      " + gultLogaSpokaFazesBilde[5] + " | |\\ /|" , 
+        " 8    _   /    | |                   _  " + gultLogaSpokaFazesBilde[6] + " | | | |" , 
+        " 9   ( ) /     | |                  ( ) |/______________________\\| | | | |" , 
+        "10   | |/      |_|__________________| | ^   _________________      |  \\  |" , 
+        "11   | |      / /                   | |$|==|_|___|__|__|___|_|     |   \\ |" , 
+        "12   | |    /  /              _   / | | |  |_________________|     |    \\|" , 
+        "13   | |  /    |             ( )/   | |_|____|_____________|_______|" , 
+        "14   | |/_____/______________| |    | |                             \\" , 
+        "15   | |      |              | |  / |_|                              \\" , 
+        "16   | |______|______________| |/                                     \\"};
+        return gultPrieksa;
+    }
+
+    public static void gultPreiksasSagatavosanaIzvadei() {
+        noteiktGultSpokaFazesSkatu();
+    }
+
+    // ------------------------------------------------------------------------------ Dīvāna loga spoks --------------------------------------------------------------------- //
+    // " 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0  ",
+    // " 1             |           ____________________________            |  ",
+    // " 2             |          | | .  \        .     /   || |           |  ",
+    // " 3             |          | |    .     .   /        || |           |  ",
+    // " 4             |          | |    \         .  /  /  || |           |  ",
+    // " 5             |          | |     .               . || |           |  ",
+    // " 6           __|          | |. /     /        .  \  || |           | |  ",
+    // " 7          /   \         | |_______________________|| |           | |  ",
+    // " 8         /    |         |/__________________________\|         __|_|_    /  ",
+    // " 9        /     |                                           ____|\\   | \\  /  ",
+    // "10       /.  x  |                                          |\\   |.\\     \\/  ",
+    // "11      /  \\    |________                                  | \\  ||\\\\    /\\  ",
+    // "12     /   |   /         \\                                 | o\\ || .\\_____\\  ",
+    // "13    /    |  /________  /_________________________________|  |\\ | ||     |  ",
+    // "14   /  x  | /         \\/|                                 \\  | \\ \\||     |  ",
+    // "15  / \\    |/________  /|/                                  \\ | o\\ ||     |  ",
+    // "16 /  |    /         \\/|/                                    \\|   \\ |     |"};
+
+    static String[] divanaParastaisLogs = {
+        "| | .  \\        .     /   || |",
+        "| |    .     .   /        || |",
+        "| |    \\         .  /  /  || |",
+        "| |     .               . || |",
+        "| |. /     /        .  \\  || |",
+        "| |_______________________|| |"
+    };
+
+    static String[] divanaLogaSpoks0 = {
+        "| | .  \\        .     /   || |",
+        "| |    .     .   /        || |",
+        "| |    \\         .  /  /  || |",
+        "| |     .      ..       . || |",
+        "| |. /     /        .  \\  || |",
+        "| |_______________________|| |"
+    };
+
+    static String[] divanaLogaSpoks1 = {
+        "| | .  \\        .     /   || |",
+        "| |    .     .   /        || |",
+        "| |    \\         .  /  /  || |",
+        "| |     .    o   o      . || |",
+        "| |. /     /        .  \\  || |",
+        "| |_______________________|| |"
+    };
+
+    static String[] divanaLogaSpoks2 = {
+        "| | .  \\        .     /   || |",
+        "| |    .     .   /        || |",
+        "| |    \\   ^   ^ .  /  /  || |",
+        "| |     .    O  _O      . || |",
+        "| |. /     /   v-v  .  \\  || |",
+        "| |_______________________|| |"
+    };
+
+    static String[] divanaLogaSpoks3 = {
+        "| | .  \\        .     /   || |",
+        "| |    .     .   /        || |",
+        "| |    \\       ^  .^/  /  || |",
+        "| |     .       ( )_( ) .(|| |",
+        "| |. /     /      V--V \\ (|| |",
+        "| |_______________________|| |"
+    };
+
+    static String[] divanaLogaSpoks4 = {
+        "| | .  \\        .     |    | |",
+        "| |    .     .   /    |    | |",
+        "| |    \\          . / |(O) | |",
+        "| |     .            (|    | |",
+        "| |. /     /         (|    | |",
+        "| |___________________|____| |"
+    };
+
+    static String[] divanaLogaSpoks5 = {
+        "| | .  \\        .  |       | |",
+        "| |    .     .   / |       | |",
+        "| |    \\          .|(O) (O)| |",
+        "| |     .         (|       | |",
+        "| |. /     /      (|       | |",
+        "| |________________|_______| |"
+    };
+
+    static String[] divanaLogaSpoks6 = {
+        "| | .  \\     |  ^       ^  | |",
+        "| |    .     | / \\ ___ / \\ | |",
+        "| |    \\     | \\ (O)_(O) / | |",
+        "| |     .    |  -\\ _V_ /-  | |",
+        "| |. /     / |   ^V-~-V^   | |",
+        "| |__________|_mn_^___^_nm_| |"
+    };
+
+    static String[] divanaLogaSpoks7 = {
+        "| | .  \\     |             | |",
+        "| |    .     |             | |",
+        "| |    \\     |             | |",
+        "| |     .    |             | |",
+        "| |. /     / |             | |",
+        "| |__________|_____________| |"
+    };
+
+    
+
+    public static void noteiktDivanaSpokaFazesSkatu() {
+        // Skatoties uz loga spoka fāzes indeksu nosaka kādu bildi izvadīs.
+        if (Spoki.logaSpokaFazesIndeks == -1) {
+            divanaLogaSpokaFazesBilde = divanaParastaisLogs;
+        } else if (Spoki.logaSpokaFazesIndeks == 0) {
+            divanaLogaSpokaFazesBilde = divanaLogaSpoks0; // Nomaina visas jaunā array vērtības.
+        } else if (Spoki.logaSpokaFazesIndeks == 1) {
+            divanaLogaSpokaFazesBilde = divanaLogaSpoks1; // Nomaina visas jaunā array vērtības.
+        } else if (Spoki.logaSpokaFazesIndeks == 2) {
+            divanaLogaSpokaFazesBilde = divanaLogaSpoks2; // Nomaina visas jaunā array vērtības.
+        } else if (Spoki.logaSpokaFazesIndeks == 3) {
+            divanaLogaSpokaFazesBilde = divanaLogaSpoks3; // Nomaina visas jaunā array vērtības.
+        } else if (Spoki.logaSpokaFazesIndeks == 4) {
+            divanaLogaSpokaFazesBilde = divanaLogaSpoks4; // Nomaina visas jaunā array vērtības.
+        } else if (Spoki.logaSpokaFazesIndeks == 5) {
+            divanaLogaSpokaFazesBilde = divanaLogaSpoks5; // Nomaina visas jaunā array vērtības.
+        } else if (Spoki.logaSpokaFazesIndeks == 6) {
+            divanaLogaSpokaFazesBilde = divanaLogaSpoks6; // Nomaina visas jaunā array vērtības.
+        } else if (Spoki.logaSpokaFazesIndeks == 7) {
+            divanaLogaSpokaFazesBilde = divanaLogaSpoks7; // Nomaina visas jaunā array vērtības.
+        } 
+    }
+
+    public static String[] modificetaDivanaPrieksasBildesIzvade() {
+        String[] divanaPrieksa = {" 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0  ",
+        " 1             |           ____________________________            |  ",
+        " 2             |          " + divanaLogaSpokaFazesBilde[0] + "           |  ",
+        " 3             |          " + divanaLogaSpokaFazesBilde[1] + "           |  ",
+        " 4             |          " + divanaLogaSpokaFazesBilde[2] + "           |  ",
+        " 5             |          " + divanaLogaSpokaFazesBilde[3] + "           |  ",
+        " 6           __|          " + divanaLogaSpokaFazesBilde[4] + "           | |  ",
+        " 7          /   \\         " + divanaLogaSpokaFazesBilde[5] + "           | |  ",
+        " 8         /    |         |/__________________________\\|         __|_|_    /  ",
+        " 9        /     |                                           ____|\\   | \\  /  ",
+        "10       /.  x  |                                          |\\   |.\\     \\/  ",
+        "11      /  \\    |________                                  | \\  ||\\\\    /\\  ",
+        "12     /   |   /         \\                                 | o\\ || .\\_____\\  ",
+        "13    /    |  /________  /_________________________________|  |\\ | ||     |  ",
+        "14   /  x  | /         \\/|                                 \\  | \\ \\||     |  ",
+        "15  / \\    |/________  /|/                                  \\ | o\\ ||     |  ",
+        "16 /  |    /         \\/|/                                    \\|   \\ |     |"};
+        return divanaPrieksa;
+    }
+
+    // ----------------------------------------------------------------------------- Durvju loga spoks ------------------------------------------------------------------------ //
+
+    // public static String[] durvisKreisa = {
+    //     " 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0  ",
+    //     " 1 /  |    |       ________________________________                           |  ",
+    //     " 2/   |    |      | |       /            \\     || |                          |  ",
+    //     " 3    |    |      | |          |                || |                          |  ",
+    //     " 4    |    |      | |   \\           |          || |                          |  ",
+    //     " 5    |    |      | |          \         /      || |                          |  ",
+    //     " 6    | +  |      | |                      /    || |                          |  ",
+    //     " 7    |   /|      | |     /           \         || |                          |  ",
+    //     " 8    |  / |      | |___________________________|| |                          |  ",
+    //     " 9  + | /  |      |/______________________________\|               ___________|  ",
+    //     " 0    |/   |                                                       \\          \\  ",
+    //     " 1    /____|                                                        \\          \\  ",
+    //     " 2   /    /|                                                        |\\          \\  ",
+    //     "13  /    / |________________________________________________________|_\\          \\  ",
+    //     "14 /    /  |                                                           \\  ",
+    //     "15/    /  /                                                             \\  ",
+    //     "16    /  /                                                               \\"};
+
+    static String[] durParastaisLogs = {
+        "| |       /            \\\\     || |",
+        "| |          |           .    || |",
+        "| |   \\\\                      || |",
+        "| |      .   \\         /      || |",
+        "| |           .          /    || |",
+        "| |     /           \\         || |",
+        "| |___________________________|| |"
+    };
+
+    static String[] durLogaSpoks0 = {
+        "| |       /            \\\\     || |",
+        "| |          |           .    || |",
+        "| |   \\\\                      || |",
+        "| |      .   \\         /      || |",
+        "| |           .          /    || |",
+        "| |     /       ..  \\         || |",
+        "| |___________________________|| |"
+    };
+
+    static String[] durLogaSpoks1 = {
+        "| |       /            \\\\     || |",
+        "| |          |           .    || |",
+        "| |   \\\\                      || |",
+        "| |      .   \\         /      || |",
+        "| |           .          /    || |",
+        "| |     /       o o \\         || |",
+        "| |___________________________|| |"
+    };
+
+    static String[] durLogaSpoks2 = {
+        "| |       /            \\\\     || |",
+        "| |          |           .    || |",
+        "| |   \\\\                      || |",
+        "| |      .   \\         /      || |",
+        "| |           .          /    || |",
+        "| |     /       O  O\\         || |",
+        "| |___________________________|| |"
+    };
+
+    static String[] durLogaSpoks3 = {
+        "| |       /            \\\\     || |",
+        "| |          |           .    || |",
+        "| |   \\\\       ^   ^          || |",
+        "| |      .   \\  O _ O  /      || |",
+        "| |           .   v v    /    || |",
+        "| |     /           \\         || |",
+        "| |___________________________|| |"
+    };
+
+    static String[] durLogaSpoks4 = {
+        "| |       /            \\\\     || |",
+        "| |          |           .    || |",
+        "| |   \\\\              ( ) ( ) || |",
+        "| |      .   \\         /      || |",
+        "| |           .          /   (|| |",
+        "| |     /           \\        (|| |",
+        "| |___________________________|| |"
+    };
+
+    static String[] durLogaSpoks5 = {
+        "| |       /            \\\\ |  ^ | |",
+        "| |          |           .|   \\| |",
+        "| |   \\\\              ( ) |(O) | |",
+        "| |      .   \\         /  | v- | |",
+        "| |           .          (| ^  | |",
+        "| |     /           \\    (|    | |",
+        "| |_______________________|____| |"
+    };
+
+    static String[] durLogaSpoks6 = {
+        "| |       /      |  ^       ^  | |",
+        "| |          |   | / \\ ___ / \\ | |",
+        "| |   \\\\         | \\ (O)_(O) / | |",
+        "| |      .   \\   |  -\\ _V_ /-  | |",
+        "| |           .  |   ^V-~-V^   | |",
+        "| |     /        |  _ ^   ^ _  | |",
+        "| |______________|_|_|_____|_|_| |"
+    };
+
+    static String[] durLogaSpoks7 = {
+        "| |       /      |             | |",
+        "| |          |   |             | |",
+        "| |   \\\\         |             | |",
+        "| |      .   \\   |             | |",
+        "| |           .  |             | |",
+        "| |     /        |             | |",
+        "| |______________|_____________| |"
+    };
 
     
 
     
-    // Virtuves loga spoka fāzes. ------------------------------------------------------------------------------------- \\
 
-    // Virtuves loga spoka beigas ------------------------------------------------------------------------- //
+    public static String[] modificetaDurKreisasPusesBildesIzvade() {
+        String[] durKreisaPuse = {
+        " 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0  ",
+        " 1 /  |    |       ________________________________                           |  ",
+        " 2/   |    |      "+ durLogaSpokaFazesBilde[0] +"                          |  ",
+        " 3    |    |      "+ durLogaSpokaFazesBilde[1] +"                          |  ",
+        " 4    |    |      "+ durLogaSpokaFazesBilde[2] +"                          |  ",
+        " 5    |    |      "+ durLogaSpokaFazesBilde[3] +"                          |  ",
+        " 6    | +  |      "+ durLogaSpokaFazesBilde[4] +"                          |  ",
+        " 7    |   /|      "+ durLogaSpokaFazesBilde[5] +"                          |  ",
+        " 8    |  / |      "+ durLogaSpokaFazesBilde[6] +"                          |  ",
+        " 9  + | /  |      |/______________________________\\|               ___________|  ",
+        " 0    |/   |                                                       \\          \\  ",
+        " 1    /____|                                                        \\          \\  ",
+        " 2   /    /|                                                        |\\          \\  ",
+        "13  /    / |________________________________________________________|_\\          \\  ",
+        "14 /    /  |                                                           \\  ",
+        "15/    /  /                                                             \\  ",
+        "16    /  /                                                               \\"};
+        return durKreisaPuse;
+    }
+    public static void noteiktDurSpokaFazesSkatu() {
+        // Skatoties uz loga spoka fāzes indeksu nosaka kādu bildi izvadīs.
+        if (Spoki.logaSpokaFazesIndeks == -1) {
+            durLogaSpokaFazesBilde = durParastaisLogs;
+        } else if (Spoki.logaSpokaFazesIndeks == 0) {
+            durLogaSpokaFazesBilde = durLogaSpoks0; // Nomaina visas jaunā array vērtības.
+        } else if (Spoki.logaSpokaFazesIndeks == 1) {
+            durLogaSpokaFazesBilde = durLogaSpoks1; // Nomaina visas jaunā array vērtības.
+        } else if (Spoki.logaSpokaFazesIndeks == 2) {
+            durLogaSpokaFazesBilde = durLogaSpoks2; // Nomaina visas jaunā array vērtības.
+        } else if (Spoki.logaSpokaFazesIndeks == 3) {
+            durLogaSpokaFazesBilde = durLogaSpoks3; // Nomaina visas jaunā array vērtības.
+        } else if (Spoki.logaSpokaFazesIndeks == 4) {
+            durLogaSpokaFazesBilde = durLogaSpoks4; // Nomaina visas jaunā array vērtības.
+        } else if (Spoki.logaSpokaFazesIndeks == 5) {
+            durLogaSpokaFazesBilde = durLogaSpoks5; // Nomaina visas jaunā array vērtības.
+        } else if (Spoki.logaSpokaFazesIndeks == 6) {
+            durLogaSpokaFazesBilde = durLogaSpoks6; // Nomaina visas jaunā array vērtības.
+        } else if (Spoki.logaSpokaFazesIndeks == 7) {
+            durLogaSpokaFazesBilde = durLogaSpoks7; // Nomaina visas jaunā array vērtības.
+        } 
+    }
+
+    static String[] virtLogaSpokaFazesBilde = new String[6]; // Definē jauno array.
+    static String[] divanaLogaSpokaFazesBilde = new String[6]; // Definē jauno array.
+    static String[] gultLogaSpokaFazesBilde = new String[6]; // Definē jauno array.
+    static String[] durLogaSpokaFazesBilde = new String[7]; // Definē jauno array.
+
+    // Loga spoka fāzes nosakošā metode.
+    public static void noteiktLogaSpokaFazesBildi(String logaSpokaEsosaIstaba) {
+        if (logaSpokaEsosaIstaba.equals("Gulta")) {
+            noteiktGultSpokaFazesSkatu();
+        } else if (logaSpokaEsosaIstaba.equals("Divans")) {
+            noteiktDivanaSpokaFazesSkatu();
+        } else if (logaSpokaEsosaIstaba.equals("Durvis")) {
+            noteiktDurSpokaFazesSkatu();
+        } else if (logaSpokaEsosaIstaba.equals("Virtuve")) {
+            noteiktVirtSpokaFazesSkatu();
+        } else {
+            
+        }
+        
+    }
+
+    // Loga spoka apvienojošā metode.
+    public static void logaSpokaIzveletasIstabasKustiba() {
+
+    }
+    // ============================================================================ Loga spoka beigas ==================================================================================== //
 
     static String[] virtuveZeme = {
         " 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3",
