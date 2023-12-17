@@ -13,6 +13,14 @@ public class Laiks extends Thread {
                     Spoki.logaSpokaFazesIndeks++; // Pietuvina spoku tuvāk logam.
                 }
             }
+
+            // Atbild par robežu pārkāpšanu un indeksu palielināšanu.
+            if (Spoki.durSpoksAktivs && Spoki.vaiDurSpoksVarKusteties) {
+                Spoki.durSpokaDrosibasRobezas--;
+                if (Spoki.durSpokaDrosibasRobezas <= 0) {
+                    Spoki.durSpokaFazesIndeks++;
+                }
+            }
             
             // Gulēšana līdz nākamam kadram.
             try {

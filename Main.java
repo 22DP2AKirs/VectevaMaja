@@ -1,52 +1,54 @@
 public class Main {
     // Visur izmantojamie mainīgie jeb objekti.
     public static volatile boolean speleSakas = true; // Mainīgais bool, kas palaiž visu spēli.
+
+    // String array-i, kas nosaka varoņa pozīciju un virzienu.
     static volatile String[] virziens = {"Prieksa", "LabaP", "Zeme", "KreisaP"}; // [P]riekša, [L]aba puse, [Z]eme V, [K]reisā puse.
     static volatile String[] atrasanasVieta = {"Gulta", "Divans", "Durvis", "Virtuve"}; // Specifiska istaba.
-    static volatile int virzienaSkaitlis = 3;
+
+    // Skaitļi, kurus izmanto, lai pielietotu ^^^ array-us.
+    static volatile int virzienaSkaitlis = 0;
     static volatile int atrasanasSkaitlis = 2; // 1, no gultas istabas. 2, jo testā sāku no durvju istabas. 3, no virtuves istabas. 
+
+    // Ieslēdz spēles testēšanas režīmu.
     public static boolean testesana = false;
+
+    // *Beta* spēlētāja darbības.
     public volatile static boolean pagrabaGaismaON = false;
 
     // Spēlētāja darbības.
     public static boolean virtDarbibas;
     public static boolean pagrDarbibas;
 
+    // Iestata tikšķa jeb 1 "refreša" periodu.
     public static int spelesAtrums = 500; // Pēc cik ilga laika ekrāns "refrešojas".
-    public static void main(String[] args) throws InterruptedException {
 
+    public static void main(String[] args) throws InterruptedException {
         // Jaunie rīki.
         Laiks laiks = new Laiks(); // Izveido jaunu Thredu, kas vienlaicīgi pildās
         Ievade ievadesLasitajs = new Ievade(); // Arī threads, bet šis lasa ievadi.
 
-        // Sākas atsevišķās darbības.
+        // Sākas atsevišķās darbības jeb patstāvīgie procesi.
         laiks.start();
         ievadesLasitajs.start();
         
-        // -------------------------------------- Sākas spēles kods ------------------------------------------------------ //
+        // ================================================================== Sākas spēles kods ============================================================= //
         while (speleSakas) {
             tiritEkranu();
 
             // Atjaunos istabas ar spoka bildēm tikai tad, kad loga spoks būs izvēlējies savu istabu.
             Spoki.logaSpoks();
+            Spoki.durSpoks();
 
-            Rooms.virtKreisasPusesSagatavosana();
-
-            
-            
-            
-
-    
-            
-            
-            
+            Rooms.virtSagatavosana();
 
             varonaKustiba();
             Rooms.istabasIzvade(); // Bildes izvade.
 
             // Rooms.testIstabasIzvade(); // Istabas testa skats.
             if (testesana) { // Testēšanas režīma funkcijas.
-                System.out.println("Spoks aktivs?: " + Spoki.logaSpoksAktivs +", Random cipars: " + Spoki.logaRandomKustibasCipars + ", Vai kustas?: " + Spoki.vaiLogaSpoksVarKusteties + ", Fazes skaitlis: " + Spoki.logaSpokaFazesIndeks + ", Spoka drosibas skaitlis: " + Spoki.logaSpokaDrosibasRobezas + ", Spoka istaba: " + Spoki.logaSpokaIstaba);
+                System.out.println("Durvju spoks aktivs?: " + Spoki.durSpoksAktivs +", Random cipars: " + Spoki.durRandomKustibasCipars + ", Vai kustas?: " + Spoki.vaiDurSpoksVarKusteties + ", Fazes skaitlis: " + Spoki.durSpokaFazesIndeks + ", Spoka drosibas skaitlis: " + Spoki.durSpokaDrosibasRobezas); // + ", Spoka istaba: " + Spoki.logaSpokaIstaba);
+                System.out.println("Loga spoks aktivs?: " + Spoki.logaSpoksAktivs +", Random cipars: " + Spoki.logaRandomKustibasCipars + ", Vai kustas?: " + Spoki.vaiLogaSpoksVarKusteties + ", Fazes skaitlis: " + Spoki.logaSpokaFazesIndeks + ", Spoka drosibas skaitlis: " + Spoki.logaSpokaDrosibasRobezas + ", Spoka istaba: " + Spoki.logaSpokaIstaba);
                 // if (pagrabaGaismaON) {
                 //     Spoki.logaSpoks(Spoki.virtuvesLogaSpokaFazes);
                 // } else {
@@ -71,7 +73,7 @@ public class Main {
         }
         laiks.join();
         ievadesLasitajs.join();
-        // ---------------------------------- Beidzas spēles kods ------------------------------------------------------ //
+        // ======================================================================== Beidzas spēles kods ============================================================================== //
     }
 
     public static void tiritEkranu() {
@@ -116,7 +118,7 @@ public class Main {
         } else if (atrasanasVieta[atrasanasSkaitlis].equals("Durvis")) {
             // Skatoties uz masīva elementu var noteikt, uz kuru pusi skatās varonis.
             if (virziens[virzienaSkaitlis].equals("Prieksa")) {
-                Rooms.aktualasIstabasParrakstisana(Rooms.durvisPrieksa);
+                Rooms.aktualasIstabasParrakstisana(Rooms.modificetasDurPrieksasBildesIzvade());
 
             } else if (virziens[virzienaSkaitlis].equals("LabaP")) {
                 Rooms.aktualasIstabasParrakstisana(Rooms.durvisLaba);

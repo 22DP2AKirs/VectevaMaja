@@ -59,4 +59,43 @@ public class Spoki {
             }
         }
     }
+
+    // ================================================================================== Durvju spoks =========================================================================== //
+
+    public static boolean durSpoksAktivs; // Aktivizē spoku.
+
+    public int maxDurSpokaAgresivitate = 20;
+    public static int durRandomKustibasCipars;
+
+    public static volatile int durSpokaFazesIndeks = -1;
+    public static volatile int durSpokaDrosibasRobezas = 3;
+
+    public static volatile boolean vaiDurSpoksVarKusteties;
+
+    public static void durSpoks() {
+        durRandomKustibasCipars = rand.nextInt(20);
+        vaiDurSpoksVarKusteties = durRandomKustibasCipars < maxLogaSpokaAgresivitate;
+
+        if (!durSpoksAktivs) {
+            if (vaiLogaSpoksVarKusteties && rand.nextInt(10) == 1) { // 10% iespēja aktivizēt šo spoku.
+                durSpoksAktivs = true;
+            }
+        } else {
+            // Visas darbības notiks tikai tad, kad spoks būs pārkāpis visām robežām.
+            if (durSpokaDrosibasRobezas <= 0) {
+                // Spoka kustības robežu pieskatīšana.
+                if (durSpokaFazesIndeks > 8) { // Pieskata, lai spoka index neiziet ārpus robežas (8 array elementi) un izslēdz durvju spoku.
+                        durSpokaFazesIndeks = -1;
+                        durSpoksAktivs = false;
+                } else if (durSpokaFazesIndeks == 7) { // Cik robežas ir jāpārkāpj, kad ir pēdējā kustības fāzē.
+                    durSpokaDrosibasRobezas = 10; 
+                } else {
+                    durSpokaDrosibasRobezas = 8; // Cik robežas pēc savas pēdējās kustības būs jāpārkāpj, lai spētu iet uz priekšu.
+                }
+                Rooms.noteiktDurSpokaFazesSkatu();
+            }
+        }
+    }
+
+    // =========================================================================================== Virtuves spoks ================================================================================== //
 }
