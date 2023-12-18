@@ -3,11 +3,11 @@
 
 ## Idejas.
 [o] Iespēja mierīgi staigāt apkārt pa māju.
-[] Ielikt iepriekšējās spēles spokus.
+[o] Ielikt iepriekšējās spēles spokus.
 [] Jaunas mehānikas vecajiem spokiem. {Loga spoks var izvēlēties savu istabu.}
 [] Jauni spoki:
 [] Mājas arku monstrs.
-[] Strādājošs laiks.
+[o] Strādājošs laiks.
 [] Mājas darbības.
 ...
 

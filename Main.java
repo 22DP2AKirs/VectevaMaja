@@ -22,6 +22,7 @@ public class Main {
 
     // Iestata tikšķa jeb 1 "refreša" periodu.
     public static int spelesAtrums = 500; // Pēc cik ilga laika ekrāns "refrešojas".
+    public static int spelesIlgums = 720;
 
     public static void main(String[] args) throws InterruptedException {
         // Jaunie rīki.
@@ -39,6 +40,7 @@ public class Main {
             // Atjaunos istabas ar spoka bildēm tikai tad, kad loga spoks būs izvēlējies savu istabu.
             Spoki.logaSpoks();
             Spoki.durSpoks();
+            Spoki.virSpoks();
 
             Rooms.virtSagatavosana();
 
@@ -49,18 +51,15 @@ public class Main {
             if (testesana) { // Testēšanas režīma funkcijas.
                 System.out.println("Durvju spoks aktivs?: " + Spoki.durSpoksAktivs +", Random cipars: " + Spoki.durRandomKustibasCipars + ", Vai kustas?: " + Spoki.vaiDurSpoksVarKusteties + ", Fazes skaitlis: " + Spoki.durSpokaFazesIndeks + ", Spoka drosibas skaitlis: " + Spoki.durSpokaDrosibasRobezas); // + ", Spoka istaba: " + Spoki.logaSpokaIstaba);
                 System.out.println("Loga spoks aktivs?: " + Spoki.logaSpoksAktivs +", Random cipars: " + Spoki.logaRandomKustibasCipars + ", Vai kustas?: " + Spoki.vaiLogaSpoksVarKusteties + ", Fazes skaitlis: " + Spoki.logaSpokaFazesIndeks + ", Spoka drosibas skaitlis: " + Spoki.logaSpokaDrosibasRobezas + ", Spoka istaba: " + Spoki.logaSpokaIstaba);
+                System.out.println("PAgraba gaisma ON?: " + pagrabaGaismaON +", Virtuves spoks aktivs?: " + Spoki.virSpoksAktivs +", Random cipars: " + Spoki.virRandomKustibasCipars + ", Vai kustas?: " + Spoki.vaiVirSpoksVarKusteties + ", Fazes skaitlis: " + Spoki.virSpokaFazesIndeks + ", Spoka drosibas skaitlis: " + Spoki.virSpokaDrosibasRobezas);
+                System.out.println(Laiks.spelesLaiks);
                 // if (pagrabaGaismaON) {
                 //     Spoki.logaSpoks(Spoki.virtuvesLogaSpokaFazes);
                 // } else {
                 //     Spoki.logaSpoks(Spoki.virtuvesTumsaLogaSpokaFazes);
                 // }
             }
-            // Spēles beigas.
-            if (Laiks.spelesLaiks >= 1000) { // Kad beidzas laiks, tad notīras ekrāns un beidzas spēle.
-                speleSakas = false;
-                tiritEkranu();
-                System.out.println("<SPIEDIET ENTER>");
-            }
+            
             // Spēle apstājas uz brīdi.
             try {
                 Thread.sleep(spelesAtrums);
@@ -133,7 +132,7 @@ public class Main {
         } else if (atrasanasVieta[atrasanasSkaitlis].equals("Virtuve")) {
             virtDarbibas = true;
             if (virziens[virzienaSkaitlis].equals("Prieksa")) {
-                Rooms.aktualasIstabasParrakstisana(Rooms.virtuvePrieksa);
+                Rooms.aktualasIstabasParrakstisana(Rooms.modificetasVirtPrieksasBildesIzvade());
 
             } else if (virziens[virzienaSkaitlis].equals("LabaP")) {
                 Rooms.aktualasIstabasParrakstisana(Rooms.virtuveLaba);
@@ -163,10 +162,12 @@ public class Main {
                 testesana = true;
             } else if (Ievade.ievade.equals("g")) {
                 // "Toggle gaismu ON vai OFF"
-                if (pagrabaGaismaON) {
-                    pagrabaGaismaON = false;
-                } else {
-                    pagrabaGaismaON = true;
+                if (Spoki.virSpokaFazesIndeks != 9) {
+                    if (pagrabaGaismaON) {
+                        pagrabaGaismaON = false;
+                    } else {
+                        pagrabaGaismaON = true;
+                    }
                 }
             }
         } catch (Exception e) {

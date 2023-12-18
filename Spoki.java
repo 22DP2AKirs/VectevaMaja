@@ -41,7 +41,7 @@ public class Spoki {
             }
         } else {
             // Visas darbības notiks tikai tad, kad spoks būs pārkāpis visām robežām.
-            if (logaSpokaDrosibasRobezas <= 0) {
+            if (logaSpokaDrosibasRobezas < 0) {
                 // Spoka kustības robežu pieskatīšana.
                 if (logaSpokaFazesIndeks > 7) { // Pieskata, lai spoka index neiziet ārpus robežas (7 array elementi) un izslēdz loga spoku.
                         logaSpokaFazesIndeks = -1;
@@ -64,7 +64,7 @@ public class Spoki {
 
     public static boolean durSpoksAktivs; // Aktivizē spoku.
 
-    public int maxDurSpokaAgresivitate = 20;
+    public static int maxDurSpokaAgresivitate = 20;
     public static int durRandomKustibasCipars;
 
     public static volatile int durSpokaFazesIndeks = -1;
@@ -74,7 +74,7 @@ public class Spoki {
 
     public static void durSpoks() {
         durRandomKustibasCipars = rand.nextInt(20);
-        vaiDurSpoksVarKusteties = durRandomKustibasCipars < maxLogaSpokaAgresivitate;
+        vaiDurSpoksVarKusteties = durRandomKustibasCipars < maxDurSpokaAgresivitate;
 
         if (!durSpoksAktivs) {
             if (vaiLogaSpoksVarKusteties && rand.nextInt(10) == 1) { // 10% iespēja aktivizēt šo spoku.
@@ -82,7 +82,7 @@ public class Spoki {
             }
         } else {
             // Visas darbības notiks tikai tad, kad spoks būs pārkāpis visām robežām.
-            if (durSpokaDrosibasRobezas <= 0) {
+            if (durSpokaDrosibasRobezas < 0) {
                 // Spoka kustības robežu pieskatīšana.
                 if (durSpokaFazesIndeks > 8) { // Pieskata, lai spoka index neiziet ārpus robežas (8 array elementi) un izslēdz durvju spoku.
                         durSpokaFazesIndeks = -1;
@@ -98,4 +98,41 @@ public class Spoki {
     }
 
     // =========================================================================================== Virtuves spoks ================================================================================== //
+    public static boolean virSpoksAktivs; // Aktivizē spoku.
+
+    public static int maxVirSpokaAgresivitate = 20;
+    public static int virRandomKustibasCipars;
+
+    public static volatile int virSpokaFazesIndeks = -1;
+    public static volatile int virSpokaDrosibasRobezas = 3;
+
+    public static volatile boolean vaiVirSpoksVarKusteties;
+
+    public static void virSpoks() {
+        virRandomKustibasCipars = rand.nextInt(20);
+        vaiVirSpoksVarKusteties = virRandomKustibasCipars < maxVirSpokaAgresivitate;
+        Rooms.noteiktVirPrieksasSpokaFazesSkatu();
+        if (!virSpoksAktivs) {
+            if (vaiVirSpoksVarKusteties && rand.nextInt(10) == 1) { // 10% iespēja aktivizēt šo spoku.
+                virSpoksAktivs = true;
+            }
+        } else {
+            // Visas darbības notiks tikai tad, kad spoks būs pārkāpis visām robežām.
+            if (virSpokaDrosibasRobezas < 0) {
+                // Spoka kustības robežu pieskatīšana.
+                if (virSpokaFazesIndeks > 9) { // Pieskata, lai spoka index neiziet ārpus robežas (8 array elementi) un izslēdz durvju spoku.
+                        virSpokaFazesIndeks = -1;
+                        virSpoksAktivs = false;
+                } else if (virSpokaFazesIndeks == 7) { // Cik robežas ir jāpārkāpj, kad ir pēdējā kustības fāzē.
+                    virSpokaDrosibasRobezas = 10; 
+                } else {
+                    virSpokaDrosibasRobezas = 8; // Cik robežas pēc savas pēdējās kustības būs jāpārkāpj, lai spētu iet uz priekšu.
+                }
+            }
+        }
+    }
+
+    
+
+    
 }
