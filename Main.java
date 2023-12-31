@@ -6,7 +6,7 @@ public class Main {
     static volatile String[] virziens = {"Prieksa", "LabaP", "Zeme", "KreisaP"}; // [P]riekša, [L]aba puse, [Z]eme V, [K]reisā puse.
     static volatile String[] atrasanasVieta = {"Gulta", "Divans", "Durvis", "Virtuve"}; // Specifiska istaba.
 
-    // Skaitļi, kurus izmanto, lai pielietotu ^^^ array-us.
+    // Spelētāja pozīcija.
     static volatile int virzienaSkaitlis = 0;
     static volatile int atrasanasSkaitlis = 2; // 1, no gultas istabas. 2, jo testā sāku no durvju istabas. 3, no virtuves istabas. 
 
@@ -42,10 +42,10 @@ public class Main {
             Spoki.durSpoks();
             Spoki.virSpoks();
 
-            Rooms.virtSagatavosana();
+            Istabu_Izskati.virtSagatavosana();
 
             varonaKustiba();
-            Rooms.istabasIzvade(); // Bildes izvade.
+            Istabu_Izskati.istabasIzvade(); // Bildes izvade.
 
             // Rooms.testIstabasIzvade(); // Istabas testa skats.
             if (testesana) { // Testēšanas režīma funkcijas.
@@ -88,61 +88,61 @@ public class Main {
         // Gultas istaba.
         if (atrasanasVieta[atrasanasSkaitlis].equals("Gulta")) {
             if (virziens[virzienaSkaitlis].equals("Prieksa")) {
-                Rooms.aktualasIstabasParrakstisana(Rooms.modificetasGultPrieksasIzvade());
+                Istabu_Izskati.aktualasIstabasParrakstisana(Istabu_Izskati.modificetasGultPrieksasIzvade());
 
             } else if (virziens[virzienaSkaitlis].equals("LabaP")) {
-                Rooms.aktualasIstabasParrakstisana(Rooms.gultasLaba);
+                Istabu_Izskati.aktualasIstabasParrakstisana(Istabu_Izskati.gultasLaba);
 
             } else if (virziens[virzienaSkaitlis].equals("Zeme")) {
-                Rooms.aktualasIstabasParrakstisana(Rooms.gultasZeme);
+                Istabu_Izskati.aktualasIstabasParrakstisana(Istabu_Izskati.gultasZeme);
 
             } else if (virziens[virzienaSkaitlis].equals("KreisaP")) {
-                Rooms.aktualasIstabasParrakstisana(Rooms.gultasKreisa);
+                Istabu_Izskati.aktualasIstabasParrakstisana(Istabu_Izskati.gultasKreisa);
             }
         // Dīvāna istaba.
         } else if (atrasanasVieta[atrasanasSkaitlis].equals("Divans")) {
             if (virziens[virzienaSkaitlis].equals("Prieksa")) {
-                Rooms.aktualasIstabasParrakstisana(Rooms.modificetaDivanaPrieksasBildesIzvade());
+                Istabu_Izskati.aktualasIstabasParrakstisana(Istabu_Izskati.modificetaDivanaPrieksasBildesIzvade());
 
             } else if (virziens[virzienaSkaitlis].equals("LabaP")) {
-                Rooms.aktualasIstabasParrakstisana(Rooms.divanaLaba);
+                Istabu_Izskati.aktualasIstabasParrakstisana(Istabu_Izskati.divanaLaba);
 
             } else if (virziens[virzienaSkaitlis].equals("Zeme")) {
-                Rooms.aktualasIstabasParrakstisana(Rooms.divanaZeme);
+                Istabu_Izskati.aktualasIstabasParrakstisana(Istabu_Izskati.divanaZeme);
 
             } else if (virziens[virzienaSkaitlis].equals("KreisaP")) {
-                Rooms.aktualasIstabasParrakstisana(Rooms.divanaKreisa);
+                Istabu_Izskati.aktualasIstabasParrakstisana(Istabu_Izskati.divanaKreisa);
             }
         // Durvju istaba.    
         } else if (atrasanasVieta[atrasanasSkaitlis].equals("Durvis")) {
             // Skatoties uz masīva elementu var noteikt, uz kuru pusi skatās varonis.
             if (virziens[virzienaSkaitlis].equals("Prieksa")) {
-                Rooms.aktualasIstabasParrakstisana(Rooms.modificetasDurPrieksasBildesIzvade());
+                Istabu_Izskati.aktualasIstabasParrakstisana(Istabu_Izskati.modificetasDurPrieksasBildesIzvade());
 
             } else if (virziens[virzienaSkaitlis].equals("LabaP")) {
-                Rooms.aktualasIstabasParrakstisana(Rooms.durvisLaba);
+                Istabu_Izskati.aktualasIstabasParrakstisana(Istabu_Izskati.durvisLaba);
 
             } else if (virziens[virzienaSkaitlis].equals("Zeme")) {
-                Rooms.aktualasIstabasParrakstisana(Rooms.durvisZeme);
+                Istabu_Izskati.aktualasIstabasParrakstisana(Istabu_Izskati.durvisZeme);
 
             } else if (virziens[virzienaSkaitlis].equals("KreisaP")) {
-                Rooms.aktualasIstabasParrakstisana(Rooms.modificetaDurKreisasPusesBildesIzvade());
+                Istabu_Izskati.aktualasIstabasParrakstisana(Istabu_Izskati.modificetaDurKreisasPusesBildesIzvade());
             }
         // Virtuves istaba.
         } else if (atrasanasVieta[atrasanasSkaitlis].equals("Virtuve")) {
             virtDarbibas = true;
             if (virziens[virzienaSkaitlis].equals("Prieksa")) {
-                Rooms.aktualasIstabasParrakstisana(Rooms.modificetasVirtPrieksasBildesIzvade());
+                Istabu_Izskati.aktualasIstabasParrakstisana(Istabu_Izskati.modificetasVirtPrieksasBildesIzvade());
 
             } else if (virziens[virzienaSkaitlis].equals("LabaP")) {
-                Rooms.aktualasIstabasParrakstisana(Rooms.virtuveLaba);
+                Istabu_Izskati.aktualasIstabasParrakstisana(Istabu_Izskati.virtuveLaba);
 
             } else if (virziens[virzienaSkaitlis].equals("Zeme")) {
-                Rooms.aktualasIstabasParrakstisana(Rooms.virtuveZeme);
+                Istabu_Izskati.aktualasIstabasParrakstisana(Istabu_Izskati.virtuveZeme);
 
             } else if (virziens[virzienaSkaitlis].equals("KreisaP")) {
                 pagrDarbibas = true;
-                Rooms.aktualasIstabasParrakstisana(Rooms.modificetasVirtKreisasPusesIzvade()); // Izvada modificētu jeb pavisam jaunu istabu.
+                Istabu_Izskati.aktualasIstabasParrakstisana(Istabu_Izskati.modificetasVirtKreisasPusesIzvade()); // Izvada modificētu jeb pavisam jaunu istabu.
             }
         }
         Ievade.notiritIevadi();

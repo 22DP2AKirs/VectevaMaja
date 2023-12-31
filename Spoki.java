@@ -54,7 +54,7 @@ public class Spoki {
                 }
 
                 if (logaSpoksAktivs) { // Notiks tikai un vienīgi tad, kad spoka kustība ir atļauta un visas drošības robežas būs pārkāptas.
-                    Rooms.noteiktLogaSpokaFazesBildi(logaSpokaIstaba); // Nosaka, kuru istabu atjaunot ar spoku.
+                    Istabu_Izskati.noteiktLogaSpokaFazesBildi(logaSpokaIstaba); // Nosaka, kuru istabu atjaunot ar spoku.
                 }
             }
         }
@@ -92,7 +92,7 @@ public class Spoki {
                 } else {
                     durSpokaDrosibasRobezas = 8; // Cik robežas pēc savas pēdējās kustības būs jāpārkāpj, lai spētu iet uz priekšu.
                 }
-                Rooms.noteiktDurSpokaFazesSkatu();
+                Istabu_Izskati.noteiktDurSpokaFazesSkatu();
             }
         }
     }
@@ -111,7 +111,7 @@ public class Spoki {
     public static void virSpoks() {
         virRandomKustibasCipars = rand.nextInt(20);
         vaiVirSpoksVarKusteties = virRandomKustibasCipars < maxVirSpokaAgresivitate;
-        Rooms.noteiktVirPrieksasSpokaFazesSkatu();
+        Istabu_Izskati.noteiktVirPrieksasSpokaFazesSkatu();
         if (!virSpoksAktivs) {
             if (vaiVirSpoksVarKusteties && rand.nextInt(10) == 1) { // 10% iespēja aktivizēt šo spoku.
                 virSpoksAktivs = true;
