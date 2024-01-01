@@ -7,8 +7,8 @@ public class Main {
     static volatile String[] atrasanasVieta = {"Gulta", "Divans", "Durvis", "Virtuve"}; // Specifiska istaba.
 
     // Spelētāja pozīcija.
-    static volatile int virzienaSkaitlis = 0;
-    static volatile int atrasanasSkaitlis = 2; // 1, no gultas istabas. 2, jo testā sāku no durvju istabas. 3, no virtuves istabas. 
+    static volatile int virzienaSkaitlis = 3;
+    static volatile int atrasanasSkaitlis = 3; // 1, no gultas istabas. 2, jo testā sāku no durvju istabas. 3, no virtuves istabas. 
 
     // Ieslēdz spēles testēšanas režīmu.
     public static boolean testesana = false;
@@ -21,8 +21,8 @@ public class Main {
     public static boolean pagrDarbibas;
 
     // Iestata tikšķa jeb 1 "refreša" periodu.
-    public static int spelesAtrums = 500; // Pēc cik ilga laika ekrāns "refrešojas".
-    public static int spelesIlgums = 720;
+    public static int spelesAtrums = 1000 / 25; // Pēc cik ilga laika ekrāns "refrešojas". (Milisekundēs)
+    public static int spelesIlgums = 20000;
 
     public static void main(String[] args) throws InterruptedException {
         // Jaunie rīki.
@@ -33,9 +33,10 @@ public class Main {
         laiks.start();
         ievadesLasitajs.start();
         
+
+        tiritEkranu();
         // ================================================================== Sākas spēles kods ============================================================= //
         while (speleSakas) {
-            tiritEkranu();
 
             // Atjaunos istabas ar spoka bildēm tikai tad, kad loga spoks būs izvēlējies savu istabu.
             Spoki.logaSpoks();
@@ -45,25 +46,31 @@ public class Main {
             Istabu_Izskati.virtSagatavosana();
 
             varonaKustiba();
-            Istabu_Izskati.istabasIzvade(); // Bildes izvade.
 
             // Rooms.testIstabasIzvade(); // Istabas testa skats.
             if (testesana) { // Testēšanas režīma funkcijas.
-                System.out.println("Durvju spoks aktivs?: " + Spoki.durSpoksAktivs +", Random cipars: " + Spoki.durRandomKustibasCipars + ", Vai kustas?: " + Spoki.vaiDurSpoksVarKusteties + ", Fazes skaitlis: " + Spoki.durSpokaFazesIndeks + ", Spoka drosibas skaitlis: " + Spoki.durSpokaDrosibasRobezas); // + ", Spoka istaba: " + Spoki.logaSpokaIstaba);
-                System.out.println("Loga spoks aktivs?: " + Spoki.logaSpoksAktivs +", Random cipars: " + Spoki.logaRandomKustibasCipars + ", Vai kustas?: " + Spoki.vaiLogaSpoksVarKusteties + ", Fazes skaitlis: " + Spoki.logaSpokaFazesIndeks + ", Spoka drosibas skaitlis: " + Spoki.logaSpokaDrosibasRobezas + ", Spoka istaba: " + Spoki.logaSpokaIstaba);
-                System.out.println("PAgraba gaisma ON?: " + pagrabaGaismaON +", Virtuves spoks aktivs?: " + Spoki.virSpoksAktivs +", Random cipars: " + Spoki.virRandomKustibasCipars + ", Vai kustas?: " + Spoki.vaiVirSpoksVarKusteties + ", Fazes skaitlis: " + Spoki.virSpokaFazesIndeks + ", Spoka drosibas skaitlis: " + Spoki.virSpokaDrosibasRobezas);
-                System.out.println(Laiks.spelesLaiks);
+                for (int i = 4; i > 0; i--){
+                    System.out.print("\033[F");
+                }
+                System.out.println("\rDurvju spoks aktivs?: " + Spoki.durSpoksAktivs +", Random cipars: " + Spoki.durRandomKustibasCipars + ", Vai kustas?: " + Spoki.vaiDurSpoksVarKusteties + ", Fazes skaitlis: " + Spoki.durSpokaFazesIndeks + ", Spoka drosibas skaitlis: " + Spoki.durSpokaDrosibasRobezas + "             "); // + ", Spoka istaba: " + Spoki.logaSpokaIstaba);
+                System.out.println("\rLoga spoks aktivs?: " + Spoki.logaSpoksAktivs +", Random cipars: " + Spoki.logaRandomKustibasCipars + ", Vai kustas?: " + Spoki.vaiLogaSpoksVarKusteties + ", Fazes skaitlis: " + Spoki.logaSpokaFazesIndeks + ", Spoka drosibas skaitlis: " + Spoki.logaSpokaDrosibasRobezas + ", Spoka istaba: " + Spoki.logaSpokaIstaba + "             ");
+                System.out.println("\rPagraba gaisma ON?: " + pagrabaGaismaON +", Virtuves spoks aktivs?: " + Spoki.virSpoksAktivs +", Random cipars: " + Spoki.virRandomKustibasCipars + ", Vai kustas?: " + Spoki.vaiVirSpoksVarKusteties + ", Fazes skaitlis: " + Spoki.virSpokaFazesIndeks + ", Spoka drosibas skaitlis: " + Spoki.virSpokaDrosibasRobezas + "             ");
+                System.out.println("\rLaiks ms: " + Laiks.spelesLaiks + " / " + spelesIlgums +"                                                                                                                    ");
                 // if (pagrabaGaismaON) {
                 //     Spoki.logaSpoks(Spoki.virtuvesLogaSpokaFazes);
                 // } else {
                 //     Spoki.logaSpoks(Spoki.virtuvesTumsaLogaSpokaFazes);
                 // }
             }
+
+            
+            Istabu_Izskati.istabasIzvade(); // Bildes izvade.
+
+            
             
             // Spēle apstājas uz brīdi.
             try {
                 Thread.sleep(spelesAtrums);
-                tiritEkranu();
             } catch (Exception e) {
                 // handle exception
                 System.out.println("Ak nē! Kaut kas notika ar laiku!");
@@ -159,7 +166,11 @@ public class Main {
             } else if (Ievade.ievade.equals("w")) {
                 ietUzPrieksu(atrasanasVieta[atrasanasSkaitlis], virziens[virzienaSkaitlis]);
             } else if (Ievade.ievade.equals("info")) {
-                testesana = true;
+                if (testesana) {
+                        testesana = false;
+                    } else {
+                        testesana = true;
+                    }
             } else if (Ievade.ievade.equals("g")) {
                 // "Toggle gaismu ON vai OFF"
                 if (Spoki.virSpokaFazesIndeks != 9) {
@@ -169,6 +180,8 @@ public class Main {
                         pagrabaGaismaON = true;
                     }
                 }
+            } else if (Ievade.ievade.equals("")) {
+                System.out.print("\033[F");
             }
         } catch (Exception e) {
             // : handle exception

@@ -8,8 +8,12 @@ public class Ievade extends Thread {
     public void run() { // Vienmēr lasa ievadi, vienalga uz to, kas notiek apkārt.
         while (Main.speleSakas) {
             ievade = ievadesLasitajs.nextLine().toLowerCase();
+            System.out.print("\033[F");
             // Izvada nākošo spēles darbību.
-            System.out.println("Darbiba: " + ievade);
+            // System.out.print("\033[F" + "Darbiba: " + ievade);
+            // if (ievade.length() > 1) {
+            //     System.out.print("\033[F\r                                                                                                                 ");
+            // }
         }
     }
 
