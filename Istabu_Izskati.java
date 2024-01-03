@@ -1,5 +1,3 @@
-
-
 public class Istabu_Izskati {
     // Durju istabas parastie skati jeb stāvokļi.
     
@@ -380,7 +378,7 @@ public class Istabu_Izskati {
     }
     
     // Sagatavo virtuves kreiso pusi izvadei.
-    public static void virtSagatavosana() {
+    public static void virtuvesPagrabaGaismasStavoklaNoteiksana() {
         virtKreisasPusesPagrabs(); // Sagatavo pagraba skatu.
     }
 
@@ -755,31 +753,4 @@ public class Istabu_Izskati {
     public static void aktualasIstabasParrakstisana(String[] istaba) {
         aktualaIstabasIzskats = istaba;
     }
-
-    public static void istabasIzvade() {
-        // Cikls strādā izmantojot indexu. Var izmantot ar vairākiem masīviem.
-        for (int i = 0; i < 17; i++) {
-            System.out.println("\r|" + aktualaIstabasIzskats[i] + "|");
-        }
-
-        // Cikls strādā izmantojot masīva izmēru.
-        // for (String linija : aktualaIstabasIzskats) {
-        //     System.out.println("\r|" + linija + "|");
-        // }
-
-        // Notīra bildes apakšu.
-        System.out.print("\r                                                                                                                                     \033[F");
-
-        for (int i = (aktualaIstabasIzskats.length); i > 0; i--) {
-            System.out.print("\033[F");
-        }
-        
-    }
-
-    public static void testIstabasIzvade() {
-        // for (String linija : divanaPrieksa) {
-        //     System.out.println(linija);
-        // }
-    }
-
 }

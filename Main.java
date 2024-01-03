@@ -1,3 +1,5 @@
+
+
 public class Main {
     // Visur izmantojamie mainīgie jeb objekti.
     public static volatile boolean speleSakas = true; // Mainīgais bool, kas palaiž visu spēli.
@@ -32,7 +34,7 @@ public class Main {
         // Sākas atsevišķās darbības jeb patstāvīgie procesi.
         laiks.start();
         ievadesLasitajs.start();
-        
+
 
         tiritEkranu();
         // ================================================================== Sākas spēles kods ============================================================= //
@@ -43,40 +45,33 @@ public class Main {
             Spoki.durSpoks();
             Spoki.virSpoks();
 
-            Istabu_Izskati.virtSagatavosana();
+            Istabu_Izskati.virtuvesPagrabaGaismasStavoklaNoteiksana();
 
+            
             varonaKustiba();
 
             // Rooms.testIstabasIzvade(); // Istabas testa skats.
             if (testesana) { // Testēšanas režīma funkcijas.
-                for (int i = 4; i > 0; i--){
-                    System.out.print("\033[F");
-                }
                 System.out.println("\rDurvju spoks aktivs?: " + Spoki.durSpoksAktivs +", Random cipars: " + Spoki.durRandomKustibasCipars + ", Vai kustas?: " + Spoki.vaiDurSpoksVarKusteties + ", Fazes skaitlis: " + Spoki.durSpokaFazesIndeks + ", Spoka drosibas skaitlis: " + Spoki.durSpokaDrosibasRobezas + "             "); // + ", Spoka istaba: " + Spoki.logaSpokaIstaba);
                 System.out.println("\rLoga spoks aktivs?: " + Spoki.logaSpoksAktivs +", Random cipars: " + Spoki.logaRandomKustibasCipars + ", Vai kustas?: " + Spoki.vaiLogaSpoksVarKusteties + ", Fazes skaitlis: " + Spoki.logaSpokaFazesIndeks + ", Spoka drosibas skaitlis: " + Spoki.logaSpokaDrosibasRobezas + ", Spoka istaba: " + Spoki.logaSpokaIstaba + "             ");
                 System.out.println("\rPagraba gaisma ON?: " + pagrabaGaismaON +", Virtuves spoks aktivs?: " + Spoki.virSpoksAktivs +", Random cipars: " + Spoki.virRandomKustibasCipars + ", Vai kustas?: " + Spoki.vaiVirSpoksVarKusteties + ", Fazes skaitlis: " + Spoki.virSpokaFazesIndeks + ", Spoka drosibas skaitlis: " + Spoki.virSpokaDrosibasRobezas + "             ");
                 System.out.println("\rLaiks ms: " + Laiks.spelesLaiks + " / " + spelesIlgums +"                                                                                                                    ");
-                // if (pagrabaGaismaON) {
-                //     Spoki.logaSpoks(Spoki.virtuvesLogaSpokaFazes);
-                // } else {
-                //     Spoki.logaSpoks(Spoki.virtuvesTumsaLogaSpokaFazes);
-                // }
             }
 
             
-            Istabu_Izskati.istabasIzvade(); // Bildes izvade.
+            UI_Izskats.salipinataIzvade(); // Izvade uz ekrāna.
+            
+            Ievade.notiritIevadi(); // Cikla beigās notīra Ievadi, jo visas matodes, kurām tā bija vajadzīga jau to ir paņēmušas.
 
-            
-            
-            // Spēle apstājas uz brīdi.
             try {
-                Thread.sleep(spelesAtrums);
+                Thread.sleep(spelesAtrums); // Spēle apstājas uz noteiktu brīdi. 30 FPS.
             } catch (Exception e) {
-                // handle exception
-                System.out.println("Ak nē! Kaut kas notika ar laiku!");
+                // Kods ko pildīs, ja "try" kods izmetīs kļūdu.
             }
             
         }
+
+        // Noķer un apstādina neatkarīgos procesus.
         laiks.join();
         ievadesLasitajs.join();
         // ======================================================================== Beidzas spēles kods ============================================================================== //
@@ -152,26 +147,26 @@ public class Main {
                 Istabu_Izskati.aktualasIstabasParrakstisana(Istabu_Izskati.modificetasVirtKreisasPusesIzvade()); // Izvada modificētu jeb pavisam jaunu istabu.
             }
         }
-        Ievade.notiritIevadi();
     }
 
     // Varoņa iespējamās darbības.
     public static void varonaKustiba() {
         // Varoņa kustēšanās kontroles.
         try {
-            if (Ievade.ievade.equals("a")) { // Pagriesties pa Kreisi.
+            if (Ievade.ievade.equals("A")) { // Pagriesties pa Kreisi.
                 pagrieztiesPaKreisi();
-            } else if (Ievade.ievade.equals("d")) { // Pagriesties pa Labi.
+            } else if (Ievade.ievade.equals("D")) { // Pagriesties pa Labi.
                 pagrieztiesPaLabi();
-            } else if (Ievade.ievade.equals("w")) {
+            } else if (Ievade.ievade.equals("W")) {
                 ietUzPrieksu(atrasanasVieta[atrasanasSkaitlis], virziens[virzienaSkaitlis]);
-            } else if (Ievade.ievade.equals("info")) {
+            } else if (Ievade.ievade.equals("INFO")) {
                 if (testesana) {
                         testesana = false;
                     } else {
                         testesana = true;
                     }
-            } else if (Ievade.ievade.equals("g")) {
+                tiritEkranu();
+            } else if (Ievade.ievade.equals("G")) {
                 // "Toggle gaismu ON vai OFF"
                 if (Spoki.virSpokaFazesIndeks != 9) {
                     if (pagrabaGaismaON) {
