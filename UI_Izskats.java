@@ -4,8 +4,8 @@ class UI_Izskats {
     static String[] apaksasUISagatavosana(String panemtaIevade) {
         String[] gatavsApaksasUI = {
             "----------------------------------------------------------------------------------",
-            "             K U S T I B A               |             D A R B I B A S            ",
-            "----------------------------------------------------------------------------------",
+            " [1] K U S T I B A | [2] U Z D E V U M I | [3] A I Z S A R D Z I B A | [4] . . .  ",
+            "___________________|_____________________|___________________________|            ",
             "                                                                                  ",
             "                                                                                  ",
             "                                                                                  ",
@@ -18,14 +18,18 @@ class UI_Izskats {
             "                                                                                  ",
             "__________________________________________________________________________________"
         };
-        if (Varona_Darbibas.varonisKustasTrueVaiVaronisStradaFalse) {
-            gatavsApaksasUI[2] = "                                         |________________________________________";
+        if (Varona_Darbibas.infoLapasSecibasSkaitlis == 1) {
+            gatavsApaksasUI[2] = "                   |_____________________|___________________________|____________";
             gatavsApaksasUI[4] = "      [ W ] - K U S T E T I E S   U Z   P R I E K S U                             ";
             gatavsApaksasUI[6] = "      [ A ] - P A G R I E Z T I E S   P A   L A B I                               ";
             gatavsApaksasUI[8] = "      [ D ] - P A G R I E Z T I E S   P A   K R E I S I                           ";
-            gatavsApaksasUI[10] = "      [ X ] - M A I N I T   R E Z I M U                                           ";
-        } else {
-            gatavsApaksasUI[2] = "_________________________________________|                                        ";
+            gatavsApaksasUI[10] = "      [ X ] - D A R B I B U   I N F O R M A C I J A                               ";
+        } else if (Varona_Darbibas.infoLapasSecibasSkaitlis == 2){
+            gatavsApaksasUI[2] = "___________________|                     |___________________________|____________";
+        } else if (Varona_Darbibas.infoLapasSecibasSkaitlis == 3) {
+            gatavsApaksasUI[2] = "___________________|_____________________|                           |____________";
+        } else if (Varona_Darbibas.infoLapasSecibasSkaitlis == 4) {
+            gatavsApaksasUI[2] = "___________________|_____________________|___________________________|            ";
         }
         
         if (!panemtaIevade.equals("}")) { // Izveido jauno.
@@ -51,8 +55,7 @@ class UI_Izskats {
         return null;
     }
 
-    public static void salipinataIzvade() {
-
+    public static void salipinataUIIzvade() {
         // Cikls strādā izmantojot indexu. Var izmantot ar vairākiem masīviem.
         // Izvada un nomaina augšējo daļu.
         for (int i = 0; i < 17; i++) {

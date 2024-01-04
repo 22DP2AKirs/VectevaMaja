@@ -1,6 +1,8 @@
 import java.util.Random;
 
 public class Spoki {
+
+    static boolean spokuInfoIzvadeBoolean = false;
     // Instrumenti.
     public static Random rand = new Random(); // Var izmantot, lai iegūtu random ciparus.
     
@@ -132,7 +134,10 @@ public class Spoki {
         }
     }
 
-    
-
-    
+    static void spokuInformacijasIzvade() {
+        System.out.println("Spoks: Loga, Aktivs?: " + logaSpoksAktivs + " Var kusteties?: " + vaiLogaSpoksVarKusteties + ", RAND kustibas cipars: " + logaRandomKustibasCipars + ", Drosibas robezas: " + logaSpokaDrosibasRobezas + ", Faze: " + logaSpokaFazesIndeks + ", Istaba: " + logaSpokaIstaba + "                      ");
+        System.out.println("Spoks: Durvju, Aktivs?: " + durSpoksAktivs + " Var kusteties?: " + vaiDurSpoksVarKusteties + ", RAND kustibas cipars: " + durRandomKustibasCipars + ", Drosibas robezas: " + durSpokaDrosibasRobezas + ", Faze: " + durSpokaFazesIndeks + "                                 ");
+        System.out.println("Spoks: Virtuves, Aktivs?: " + virSpoksAktivs + " Var kusteties?: " + vaiVirSpoksVarKusteties + ", RAND kustibas cipars: " + virRandomKustibasCipars + ", Drosibas robezas: " + virRandomKustibasCipars + ", Faze: " + virSpokaFazesIndeks + ", Pagraba gaisma ON?: " + Main.pagrabaGaismaON + "                    ");
+        System.out.println("Laiks ms: " + Laiks.spelesLaiks + " / " + Main.spelesIlgums + "                                                                                                                         ");
+    }
 }

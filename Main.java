@@ -1,5 +1,3 @@
-
-
 public class Main {
     // Visur izmantojamie mainīgie jeb objekti.
     public static volatile boolean speleSakas = true; // Mainīgais bool, kas palaiž visu spēli.
@@ -38,37 +36,32 @@ public class Main {
 
         tiritEkranu();
         // ================================================================== Sākas spēles kods ============================================================= //
-        while (speleSakas) {
+        while (speleSakas) { // Kamēr laiks nav beidzies, turpināt ciklu jeb spēli.
 
+            // ----------------------------------------------------------- vvv Jāatjauno, jāpārveido vvv --------------------------------------------------------//
             // Atjaunos istabas ar spoka bildēm tikai tad, kad loga spoks būs izvēlējies savu istabu.
             Spoki.logaSpoks();
             Spoki.durSpoks();
             Spoki.virSpoks();
 
             Istabu_Izskati.virtuvesPagrabaGaismasStavoklaNoteiksana();
+            // ------------------------------------------------------------------^^^^^^^^^^^^^^^^^^^^^^^^^^^---------------------------------------------------- //
 
+            Varona_Darbibas.varonaDarbibas(Ievade.ievade); // Lietotāja jeb varoņa ievade un tās darbības (komandas un to darbības).
             
-            varonaKustiba();
-
-            // Rooms.testIstabasIzvade(); // Istabas testa skats.
-            if (testesana) { // Testēšanas režīma funkcijas.
-                System.out.println("\rDurvju spoks aktivs?: " + Spoki.durSpoksAktivs +", Random cipars: " + Spoki.durRandomKustibasCipars + ", Vai kustas?: " + Spoki.vaiDurSpoksVarKusteties + ", Fazes skaitlis: " + Spoki.durSpokaFazesIndeks + ", Spoka drosibas skaitlis: " + Spoki.durSpokaDrosibasRobezas + "             "); // + ", Spoka istaba: " + Spoki.logaSpokaIstaba);
-                System.out.println("\rLoga spoks aktivs?: " + Spoki.logaSpoksAktivs +", Random cipars: " + Spoki.logaRandomKustibasCipars + ", Vai kustas?: " + Spoki.vaiLogaSpoksVarKusteties + ", Fazes skaitlis: " + Spoki.logaSpokaFazesIndeks + ", Spoka drosibas skaitlis: " + Spoki.logaSpokaDrosibasRobezas + ", Spoka istaba: " + Spoki.logaSpokaIstaba + "             ");
-                System.out.println("\rPagraba gaisma ON?: " + pagrabaGaismaON +", Virtuves spoks aktivs?: " + Spoki.virSpoksAktivs +", Random cipars: " + Spoki.virRandomKustibasCipars + ", Vai kustas?: " + Spoki.vaiVirSpoksVarKusteties + ", Fazes skaitlis: " + Spoki.virSpokaFazesIndeks + ", Spoka drosibas skaitlis: " + Spoki.virSpokaDrosibasRobezas + "             ");
-                System.out.println("\rLaiks ms: " + Laiks.spelesLaiks + " / " + spelesIlgums +"                                                                                                                    ");
+            if (Spoki.spokuInfoIzvadeBoolean) { // Spoku informācijas izvade. --Debuging--
+                Spoki.spokuInformacijasIzvade();
             }
 
-            
-            UI_Izskats.salipinataIzvade(); // Izvade uz ekrāna.
+            UI_Izskats.salipinataUIIzvade(); // Izvade uz ekrāna.
             
             Ievade.notiritIevadi(); // Cikla beigās notīra Ievadi, jo visas matodes, kurām tā bija vajadzīga jau to ir paņēmušas.
 
-            try {
+            try { // Vienas bildes izvade jeb beigas.
                 Thread.sleep(spelesAtrums); // Spēle apstājas uz noteiktu brīdi. 30 FPS.
             } catch (Exception e) {
                 // Kods ko pildīs, ja "try" kods izmetīs kļūdu.
             }
-            
         }
 
         // Noķer un apstādina neatkarīgos procesus.
@@ -77,13 +70,13 @@ public class Main {
         // ======================================================================== Beidzas spēles kods ============================================================================== //
     }
 
-    public static void tiritEkranu() {
+    static void tiritEkranu() {
         System.out.print("\033[H\033[2J"); // Notīra terminālu.
         System.out.flush(); // Kaut kas ar kursora pozīciju.
     }
     
     // Kustoties pa māju, uz kuru pusi skatīsies varonis.
-    public static void istabasVirziens() {
+    static void istabasVirziens() {
         // Nosākuma pārbauda, kurā istabā atrodas varonis un pēc tam viņa virzienu.
         // Skatoties kurā istabā atrodas varons ir pieejami citi skati.
 
@@ -148,58 +141,9 @@ public class Main {
             }
         }
     }
-
-    // Varoņa iespējamās darbības.
-    public static void varonaKustiba() {
-        // Varoņa kustēšanās kontroles.
-        try {
-            if (Ievade.ievade.equals("A")) { // Pagriesties pa Kreisi.
-                pagrieztiesPaKreisi();
-            } else if (Ievade.ievade.equals("D")) { // Pagriesties pa Labi.
-                pagrieztiesPaLabi();
-            } else if (Ievade.ievade.equals("W")) {
-                ietUzPrieksu(atrasanasVieta[atrasanasSkaitlis], virziens[virzienaSkaitlis]);
-            } else if (Ievade.ievade.equals("INFO")) {
-                if (testesana) {
-                        testesana = false;
-                    } else {
-                        testesana = true;
-                    }
-                tiritEkranu();
-            } else if (Ievade.ievade.equals("G")) {
-                // "Toggle gaismu ON vai OFF"
-                if (Spoki.virSpokaFazesIndeks != 9) {
-                    if (pagrabaGaismaON) {
-                        pagrabaGaismaON = false;
-                    } else {
-                        pagrabaGaismaON = true;
-                    }
-                }
-            } else if (Ievade.ievade.equals("")) {
-                System.out.print("\033[F");
-            }
-        } catch (Exception e) {
-            // : handle exception
-        }
-        istabasVirziens(); // Varoņa galvas kustināšana (Skatās pa labi, kreisi).
-    }
-
-    public static void pagrieztiesPaKreisi() {
-        virzienaSkaitlis--;
-        if (virzienaSkaitlis < 0) { // Lai masīvs neizietu no diapazonas.
-            virzienaSkaitlis = 3;
-        }
-    }
-
-    public static void pagrieztiesPaLabi() {
-        virzienaSkaitlis++;
-        if (virzienaSkaitlis > 3) { // Lai masīvs neizietu no diapazonas.
-            virzienaSkaitlis = 0;
-        }
-    }
-
+    
     // Kustība pa māju.
-    public static void ietUzPrieksu(String tagadejaIstaba, String tagadejaisVirziens) {
+    static void ietUzPrieksu(String tagadejaIstaba, String tagadejaisVirziens) {
         if (tagadejaIstaba.equals("Gulta")) {
             if (tagadejaisVirziens.equals("LabaP")) {
                 atrasanasSkaitlis++;

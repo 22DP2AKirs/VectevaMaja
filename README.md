@@ -1,15 +1,17 @@
 ## VectevaMaja-Java
 # Stāsts.
 
-## Idejas.
-[o] Iespēja mierīgi staigāt apkārt pa māju.
-[o] Ielikt iepriekšējās spēles spokus.
-[] Jaunas mehānikas vecajiem spokiem. {Loga spoks var izvēlēties savu istabu.}
-[] Jauni spoki:
-[] Mājas arku monstrs.
-[o] Strādājošs laiks.
-[] Mājas darbības.
-...
+## Idejas:
+- [ x ] Iespēja mierīgi staigāt apkārt pa māju.
+- [ x ] Ielikt iepriekšējās spēles spokus.
+- [] Jaunas mehānikas vecajiem spokiem. {Loga spoks var izvēlēties savu istabu.}
+- [] Jauni spoki:
+- [] Mājas arku jeb durvju monstrs.
+- [o] Strādājošs laiks.
+- [] Mājas darbības.
+- [] Lietotāja UI - User interface.
+- [] Skaņa.
+- ...
 
 
 ## Spēles nobeiguma stress.
