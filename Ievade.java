@@ -4,11 +4,16 @@ public class Ievade extends Thread {
     // volatile ir, lai objekts sinhronizējas starp visiem Thrediem.
     private static Scanner ievadesLasitajs = new Scanner(System.in); // Parastais lasītājs, kurš lasīs lietotāja ievadi.
     static volatile String ievade = ""; // Definēju mainīgo, lai kods tālāk spētu viņu visu laiku dublicēt (šinī gadījumā saglabāt).
+
+    static boolean vaiIevadiIzpildija = true; // Ļauj ievadītajām darbībām būt izpildītām pirms tās tiek nodzēstas.
     
     public void run() { // Vienmēr lasa ievadi, vienalga uz to, kas notiek apkārt.
         while (Main.speleSakas) {
             ievade = ievadesLasitajs.nextLine().toUpperCase();
+            vaiIevadiIzpildija = false; // Pēc ievades saglabāšanas, notiritIevadi() netīrīs ievadi, līdz VaronaDarbibas izpildīs ievadīto komandu.
             System.out.print("\033[F"); // Noliek mirgojošo kursoru vienu līniju uz augšu.
+            
+            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Problēmas ar \033[F , jāatrod aizvietojums. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         }
     }
     
@@ -33,11 +38,12 @@ public class Ievade extends Thread {
                 }
             }
         }
-
         return galaIevade; 
     }
 
     static void notiritIevadi() {
-        Ievade.ievade = "}";
+        if (vaiIevadiIzpildija) { // Ja komanda tika izpildīta, tad to var nodzēst.
+            Ievade.ievade = "}";
+        }
     }
 }

@@ -1,6 +1,6 @@
 public class Laiks extends Thread {
     public static volatile int spelesLaiks; // Visiem pieejamais objekts.
-    public static String laikaTeksts = "1 2 PM";
+    public static String laikaTeksts = "1 2 PM ";
     public static int vienaStunda = Main.spelesIlgums / 6;
     @Override
     public void run() {
@@ -8,17 +8,17 @@ public class Laiks extends Thread {
             Laiks.spelesLaiks++; // Spēles laiks palielinas, katru sekundi jeb spēlesĀtrumu.
 
             if (spelesLaiks == vienaStunda) {
-                laikaTeksts = "  1 AM";
+                laikaTeksts = "  1 AM ";
             } else if (spelesLaiks == vienaStunda * 2) {
-                laikaTeksts = "  2 AM";
+                laikaTeksts = "  2 AM ";
             } else if (spelesLaiks == vienaStunda * 3) {
-                laikaTeksts = "  3 AM";
+                laikaTeksts = "  3 AM ";
             } else if (spelesLaiks == vienaStunda * 4) {
-                laikaTeksts = "  4 AM";
+                laikaTeksts = "  4 AM ";
             } else if (spelesLaiks == vienaStunda * 5) {
-                laikaTeksts = "  5 AM";
+                laikaTeksts = "  5 AM ";
             } else if (spelesLaiks == vienaStunda * 6) {
-                laikaTeksts = "  6 AM";
+                laikaTeksts = "  6 AM ";
                 Main.speleSakas = false;
                 Main.tiritEkranu();
                 System.out.println("Jūs izdzīvojāt!!!\n\n\n\n\n");

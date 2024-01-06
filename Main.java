@@ -2,6 +2,11 @@ public class Main {
     // Visur izmantojamie mainīgie jeb objekti.
     static volatile boolean speleSakas = true; // Mainīgais bool, kas palaiž visu spēli.
 
+    // Spēles mainīgie.
+    static int nakts = 6;
+
+    static String[] visiVaronaUzdevumi = {"Pildit majasdarbus", "Est", "Mazgat", "Kartot", "Lasit", "Tirit"};
+
     // *Beta* spēlētāja darbības.
     volatile static boolean pagrabaGaismaON = false;
 
@@ -17,7 +22,7 @@ public class Main {
         // Sākas atsevišķās darbības jeb patstāvīgie procesi.
         laiks.start();
         ievadesLasitajs.start();
-
+        
         // ================================================================== Sākas spēles kods ============================================================= //
         tiritEkranu();
         while (speleSakas) { // Kamēr laiks nav beidzies, turpināt ciklu jeb spēli.

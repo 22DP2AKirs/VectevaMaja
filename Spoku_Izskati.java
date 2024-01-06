@@ -517,7 +517,7 @@ public class Spoku_Izskati {
     };
 
     // =========================================================================================== Virtuves spoks ======================================================================================= //
-    public static String[] izslegtaPagrabaGaisma = {
+    static String[] izslegtaPagrabaGaisma = {
         "░░░░░░░░░░░░░",
       "░░░░░░░░░░░░░░░░░",
       "░░░░░░░░░░░░░░░░░",
@@ -532,7 +532,7 @@ public class Spoku_Izskati {
       "░░░░░░░░░░░░░░░░░"
     };
 
-  public static String[] ieslegtaPagrabaGaisma = {
+    static String[] ieslegtaPagrabaGaisma = {
         "-------------",
       "|---------------|",
       "| |-----------| |",
@@ -547,7 +547,7 @@ public class Spoku_Izskati {
       "/               \\"
     };
 
-  public static String[] virtuvesSp0 = {
+    static String[] virtuvesSp0 = {
         "-------------",
       "|---------------|",
       "| |-----------| |",
@@ -562,7 +562,7 @@ public class Spoku_Izskati {
       "/               \\"
     };
 
-  public static String[] virtuvesSp1 = {
+    static String[] virtuvesSp1 = {
         "-------------",
       "|---------------|",
       "| |-----------| |",
@@ -577,7 +577,7 @@ public class Spoku_Izskati {
       "/               \\"
     };
 
-  public static String[] virtuvesSp2 = {
+    static String[] virtuvesSp2 = {
         "-------------",
       "|---------------|",
       "| |-----------| |",
@@ -592,7 +592,7 @@ public class Spoku_Izskati {
       "/               \\"
     };
 
-  public static String[] virtuvesSp3 = {
+    static String[] virtuvesSp3 = {
         "-------------",
       "|---------------|",
       "| |-----------| |",
@@ -607,7 +607,7 @@ public class Spoku_Izskati {
       "/               \\"
     };
 
-  public static String[] virtuvesSp4 = {
+    static String[] virtuvesSp4 = {
         "-------------",
       "|---------------|",
       "| |-----------| |",
@@ -622,7 +622,7 @@ public class Spoku_Izskati {
       "/               \\"
     };
 
-  public static String[] virtuvesSp5 = {
+    static String[] virtuvesSp5 = {
         "-------------",
       "|---------------|",
       "| |-----------| |",
@@ -637,7 +637,7 @@ public class Spoku_Izskati {
       "/               \\"
     };
 
-  public static String[] virtuvesSp6 = {
+    static String[] virtuvesSp6 = {
         "-------------",
       "|---------------|",
       "| |-----------| |",
@@ -652,7 +652,7 @@ public class Spoku_Izskati {
       "/               \\"
     };
 
-  public static String[] virtuvesSp7 = {
+    static String[] virtuvesSp7 = {
         "-------------",
       "|---------------|",
       "| ^          ^  |",
@@ -667,7 +667,7 @@ public class Spoku_Izskati {
       "/               \\"
     };
 
-  public static String[] virtuvesSp8 = {
+    static String[] virtuvesSp8 = {
         "             ",
       "  \\           /  ",
       " ___\\       /___ ",
@@ -682,7 +682,7 @@ public class Spoku_Izskati {
       "/ v v       v v \\"
     };
 
-  public static String[] virtuvesSp9 = {
+    static String[] virtuvesSp9 = {
         "░░░░░░░░░░░░░",
       "░░░░░░░░░░░░░░░░░",
       "░░░░░░░░░░░░░░░░░",

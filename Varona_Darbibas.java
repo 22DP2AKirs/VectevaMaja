@@ -6,6 +6,10 @@ class Varona_Darbibas {
     static int varonaIstabasSkaitlis = 0; // 0, no gultas istabas. 2, jo testā sāku no durvju istabas. 3, no virtuves istabas. 
 
     static void varonaDarbibas(String ievade) {
+        if (!Ievade.vaiIevadiIzpildija) { // Garantē, lai lietotāja ievade tiktu izpildīta, pirms tā ir nodzēsta ar notiritIevadi().
+            Ievade.vaiIevadiIzpildija = true;
+        }
+
         if (ievade.equals("A")) { // Pagriezties pa kreisi.
             pagrieztiesPaKreisi();
         } else if (ievade.equals("W")) { // Iet uz priekšu.

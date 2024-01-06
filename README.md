@@ -11,6 +11,7 @@
 - [] Mājas darbības.
 - [] Lietotāja UI - User interface.
 - [] Skaņa.
+- [ ] Izskrāsot durvis brūnas un logus zilus (Ādama ideja).
 - ...
 
 
