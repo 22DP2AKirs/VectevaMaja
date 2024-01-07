@@ -138,6 +138,6 @@ public class Spoki {
         System.out.println("Spoks: Loga, Aktivs?: " + logaSpoksAktivs + " Var kusteties?: " + vaiLogaSpoksVarKusteties + ", RAND kustibas cipars: " + logaRandomKustibasCipars + ", Drosibas robezas: " + logaSpokaDrosibasRobezas + ", Faze: " + logaSpokaFazesIndeks + ", Istaba: " + logaSpokaIstaba + "\033[0K");
         System.out.println("Spoks: Durvju, Aktivs?: " + durSpoksAktivs + " Var kusteties?: " + vaiDurSpoksVarKusteties + ", RAND kustibas cipars: " + durRandomKustibasCipars + ", Drosibas robezas: " + durSpokaDrosibasRobezas + ", Faze: " + durSpokaFazesIndeks + "\033[0K");
         System.out.println("Spoks: Virtuves, Aktivs?: " + virSpoksAktivs + " Var kusteties?: " + vaiVirSpoksVarKusteties + ", RAND kustibas cipars: " + virRandomKustibasCipars + ", Drosibas robezas: " + virRandomKustibasCipars + ", Faze: " + virSpokaFazesIndeks + ", Pagraba gaisma ON?: " + Main.pagrabaGaismaON + "\033[0K");
-        System.out.println("Laiks ms: " + Laiks.spelesLaiks + " / " + Main.spelesIlgums + "\033[0K");
+        System.out.println("Laiks ms: " + Laiks.spelesLaiks + " / " + Laiks.vienaStunda * 6 + "\033[0K");
     }
 }

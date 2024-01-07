@@ -1,6 +1,6 @@
 public class Istabu_Izskati {
     // Durju istabas parastie skati jeb stāvokļi.
-    public static String[] durvisLaba= {
+    public static String[] durvjuLeja = {
         "   |                                                   | \\                   \\  ",
         " . |              ________________                     |  \\___________________\\ ",
         "/| |   _______   /                \\            |       |  |           | | | | | ",
@@ -19,7 +19,7 @@ public class Istabu_Izskati {
         "/                                                                              \\"
         };
 
-    public static String[] durvisZeme = {
+    public static String[] durvjuKreisaPuse = {
         "         /     /|     ___.----.___            |  \\_____________\\ |              ",
         "        /     / |  .--            --.         |  |      |      | |              ",
         "       /     /__|  |                |         |  |      |      | |    .         ",
@@ -38,7 +38,7 @@ public class Istabu_Izskati {
         "|     |  /||//                                                      \\     \\  \\  "
         };
 
-    public static String[] modificetaDurKreisasPusesBildesIzvade() {
+    public static String[] modificetaDurvjuPrieksasBildesIzvade() {
         String[] durKreisaPuse = {
         " /  |    |       ________________________________                           |   ",
         "/   |    |      " + durLogaSpokaFazesBilde[0] + "                          |   ",
@@ -83,7 +83,7 @@ public class Istabu_Izskati {
     }
     public static String[] durSpokaFazesBilde = Spoku_Izskati.durvisCiet;
 
-    public static String[] modificetasDurPrieksasBildesIzvade() {
+    public static String[] modificetasDurvjuLabasPusesBildesIzvade() {
         String[] durvisPrieksa= {
             "             |                                                   |              ",
             "             |                              __________________   |              ",
@@ -179,7 +179,7 @@ public class Istabu_Izskati {
     //         "15  / \\    |/________  /|/                                  \\ | o\\ ||     |  ",
     //         "16 /  |    /         \\/|/                                    \\|   \\ |     |"};
 
-    static String[] divanaKreisa = {
+    static String[] divanaKreisaPuse = {
             "   |                                                                        |   " ,
             "   |                                                                        |   " ,
             "   |                                                                        |   " ,
@@ -197,7 +197,7 @@ public class Istabu_Izskati {
             " /     \\__\\_/____\\  \\___\\                                                     \\ ",
             "/                 \\_/                                                          \\"};
 
-    static String[] divanaZeme = {
+    static String[] divanaLeja = {
             "             |       ________________               _______      |              ",
             "             |      /                \\             /   |   \\     |              ",
             "    ______   |      |                |            |    |    |    |              ",
@@ -216,7 +216,7 @@ public class Istabu_Izskati {
             "                                                            \\  /   /\\           "};
             
 
-    static String[] divanaLaba = {
+    static String[] divanaLabaPuse = {
             "   |                                                                        |   ",
             "   |                                                    ___.---.___         |   ",
             "   |         \\        /                             .---           ---.     |   ",
@@ -298,7 +298,7 @@ public class Istabu_Izskati {
     //         "15   | |      |              | |  / |_|                              \\" , 
     //         "16   | |______|______________| |/                                     \\"};
 
-    static String[] gultasKreisa = {
+    static String[] gultasLeja = {
             "             |      _____                                        |              " ,
             "__           |     /     \\                                       |              " , 
             "  \\          |    |    .  |                                      |              " , 
@@ -316,7 +316,7 @@ public class Istabu_Izskati {
             "   |       |_____________________|/             \\  \\                \\           " , 
             "   |      /                                      \\  \\                \\          "};
 
-    static String[] gultasZeme = {
+    static String[] gultasLabaPuse = {
             "             |                       ________________            |              " , 
             "   _____     |         _______      /                \\           |  __          " , 
             "  /     \\    |        /       |     |                |           | |  \\         " , 
@@ -334,7 +334,7 @@ public class Istabu_Izskati {
             "         | /                                              \\\\  \\|     |          " , 
             "         |/                                                \\\\  |     |          "};
 
-    static String[] gultasLaba = {
+    static String[] gultasPrieksa = {
             "       / |   |    ________                 ________________      |              " , 
             "      /| |   |   |        |               /                \\     |              " , 
             "     /|| |   |   | |\\/\\/\\ |               |                |     |              " , 
@@ -352,7 +352,7 @@ public class Istabu_Izskati {
             "||/ / / / //                  |_________|                          \\            " ,
             "|/ / /|/ /|                                                         \\           "};
 
-    public static String[] modificetasGultPrieksasIzvade() {
+    public static String[] modificetasGultasKreisasPusesIzvade() {
     String[] gultPrieksa = {   
         "             |                         ________________________  |              ",  
         "             |                        " + gultLogaSpokaFazesBilde[0] + " |              ", 
@@ -393,7 +393,7 @@ public class Istabu_Izskati {
     //    "15  /                                                                          \\ |     ",
     //    "16 /                                                                            \\|     "};
 
-    static String[] virtuveZeme = {
+    static String[] virtuvesPrieksa = {
         "   |                 ______________                              ___________|   ",
         "   |               _/____/___/___  \\          ________________  |\\           \\  ",
         "   |              /              \\/|  _____  /                \\ |\\\\           \\ ",
@@ -411,7 +411,7 @@ public class Istabu_Izskati {
         "  /'._.'                                                          \\\\|  \\     \\ |",
         " /   |                                                             \\|__|\\_____\\|"};
 
-    static String[] virtuveLaba = { 
+    static String[] virtuvesKreisaPuse = { 
         "    /        /  |   |  _________________                         |              ",
         "   /________/   |()/| /                 \\                        |              ",
         "   |        |   | //| |                 |                        |              ",
@@ -504,7 +504,7 @@ public class Istabu_Izskati {
         } 
     }
 
-    public static String[] modificetasVirtKreisasPusesIzvade() {
+    public static String[] modificetasVirtLabasPusesIzvade() {
         // Modificētā, galējā bilde.
         String[] virtuveKreisa = {
             "           /              /|                                     |              ",
@@ -696,11 +696,10 @@ public class Istabu_Izskati {
         } else {
             virtPrieksasPagrabaBildesArSpoku = Spoku_Izskati.izslegtaPagrabaGaisma;
         }
-        
     }
 
     public static String[] virtPrieksasPagrabaBildesArSpoku = Spoku_Izskati.virtuvesSp0;
-    public static String[] modificetasVirtPrieksasBildesIzvade() {
+    public static String[] modificetasVirtLejasBildesIzvade() {
         String[] virtuvePrieksa = {
                 "   |    __.-------.__                                       |  |       |       |",
                 "   | .--" + virtPrieksasPagrabaBildesArSpoku[0] + "--.                                    |  |    ( )|( )    |",
@@ -724,10 +723,10 @@ public class Istabu_Izskati {
     static String[] [][] istabuMasivaAtjaunosana() {
 
         String[] [][] istabaUnVirziens = { // {Priekša, LabāPuse, Leja, KreisāPuse} // Istabas virzieni.
-        {modificetasGultPrieksasIzvade(), gultasLaba, gultasZeme, gultasKreisa}, // Gultas istaba [x][].
-        {modificetaDivanaPrieksasBildesIzvade(), divanaLaba, divanaZeme, divanaKreisa}, // Dīvāna istaba [x][].
-        {modificetasDurPrieksasBildesIzvade(),durvisLaba, durvisZeme, modificetaDurKreisasPusesBildesIzvade()}, // Durvju istaba [x][].
-        {modificetasVirtPrieksasBildesIzvade(), virtuveLaba, virtuveZeme, modificetasVirtKreisasPusesIzvade()} // Virtuves istaba.
+        {gultasPrieksa, gultasLabaPuse, gultasLeja, modificetasGultasKreisasPusesIzvade()}, // Gultas istaba [x][].
+        {modificetaDivanaPrieksasBildesIzvade(), divanaLabaPuse, divanaLeja, divanaKreisaPuse}, // Dīvāna istaba [x][].
+        {modificetaDurvjuPrieksasBildesIzvade(), modificetasDurvjuLabasPusesBildesIzvade(), durvjuLeja, durvjuKreisaPuse}, // Durvju istaba [x][].
+        {virtuvesPrieksa, modificetasVirtLabasPusesIzvade(),  modificetasVirtLejasBildesIzvade(), virtuvesKreisaPuse} // Virtuves istaba.
         }; 
         
         return istabaUnVirziens;
@@ -737,5 +736,38 @@ public class Istabu_Izskati {
 
     public static String[] aktualasIstabasParrakstisana(String[] istaba) {
         return istaba;
+    }
+
+    static String[] istabasArIzslegtuElektribu(String[] varonaAktualaIstaba) {
+        String[] tumsaIstaba = {
+            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
+            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
+            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
+            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
+            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
+            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
+            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
+            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
+            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
+            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
+            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
+            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
+            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
+            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
+            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
+            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
+        };
+        
+        if (VaronaDarbibas.aizdedzinatsSerkocins) {
+            tumsaIstaba[8] = K.TPELEKS + varonaAktualaIstaba[8] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + "\033[70G░░░░░░░░░░░░" + K.RESET;
+            tumsaIstaba[9] = K.TPELEKS + varonaAktualaIstaba[9] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + "\033[73G░░░░░░░░░" + K.RESET;
+            tumsaIstaba[10] = K.TPELEKS + varonaAktualaIstaba[10] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + "\033[76G░░░░░░" + K.RESET;
+            tumsaIstaba[11] = K.TPELEKS + varonaAktualaIstaba[11] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + "\033[61G" + K.DZELTENS + "/\\_" + K.TPELEKS + "\033[79G░░░" + K.RESET;
+            tumsaIstaba[12] = K.TPELEKS + varonaAktualaIstaba[12] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + "\033[60G"+ K.ORANZS + "/   \\" + K.TPELEKS + "\033[80G░░" + K.RESET;
+            tumsaIstaba[13] = K.TPELEKS + varonaAktualaIstaba[13] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + "\033[60G" + K.SARKANS + "| O  |" + K.TPELEKS + "\033[80G░░" + K.RESET;
+            tumsaIstaba[14] = K.TPELEKS + varonaAktualaIstaba[14] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + "\033[61G" + K.SARKANS + "'-\\'" + K.TPELEKS + "\033[80G░░" + K.RESET;
+            tumsaIstaba[15] = K.TPELEKS + varonaAktualaIstaba[15] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + "\033[64G" + K.BRUNS + "\\" + K.TPELEKS + "\033[80G░░" + K.RESET;
+        }
+        return tumsaIstaba;
     }
 }

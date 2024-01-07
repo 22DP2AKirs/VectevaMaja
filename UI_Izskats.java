@@ -20,18 +20,20 @@ class UI_Izskats {
             "                                                                                ",
             "________________________________________________________________________________"
         };
-        if (Varona_Darbibas.infoLapasSecibasSkaitlis == 1) {
+        if (VaronaDarbibas.infoLapasSecibasSkaitlis == 1) {
             gatavsApaksasUI[2] = "                   |_____________________|___________________________|__________";
             gatavsApaksasUI[4] = "      [ W ] - K U S T E T I E S   U Z   P R I E K S U                           ";
             gatavsApaksasUI[6] = "      [ A ] - P A G R I E Z T I E S   P A   L A B I                             ";
             gatavsApaksasUI[8] = "      [ D ] - P A G R I E Z T I E S   P A   K R E I S I                         ";
             gatavsApaksasUI[10] = "      [ X ] - D A R B I B U   I N F O R M A C I J A                             ";
-        } else if (Varona_Darbibas.infoLapasSecibasSkaitlis == 2){
+        } else if (VaronaDarbibas.infoLapasSecibasSkaitlis == 2){
             gatavsApaksasUI[2] = "___________________|                     |___________________________|__________";
-        } else if (Varona_Darbibas.infoLapasSecibasSkaitlis == 3) {
+        } else if (VaronaDarbibas.infoLapasSecibasSkaitlis == 3) {
             gatavsApaksasUI[2] = "___________________|_____________________|                           |__________";
-        } else if (Varona_Darbibas.infoLapasSecibasSkaitlis == 4) {
+        } else if (VaronaDarbibas.infoLapasSecibasSkaitlis == 4) {
             gatavsApaksasUI[2] = "___________________|_____________________|___________________________|          ";
+            gatavsApaksasUI[4] = "      [ E ] - I Z M A N T O T   O B J E K T U                                   ";
+            gatavsApaksasUI[6] = "      [ F ] - C E N S T I E S   A I Z D E D Z I N A T   S E R K O C I N U       ";
         }
         
         if (!panemtaIevade.equals("}")) { // Izveido jauno.
@@ -55,52 +57,91 @@ class UI_Izskats {
 
     static String[] labasPusesUISagatavosana() {
         String[] gatavsLabasPusesUI = {
-            "                    ",
+            "                     ",
             " L A I K S : " + Laiks.laikaTeksts,
-            "____________________",
-            "          |         ",
-            "                    ",
-            "____   ___|___   ___",
-            "          |         ",
-            "                    ",
-            "__________|_________",
-            "                    ",
-            "  U Z D E V U M I : ",
-            "                    ",
-            "                    ", // 13
-            "                    ",
-            "                    ", // 15
-            "                    ",
-            "                    ",
-            "                    ",
-            "                    ", // 13
-            "                    ",
-            "                    ", // 15
-            "                    ",
-            "                    ",
-            "                    ",
-            "                    ", // 13
-            "                    ",
-            "                    ", // 15
-            "                    ",
-            "                    ",
-            "____________________"
-            
+            "_____________________",
+            "Div       |Dur       ",
+            "                     ",
+            "____   ___|____   ___",
+            "Gul       |Vir       ",
+            "                     ",
+            "__________|__________",
+            "                     ",
+            "  U Z D E V U M I :  ",
+            "                     ",
+            "                     ", // 13
+            "                     ",
+            "                     ", // 15
+            "                     ",
+            "                     ",
+            "                     ",
+            "                     ", // 13
+            "                     ",
+            "                     ", // 15
+            "                     ",
+            "                     ",
+            "                     ",
+            "                     ", // 13
+            "                     ",
+            "                     ", // 15
+            "                     ",
+            "                     ",
+            "_____________________"
         };
 
+        // Mapes varoņa bultiņas pozīcijas noteicējs.
+        if (VaronaDarbibas.elektribaIeslegta) {
+            if (VaronaDarbibas.varonaIstabasSkaitlis == 0) {
+                gatavsLabasPusesUI[7] = "     " + varonaMapesBultinasVirzienaDevejs() + "               ";
+            } else if (VaronaDarbibas.varonaIstabasSkaitlis == 1) {
+                gatavsLabasPusesUI[4] = "     " + varonaMapesBultinasVirzienaDevejs() + "               ";
+            } else if (VaronaDarbibas.varonaIstabasSkaitlis == 2) {
+                gatavsLabasPusesUI[4] = "                " + varonaMapesBultinasVirzienaDevejs() + "    ";
+            } else if (VaronaDarbibas.varonaIstabasSkaitlis == 3) {
+                gatavsLabasPusesUI[7] = "                " + varonaMapesBultinasVirzienaDevejs() + "    ";
+            }
+        } else {
+            gatavsLabasPusesUI[3] = K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░" + K.RESET;
+            gatavsLabasPusesUI[4] = K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░" + K.RESET;
+            gatavsLabasPusesUI[5] = K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░" + K.RESET;
+            gatavsLabasPusesUI[6] = K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░" + K.RESET;
+            gatavsLabasPusesUI[7] = K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░" + K.RESET;
+            gatavsLabasPusesUI[8] = K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░" + K.RESET;
+        }
         return gatavsLabasPusesUI;
     }
 
-    
+    static String varonaMapesBultinasVirzienaDevejs() {
+        String noteiktaMapesBultina = "";
+        if(VaronaDarbibas.varonaVirzienaSkaitlis == 0) {
+            noteiktaMapesBultina = "^";
+        } else if (VaronaDarbibas.varonaVirzienaSkaitlis == 1) {
+            noteiktaMapesBultina = ">";
+        } else if (VaronaDarbibas.varonaVirzienaSkaitlis == 2) {
+            noteiktaMapesBultina = "v";
+        } else if (VaronaDarbibas.varonaVirzienaSkaitlis == 3) {
+            noteiktaMapesBultina = "<";
+        }
+        return noteiktaMapesBultina;
+    }
+
     static ArrayList<String> programmasGalejaIzvadeUzEkrana = new ArrayList<>(); // Masīvs saturēs visu spēles grafisko informāciju.
     static void salipinataUIIzvade() { // Metode mainīs un izvadīs "Galveno izvades masīvu". Visu laiku atjaunojot to ar aktuālajām (dinamiskajām bildēm (Katrs freims (FPS))).
 
-        System.out.println("\r▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓"); // Ekrāna augšējā daļa.
+        System.out.println("\r▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓"); // Ekrāna augšējā daļa.
 
-        // Pievieno mājas bildes pie gala izvades.
-        for (String linija : Istabu_Izskati.istabuMasivaAtjaunosana()[Varona_Darbibas.varonaIstabasSkaitlis][Varona_Darbibas.varonaVirzienaSkaitlis]) {
-            programmasGalejaIzvadeUzEkrana.add("\r|" + linija + "|");
+        if (VaronaDarbibas.elektribaIeslegta) { // Elektrība ieslēgta.
+            // Pievieno mājas bildes pie gala izvades.
+            for (String linija : Istabu_Izskati.istabuMasivaAtjaunosana()[VaronaDarbibas.varonaIstabasSkaitlis][VaronaDarbibas.varonaVirzienaSkaitlis]) {
+                programmasGalejaIzvadeUzEkrana.add("\r|" + linija + "|");
+            }
+
+        } else { // Elektrība Izslēgta.
+            for (String linija : Istabu_Izskati.istabasArIzslegtuElektribu(Istabu_Izskati.istabuMasivaAtjaunosana()[VaronaDarbibas.varonaIstabasSkaitlis][VaronaDarbibas.varonaVirzienaSkaitlis])) {
+                programmasGalejaIzvadeUzEkrana.add("\r|" + linija + "|");
+            }
         }
+        
 
         // Pievieno apakšējo UI pie gala izvades, pēc mājas bildēm.
         for (String linija : UI_Izskats.apaksasUISagatavosana(Ievade.ievade)) {

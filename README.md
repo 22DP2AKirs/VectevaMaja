@@ -12,6 +12,7 @@
 - [] Lietotāja UI - User interface.
 - [] Skaņa.
 - [ ] Izskrāsot durvis brūnas un logus zilus (Ādama ideja).
+- [] Jāpieiet pie loga. cits spoks?
 - ...
 
 

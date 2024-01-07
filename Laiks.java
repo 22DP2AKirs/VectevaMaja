@@ -1,29 +1,45 @@
 public class Laiks extends Thread {
     public static volatile int spelesLaiks; // Visiem pieejamais objekts.
-    public static String laikaTeksts = "1 2 PM ";
+    public static String laikaTeksts = "1 2 P M ";
     public static int vienaStunda = Main.spelesIlgums / 6;
+
+    static int gaidisanasLaiks;
+
     @Override
     public void run() {
         while (Main.speleSakas) {
             Laiks.spelesLaiks++; // Spēles laiks palielinas, katru sekundi jeb spēlesĀtrumu.
-
+            
             if (spelesLaiks == vienaStunda) {
-                laikaTeksts = "  1 AM ";
+                laikaTeksts = " 1 A M  ";
             } else if (spelesLaiks == vienaStunda * 2) {
-                laikaTeksts = "  2 AM ";
+                laikaTeksts = " 2 A M  ";
             } else if (spelesLaiks == vienaStunda * 3) {
-                laikaTeksts = "  3 AM ";
+                laikaTeksts = " 3 A M  ";
             } else if (spelesLaiks == vienaStunda * 4) {
-                laikaTeksts = "  4 AM ";
+                laikaTeksts = " 4 A M  ";
             } else if (spelesLaiks == vienaStunda * 5) {
-                laikaTeksts = "  5 AM ";
+                laikaTeksts = " 5 A M  ";
             } else if (spelesLaiks == vienaStunda * 6) {
-                laikaTeksts = "  6 AM ";
+                laikaTeksts = " 6 A M  ";
                 Main.speleSakas = false;
+
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {}
+
                 Main.tiritEkranu();
-                System.out.println("Jūs izdzīvojāt!!!\n\n\n\n\n");
+                System.out.println("\n\n\n\nJus izdzivojat!!!\n\n\n\n\n");
                 System.out.println("<SPIEDIET ENTER>");
                 break;
+            }
+
+            if (!VaronaDarbibas.elektribaIeslegta) { // Ja false, tad ...
+                if (gaidisanasLaiks <= 0) {
+                    VaronaDarbibas.elektribaIeslegta = true;
+                    VaronaDarbibas.aizdedzinatsSerkocins = false;
+                }
+                gaidisanasLaiks--;
             }
 
             // Katru sekundi nosaka vai spoks nāk par 1 fāzi tuvāk, vai pārkāpj 1 robežu.
@@ -52,11 +68,8 @@ public class Laiks extends Thread {
             
             // Gulēšana līdz nākamam kadram.
             try {
-                Thread.sleep(Main.spelesAtrums);
-            } catch (Exception e) {
-                // handle exception
-                System.out.println("Ak nē! Kaut kas notika ar laiku!");
-            }
+                Thread.sleep(1000); // 1000 = 1 sekunde.
+            } catch (Exception e) {}
         }
     }
 }
