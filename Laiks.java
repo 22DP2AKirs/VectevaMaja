@@ -36,10 +36,18 @@ public class Laiks extends Thread {
 
             if (!VaronaDarbibas.elektribaIeslegta) { // Ja false, tad ...
                 if (gaidisanasLaiks <= 0) {
+                    SkanasSpeletajs.SpeletSkanu("Skanas faili\\fuse-box-turning-on-off.wav", 0);
                     VaronaDarbibas.elektribaIeslegta = true;
                     VaronaDarbibas.aizdedzinatsSerkocins = false;
                 }
                 gaidisanasLaiks--;
+            }
+
+            if (VaronaDarbibas.aizdedzinatsSerkocins && VaronaDarbibas.serkocinaDegsanasLaiks != Main.maxSerkocinaDegsanasLaiks) {
+                VaronaDarbibas.serkocinaDegsanasLaiks++;
+            } else {
+                VaronaDarbibas.aizdedzinatsSerkocins = false;
+                VaronaDarbibas.serkocinaDegsanasLaiks = 0;
             }
 
             // Katru sekundi nosaka vai spoks nāk par 1 fāzi tuvāk, vai pārkāpj 1 robežu.

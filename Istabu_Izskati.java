@@ -316,23 +316,44 @@ public class Istabu_Izskati {
             "   |       |_____________________|/             \\  \\                \\           " , 
             "   |      /                                      \\  \\                \\          "};
 
-    static String[] gultasLabaPuse = {
+    static String[] gultasLabaPuse() {
+        String[] elektriskaKaste = new String[9]; // Masīvs priekš elektriskās kastes bildes.
+
+        if (VaronaDarbibas.elektribaIeslegta) { // Ieslēgts.
+            elektriskaKaste[0] = K.OBJEKTS + "_______" + K.RESET;
+            elektriskaKaste[1] = K.OBJEKTS + "/       |" + K.RESET;
+            elektriskaKaste[2] = K.OBJEKTS + "/|  =  ON|" + K.RESET;
+            elektriskaKaste[3] = K.OBJEKTS + "| | _|_   |" + K.RESET;
+            elektriskaKaste[4] = K.OBJEKTS + "| |       |" + K.RESET;
+            elektriskaKaste[5] = K.OBJEKTS + "| |    OFF|" + K.RESET;
+            elektriskaKaste[6] = K.OBJEKTS + "| |_______|" + K.RESET;
+            elektriskaKaste[7] = K.OBJEKTS + "| /" + K.RESET;
+            elektriskaKaste[8] = K.OBJEKTS + "|/" + K.RESET;
+        } else { // Izslēgts.
+            elektriskaKaste[7] = "   ";
+            elektriskaKaste[8] = "  ";
+        }
+
+        String[] gultasLabaPuse = {
             "             |                       ________________            |              " , 
-            "   _____     |         _______      /                \\           |  __          " , 
-            "  /     \\    |        /       |     |                |           | |  \\         " , 
-            " /       |   |       /|  =  ON|     |                |           | | / |        " , 
-            "/        ||| |      | | _|_   |     |                |           | |   |        " , 
-            "         ||| |      | |       |     |                |           | |\\  |        " , 
-            "         |   |      | |    OFF|     |                |           | |   |        " , 
-            "         |   |      | |_______|     |                |     ______| | . |        " , 
-            "         |   |      | /             |                |    |\\     \\  \\__|        " , 
-            "         |   |      |/              |                |    | \\     \\             " , 
+            "   _____     |         " + elektriskaKaste[0] + "      /                \\           |  __          " , 
+            "  /     \\    |        " + elektriskaKaste[1] + "     |                |           | |  \\         " , 
+            " /       |   |       " + elektriskaKaste[2] + "     |                |           | | / |        " , 
+            "/        ||| |      " + elektriskaKaste[3] + "     |                |           | |   |        " , 
+            "         ||| |      " + elektriskaKaste[4] + "     |                |           | |\\  |        " , 
+            "         |   |      " + elektriskaKaste[5] + "     |                |           | |   |        " , 
+            "         |   |      " + elektriskaKaste[6] + "     |                |     ______| | . |        " , 
+            "         |   |      " + elektriskaKaste[7] + "             |                |    |\\     \\  \\__|        " , 
+            "         |   |      " + elektriskaKaste[8] + "              |                |    | \\     \\             " , 
             "         |   |                      |                |    | O\\     \\            " , 
             "         |   |                      |                |    |\\  \\     \\           " , 
             "         |   |______________________|                |____| \\  \\_____\\          " , 
             "         |  /                                             | O\\ |     |          " , 
             "         | /                                              \\\\  \\|     |          " , 
-            "         |/                                                \\\\  |     |          "};
+            "         |/                                                \\\\  |     |          "
+        };
+        return gultasLabaPuse;
+    }
 
     static String[] gultasPrieksa = {
             "       / |   |    ________                 ________________      |              " , 
@@ -723,7 +744,7 @@ public class Istabu_Izskati {
     static String[] [][] istabuMasivaAtjaunosana() {
 
         String[] [][] istabaUnVirziens = { // {Priekša, LabāPuse, Leja, KreisāPuse} // Istabas virzieni.
-        {gultasPrieksa, gultasLabaPuse, gultasLeja, modificetasGultasKreisasPusesIzvade()}, // Gultas istaba [x][].
+        {gultasPrieksa, gultasLabaPuse(), gultasLeja, modificetasGultasKreisasPusesIzvade()}, // Gultas istaba [x][].
         {modificetaDivanaPrieksasBildesIzvade(), divanaLabaPuse, divanaLeja, divanaKreisaPuse}, // Dīvāna istaba [x][].
         {modificetaDurvjuPrieksasBildesIzvade(), modificetasDurvjuLabasPusesBildesIzvade(), durvjuLeja, durvjuKreisaPuse}, // Durvju istaba [x][].
         {virtuvesPrieksa, modificetasVirtLabasPusesIzvade(),  modificetasVirtLejasBildesIzvade(), virtuvesKreisaPuse} // Virtuves istaba.
@@ -759,15 +780,24 @@ public class Istabu_Izskati {
         };
         
         if (VaronaDarbibas.aizdedzinatsSerkocins) {
-            tumsaIstaba[8] = K.TPELEKS + varonaAktualaIstaba[8] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + "\033[70G░░░░░░░░░░░░" + K.RESET;
-            tumsaIstaba[9] = K.TPELEKS + varonaAktualaIstaba[9] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + "\033[73G░░░░░░░░░" + K.RESET;
-            tumsaIstaba[10] = K.TPELEKS + varonaAktualaIstaba[10] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + "\033[76G░░░░░░" + K.RESET;
-            tumsaIstaba[11] = K.TPELEKS + varonaAktualaIstaba[11] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + "\033[61G" + K.DZELTENS + "/\\_" + K.TPELEKS + "\033[79G░░░" + K.RESET;
-            tumsaIstaba[12] = K.TPELEKS + varonaAktualaIstaba[12] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + "\033[60G"+ K.ORANZS + "/   \\" + K.TPELEKS + "\033[80G░░" + K.RESET;
-            tumsaIstaba[13] = K.TPELEKS + varonaAktualaIstaba[13] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + "\033[60G" + K.SARKANS + "| O  |" + K.TPELEKS + "\033[80G░░" + K.RESET;
-            tumsaIstaba[14] = K.TPELEKS + varonaAktualaIstaba[14] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + "\033[61G" + K.SARKANS + "'-\\'" + K.TPELEKS + "\033[80G░░" + K.RESET;
-            tumsaIstaba[15] = K.TPELEKS + varonaAktualaIstaba[15] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + "\033[64G" + K.BRUNS + "\\" + K.TPELEKS + "\033[80G░░" + K.RESET;
+            tumsaIstaba[8] = K.TPELEKS + varonaAktualaIstaba[8] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[70G░░░░░░░░░░░░" + K.RESET;
+            tumsaIstaba[9] = K.TPELEKS + varonaAktualaIstaba[9] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[73G░░░░░░░░░" + K.RESET;
+            tumsaIstaba[10] = K.TPELEKS + varonaAktualaIstaba[10] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[76G░░░░░░" + K.RESET;
+            tumsaIstaba[11] = K.TPELEKS + varonaAktualaIstaba[11] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[61G" + K.DZELTENS + "/\\_" + K.TPELEKS + "\033[79G░░░" + K.RESET;
+            tumsaIstaba[12] = K.TPELEKS + varonaAktualaIstaba[12] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[60G"+ K.ORANZS + "/   \\" + K.TPELEKS + "\033[80G░░" + K.RESET;
+            tumsaIstaba[13] = K.TPELEKS + varonaAktualaIstaba[13] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[60G" + K.SARKANS + "| O  |" + K.TPELEKS + "\033[80G░░" + K.RESET;
+            tumsaIstaba[14] = K.TPELEKS + varonaAktualaIstaba[14] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[61G" + K.SARKANS + "'-\\'" + K.TPELEKS + "\033[80G░░" + K.RESET;
+            tumsaIstaba[15] = K.TPELEKS + varonaAktualaIstaba[15] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[64G" + K.BRUNS + "\\" + K.TPELEKS + "\033[80G░░" + K.RESET;
         }
         return tumsaIstaba;
+        
     }
+
+    static String[] serkocinaIzskats = {
+        "\033[61G" + K.DZELTENS + "/\\_" + K.RESET,
+        "\033[60G"+ K.ORANZS + "/   \\" + K.RESET,
+        "\033[60G" + K.SARKANS + "| O  |" + K.RESET,
+        "\033[61G" + K.SARKANS + "'-\\'" + K.RESET,
+        "\033[64G" + K.BRUNS + "\\" + K.RESET
+    };
 }

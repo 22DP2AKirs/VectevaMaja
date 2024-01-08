@@ -2,9 +2,15 @@ public class Main {
     // Visur izmantojamie mainīgie jeb objekti.
     static volatile boolean speleSakas = true; // Mainīgais bool, kas palaiž visu spēli.
 
-    // Spēles mainīgie.
-    static int nakts = 6;
+    //////////////////////////////////////////////////////////////////////////// S P Ē L E S   I E S T A T Ī J U M I ///////////////////////////////////////////////////////////////////////////////////////
+    static int spelesNakts = 6;
 
+    static int atlikusoSerkocinuDaudzums = 10;
+    static int maxSerkocinaDegsanasLaiks = 10;
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     static String[] visiVaronaUzdevumi = {"Pildit majasdarbus", "Est", "Mazgat", "Kartot", "Lasit", "Tirit"};
 
     // *Beta* spēlētāja darbības.
@@ -25,7 +31,7 @@ public class Main {
         ievadesLasitajs.start();
         skanasSpeletajs.start();
         
-        // ================================================================== Sākas spēles kods ============================================================= //
+        ////////////////////////////////////////////////////////////////////// S Ā K A S   S P Ē L E S   K O D S /////////////////////////////////////////////////////////////////////////////////////////
         tiritEkranu();
         while (speleSakas) { // Kamēr laiks nav beidzies, turpināt ciklu jeb spēli.
 
@@ -59,7 +65,7 @@ public class Main {
         laiks.join();
         ievadesLasitajs.join();
         skanasSpeletajs.join();
-        // ======================================================================== Beidzas spēles kods ============================================================================== //
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }
 
     static void tiritEkranu() {

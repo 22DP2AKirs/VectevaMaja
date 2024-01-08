@@ -67,7 +67,7 @@ class UI_Izskats {
             "                     ",
             "__________|__________",
             "                     ",
-            "  U Z D E V U M I :  ",
+            " Serkocini :         ",
             "                     ",
             "                     ", // 13
             "                     ",
@@ -88,6 +88,12 @@ class UI_Izskats {
             "                     ",
             "_____________________"
         };
+
+        if (Main.atlikusoSerkocinuDaudzums > 9) { // Nomaina atlikušo sērkociņu daudzuma rindu.
+            gatavsLabasPusesUI[10] = " Serkocini : " + Main.atlikusoSerkocinuDaudzums + "      ";
+        } else {
+            gatavsLabasPusesUI[10] = " Serkocini : " + Main.atlikusoSerkocinuDaudzums + "       ";
+        }
 
         // Mapes varoņa bultiņas pozīcijas noteicējs.
         if (VaronaDarbibas.elektribaIeslegta) {
@@ -142,7 +148,6 @@ class UI_Izskats {
             }
         }
         
-
         // Pievieno apakšējo UI pie gala izvades, pēc mājas bildēm.
         for (String linija : UI_Izskats.apaksasUISagatavosana(Ievade.ievade)) {
             programmasGalejaIzvadeUzEkrana.add("\r|" + linija + "|");

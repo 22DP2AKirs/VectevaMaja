@@ -11,7 +11,7 @@ public class SkanasSpeletajs extends Thread {
         while (Main.speleSakas) {
             SpeletSkanu("Skanas faili\\ambiance-sakana.wav", -5);
             try {
-                Thread.sleep(20000);
+                Thread.sleep(96000);
             } catch (Exception e) {
                 // TODO: handle exception
             }

@@ -6,7 +6,9 @@ class VaronaDarbibas {
     static int varonaIstabasSkaitlis = 0; // 0, no gultas istabas. 2, jo testā sāku no durvju istabas. 3, no virtuves istabas. 
 
     static boolean elektribaIeslegta = true;
+
     static boolean aizdedzinatsSerkocins = false;
+    static int serkocinaDegsanasLaiks;
 
     static void varonaDarbibas(String ievade) {
         if (!Ievade.vaiIevadiIzpildija) { // Garantē, lai lietotāja ievade tiktu izpildīta, pirms tā ir nodzēsta ar notiritIevadi().
@@ -14,10 +16,14 @@ class VaronaDarbibas {
         }
 
         if (!ievade.equals("}")) { // Ja ievades nebija, tad nepārbauda pārējās komandas.
-            if (!elektribaIeslegta && ievade.equals("F")) {
+            if (ievade.equals("F") && Main.atlikusoSerkocinuDaudzums != 0 && !aizdedzinatsSerkocins) {
                 if (Spoki.rand.nextInt(5) == 0) { // 20 % iespēja aizdedzināt sērkociņu.
-                    SkanasSpeletajs.SpeletSkanu("C:\\Users\\Adrians\\Documents\\Programmesana\\Java-programming-Game\\Skanas faili\\lighting-matches.wav", 0);
+                    SkanasSpeletajs.SpeletSkanu("Skanas faili\\lighting-matches.wav", 0);
                     aizdedzinatsSerkocins = true;
+                    
+                    Main.atlikusoSerkocinuDaudzums--;
+                } else {
+                    SkanasSpeletajs.SpeletSkanu("Skanas faili\\failing-to-lit-matches.wav", 0);
                 }
             } else if (ievade.equals("A")) { // Pagriezties pa kreisi.
                 pagrieztiesPaKreisi();
@@ -50,6 +56,7 @@ class VaronaDarbibas {
             } else if (varonaIstabasSkaitlis == 0) { // Gultas darbības.
                 if (varonaVirzienaSkaitlis == 1 && elektribaIeslegta) { // Elektrības kastes puse.
                     if (ievade.equals("E")) {
+                        SkanasSpeletajs.SpeletSkanu("Skanas faili\\fuse-box-turning-on-off.wav", 0);
                         elektribaIeslegta = false;
                         Laiks.gaidisanasLaiks = 20;
                     }

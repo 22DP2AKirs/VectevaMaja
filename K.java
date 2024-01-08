@@ -22,4 +22,6 @@ class K {
     static final String GZILS = "\u001B[36m";
 
     static final String BALTS = "\u001B[37m";
+
+    static final String OBJEKTS = "\u001B[38;5;187m";
 }
