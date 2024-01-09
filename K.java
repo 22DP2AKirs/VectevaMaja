@@ -17,9 +17,9 @@ class K {
 
     static final String ZILS = "\u001B[34m";
 
-    static final String VIOLETS = "\u001B[35m";
+    static final String DEBESU_ZILS = "\u001B[38;5;117m";
 
-    static final String GZILS = "\u001B[36m";
+    static final String VIOLETS = "\u001B[35m";
 
     static final String BALTS = "\u001B[37m";
 

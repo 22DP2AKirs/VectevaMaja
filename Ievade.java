@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Ievade extends Thread {
     // volatile ir, lai objekts sinhronizējas starp visiem Thrediem.
     private static Scanner ievadesLasitajs = new Scanner(System.in); // Parastais lasītājs, kurš lasīs lietotāja ievadi.
-    static volatile String ievade = ""; // Definēju mainīgo, lai kods tālāk spētu viņu visu laiku dublicēt (šinī gadījumā saglabāt).
+    static volatile String ievade = "}"; // Definēju mainīgo, lai kods tālāk spētu viņu visu laiku dublicēt (šinī gadījumā saglabāt).
 
     static boolean vaiIevadiIzpildija = true; // Ļauj ievadītajām darbībām būt izpildītām pirms tās tiek nodzēstas.
     
