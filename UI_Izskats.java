@@ -136,16 +136,9 @@ class UI_Izskats {
 
         System.out.println("\r▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓"); // Ekrāna augšējā daļa.
 
-        if (VaronaDarbibas.elektribaIeslegta) { // Elektrība ieslēgta.
-            // Pievieno mājas bildes pie gala izvades.
-            for (String linija : Istabu_Izskati.istabuMasivaAtjaunosana()[VaronaDarbibas.varonaIstabasSkaitlis][VaronaDarbibas.varonaVirzienaSkaitlis]) {
-                programmasGalejaIzvadeUzEkrana.add("\r|" + linija + "|");
-            }
-
-        } else { // Elektrība Izslēgta.
-            for (String linija : Istabu_Izskati.istabasArIzslegtuElektribu(Istabu_Izskati.istabuMasivaAtjaunosana()[VaronaDarbibas.varonaIstabasSkaitlis][VaronaDarbibas.varonaVirzienaSkaitlis])) {
-                programmasGalejaIzvadeUzEkrana.add("\r|" + linija + "|");
-            }
+        // Pievieno apstrādātas mājas bildes ar "Overlayiem (Pārklājumiem)".
+        for (String parklataLinija : Istabu_Izskati.istabasArParklajumiem(Istabu_Izskati.istabuMasivaAtjaunosana()[VaronaDarbibas.varonaIstabasSkaitlis][VaronaDarbibas.varonaVirzienaSkaitlis])) {
+            programmasGalejaIzvadeUzEkrana.add("\r|" + parklataLinija + "|");
         }
         
         // Pievieno apakšējo UI pie gala izvades, pēc mājas bildēm.

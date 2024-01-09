@@ -759,45 +759,56 @@ public class Istabu_Izskati {
         return istaba;
     }
 
-    static String[] istabasArIzslegtuElektribu(String[] varonaAktualaIstaba) {
-        String[] tumsaIstaba = {
-            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
-            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
-            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
-            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
-            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
-            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
-            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
-            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
-            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
-            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
-            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
-            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
-            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
-            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
-            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
-            K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET,
-        };
-        
-        if (VaronaDarbibas.aizdedzinatsSerkocins) {
-            tumsaIstaba[8] = K.TPELEKS + varonaAktualaIstaba[8] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[70G░░░░░░░░░░░░" + K.RESET;
-            tumsaIstaba[9] = K.TPELEKS + varonaAktualaIstaba[9] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[73G░░░░░░░░░" + K.RESET;
-            tumsaIstaba[10] = K.TPELEKS + varonaAktualaIstaba[10] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[76G░░░░░░" + K.RESET;
-            tumsaIstaba[11] = K.TPELEKS + varonaAktualaIstaba[11] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[61G" + K.DZELTENS + "/\\_" + K.TPELEKS + "\033[79G░░░" + K.RESET;
-            tumsaIstaba[12] = K.TPELEKS + varonaAktualaIstaba[12] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[60G"+ K.ORANZS + "/   \\" + K.TPELEKS + "\033[80G░░" + K.RESET;
-            tumsaIstaba[13] = K.TPELEKS + varonaAktualaIstaba[13] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[60G" + K.SARKANS + "| O  |" + K.TPELEKS + "\033[80G░░" + K.RESET;
-            tumsaIstaba[14] = K.TPELEKS + varonaAktualaIstaba[14] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[61G" + K.SARKANS + "'-\\'" + K.TPELEKS + "\033[80G░░" + K.RESET;
-            tumsaIstaba[15] = K.TPELEKS + varonaAktualaIstaba[15] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[64G" + K.BRUNS + "\\" + K.TPELEKS + "\033[80G░░" + K.RESET;
+    static String[] istabasArParklajumiem(String[] varonaAktualaIstaba) {
+        String[] varonaAktualaIstabaArParklajumiem = new String[16];
+
+        for (int i = 0; i < varonaAktualaIstaba.length; i++) { // Iegūst neapstrādāto bildi.
+            varonaAktualaIstabaArParklajumiem[i] = varonaAktualaIstaba[i];
         }
-        return tumsaIstaba;
-        
+
+        if (!VaronaDarbibas.elektribaIeslegta) {
+                for (int i = 0; i < varonaAktualaIstabaArParklajumiem.length; i++) {
+                    varonaAktualaIstabaArParklajumiem[i] = K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET;
+                }
+        }
+
+        if (VaronaDarbibas.aizdedzinatsSerkocins) {
+            // Ja apstrādāto līniju pārdefinē ar sērkociņu, tad pārdefinētā līnija neatjaunosies iepriekšējā ciklā "Iegūst neapstrādāto bildi". Būs statiska bilde ar sērkociņu klāt un nodzēstu galu.
+            // Ja apstrādātai līnijai pieliks klāt sērkociņu, tad pārveidotā līnija tiks atjaunot, bet būs ar nodzēstu galu.
+            // \r nepalīdz atstāt galu.
+            // Pieliekot RESET vai krāsas maiņu arī nepalīdz.
+
+            // !!!!!!!!! Pieliekot beigās ANSI \033[#G kodu (Pārvietot rakstīšanas kursoru uz # kolonnu) ar # esot visa teksta līnijas beigas (arī aiz sērkociņa) nenodzēsa tālākos tekstu. !!!!!!!!!
+            // "\033[82G"
+
+            // Pieliek pie bildes sērkociņu.
+            varonaAktualaIstabaArParklajumiem[11] += serkocinaIzskats[0];
+            varonaAktualaIstabaArParklajumiem[12] += serkocinaIzskats[1];
+            varonaAktualaIstabaArParklajumiem[13] += serkocinaIzskats[2];
+            varonaAktualaIstabaArParklajumiem[14] += serkocinaIzskats[3];
+            varonaAktualaIstabaArParklajumiem[15] += serkocinaIzskats[4];
+
+            // Nezinu kāpēc šis nenodzēš pēc sērkociņa tekstu.
+            if (!VaronaDarbibas.elektribaIeslegta) {
+                varonaAktualaIstabaArParklajumiem[8] = K.TPELEKS + varonaAktualaIstaba[8] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[70G░░░░░░░░░░░░" + K.RESET;
+                varonaAktualaIstabaArParklajumiem[9] = K.TPELEKS + varonaAktualaIstaba[9] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[73G░░░░░░░░░" + K.RESET;
+                varonaAktualaIstabaArParklajumiem[10] = K.TPELEKS + varonaAktualaIstaba[10] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[76G░░░░░░" + K.RESET;
+                varonaAktualaIstabaArParklajumiem[11] = K.TPELEKS + varonaAktualaIstaba[11] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + serkocinaIzskats[0] + K.TPELEKS + "\033[79G░░░" + K.RESET;
+                varonaAktualaIstabaArParklajumiem[12] = K.TPELEKS + varonaAktualaIstaba[12] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + serkocinaIzskats[1] + K.TPELEKS + "\033[80G░░" + K.RESET;
+                varonaAktualaIstabaArParklajumiem[13] = K.TPELEKS + varonaAktualaIstaba[13] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + serkocinaIzskats[2] + K.TPELEKS + "\033[80G░░" + K.RESET;
+                varonaAktualaIstabaArParklajumiem[14] = K.TPELEKS + varonaAktualaIstaba[14] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + serkocinaIzskats[3] + K.TPELEKS + "\033[80G░░" + K.RESET;
+                varonaAktualaIstabaArParklajumiem[15] = K.TPELEKS + varonaAktualaIstaba[15] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + serkocinaIzskats[4] + K.TPELEKS + "\033[80G░░" + K.RESET;
+            }
+        }
+
+        return varonaAktualaIstabaArParklajumiem;
     }
 
     static String[] serkocinaIzskats = {
-        "\033[61G" + K.DZELTENS + "/\\_" + K.RESET,
-        "\033[60G"+ K.ORANZS + "/   \\" + K.RESET,
-        "\033[60G" + K.SARKANS + "| O  |" + K.RESET,
-        "\033[61G" + K.SARKANS + "'-\\'" + K.RESET,
-        "\033[64G" + K.BRUNS + "\\" + K.RESET
+        "\033[61G" + K.DZELTENS + "/\\_" + K.RESET + "\033[82G",
+        "\033[60G"+ K.ORANZS + "/   \\" + K.RESET + "\033[82G",
+        "\033[60G" + K.SARKANS + "| O  |" + K.RESET + "\033[82G",
+        "\033[61G" + K.SARKANS + "'-\\'" + K.RESET + "\033[82G",
+        "\033[64G" + K.BRUNS + "\\" + K.RESET + "\033[82G"
     };
 }

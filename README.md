@@ -2,17 +2,18 @@
 # Stāsts.
 
 ## Idejas:
-- [ x ] Iespēja mierīgi staigāt apkārt pa māju.
-- [ x ] Ielikt iepriekšējās spēles spokus.
-- [] Jaunas mehānikas vecajiem spokiem. {Loga spoks var izvēlēties savu istabu.}
-- [] Jauni spoki:
-- [] Mājas arku jeb durvju monstrs.
+- [x] Iespēja mierīgi staigāt apkārt pa māju.
+- [x] Ielikt iepriekšējās spēles spokus.
+- [ ] Jaunas mehānikas vecajiem spokiem. {Loga spoks var izvēlēties savu istabu.}
+- [ ] Jauni spoki:
+- [ ] Mājas arku jeb durvju monstrs.
 - [o] Strādājošs laiks.
-- [] Mājas darbības.
-- [] Lietotāja UI - User interface.
-- [] Skaņa.
+- [ ] Mājas darbības.
+- [ ] Lietotāja UI - User interface.
+- [ ] Skaņa.
 - [ ] Izskrāsot durvis brūnas un logus zilus (Ādama ideja).
-- [] Jāpieiet pie loga. cits spoks?
+- [ ] Jāpieiet pie loga. cits spoks?
+- [ ] Aizdedzināt spoku :|?????
 - ...
 
 

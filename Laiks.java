@@ -38,7 +38,6 @@ public class Laiks extends Thread {
                 if (gaidisanasLaiks <= 0) {
                     SkanasSpeletajs.SpeletSkanu("Skanas faili\\fuse-box-turning-on-off.wav", 0);
                     VaronaDarbibas.elektribaIeslegta = true;
-                    VaronaDarbibas.aizdedzinatsSerkocins = false;
                 }
                 gaidisanasLaiks--;
             }
