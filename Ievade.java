@@ -8,7 +8,7 @@ public class Ievade extends Thread {
     static boolean vaiIevadiIzpildija = true; // Ļauj ievadītajām darbībām būt izpildītām pirms tās tiek nodzēstas.
     
     public void run() { // Vienmēr lasa ievadi, vienalga uz to, kas notiek apkārt.
-        while (Main.speleSakas) {
+        while (Main.programmaPalaista) {
             ievade = ievadesLasitajs.nextLine().toUpperCase();
             vaiIevadiIzpildija = false; // Pēc ievades saglabāšanas, notiritIevadi() netīrīs ievadi, līdz VaronaDarbibas izpildīs ievadīto komandu.
             System.out.print("\033[F"); // Noliek mirgojošo kursoru vienu līniju uz augšu.

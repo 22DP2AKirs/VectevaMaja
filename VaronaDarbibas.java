@@ -51,6 +51,7 @@ class VaronaDarbibas {
                     }
                     Main.tiritEkranu();
                 } else if (ievade.equals("EXIT")) {
+                    Main.programmaPalaista = false;
                     System.exit(0);
                 }else if (ievade.equals("POWER OFF")) {
                     if(elektribaIeslegta) {
@@ -89,6 +90,7 @@ class VaronaDarbibas {
         } else if (panemtaIevade.equals("")) {
             if (SakumaEkrans.izvelnesSkaits == 1) { // Spēlēt.
                 Main.sakumaEkrans = false;
+                Main.speleSakas = true;
             } else if (SakumaEkrans.izvelnesSkaits == 2) {
             
             } else if (SakumaEkrans.izvelnesSkaits == 3) {
@@ -96,6 +98,7 @@ class VaronaDarbibas {
             } else if (SakumaEkrans.izvelnesSkaits == 4) {
 
             } else if (SakumaEkrans.izvelnesSkaits == 5) {
+                Main.programmaPalaista = false;
                 System.exit(0); // Pārtrauc spēles darbību.
             } 
         }
