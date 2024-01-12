@@ -1,7 +1,7 @@
 public class Main {
     // Visur izmantojamie mainīgie jeb objekti.
     static volatile boolean programmaPalaista = true;
-    static boolean sakumaEkrans = false;
+    static boolean sakumaEkrans = true;
     static volatile boolean speleSakas = true; // Mainīgais bool, kas palaiž visu spēli.
 
     //////////////////////////////////////////////////////////////////////////// S P Ē L E S   I E S T A T Ī J U M I ///////////////////////////////////////////////////////////////////////////////////////
@@ -10,6 +10,13 @@ public class Main {
     static int atlikusoSerkocinuDaudzums = 10;
     static int maxSerkocinaDegsanasLaiks = 10;
 
+    static int logaSpokaAgresivitatesLimits = 10;
+    static int durvjuSpokaAgresivitatesLimits = 15;
+    static int virtuvesSpokaAgresivitatesLimits = 20;
+
+    static int logaSpokaDrosibasRobezas = 3;
+    static int durvjuSpokaDrosibasRobezas = 3;
+    static int virtuvesSpokaDrosibasRobezas = 3;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     static String[] visiVaronaUzdevumi = {"Pildit majasdarbus", "Est", "Mazgat", "Kartot", "Lasit", "Tirit"}; // TODO: Izmantot vai pārveidot.
@@ -19,22 +26,18 @@ public class Main {
 
     // Iestata tikšķa jeb 1 "refreša" periodu.
     static int framesPerSecond = 1000 / 25; // Pēc cik ilga laika ekrāns "refrešojas". (Milisekundēs)
-    static int spelesIlgums = 10;// 6 min 360;
+    static int spelesIlgums = 100;// 6 min 360;
 
     public static void main(String[] args) throws InterruptedException {
         // Jaunie rīki jeb thredi.
-        
         Ievade ievadesLasitajs = new Ievade(); // Arī threads, bet šis lasa ievadi.
         SkanasSpeletajs skanasSpeletajs = new SkanasSpeletajs();
-        
-            
 
         ///////// T H R E D I //////////
         // Sākas atsevišķās darbības jeb patstāvīgie procesi.
         skanasSpeletajs.start(); // Strādā, kamēr speleSakas bools ir true.
         ievadesLasitajs.start(); // Strādā, kamēr programmaPalaista bools ir true.
         
-
         while (programmaPalaista) { // Palaiž programmu.
             //////////////////////////////////////////////////////// S P Ē L E S   I Z V Ē L N E //////////////////////////////////////////////////////
             tiritEkranu();
@@ -59,9 +62,9 @@ public class Main {
 
                 // ----------------------------------------------------------- vvv Jāatjauno, jāpārveido vvv --------------------------------------------------------// // TODO: Izmantot vai pārveidot.
                 // Atjaunos istabas ar spoka bildēm tikai tad, kad loga spoks būs izvēlējies savu istabu.
-                Spoki.logaSpoks();
-                Spoki.durSpoks();
-                Spoki.virSpoks();
+                // Spoki.logaSpoks();
+                // Spoki.durSpoks();
+                // Spoki.virSpoks();
                 
                 Istabu_Izskati.virtuvesPagrabaGaismasStavoklaNoteiksana();
                 // ------------------------------------------------------------------^^^^^^^^^^^^^^^^^^^^^^^^^^^---------------------------------------------------- // // TODO: Izmantot vai pārveidot.
@@ -71,6 +74,9 @@ public class Main {
                 if (Spoki.spokuInfoIzvadeBoolean) { // Spoku informācijas izvade. --Debuging--
                     Spoki.spokuInformacijasIzvade();
                 }
+
+                // Visām fāzēm, bildēm un visam vizuālajam ir jābūt gatavam pirms šīs metodes izsaukšanas!!!
+                // Spoku vizuālais atjaunojums notiek Laiks.java Klasē.
 
                 UI_Izskats.salipinataUIIzvade(); // Izvade uz ekrāna.
                 

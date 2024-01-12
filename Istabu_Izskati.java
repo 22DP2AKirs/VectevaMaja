@@ -41,13 +41,13 @@ public class Istabu_Izskati {
     public static String[] modificetaDurvjuPrieksasBildesIzvade() {
         String[] durKreisaPuse = {
         " /  |    |       ________________________________                           |   ",
-        "/   |    |      " + durLogaSpokaFazesBilde[0] + "                          |   ",
-        "    |    |      " + durLogaSpokaFazesBilde[1] + "                          |   ",
-        "    |    |      " + durLogaSpokaFazesBilde[2] + "                          |   ",
-        "    |    |      " + durLogaSpokaFazesBilde[3] + "                          |   ",
-        "    | +  |      " + durLogaSpokaFazesBilde[4] + "                          |   ",
-        "    |   /|      " + durLogaSpokaFazesBilde[5] + "                          |   ",
-        "    |  / |      " + durLogaSpokaFazesBilde[6] + "                          |   ",
+        "/   |    |      " + durvjuLogaSpokaFazesBilde[0] + "                          |   ",
+        "    |    |      " + durvjuLogaSpokaFazesBilde[1] + "                          |   ",
+        "    |    |      " + durvjuLogaSpokaFazesBilde[2] + "                          |   ",
+        "    |    |      " + durvjuLogaSpokaFazesBilde[3] + "                          |   ",
+        "    | +  |      " + durvjuLogaSpokaFazesBilde[4] + "                          |   ",
+        "    |   /|      " + durvjuLogaSpokaFazesBilde[5] + "                          |   ",
+        "    |  / |      " + durvjuLogaSpokaFazesBilde[6] + "                          |   ",
         "  + | /  |      |/______________________________\\|               ___________|   ",
         "    |/   |                                                       \\           \\  ",
         "    /____|                                                        \\           \\ ",
@@ -59,28 +59,7 @@ public class Istabu_Izskati {
         return durKreisaPuse;
     }
 
-    public static void noteiktDurIstabasSpokaFazesSkatu() {
-        // Skatoties uz loga spoka fāzes indeksu nosaka kādu bildi izvadīs.
-        if (Spoki.logaSpokaFazesIndeks == -1) {
-            durLogaSpokaFazesBilde = Spoku_Izskati.durvjuLogsCiet;
-        } else if (Spoki.logaSpokaFazesIndeks == 0) {
-            durLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieDurvim0; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 1) {
-            durLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieDurvim1; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 2) {
-            durLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieDurvim2; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 3) {
-            durLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieDurvim3; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 4) {
-            durLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieDurvim4; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 5) {
-            durLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieDurvim5; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 6) {
-            durLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieDurvim6; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 7) {
-            durLogaSpokaFazesBilde = Spoku_Izskati.durvjuLogsVala; // Nomaina visas jaunā array vērtības.
-        } 
-    }
+    
     public static String[] durSpokaFazesBilde = Spoku_Izskati.durvisCiet;
 
     public static String[] modificetasDurvjuLabasPusesBildesIzvade() {
@@ -105,30 +84,7 @@ public class Istabu_Izskati {
         return durvisPrieksa;
     }
     
-    public static void noteiktDurSpokaFazesSkatu() {
-        // Skatoties uz loga spoka fāzes indeksu nosaka kādu bildi izvadīs.
-        if (Spoki.durSpokaFazesIndeks == -1) {
-            durSpokaFazesBilde = Spoku_Izskati.durvisCiet;
-        } else if (Spoki.durSpokaFazesIndeks == 0) {
-            durSpokaFazesBilde = Spoku_Izskati.durvjuSp0; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.durSpokaFazesIndeks == 1) {
-            durSpokaFazesBilde = Spoku_Izskati.durvjuSp1; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.durSpokaFazesIndeks == 2) {
-            durSpokaFazesBilde = Spoku_Izskati.durvjuSp2; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.durSpokaFazesIndeks == 3) {
-            durSpokaFazesBilde = Spoku_Izskati.durvjuSp3; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.durSpokaFazesIndeks == 4) {
-            durSpokaFazesBilde = Spoku_Izskati.durvjuSp4; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.durSpokaFazesIndeks == 5) {
-            durSpokaFazesBilde = Spoku_Izskati.durvjuSp5; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.durSpokaFazesIndeks == 6) {
-            durSpokaFazesBilde = Spoku_Izskati.durvjuSp6; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.durSpokaFazesIndeks == 7) {
-            durSpokaFazesBilde = Spoku_Izskati.durvjuSp7; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.durSpokaFazesIndeks == 8) {
-            durSpokaFazesBilde = Spoku_Izskati.durvisVala; // Nomaina visas jaunā array vērtības.
-        } 
-    }
+    
     // -------------------------------------------------------------- 2 Dimensiju masīva darbības paraugs -------------------------------------------------------------------------------- //
     // // [rinda][kolonna]
     // String [][] tests = {
@@ -234,28 +190,7 @@ public class Istabu_Izskati {
             " /|_______|_________|________|/                                               \\ ",
             "/                                                                              \\"};
 
-    public static void noteiktDivanaSpokaFazesSkatu() {
-        // Skatoties uz loga spoka fāzes indeksu nosaka kādu bildi izvadīs.
-        if (Spoki.logaSpokaFazesIndeks == -1) {
-            divanaLogaSpokaFazesBilde = Spoku_Izskati.divanaLogsCiet;
-        } else if (Spoki.logaSpokaFazesIndeks == 0) {
-            divanaLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieDivana0; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 1) {
-            divanaLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieDivana1; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 2) {
-            divanaLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieDivana2; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 3) {
-            divanaLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieDivana3; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 4) {
-            divanaLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieDivana4; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 5) {
-            divanaLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieDivana5; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 6) {
-            divanaLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieDivana6; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 7) {
-            divanaLogaSpokaFazesBilde = Spoku_Izskati.divanaLogsVala; // Nomaina visas jaunā array vērtības.
-        } 
-    }
+    
 
     public static String[] modificetaDivanaPrieksasBildesIzvade() {
         String[] divanaPrieksa = {
@@ -376,13 +311,13 @@ public class Istabu_Izskati {
     public static String[] modificetasGultasKreisasPusesIzvade() {
     String[] gultPrieksa = {   
         "             |                         ________________________  |              ",  
-        "             |                        " + gultLogaSpokaFazesBilde[0] + " |              ", 
-        "             |                        " + gultLogaSpokaFazesBilde[1] + " | |\\           " , 
-        "             |                        " + gultLogaSpokaFazesBilde[2] + " | | \\          " , 
-        "             |_                       " + gultLogaSpokaFazesBilde[3] + " | |  \\         " , 
-        "             ( )                      " + gultLogaSpokaFazesBilde[4] + " | ||\\_|        " , 
-        "         ____| |                      " + gultLogaSpokaFazesBilde[5] + " | |\\ /|        " , 
-        "    _   /    | |                   _  " + gultLogaSpokaFazesBilde[6] + " | | | |        " , 
+        "             |                        " + gultasLogaSpokaFazesBilde[0] + " |              ", 
+        "             |                        " + gultasLogaSpokaFazesBilde[1] + " | |\\           " , 
+        "             |                        " + gultasLogaSpokaFazesBilde[2] + " | | \\          " , 
+        "             |_                       " + gultasLogaSpokaFazesBilde[3] + " | |  \\         " , 
+        "             ( )                      " + gultasLogaSpokaFazesBilde[4] + " | ||\\_|        " , 
+        "         ____| |                      " + gultasLogaSpokaFazesBilde[5] + " | |\\ /|        " , 
+        "    _   /    | |                   _  " + gultasLogaSpokaFazesBilde[6] + " | | | |        " , 
         "   ( ) /     | |                  ( ) |/______________________\\| | | | |        " , 
         "   | |/      |_|__________________| | ^   _________________      |  \\  |        " , 
         "   | |      / /                   | |$|==|_|___|__|__|___|_|     |   \\ |        " , 
@@ -501,29 +436,7 @@ public class Istabu_Izskati {
         }
     }
 
-    // ==================================================================================== Loga spoks ===================================================================================== //
-    public static void noteiktVirtSpokaFazesSkatu() {
-        // Skatoties uz loga spoka fāzes indeksu nosaka kādu bildi izvadīs.
-        if (Spoki.logaSpokaFazesIndeks == -1) {
-            virtLogaSpokaFazesBilde = Spoku_Izskati.virtuvesLogsCiet;
-        } else if (Spoki.logaSpokaFazesIndeks == 0) {
-            virtLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieVirtuves0; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 1) {
-            virtLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieVirtuves1; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 2) {
-            virtLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieVirtuves2; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 3){
-            virtLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieVirtuves3; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 4) {
-            virtLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieVirtuves4; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 5) {
-            virtLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieVirtuves5; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 6) {
-            virtLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieVirtuves6; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 7) {
-            virtLogaSpokaFazesBilde = Spoku_Izskati.virtuvesLogsVala; // Nomaina visas jaunā array vērtības.
-        } 
-    }
+    
 
     public static String[] modificetasVirtLabasPusesIzvade() {
         // Modificētā, galējā bilde.
@@ -531,12 +444,12 @@ public class Istabu_Izskati {
             "           /              /|                                     |              ",
             "          /              / |                                     |              ",
             "         /______________/  |      ___________________________    |   ______     ",
-            "    __   | ____   ____ |   |     " + virtLogaSpokaFazesBilde[0] + virtKreisaPusesPagrabaSkats[0] + "    ",
-            "   /  \\  ||    | |    ||   |     " + virtLogaSpokaFazesBilde[1] + virtKreisaPusesPagrabaSkats[1] + "   ",
-            "  /   |  ||    | |    ||   |     " + virtLogaSpokaFazesBilde[2] + virtKreisaPusesPagrabaSkats[2] + "|  ",
-            " /    |  ||    | |    ||   |     " + virtLogaSpokaFazesBilde[3] + virtKreisaPusesPagrabaSkats[2] + "|  ",
-            "/     |  ||    | |    ||   ||    " + virtLogaSpokaFazesBilde[4] + virtKreisaPusesPagrabaSkats[2] + "|  ",
-            "      |  ||    | |    ||   /|    " + virtLogaSpokaFazesBilde[5] + virtKreisaPusesPagrabaSkats[2] + "|  ",
+            "    __   | ____   ____ |   |     " + virtuvesLogaSpokaFazesBilde[0] + virtKreisaPusesPagrabaSkats[0] + "    ",
+            "   /  \\  ||    | |    ||   |     " + virtuvesLogaSpokaFazesBilde[1] + virtKreisaPusesPagrabaSkats[1] + "   ",
+            "  /   |  ||    | |    ||   |     " + virtuvesLogaSpokaFazesBilde[2] + virtKreisaPusesPagrabaSkats[2] + "|  ",
+            " /    |  ||    | |    ||   |     " + virtuvesLogaSpokaFazesBilde[3] + virtKreisaPusesPagrabaSkats[2] + "|  ",
+            "/     |  ||    | |    ||   ||    " + virtuvesLogaSpokaFazesBilde[4] + virtKreisaPusesPagrabaSkats[2] + "|  ",
+            "      |  ||    | |    ||   /|    " + virtuvesLogaSpokaFazesBilde[5] + virtKreisaPusesPagrabaSkats[2] + "|  ",
             "      |  || ( )| |( ) || |/||    |/_________________________\\|   | |" + virtKreisaPusesPagrabaSkats[3] + "|  ",
             "      |  ||    | |    || | ||                                    | |" + virtKreisaPusesPagrabaSkats[3] + "|  ",
             "      |  ||    | |    || | /|_____                               | |" + virtKreisaPusesPagrabaSkats[3] + "|  ",
@@ -571,32 +484,7 @@ public class Istabu_Izskati {
     // "15   | |      |              | |  / |_|                              \\" , 
     // "16   | |______|______________| |/                                     \\"};  
 
-    public static void noteiktGultSpokaFazesSkatu() {
-        // Skatoties uz loga spoka fāzes indeksu nosaka kādu bildi izvadīs.
-        if (Spoki.logaSpokaFazesIndeks == -1) {
-            gultLogaSpokaFazesBilde = Spoku_Izskati.gultasLogsCiet;
-        } else if (Spoki.logaSpokaFazesIndeks == 0) {
-            gultLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieGultas0; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 1) {
-            gultLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieGultas1; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 2) {
-            gultLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieGultas2; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 3) {
-            gultLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieGultas3; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 4) {
-            gultLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieGultas4; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 5) {
-            gultLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieGultas5; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 6) {
-            gultLogaSpokaFazesBilde = Spoku_Izskati.logaSpPieGultas6; // Nomaina visas jaunā array vērtības.
-        } else if (Spoki.logaSpokaFazesIndeks == 7) {
-            gultLogaSpokaFazesBilde = Spoku_Izskati.gultasLogsVala; // Nomaina visas jaunā array vērtības.
-        } 
-    }
-
-    public static void gultPreiksasSagatavosanaIzvadei() {
-        noteiktGultSpokaFazesSkatu();
-    }
+    
 
     // ------------------------------------------------------------------------------ Dīvāna loga spoks --------------------------------------------------------------------- //
 
@@ -639,26 +527,12 @@ public class Istabu_Izskati {
     //     "15/    /  /                                                             \\  ",
     //     "16    /  /                                                               \\"};
 
-    static String[] virtLogaSpokaFazesBilde = Spoku_Izskati.virtuvesLogsCiet; // Definē jauno array.
+    static String[] virtuvesLogaSpokaFazesBilde = Spoku_Izskati.virtuvesLogsCiet; // Definē jauno array.
     static String[] divanaLogaSpokaFazesBilde = Spoku_Izskati.divanaLogsCiet; // Definē jauno array.
-    static String[] gultLogaSpokaFazesBilde = Spoku_Izskati.gultasLogsCiet; // Definē jauno array.
-    static String[] durLogaSpokaFazesBilde = Spoku_Izskati.durvjuLogsCiet; // Definē jauno array.
+    static String[] gultasLogaSpokaFazesBilde = Spoku_Izskati.gultasLogsCiet; // Definē jauno array.
+    static String[] durvjuLogaSpokaFazesBilde = Spoku_Izskati.durvjuLogsCiet; // Definē jauno array.
 
-    // Loga spoka fāzes nosakošā metode.
-    public static void noteiktLogaSpokaFazesBildi(String logaSpokaEsosaIstaba) {
-        if (logaSpokaEsosaIstaba.equals("Gulta")) {
-            noteiktGultSpokaFazesSkatu();
-        } else if (logaSpokaEsosaIstaba.equals("Divans")) {
-            noteiktDivanaSpokaFazesSkatu();
-        } else if (logaSpokaEsosaIstaba.equals("Durvis")) {
-            noteiktDurIstabasSpokaFazesSkatu();
-        } else if (logaSpokaEsosaIstaba.equals("Virtuve")) {
-            noteiktVirtSpokaFazesSkatu();
-        } else {
-
-        }
-        
-    }
+   
 
     // Loga spoka apvienojošā metode.
     public static void logaSpokaIzveletasIstabasKustiba() {
@@ -686,38 +560,6 @@ public class Istabu_Izskati {
     //     "15/         /                           | /                        \\       |  ",
     //     "16         /                            |/                          \\      |"
     //     };
-
-    public static void noteiktVirPrieksasSpokaFazesSkatu() {
-        if (Main.pagrabaGaismaON) {
-                // Skatoties uz loga spoka fāzes indeksu nosaka kādu bildi izvadīs.
-            if (Spoki.virSpokaFazesIndeks == -1) {
-                virtPrieksasPagrabaBildesArSpoku = Spoku_Izskati.ieslegtaPagrabaGaisma;
-            } else if (Spoki.virSpokaFazesIndeks == 0) {
-                virtPrieksasPagrabaBildesArSpoku = Spoku_Izskati.virtuvesSp0; // Nomaina visas jaunā array vērtības.
-            } else if (Spoki.virSpokaFazesIndeks == 1) {
-                virtPrieksasPagrabaBildesArSpoku = Spoku_Izskati.virtuvesSp1; // Nomaina visas jaunā array vērtības.
-            } else if (Spoki.virSpokaFazesIndeks == 2) {
-                virtPrieksasPagrabaBildesArSpoku = Spoku_Izskati.virtuvesSp2; // Nomaina visas jaunā array vērtības.
-            } else if (Spoki.virSpokaFazesIndeks == 3) {
-                virtPrieksasPagrabaBildesArSpoku = Spoku_Izskati.virtuvesSp3; // Nomaina visas jaunā array vērtības.
-            } else if (Spoki.virSpokaFazesIndeks == 4) {
-                virtPrieksasPagrabaBildesArSpoku = Spoku_Izskati.virtuvesSp4; // Nomaina visas jaunā array vērtības.
-            } else if (Spoki.virSpokaFazesIndeks == 5) {
-                virtPrieksasPagrabaBildesArSpoku = Spoku_Izskati.virtuvesSp5; // Nomaina visas jaunā array vērtības.
-            } else if (Spoki.virSpokaFazesIndeks == 6) {
-                virtPrieksasPagrabaBildesArSpoku = Spoku_Izskati.virtuvesSp6; // Nomaina visas jaunā array vērtības.
-            } else if (Spoki.virSpokaFazesIndeks == 7) {
-                virtPrieksasPagrabaBildesArSpoku = Spoku_Izskati.virtuvesSp7; // Nomaina visas jaunā array vērtības.
-            } else if (Spoki.virSpokaFazesIndeks == 8) {
-                virtPrieksasPagrabaBildesArSpoku = Spoku_Izskati.virtuvesSp8; // Nomaina visas jaunā array vērtības.
-            } else if (Spoki.virSpokaFazesIndeks == 9) {
-                virtPrieksasPagrabaBildesArSpoku = Spoku_Izskati.virtuvesSp9; // Nomaina visas jaunā array vērtības.
-                Main.pagrabaGaismaON = false;
-            }
-        } else {
-            virtPrieksasPagrabaBildesArSpoku = Spoku_Izskati.izslegtaPagrabaGaisma;
-        }
-    }
 
     public static String[] virtPrieksasPagrabaBildesArSpoku = Spoku_Izskati.virtuvesSp0;
     public static String[] modificetasVirtLejasBildesIzvade() {

@@ -84,6 +84,8 @@ public class Spoku_Izskati {
         "| |________||_____________| |"
     };
 
+    static String[] [] logaSpokaSkatiPieVirtuves = {virtuvesLogsCiet, logaSpPieVirtuves0, logaSpPieVirtuves1, logaSpPieVirtuves2, logaSpPieVirtuves3, logaSpPieVirtuves4, logaSpPieVirtuves5, logaSpPieVirtuves6, virtuvesLogsVala};
+
     // -------------------------------------------------------------------------------- Loga spoks pie gultas -------------------------------------------------------------------------------- //
 
     static String[] gultasLogsCiet = {
@@ -168,6 +170,8 @@ public class Spoku_Izskati {
         "| |           |      . | |",
         "| |___________|________| |"};
 
+    static String[] [] logaSpokaSkatiPieGultas = {gultasLogsCiet, logaSpPieGultas0, logaSpPieGultas1, logaSpPieGultas2, logaSpPieGultas3, logaSpPieGultas4, logaSpPieGultas5, logaSpPieGultas6, gultasLogsVala};
+
     // -------------------------------------------------------------------------------- Loga spoks pie dīvāna -------------------------------------------------------------------------------- //
 
     static String[] divanaLogsCiet = {
@@ -250,6 +254,8 @@ public class Spoku_Izskati {
         "| |. /     / |             | |",
         "| |__________|_____________| |"
     };
+
+    static String[] [] logaSpokaSkatiPieDivana = {divanaLogsCiet, logaSpPieDivana0, logaSpPieDivana1, logaSpPieDivana2, logaSpPieDivana3, logaSpPieDivana4, logaSpPieDivana5, logaSpPieDivana6, divanaLogsVala};
 
     // -------------------------------------------------------------------------------- Loga spoks pie durvīm -------------------------------------------------------------------------------- //
 
@@ -342,6 +348,8 @@ public class Spoku_Izskati {
         "| |     /        |             | |",
         "| |______________|_____________| |"
     };
+
+    static String[] [] logaSpokaSkatiPieDurvim = {durvjuLogsCiet, logaSpPieDurvim0, logaSpPieDurvim1, logaSpPieDurvim2, logaSpPieDurvim3, logaSpPieDurvim4, logaSpPieDurvim5, logaSpPieDurvim6, durvjuLogsVala};
 
     // =============================================================================== Durvju spoks ======================================================================================= //
 
@@ -515,6 +523,8 @@ public class Spoku_Izskati {
         "|  /                      ",
         "| /                       "
     };
+
+    static String[] [] durvjuSpokaIzskati = {durvisCiet, durvjuSp0, durvjuSp1, durvjuSp2, durvjuSp3, durvjuSp4, durvjuSp5, durvjuSp6, durvjuSp7, durvisVala};
 
     // =========================================================================================== Virtuves spoks ======================================================================================= //
     static String[] izslegtaPagrabaGaisma = {
@@ -696,5 +706,7 @@ public class Spoku_Izskati {
       "░░░░░░░░░░░░░░░░░",
       "░░░░░░░░░░░░░░░░░"
     };
+
+    static String[] [] virtuvesSpokaIzskati = {ieslegtaPagrabaGaisma, virtuvesSp0, virtuvesSp1, virtuvesSp2, virtuvesSp3, virtuvesSp4, virtuvesSp5, virtuvesSp6, virtuvesSp7, virtuvesSp8, virtuvesSp9};
 }
     

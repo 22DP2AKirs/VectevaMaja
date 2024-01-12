@@ -7,32 +7,33 @@ public class Laiks extends Thread {
 
     @Override
     public void run() {
+        // Izveido visus spokus.
+        Spoki logaSpoks = new Spoki("loga");
+        Spoki durvjuSpoks = new Spoki("durvju");
+        Spoki virtuvesSpoks = new Spoki("virtuves");
+
         while (Main.speleSakas) {
-            Laiks.spelesLaiks++; // Spēles laiks palielinas, katru sekundi jeb spēlesĀtrumu.
+            laikaVadiba(); // Skaita laiku un nosaka, kad spēle ir beigusies.
             
-            if (spelesLaiks == vienaStunda) {
-                laikaTeksts = " 1 A M  ";
-            } else if (spelesLaiks == vienaStunda * 2) {
-                laikaTeksts = " 2 A M  ";
-            } else if (spelesLaiks == vienaStunda * 3) {
-                laikaTeksts = " 3 A M  ";
-            } else if (spelesLaiks == vienaStunda * 4) {
-                laikaTeksts = " 4 A M  ";
-            } else if (spelesLaiks == vienaStunda * 5) {
-                laikaTeksts = " 5 A M  ";
-            } else if (spelesLaiks == vienaStunda * 6) {
-                laikaTeksts = " 6 A M  ";
-                Main.speleSakas = false;
+            // Spoku objektu RAND kustības atjaunošana.
+            logaSpoks.randomKustibasCiparaAtjaunosana();
+            durvjuSpoks.randomKustibasCiparaAtjaunosana();
+            virtuvesSpoks.randomKustibasCiparaAtjaunosana();
 
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {}
+            // Robezu pārkāpšana un fāzes palielināšana.
+            logaSpoks.spokuVirzisanasUzPrieksu();
+            durvjuSpoks.spokuVirzisanasUzPrieksu();
+            virtuvesSpoks.spokuVirzisanasUzPrieksu();
 
-                Main.tiritEkranu();
-                System.out.println("\n\n\n\nJus izdzivojat!!!\n\n\n\n\n");
-                System.out.println("<SPIEDIET ENTER>");
-                break;
-            }
+            // Vizuālo skatu atjaunošana.
+            logaSpoks.istabuBildesFazuAtjaunosana(logaSpoks.spokaVeids, logaSpoks.spokaIstaba);
+            durvjuSpoks.istabuBildesFazuAtjaunosana(durvjuSpoks.spokaVeids, durvjuSpoks.spokaIstaba);
+            virtuvesSpoks.istabuBildesFazuAtjaunosana(virtuvesSpoks.spokaVeids, virtuvesSpoks.spokaIstaba);
+
+            // Iespēja padarīt spokus aktīvus.
+            logaSpoks.iespejaPadaritSpokuAktivu();
+            durvjuSpoks.iespejaPadaritSpokuAktivu();
+            virtuvesSpoks.iespejaPadaritSpokuAktivu();
 
             if (!VaronaDarbibas.elektribaIeslegta) { // Ja false, tad ...
                 if (gaidisanasLaiks <= 0) {
@@ -49,34 +50,40 @@ public class Laiks extends Thread {
                 VaronaDarbibas.serkocinaDegsanasLaiks = 0;
             }
 
-            // Katru sekundi nosaka vai spoks nāk par 1 fāzi tuvāk, vai pārkāpj 1 robežu.
-            if (Spoki.logaSpoksAktivs && Spoki.vaiLogaSpoksVarKusteties) { // Pārbauda vai spoka kustība ir atļauta (vai spoks ir izvēlējies savu istabu) un 
-                if (Spoki.logaSpokaDrosibasRobezas <= 0) { // Kad spoks pārkāpj visas drošības robežas, tad viņš nākošajā kustībā nāk par 1 fāzi tuvāk un pēc tam, kāpj pāri nākošām robežām.
-                    Spoki.logaSpokaFazesIndeks++; // Pietuvina spoku tuvāk logam.
-                }
-                Spoki.logaSpokaDrosibasRobezas--; // Noņem vienu drošības robežu.
-            }
-
-            // Atbild par robežu pārkāpšanu un indeksu palielināšanu.
-            if (Spoki.durSpoksAktivs && Spoki.vaiDurSpoksVarKusteties) {
-                if (Spoki.durSpokaDrosibasRobezas <= 0) {
-                    Spoki.durSpokaFazesIndeks++;
-                }
-                Spoki.durSpokaDrosibasRobezas--;
-            }
-
-            // Virtuves spoks.
-            if (Spoki.virSpoksAktivs && Spoki.vaiVirSpoksVarKusteties) {
-                if (Spoki.virSpokaDrosibasRobezas <= 0) {
-                    Spoki.virSpokaFazesIndeks++;
-                }
-                Spoki.virSpokaDrosibasRobezas--;
+            if (Spoki.spokuInfoIzvadeBoolean) { // Spoku informācijas izvade. --Debuging--
+                Spoki.spokuStati = Spoki.spokuInformacijasSavaksana(logaSpoks, durvjuSpoks, virtuvesSpoks);
             }
             
             // Gulēšana līdz nākamam kadram.
             try {
                 Thread.sleep(1000); // 1000 = 1 sekunde.
             } catch (Exception e) {}
+        }
+    }
+
+    void laikaVadiba() {
+        Laiks.spelesLaiks++; // Spēles laiks palielinas, katru sekundi jeb spēlesĀtrumu.
+            
+        if (spelesLaiks == vienaStunda) {
+            laikaTeksts = " 1 A M  ";
+        } else if (spelesLaiks == vienaStunda * 2) {
+            laikaTeksts = " 2 A M  ";
+        } else if (spelesLaiks == vienaStunda * 3) {
+            laikaTeksts = " 3 A M  ";
+        } else if (spelesLaiks == vienaStunda * 4) {
+            laikaTeksts = " 4 A M  ";
+        } else if (spelesLaiks == vienaStunda * 5) {
+            laikaTeksts = " 5 A M  ";
+        } else if (spelesLaiks == vienaStunda * 6) {
+            laikaTeksts = " 6 A M  ";
+            Main.speleSakas = false;
+
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {}
+
+            Main.tiritEkranu();
+            System.out.println("\n\n\n\nJus izdzivojat!!!\n\n\n\n\n");
         }
     }
 }
