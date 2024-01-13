@@ -7,16 +7,17 @@ public class Main {
     //////////////////////////////////////////////////////////////////////////// S P Ē L E S   I E S T A T Ī J U M I ///////////////////////////////////////////////////////////////////////////////////////
     static int spelesNakts = 6;
 
-    static int atlikusoSerkocinuDaudzums = 10;
-    static int maxSerkocinaDegsanasLaiks = 10;
+    // Sērkociņa dati.
+    static int atlikusoSerkocinuDaudzums = FailuRedigetajs.datuLasitajs("atlikusoSerkocinuDaudzums");
+    static int maxSerkocinaDegsanasLaiks = FailuRedigetajs.datuLasitajs("maxSerkocinaDegsanasLaiks");
 
-    static int logaSpokaAgresivitatesLimits = 10;
-    static int durvjuSpokaAgresivitatesLimits = 15;
-    static int virtuvesSpokaAgresivitatesLimits = 20;
+    static int logaSpokaAgresivitatesLimits = FailuRedigetajs.datuLasitajs("logaSpokaAgresivitatesLimits");
+    static int durvjuSpokaAgresivitatesLimits = FailuRedigetajs.datuLasitajs("durvjuSpokaAgresivitatesLimits");
+    static int virtuvesSpokaAgresivitatesLimits = FailuRedigetajs.datuLasitajs("virtuvesSpokaAgresivitatesLimits");
 
-    static int logaSpokaDrosibasRobezas = 3;
-    static int durvjuSpokaDrosibasRobezas = 3;
-    static int virtuvesSpokaDrosibasRobezas = 3;
+    static int logaSpokaDrosibasRobezas = FailuRedigetajs.datuLasitajs("logaSpokaDrosibasRobezas");
+    static int durvjuSpokaDrosibasRobezas = FailuRedigetajs.datuLasitajs("durvjuSpokaDrosibasRobezas");
+    static int virtuvesSpokaDrosibasRobezas = FailuRedigetajs.datuLasitajs("virtuvesSpokaDrosibasRobezas");
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     static String[] visiVaronaUzdevumi = {"Pildit majasdarbus", "Est", "Mazgat", "Kartot", "Lasit", "Tirit"}; // TODO: Izmantot vai pārveidot.

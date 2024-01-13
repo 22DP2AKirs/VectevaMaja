@@ -1,1 +1,20 @@
 #Iestatijumi.
+
+1. Sērkociņa dati.
+{ 
+atlikusoSerkocinuDaudzums=10
+maxSerkocinaDegsanasLaiks=2
+}
+
+2. Spoku dati.
+{
+// Agresivitāte.
+logaSpokaAgresivitatesLimits=10
+durvjuSpokaAgresivitatesLimits=15
+virtuvesSpokaAgresivitatesLimits=20
+
+// Drošības robežas.
+logaSpokaDrosibasRobezas=3
+durvjuSpokaDrosibasRobezas=3
+virtuvesSpokaDrosibasRobezas=3
+}

@@ -6,7 +6,7 @@ import java.io.FileWriter;
 // try (Scanner failuLasitajs = new Scanner(Paths.get("Iestatijumi.csv"))) { // Scanner() konstruktorā ieliek datus jeb failu, kuru viņam ir jālasa un Paths.get() iegūst ceļu uz šo failu pēc dotā faila nosaukuma.
 
 public class FailuRedigetajs {
-    static void failuLasitajs() {
+    static void failuPrintetajs() {
         try (BufferedReader failuLasitajs = new BufferedReader(new FileReader("Iestatijumi.csv"))) {
             String linija;
             while ((linija = failuLasitajs.readLine()) != null) { // Lasa kamēr nav ticis līdz faila pēdējai līnijai.
@@ -21,4 +21,21 @@ public class FailuRedigetajs {
             rakstitajs.close();
         } catch (Exception e) {}
     }
+
+    static int datuLasitajs(String mainigaNosaukums) {
+        try (BufferedReader mainigoDatuLasitajs = new BufferedReader(new FileReader("Iestatijumi.csv"))) {
+            // Pareizās līnijas atrašana.
+            String linija;
+            // Darbošanās princips. !(boolean) => definē mainīgo "linija", katru reizi, kad nosacījums tiek pārbaudīts un pārbauda vai definējuma iekšā ir norādītā burtu virkne.
+            while (!(linija = mainigoDatuLasitajs.readLine()).contains(mainigaNosaukums)) {}
+            
+            // Atrastās līnijas apstrāde.
+            int saglabataMainigaVertiba = Integer.valueOf(linija.substring(linija.indexOf("=") + 1));
+
+            return saglabataMainigaVertiba;
+        } catch (Exception e) {}
+        throw new RuntimeException("Iestatijumos vai ka parametrs mainigais ar nosaukumu: " + mainigaNosaukums + " ir nepareizs!");
+    }
+
+
 }
