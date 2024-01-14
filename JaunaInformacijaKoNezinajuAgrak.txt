@@ -1,0 +1,22 @@
+1. metodes(parametrs Array).
+
+Ja metodē kā parametru liek mainīgo, tad mainīgā vērtība tiek kopēta un pārveidota par lokālo mainīgo.
+Lokālo mainīgo var mainīt cik grib, bet tas nemainīs mainīgā vērtību, kas tika sniegts kā parametrs.
+
+JA, metodē, kā parametru liek Array (Masīvu (tiek skaitīts kā objekts)), tad kā paramters ir sniegts ceļš uz Array, NE Array vērtība.
+Tādēļ metodē mainot Array. Metode caur kā parametru sniegto ceļu maina Array īsto vērtību.
+
+2. Array.
+Piemēra kods:
+String[] abolaBildesRindas = new String[<Izmērs>];
+String[] bumbieraBildesRindas = new String[<Izmērs>];
+abolaBildesRindas = bumbieraBildesRindas;
+
+pirmais_Array = cits_Array; Šī darbība pirmajam Array kopē "CEĻU" ne "VĒRTĪBAS" uz cits_Array.
+Tātad mainot pirmais_Array, mainīs arī cits_Array, jo pēc "=" darbības abi masīvi dala vienu un to pašu ceļu uz vienu vērtību.
+
+Tad, Kā kopēt masīvus?
+
+for (int i = 0; pirmais_Array.lenght; i++) {
+    pirmais_Array[i] = cits_Array[i];
+}

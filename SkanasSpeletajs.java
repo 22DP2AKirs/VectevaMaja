@@ -8,7 +8,7 @@ import javax.sound.sampled.FloatControl;
 public class SkanasSpeletajs extends Thread {
     @Override
     public void run() {
-        while (Main.speleSakas) {
+        while (Main.spelePalaista) {
             SpeletSkanu("Skanas faili\\ambiance-sakana.wav", -5);
             try {
                 Thread.sleep(96000);
@@ -29,10 +29,8 @@ public class SkanasSpeletajs extends Thread {
                 iegutKontroli.setValue(skalumsDecibelos); // Reduce volume by 10 decibels.
                 klips.start();
             } else {
-                System.out.println("Nevar atrast failu.");
+                throw new RuntimeException("Nevar atrast skaņas failu.");
             }
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
+        } catch (Exception e) {}
     }
 }

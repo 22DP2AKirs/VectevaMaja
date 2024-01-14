@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 class VaronaDarbibas {
     
 
@@ -9,7 +11,7 @@ class VaronaDarbibas {
 
     static boolean elektribaIeslegta = true;  // TODO: Pārvietot uz Main.clasi
 
-    static boolean aizdedzinatsSerkocins = false; 
+    static volatile boolean aizdedzinatsSerkocins = false; 
     static int serkocinaDegsanasLaiks;
 
     static void varonaDarbibas(String ievade) { // TODO: sadalīt dažādās metodēs (Testēšanas darbības, spēlēšanas darbības, Izvēlnes darbības u.t.t.)
@@ -20,13 +22,12 @@ class VaronaDarbibas {
         if (Main.sakumaEkrans) {
             sakumaEkranaDarbibas(ievade);
         } 
-        else if (Main.speleSakas) {
+        else if (Main.spelePalaista) {
             if (!ievade.equals("}")) { // Ja ievades nebija, tad nepārbauda pārējās komandas.
                 if (ievade.equals("F") && Main.atlikusoSerkocinuDaudzums != 0 && !aizdedzinatsSerkocins) {
-                    if (Spoki.rand.nextInt(5) == 0) { // 20 % iespēja aizdedzināt sērkociņu.
+                    if (Spoki.rand.nextInt(4) == 0) { // 25 % iespēja aizdedzināt sērkociņu.
                         SkanasSpeletajs.SpeletSkanu("Skanas faili\\lighting-matches.wav", 0);
                         aizdedzinatsSerkocins = true;
-                        
                         Main.atlikusoSerkocinuDaudzums--;
                     } 
                     else {
@@ -70,24 +71,96 @@ class VaronaDarbibas {
                 else if (ievade.equals("POWER OFF")) {
                     if(elektribaIeslegta) {
                         elektribaIeslegta = false;
-                        Laiks.gaidisanasLaiks = 100;
+                        Laiks.gaidisanasLaiks = 10;
                     } 
                     else {
                         elektribaIeslegta = true;
                     }
                 } 
                 else if (varonaIstabasSkaitlis == 0) { // Gultas darbības.
-                    if (varonaVirzienaSkaitlis == 1 && elektribaIeslegta) { // Elektrības kastes puse.
-                        if (ievade.equals("E")) {
-                            SkanasSpeletajs.SpeletSkanu("Skanas faili\\fuse-box-turning-on-off.wav", 0);
-                            elektribaIeslegta = false;
-                            Laiks.gaidisanasLaiks = 20;
-                        }
-                    }
+                    gultasDarbibas(ievade);
+                }
+                else if (varonaIstabasSkaitlis == 1) { // Divana darbības.
+                    divanaDarbibas(ievade);
+                }
+                else if (varonaIstabasSkaitlis == 2) { // Durvju darbības.
+                    durvjuDarbibas(ievade);
+                }
+                else if (varonaIstabasSkaitlis == 3) { // Virtuves darbības.
+                    virtuvesDarbibas(ievade);
                 }
             }
-            istabasVirzienaNoteiksana(); // Nosaka uz kuru pusi skatīsies varonis ieejot citā istabā.
+            Istabu_Izskati.istabuMasivaAtjaunosana(); // Atjauno visas istabas un, pēc pirms metodes izsauktajām darbībām, nosaka varoņa tagadējo istabu, un uz kuru pusi viņš skatās.
         }
+    }
+
+    static void virtuvesDarbibas(String panemtaIevade) {
+        if (varonaVirzienaSkaitlis == 3) { // Priekšas darbības.
+            if (panemtaIevade.equals("G")) {
+                if (Main.istabuGaismasIeslegtas[3]) {
+                    SkanasSpeletajs.SpeletSkanu("Skanas faili\\gaismas-sledzis-off.wav", 0);
+                    Main.istabuGaismasIeslegtas[3] = false;
+                } 
+                else {
+                    SkanasSpeletajs.SpeletSkanu("Skanas faili\\gaismas-sledzis-on.wav", 0);
+                    Main.istabuGaismasIeslegtas[3] = true;
+                }
+            }
+        }
+    }
+
+    static void durvjuDarbibas(String panemtaIevade) {
+        if (varonaVirzienaSkaitlis == 2) { // Priekšas darbības.
+            if (panemtaIevade.equals("G")) {
+                if (Main.istabuGaismasIeslegtas[2]) {
+                    SkanasSpeletajs.SpeletSkanu("Skanas faili\\gaismas-sledzis-off.wav", 0);
+                    Main.istabuGaismasIeslegtas[2] = false;
+                } 
+                else {
+                    SkanasSpeletajs.SpeletSkanu("Skanas faili\\gaismas-sledzis-on.wav", 0);
+                    Main.istabuGaismasIeslegtas[2] = true;
+                }
+            }
+        }
+    }
+
+    static void divanaDarbibas(String panemtaIevade) {
+        if (varonaVirzienaSkaitlis == 1) { // Priekšas darbības.
+            if (panemtaIevade.equals("G")) {
+                if (Main.istabuGaismasIeslegtas[1]) {
+                    SkanasSpeletajs.SpeletSkanu("Skanas faili\\gaismas-sledzis-off.wav", 0);
+                    Main.istabuGaismasIeslegtas[1] = false;
+                } 
+                else {
+                    SkanasSpeletajs.SpeletSkanu("Skanas faili\\gaismas-sledzis-on.wav", 0);
+                    Main.istabuGaismasIeslegtas[1] = true;
+                }
+            }
+        }
+    }
+
+    static void gultasDarbibas(String panemtaIevade) {
+        if (varonaVirzienaSkaitlis == 0) { // Priekšas darbības.
+            if (panemtaIevade.equals("G")) {
+                if (Main.istabuGaismasIeslegtas[0]) {
+                    SkanasSpeletajs.SpeletSkanu("Skanas faili\\gaismas-sledzis-off.wav", 0);
+                    Main.istabuGaismasIeslegtas[0] = false;
+                } 
+                else {
+                    SkanasSpeletajs.SpeletSkanu("Skanas faili\\gaismas-sledzis-on.wav", 0);
+                    Main.istabuGaismasIeslegtas[0] = true;
+                }
+            }
+        }
+        else if (varonaVirzienaSkaitlis == 1 && elektribaIeslegta) { // Elektrības kastes puse.
+            if (panemtaIevade.equals("E")) {
+                SkanasSpeletajs.SpeletSkanu("Skanas faili\\fuse-box-turning-on-off.wav", 0);
+                elektribaIeslegta = false;
+                Arrays.fill(Main.istabuGaismasIeslegtas, false);
+                Laiks.gaidisanasLaiks = 10;
+            }
+        }
+            
     }
 
     static void sakumaEkranaDarbibas(String panemtaIevade) {
@@ -107,7 +180,7 @@ class VaronaDarbibas {
             }
             else if (SakumaEkrans.izvelnesSkaits == 2) { // Spēlēt.
                 Main.sakumaEkrans = false;
-                Main.speleSakas = true;
+                Main.spelePalaista = true;
             } 
             else if (SakumaEkrans.izvelnesSkaits == 3) {
             
@@ -138,11 +211,6 @@ class VaronaDarbibas {
         if (varonaVirzienaSkaitlis > 3) { // Lai masīvs neizietu no diapazonas.
             varonaVirzienaSkaitlis = 0;
         }
-    }
-    
-    static void istabasVirzienaNoteiksana() { // Nosaka uz kuru pusi skatīsies varonis ieejot citā istabā.
-        // Atjauno visas istabas un, pēc pirms metodes izsauktajām darbībām, nosaka varoņa tagadējo istabu, un uz kuru pusi viņš skatās.
-        Istabu_Izskati.aktualasIstabasParrakstisana(Istabu_Izskati.istabuMasivaAtjaunosana()[varonaIstabasSkaitlis][varonaVirzienaSkaitlis]);
     }
    
     static void ietUzPrieksu() {  // Kustība pa māju.

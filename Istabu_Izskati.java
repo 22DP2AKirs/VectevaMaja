@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Istabu_Izskati {
     // Durju istabas parastie skati jeb stāvokļi.
     public static String[] durvjuLeja = {
@@ -601,56 +603,124 @@ public class Istabu_Izskati {
         return istaba;
     }
 
-    static String[] istabasArParklajumiem(String[] varonaAktualaIstaba) {
-        String[] varonaAktualaIstabaArParklajumiem = new String[16];
-
-        for (int i = 0; i < varonaAktualaIstaba.length; i++) { // Iegūst neapstrādāto bildi.
-            varonaAktualaIstabaArParklajumiem[i] = varonaAktualaIstaba[i];
+    static String[] istabasArParklajumiem(String[] nemainitaVaronaAktualaIstabas) {
+        // Parametra masīva vērtību pārkopēšana un jauna masīva, lai nebojātu masīvu, kas ir sniegts kā parametrs.
+        String[] mainitaVaronaAktualaIstabasKopija = new String[K.BILDES_MASIVA_IZMERS];
+        for (int i = 0; i < K.BILDES_MASIVA_IZMERS; i++) { 
+            mainitaVaronaAktualaIstabasKopija[i] = nemainitaVaronaAktualaIstabas[i]; // mainita - drīkst mainīt, nemainītā - NEDRĪKST MAINĪT.
         }
 
-        if (!VaronaDarbibas.elektribaIeslegta) {
-                for (int i = 0; i < varonaAktualaIstabaArParklajumiem.length; i++) {
-                    varonaAktualaIstabaArParklajumiem[i] = K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET;
-                }
+        // Dažādie nosacījumi, lai noteiktu pareizo pārklājumu, pareizai situācijai.
+        if (VaronaDarbibas.elektribaIeslegta && VaronaDarbibas.aizdedzinatsSerkocins){
+            mainitaVaronaAktualaIstabasKopija = serkocinaPieliksanaPieBildes(mainitaVaronaAktualaIstabasKopija);
+        }
+        else if (!VaronaDarbibas.elektribaIeslegta && VaronaDarbibas.aizdedzinatsSerkocins) {
+            mainitaVaronaAktualaIstabasKopija = tumsaIstabaArAizdedzinatuSerkocinu(mainitaVaronaAktualaIstabasKopija, nemainitaVaronaAktualaIstabas);
+        }
+        else if (!VaronaDarbibas.elektribaIeslegta && !VaronaDarbibas.aizdedzinatsSerkocins) { // Ja mājā ir izslēgta elektrība un sērkociņš ir neaizdedzināts.
+            mainitaVaronaAktualaIstabasKopija = istabaArIzslegtuGaismu();
         }
 
-        if (VaronaDarbibas.aizdedzinatsSerkocins) {
-            // Ja apstrādāto līniju pārdefinē ar sērkociņu, tad pārdefinētā līnija neatjaunosies iepriekšējā ciklā "Iegūst neapstrādāto bildi". Būs statiska bilde ar sērkociņu klāt un nodzēstu galu.
-            // Ja apstrādātai līnijai pieliks klāt sērkociņu, tad pārveidotā līnija tiks atjaunot, bet būs ar nodzēstu galu.
-            // \r nepalīdz atstāt galu.
-            // Pieliekot RESET vai krāsas maiņu arī nepalīdz.
+        // Pārbauda katru istabu, un nosaka vai gaisma tanī būs izslēgta vai izslēgta ar sērkociņu.
+        mainitaVaronaAktualaIstabasKopija = katrasIstabasParbaudeParGaismasStatusu(mainitaVaronaAktualaIstabasKopija, nemainitaVaronaAktualaIstabas);
+        
+        
+        return mainitaVaronaAktualaIstabasKopija;
+    }
 
-            // !!!!!!!!! Pieliekot beigās ANSI \033[#G kodu (Pārvietot rakstīšanas kursoru uz # kolonnu) ar # esot visa teksta līnijas beigas (arī aiz sērkociņa) nenodzēsa tālākos tekstu. !!!!!!!!!
-            // "\033[82G"
-
-            // Pieliek pie bildes sērkociņu.
-            varonaAktualaIstabaArParklajumiem[11] += serkocinaIzskats[0];
-            varonaAktualaIstabaArParklajumiem[12] += serkocinaIzskats[1];
-            varonaAktualaIstabaArParklajumiem[13] += serkocinaIzskats[2];
-            varonaAktualaIstabaArParklajumiem[14] += serkocinaIzskats[3];
-            varonaAktualaIstabaArParklajumiem[15] += serkocinaIzskats[4];
-
-            // Nezinu kāpēc šis nenodzēš pēc sērkociņa tekstu.
-            if (!VaronaDarbibas.elektribaIeslegta) {
-                varonaAktualaIstabaArParklajumiem[8] = K.TPELEKS + varonaAktualaIstaba[8] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[70G░░░░░░░░░░░░" + K.RESET;
-                varonaAktualaIstabaArParklajumiem[9] = K.TPELEKS + varonaAktualaIstaba[9] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[73G░░░░░░░░░" + K.RESET;
-                varonaAktualaIstabaArParklajumiem[10] = K.TPELEKS + varonaAktualaIstaba[10] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[76G░░░░░░" + K.RESET;
-                varonaAktualaIstabaArParklajumiem[11] = K.TPELEKS + varonaAktualaIstaba[11] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + serkocinaIzskats[0] + K.TPELEKS + "\033[79G░░░" + K.RESET;
-                varonaAktualaIstabaArParklajumiem[12] = K.TPELEKS + varonaAktualaIstaba[12] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + serkocinaIzskats[1] + K.TPELEKS + "\033[80G░░" + K.RESET;
-                varonaAktualaIstabaArParklajumiem[13] = K.TPELEKS + varonaAktualaIstaba[13] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + serkocinaIzskats[2] + K.TPELEKS + "\033[80G░░" + K.RESET;
-                varonaAktualaIstabaArParklajumiem[14] = K.TPELEKS + varonaAktualaIstaba[14] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + serkocinaIzskats[3] + K.TPELEKS + "\033[80G░░" + K.RESET;
-                varonaAktualaIstabaArParklajumiem[15] = K.TPELEKS + varonaAktualaIstaba[15] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + serkocinaIzskats[4] + K.TPELEKS + "\033[80G░░" + K.RESET;
+    static String[] katrasIstabasParbaudeParGaismasStatusu(String[] mainamaisMasivs, String[] originalaisMasivs) { // TODO: Jāoptimizē.
+        // Pārbauda katru istabu, un nosaka vai gaisma tanī būs izslēgta vai izslēgta ar sērkociņu.
+        if (!Main.istabuGaismasIeslegtas[0] && !VaronaDarbibas.aizdedzinatsSerkocins) {
+            if (VaronaDarbibas.varonaIstabasSkaitlis == 0){
+                mainamaisMasivs = istabaArIzslegtuGaismu();
+            }
+        }
+        else if (!Main.istabuGaismasIeslegtas[0] && VaronaDarbibas.aizdedzinatsSerkocins) {
+            if (VaronaDarbibas.varonaIstabasSkaitlis == 0){
+                mainamaisMasivs = tumsaIstabaArAizdedzinatuSerkocinu(mainamaisMasivs, originalaisMasivs);
             }
         }
 
-        return varonaAktualaIstabaArParklajumiem;
+        if (!Main.istabuGaismasIeslegtas[1] && !VaronaDarbibas.aizdedzinatsSerkocins) {
+            if (VaronaDarbibas.varonaIstabasSkaitlis == 1){
+                mainamaisMasivs = istabaArIzslegtuGaismu();
+            }
+        }
+        else if (!Main.istabuGaismasIeslegtas[1] && VaronaDarbibas.aizdedzinatsSerkocins) {
+            if (VaronaDarbibas.varonaIstabasSkaitlis == 1){
+                mainamaisMasivs = tumsaIstabaArAizdedzinatuSerkocinu(mainamaisMasivs, originalaisMasivs);
+            }
+        }
+
+        if (!Main.istabuGaismasIeslegtas[2] && !VaronaDarbibas.aizdedzinatsSerkocins) {
+            if (VaronaDarbibas.varonaIstabasSkaitlis == 2){
+                mainamaisMasivs = istabaArIzslegtuGaismu();
+            }
+        }
+        else if (!Main.istabuGaismasIeslegtas[2] && VaronaDarbibas.aizdedzinatsSerkocins) {
+            if (VaronaDarbibas.varonaIstabasSkaitlis == 2){
+                mainamaisMasivs = tumsaIstabaArAizdedzinatuSerkocinu(mainamaisMasivs, originalaisMasivs);
+            }
+        }
+
+        if (!Main.istabuGaismasIeslegtas[3] && !VaronaDarbibas.aizdedzinatsSerkocins) {
+            if (VaronaDarbibas.varonaIstabasSkaitlis == 3){
+                mainamaisMasivs = istabaArIzslegtuGaismu();
+            }
+        }
+        else if (!Main.istabuGaismasIeslegtas[3] && VaronaDarbibas.aizdedzinatsSerkocins) {
+            if (VaronaDarbibas.varonaIstabasSkaitlis == 3){
+                mainamaisMasivs = tumsaIstabaArAizdedzinatuSerkocinu(mainamaisMasivs, originalaisMasivs);
+            }
+        }
+        return mainamaisMasivs;
+    }
+
+    static String[] tumsaIstabaArAizdedzinatuSerkocinu(String[] apstradajamaisMasivs, String[] originalaisMasivs) {
+        apstradajamaisMasivs = istabaArIzslegtuGaismu();
+        apstradajamaisMasivs[8] = K.TPELEKS + originalaisMasivs[8] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[70G░░░░░░░░░░░░" + K.RESET;
+        apstradajamaisMasivs[9] = K.TPELEKS + originalaisMasivs[9] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[73G░░░░░░░░░" + K.RESET;
+        apstradajamaisMasivs[10] = K.TPELEKS + originalaisMasivs[10] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[76G░░░░░░" + K.RESET;
+        apstradajamaisMasivs[11] = K.TPELEKS + originalaisMasivs[11] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[79G░░░" + K.RESET;
+        apstradajamaisMasivs[12] = K.TPELEKS + originalaisMasivs[12] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[80G░░" + K.RESET;
+        apstradajamaisMasivs[13] = K.TPELEKS + originalaisMasivs[13] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[80G░░" + K.RESET;
+        apstradajamaisMasivs[14] = K.TPELEKS + originalaisMasivs[14] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[80G░░" + K.RESET;
+        apstradajamaisMasivs[15] = K.TPELEKS + originalaisMasivs[15] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[80G░░" + K.RESET;
+
+        apstradajamaisMasivs = serkocinaPieliksanaPieBildes(apstradajamaisMasivs);
+        return apstradajamaisMasivs;
+    }
+
+    static String[] serkocinaPieliksanaPieBildes(String[] apstradajamaisMasivs) {
+        apstradajamaisMasivs[11] += serkocinaIzskats[0];
+        apstradajamaisMasivs[12] += serkocinaIzskats[1];
+        apstradajamaisMasivs[13] += serkocinaIzskats[2];
+        apstradajamaisMasivs[14] += serkocinaIzskats[3];
+        apstradajamaisMasivs[15] += serkocinaIzskats[4];
+
+        return apstradajamaisMasivs;
     }
 
     static String[] serkocinaIzskats = {
+        // Ja apstrādāto līniju pārdefinē ar sērkociņu, tad pārdefinētā līnija neatjaunosies iepriekšējā ciklā "Iegūst neapstrādāto bildi". Būs statiska bilde ar sērkociņu klāt un nodzēstu galu.
+        // Ja apstrādātai līnijai pieliks klāt sērkociņu, tad pārveidotā līnija tiks atjaunot, bet būs ar nodzēstu galu.
+        // \r nepalīdz atstāt galu.
+        // Pieliekot RESET vai krāsas maiņu arī nepalīdz.
+
+        // !!!!!!!!! Pieliekot beigās ANSI \033[#G kodu (Pārvietot rakstīšanas kursoru uz # kolonnu) ar # esot visa teksta līnijas beigas (arī aiz sērkociņa) nenodzēsa tālākos tekstu. !!!!!!!!!
+        // "\033[82G"
+
         "\033[61G" + K.DZELTENS + "/\\_" + K.RESET + "\033[82G",
         "\033[60G"+ K.ORANZS + "/   \\" + K.RESET + "\033[82G",
         "\033[60G" + K.SARKANS + "| O  |" + K.RESET + "\033[82G",
         "\033[61G" + K.SARKANS + "'-\\'" + K.RESET + "\033[82G",
         "\033[64G" + K.BRUNS + "\\" + K.RESET + "\033[82G"
     };
+
+    static String[] istabaArIzslegtuGaismu() {
+        String[] masivs = new String[K.BILDES_MASIVA_IZMERS];
+        Arrays.fill(masivs, K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET); // Aizpilda visus masīva indeksus ar vienu un to pašu elementu.
+        
+        return masivs;
+    }
 }

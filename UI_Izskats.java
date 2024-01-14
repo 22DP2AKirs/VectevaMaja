@@ -34,6 +34,7 @@ class UI_Izskats {
             gatavsApaksasUI[2] = "___________________|_____________________|___________________________|          ";
             gatavsApaksasUI[4] = "      [ E ] - I Z M A N T O T   O B J E K T U                                   ";
             gatavsApaksasUI[6] = "      [ F ] - C E N S T I E S   A I Z D E D Z I N A T   S E R K O C I N U       ";
+            gatavsApaksasUI[8] = "      [ G ] - I E S L E G T   V A I   I Z S L E G T   G A I S M U               ";
         }
         
         if (!panemtaIevade.equals("}")) { // Izveido jauno.

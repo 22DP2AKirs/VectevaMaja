@@ -79,7 +79,15 @@ public class Spoki {
             Istabu_Izskati.virtPrieksasPagrabaBildesArSpoku = Spoku_Izskati.virtuvesSpokaIzskati[spokaFazesIndeks];
         }
         else { // Kods kurš strādās, tikai tad, kad spēlētājs nomirs no spoka. TODO: ! ! ! Z A U D Ē Š A N A S   K O D S ! ! !
+            if (!Main.varonaNemirstiba) {
+                Main.spelePalaista = false;
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {}
 
+                Main.tiritEkranu();
+                System.out.println("Jus nomirat!\nNaves iemesls: " + spokaVeids + " spoks.");
+            }
         }
     }
 

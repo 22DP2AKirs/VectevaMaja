@@ -12,7 +12,7 @@ public class Laiks extends Thread {
         Spoki durvjuSpoks = new Spoki("durvju");
         Spoki virtuvesSpoks = new Spoki("virtuves");
 
-        while (Main.speleSakas) {
+        while (Main.spelePalaista) {
             laikaVadiba(); // Skaita laiku un nosaka, kad spēle ir beigusies.
             
             // Spoku objektu RAND kustības atjaunošana.
@@ -34,6 +34,8 @@ public class Laiks extends Thread {
             logaSpoks.iespejaPadaritSpokuAktivu();
             durvjuSpoks.iespejaPadaritSpokuAktivu();
             virtuvesSpoks.iespejaPadaritSpokuAktivu();
+
+            randomIespejaIzslegtKadasIstabasGaismu();
 
             if (!VaronaDarbibas.elektribaIeslegta) { // Ja false, tad ...
                 if (gaidisanasLaiks <= 0) {
@@ -61,6 +63,16 @@ public class Laiks extends Thread {
         }
     }
 
+    void randomIespejaIzslegtKadasIstabasGaismu() {
+        int randomIzveletasIstabasCipars = Spoki.rand.nextInt(4);
+        if (Spoki.rand.nextInt(60) + 1 == 1) {
+            if (Main.istabuGaismasIeslegtas[randomIzveletasIstabasCipars] == true) {
+                Main.istabuGaismasIeslegtas[randomIzveletasIstabasCipars] = false;
+                SkanasSpeletajs.SpeletSkanu("Skanas faili\\gaismas-sledzis-off.wav", 0);
+            }
+        }
+    }
+
     void laikaVadiba() {
         Laiks.spelesLaiks++; // Spēles laiks palielinas, katru sekundi jeb spēlesĀtrumu.
             
@@ -76,14 +88,14 @@ public class Laiks extends Thread {
             laikaTeksts = " 5 A M  ";
         } else if (spelesLaiks == vienaStunda * 6) {
             laikaTeksts = " 6 A M  ";
-            Main.speleSakas = false;
+            Main.spelePalaista = false;
 
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {}
 
             Main.tiritEkranu();
-            System.out.println("\n\n\n\nJus izdzivojat!!!\n\n\n\n\n");
+            System.out.println("Jus izdzivojat!!\n\n\n\n\n");
         }
     }
 }

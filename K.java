@@ -24,4 +24,7 @@ class K {
     static final String BALTS = "\u001B[37m";
 
     static final String OBJEKTS = "\u001B[38;5;187m";
+
+    // Masīvu izmēri.
+    static final int BILDES_MASIVA_IZMERS = 16;
 }

@@ -1,10 +1,15 @@
 public class Main {
-    // Visur izmantojamie mainīgie jeb objekti.
-    static volatile boolean programmaPalaista = true;
-    static boolean sakumaEkrans = true;
-    static volatile boolean speleSakas = true; // Mainīgais bool, kas palaiž visu spēli.
+    // Mainīgie jeb objekti.
+    static volatile boolean programmaPalaista = true; // booleans, kas palaiž visu programmu.
+    static boolean sakumaEkrans = false; // Nosaka vai spēles sākumā rādīs sākuma ekrānu vai nē.
+    static volatile boolean spelePalaista = true; // Mainīgais bool, kas pašu spēli.
+
+    static boolean varonaNemirstiba = true; // Vai varonis var zaudēt spēli vai nē.
 
     //////////////////////////////////////////////////////////////////////////// S P Ē L E S   I E S T A T Ī J U M I ///////////////////////////////////////////////////////////////////////////////////////
+
+    static boolean[] istabuGaismasIeslegtas = {true, true, true, true}; // Indeksi: 0. Gulta, 1. Dīvāns, 2. Durvis, 3. Virtuve.
+
     static int spelesNakts = 6;
 
     // Sērkociņa dati.
@@ -36,12 +41,12 @@ public class Main {
 
         ///////// T H R E D I //////////
         // Sākas atsevišķās darbības jeb patstāvīgie procesi.
-        skanasSpeletajs.start(); // Strādā, kamēr speleSakas bools ir true.
+        skanasSpeletajs.start(); // Strādā, kamēr spelePalaista bools ir true.
         ievadesLasitajs.start(); // Strādā, kamēr programmaPalaista bools ir true.
         
         while (programmaPalaista) { // Palaiž programmu.
-            //////////////////////////////////////////////////////// S P Ē L E S   I Z V Ē L N E //////////////////////////////////////////////////////
             tiritEkranu();
+            //////////////////////////////////////////////////////// S P Ē L E S   I Z V Ē L N E //////////////////////////////////////////////////////
             while (sakumaEkrans) {
 
                 VaronaDarbibas.varonaDarbibas(Ievade.ievade);
@@ -58,14 +63,10 @@ public class Main {
             ////////////////////////////////////////////////////////////////////// S Ā K A S   S P Ē L E S   K O D S /////////////////////////////////////////////////////////////////////////////////////////
             tiritEkranu();
             Laiks laiks = new Laiks(); // Katru reizi, kad ir palaista spēle, veido jaunu Laika thredu.
-            laiks.start(); // Strādā, kamēr speleSakas bools ir true.
-            while (speleSakas) { // Kamēr laiks nav beidzies, turpināt ciklu jeb spēli.
+            laiks.start(); // Strādā, kamēr spelePalaista bools ir true.
+            while (spelePalaista) { // Kamēr laiks nav beidzies, turpināt ciklu jeb spēli.
 
                 // ----------------------------------------------------------- vvv Jāatjauno, jāpārveido vvv --------------------------------------------------------// // TODO: Izmantot vai pārveidot.
-                // Atjaunos istabas ar spoka bildēm tikai tad, kad loga spoks būs izvēlējies savu istabu.
-                // Spoki.logaSpoks();
-                // Spoki.durSpoks();
-                // Spoki.virSpoks();
                 
                 Istabu_Izskati.virtuvesPagrabaGaismasStavoklaNoteiksana();
                 // ------------------------------------------------------------------^^^^^^^^^^^^^^^^^^^^^^^^^^^---------------------------------------------------- // // TODO: Izmantot vai pārveidot.
@@ -89,6 +90,11 @@ public class Main {
                     // Kods ko pildīs, ja "try" kods izmetīs kļūdu.
                 }
             }
+
+            try { // Laiks, lai spēlētājs varētu izlasīt, vai viņš uzvarēja vai zaudēja.
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {}
+
             // Apstādina Laika thredu un izveido jaunu, kad palaiž spēli.
             laiks.join(); // wait for the thread to stop
             Laiks.spelesLaiks = 0; // Lai laika threads momentāli neapstātos pēc tā pališanas, atjauno spēles laiku.
