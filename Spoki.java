@@ -6,6 +6,10 @@ public class Spoki {
     // Statistikas objekti.
     int spokuSkaits; // Nedefinēta int vērtība ir 0. !!! NAV IZMANTOTS !!!
 
+    volatile static boolean logaSpoksAktivs;
+    static boolean durvjuSpoksAktivs;
+    static boolean virtuvesSpoksAktivs;
+
     // Klases instances jeb objekti, jeb mainīgie.
     boolean spoksAktivs;
     String spokaVeids;
@@ -26,34 +30,40 @@ public class Spoki {
 
     public Spoki(String spokaVeids) { // Konstruktors.
         if (spokaVeids.equals("loga")) {
-            this.spokaAgresivitatesLimits = Main.logaSpokaAgresivitatesLimits;
-            this.spokaIstaba = logaSpokaIstabas[rand.nextInt(4)]; // 4, jo mājā ir četras istabas.
+            spokaAgresivitatesLimits = Main.logaSpokaAgresivitatesLimits;
         } 
         else if (spokaVeids.equals("durvju")) {
-            this.spokaAgresivitatesLimits = Main.durvjuSpokaAgresivitatesLimits;
+            spokaAgresivitatesLimits = Main.durvjuSpokaAgresivitatesLimits;
         } 
         else if (spokaVeids.equals("virtuves")) {
-            this.spokaAgresivitatesLimits = Main.virtuvesSpokaAgresivitatesLimits;
+            spokaAgresivitatesLimits = Main.virtuvesSpokaAgresivitatesLimits;
         }
-        this.spokaDrosibasRobezas = 3;
+        spokaDrosibasRobezas = 3;
         this.spokaVeids = spokaVeids;
-        this.spokaFazesIndeks = 0; // 0 nozīmē, ka spoks nav sācis uzbrukt.
-        this.vaiSpoksKustas = false;
-        this.spoksAktivs = false;
+        spokaFazesIndeks = 0; // 0 nozīmē, ka spoks nav sācis uzbrukt.
+        vaiSpoksKustas = false;
+        spoksAktivs = false;
+        spokaIstaba = "";
     }
 
     void randomKustibasCiparaAtjaunosana() {
         randomKustibasIespejasCipars = rand.nextInt(20) + 1; // + 1, lai skaitļa intervāls būtu no 1 - 20, nevis no 0 - 19.
-        this.vaiSpoksKustas = randomKustibasIespejasCipars < spokaAgresivitatesLimits;
+        vaiSpoksKustas = randomKustibasIespejasCipars < spokaAgresivitatesLimits;
     }
 
-    void spokuVirzisanasUzPrieksu() {
-        if (this.spoksAktivs && this.vaiSpoksKustas) {
-            if (this.spokaDrosibasRobezas < 1) { // Kad spoks pārkāpj visas drošības robežas, tad viņš nākošajā kustībā nāk par 1 fāzi tuvāk un pēc tam, kāpj pāri nākošām robežām.
-                this.spokaFazesIndeks++; // Pietuvina spoku mērķim.
-                this.spokaDrosibasRobezas = 4;
+    void spokuRobezuKapsana() {
+        spokaDrosibasRobezas--; // Noņem vienu drošības robežu.
+    }
+
+    void spokuVirzisanasUzPrieksu() { // Nosaka, vai spoks kustās uz priekšu, vai pārkāpj robežu.
+        if (spoksAktivs) {
+            if (vaiSpoksKustas && spokaDrosibasRobezas < 1) {
+                spokaFazesIndeks++; // Pietuvina spoku mērķim.
+                spokaDrosibasRobezas = 4;
             }
-            this.spokaDrosibasRobezas--; // Noņem vienu drošības robežu.
+            else if (spokaDrosibasRobezas > 0) {
+                spokuRobezuKapsana();
+            }
         }
     }
 
@@ -78,7 +88,7 @@ public class Spoki {
         else if (spokaVeids.equals("virtuves") && spokaFazesIndeks < 11) {
             Istabu_Izskati.virtPrieksasPagrabaBildesArSpoku = Spoku_Izskati.virtuvesSpokaIzskati[spokaFazesIndeks];
         }
-        else { // Kods kurš strādās, tikai tad, kad spēlētājs nomirs no spoka. TODO: ! ! ! Z A U D Ē Š A N A S   K O D S ! ! !
+        else { // Kods kurš strādās, tikai tad, kad spēlētājs nomirs no spoka. ! ! ! Z A U D Ē Š A N A S   K O D S ! ! !
             if (!Main.varonaNemirstiba) {
                 Main.spelePalaista = false;
                 try {
@@ -92,9 +102,21 @@ public class Spoki {
     }
 
     void iespejaPadaritSpokuAktivu() { 
-        if ((rand.nextInt(20) + 1) == 1) { // Ja 1/20-ā jeb 5/100-ās iespēja ir patiesa, tad spoks paliek aktīvs.
-            spoksAktivs = true;
-        }
+        if (!spoksAktivs) {
+            if ((rand.nextInt(2) + 1) == 1) { // Ja 1/20-ā jeb 5/100-ās iespēja ir patiesa, tad spoks paliek aktīvs.
+                if (spokaVeids.equals("loga")) {
+                    spokaIstaba = logaSpokaIstabas[rand.nextInt(4)]; // 4, jo mājā ir četras istabas.
+                    logaSpoksAktivs = true;
+                }
+                else if (spokaVeids.equals("durvju")) {
+                    durvjuSpoksAktivs = true;
+                }
+                else if (spokaVeids.equals("virtuves")){
+                    virtuvesSpoksAktivs =  true;
+                }
+                spoksAktivs = true;
+            }
+        }  
     }
 
     static Spoki[] spokuInformacijasSavaksana(Spoki logaSpoks, Spoki durvjuSpoks, Spoki virtuvesSpoks) {
@@ -120,5 +142,11 @@ public class Spoki {
         System.out.println("Virtuves spoks" + K.VIOLETS + " aktivs?: " + spokuStati[2].spoksAktivs + K.ZALS + " RAND cipars: " + spokuStati[2].randomKustibasIespejasCipars + K.ZILS + " Drosibas robezas: " + spokuStati[2].spokaDrosibasRobezas + " Fazes indekss: " + spokuStati[2].spokaFazesIndeks + K.RESET + "\033[0K");
         
         System.out.println("Laiks ms: " + Laiks.spelesLaiks + " / " + Laiks.vienaStunda * 6 + K.RESET + "\033[0K");
+    }
+
+    void izslegtSpoku() {
+        spoksAktivs = false;
+        spokaDrosibasRobezas = 3;
+        spokaFazesIndeks = 0;
     }
 }

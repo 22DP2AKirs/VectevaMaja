@@ -1,3 +1,6 @@
+// Adrians Kiršteins, DP2-2.
+
+
 public class Main {
     // Mainīgie jeb objekti.
     static volatile boolean programmaPalaista = true; // booleans, kas palaiž visu programmu.
@@ -8,21 +11,24 @@ public class Main {
 
     //////////////////////////////////////////////////////////////////////////// S P Ē L E S   I E S T A T Ī J U M I ///////////////////////////////////////////////////////////////////////////////////////
 
-    static boolean[] istabuGaismasIeslegtas = {true, true, true, true}; // Indeksi: 0. Gulta, 1. Dīvāns, 2. Durvis, 3. Virtuve.
+    // Gaismas dati.
+    static boolean[] istabuGaismasIeslegtas = {FailuRedigetajs.booleanDatuAtgriezejs("gultasGaisma"), FailuRedigetajs.booleanDatuAtgriezejs("divanaGaisma"), FailuRedigetajs.booleanDatuAtgriezejs("durvjuGaisma"), FailuRedigetajs.booleanDatuAtgriezejs("virtuvesGaisma")}; // Indeksi: 0. Gulta, 1. Dīvāns, 2. Durvis, 3. Virtuve.
+    static boolean spokiSledzAraGaismu = FailuRedigetajs.booleanDatuAtgriezejs("spokiSledzAraGaismu");
 
     static int spelesNakts = 6;
 
     // Sērkociņa dati.
-    static int atlikusoSerkocinuDaudzums = FailuRedigetajs.datuLasitajs("atlikusoSerkocinuDaudzums");
-    static int maxSerkocinaDegsanasLaiks = FailuRedigetajs.datuLasitajs("maxSerkocinaDegsanasLaiks");
+    static int atlikusoSerkocinuDaudzums = FailuRedigetajs.intDatuAtgriezejs("atlikusoSerkocinuDaudzums");
+    static int maxSerkocinaDegsanasLaiks = FailuRedigetajs.intDatuAtgriezejs("maxSerkocinaDegsanasLaiks");
 
-    static int logaSpokaAgresivitatesLimits = FailuRedigetajs.datuLasitajs("logaSpokaAgresivitatesLimits");
-    static int durvjuSpokaAgresivitatesLimits = FailuRedigetajs.datuLasitajs("durvjuSpokaAgresivitatesLimits");
-    static int virtuvesSpokaAgresivitatesLimits = FailuRedigetajs.datuLasitajs("virtuvesSpokaAgresivitatesLimits");
+    // Spoku dati.
+    static int logaSpokaAgresivitatesLimits = FailuRedigetajs.intDatuAtgriezejs("logaSpokaAgresivitatesLimits");
+    static int durvjuSpokaAgresivitatesLimits = FailuRedigetajs.intDatuAtgriezejs("durvjuSpokaAgresivitatesLimits");
+    static int virtuvesSpokaAgresivitatesLimits = FailuRedigetajs.intDatuAtgriezejs("virtuvesSpokaAgresivitatesLimits");
 
-    static int logaSpokaDrosibasRobezas = FailuRedigetajs.datuLasitajs("logaSpokaDrosibasRobezas");
-    static int durvjuSpokaDrosibasRobezas = FailuRedigetajs.datuLasitajs("durvjuSpokaDrosibasRobezas");
-    static int virtuvesSpokaDrosibasRobezas = FailuRedigetajs.datuLasitajs("virtuvesSpokaDrosibasRobezas");
+    static int logaSpokaDrosibasRobezas = FailuRedigetajs.intDatuAtgriezejs("logaSpokaDrosibasRobezas");
+    static int durvjuSpokaDrosibasRobezas = FailuRedigetajs.intDatuAtgriezejs("durvjuSpokaDrosibasRobezas");
+    static int virtuvesSpokaDrosibasRobezas = FailuRedigetajs.intDatuAtgriezejs("virtuvesSpokaDrosibasRobezas");
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     static String[] visiVaronaUzdevumi = {"Pildit majasdarbus", "Est", "Mazgat", "Kartot", "Lasit", "Tirit"}; // TODO: Izmantot vai pārveidot.
@@ -48,17 +54,12 @@ public class Main {
             tiritEkranu();
             //////////////////////////////////////////////////////// S P Ē L E S   I Z V Ē L N E //////////////////////////////////////////////////////
             while (sakumaEkrans) {
-
                 VaronaDarbibas.varonaDarbibas(Ievade.ievade);
                 UI_Izskats.masivuIzvade(SakumaEkrans.sakumaEkranaBildesCikls());
-
                 try { // Vienas bildes izvade jeb beigas.
                     Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 30 FPS.
-                } catch (Exception e) {
-                    // Kods ko pildīs, ja "try" kods izmetīs kļūdu.
-                }
+                } catch (Exception e) {}
             }
-            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             
             ////////////////////////////////////////////////////////////////////// S Ā K A S   S P Ē L E S   K O D S /////////////////////////////////////////////////////////////////////////////////////////
             tiritEkranu();
@@ -74,7 +75,7 @@ public class Main {
                 VaronaDarbibas.varonaDarbibas(Ievade.ievade); // Lietotāja jeb varoņa ievade un tās darbības (komandas un to darbības).
 
                 if (Spoki.spokuInfoIzvadeBoolean) { // Spoku informācijas izvade. --Debuging--
-                    Spoki.spokuInformacijasIzvade();
+                    Spoki.spokuInformacijasIzvade(); 
                 }
 
                 // Visām fāzēm, bildēm un visam vizuālajam ir jābūt gatavam pirms šīs metodes izsaukšanas!!!
@@ -98,13 +99,11 @@ public class Main {
             // Apstādina Laika thredu un izveido jaunu, kad palaiž spēli.
             laiks.join(); // wait for the thread to stop
             Laiks.spelesLaiks = 0; // Lai laika threads momentāli neapstātos pēc tā pališanas, atjauno spēles laiku.
-            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             sakumaEkrans = true;
-        } // P R O G R A M M A S   C I K L A   B E I G A S
+        }
         /////////////////////// L I E K   T H R E D I E M   B E I G T I E S /////////////////////////
         skanasSpeletajs.join();
         ievadesLasitajs.join();
-        //////////////////////////////////////////////////////////////////////////////////////////// K O D A   B E I G A S ///////////////////////////////////////////////////////////////////////////////////
     }
 
     static void tiritEkranu() {

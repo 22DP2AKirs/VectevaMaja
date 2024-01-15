@@ -85,57 +85,6 @@ public class Istabu_Izskati {
         };
         return durvisPrieksa;
     }
-    
-    
-    // -------------------------------------------------------------- 2 Dimensiju masīva darbības paraugs -------------------------------------------------------------------------------- //
-    // // [rinda][kolonna]
-    // String [][] tests = {
-    //     // Kolonnas V  V  V
-    //     {"veikals", "Parks", "Maja"}, // Rinda 1.
-    //     {"Ola", "Maize", "Nazis"}}; // Rinda 2.
-    
-    // // System.out.println(vieta[1][2]); // Nazis
-    // -------------------------------------------------------------- 2 Dimensiju masīva darbības paraugs -------------------------------------------------------------------------------- //
-
-    // public static String[] durvisKreisa = {
-    //     "| 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0|",
-    //     "| 1 /  |    |       ________________________________                           |  |",
-    //     "| 2/   |    |      | |       /            \\\\     || |                          |  |",
-    //     "| 3    |    |      | |          |                || |                          |  |",
-    //     "| 4    |    |      | |   \\\\           |          || |                          |  |",
-    //     "| 5    |    |      | |          \\         /      || |                          |  |",
-    //     "| 6    | +  |      | |                      /    || |                          |  |",
-    //     "| 7    |   /|      | |     /           \\         || |                          |  |",
-    //     "| 8    |  / |      | |___________________________|| |                          |  |",
-    //     "| 9  + | /  |      |/______________________________\\|               ___________|  |",
-    //     "|10    |/   |                                                       \\          \\  |",
-    //     "|11    /____|                                                        \\          \\  |",
-    //     "|12   /    /|                                                        |\\          \\  |",
-    //     "|13  /    / |________________________________________________________|_\\          \\  |",
-    //     "|14 /    /  |                                                           \\         |",
-    //     "|15/    /  /                                                             \\         |",
-    //     "|16    /  /                                                               \\        |"
-    // };
-
-    // ------------------------------------------------------ Dīvāna istaba ar logu.
-    // static String[] divanaPrieksa = {
-    //         " 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0",
-    //         " 1             |           ____________________________            |  ",
-    //         " 2             |          | | .  \\        .     /   || |           |  ",
-    //         " 3             |          | |    .     .   /        || |           |  ",
-    //         " 4             |          | |    \\         .  /  /  || |           |  ",
-    //         " 5             |          | |     .               . || |           |  ",
-    //         " 6           __|          | |. /     /        . \\\\  || |           | |  ",
-    //         " 7          /   \\         | |_______________________|| |           | |  ",
-    //         " 8         /    |         |/__________________________\\|         __|_|_    /  ",
-    //         " 9        /     |                                           ____|\\   | \\  /  ",
-    //         "10       /.  x  |                                          |\\   |.\\     \\/  ",
-    //         "11      /  \\    |________                                  | \\  ||\\\\    /\\  ",
-    //         "12     /   |   /         \\                                 | o\\ || .\\_____\\  ",
-    //         "13    /    |  /________  /_________________________________|  |\\ | ||     |  ",
-    //         "14   /  x  | /         \\/|                                 \\  | \\ \\||     |  ",
-    //         "15  / \\    |/________  /|/                                  \\ | o\\ ||     |  ",
-    //         "16 /  |    /         \\/|/                                    \\|   \\ |     |"};
 
     static String[] divanaKreisaPuse = {
             "   |                                                                        |   " ,
@@ -214,26 +163,6 @@ public class Istabu_Izskati {
         " /  |    /         \\/|/                                    \\|   \\ |     |       "};
         return divanaPrieksa;
     }
-
-    // Gultas istaba.
-    // static String[] gultasPrieksa = {
-    //         " 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0" , 
-    //         " 1             |                         ________________________  |",  
-    //         " 2             |                        | ||  .      ||.       | | |", 
-    //         " 3             |                        | ||       \\ ||    \\   | | | |\\" , 
-    //         " 4             |                        | ||   /  .  ||\\     . | | | | \\" , 
-    //         " 5             |_                       | ||  .      ||.       | | | |  \\" , 
-    //         " 6             ( )                      | ||     .   ||   /    | | | ||\\_|" , 
-    //         " 7         ____| |                      | || /       ||      . | | | |\\ /|" , 
-    //         " 8    _   /    | |                   _  | ||_________||________| | | | | |" , 
-    //         " 9   ( ) /     | |                  ( ) |/______________________\\| | | | |" , 
-    //         "10   | |/      |_|__________________| | ^   _________________      |  \\  |" , 
-    //         "11   | |      / /                   | |$|==|_|___|__|__|___|_|     |   \\ |" , 
-    //         "12   | |    /  /              _   / | | |  |_________________|     |    \\|" , 
-    //         "13   | |  /    |             ( )/   | |_|____|_____________|_______|" , 
-    //         "14   | |/_____/______________| |    | |                             \\" , 
-    //         "15   | |      |              | |  / |_|                              \\" , 
-    //         "16   | |______|______________| |/                                     \\"};
 
     static String[] gultasLeja = {
             "             |      _____                                        |              " ,
@@ -331,26 +260,6 @@ public class Istabu_Izskati {
         return gultPrieksa;
     }
 
-    // Virtuve.
-    // static String[] virtuvePrieksa = { 
-    //    " 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3",
-    //    " 1    |      __.-------.__                                      |      |      |        ",
-    //    " 2    |   .--             --.                                   |   ( )|( )   |    __  ",
-    //    " 3/|  |   |                 |   _                               |______|______|   /  \\ ",
-    //    " 4 |  |   |                 |  |=|                              |_____________|  |    \\",
-    //    " 5 |  |   |                 |  |_|                              |      |      |  |     ",
-    //    " 6 |  |   |                 |            |==^                   |      |      |  |     ",
-    //    " 7 |  |   |                 |   _______V__||__V_________________|      |      |  |     ",
-    //    " 8 |  |   |                 |  / O    /|______|\\    |           |      |      |  |     ",
-    //    " 9 /  |   |                 | / /     \\________/ |  | {+}   {+} |   ( )|( )   |  |     ",
-    //    "10    |   |                 |/______________________| __________|      |      |  |     ",
-    //    "11    |   |                 ||  ____   ____   ____   ==(-)=(-)==|      |      |  |     ",
-    //    "12    |   |                 || | () | | () | | () |   |       | |      |      |  |     ",
-    //    "13    |___|                 || |____| |____| |____|   |_______| |______|______|  |     ",
-    //    "14   /                       |__________________________________|_____________|  |     ",
-    //    "15  /                                                                          \\ |     ",
-    //    "16 /                                                                            \\|     "};
-
     static String[] virtuvesPrieksa = {
         "   |                 ______________                              ___________|   ",
         "   |               _/____/___/___  \\          ________________  |\\           \\  ",
@@ -385,26 +294,8 @@ public class Istabu_Izskati {
         "  /      /| | ()|   |_|                 |___|_____/|\\________|  |         |  |\\ ",
         " /  {}  //| |   |  //                            / | \\       |  |         |  |~\\",
         "/      /O | |   | //                               |         | \\|         |  | ~",
-        "  {}  //| | |   |//                                          | ||         |  |()"};
-
-    // Parastais kreisās puses virtuves izskats.
-    // " 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 ",
-    // " 1            /              /|                                       |          ",
-    // " 2           /_____________ / |        ___________________________    |   ______   ",
-    // " 3   ___    |  ____   ____ |  |       | | .   \                || |   |  /      \    ",
-    // " 4__/   \   | |    | |    ||  |       | | \       .  /    \  / || |   | |        \ ",
-    // " 5      |   | |    | |    ||  |       | |    .  \      .       || |   | |         \",
-    // " 6      |   | |    | |    ||  |       | |           \   /    . || |   | |          ",
-    // " 7      |   | |    | |    ||  ||      | | .   /   .        \   || |   | |          ",
-    // " 8      |   | |    | |    || |/|      | |______________________|| |   | |          ",
-    // " 9      |   | | ( )| |( ) || | |      |/_________________________\|   | |          ",
-    // "10      |   | |    | |    || |/| ____                                 | |          ",
-    // "11      |   | |    | |    || | /     /                                | |          ",
-    // "12      |   | |    | |    || |/____ /|                                | |          ",
-    // "13      |   | |____| |____|| |_|___|_|________________________________| |          ",
-    // "14      |   |              | |     |                                   \|          ",
-    // "15      |   |______________|/|     |                                               ",
-    // "16      |  /                                                                       "
+        "  {}  //| | |   |//                                          | ||         |  |()"
+    };
     
     // Virtuves durvju izskati.
     static String[] izslegtsPagrabsVirtuveKreisa = { // Tumš pagrabs.
@@ -436,9 +327,7 @@ public class Istabu_Izskati {
         } else {
             virtKreisaPusesPagrabaSkats = izslegtsPagrabsVirtuveKreisa;
         }
-    }
-
-    
+    }   
 
     public static String[] modificetasVirtLabasPusesIzvade() {
         // Modificētā, galējā bilde.
@@ -477,7 +366,7 @@ public class Istabu_Izskati {
     // " 6             ( )                      | ||     .   ||   /    | | | ||\\_|" , 
     // " 7         ____| |                      | || /       ||      . | | | |\\ /|" , 
     // " 8    _   /    | |                   _  | ||_________||________| | | | | |" , 
-    // " 9   ( ) /     | |                  ( ) |/______________________\\| | | | |" , 
+    // " 9   ( ) /     | |                  ( ) |/______________________\\ | | | | |" , 
     // "10   | |/      |_|__________________| | ^   _________________      |  \\  |" , 
     // "11   | |      / /                   | |$|==|_|___|__|__|___|_|     |   \\ |" , 
     // "12   | |    /  /              _   / | | |  |_________________|     |    \\|" , 
@@ -534,35 +423,6 @@ public class Istabu_Izskati {
     static String[] gultasLogaSpokaFazesBilde = Spoku_Izskati.gultasLogsCiet; // Definē jauno array.
     static String[] durvjuLogaSpokaFazesBilde = Spoku_Izskati.durvjuLogsCiet; // Definē jauno array.
 
-   
-
-    // Loga spoka apvienojošā metode.
-    public static void logaSpokaIzveletasIstabasKustiba() {
-
-    }
-    // ============================================================================ Loga spoka beigas ==================================================================================== //
-
-    // =============================================================================== Durvju spoks ======================================================================================= //
-    // public static String[] durvisPrieksa= 
-    //     {" 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0  ",
-    //     " 1             |                                                   |  ",
-    //     " 2             |                              __________________   |  ",
-    //     " 3             |                            /|                  |  |  ",
-    //     " 4 /|          |                           / |                  |  |   |\\       __  ",
-    //     " 5/ |          |                          /  |                  |  | \\     /  ",
-    //     " 6| |          |                         /   |   --__     __--  |  |   |  \\   /  ",
-    //     " 7| |          |                        /    |  ( O )  _  ( O ) |  |   |\\| |  |  ",
-    //     " 8| |          |____________________    |    |         V    _^_ |  |   |\\|/|  |  ",
-    //     " 9| |          /                    \   |  / | -^__      ^_|v ^ |  |   |  |/|  |  ",
-    //     " 0| |         /                      \  |()  | ^-V |__^_| v_^   |  |    \\| |  |  ",
-    //     " 1| |        /________________________\ |    |    ^-vv_^- ^     |  |     \\ |  |  ",
-    //     " 2| |         ||____________________||__|    |                  |__|      \\|  |  ",
-    //     "13|_|         |                      |  |   /                    \\         |  ",
-    //     "14 /         /|                      |  |  /                      \\        |  ",
-    //     "15/         /                           | /                        \\       |  ",
-    //     "16         /                            |/                          \\      |"
-    //     };
-
     public static String[] virtPrieksasPagrabaBildesArSpoku = Spoku_Izskati.virtuvesSp0;
     public static String[] modificetasVirtLejasBildesIzvade() {
         String[] virtuvePrieksa = {
@@ -605,10 +465,8 @@ public class Istabu_Izskati {
 
     static String[] istabasArParklajumiem(String[] nemainitaVaronaAktualaIstabas) {
         // Parametra masīva vērtību pārkopēšana un jauna masīva, lai nebojātu masīvu, kas ir sniegts kā parametrs.
-        String[] mainitaVaronaAktualaIstabasKopija = new String[K.BILDES_MASIVA_IZMERS];
-        for (int i = 0; i < K.BILDES_MASIVA_IZMERS; i++) { 
-            mainitaVaronaAktualaIstabasKopija[i] = nemainitaVaronaAktualaIstabas[i]; // mainita - drīkst mainīt, nemainītā - NEDRĪKST MAINĪT.
-        }
+        // mainita - drīkst mainīt, nemainītā - NEDRĪKST MAINĪT.
+        String[] mainitaVaronaAktualaIstabasKopija = Arrays.copyOf(nemainitaVaronaAktualaIstabas, nemainitaVaronaAktualaIstabas.length); // Masīva elementu pārkopēšana.
 
         // Dažādie nosacījumi, lai noteiktu pareizo pārklājumu, pareizai situācijai.
         if (VaronaDarbibas.elektribaIeslegta && VaronaDarbibas.aizdedzinatsSerkocins){
@@ -624,55 +482,18 @@ public class Istabu_Izskati {
         // Pārbauda katru istabu, un nosaka vai gaisma tanī būs izslēgta vai izslēgta ar sērkociņu.
         mainitaVaronaAktualaIstabasKopija = katrasIstabasParbaudeParGaismasStatusu(mainitaVaronaAktualaIstabasKopija, nemainitaVaronaAktualaIstabas);
         
-        
         return mainitaVaronaAktualaIstabasKopija;
     }
 
-    static String[] katrasIstabasParbaudeParGaismasStatusu(String[] mainamaisMasivs, String[] originalaisMasivs) { // TODO: Jāoptimizē.
+    static String[] katrasIstabasParbaudeParGaismasStatusu(String[] mainamaisMasivs, String[] originalaisMasivs) {
         // Pārbauda katru istabu, un nosaka vai gaisma tanī būs izslēgta vai izslēgta ar sērkociņu.
-        if (!Main.istabuGaismasIeslegtas[0] && !VaronaDarbibas.aizdedzinatsSerkocins) {
-            if (VaronaDarbibas.varonaIstabasSkaitlis == 0){
-                mainamaisMasivs = istabaArIzslegtuGaismu();
-            }
+        if (!Main.istabuGaismasIeslegtas[VaronaDarbibas.varonaIstabasSkaitlis] && !VaronaDarbibas.aizdedzinatsSerkocins) {
+            mainamaisMasivs = istabaArIzslegtuGaismu();
         }
-        else if (!Main.istabuGaismasIeslegtas[0] && VaronaDarbibas.aizdedzinatsSerkocins) {
-            if (VaronaDarbibas.varonaIstabasSkaitlis == 0){
-                mainamaisMasivs = tumsaIstabaArAizdedzinatuSerkocinu(mainamaisMasivs, originalaisMasivs);
-            }
+        else if (!Main.istabuGaismasIeslegtas[VaronaDarbibas.varonaIstabasSkaitlis] && VaronaDarbibas.aizdedzinatsSerkocins) {
+            mainamaisMasivs = tumsaIstabaArAizdedzinatuSerkocinu(mainamaisMasivs, originalaisMasivs);
         }
 
-        if (!Main.istabuGaismasIeslegtas[1] && !VaronaDarbibas.aizdedzinatsSerkocins) {
-            if (VaronaDarbibas.varonaIstabasSkaitlis == 1){
-                mainamaisMasivs = istabaArIzslegtuGaismu();
-            }
-        }
-        else if (!Main.istabuGaismasIeslegtas[1] && VaronaDarbibas.aizdedzinatsSerkocins) {
-            if (VaronaDarbibas.varonaIstabasSkaitlis == 1){
-                mainamaisMasivs = tumsaIstabaArAizdedzinatuSerkocinu(mainamaisMasivs, originalaisMasivs);
-            }
-        }
-
-        if (!Main.istabuGaismasIeslegtas[2] && !VaronaDarbibas.aizdedzinatsSerkocins) {
-            if (VaronaDarbibas.varonaIstabasSkaitlis == 2){
-                mainamaisMasivs = istabaArIzslegtuGaismu();
-            }
-        }
-        else if (!Main.istabuGaismasIeslegtas[2] && VaronaDarbibas.aizdedzinatsSerkocins) {
-            if (VaronaDarbibas.varonaIstabasSkaitlis == 2){
-                mainamaisMasivs = tumsaIstabaArAizdedzinatuSerkocinu(mainamaisMasivs, originalaisMasivs);
-            }
-        }
-
-        if (!Main.istabuGaismasIeslegtas[3] && !VaronaDarbibas.aizdedzinatsSerkocins) {
-            if (VaronaDarbibas.varonaIstabasSkaitlis == 3){
-                mainamaisMasivs = istabaArIzslegtuGaismu();
-            }
-        }
-        else if (!Main.istabuGaismasIeslegtas[3] && VaronaDarbibas.aizdedzinatsSerkocins) {
-            if (VaronaDarbibas.varonaIstabasSkaitlis == 3){
-                mainamaisMasivs = tumsaIstabaArAizdedzinatuSerkocinu(mainamaisMasivs, originalaisMasivs);
-            }
-        }
         return mainamaisMasivs;
     }
 

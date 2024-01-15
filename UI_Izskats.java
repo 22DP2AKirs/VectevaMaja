@@ -30,6 +30,7 @@ class UI_Izskats {
             gatavsApaksasUI[2] = "___________________|                     |___________________________|__________";
         } else if (VaronaDarbibas.infoLapasSecibasSkaitlis == 3) {
             gatavsApaksasUI[2] = "___________________|_____________________|                           |__________";
+            gatavsApaksasUI[4] = "      [ LOGS ] - A I Z B I E D E T   L O G A   S P O K U                        ";
         } else if (VaronaDarbibas.infoLapasSecibasSkaitlis == 4) {
             gatavsApaksasUI[2] = "___________________|_____________________|___________________________|          ";
             gatavsApaksasUI[4] = "      [ E ] - I Z M A N T O T   O B J E K T U                                   ";

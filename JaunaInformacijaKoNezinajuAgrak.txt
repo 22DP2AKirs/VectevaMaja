@@ -20,3 +20,13 @@ Tad, Kā kopēt masīvus?
 for (int i = 0; pirmais_Array.lenght; i++) {
     pirmais_Array[i] = cits_Array[i];
 }
+
+    // -------------------------------------------------------------- 2 Dimensiju masīva darbības paraugs -------------------------------------------------------------------------------- //
+    // // [rinda][kolonna]
+    // String [][] tests = {
+    //     // Kolonnas V  V  V
+    //     {"veikals", "Parks", "Maja"}, // Rinda 1.
+    //     {"Ola", "Maize", "Nazis"}}; // Rinda 2.
+    //
+    // // System.out.println(vieta[1][2]); // Nazis
+    // -------------------------------------------------------------- 2 Dimensiju masīva darbības paraugs -------------------------------------------------------------------------------- //

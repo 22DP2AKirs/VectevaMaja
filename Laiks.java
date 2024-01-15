@@ -14,6 +14,11 @@ public class Laiks extends Thread {
 
         while (Main.spelePalaista) {
             laikaVadiba(); // Skaita laiku un nosaka, kad spēle ir beigusies.
+
+            // Spoku izslēgšana.
+            if (!Spoki.logaSpoksAktivs) {logaSpoks.izslegtSpoku();}
+            if (!Spoki.durvjuSpoksAktivs) {durvjuSpoks.izslegtSpoku();}
+            if (!Spoki.virtuvesSpoksAktivs) {virtuvesSpoks.izslegtSpoku();}
             
             // Spoku objektu RAND kustības atjaunošana.
             logaSpoks.randomKustibasCiparaAtjaunosana();
@@ -52,23 +57,27 @@ public class Laiks extends Thread {
                 VaronaDarbibas.serkocinaDegsanasLaiks = 0;
             }
 
-            if (Spoki.spokuInfoIzvadeBoolean) { // Spoku informācijas izvade. --Debuging--
-                Spoki.spokuStati = Spoki.spokuInformacijasSavaksana(logaSpoks, durvjuSpoks, virtuvesSpoks);
-            }
+            // Spoku informācijas savākšana.
+            Spoki.spokuStati = Spoki.spokuInformacijasSavaksana(logaSpoks, durvjuSpoks, virtuvesSpoks);
             
             // Gulēšana līdz nākamam kadram.
             try {
                 Thread.sleep(1000); // 1000 = 1 sekunde.
             } catch (Exception e) {}
         }
+        logaSpoks.izslegtSpoku();
+        durvjuSpoks.izslegtSpoku();
+        virtuvesSpoks.izslegtSpoku();
     }
 
     void randomIespejaIzslegtKadasIstabasGaismu() {
-        int randomIzveletasIstabasCipars = Spoki.rand.nextInt(4);
-        if (Spoki.rand.nextInt(60) + 1 == 1) {
-            if (Main.istabuGaismasIeslegtas[randomIzveletasIstabasCipars] == true) {
-                Main.istabuGaismasIeslegtas[randomIzveletasIstabasCipars] = false;
-                SkanasSpeletajs.SpeletSkanu("Skanas faili\\gaismas-sledzis-off.wav", 0);
+        if (Main.spokiSledzAraGaismu) { // Spēles iestatījums.
+            int randomIzveletasIstabasCipars = Spoki.rand.nextInt(4);
+            if (Spoki.rand.nextInt(60) + 1 == 1) {
+                if (Main.istabuGaismasIeslegtas[randomIzveletasIstabasCipars] == true) {
+                    Main.istabuGaismasIeslegtas[randomIzveletasIstabasCipars] = false;
+                    SkanasSpeletajs.SpeletSkanu("Skanas faili\\gaismas-sledzis-off.wav", 0);
+                }
             }
         }
     }

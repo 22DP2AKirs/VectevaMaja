@@ -95,8 +95,13 @@ class VaronaDarbibas {
     }
 
     static void virtuvesDarbibas(String panemtaIevade) {
-        if (varonaVirzienaSkaitlis == 3) { // Priekšas darbības.
-            if (panemtaIevade.equals("G")) {
+        if (varonaVirzienaSkaitlis == 1) { // Labās puses darbības.
+            if (panemtaIevade.equals("LOGS") && Spoki.spokuStati[0].spokaIstaba.equals("Virtuve") && Spoki.spokuStati[0].spoksAktivs) {
+                Spoki.logaSpoksAktivs = false;
+            }
+        }
+        else if (varonaVirzienaSkaitlis == 3) { // Kreisās puses darbības.
+            if (panemtaIevade.equals("G") && VaronaDarbibas.elektribaIeslegta) {
                 if (Main.istabuGaismasIeslegtas[3]) {
                     SkanasSpeletajs.SpeletSkanu("Skanas faili\\gaismas-sledzis-off.wav", 0);
                     Main.istabuGaismasIeslegtas[3] = false;
@@ -110,8 +115,13 @@ class VaronaDarbibas {
     }
 
     static void durvjuDarbibas(String panemtaIevade) {
-        if (varonaVirzienaSkaitlis == 2) { // Priekšas darbības.
-            if (panemtaIevade.equals("G")) {
+        if (varonaVirzienaSkaitlis == 0) { // Priekšas darbības.
+            if (panemtaIevade.equals("LOGS") && Spoki.spokuStati[0].spokaIstaba.equals("Durvis") && Spoki.spokuStati[0].spoksAktivs) {
+                Spoki.logaSpoksAktivs = false;
+            }
+        }
+        else if (varonaVirzienaSkaitlis == 2) { // Lejas darbības.
+            if (panemtaIevade.equals("G") && VaronaDarbibas.elektribaIeslegta) {
                 if (Main.istabuGaismasIeslegtas[2]) {
                     SkanasSpeletajs.SpeletSkanu("Skanas faili\\gaismas-sledzis-off.wav", 0);
                     Main.istabuGaismasIeslegtas[2] = false;
@@ -125,8 +135,13 @@ class VaronaDarbibas {
     }
 
     static void divanaDarbibas(String panemtaIevade) {
-        if (varonaVirzienaSkaitlis == 1) { // Priekšas darbības.
-            if (panemtaIevade.equals("G")) {
+        if (varonaVirzienaSkaitlis == 0) { // Priekšas darbības.
+            if (panemtaIevade.equals("LOGS") && Spoki.spokuStati[0].spokaIstaba.equals("Divans") && Spoki.spokuStati[0].spoksAktivs) {
+                Spoki.logaSpoksAktivs = false;
+            }
+        }
+        else if (varonaVirzienaSkaitlis == 1) { // Labās puses darbības.
+            if (panemtaIevade.equals("G") && VaronaDarbibas.elektribaIeslegta) {
                 if (Main.istabuGaismasIeslegtas[1]) {
                     SkanasSpeletajs.SpeletSkanu("Skanas faili\\gaismas-sledzis-off.wav", 0);
                     Main.istabuGaismasIeslegtas[1] = false;
@@ -136,12 +151,13 @@ class VaronaDarbibas {
                     Main.istabuGaismasIeslegtas[1] = true;
                 }
             }
+            
         }
     }
 
     static void gultasDarbibas(String panemtaIevade) {
         if (varonaVirzienaSkaitlis == 0) { // Priekšas darbības.
-            if (panemtaIevade.equals("G")) {
+            if (panemtaIevade.equals("G") && VaronaDarbibas.elektribaIeslegta) {
                 if (Main.istabuGaismasIeslegtas[0]) {
                     SkanasSpeletajs.SpeletSkanu("Skanas faili\\gaismas-sledzis-off.wav", 0);
                     Main.istabuGaismasIeslegtas[0] = false;
@@ -152,15 +168,22 @@ class VaronaDarbibas {
                 }
             }
         }
-        else if (varonaVirzienaSkaitlis == 1 && elektribaIeslegta) { // Elektrības kastes puse.
-            if (panemtaIevade.equals("E")) {
+        else if (varonaVirzienaSkaitlis == 1) { // Labās puses darbības.
+            if (panemtaIevade.equals("E") && elektribaIeslegta) {
                 SkanasSpeletajs.SpeletSkanu("Skanas faili\\fuse-box-turning-on-off.wav", 0);
                 elektribaIeslegta = false;
                 Arrays.fill(Main.istabuGaismasIeslegtas, false);
                 Laiks.gaidisanasLaiks = 10;
             }
         }
-            
+        else if (varonaVirzienaSkaitlis == 2) { // Lejas darbības.
+
+        }
+        else if (varonaVirzienaSkaitlis == 3) { // Kreisās puses darbības.
+            if (panemtaIevade.equals("LOGS") && Spoki.spokuStati[0].spokaIstaba.equals("Gulta") && Spoki.spokuStati[0].spoksAktivs) {
+                Spoki.logaSpoksAktivs = false;
+            }
+        }
     }
 
     static void sakumaEkranaDarbibas(String panemtaIevade) {

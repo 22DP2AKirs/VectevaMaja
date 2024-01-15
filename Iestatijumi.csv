@@ -9,7 +9,7 @@ maxSerkocinaDegsanasLaiks=5
 2. Spoku dati.
 {
 // Agresivitāte.
-logaSpokaAgresivitatesLimits=10
+logaSpokaAgresivitatesLimits=5
 durvjuSpokaAgresivitatesLimits=15
 virtuvesSpokaAgresivitatesLimits=20
 
@@ -17,4 +17,19 @@ virtuvesSpokaAgresivitatesLimits=20
 logaSpokaDrosibasRobezas=3
 durvjuSpokaDrosibasRobezas=3
 virtuvesSpokaDrosibasRobezas=3
+}
+
+3. Istabu Iestatijumi jeb istabuGaismasIeslegtas.
+{
+// Sākuma gaismu stāvokļi.
+gultasGaisma=T
+divanaGaisma=T
+durvjuGaisma=T
+virtuvesGaisma=T
+
+}
+
+4. Papildus iestatījumi.
+{
+spokiSledzAraGaismu=F
 }

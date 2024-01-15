@@ -22,7 +22,7 @@ public class FailuRedigetajs {
         } catch (Exception e) {}
     }
 
-    static int datuLasitajs(String mainigaNosaukums) {
+    static int intDatuAtgriezejs(String mainigaNosaukums) {
         try (BufferedReader mainigoDatuLasitajs = new BufferedReader(new FileReader("Iestatijumi.csv"))) {
             // Pareizās līnijas atrašana.
             String linija;
@@ -34,7 +34,39 @@ public class FailuRedigetajs {
 
             return saglabataMainigaVertiba;
         } catch (Exception e) {}
-        throw new RuntimeException("Iestatijumos vai ka parametrs mainigais ar nosaukumu: " + mainigaNosaukums + " ir nepareizs!");
+        throw new RuntimeException("Iestatijumos vai ka parametrs mainigais int ar nosaukumu: " + mainigaNosaukums + " ir nepareizs!");
+    }
+
+    static String stringDatuAtgriezejs(String mainigaNosaukums) {
+        try (BufferedReader mainigoDatuLasitajs = new BufferedReader(new FileReader("Iestatijumi.csv"))) {
+            // Pareizās līnijas atrašana.
+            String linija;
+            // Darbošanās princips. !(boolean) => definē mainīgo "linija", katru reizi, kad nosacījums tiek pārbaudīts un pārbauda vai definējuma iekšā ir norādītā burtu virkne.
+            while (!(linija = mainigoDatuLasitajs.readLine()).contains(mainigaNosaukums)) {}
+            
+            // Atrastās līnijas apstrāde.
+            return linija.substring(linija.indexOf("=") + 1);
+        } catch (Exception e) {}
+        throw new RuntimeException("Iestatijumos vai ka parametrs mainigais String ar nosaukumu: " + mainigaNosaukums + " ir nepareizs!");
+    }
+
+    static boolean booleanDatuAtgriezejs(String mainigaNosaukums) {
+        try (BufferedReader mainigoDatuLasitajs = new BufferedReader(new FileReader("Iestatijumi.csv"))) {
+            // Pareizās līnijas atrašana.
+            String linija;
+            // Darbošanās princips. !(boolean) => definē mainīgo "linija", katru reizi, kad nosacījums tiek pārbaudīts un pārbauda vai definējuma iekšā ir norādītā burtu virkne.
+            while (!(linija = mainigoDatuLasitajs.readLine()).contains(mainigaNosaukums)) {}
+            
+            // Atrastās līnijas apstrāde.
+            String tekstaDala = linija.substring(linija.indexOf("=") + 1);
+            if (tekstaDala.equals("T")) {
+                return true;
+            } 
+            else if (tekstaDala.equals("F")){
+                return false;
+            }
+        } catch (Exception e) {}
+        throw new RuntimeException("Iestatijumos vai ka parametrs mainigais boolean ar nosaukumu: " + mainigaNosaukums + " ir nepareizs!");
     }
 
 
