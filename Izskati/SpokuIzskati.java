@@ -1,8 +1,9 @@
-public class Spoku_Izskati {
+package Izskati;
+public class SpokuIzskati {
     // ==================================================================================== Loga spoks ===================================================================================== //
     // ----------------------------------------------------------------------------- Loga spoks pie virtuves -------------------------------------------------------------------------------- //
     // Normāla virt. loga izskats.
-    static String[] virtuvesLogsCiet = {
+    public static String[] virtuvesLogsCiet = {
         "| | .   \\                || |",
         "| | \\       .  /    \\  / || |",
         "| |    .  \\      .       || |",
@@ -12,7 +13,7 @@ public class Spoku_Izskati {
     };
 
     // Virtuves loga spoka fāzes.
-    static String[] logaSpPieVirtuves0 = {
+    public static String[] logaSpPieVirtuves0 = {
         "| | .   \\                || |",
         "| | \\       .  /    \\  / || |",
         "| |    .  \\      .       || |",
@@ -21,7 +22,7 @@ public class Spoku_Izskati {
         "| |______________________|| |",
     };
     
-    static String[] logaSpPieVirtuves1 = {
+    public static String[] logaSpPieVirtuves1 = {
         "| | .   \\                || |",
         "| | \\       .  /    \\  / || |",
         "| |    .  \\      .       || |",
@@ -30,7 +31,7 @@ public class Spoku_Izskati {
         "| |______________________|| |"
     };
 
-    static String[] logaSpPieVirtuves2 = {
+    public static String[] logaSpPieVirtuves2 = {
         "| | .   \\                || |",
         "| | \\       .  /    \\  / || |",
         "| |    .  \\      .       || |",
@@ -39,7 +40,7 @@ public class Spoku_Izskati {
         "| |______________________|| |"
     };
 
-    static String[] logaSpPieVirtuves3 = {
+    public static String[] logaSpPieVirtuves3 = {
         "| | .   \\                || |",
         "| | \\       .  /    \\  / || |",
         "| |    .  \\      .      (|| |",
@@ -48,7 +49,7 @@ public class Spoku_Izskati {
         "| |______________________|| |",
     };
 
-    static String[] logaSpPieVirtuves4 = {
+    public static String[] logaSpPieVirtuves4 = {
         "| | .   \\             ||  | |",
         "| | \\       .  /    \\ ||  | |",
         "| |    .  \\      .   (||) | |",
@@ -57,7 +58,7 @@ public class Spoku_Izskati {
         "| |___________________||__| |"
     };
 
-    static String[] logaSpPieVirtuves5 = {
+    public static String[] logaSpPieVirtuves5 = {
         "| | .   \\        ||       | |",
         "| | \\       .  / ||^ ^    | |",
         "| |    .  \\     (||)O _O  | |",
@@ -66,7 +67,7 @@ public class Spoku_Izskati {
         "| |______________||_______| |"
     };
 
-    static String[] logaSpPieVirtuves6 = {
+    public static String[] logaSpPieVirtuves6 = {
         "| | .   \\  ||  ^       ^  | |",
         "| | \\      || / \\ ___ / \\ | |",
         "| |    .  (||)\\ (0)_(0) / | |",
@@ -75,7 +76,7 @@ public class Spoku_Izskati {
         "| |________||____^___^___(| |"
     };
 
-    static String[] virtuvesLogsVala = {
+    public static String[] virtuvesLogsVala = {
         "| | .   \\  ||             | |",
         "| | \\      ||             | |",
         "| |    .  \\||             | |",
@@ -84,11 +85,11 @@ public class Spoku_Izskati {
         "| |________||_____________| |"
     };
 
-    static String[] [] logaSpokaSkatiPieVirtuves = {virtuvesLogsCiet, logaSpPieVirtuves0, logaSpPieVirtuves1, logaSpPieVirtuves2, logaSpPieVirtuves3, logaSpPieVirtuves4, logaSpPieVirtuves5, logaSpPieVirtuves6, virtuvesLogsVala};
+    public static String[] [] logaSpokaSkatiPieVirtuves = {virtuvesLogsCiet, logaSpPieVirtuves0, logaSpPieVirtuves1, logaSpPieVirtuves2, logaSpPieVirtuves3, logaSpPieVirtuves4, logaSpPieVirtuves5, logaSpPieVirtuves6, virtuvesLogsVala};
 
     // -------------------------------------------------------------------------------- Loga spoks pie gultas -------------------------------------------------------------------------------- //
 
-    static String[] gultasLogsCiet = {
+    public static String[] gultasLogsCiet = {
         "| ||  .      ||.       | |",
         "| ||       \\ ||    \\   | |",
         "| ||   /  .  ||\\     . | |",
@@ -98,7 +99,7 @@ public class Spoku_Izskati {
         "| ||_________||________| |"
     };
 
-    static String[] logaSpPieGultas0 = {
+    public static String[] logaSpPieGultas0 = {
         "| ||  .      ||.       | |",
         "| ||   ..  \\ ||    \\   | |",
         "| ||   /  .  ||\\     . | |",
@@ -107,7 +108,7 @@ public class Spoku_Izskati {
         "| || /       ||      . | |",
         "| ||_________||________| |"};
 
-    static String[] logaSpPieGultas1 = {
+    public static String[] logaSpPieGultas1 = {
         "| ||  .      ||.       | |",
         "| ||  o o  \\ ||    \\   | |",
         "| ||   /  .  ||\\     . | |",
@@ -116,7 +117,7 @@ public class Spoku_Izskati {
         "| || /       ||      . | |",
         "| ||_________||________| |"};
 
-    static String[] logaSpPieGultas2 = {
+    public static String[] logaSpPieGultas2 = {
         "| ||  .      ||.       | |",
         "| ||  O _ O\\ ||    \\   | |",
         "| ||   /-v . ||\\     . | |",
@@ -125,7 +126,7 @@ public class Spoku_Izskati {
         "| || /       ||      . | |",
         "| ||_________||________| |"};
 
-    static String[] logaSpPieGultas3 = {
+    public static String[] logaSpPieGultas3 = {
         "| ||  .      ||.       | |",
         "| ||       \\ ||    \\   | |",
         "| ||   /  .  ||\\     . | |",
@@ -134,7 +135,7 @@ public class Spoku_Izskati {
         "| || /       ||      . | |",
         "| ||_mn___nm_||________| |"};
 
-    static String[] logaSpPieGultas4 = {
+    public static String[] logaSpPieGultas4 = {
         "| ||  .      ||.       | |",
         "| ||       \\ ||    \\   | |",
         "| ||   /  .  ||\\     . | |",
@@ -143,7 +144,7 @@ public class Spoku_Izskati {
         "| ||_mn___nm_||      . | |",
         "| |_/_/___\\_\\_|________| |"};
 
-    static String[] logaSpPieGultas5 = {
+    public static String[] logaSpPieGultas5 = {
         "| ||  .      ||.       | |",
         "| ||       \\ ||    \\   | |",
         "| ||   /  .  ||\\     . | |",
@@ -152,7 +153,7 @@ public class Spoku_Izskati {
         "| | ^       ^ |      . | |",
         "| |/_\\_____/_\\|________| |"};
 
-    static String[] logaSpPieGultas6 = {
+    public static String[] logaSpPieGultas6 = {
         "| ||  .      ||.       | |",
         "| ||_________||    \\   | |",
         "| | ^       ^ |\\     . | |",
@@ -161,7 +162,7 @@ public class Spoku_Izskati {
         "| |  \\ _V_ /  |      . | |",
         "| |nm^V-~-V^_(|________| |"};
 
-    static String[] gultasLogsVala = {
+    public static String[] gultasLogsVala = {
         "| ||  .      ||.       | |",
         "| ||_________||    \\   | |",
         "| |           |\\     . | |",
@@ -170,11 +171,11 @@ public class Spoku_Izskati {
         "| |           |      . | |",
         "| |___________|________| |"};
 
-    static String[] [] logaSpokaSkatiPieGultas = {gultasLogsCiet, logaSpPieGultas0, logaSpPieGultas1, logaSpPieGultas2, logaSpPieGultas3, logaSpPieGultas4, logaSpPieGultas5, logaSpPieGultas6, gultasLogsVala};
+    public static String[] [] logaSpokaSkatiPieGultas = {gultasLogsCiet, logaSpPieGultas0, logaSpPieGultas1, logaSpPieGultas2, logaSpPieGultas3, logaSpPieGultas4, logaSpPieGultas5, logaSpPieGultas6, gultasLogsVala};
 
     // -------------------------------------------------------------------------------- Loga spoks pie dīvāna -------------------------------------------------------------------------------- //
 
-    static String[] divanaLogsCiet = {
+    public static String[] divanaLogsCiet = {
         "| | .  \\        .     /   || |",
         "| |    .     .   /        || |",
         "| |    \\         .  /  /  || |",
@@ -183,7 +184,7 @@ public class Spoku_Izskati {
         "| |_______________________|| |"
     };
 
-    static String[] logaSpPieDivana0 = {
+    public static String[] logaSpPieDivana0 = {
         "| | .  \\        .     /   || |",
         "| |    .     .   /        || |",
         "| |    \\         .  /  /  || |",
@@ -192,7 +193,7 @@ public class Spoku_Izskati {
         "| |_______________________|| |"
     };
 
-    static String[] logaSpPieDivana1 = {
+    public static String[] logaSpPieDivana1 = {
         "| | .  \\        .     /   || |",
         "| |    .     .   /        || |",
         "| |    \\         .  /  /  || |",
@@ -201,7 +202,7 @@ public class Spoku_Izskati {
         "| |_______________________|| |"
     };
 
-    static String[] logaSpPieDivana2 = {
+    public static String[] logaSpPieDivana2 = {
         "| | .  \\        .     /   || |",
         "| |    .     .   /        || |",
         "| |    \\   ^   ^ .  /  /  || |",
@@ -210,7 +211,7 @@ public class Spoku_Izskati {
         "| |_______________________|| |"
     };
 
-    static String[] logaSpPieDivana3 = {
+    public static String[] logaSpPieDivana3 = {
         "| | .  \\        .     /   || |",
         "| |    .     .   /        || |",
         "| |    \\       ^  .^/  /  || |",
@@ -219,7 +220,7 @@ public class Spoku_Izskati {
         "| |_______________________|| |"
     };
 
-    static String[] logaSpPieDivana4 = {
+    public static String[] logaSpPieDivana4 = {
         "| | .  \\        .     |    | |",
         "| |    .     .   /    |    | |",
         "| |    \\          . / |(O) | |",
@@ -228,7 +229,7 @@ public class Spoku_Izskati {
         "| |___________________|____| |"
     };
 
-    static String[] logaSpPieDivana5 = {
+    public static String[] logaSpPieDivana5 = {
         "| | .  \\        .  |       | |",
         "| |    .     .   / |       | |",
         "| |    \\          .|(O) (O)| |",
@@ -237,7 +238,7 @@ public class Spoku_Izskati {
         "| |________________|_______| |"
     };
 
-    static String[] logaSpPieDivana6 = {
+    public static String[] logaSpPieDivana6 = {
         "| | .  \\     |  ^       ^  | |",
         "| |    .     | / \\ ___ / \\ | |",
         "| |    \\     | \\ (O)_(O) / | |",
@@ -246,7 +247,7 @@ public class Spoku_Izskati {
         "| |__________|_mn_^___^_nm_| |"
     };
 
-    static String[] divanaLogsVala = {
+    public static String[] divanaLogsVala = {
         "| | .  \\     |             | |",
         "| |    .     |             | |",
         "| |    \\     |             | |",
@@ -255,11 +256,11 @@ public class Spoku_Izskati {
         "| |__________|_____________| |"
     };
 
-    static String[] [] logaSpokaSkatiPieDivana = {divanaLogsCiet, logaSpPieDivana0, logaSpPieDivana1, logaSpPieDivana2, logaSpPieDivana3, logaSpPieDivana4, logaSpPieDivana5, logaSpPieDivana6, divanaLogsVala};
+    public static String[] [] logaSpokaSkatiPieDivana = {divanaLogsCiet, logaSpPieDivana0, logaSpPieDivana1, logaSpPieDivana2, logaSpPieDivana3, logaSpPieDivana4, logaSpPieDivana5, logaSpPieDivana6, divanaLogsVala};
 
     // -------------------------------------------------------------------------------- Loga spoks pie durvīm -------------------------------------------------------------------------------- //
 
-    static String[] durvjuLogsCiet = {
+    public static String[] durvjuLogsCiet = {
         "| |       /            \\\\     || |",
         "| |          |           .    || |",
         "| |   \\\\                      || |",
@@ -269,7 +270,7 @@ public class Spoku_Izskati {
         "| |___________________________|| |"
     };
 
-    static String[] logaSpPieDurvim0 = {
+    public static String[] logaSpPieDurvim0 = {
         "| |       /            \\\\     || |",
         "| |          |           .    || |",
         "| |   \\\\                      || |",
@@ -279,7 +280,7 @@ public class Spoku_Izskati {
         "| |___________________________|| |"
     };
 
-    static String[] logaSpPieDurvim1 = {
+    public static String[] logaSpPieDurvim1 = {
         "| |       /            \\\\     || |",
         "| |          |           .    || |",
         "| |   \\\\                      || |",
@@ -289,7 +290,7 @@ public class Spoku_Izskati {
         "| |___________________________|| |"
     };
 
-    static String[] logaSpPieDurvim2 = {
+    public static String[] logaSpPieDurvim2 = {
         "| |       /            \\\\     || |",
         "| |          |           .    || |",
         "| |   \\\\                      || |",
@@ -299,7 +300,7 @@ public class Spoku_Izskati {
         "| |___________________________|| |"
     };
 
-    static String[] logaSpPieDurvim3 = {
+    public static String[] logaSpPieDurvim3 = {
         "| |       /            \\\\     || |",
         "| |          |           .    || |",
         "| |   \\\\       ^   ^          || |",
@@ -309,7 +310,7 @@ public class Spoku_Izskati {
         "| |___________________________|| |"
     };
 
-    static String[] logaSpPieDurvim4 = {
+    public static String[] logaSpPieDurvim4 = {
         "| |       /            \\\\     || |",
         "| |          |           .    || |",
         "| |   \\\\              ( ) ( ) || |",
@@ -319,7 +320,7 @@ public class Spoku_Izskati {
         "| |___________________________|| |"
     };
 
-    static String[] logaSpPieDurvim5 = {
+    public static String[] logaSpPieDurvim5 = {
         "| |       /            \\\\ |  ^ | |",
         "| |          |           .|   \\| |",
         "| |   \\\\              ( ) |(O) | |",
@@ -329,7 +330,7 @@ public class Spoku_Izskati {
         "| |_______________________|____| |"
     };
 
-    static String[] logaSpPieDurvim6 = {
+    public static String[] logaSpPieDurvim6 = {
         "| |       /      |  ^       ^  | |",
         "| |          |   | / \\ ___ / \\ | |",
         "| |   \\\\         | \\ (O)_(O) / | |",
@@ -339,7 +340,7 @@ public class Spoku_Izskati {
         "| |______________|_|_|_____|_|_| |"
     };
 
-    static String[] durvjuLogsVala = {
+    public static String[] durvjuLogsVala = {
         "| |       /      |             | |",
         "| |          |   |             | |",
         "| |   \\\\         |             | |",
@@ -349,11 +350,11 @@ public class Spoku_Izskati {
         "| |______________|_____________| |"
     };
 
-    static String[] [] logaSpokaSkatiPieDurvim = {durvjuLogsCiet, logaSpPieDurvim0, logaSpPieDurvim1, logaSpPieDurvim2, logaSpPieDurvim3, logaSpPieDurvim4, logaSpPieDurvim5, logaSpPieDurvim6, durvjuLogsVala};
+    public static String[] [] logaSpokaSkatiPieDurvim = {durvjuLogsCiet, logaSpPieDurvim0, logaSpPieDurvim1, logaSpPieDurvim2, logaSpPieDurvim3, logaSpPieDurvim4, logaSpPieDurvim5, logaSpPieDurvim6, durvjuLogsVala};
 
     // =============================================================================== Durvju spoks ======================================================================================= //
 
-    static String[] durvisCiet = {
+    public static String[] durvisCiet = {
         "     |                  | ",
         "     |                  | ",
         "     |                  | ",
@@ -371,7 +372,7 @@ public class Spoku_Izskati {
         "                          "
     };
 
-    static String[] durvjuSp0 = {
+    public static String[] durvjuSp0 = {
         "     |                  | ",
         "     |                  | ",
         "     |                  | ",
@@ -388,7 +389,7 @@ public class Spoku_Izskati {
         "                          "
     };
 
-    static String[] durvjuSp1 = {
+    public static String[] durvjuSp1 = {
         "     |                  | ",
         "     |                  | ",
         "     |                  | ",
@@ -405,7 +406,7 @@ public class Spoku_Izskati {
         "                          "
     };
 
-    static String[] durvjuSp2 = {
+    public static String[] durvjuSp2 = {
         "     |                  | ",
         "     |                  | ",
         "     |                  | ",
@@ -422,7 +423,7 @@ public class Spoku_Izskati {
         "                          "
     };
 
-    static String[] durvjuSp3 = {
+    public static String[] durvjuSp3 = {
         "     |    ------______  | ",
         "     |                | | ",
         "     |                | | ",
@@ -439,7 +440,7 @@ public class Spoku_Izskati {
         "                          "
     };
     
-    static String[] durvjuSp4 = {
+    public static String[] durvjuSp4 = {
         "     |  --__            | ",
         "     |      --__        | ",
         "     |          --__    | ",
@@ -456,7 +457,7 @@ public class Spoku_Izskati {
         "                --__|     "
     };
 
-    static String[] durvjuSp5 = {
+    public static String[] durvjuSp5 = {
         "     |  --__            | ",
         "     |      --__        | ",
         "     |          --__    | ",
@@ -473,7 +474,7 @@ public class Spoku_Izskati {
         "                --__|     ",
     };
 
-    static String[] durvjuSp6 = {
+    public static String[] durvjuSp6 = {
         "     | -_               | ",
         "     |   -_             | ",
         "     |     -_     ___   | ",
@@ -490,7 +491,7 @@ public class Spoku_Izskati {
         "           -_  |          "
     };
 
-    static String[] durvjuSp7 = {
+    public static String[] durvjuSp7 = {
         "    /|                  | ",
         "   / |                  | ",
         "  /  |                  | ",
@@ -507,7 +508,7 @@ public class Spoku_Izskati {
         "| /                       "
     };
 
-    static String[] durvisVala = {
+    public static String[] durvisVala = {
         "    /|                  | ",
         "   / |                  | ",
         "  /  |                  | ",
@@ -524,10 +525,10 @@ public class Spoku_Izskati {
         "| /                       "
     };
 
-    static String[] [] durvjuSpokaIzskati = {durvisCiet, durvjuSp0, durvjuSp1, durvjuSp2, durvjuSp3, durvjuSp4, durvjuSp5, durvjuSp6, durvjuSp7, durvisVala};
+    public static String[] [] durvjuSpokaIzskati = {durvisCiet, durvjuSp0, durvjuSp1, durvjuSp2, durvjuSp3, durvjuSp4, durvjuSp5, durvjuSp6, durvjuSp7, durvisVala};
 
     // =========================================================================================== Virtuves spoks ======================================================================================= //
-    static String[] izslegtaPagrabaGaisma = {
+    public static String[] izslegtaPagrabaGaisma = {
         "░░░░░░░░░░░░░",
       "░░░░░░░░░░░░░░░░░",
       "░░░░░░░░░░░░░░░░░",
@@ -542,7 +543,7 @@ public class Spoku_Izskati {
       "░░░░░░░░░░░░░░░░░"
     };
 
-    static String[] ieslegtaPagrabaGaisma = {
+    public static String[] ieslegtaPagrabaGaisma = {
         "-------------",
       "|---------------|",
       "| |-----------| |",
@@ -557,7 +558,7 @@ public class Spoku_Izskati {
       "/               \\"
     };
 
-    static String[] virtuvesSp0 = {
+    public static String[] virtuvesSp0 = {
         "-------------",
       "|---------------|",
       "| |-----------| |",
@@ -572,7 +573,7 @@ public class Spoku_Izskati {
       "/               \\"
     };
 
-    static String[] virtuvesSp1 = {
+    public static String[] virtuvesSp1 = {
         "-------------",
       "|---------------|",
       "| |-----------| |",
@@ -587,7 +588,7 @@ public class Spoku_Izskati {
       "/               \\"
     };
 
-    static String[] virtuvesSp2 = {
+    public static String[] virtuvesSp2 = {
         "-------------",
       "|---------------|",
       "| |-----------| |",
@@ -602,7 +603,7 @@ public class Spoku_Izskati {
       "/               \\"
     };
 
-    static String[] virtuvesSp3 = {
+    public static String[] virtuvesSp3 = {
         "-------------",
       "|---------------|",
       "| |-----------| |",
@@ -617,7 +618,7 @@ public class Spoku_Izskati {
       "/               \\"
     };
 
-    static String[] virtuvesSp4 = {
+    public static String[] virtuvesSp4 = {
         "-------------",
       "|---------------|",
       "| |-----------| |",
@@ -632,7 +633,7 @@ public class Spoku_Izskati {
       "/               \\"
     };
 
-    static String[] virtuvesSp5 = {
+    public static String[] virtuvesSp5 = {
         "-------------",
       "|---------------|",
       "| |-----------| |",
@@ -647,7 +648,7 @@ public class Spoku_Izskati {
       "/               \\"
     };
 
-    static String[] virtuvesSp6 = {
+    public static String[] virtuvesSp6 = {
         "-------------",
       "|---------------|",
       "| |-----------| |",
@@ -662,7 +663,7 @@ public class Spoku_Izskati {
       "/               \\"
     };
 
-    static String[] virtuvesSp7 = {
+    public static String[] virtuvesSp7 = {
         "-------------",
       "|---------------|",
       "| ^          ^  |",
@@ -677,7 +678,7 @@ public class Spoku_Izskati {
       "/               \\"
     };
 
-    static String[] virtuvesSp8 = {
+    public static String[] virtuvesSp8 = {
         "             ",
       "  \\           /  ",
       " ___\\       /___ ",
@@ -692,7 +693,7 @@ public class Spoku_Izskati {
       "/ v v       v v \\"
     };
 
-    static String[] virtuvesSp9 = {
+    public static String[] virtuvesSp9 = {
         "░░░░░░░░░░░░░",
       "░░░░░░░░░░░░░░░░░",
       "░░░░░░░░░░░░░░░░░",
@@ -707,6 +708,6 @@ public class Spoku_Izskati {
       "░░░░░░░░░░░░░░░░░"
     };
 
-    static String[] [] virtuvesSpokaIzskati = {ieslegtaPagrabaGaisma, virtuvesSp0, virtuvesSp1, virtuvesSp2, virtuvesSp3, virtuvesSp4, virtuvesSp5, virtuvesSp6, virtuvesSp7, virtuvesSp8, virtuvesSp9};
+    public static String[] [] virtuvesSpokaIzskati = {ieslegtaPagrabaGaisma, virtuvesSp0, virtuvesSp1, virtuvesSp2, virtuvesSp3, virtuvesSp4, virtuvesSp5, virtuvesSp6, virtuvesSp7, virtuvesSp8, virtuvesSp9};
 }
     

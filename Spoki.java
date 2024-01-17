@@ -1,5 +1,7 @@
 import java.util.Random;
 
+import Izskati.SpokuIzskati;
+
 public class Spoki {
     public static Random rand = new Random(); // Priekš random darbībām.
     static boolean spokuInfoIzvadeBoolean = false;
@@ -70,23 +72,23 @@ public class Spoki {
     void istabuBildesFazuAtjaunosana(String spokaVeids, String istaba) {
         if (spokaVeids.equals("loga") && spokaFazesIndeks < 9) {
             if (istaba.equals("Gulta")) {
-                Istabu_Izskati.gultasLogaSpokaFazesBilde = Spoku_Izskati.logaSpokaSkatiPieGultas[spokaFazesIndeks];
+                IstabuIzskati.gultasLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieGultas[spokaFazesIndeks];
             }
             else if (istaba.equals("Divans")) {
-                Istabu_Izskati.divanaLogaSpokaFazesBilde = Spoku_Izskati.logaSpokaSkatiPieDivana[spokaFazesIndeks];
+                IstabuIzskati.divanaLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieDivana[spokaFazesIndeks];
             }
             else if (istaba.equals("Durvis")) {
-                Istabu_Izskati.durvjuLogaSpokaFazesBilde = Spoku_Izskati.logaSpokaSkatiPieDurvim[spokaFazesIndeks];
+                IstabuIzskati.durvjuLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieDurvim[spokaFazesIndeks];
             }
             else if (istaba.equals("Virtuve")) {
-                Istabu_Izskati.virtuvesLogaSpokaFazesBilde = Spoku_Izskati.logaSpokaSkatiPieVirtuves[spokaFazesIndeks];
+                IstabuIzskati.virtuvesLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieVirtuves[spokaFazesIndeks];
             }
         }
         else if (spokaVeids.equals("durvju") && spokaFazesIndeks < 10) {
-            Istabu_Izskati.durSpokaFazesBilde = Spoku_Izskati.durvjuSpokaIzskati[spokaFazesIndeks];
+            IstabuIzskati.durSpokaFazesBilde = SpokuIzskati.durvjuSpokaIzskati[spokaFazesIndeks];
         }
         else if (spokaVeids.equals("virtuves") && spokaFazesIndeks < 11) {
-            Istabu_Izskati.virtPrieksasPagrabaBildesArSpoku = Spoku_Izskati.virtuvesSpokaIzskati[spokaFazesIndeks];
+            IstabuIzskati.virtPrieksasPagrabaBildesArSpoku = SpokuIzskati.virtuvesSpokaIzskati[spokaFazesIndeks];
         }
         else { // Kods kurš strādās, tikai tad, kad spēlētājs nomirs no spoka. ! ! ! Z A U D Ē Š A N A S   K O D S ! ! !
             if (!Main.varonaNemirstiba) {

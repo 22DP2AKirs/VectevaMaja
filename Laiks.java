@@ -42,19 +42,19 @@ public class Laiks extends Thread {
 
             randomIespejaIzslegtKadasIstabasGaismu();
 
-            if (!VaronaDarbibas.elektribaIeslegta) { // Ja false, tad ...
+            if (!Main.elektribaIeslegta) { // Ja false, tad ...
                 if (gaidisanasLaiks <= 0) {
                     SkanasSpeletajs.SpeletSkanu("Skanas faili\\fuse-box-turning-on-off.wav", 0);
-                    VaronaDarbibas.elektribaIeslegta = true;
+                    Main.elektribaIeslegta = true;
                 }
                 gaidisanasLaiks--;
             }
 
-            if (VaronaDarbibas.aizdedzinatsSerkocins && VaronaDarbibas.serkocinaDegsanasLaiks != Main.maxSerkocinaDegsanasLaiks) {
-                VaronaDarbibas.serkocinaDegsanasLaiks++;
+            if (VaronaDarbibas.aizdedzinatsSerkocins && VaronaDarbibas.serkocinaDeksanasLaikaSkaititajs != Main.maxSerkocinaDegsanasLaiks) {
+                VaronaDarbibas.serkocinaDeksanasLaikaSkaititajs++;
             } else {
                 VaronaDarbibas.aizdedzinatsSerkocins = false;
-                VaronaDarbibas.serkocinaDegsanasLaiks = 0;
+                VaronaDarbibas.serkocinaDeksanasLaikaSkaititajs = 0;
             }
 
             // Spoku informācijas savākšana.

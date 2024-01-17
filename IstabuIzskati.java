@@ -1,6 +1,10 @@
+
 import java.util.Arrays;
 
-public class Istabu_Izskati {
+import Izskati.SpokuIzskati;
+
+
+public class IstabuIzskati {
     // Durju istabas parastie skati jeb stāvokļi.
     public static String[] durvjuLeja = {
         "   |                                                   | \\                   \\  ",
@@ -62,7 +66,7 @@ public class Istabu_Izskati {
     }
 
     
-    public static String[] durSpokaFazesBilde = Spoku_Izskati.durvisCiet;
+    public static String[] durSpokaFazesBilde = SpokuIzskati.durvisCiet;
 
     public static String[] modificetasDurvjuLabasPusesBildesIzvade() {
         String[] durvisPrieksa= {
@@ -86,7 +90,7 @@ public class Istabu_Izskati {
         return durvisPrieksa;
     }
 
-    static String[] divanaKreisaPuse = {
+  public static String[] divanaKreisaPuse = {
             "   |                                                                        |   " ,
             "   |                                                                        |   " ,
             "   |                                                                        |   " ,
@@ -104,7 +108,7 @@ public class Istabu_Izskati {
             " /     \\__\\_/____\\  \\___\\                                                     \\ ",
             "/                 \\_/                                                          \\"};
 
-    static String[] divanaLeja = {
+  public static String[] divanaLeja = {
             "             |       ________________               _______      |              ",
             "             |      /                \\             /   |   \\     |              ",
             "    ______   |      |                |            |    |    |    |              ",
@@ -123,7 +127,7 @@ public class Istabu_Izskati {
             "                                                            \\  /   /\\           "};
             
 
-    static String[] divanaLabaPuse = {
+  public static String[] divanaLabaPuse = {
             "   |                                                                        |   ",
             "   |                                                    ___.---.___         |   ",
             "   |         \\        /                             .---           ---.     |   ",
@@ -164,7 +168,7 @@ public class Istabu_Izskati {
         return divanaPrieksa;
     }
 
-    static String[] gultasLeja = {
+  public static String[] gultasLeja = {
             "             |      _____                                        |              " ,
             "__           |     /     \\                                       |              " , 
             "  \\          |    |    .  |                                      |              " , 
@@ -182,10 +186,10 @@ public class Istabu_Izskati {
             "   |       |_____________________|/             \\  \\                \\           " , 
             "   |      /                                      \\  \\                \\          "};
 
-    static String[] gultasLabaPuse() {
+  public static String[] gultasLabaPuse() {
         String[] elektriskaKaste = new String[9]; // Masīvs priekš elektriskās kastes bildes.
 
-        if (VaronaDarbibas.elektribaIeslegta) { // Ieslēgts.
+        if (Main.elektribaIeslegta) { // Ieslēgts.
             elektriskaKaste[0] = K.OBJEKTS + "_______" + K.RESET;
             elektriskaKaste[1] = K.OBJEKTS + "/       |" + K.RESET;
             elektriskaKaste[2] = K.OBJEKTS + "/|  =  ON|" + K.RESET;
@@ -221,7 +225,7 @@ public class Istabu_Izskati {
         return gultasLabaPuse;
     }
 
-    static String[] gultasPrieksa = {
+  public static String[] gultasPrieksa = {
             "       / |   |    ________                 ________________      |              " , 
             "      /| |   |   |        |               /                \\     |              " , 
             "     /|| |   |   | |\\/\\/\\ |               |                |     |              " , 
@@ -260,7 +264,7 @@ public class Istabu_Izskati {
         return gultPrieksa;
     }
 
-    static String[] virtuvesPrieksa = {
+  public static String[] virtuvesPrieksa = {
         "   |                 ______________                              ___________|   ",
         "   |               _/____/___/___  \\          ________________  |\\           \\  ",
         "   |              /              \\/|  _____  /                \\ |\\\\           \\ ",
@@ -278,7 +282,7 @@ public class Istabu_Izskati {
         "  /'._.'                                                          \\\\|  \\     \\ |",
         " /   |                                                             \\|__|\\_____\\|"};
 
-    static String[] virtuvesKreisaPuse = { 
+  public static String[] virtuvesKreisaPuse = { 
         "    /        /  |   |  _________________                         |              ",
         "   /________/   |()/| /                 \\                        |              ",
         "   |        |   | //| |                 |                        |              ",
@@ -298,7 +302,7 @@ public class Istabu_Izskati {
     };
     
     // Virtuves durvju izskati.
-    static String[] izslegtsPagrabsVirtuveKreisa = { // Tumš pagrabs.
+  public static String[] izslegtsPagrabsVirtuveKreisa = { // Tumš pagrabs.
         "   |  /░░░░░░\\",
         "   | |░░░░░░░░\\",
         "   | |░░░░░░░░░",
@@ -309,7 +313,7 @@ public class Istabu_Izskati {
         "", // Lai strādātu pārveidojumi.
     };
 
-    static String[] ieslegtsPagrabsVirtuveKreisa = { // Gaiš pagrabs.
+  public static String[] ieslegtsPagrabsVirtuveKreisa = { // Gaiš pagrabs.
         "   |  /      \\",
         "   | |        \\",
         "   | |",
@@ -418,12 +422,13 @@ public class Istabu_Izskati {
     //     "15/    /  /                                                             \\  ",
     //     "16    /  /                                                               \\"};
 
-    static String[] virtuvesLogaSpokaFazesBilde = Spoku_Izskati.virtuvesLogsCiet; // Definē jauno array.
-    static String[] divanaLogaSpokaFazesBilde = Spoku_Izskati.divanaLogsCiet; // Definē jauno array.
-    static String[] gultasLogaSpokaFazesBilde = Spoku_Izskati.gultasLogsCiet; // Definē jauno array.
-    static String[] durvjuLogaSpokaFazesBilde = Spoku_Izskati.durvjuLogsCiet; // Definē jauno array.
+  public static String[] virtuvesLogaSpokaFazesBilde = SpokuIzskati.virtuvesLogsCiet; // Definē jauno array.
+  public static String[] divanaLogaSpokaFazesBilde = SpokuIzskati.divanaLogsCiet; // Definē jauno array.
+  public static String[] gultasLogaSpokaFazesBilde = SpokuIzskati.gultasLogsCiet; // Definē jauno array.
+    public static String[] durvjuLogaSpokaFazesBilde = SpokuIzskati.durvjuLogsCiet; // Definē jauno array.
+    
 
-    public static String[] virtPrieksasPagrabaBildesArSpoku = Spoku_Izskati.virtuvesSp0;
+    public static String[] virtPrieksasPagrabaBildesArSpoku = SpokuIzskati.virtuvesSp0;
     public static String[] modificetasVirtLejasBildesIzvade() {
         String[] virtuvePrieksa = {
                 "   |    __.-------.__                                       |  |       |       |",
@@ -444,8 +449,9 @@ public class Istabu_Izskati {
                 "/                                                                               "};
         return virtuvePrieksa;
     }
+
    
-    static String[] [][] istabuMasivaAtjaunosana() {
+  public static String[] [][] istabuMasivaAtjaunosana() {
 
         String[] [][] istabaUnVirziens = { // {Priekša, LabāPuse, Leja, KreisāPuse} // Istabas virzieni.
         {gultasPrieksa, gultasLabaPuse(), gultasLeja, modificetasGultasKreisasPusesIzvade()}, // Gultas istaba [x][].
@@ -457,25 +463,20 @@ public class Istabu_Izskati {
         return istabaUnVirziens;
     }
 
-    public static String[] aktualaIstabasIzskats = new String[16]; // 16, jo ir pirmā skaitļa līnija.
 
-    public static String[] aktualasIstabasParrakstisana(String[] istaba) {
-        return istaba;
-    }
-
-    static String[] istabasArParklajumiem(String[] nemainitaVaronaAktualaIstabas) {
+  public static String[] istabasArParklajumiem(String[] nemainitaVaronaAktualaIstabas) {
         // Parametra masīva vērtību pārkopēšana un jauna masīva, lai nebojātu masīvu, kas ir sniegts kā parametrs.
         // mainita - drīkst mainīt, nemainītā - NEDRĪKST MAINĪT.
         String[] mainitaVaronaAktualaIstabasKopija = Arrays.copyOf(nemainitaVaronaAktualaIstabas, nemainitaVaronaAktualaIstabas.length); // Masīva elementu pārkopēšana.
 
         // Dažādie nosacījumi, lai noteiktu pareizo pārklājumu, pareizai situācijai.
-        if (VaronaDarbibas.elektribaIeslegta && VaronaDarbibas.aizdedzinatsSerkocins){
+        if (Main.elektribaIeslegta && VaronaDarbibas.aizdedzinatsSerkocins){
             mainitaVaronaAktualaIstabasKopija = serkocinaPieliksanaPieBildes(mainitaVaronaAktualaIstabasKopija);
         }
-        else if (!VaronaDarbibas.elektribaIeslegta && VaronaDarbibas.aizdedzinatsSerkocins) {
+        else if (!Main.elektribaIeslegta && VaronaDarbibas.aizdedzinatsSerkocins) {
             mainitaVaronaAktualaIstabasKopija = tumsaIstabaArAizdedzinatuSerkocinu(mainitaVaronaAktualaIstabasKopija, nemainitaVaronaAktualaIstabas);
         }
-        else if (!VaronaDarbibas.elektribaIeslegta && !VaronaDarbibas.aizdedzinatsSerkocins) { // Ja mājā ir izslēgta elektrība un sērkociņš ir neaizdedzināts.
+        else if (!Main.elektribaIeslegta && !VaronaDarbibas.aizdedzinatsSerkocins) { // Ja mājā ir izslēgta elektrība un sērkociņš ir neaizdedzināts.
             mainitaVaronaAktualaIstabasKopija = istabaArIzslegtuGaismu();
         }
 
@@ -485,19 +486,21 @@ public class Istabu_Izskati {
         return mainitaVaronaAktualaIstabasKopija;
     }
 
-    static String[] katrasIstabasParbaudeParGaismasStatusu(String[] mainamaisMasivs, String[] originalaisMasivs) {
+
+  public static String[] katrasIstabasParbaudeParGaismasStatusu(String[] mainamaisMasivs, String[] originalaisMasivs) {
         // Pārbauda katru istabu, un nosaka vai gaisma tanī būs izslēgta vai izslēgta ar sērkociņu.
-        if (!Main.istabuGaismasIeslegtas[VaronaDarbibas.varonaIstabasSkaitlis] && !VaronaDarbibas.aizdedzinatsSerkocins) {
+        if (!Main.istabuGaismasIeslegtas[Main.varonaIstabasSkaitlis] && !VaronaDarbibas.aizdedzinatsSerkocins) {
             mainamaisMasivs = istabaArIzslegtuGaismu();
         }
-        else if (!Main.istabuGaismasIeslegtas[VaronaDarbibas.varonaIstabasSkaitlis] && VaronaDarbibas.aizdedzinatsSerkocins) {
+        else if (!Main.istabuGaismasIeslegtas[Main.varonaIstabasSkaitlis] && VaronaDarbibas.aizdedzinatsSerkocins) {
             mainamaisMasivs = tumsaIstabaArAizdedzinatuSerkocinu(mainamaisMasivs, originalaisMasivs);
         }
 
         return mainamaisMasivs;
     }
 
-    static String[] tumsaIstabaArAizdedzinatuSerkocinu(String[] apstradajamaisMasivs, String[] originalaisMasivs) {
+
+  public static String[] tumsaIstabaArAizdedzinatuSerkocinu(String[] apstradajamaisMasivs, String[] originalaisMasivs) {
         apstradajamaisMasivs = istabaArIzslegtuGaismu();
         apstradajamaisMasivs[8] = K.TPELEKS + originalaisMasivs[8] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[70G░░░░░░░░░░░░" + K.RESET;
         apstradajamaisMasivs[9] = K.TPELEKS + originalaisMasivs[9] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[73G░░░░░░░░░" + K.RESET;
@@ -512,7 +515,8 @@ public class Istabu_Izskati {
         return apstradajamaisMasivs;
     }
 
-    static String[] serkocinaPieliksanaPieBildes(String[] apstradajamaisMasivs) {
+
+  public static String[] serkocinaPieliksanaPieBildes(String[] apstradajamaisMasivs) {
         apstradajamaisMasivs[11] += serkocinaIzskats[0];
         apstradajamaisMasivs[12] += serkocinaIzskats[1];
         apstradajamaisMasivs[13] += serkocinaIzskats[2];
@@ -522,7 +526,8 @@ public class Istabu_Izskati {
         return apstradajamaisMasivs;
     }
 
-    static String[] serkocinaIzskats = {
+
+  public static String[] serkocinaIzskats = {
         // Ja apstrādāto līniju pārdefinē ar sērkociņu, tad pārdefinētā līnija neatjaunosies iepriekšējā ciklā "Iegūst neapstrādāto bildi". Būs statiska bilde ar sērkociņu klāt un nodzēstu galu.
         // Ja apstrādātai līnijai pieliks klāt sērkociņu, tad pārveidotā līnija tiks atjaunot, bet būs ar nodzēstu galu.
         // \r nepalīdz atstāt galu.
@@ -538,7 +543,8 @@ public class Istabu_Izskati {
         "\033[64G" + K.BRUNS + "\\" + K.RESET + "\033[82G"
     };
 
-    static String[] istabaArIzslegtuGaismu() {
+
+  public static String[] istabaArIzslegtuGaismu() {
         String[] masivs = new String[K.BILDES_MASIVA_IZMERS];
         Arrays.fill(masivs, K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET); // Aizpilda visus masīva indeksus ar vienu un to pašu elementu.
         

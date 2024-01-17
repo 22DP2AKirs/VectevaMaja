@@ -13,7 +13,7 @@ public class Ievade extends Thread {
             vaiIevadiIzpildija = false; // Pēc ievades saglabāšanas, notiritIevadi() netīrīs ievadi, līdz VaronaDarbibas izpildīs ievadīto komandu.
             System.out.print("\033[F"); // Noliek mirgojošo kursoru vienu līniju uz augšu.
             
-            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Problēmas ar \033[F , jāatrod aizvietojums. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            // * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Problēmas ar \033[F , jāatrod aizvietojums. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         }
     }
     

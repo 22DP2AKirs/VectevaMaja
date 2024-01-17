@@ -1,6 +1,5 @@
 // Adrians Kiršteins, DP2-2.
 
-
 public class Main {
     // Mainīgie jeb objekti.
     static volatile boolean programmaPalaista = true; // booleans, kas palaiž visu programmu.
@@ -9,13 +8,19 @@ public class Main {
 
     static boolean varonaNemirstiba = true; // Vai varonis var zaudēt spēli vai nē.
 
-    //////////////////////////////////////////////////////////////////////////// S P Ē L E S   I E S T A T Ī J U M I ///////////////////////////////////////////////////////////////////////////////////////
+    //* ////////////////////////////////////////////////// S P Ē L E S   I E S T A T Ī J U M I /////////////////////////////////////////////////////////////////
 
     // Gaismas dati.
     static boolean[] istabuGaismasIeslegtas = {FailuRedigetajs.booleanDatuAtgriezejs("gultasGaisma"), FailuRedigetajs.booleanDatuAtgriezejs("divanaGaisma"), FailuRedigetajs.booleanDatuAtgriezejs("durvjuGaisma"), FailuRedigetajs.booleanDatuAtgriezejs("virtuvesGaisma")}; // Indeksi: 0. Gulta, 1. Dīvāns, 2. Durvis, 3. Virtuve.
     static boolean spokiSledzAraGaismu = FailuRedigetajs.booleanDatuAtgriezejs("spokiSledzAraGaismu");
 
     static int spelesNakts = 6;
+
+    // Spelētāja pozīcija. 
+    static int varonaVirzienaSkaitlis = 0;
+    static int varonaIstabasSkaitlis = 0; // 0, no gultas istabas. 2, jo testā sāku no durvju istabas. 3, no virtuves istabas. 
+
+    static boolean elektribaIeslegta = FailuRedigetajs.booleanDatuAtgriezejs("elektribaIeslegta");
 
     // Sērkociņa dati.
     static int atlikusoSerkocinuDaudzums = FailuRedigetajs.intDatuAtgriezejs("atlikusoSerkocinuDaudzums");
@@ -30,10 +35,9 @@ public class Main {
     static int durvjuSpokaDrosibasRobezas = FailuRedigetajs.intDatuAtgriezejs("durvjuSpokaDrosibasRobezas");
     static int virtuvesSpokaDrosibasRobezas = FailuRedigetajs.intDatuAtgriezejs("virtuvesSpokaDrosibasRobezas");
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     static String[] visiVaronaUzdevumi = {"Pildit majasdarbus", "Est", "Mazgat", "Kartot", "Lasit", "Tirit"}; // TODO: Izmantot vai pārveidot.
 
-    // *Beta* spēlētāja darbības.
     volatile static boolean pagrabaGaismaON = false;
 
     // Iestata tikšķa jeb 1 "refreša" periodu.
@@ -45,33 +49,32 @@ public class Main {
         Ievade ievadesLasitajs = new Ievade(); // Arī threads, bet šis lasa ievadi.
         SkanasSpeletajs skanasSpeletajs = new SkanasSpeletajs();
 
-        ///////// T H R E D I //////////
+        //* /////// T H R E D I //////////
         // Sākas atsevišķās darbības jeb patstāvīgie procesi.
         skanasSpeletajs.start(); // Strādā, kamēr spelePalaista bools ir true.
         ievadesLasitajs.start(); // Strādā, kamēr programmaPalaista bools ir true.
         
         while (programmaPalaista) { // Palaiž programmu.
             tiritEkranu();
-            //////////////////////////////////////////////////////// S P Ē L E S   I Z V Ē L N E //////////////////////////////////////////////////////
+            //* ////////////////////////////////////////////////////// S P Ē L E S   I Z V Ē L N E //////////////////////////////////////////////////////
             while (sakumaEkrans) {
                 VaronaDarbibas.varonaDarbibas(Ievade.ievade);
-                UI_Izskats.masivuIzvade(SakumaEkrans.sakumaEkranaBildesCikls());
+                UIizskats.masivuIzvade(SakumaEkrans.sakumaEkranaBildesCikls());
                 try { // Vienas bildes izvade jeb beigas.
                     Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 30 FPS.
                 } catch (Exception e) {}
             }
             
-            ////////////////////////////////////////////////////////////////////// S Ā K A S   S P Ē L E S   K O D S /////////////////////////////////////////////////////////////////////////////////////////
+            //* //////////////////////////////////////////////////////////////////// S Ā K A S   S P Ē L E S   K O D S /////////////////////////////////////////////////////////////////////////////////////////
             tiritEkranu();
             Laiks laiks = new Laiks(); // Katru reizi, kad ir palaista spēle, veido jaunu Laika thredu.
             laiks.start(); // Strādā, kamēr spelePalaista bools ir true.
             while (spelePalaista) { // Kamēr laiks nav beidzies, turpināt ciklu jeb spēli.
 
-                // ----------------------------------------------------------- vvv Jāatjauno, jāpārveido vvv --------------------------------------------------------// // TODO: Izmantot vai pārveidot.
+                // * --------------------------- vvv Jāatjauno, jāpārveido vvv ----------------------------// TODO: Izmantot vai pārveidot.
                 
-                Istabu_Izskati.virtuvesPagrabaGaismasStavoklaNoteiksana();
-                // ------------------------------------------------------------------^^^^^^^^^^^^^^^^^^^^^^^^^^^---------------------------------------------------- // // TODO: Izmantot vai pārveidot.
-
+                IstabuIzskati.virtuvesPagrabaGaismasStavoklaNoteiksana();
+                // * ------------------------------------^^^^^^^^^^^^^^^^^^^^^^^^^^^--------------------------
                 VaronaDarbibas.varonaDarbibas(Ievade.ievade); // Lietotāja jeb varoņa ievade un tās darbības (komandas un to darbības).
 
                 if (Spoki.spokuInfoIzvadeBoolean) { // Spoku informācijas izvade. --Debuging--
@@ -81,7 +84,7 @@ public class Main {
                 // Visām fāzēm, bildēm un visam vizuālajam ir jābūt gatavam pirms šīs metodes izsaukšanas!!!
                 // Spoku vizuālais atjaunojums notiek Laiks.java Klasē.
 
-                UI_Izskats.salipinataUIIzvade(); // Izvade uz ekrāna.
+                UIizskats.salipinataUIIzvade(); // Izvade uz ekrāna.
                 
                 Ievade.notiritIevadi(); // Cikla beigās notīra Ievadi, jo visas matodes, kurām tā bija vajadzīga jau to ir paņēmušas.
 
@@ -101,7 +104,7 @@ public class Main {
             Laiks.spelesLaiks = 0; // Lai laika threads momentāli neapstātos pēc tā pališanas, atjauno spēles laiku.
             sakumaEkrans = true;
         }
-        /////////////////////// L I E K   T H R E D I E M   B E I G T I E S /////////////////////////
+        //* ///////////////////// L I E K   T H R E D I E M   B E I G T I E S /////////////////////////
         skanasSpeletajs.join();
         ievadesLasitajs.join();
     }

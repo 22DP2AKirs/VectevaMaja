@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 
-class UI_Izskats {
+class UIizskats {
     static String[] ievadesMasivs = Ievade.ieprieksejaIevade("");
 
     static String[] apaksasUISagatavosana(String panemtaIevade) {
         String[] gatavsApaksasUI = {
             "--------------------------------------------------------------------------------",
-            " [1] K U S T I B A | [2] U Z D E V U M I | [3] A I Z S A R D Z I B A | [4] . . .",
+            " [1] K U S T I B A | [2] U Z D E V U M I | [3] A I Z S A R D Z I B A | [4] ...  ",
             "___________________|_____________________|___________________________|          ",
             "                                                                                ",
             "                                                                                ",
@@ -98,14 +98,14 @@ class UI_Izskats {
         }
 
         // Mapes varoņa bultiņas pozīcijas noteicējs.
-        if (VaronaDarbibas.elektribaIeslegta) {
-            if (VaronaDarbibas.varonaIstabasSkaitlis == 0) {
+        if (Main.elektribaIeslegta) {
+            if (Main.varonaIstabasSkaitlis == 0) {
                 gatavsLabasPusesUI[7] = "     " + varonaMapesBultinasVirzienaDevejs() + "               ";
-            } else if (VaronaDarbibas.varonaIstabasSkaitlis == 1) {
+            } else if (Main.varonaIstabasSkaitlis == 1) {
                 gatavsLabasPusesUI[4] = "     " + varonaMapesBultinasVirzienaDevejs() + "               ";
-            } else if (VaronaDarbibas.varonaIstabasSkaitlis == 2) {
+            } else if (Main.varonaIstabasSkaitlis == 2) {
                 gatavsLabasPusesUI[4] = "                " + varonaMapesBultinasVirzienaDevejs() + "    ";
-            } else if (VaronaDarbibas.varonaIstabasSkaitlis == 3) {
+            } else if (Main.varonaIstabasSkaitlis == 3) {
                 gatavsLabasPusesUI[7] = "                " + varonaMapesBultinasVirzienaDevejs() + "    ";
             }
         } else {
@@ -121,13 +121,13 @@ class UI_Izskats {
 
     static String varonaMapesBultinasVirzienaDevejs() {
         String noteiktaMapesBultina = "";
-        if(VaronaDarbibas.varonaVirzienaSkaitlis == 0) {
+        if(Main.varonaVirzienaSkaitlis == 0) {
             noteiktaMapesBultina = "^";
-        } else if (VaronaDarbibas.varonaVirzienaSkaitlis == 1) {
+        } else if (Main.varonaVirzienaSkaitlis == 1) {
             noteiktaMapesBultina = ">";
-        } else if (VaronaDarbibas.varonaVirzienaSkaitlis == 2) {
+        } else if (Main.varonaVirzienaSkaitlis == 2) {
             noteiktaMapesBultina = "v";
-        } else if (VaronaDarbibas.varonaVirzienaSkaitlis == 3) {
+        } else if (Main.varonaVirzienaSkaitlis == 3) {
             noteiktaMapesBultina = "<";
         }
         return noteiktaMapesBultina;
@@ -139,12 +139,12 @@ class UI_Izskats {
         System.out.println("\r▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓"); // Ekrāna augšējā daļa.
 
         // Pievieno apstrādātas mājas bildes ar "Overlayiem (Pārklājumiem)".
-        for (String parklataLinija : Istabu_Izskati.istabasArParklajumiem(Istabu_Izskati.istabuMasivaAtjaunosana()[VaronaDarbibas.varonaIstabasSkaitlis][VaronaDarbibas.varonaVirzienaSkaitlis])) {
+        for (String parklataLinija : IstabuIzskati.istabasArParklajumiem(IstabuIzskati.istabuMasivaAtjaunosana()[Main.varonaIstabasSkaitlis][Main.varonaVirzienaSkaitlis])) {
             programmasGalejaIzvadeUzEkrana.add("\r|" + parklataLinija + "|");
         }
         
         // Pievieno apakšējo UI pie gala izvades, pēc mājas bildēm.
-        for (String linija : UI_Izskats.apaksasUISagatavosana(Ievade.ievade)) {
+        for (String linija : UIizskats.apaksasUISagatavosana(Ievade.ievade)) {
             programmasGalejaIzvadeUzEkrana.add("\r|" + linija + "|");
         }
 
