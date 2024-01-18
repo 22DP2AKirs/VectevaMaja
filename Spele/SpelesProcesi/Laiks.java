@@ -1,9 +1,16 @@
+package Spele.SpelesProcesi;
+
+import Spele.Spoki;
+import Spele.VaronaDarbibas;
+import Spele.FailuLietotaji.SkanasSpeletajs;
+
+
 public class Laiks extends Thread {
     public static volatile int spelesLaiks; // Visiem pieejamais objekts.
     public static String laikaTeksts = "1 2 P M ";
     public static int vienaStunda = Main.spelesIlgums / 6;
 
-    static int gaidisanasLaiks;
+    public static int gaidisanasLaiks;
 
     @Override
     public void run() {

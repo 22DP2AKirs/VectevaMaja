@@ -1,9 +1,11 @@
-public class K {
-    static final String RESET = "\u001B[0m";
+package Spele;
+
+public final class K {
+    public static final String RESET = "\u001B[0m";
 
     static final String MELNS = "\u001B[30m";
 
-    static final String TPELEKS = "\u001B[38;5;237m";
+    public static final String TPELEKS = "\u001B[38;5;237m";
 
     static final String SARKANS = "\u001B[31m";
 
@@ -23,7 +25,7 @@ public class K {
 
     static final String BALTS = "\u001B[37m";
 
-    static final String OBJEKTS = "\u001B[38;5;187m";
+    public static final String OBJEKTS = "\u001B[38;5;187m";
 
     // Masīvu izmēri.
     static final int BILDES_MASIVA_IZMERS = 16;

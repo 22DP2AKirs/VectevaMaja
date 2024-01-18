@@ -1,13 +1,20 @@
+package Spele;
 import java.util.Arrays;
 
-class VaronaDarbibas {
-    static int infoLapasSecibasSkaitlis = 1; // Nosaka vai varoņa ievade būs ar kustību saistīta vai ar darbu darbību saistīta.
+import Spele.SpelesProcesi.Main;
+import Spele.FailuLietotaji.SkanasSpeletajs;
+import Spele.Izskati.IstabuIzskati;
+import Spele.SpelesProcesi.Ievade;
+import Spele.SpelesProcesi.Laiks;
 
-    static volatile boolean aizdedzinatsSerkocins = false; 
-    static int serkocinaDeksanasLaikaSkaititajs;
+public class VaronaDarbibas {
+    public static int infoLapasSecibasSkaitlis = 1; // Nosaka vai varoņa ievade būs ar kustību saistīta vai ar darbu darbību saistīta.
+
+    public static volatile boolean aizdedzinatsSerkocins = false; 
+    public static int serkocinaDeksanasLaikaSkaititajs;
 
     
-    static void varonaDarbibas(String ievade) { // TODO: sadalīt dažādās metodēs (Testēšanas darbības, spēlēšanas darbības, Izvēlnes darbības u.t.t.)
+    public static void varonaDarbibas(String ievade) { // TODO: sadalīt dažādās metodēs (Testēšanas darbības, spēlēšanas darbības, Izvēlnes darbības u.t.t.)
         if (!Ievade.vaiIevadiIzpildija) { // Garantē, lai lietotāja ievade tiktu izpildīta, pirms tā ir nodzēsta ar notiritIevadi().
             Ievade.vaiIevadiIzpildija = true;
         }
@@ -92,6 +99,18 @@ class VaronaDarbibas {
         if (Main.varonaVirzienaSkaitlis == 1) { // Labās puses darbības.
             if (panemtaIevade.equals("LOGS") && Spoki.spokuStati[0].spokaIstaba.equals("Virtuve") && Spoki.spokuStati[0].spoksAktivs) {
                 Spoki.logaSpoksAktivs = false;
+            }
+        }
+        else if (Main.varonaVirzienaSkaitlis == 2) {
+            if (panemtaIevade.equals("G")) {
+                if (Main.pagrabaGaisma) {
+                    SkanasSpeletajs.SpeletSkanu("Skanas faili\\gaismas-sledzis-off.wav", 0);
+                    Main.pagrabaGaisma = false;
+                }
+                else {
+                    SkanasSpeletajs.SpeletSkanu("Skanas faili\\gaismas-sledzis-on.wav", 0);
+                    Main.pagrabaGaisma = true;
+                }
             }
         }
         else if (Main.varonaVirzienaSkaitlis == 3) { // Kreisās puses darbības.

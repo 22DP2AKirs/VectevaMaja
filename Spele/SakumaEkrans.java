@@ -1,7 +1,10 @@
+package Spele;
+
+
 public class SakumaEkrans {
     static int izvelnesSkaits = 1;
     static String[] sakumaEkranaIzvelesVarduVarianti = {"", "", "", "", "", ""};
-    static String[] sakumaEkranaBildesCikls() {
+    public static String[] sakumaEkranaBildesCikls() {
 
         if (izvelnesSkaits == 1) { // Spēlēt.
             sakumaEkranaIzvelesVarduVarianti[0] = izvelnesBultinas[0] + " T U R P I N A T " + izvelnesBultinas[1];
@@ -52,15 +55,15 @@ public class SakumaEkrans {
             "\r|                                                              ::::.::::  ::    ::      ::  ::    ::   |",
             "\r|                                                              :: ':' ::  ::''''::      ::  ::''''::   |",
             "\r|                                                              ::     ::  ::    ::  ::::'   ::    ::   |",
-            "\r|             " + K.SARKANS + sakumaEkranaIzvelesVarduVarianti[0] + K.RESET + "                                                                      |",
+            "\r|             " + Spele.K.SARKANS + sakumaEkranaIzvelesVarduVarianti[0] + Spele.K.RESET + "                                                                      |",
             "\r|                                                                                                      |",
             "\r|               " + sakumaEkranaIzvelesVarduVarianti[1] + "                                                                        |",
             "\r|                                                                                                      |",
-            "\r|          " + K.SARKANS + sakumaEkranaIzvelesVarduVarianti[2] + K.RESET + "                                                                   |",
+            "\r|          " + Spele.K.SARKANS + sakumaEkranaIzvelesVarduVarianti[2] + Spele.K.RESET + "                                                                   |",
             "\r|                                                                                                      |",
-            "\r|             " + K.SARKANS + sakumaEkranaIzvelesVarduVarianti[3] + K.RESET + "                                                                      |",
+            "\r|             " + Spele.K.SARKANS + sakumaEkranaIzvelesVarduVarianti[3] + Spele.K.RESET + "                                                                      |",
             "\r|                                                                                                      |",
-            "\r|              " + K.SARKANS + sakumaEkranaIzvelesVarduVarianti[4] + K.RESET + "                                                                       |",
+            "\r|              " + Spele.K.SARKANS + sakumaEkranaIzvelesVarduVarianti[4] + Spele.K.RESET + "                                                                       |",
             "\r|                                                                                                      |",
             "\r|                " + sakumaEkranaIzvelesVarduVarianti[5] + "                                                                         |",
             "\r|                                                                                                ::    |",
@@ -77,6 +80,6 @@ public class SakumaEkrans {
         return sakumaEkranaIzvelne;
     }
     
-    static String[] izvelnesBultinas = {K.DEBESU_ZILS + ">", "<" + K.RESET};
+    static String[] izvelnesBultinas = {Spele.K.DEBESU_ZILS + ">", "<" + Spele.K.RESET};
 
 }

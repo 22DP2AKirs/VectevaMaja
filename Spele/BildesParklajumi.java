@@ -1,11 +1,20 @@
+package Spele;
 import java.util.Arrays;
 
-public class IzvadeUzTerminalu {
+import Spele.SpelesProcesi.Main;
+
+public class BildesParklajumi {
     // * Atgriež masīvu, kuru izvadīs terminālī (Pēdējā bildes apstrāde).
     public static String[] istabasArParklajumiem(String[] originalaisMasivs) { 
         // Parametra masīva vērtību pārkopēšana un jauna masīva, lai nebojātu masīvu, kas ir sniegts kā parametrs.
         // mainita - drīkst mainīt, nemainītā - NEDRĪKST MAINĪT.
         String[] mainitaVaronaAktualaIstabasKopija = Arrays.copyOf(originalaisMasivs, originalaisMasivs.length); // Masīva elementu pārkopēšana.
+
+        if (Main.varonaIstabasSkaitlis == 3 && Main.varonaVirzienaSkaitlis == 2) {
+            if (!Main.pagrabaGaisma) {
+                virtuvesPagrabaParklajs(mainitaVaronaAktualaIstabasKopija, originalaisMasivs);
+            }
+        }
 
         istabasGaismasUnSerkocinaParklajumi(mainitaVaronaAktualaIstabasKopija, originalaisMasivs);
         
@@ -77,4 +86,22 @@ public class IzvadeUzTerminalu {
         
         return aizpildamaisMasivs;
     }
+
+    public static String[] virtuvesPagrabaParklajs(String[] parklajamaisMasivs, String[] originalaisMasivs) {
+        // Nosaka, ko izvadīs, ja pagramba gaisma ir izslēgta.
+        parklajamaisMasivs[1] += "\033[10G" + K.TPELEKS + "░░░░░░░░░░░░░" + K.RESET + "\033[82G";
+        parklajamaisMasivs[2] += "\033[8G" + K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET + "\033[82G";
+        parklajamaisMasivs[3] += "\033[8G" + K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET + "\033[82G";
+        parklajamaisMasivs[4] += "\033[8G" + K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET + "\033[82G";
+        parklajamaisMasivs[5] += "\033[8G" + K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET + "\033[82G";
+        parklajamaisMasivs[6] += "\033[8G" + K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET + "\033[82G";
+        parklajamaisMasivs[7] += "\033[8G" + K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET + "\033[82G";
+        parklajamaisMasivs[8] += "\033[8G" + K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET + "\033[82G";
+        parklajamaisMasivs[9] += "\033[8G" + K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET + "\033[82G";
+        parklajamaisMasivs[10] += "\033[8G" + K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET + "\033[82G";
+        parklajamaisMasivs[11] += "\033[8G" + K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET + "\033[82G";
+        parklajamaisMasivs[12] += "\033[8G" + K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET + "\033[82G";
+        
+        return parklajamaisMasivs;
+    } 
 }

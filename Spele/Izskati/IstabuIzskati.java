@@ -1,4 +1,6 @@
-import Izskati.SpokuIzskati;
+package Spele.Izskati;
+import Spele.SpelesProcesi.Main;
+import Spele.K;
 
 public class IstabuIzskati {
     // Durju istabas parastie skati jeb stāvokļi.
@@ -299,33 +301,46 @@ public class IstabuIzskati {
 
     // Virtuves durvju izskati.
     public static String[] izslegtsPagrabsVirtuveKreisa = { // Tumš pagrabs.
-        "   |  /░░░░░░\\",
-        "   | |░░░░░░░░\\",
-        "   | |░░░░░░░░░",
-        "░░░░░░░░░",
-        "░░░░░░░░░",
-        "░░░░░░░",
-        "░░░░░",
+        "   |  /" + K.TPELEKS + "░░░░░░" + K.RESET + "\\",
+        "   | |" + K.TPELEKS + "░░░░░░░░" + K.RESET + "\\",
+        "   | |" + K.TPELEKS + "░░░░░░░░░" + K.RESET,
+        K.TPELEKS + "░░░░░░░░░" + K.RESET,
+        K.TPELEKS + "░░░░░░░░░" + K.RESET,
+        K.TPELEKS + "░░░░░░░" + K.RESET,
+        K.TPELEKS + "░░░░░" + K.RESET,
         "", // Lai strādātu pārveidojumi.
     };
 
     public static String[] ieslegtsPagrabsVirtuveKreisa = { // Gaiš pagrabs.
         "   |  /      \\",
         "   | |        \\",
-        "   | |",
-        "",
-        "___",
-        " \\ __",
-        "\\  \\",
+        "   | |         ",
+        "         ",
+        "___      ",
+        " \\ __  ",
+        "\\  \\ ",
         "   \\  \\"
     };
 
     public static String[] modificetasVirtLabasPusesIzvade() {
         String[] virtKreisaPusesPagrabaSkats = new String[7];
+        // Nosaka, kā izskatīsies pagraba skats.
         if (Main.pagrabaGaisma) {
             virtKreisaPusesPagrabaSkats = ieslegtsPagrabsVirtuveKreisa;
         } else {
             virtKreisaPusesPagrabaSkats = izslegtsPagrabsVirtuveKreisa;
+            if (!Main.istabuGaismasIeslegtas[3]) { // Salabo krāsu, kad ir izslēgta gaisma.
+                virtKreisaPusesPagrabaSkats[3] += K.TPELEKS;
+                virtKreisaPusesPagrabaSkats[4] += K.TPELEKS;
+                virtKreisaPusesPagrabaSkats[5] += K.TPELEKS;
+                virtKreisaPusesPagrabaSkats[6] += K.TPELEKS;
+            }
+            else {
+                virtKreisaPusesPagrabaSkats[3] += K.RESET;
+                virtKreisaPusesPagrabaSkats[4] += K.RESET;
+                virtKreisaPusesPagrabaSkats[5] += K.RESET;
+                virtKreisaPusesPagrabaSkats[6] += K.RESET;
+            }
         }
 
         // Modificētā, galējā bilde.
@@ -345,7 +360,9 @@ public class IstabuIzskati {
             "      |  ||    | |    || |//     /_______________________________| |" + virtKreisaPusesPagrabaSkats[3] + "|  ",
             "      |  ||    | |    || |/_____/|                                \\|" + virtKreisaPusesPagrabaSkats[4] + "|  ",
             "      |  ||____| |____|| |  |  | |                                    " + virtKreisaPusesPagrabaSkats[5] + "|  ",
-            "      |  |             |/|     |                                        " + virtKreisaPusesPagrabaSkats[6] + "|  "};
+            "      |  |             |/|     |                                        " + virtKreisaPusesPagrabaSkats[6] + "|  "
+        };
+
         return virtuveKreisa; // Atgriež tikko izveidoto array jeb masīvu izvadei.
     }
 
@@ -432,7 +449,9 @@ public class IstabuIzskati {
                 "   |_|" + SpokuIzskati.virtPrieksasPagrabaBildesArSpoku[11] + "| | |    ( )|  |( )    | | |          | |       |       |",
                 "  /                    \\ | |_______|  |_______| | |__________| |_______|_______|",
                 " /                      \\|______________________|______________|_______________|",
-                "/                                                                               "};
+                "/                                                                               "
+            };
+
         return virtuvePrieksa;
     }
 

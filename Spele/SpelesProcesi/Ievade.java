@@ -1,11 +1,14 @@
+package Spele.SpelesProcesi;
 import java.util.Scanner;
+
+
 
 public class Ievade extends Thread {
     // volatile ir, lai objekts sinhronizējas starp visiem Thrediem.
     private static Scanner ievadesLasitajs = new Scanner(System.in); // Parastais lasītājs, kurš lasīs lietotāja ievadi.
-    static volatile String ievade = "}"; // Definēju mainīgo, lai kods tālāk spētu viņu visu laiku dublicēt (šinī gadījumā saglabāt).
+    public static volatile String ievade = "}"; // Definēju mainīgo, lai kods tālāk spētu viņu visu laiku dublicēt (šinī gadījumā saglabāt).
 
-    static boolean vaiIevadiIzpildija = true; // Ļauj ievadītajām darbībām būt izpildītām pirms tās tiek nodzēstas.
+    public static boolean vaiIevadiIzpildija = true; // Ļauj ievadītajām darbībām būt izpildītām pirms tās tiek nodzēstas.
     
     public void run() { // Vienmēr lasa ievadi, vienalga uz to, kas notiek apkārt.
         while (Main.programmaPalaista) {
@@ -17,7 +20,7 @@ public class Ievade extends Thread {
         }
     }
     
-    static String[] ieprieksejaIevade(String ievade) { // Atgriež ievadi sadalītu pa burtiem.
+    public static String[] ieprieksejaIevade(String ievade) { // Atgriež ievadi sadalītu pa burtiem.
         String[] galaIevade = new String[10];
 
         if (ievade.length() > 10) { // Ja ievade ir garāka par 10 simboliem, tad komandā to uzrādīs ar vairākām issaukuma zīmēm [!].
@@ -41,7 +44,7 @@ public class Ievade extends Thread {
         return galaIevade; 
     }
 
-    static void notiritIevadi() {
+    public static void notiritIevadi() {
         if (vaiIevadiIzpildija) { // Ja komanda tika izpildīta, tad to var nodzēst.
             Ievade.ievade = "}";
         }

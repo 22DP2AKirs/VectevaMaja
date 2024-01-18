@@ -1,8 +1,11 @@
+package Spele.FailuLietotaji;
+
 import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
+import Spele.SpelesProcesi.Main;
 
 
 public class SkanasSpeletajs extends Thread {
@@ -18,7 +21,7 @@ public class SkanasSpeletajs extends Thread {
         }
     }
 
-    static void SpeletSkanu(String celsUzFailu, float skalumsDecibelos) {
+    public static void SpeletSkanu(String celsUzFailu, float skalumsDecibelos) {
         try {
             File skanasCels = new File(celsUzFailu);
             if (skanasCels.exists()) {

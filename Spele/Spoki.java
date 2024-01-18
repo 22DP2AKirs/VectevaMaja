@@ -1,20 +1,24 @@
+package Spele;
+
 import java.util.Random;
 
-import Izskati.SpokuIzskati;
+import Spele.SpelesProcesi.Main;
+import Spele.Izskati.SpokuIzskati;
+import Spele.SpelesProcesi.Laiks;
 
 public class Spoki {
     public static Random rand = new Random(); // Priekš random darbībām.
-    static boolean spokuInfoIzvadeBoolean = false;
+    public static boolean spokuInfoIzvadeBoolean = false;
     // Statistikas objekti.
     int spokuSkaits; // Nedefinēta int vērtība ir 0. !!! NAV IZMANTOTS !!!
 
-    volatile static boolean logaSpoksAktivs;
-    static boolean durvjuSpoksAktivs;
-    static boolean virtuvesSpoksAktivs;
+    public volatile static boolean logaSpoksAktivs;
+    public static boolean durvjuSpoksAktivs;
+    public static boolean virtuvesSpoksAktivs;
 
     // Klases instances jeb objekti, jeb mainīgie.
     boolean spoksAktivs;
-    String spokaVeids;
+    public String spokaVeids;
 
     int spokaAgresivitatesLimits; // Šo pielīdzina RAND ciparam un nosaka vai spoks kustēsies.
     int randomKustibasIespejasCipars; // Dod spokam RAND ciparu, lai to pielīdzinātu agresivitātes limitam un noteiktu vai spoks kustēsies.
@@ -24,7 +28,7 @@ public class Spoki {
     int spokaFazesIndeks; // Nosaka spoka fāzi.
     int spokaDrosibasRobezas; // Nosaka cik robežas spokam ir jāpāriet, lai palielinātu savu fāzi.
 
-    String spokaIstaba; // Nosaka, kurā istabā ir loga spoks.
+    public String spokaIstaba; // Nosaka, kurā istabā ir loga spoks.
 
     // Spoku masīvi jeb array's.
     String[] logaSpokaIstabas = {"Gulta","Divans","Durvis","Virtuve"};
@@ -41,7 +45,7 @@ public class Spoki {
         spokaIstaba = ""; // Svarīgs tikai loga spokam.
     }
 
-    void randomKustibasCiparaAtjaunosana() {
+    public void randomKustibasCiparaAtjaunosana() {
         randomKustibasIespejasCipars = rand.nextInt(20) + 1; // + 1, lai skaitļa intervāls būtu no 1 - 20, nevis no 0 - 19.
         vaiSpoksKustas = randomKustibasIespejasCipars < spokaAgresivitatesLimits;
     }
@@ -50,7 +54,7 @@ public class Spoki {
         spokaDrosibasRobezas--; // Noņem vienu drošības robežu.
     }
 
-    void spokuVirzisanasUzPrieksu() { // Nosaka, vai spoks kustās uz priekšu, vai pārkāpj robežu.
+    public void spokuVirzisanasUzPrieksu() { // Nosaka, vai spoks kustās uz priekšu, vai pārkāpj robežu.
         if (spoksAktivs) {
             if (vaiSpoksKustas && spokaDrosibasRobezas < 1) {
                 spokaFazesIndeks++; // Pietuvina spoku mērķim.
@@ -62,7 +66,7 @@ public class Spoki {
         }
     }
 
-    void istabuBildesFazuAtjaunosana(String spokaVeids, String istaba) {
+    public void istabuBildesFazuAtjaunosana(String spokaVeids, String istaba) {
         if (spokaVeids.equals("loga") && spokaFazesIndeks < 9) {
             if (istaba.equals("Gulta")) {
                 SpokuIzskati.gultasLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieGultas[spokaFazesIndeks];
@@ -96,7 +100,7 @@ public class Spoki {
         }
     }
 
-    void iespejaPadaritSpokuAktivu() { 
+    public void iespejaPadaritSpokuAktivu() { 
         if (!spoksAktivs) {
             if ((rand.nextInt(2) + 1) == 1) { // Ja 1/20-ā jeb 5/100-ās iespēja ir patiesa, tad spoks paliek aktīvs.
                 if (spokaVeids.equals("loga")) {
@@ -114,7 +118,7 @@ public class Spoki {
         }  
     }
 
-    static Spoki[] spokuInformacijasSavaksana(Spoki logaSpoks, Spoki durvjuSpoks, Spoki virtuvesSpoks) {
+    public static Spoki[] spokuInformacijasSavaksana(Spoki logaSpoks, Spoki durvjuSpoks, Spoki virtuvesSpoks) {
         Spoki[] visiSpoki = new Spoki[3];
         visiSpoki[0] = logaSpoks;
         visiSpoki[1] = durvjuSpoks;
@@ -123,13 +127,13 @@ public class Spoki {
         return visiSpoki;
     }
 
-    static Spoki[] spokuStati = {
+    public static Spoki[] spokuStati = {
         new Spoki("loga", Main.logaSpokaAgresivitatesLimits),
         new Spoki("durvju", Main.durvjuSpokaAgresivitatesLimits),
         new Spoki("virtuves", Main.virtuvesSpokaAgresivitatesLimits)
     };
 
-    static void spokuInformacijasIzvade() {
+    public static void spokuInformacijasIzvade() {
         System.out.println();
 
         System.out.println("Loga spoks" + K.VIOLETS + " aktivs?: " + spokuStati[0].spoksAktivs + K.ZALS + " RAND cipars: " + spokuStati[0].randomKustibasIespejasCipars + K.ZILS + " Drosibas robezas: " + spokuStati[0].spokaDrosibasRobezas + " Fazes indekss: " + spokuStati[0].spokaFazesIndeks + " Istaba: " + spokuStati[0].spokaIstaba + K.RESET + "\033[0K");
@@ -139,7 +143,7 @@ public class Spoki {
         System.out.println("Laiks ms: " + Laiks.spelesLaiks + " / " + Laiks.vienaStunda * 6 + K.RESET + "\033[0K");
     }
 
-    void izslegtSpoku() {
+    public void izslegtSpoku() {
         spoksAktivs = false;
         spokaDrosibasRobezas = 3;
         spokaFazesIndeks = 0;

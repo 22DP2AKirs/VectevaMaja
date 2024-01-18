@@ -1,9 +1,15 @@
-import java.util.ArrayList;
+package Spele.Izskati;
 
-class UIizskats {
+import Spele.K;
+import Spele.VaronaDarbibas;
+import Spele.SpelesProcesi.Ievade;
+import Spele.SpelesProcesi.Laiks;
+import Spele.SpelesProcesi.Main;
+
+public class UIizskats {
     static String[] ievadesMasivs = Ievade.ieprieksejaIevade("");
 
-    static String[] apaksasUISagatavosana(String panemtaIevade) {
+    public static String[] apaksasUISagatavosana(String panemtaIevade) {
         String[] gatavsApaksasUI = {
             "--------------------------------------------------------------------------------",
             " [1] K U S T I B A | [2] U Z D E V U M I | [3] A I Z S A R D Z I B A | [4] ...  ",
@@ -57,7 +63,7 @@ class UIizskats {
             return gatavsApaksasUI;
     }
 
-    static String[] labasPusesUISagatavosana() {
+    public static String[] labasPusesUISagatavosana() {
         String[] gatavsLabasPusesUI = {
             "                     ",
             " L A I K S : " + Laiks.laikaTeksts,
@@ -134,43 +140,5 @@ class UIizskats {
         return noteiktaMapesBultina;
     }
 
-    static ArrayList<String> programmasGalejaIzvadeUzEkrana = new ArrayList<>(); // Masīvs saturēs visu spēles grafisko informāciju.
-    static void salipinataUIIzvade() { // Metode mainīs un izvadīs "Galveno izvades masīvu". Visu laiku atjaunojot to ar aktuālajām (dinamiskajām bildēm (Katrs freims (FPS))).
-
-        System.out.println("\r▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓"); // Ekrāna augšējā daļa.
-
-        // Pievieno apstrādātas mājas bildes ar "Overlayiem (Pārklājumiem)".
-        for (String parklataLinija : IzvadeUzTerminalu.istabasArParklajumiem(IstabuIzskati.istabuMasivaAtjaunosana()[Main.varonaIstabasSkaitlis][Main.varonaVirzienaSkaitlis])) {
-            programmasGalejaIzvadeUzEkrana.add("\r|" + parklataLinija + "|");
-        }
-        
-        // Pievieno apakšējo UI pie gala izvades, pēc mājas bildēm.
-        for (String linija : UIizskats.apaksasUISagatavosana(Ievade.ievade)) {
-            programmasGalejaIzvadeUzEkrana.add("\r|" + linija + "|");
-        }
-
-        // Pie mājas bildēm un apakšējā UI pievieno Labās puses UI.
-        for (int i = 0; i < (labasPusesUISagatavosana().length); i++) {
-            programmasGalejaIzvadeUzEkrana.set(i, programmasGalejaIzvadeUzEkrana.get(i) + labasPusesUISagatavosana()[i] + "|\033[0K");
-        }
-
-        // Izvada visus ArrayList elementus jeb fināla, gala bildi.
-        for (int i = 0; i < programmasGalejaIzvadeUzEkrana.size(); i++) {
-            System.out.println(programmasGalejaIzvadeUzEkrana.get(i));
-        }
-
-        System.out.println("\033[0J"); // Izdzēš visu tekstu līdz ekrāna beigām.
-
-        programmasGalejaIzvadeUzEkrana.removeAll(programmasGalejaIzvadeUzEkrana); // Attīra ArrayLists no visiem viņa elementiem, padarot to pilnībā tukšu.
-        System.out.print("\033[H"); // Noliek kursoru sākuma pozīcijā 0,0 jeb pirmās rindas pirmajā kolonnā.
-    }
-
-    static void masivuIzvade(String[] masivs) {
-        int masivaGarums = masivs.length;
-        for (int i = 0; i < masivaGarums; i++) {
-            System.out.println(masivs[i] + "\033[0K");
-        }
-        System.out.println("\033[0J"); // Izdzēš visu tekstu līdz ekrāna beigām.
-        System.out.print("\033[H"); // Noliek kursoru sākuma pozīcijā 0,0 jeb pirmās rindas pirmajā kolonnā.
-    }
+    
 }

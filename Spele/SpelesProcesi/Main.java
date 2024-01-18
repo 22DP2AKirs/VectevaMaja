@@ -1,36 +1,43 @@
-// Adrians Kiršteins, DP2-2.
+package Spele.SpelesProcesi;
+
+import Spele.IzvadeUzTerminalu;
+import Spele.SakumaEkrans;
+import Spele.Spoki;
+import Spele.VaronaDarbibas;
+import Spele.FailuLietotaji.FailuRedigetajs;
+import Spele.FailuLietotaji.SkanasSpeletajs;
 
 public class Main {
     // Mainīgie jeb objekti.
-    static volatile boolean programmaPalaista = true; // booleans, kas palaiž visu programmu.
-    static boolean sakumaEkrans = false; // Nosaka vai spēles sākumā rādīs sākuma ekrānu vai nē.
-    static volatile boolean spelePalaista = true; // Mainīgais bool, kas pašu spēli.
+    public static volatile boolean programmaPalaista = true; // booleans, kas palaiž visu programmu.
+    public static boolean sakumaEkrans = false; // Nosaka vai spēles sākumā rādīs sākuma ekrānu vai nē.
+    public static volatile boolean spelePalaista = true; // Mainīgais bool, kas pašu spēli.
 
-    static boolean varonaNemirstiba = true; // Vai varonis var zaudēt spēli vai nē.
+    public static boolean varonaNemirstiba = true; // Vai varonis var zaudēt spēli vai nē.
 
     //* ////////////////////////////////////////////////// S P Ē L E S   I E S T A T Ī J U M I /////////////////////////////////////////////////////////////////
 
     // Gaismas dati.
-    static boolean[] istabuGaismasIeslegtas = {FailuRedigetajs.booleanDatuAtgriezejs("gultasGaisma"), FailuRedigetajs.booleanDatuAtgriezejs("divanaGaisma"), FailuRedigetajs.booleanDatuAtgriezejs("durvjuGaisma"), FailuRedigetajs.booleanDatuAtgriezejs("virtuvesGaisma")}; // Indeksi: 0. Gulta, 1. Dīvāns, 2. Durvis, 3. Virtuve.
+    public static boolean[] istabuGaismasIeslegtas = {FailuRedigetajs.booleanDatuAtgriezejs("gultasGaisma"), FailuRedigetajs.booleanDatuAtgriezejs("divanaGaisma"), FailuRedigetajs.booleanDatuAtgriezejs("durvjuGaisma"), FailuRedigetajs.booleanDatuAtgriezejs("virtuvesGaisma")}; // Indeksi: 0. Gulta, 1. Dīvāns, 2. Durvis, 3. Virtuve.
     static boolean spokiSledzAraGaismu = FailuRedigetajs.booleanDatuAtgriezejs("spokiSledzAraGaismu");
 
     static int spelesNakts = 6;
 
     // Spelētāja pozīcija. 
-    static int varonaVirzienaSkaitlis = 0;
-    static int varonaIstabasSkaitlis = 0; // 0, no gultas istabas. 2, jo testā sāku no durvju istabas. 3, no virtuves istabas. 
+    public static int varonaVirzienaSkaitlis = 2;
+    public static int varonaIstabasSkaitlis = 3; // 0, no gultas istabas. 2, jo testā sāku no durvju istabas. 3, no virtuves istabas. 
 
-    static boolean elektribaIeslegta = FailuRedigetajs.booleanDatuAtgriezejs("elektribaIeslegta");
-    static boolean pagrabaGaisma = FailuRedigetajs.booleanDatuAtgriezejs("pagrabaGaisma");
+    public static boolean elektribaIeslegta = FailuRedigetajs.booleanDatuAtgriezejs("elektribaIeslegta");
+    public static boolean pagrabaGaisma = FailuRedigetajs.booleanDatuAtgriezejs("pagrabaGaisma");
 
     // Sērkociņa dati.
-    static int atlikusoSerkocinuDaudzums = FailuRedigetajs.intDatuAtgriezejs("atlikusoSerkocinuDaudzums");
+    public static int atlikusoSerkocinuDaudzums = FailuRedigetajs.intDatuAtgriezejs("atlikusoSerkocinuDaudzums");
     static int maxSerkocinaDegsanasLaiks = FailuRedigetajs.intDatuAtgriezejs("maxSerkocinaDegsanasLaiks");
 
     // Spoku dati.
-    static int logaSpokaAgresivitatesLimits = FailuRedigetajs.intDatuAtgriezejs("logaSpokaAgresivitatesLimits");
-    static int durvjuSpokaAgresivitatesLimits = FailuRedigetajs.intDatuAtgriezejs("durvjuSpokaAgresivitatesLimits");
-    static int virtuvesSpokaAgresivitatesLimits = FailuRedigetajs.intDatuAtgriezejs("virtuvesSpokaAgresivitatesLimits");
+    public static int logaSpokaAgresivitatesLimits = FailuRedigetajs.intDatuAtgriezejs("logaSpokaAgresivitatesLimits");
+    public static int durvjuSpokaAgresivitatesLimits = FailuRedigetajs.intDatuAtgriezejs("durvjuSpokaAgresivitatesLimits");
+    public static int virtuvesSpokaAgresivitatesLimits = FailuRedigetajs.intDatuAtgriezejs("virtuvesSpokaAgresivitatesLimits");
 
     static int logaSpokaDrosibasRobezas = FailuRedigetajs.intDatuAtgriezejs("logaSpokaDrosibasRobezas");
     static int durvjuSpokaDrosibasRobezas = FailuRedigetajs.intDatuAtgriezejs("durvjuSpokaDrosibasRobezas");
@@ -62,7 +69,7 @@ public class Main {
             // * ////////////////////////////////////////////////////// S P Ē L E S   I Z V Ē L N E //////////////////////////////////////////////////////
             while (sakumaEkrans) {
                 VaronaDarbibas.varonaDarbibas(Ievade.ievade);
-                UIizskats.masivuIzvade(SakumaEkrans.sakumaEkranaBildesCikls());
+                IzvadeUzTerminalu.masivuIzvade(SakumaEkrans.sakumaEkranaBildesCikls());
                 try { // Vienas bildes izvade jeb beigas.
                     Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 30 FPS.
                 } catch (Exception e) {}
@@ -82,7 +89,7 @@ public class Main {
 
                 // Visām fāzēm, bildēm un visam vizuālajam ir jābūt gatavam pirms šīs metodes izsaukšanas!!!
                 // Spoku vizuālais atjaunojums notiek Laiks.java Klasē.
-                UIizskats.salipinataUIIzvade(); // Izvade uz ekrāna.
+                IzvadeUzTerminalu.salipinataUIIzvade(); // Izvade uz ekrāna.
                 
                 Ievade.notiritIevadi(); // Cikla beigās notīra Ievadi, jo visas matodes, kurām tā bija vajadzīga jau to ir paņēmušas.
 
@@ -107,7 +114,7 @@ public class Main {
         ievadesLasitajs.join();
     }
 
-    static void tiritEkranu() {
+    public static void tiritEkranu() {
         System.out.print("\033[H\033[2J"); // Notīra terminālu.
         System.out.flush(); // Kaut kas ar kursora pozīciju.
     }

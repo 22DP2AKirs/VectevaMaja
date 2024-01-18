@@ -1,3 +1,5 @@
+package Spele.FailuLietotaji;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -26,7 +28,7 @@ public class FailuRedigetajs {
 
     // * Atgriež vērtības no nolasītā faila.
     // int.
-    static int intDatuAtgriezejs(String mainigaNosaukums) {
+    public static int intDatuAtgriezejs(String mainigaNosaukums) {
         try (BufferedReader mainigoDatuLasitajs = new BufferedReader(new FileReader("Iestatijumi.csv"))) {
             // Pareizās līnijas atrašana.
             String linija;
@@ -56,7 +58,7 @@ public class FailuRedigetajs {
     }
 
     // boolean.
-    static boolean booleanDatuAtgriezejs(String mainigaNosaukums) {
+    public static boolean booleanDatuAtgriezejs(String mainigaNosaukums) {
         try (BufferedReader mainigoDatuLasitajs = new BufferedReader(new FileReader("Iestatijumi.csv"))) {
             // Pareizās līnijas atrašana.
             String linija;
