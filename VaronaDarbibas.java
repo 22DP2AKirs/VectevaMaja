@@ -18,7 +18,7 @@ class VaronaDarbibas {
         else if (Main.spelePalaista) {
             if (!ievade.equals("}")) { // Ja ievades nebija, tad nepārbauda pārējās komandas.
                 if (ievade.equals("F") && Main.atlikusoSerkocinuDaudzums != 0 && !aizdedzinatsSerkocins) {
-                    if (Spoki.rand.nextInt(4) == 0) { // 25 % iespēja aizdedzināt sērkociņu.
+                    if (Spoki.rand.nextInt(3) == 0) { // 33.33 % iespēja aizdedzināt sērkociņu.
                         SkanasSpeletajs.SpeletSkanu("Skanas faili\\lighting-matches.wav", 0);
                         aizdedzinatsSerkocins = true;
                         Main.atlikusoSerkocinuDaudzums--;
@@ -171,12 +171,12 @@ class VaronaDarbibas {
             }
         }
         else if (Main.varonaVirzienaSkaitlis == 1) { // Labās puses darbības.
-            if (panemtaIevade.equals("E") && Main.elektribaIeslegta) {
+            if (panemtaIevade.equals("E") && Main.elektribaIeslegta) { //* Elektrības izslēgšana.
                 SkanasSpeletajs.SpeletSkanu("Skanas faili\\fuse-box-turning-on-off.wav", 0);
                 Main.elektribaIeslegta = false;
                 Spoki.virtuvesSpoksAktivs = false;
                 Arrays.fill(Main.istabuGaismasIeslegtas, false);
-                Laiks.gaidisanasLaiks = 10;
+                Laiks.gaidisanasLaiks = 3;
             }
         }
         else if (Main.varonaVirzienaSkaitlis == 2) { // Lejas darbības.

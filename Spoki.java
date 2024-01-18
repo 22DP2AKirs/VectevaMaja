@@ -30,22 +30,15 @@ public class Spoki {
     String[] logaSpokaIstabas = {"Gulta","Divans","Durvis","Virtuve"};
     String[] spokuVeidi = {"loga", "durvju", "virtuves"};
 
-    public Spoki(String spokaVeids) { // Konstruktors.
-        if (spokaVeids.equals("loga")) {
-            spokaAgresivitatesLimits = Main.logaSpokaAgresivitatesLimits;
-        } 
-        else if (spokaVeids.equals("durvju")) {
-            spokaAgresivitatesLimits = Main.durvjuSpokaAgresivitatesLimits;
-        } 
-        else if (spokaVeids.equals("virtuves")) {
-            spokaAgresivitatesLimits = Main.virtuvesSpokaAgresivitatesLimits;
-        }
-        spokaDrosibasRobezas = 3;
+    public Spoki(String spokaVeids, int spokaAgresivitatesLimits) { // Konstruktors.
+        this.spokaAgresivitatesLimits = spokaAgresivitatesLimits;
         this.spokaVeids = spokaVeids;
+
+        spokaDrosibasRobezas = 3;
         spokaFazesIndeks = 0; // 0 nozīmē, ka spoks nav sācis uzbrukt.
         vaiSpoksKustas = false;
         spoksAktivs = false;
-        spokaIstaba = "";
+        spokaIstaba = ""; // Svarīgs tikai loga spokam.
     }
 
     void randomKustibasCiparaAtjaunosana() {
@@ -72,23 +65,23 @@ public class Spoki {
     void istabuBildesFazuAtjaunosana(String spokaVeids, String istaba) {
         if (spokaVeids.equals("loga") && spokaFazesIndeks < 9) {
             if (istaba.equals("Gulta")) {
-                IstabuIzskati.gultasLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieGultas[spokaFazesIndeks];
+                SpokuIzskati.gultasLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieGultas[spokaFazesIndeks];
             }
             else if (istaba.equals("Divans")) {
-                IstabuIzskati.divanaLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieDivana[spokaFazesIndeks];
+                SpokuIzskati.divanaLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieDivana[spokaFazesIndeks];
             }
             else if (istaba.equals("Durvis")) {
-                IstabuIzskati.durvjuLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieDurvim[spokaFazesIndeks];
+                SpokuIzskati.durvjuLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieDurvim[spokaFazesIndeks];
             }
             else if (istaba.equals("Virtuve")) {
-                IstabuIzskati.virtuvesLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieVirtuves[spokaFazesIndeks];
+                SpokuIzskati.virtuvesLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieVirtuves[spokaFazesIndeks];
             }
         }
         else if (spokaVeids.equals("durvju") && spokaFazesIndeks < 10) {
-            IstabuIzskati.durSpokaFazesBilde = SpokuIzskati.durvjuSpokaIzskati[spokaFazesIndeks];
+            SpokuIzskati.durSpokaFazesBilde = SpokuIzskati.durvjuSpokaIzskati[spokaFazesIndeks];
         }
         else if (spokaVeids.equals("virtuves") && spokaFazesIndeks < 11) {
-            IstabuIzskati.virtPrieksasPagrabaBildesArSpoku = SpokuIzskati.virtuvesSpokaIzskati[spokaFazesIndeks];
+            SpokuIzskati.virtPrieksasPagrabaBildesArSpoku = SpokuIzskati.virtuvesSpokaIzskati[spokaFazesIndeks];
         }
         else { // Kods kurš strādās, tikai tad, kad spēlētājs nomirs no spoka. ! ! ! Z A U D Ē Š A N A S   K O D S ! ! !
             if (!Main.varonaNemirstiba) {
@@ -131,9 +124,9 @@ public class Spoki {
     }
 
     static Spoki[] spokuStati = {
-        new Spoki("loga"),
-        new Spoki("durvju"),
-        new Spoki("virtuves")
+        new Spoki("loga", Main.logaSpokaAgresivitatesLimits),
+        new Spoki("durvju", Main.durvjuSpokaAgresivitatesLimits),
+        new Spoki("virtuves", Main.virtuvesSpokaAgresivitatesLimits)
     };
 
     static void spokuInformacijasIzvade() {

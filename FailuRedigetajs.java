@@ -6,6 +6,7 @@ import java.io.FileWriter;
 // try (Scanner failuLasitajs = new Scanner(Paths.get("Iestatijumi.csv"))) { // Scanner() konstruktorā ieliek datus jeb failu, kuru viņam ir jālasa un Paths.get() iegūst ceļu uz šo failu pēc dotā faila nosaukuma.
 
 public class FailuRedigetajs {
+    // Izprintē jeb izvada visus faila datus.
     static void failuPrintetajs() {
         try (BufferedReader failuLasitajs = new BufferedReader(new FileReader("Iestatijumi.csv"))) {
             String linija;
@@ -15,6 +16,7 @@ public class FailuRedigetajs {
         } catch (Exception e) {}
     }
 
+    // Jebkurā uzrādītajā failā ieraksta norādīto tekstu.
     static void failuRakstitajs(String rakstamaisTeksts) {
         try (BufferedWriter rakstitajs = new BufferedWriter(new FileWriter("Iestatijumi.csv", true))) { // FileWriter(x, y) x - Faila nosaukums, y - append režīms (true - pieraksta, false - pārraksta).
             rakstitajs.write(rakstamaisTeksts);
@@ -22,6 +24,8 @@ public class FailuRedigetajs {
         } catch (Exception e) {}
     }
 
+    // * Atgriež vērtības no nolasītā faila.
+    // int.
     static int intDatuAtgriezejs(String mainigaNosaukums) {
         try (BufferedReader mainigoDatuLasitajs = new BufferedReader(new FileReader("Iestatijumi.csv"))) {
             // Pareizās līnijas atrašana.
@@ -37,6 +41,7 @@ public class FailuRedigetajs {
         throw new RuntimeException("Iestatijumos vai ka parametrs mainigais int ar nosaukumu: " + mainigaNosaukums + " ir nepareizs!");
     }
 
+    // String.
     static String stringDatuAtgriezejs(String mainigaNosaukums) {
         try (BufferedReader mainigoDatuLasitajs = new BufferedReader(new FileReader("Iestatijumi.csv"))) {
             // Pareizās līnijas atrašana.
@@ -50,6 +55,7 @@ public class FailuRedigetajs {
         throw new RuntimeException("Iestatijumos vai ka parametrs mainigais String ar nosaukumu: " + mainigaNosaukums + " ir nepareizs!");
     }
 
+    // boolean.
     static boolean booleanDatuAtgriezejs(String mainigaNosaukums) {
         try (BufferedReader mainigoDatuLasitajs = new BufferedReader(new FileReader("Iestatijumi.csv"))) {
             // Pareizās līnijas atrašana.
@@ -68,6 +74,4 @@ public class FailuRedigetajs {
         } catch (Exception e) {}
         throw new RuntimeException("Iestatijumos vai ka parametrs mainigais boolean ar nosaukumu: " + mainigaNosaukums + " ir nepareizs!");
     }
-
-
 }

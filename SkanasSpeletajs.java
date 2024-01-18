@@ -13,7 +13,7 @@ public class SkanasSpeletajs extends Thread {
             try {
                 Thread.sleep(96000);
             } catch (Exception e) {
-                // TODO: handle exception
+                //  handle exception
             }
         }
     }

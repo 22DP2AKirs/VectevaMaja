@@ -1,8 +1,4 @@
-
-import java.util.Arrays;
-
 import Izskati.SpokuIzskati;
-
 
 public class IstabuIzskati {
     // Durju istabas parastie skati jeb stāvokļi.
@@ -47,13 +43,13 @@ public class IstabuIzskati {
     public static String[] modificetaDurvjuPrieksasBildesIzvade() {
         String[] durKreisaPuse = {
         " /  |    |       ________________________________                           |   ",
-        "/   |    |      " + durvjuLogaSpokaFazesBilde[0] + "                          |   ",
-        "    |    |      " + durvjuLogaSpokaFazesBilde[1] + "                          |   ",
-        "    |    |      " + durvjuLogaSpokaFazesBilde[2] + "                          |   ",
-        "    |    |      " + durvjuLogaSpokaFazesBilde[3] + "                          |   ",
-        "    | +  |      " + durvjuLogaSpokaFazesBilde[4] + "                          |   ",
-        "    |   /|      " + durvjuLogaSpokaFazesBilde[5] + "                          |   ",
-        "    |  / |      " + durvjuLogaSpokaFazesBilde[6] + "                          |   ",
+        "/   |    |      " + SpokuIzskati.durvjuLogaSpokaFazesBilde[0] + "                          |   ",
+        "    |    |      " + SpokuIzskati.durvjuLogaSpokaFazesBilde[1] + "                          |   ",
+        "    |    |      " + SpokuIzskati.durvjuLogaSpokaFazesBilde[2] + "                          |   ",
+        "    |    |      " + SpokuIzskati.durvjuLogaSpokaFazesBilde[3] + "                          |   ",
+        "    | +  |      " + SpokuIzskati.durvjuLogaSpokaFazesBilde[4] + "                          |   ",
+        "    |   /|      " + SpokuIzskati.durvjuLogaSpokaFazesBilde[5] + "                          |   ",
+        "    |  / |      " + SpokuIzskati.durvjuLogaSpokaFazesBilde[6] + "                          |   ",
         "  + | /  |      |/______________________________\\|               ___________|   ",
         "    |/   |                                                       \\           \\  ",
         "    /____|                                                        \\           \\ ",
@@ -66,26 +62,26 @@ public class IstabuIzskati {
     }
 
     
-    public static String[] durSpokaFazesBilde = SpokuIzskati.durvisCiet;
+    
 
     public static String[] modificetasDurvjuLabasPusesBildesIzvade() {
         String[] durvisPrieksa= {
             "             |                                                   |              ",
             "             |                              __________________   |              ",
-            "             |                        " + durSpokaFazesBilde[0]+ " |              ",
-            " /|          |                        " + durSpokaFazesBilde[1]+ " |   |\\       __",
-            "/ |          |                        " + durSpokaFazesBilde[2]+ " |   | \\     /  ",
-            "| |          |                        " + durSpokaFazesBilde[3]+ " |   |  \\   /   ",
-            "| |          |                        " + durSpokaFazesBilde[4]+ " |   |\\| |  |   ",
-            "| |          |                        " + durSpokaFazesBilde[5]+ " |   |\\|/|  |   ",
-            "| |          |___________________     " + durSpokaFazesBilde[6]+ " |   | |/|  |   ",
-            "| |         /                    \\    " + durSpokaFazesBilde[7]+ " |    \\| |  |   ",
-            "| |        /                      \\   " + durSpokaFazesBilde[8]+ " |     \\ |  |   ",
-            "| |       /________________________\\  " + durSpokaFazesBilde[9]+ " |      \\|  |   ",
-            "|_|        ||___________________||____" + durSpokaFazesBilde[10]+ "_|          |   ",
-            " /         |                     |    " + durSpokaFazesBilde[11]+ "  \\         |   ",
-            "/         /|                     |    " + durSpokaFazesBilde[12]+ "   \\        |   ",
-            "         /                            " + durSpokaFazesBilde[13]+ "    \\       |   "
+            "             |                        " + SpokuIzskati.durSpokaFazesBilde[0]+ " |              ",
+            " /|          |                        " + SpokuIzskati.durSpokaFazesBilde[1]+ " |   |\\       __",
+            "/ |          |                        " + SpokuIzskati.durSpokaFazesBilde[2]+ " |   | \\     /  ",
+            "| |          |                        " + SpokuIzskati.durSpokaFazesBilde[3]+ " |   |  \\   /   ",
+            "| |          |                        " + SpokuIzskati.durSpokaFazesBilde[4]+ " |   |\\| |  |   ",
+            "| |          |                        " + SpokuIzskati.durSpokaFazesBilde[5]+ " |   |\\|/|  |   ",
+            "| |          |___________________     " + SpokuIzskati.durSpokaFazesBilde[6]+ " |   | |/|  |   ",
+            "| |         /                    \\    " + SpokuIzskati.durSpokaFazesBilde[7]+ " |    \\| |  |   ",
+            "| |        /                      \\   " + SpokuIzskati.durSpokaFazesBilde[8]+ " |     \\ |  |   ",
+            "| |       /________________________\\  " + SpokuIzskati.durSpokaFazesBilde[9]+ " |      \\|  |   ",
+            "|_|        ||___________________||____" + SpokuIzskati.durSpokaFazesBilde[10]+ "_|          |   ",
+            " /         |                     |    " + SpokuIzskati.durSpokaFazesBilde[11]+ "  \\         |   ",
+            "/         /|                     |    " + SpokuIzskati.durSpokaFazesBilde[12]+ "   \\        |   ",
+            "         /                            " + SpokuIzskati.durSpokaFazesBilde[13]+ "    \\       |   "
         };
         return durvisPrieksa;
     }
@@ -150,12 +146,12 @@ public class IstabuIzskati {
     public static String[] modificetaDivanaPrieksasBildesIzvade() {
         String[] divanaPrieksa = {
         "             |           ____________________________            |              ",
-        "             |          " + divanaLogaSpokaFazesBilde[0] + "           |              ",
-        "             |          " + divanaLogaSpokaFazesBilde[1] + "           |              ",
-        "             |          " + divanaLogaSpokaFazesBilde[2] + "           |              ",
-        "             |          " + divanaLogaSpokaFazesBilde[3] + "           |              ",
-        "           __|          " + divanaLogaSpokaFazesBilde[4] + "           | |            ",
-        "          /   \\         " + divanaLogaSpokaFazesBilde[5] + "           | |            ",
+        "             |          " + SpokuIzskati.divanaLogaSpokaFazesBilde[0] + "           |              ",
+        "             |          " + SpokuIzskati.divanaLogaSpokaFazesBilde[1] + "           |              ",
+        "             |          " + SpokuIzskati.divanaLogaSpokaFazesBilde[2] + "           |              ",
+        "             |          " + SpokuIzskati.divanaLogaSpokaFazesBilde[3] + "           |              ",
+        "           __|          " + SpokuIzskati.divanaLogaSpokaFazesBilde[4] + "           | |            ",
+        "          /   \\         " + SpokuIzskati.divanaLogaSpokaFazesBilde[5] + "           | |            ",
         "         /    |         |/__________________________\\|         __|_|_    /      ",
         "        /     |                                           ____|\\   | \\  /       ",
         "       /.  x  |                                          |\\   |.\\     \\/        ",
@@ -246,13 +242,13 @@ public class IstabuIzskati {
     public static String[] modificetasGultasKreisasPusesIzvade() {
     String[] gultPrieksa = {   
         "             |                         ________________________  |              ",  
-        "             |                        " + gultasLogaSpokaFazesBilde[0] + " |              ", 
-        "             |                        " + gultasLogaSpokaFazesBilde[1] + " | |\\           " , 
-        "             |                        " + gultasLogaSpokaFazesBilde[2] + " | | \\          " , 
-        "             |_                       " + gultasLogaSpokaFazesBilde[3] + " | |  \\         " , 
-        "             ( )                      " + gultasLogaSpokaFazesBilde[4] + " | ||\\_|        " , 
-        "         ____| |                      " + gultasLogaSpokaFazesBilde[5] + " | |\\ /|        " , 
-        "    _   /    | |                   _  " + gultasLogaSpokaFazesBilde[6] + " | | | |        " , 
+        "             |                        " + SpokuIzskati.gultasLogaSpokaFazesBilde[0] + " |              ", 
+        "             |                        " + SpokuIzskati.gultasLogaSpokaFazesBilde[1] + " | |\\           " , 
+        "             |                        " + SpokuIzskati.gultasLogaSpokaFazesBilde[2] + " | | \\          " , 
+        "             |_                       " + SpokuIzskati.gultasLogaSpokaFazesBilde[3] + " | |  \\         " , 
+        "             ( )                      " + SpokuIzskati.gultasLogaSpokaFazesBilde[4] + " | ||\\_|        " , 
+        "         ____| |                      " + SpokuIzskati.gultasLogaSpokaFazesBilde[5] + " | |\\ /|        " , 
+        "    _   /    | |                   _  " + SpokuIzskati.gultasLogaSpokaFazesBilde[6] + " | | | |        " , 
         "   ( ) /     | |                  ( ) |/______________________\\| | | | |        " , 
         "   | |/      |_|__________________| | ^   _________________      |  \\  |        " , 
         "   | |      / /                   | |$|==|_|___|__|__|___|_|     |   \\ |        " , 
@@ -300,9 +296,9 @@ public class IstabuIzskati {
         "/      /O | |   | //                               |         | \\|         |  | ~",
         "  {}  //| | |   |//                                          | ||         |  |()"
     };
-    
+
     // Virtuves durvju izskati.
-  public static String[] izslegtsPagrabsVirtuveKreisa = { // Tumš pagrabs.
+    public static String[] izslegtsPagrabsVirtuveKreisa = { // Tumš pagrabs.
         "   |  /░░░░░░\\",
         "   | |░░░░░░░░\\",
         "   | |░░░░░░░░░",
@@ -313,7 +309,7 @@ public class IstabuIzskati {
         "", // Lai strādātu pārveidojumi.
     };
 
-  public static String[] ieslegtsPagrabsVirtuveKreisa = { // Gaiš pagrabs.
+    public static String[] ieslegtsPagrabsVirtuveKreisa = { // Gaiš pagrabs.
         "   |  /      \\",
         "   | |        \\",
         "   | |",
@@ -324,27 +320,25 @@ public class IstabuIzskati {
         "   \\  \\"
     };
 
-    private static String[] virtKreisaPusesPagrabaSkats = new String[7];
-    public static void virtKreisasPusesPagrabs() {
-        if (Main.pagrabaGaismaON) {
+    public static String[] modificetasVirtLabasPusesIzvade() {
+        String[] virtKreisaPusesPagrabaSkats = new String[7];
+        if (Main.pagrabaGaisma) {
             virtKreisaPusesPagrabaSkats = ieslegtsPagrabsVirtuveKreisa;
         } else {
             virtKreisaPusesPagrabaSkats = izslegtsPagrabsVirtuveKreisa;
         }
-    }   
 
-    public static String[] modificetasVirtLabasPusesIzvade() {
         // Modificētā, galējā bilde.
         String[] virtuveKreisa = {
             "           /              /|                                     |              ",
             "          /              / |                                     |              ",
             "         /______________/  |      ___________________________    |   ______     ",
-            "    __   | ____   ____ |   |     " + virtuvesLogaSpokaFazesBilde[0] + virtKreisaPusesPagrabaSkats[0] + "    ",
-            "   /  \\  ||    | |    ||   |     " + virtuvesLogaSpokaFazesBilde[1] + virtKreisaPusesPagrabaSkats[1] + "   ",
-            "  /   |  ||    | |    ||   |     " + virtuvesLogaSpokaFazesBilde[2] + virtKreisaPusesPagrabaSkats[2] + "|  ",
-            " /    |  ||    | |    ||   |     " + virtuvesLogaSpokaFazesBilde[3] + virtKreisaPusesPagrabaSkats[2] + "|  ",
-            "/     |  ||    | |    ||   ||    " + virtuvesLogaSpokaFazesBilde[4] + virtKreisaPusesPagrabaSkats[2] + "|  ",
-            "      |  ||    | |    ||   /|    " + virtuvesLogaSpokaFazesBilde[5] + virtKreisaPusesPagrabaSkats[2] + "|  ",
+            "    __   | ____   ____ |   |     " + SpokuIzskati.virtuvesLogaSpokaFazesBilde[0] + virtKreisaPusesPagrabaSkats[0] + "    ",
+            "   /  \\  ||    | |    ||   |     " + SpokuIzskati.virtuvesLogaSpokaFazesBilde[1] + virtKreisaPusesPagrabaSkats[1] + "   ",
+            "  /   |  ||    | |    ||   |     " + SpokuIzskati.virtuvesLogaSpokaFazesBilde[2] + virtKreisaPusesPagrabaSkats[2] + "|  ",
+            " /    |  ||    | |    ||   |     " + SpokuIzskati.virtuvesLogaSpokaFazesBilde[3] + virtKreisaPusesPagrabaSkats[2] + "|  ",
+            "/     |  ||    | |    ||   ||    " + SpokuIzskati.virtuvesLogaSpokaFazesBilde[4] + virtKreisaPusesPagrabaSkats[2] + "|  ",
+            "      |  ||    | |    ||   /|    " + SpokuIzskati.virtuvesLogaSpokaFazesBilde[5] + virtKreisaPusesPagrabaSkats[2] + "|  ",
             "      |  || ( )| |( ) || |/||    |/_________________________\\|   | |" + virtKreisaPusesPagrabaSkats[3] + "|  ",
             "      |  ||    | |    || | ||                                    | |" + virtKreisaPusesPagrabaSkats[3] + "|  ",
             "      |  ||    | |    || | /|_____                               | |" + virtKreisaPusesPagrabaSkats[3] + "|  ",
@@ -353,11 +347,6 @@ public class IstabuIzskati {
             "      |  ||____| |____|| |  |  | |                                    " + virtKreisaPusesPagrabaSkats[5] + "|  ",
             "      |  |             |/|     |                                        " + virtKreisaPusesPagrabaSkats[6] + "|  "};
         return virtuveKreisa; // Atgriež tikko izveidoto array jeb masīvu izvadei.
-    }
-    
-    // Sagatavo virtuves kreiso pusi izvadei.
-    public static void virtuvesPagrabaGaismasStavoklaNoteiksana() {
-        virtKreisasPusesPagrabs(); // Sagatavo pagraba skatu.
     }
 
     // ------------------------------------------------------------------------------ Gultas loga spoks ------------------------------------------------------------------------ //
@@ -422,28 +411,25 @@ public class IstabuIzskati {
     //     "15/    /  /                                                             \\  ",
     //     "16    /  /                                                               \\"};
 
-  public static String[] virtuvesLogaSpokaFazesBilde = SpokuIzskati.virtuvesLogsCiet; // Definē jauno array.
-  public static String[] divanaLogaSpokaFazesBilde = SpokuIzskati.divanaLogsCiet; // Definē jauno array.
-  public static String[] gultasLogaSpokaFazesBilde = SpokuIzskati.gultasLogsCiet; // Definē jauno array.
-    public static String[] durvjuLogaSpokaFazesBilde = SpokuIzskati.durvjuLogsCiet; // Definē jauno array.
+    
     
 
-    public static String[] virtPrieksasPagrabaBildesArSpoku = SpokuIzskati.virtuvesSp0;
+    
     public static String[] modificetasVirtLejasBildesIzvade() {
         String[] virtuvePrieksa = {
                 "   |    __.-------.__                                       |  |       |       |",
-                "   | .--" + virtPrieksasPagrabaBildesArSpoku[0] + "--.                                    |  |    ( )|( )    |",
-                "  .| |" + virtPrieksasPagrabaBildesArSpoku[1] + "|  _                                 |  |_______|_______|",
-                " /|| |" + virtPrieksasPagrabaBildesArSpoku[2] + "| |=|                                |  |_______________|",
-                "/ || |" + virtPrieksasPagrabaBildesArSpoku[3] + "| |_|                                |  |       |       |",
-                "| || |" + virtPrieksasPagrabaBildesArSpoku[4] + "|                                    |  |       |       |",
-                "| || |" + virtPrieksasPagrabaBildesArSpoku[5] + "|          |==^                      |  |       |       |",
-                "| || |" + virtPrieksasPagrabaBildesArSpoku[6] + "|________V__||__V____________________|  |       |       |",
-                "|_|| |" + virtPrieksasPagrabaBildesArSpoku[7] + "|\\ ---O |        \\      \\  {+}   {+}  \\ |       |       |",
-                " / | |" + virtPrieksasPagrabaBildesArSpoku[8] + "| \\_____\\________/_______\\_____________\\|    ( )|( )    |",
-                "/  | |" + virtPrieksasPagrabaBildesArSpoku[9] + "| |  _______    _______  |==(+)====(-)==|       |       |",
-                "   | |" + virtPrieksasPagrabaBildesArSpoku[10] + "| | |       |  |       | | |          | |       |       |",
-                "   |_|" + virtPrieksasPagrabaBildesArSpoku[11] + "| | |    ( )|  |( )    | | |          | |       |       |",
+                "   | .--" + SpokuIzskati.virtPrieksasPagrabaBildesArSpoku[0] + "--.                                    |  |    ( )|( )    |",
+                "  .| |" + SpokuIzskati.virtPrieksasPagrabaBildesArSpoku[1] + "|  _                                 |  |_______|_______|",
+                " /|| |" + SpokuIzskati.virtPrieksasPagrabaBildesArSpoku[2] + "| |=|                                |  |_______________|",
+                "/ || |" + SpokuIzskati.virtPrieksasPagrabaBildesArSpoku[3] + "| |_|                                |  |       |       |",
+                "| || |" + SpokuIzskati.virtPrieksasPagrabaBildesArSpoku[4] + "|                                    |  |       |       |",
+                "| || |" + SpokuIzskati.virtPrieksasPagrabaBildesArSpoku[5] + "|          |==^                      |  |       |       |",
+                "| || |" + SpokuIzskati.virtPrieksasPagrabaBildesArSpoku[6] + "|________V__||__V____________________|  |       |       |",
+                "|_|| |" + SpokuIzskati.virtPrieksasPagrabaBildesArSpoku[7] + "|\\ ---O |        \\      \\  {+}   {+}  \\ |       |       |",
+                " / | |" + SpokuIzskati.virtPrieksasPagrabaBildesArSpoku[8] + "| \\_____\\________/_______\\_____________\\|    ( )|( )    |",
+                "/  | |" + SpokuIzskati.virtPrieksasPagrabaBildesArSpoku[9] + "| |  _______    _______  |==(+)====(-)==|       |       |",
+                "   | |" + SpokuIzskati.virtPrieksasPagrabaBildesArSpoku[10] + "| | |       |  |       | | |          | |       |       |",
+                "   |_|" + SpokuIzskati.virtPrieksasPagrabaBildesArSpoku[11] + "| | |    ( )|  |( )    | | |          | |       |       |",
                 "  /                    \\ | |_______|  |_______| | |__________| |_______|_______|",
                 " /                      \\|______________________|______________|_______________|",
                 "/                                                                               "};
@@ -451,7 +437,7 @@ public class IstabuIzskati {
     }
 
    
-  public static String[] [][] istabuMasivaAtjaunosana() {
+    public static String[] [][] istabuMasivaAtjaunosana() {
 
         String[] [][] istabaUnVirziens = { // {Priekša, LabāPuse, Leja, KreisāPuse} // Istabas virzieni.
         {gultasPrieksa, gultasLabaPuse(), gultasLeja, modificetasGultasKreisasPusesIzvade()}, // Gultas istaba [x][].
@@ -461,93 +447,5 @@ public class IstabuIzskati {
         }; 
         
         return istabaUnVirziens;
-    }
-
-
-  public static String[] istabasArParklajumiem(String[] nemainitaVaronaAktualaIstabas) {
-        // Parametra masīva vērtību pārkopēšana un jauna masīva, lai nebojātu masīvu, kas ir sniegts kā parametrs.
-        // mainita - drīkst mainīt, nemainītā - NEDRĪKST MAINĪT.
-        String[] mainitaVaronaAktualaIstabasKopija = Arrays.copyOf(nemainitaVaronaAktualaIstabas, nemainitaVaronaAktualaIstabas.length); // Masīva elementu pārkopēšana.
-
-        // Dažādie nosacījumi, lai noteiktu pareizo pārklājumu, pareizai situācijai.
-        if (Main.elektribaIeslegta && VaronaDarbibas.aizdedzinatsSerkocins){
-            mainitaVaronaAktualaIstabasKopija = serkocinaPieliksanaPieBildes(mainitaVaronaAktualaIstabasKopija);
-        }
-        else if (!Main.elektribaIeslegta && VaronaDarbibas.aizdedzinatsSerkocins) {
-            mainitaVaronaAktualaIstabasKopija = tumsaIstabaArAizdedzinatuSerkocinu(mainitaVaronaAktualaIstabasKopija, nemainitaVaronaAktualaIstabas);
-        }
-        else if (!Main.elektribaIeslegta && !VaronaDarbibas.aizdedzinatsSerkocins) { // Ja mājā ir izslēgta elektrība un sērkociņš ir neaizdedzināts.
-            mainitaVaronaAktualaIstabasKopija = istabaArIzslegtuGaismu();
-        }
-
-        // Pārbauda katru istabu, un nosaka vai gaisma tanī būs izslēgta vai izslēgta ar sērkociņu.
-        mainitaVaronaAktualaIstabasKopija = katrasIstabasParbaudeParGaismasStatusu(mainitaVaronaAktualaIstabasKopija, nemainitaVaronaAktualaIstabas);
-        
-        return mainitaVaronaAktualaIstabasKopija;
-    }
-
-
-  public static String[] katrasIstabasParbaudeParGaismasStatusu(String[] mainamaisMasivs, String[] originalaisMasivs) {
-        // Pārbauda katru istabu, un nosaka vai gaisma tanī būs izslēgta vai izslēgta ar sērkociņu.
-        if (!Main.istabuGaismasIeslegtas[Main.varonaIstabasSkaitlis] && !VaronaDarbibas.aizdedzinatsSerkocins) {
-            mainamaisMasivs = istabaArIzslegtuGaismu();
-        }
-        else if (!Main.istabuGaismasIeslegtas[Main.varonaIstabasSkaitlis] && VaronaDarbibas.aizdedzinatsSerkocins) {
-            mainamaisMasivs = tumsaIstabaArAizdedzinatuSerkocinu(mainamaisMasivs, originalaisMasivs);
-        }
-
-        return mainamaisMasivs;
-    }
-
-
-  public static String[] tumsaIstabaArAizdedzinatuSerkocinu(String[] apstradajamaisMasivs, String[] originalaisMasivs) {
-        apstradajamaisMasivs = istabaArIzslegtuGaismu();
-        apstradajamaisMasivs[8] = K.TPELEKS + originalaisMasivs[8] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[70G░░░░░░░░░░░░" + K.RESET;
-        apstradajamaisMasivs[9] = K.TPELEKS + originalaisMasivs[9] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[73G░░░░░░░░░" + K.RESET;
-        apstradajamaisMasivs[10] = K.TPELEKS + originalaisMasivs[10] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[76G░░░░░░" + K.RESET;
-        apstradajamaisMasivs[11] = K.TPELEKS + originalaisMasivs[11] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[79G░░░" + K.RESET;
-        apstradajamaisMasivs[12] = K.TPELEKS + originalaisMasivs[12] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[80G░░" + K.RESET;
-        apstradajamaisMasivs[13] = K.TPELEKS + originalaisMasivs[13] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[80G░░" + K.RESET;
-        apstradajamaisMasivs[14] = K.TPELEKS + originalaisMasivs[14] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[80G░░" + K.RESET;
-        apstradajamaisMasivs[15] = K.TPELEKS + originalaisMasivs[15] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[80G░░" + K.RESET;
-
-        apstradajamaisMasivs = serkocinaPieliksanaPieBildes(apstradajamaisMasivs);
-        return apstradajamaisMasivs;
-    }
-
-
-  public static String[] serkocinaPieliksanaPieBildes(String[] apstradajamaisMasivs) {
-        apstradajamaisMasivs[11] += serkocinaIzskats[0];
-        apstradajamaisMasivs[12] += serkocinaIzskats[1];
-        apstradajamaisMasivs[13] += serkocinaIzskats[2];
-        apstradajamaisMasivs[14] += serkocinaIzskats[3];
-        apstradajamaisMasivs[15] += serkocinaIzskats[4];
-
-        return apstradajamaisMasivs;
-    }
-
-
-  public static String[] serkocinaIzskats = {
-        // Ja apstrādāto līniju pārdefinē ar sērkociņu, tad pārdefinētā līnija neatjaunosies iepriekšējā ciklā "Iegūst neapstrādāto bildi". Būs statiska bilde ar sērkociņu klāt un nodzēstu galu.
-        // Ja apstrādātai līnijai pieliks klāt sērkociņu, tad pārveidotā līnija tiks atjaunot, bet būs ar nodzēstu galu.
-        // \r nepalīdz atstāt galu.
-        // Pieliekot RESET vai krāsas maiņu arī nepalīdz.
-
-        // !!!!!!!!! Pieliekot beigās ANSI \033[#G kodu (Pārvietot rakstīšanas kursoru uz # kolonnu) ar # esot visa teksta līnijas beigas (arī aiz sērkociņa) nenodzēsa tālākos tekstu. !!!!!!!!!
-        // "\033[82G"
-
-        "\033[61G" + K.DZELTENS + "/\\_" + K.RESET + "\033[82G",
-        "\033[60G"+ K.ORANZS + "/   \\" + K.RESET + "\033[82G",
-        "\033[60G" + K.SARKANS + "| O  |" + K.RESET + "\033[82G",
-        "\033[61G" + K.SARKANS + "'-\\'" + K.RESET + "\033[82G",
-        "\033[64G" + K.BRUNS + "\\" + K.RESET + "\033[82G"
-    };
-
-
-  public static String[] istabaArIzslegtuGaismu() {
-        String[] masivs = new String[K.BILDES_MASIVA_IZMERS];
-        Arrays.fill(masivs, K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET); // Aizpilda visus masīva indeksus ar vienu un to pašu elementu.
-        
-        return masivs;
     }
 }

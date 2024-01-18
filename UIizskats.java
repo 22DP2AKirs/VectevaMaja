@@ -130,6 +130,7 @@ class UIizskats {
         } else if (Main.varonaVirzienaSkaitlis == 3) {
             noteiktaMapesBultina = "<";
         }
+        
         return noteiktaMapesBultina;
     }
 
@@ -139,7 +140,7 @@ class UIizskats {
         System.out.println("\r▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓"); // Ekrāna augšējā daļa.
 
         // Pievieno apstrādātas mājas bildes ar "Overlayiem (Pārklājumiem)".
-        for (String parklataLinija : IstabuIzskati.istabasArParklajumiem(IstabuIzskati.istabuMasivaAtjaunosana()[Main.varonaIstabasSkaitlis][Main.varonaVirzienaSkaitlis])) {
+        for (String parklataLinija : IzvadeUzTerminalu.istabasArParklajumiem(IstabuIzskati.istabuMasivaAtjaunosana()[Main.varonaIstabasSkaitlis][Main.varonaVirzienaSkaitlis])) {
             programmasGalejaIzvadeUzEkrana.add("\r|" + parklataLinija + "|");
         }
         

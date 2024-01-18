@@ -1,4 +1,4 @@
-class K {
+public class K {
     static final String RESET = "\u001B[0m";
 
     static final String MELNS = "\u001B[30m";

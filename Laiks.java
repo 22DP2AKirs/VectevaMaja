@@ -8,9 +8,9 @@ public class Laiks extends Thread {
     @Override
     public void run() {
         // Izveido visus spokus.
-        Spoki logaSpoks = new Spoki("loga");
-        Spoki durvjuSpoks = new Spoki("durvju");
-        Spoki virtuvesSpoks = new Spoki("virtuves");
+        Spoki logaSpoks = new Spoki("loga", Main.logaSpokaAgresivitatesLimits);
+        Spoki durvjuSpoks = new Spoki("durvju", Main.durvjuSpokaAgresivitatesLimits);
+        Spoki virtuvesSpoks = new Spoki("virtuves", Main.virtuvesSpokaAgresivitatesLimits);
 
         while (Main.spelePalaista) {
             laikaVadiba(); // Skaita laiku un nosaka, kad spēle ir beigusies.
@@ -42,6 +42,7 @@ public class Laiks extends Thread {
 
             randomIespejaIzslegtKadasIstabasGaismu();
 
+            // Skaita, cik ilgi līdz elektrības pieslēgšanas.
             if (!Main.elektribaIeslegta) { // Ja false, tad ...
                 if (gaidisanasLaiks <= 0) {
                     SkanasSpeletajs.SpeletSkanu("Skanas faili\\fuse-box-turning-on-off.wav", 0);
