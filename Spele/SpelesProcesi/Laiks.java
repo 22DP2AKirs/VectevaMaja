@@ -52,7 +52,7 @@ public class Laiks extends Thread {
             // Skaita, cik ilgi līdz elektrības pieslēgšanas.
             if (!Main.elektribaIeslegta) { // Ja false, tad ...
                 if (gaidisanasLaiks <= 0) {
-                    SkanasSpeletajs.SpeletSkanu("Skanas faili\\fuse-box-turning-on-off.wav", 0);
+                    SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\fuse-box-turning-on-off.wav", 0);
                     Main.elektribaIeslegta = true;
                 }
                 gaidisanasLaiks--;
@@ -84,7 +84,7 @@ public class Laiks extends Thread {
             if (Spoki.rand.nextInt(60) + 1 == 1) {
                 if (Main.istabuGaismasIeslegtas[randomIzveletasIstabasCipars] == true) {
                     Main.istabuGaismasIeslegtas[randomIzveletasIstabasCipars] = false;
-                    SkanasSpeletajs.SpeletSkanu("Skanas faili\\gaismas-sledzis-off.wav", 0);
+                    SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-off.wav", 0);
                 }
             }
         }

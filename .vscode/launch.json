@@ -8,6 +8,13 @@
             "type": "java",
             "name": "Main",
             "request": "launch",
+            "mainClass": "Spele.SpelesProcesi.Main",
+            "projectName": "VectevaMajaJava_5d128832"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
             "mainClass": "Main",
             "projectName": "Java-programming-Game_35158c26"
         },
