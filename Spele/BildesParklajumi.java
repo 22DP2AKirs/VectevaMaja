@@ -1,7 +1,9 @@
 package Spele;
 import java.util.Arrays;
 
+import Spele.Izskati.IstabuIzskati;
 import Spele.SpelesProcesi.Main;
+import Spele.Varonis.VaronaDarbibas;
 
 public class BildesParklajumi {
     // * Atgriež masīvu, kuru izvadīs terminālī (Pēdējā bildes apstrāde).
@@ -15,6 +17,8 @@ public class BildesParklajumi {
                 virtuvesPagrabaParklajs(mainitaVaronaAktualaIstabasKopija, originalaisMasivs);
             }
         }
+
+        izslegtasIstabasGaismasParklajiNoCitam(mainitaVaronaAktualaIstabasKopija);
 
         istabasGaismasUnSerkocinaParklajumi(mainitaVaronaAktualaIstabasKopija, originalaisMasivs);
         
@@ -104,4 +108,72 @@ public class BildesParklajumi {
         
         return parklajamaisMasivs;
     } 
+
+    private static String[] izslegtasIstabasGaismasParklajiNoCitam(String[] aizpildamaisMasivs) {
+        // Nosaka varona atrasanās vietu.
+        // 0. Gulta. ; Prieksa.
+        // 1. Dīvāns. ; Laba puse.
+        // 2. Durvis. ; Leja.
+        // 3. Virtuve. ; Kreisa puse.
+        if (Main.varonaIstabasSkaitlis == 0) {
+            // Nosaka, kurā no blakus esošajām istabām ir izslēgta gaisma.
+            if (!Main.istabuGaismasIeslegtas[1] && Main.varonaVirzienaSkaitlis == 0) {
+                for (int i = 1; i < 13; i++) {
+                    aizpildamaisMasivs[i] += "\033[45G" + K.TPELEKS + IstabuIzskati.arkuGaismasAizpilditajs[0] + K.RESET + "\033[82G";
+                }
+                return aizpildamaisMasivs;
+            }
+            else if (!Main.istabuGaismasIeslegtas[3] && Main.varonaVirzienaSkaitlis == 1){
+                for (int i = 1; i < 13; i++) {
+                    aizpildamaisMasivs[i] += "\033[39G" + K.TPELEKS + IstabuIzskati.arkuGaismasAizpilditajs[0] + K.RESET + "\033[82G";
+                }
+                return aizpildamaisMasivs;
+            }
+        }
+        else if (Main.varonaIstabasSkaitlis == 1) {
+            if (!Main.istabuGaismasIeslegtas[2] && Main.varonaVirzienaSkaitlis == 1) {
+                aizpildamaisMasivs[2] += "\033[57G" + K.TPELEKS + IstabuIzskati.arkuGaismasAizpilditajs[1] + K.RESET + "\033[82G";
+                for (int i = 3; i < 13; i++) {
+                    aizpildamaisMasivs[i] += "\033[55G" + K.TPELEKS + IstabuIzskati.arkuGaismasAizpilditajs[0] + K.RESET + "\033[82G";
+                }
+                return aizpildamaisMasivs;
+            }
+            else if (!Main.istabuGaismasIeslegtas[0] && Main.varonaVirzienaSkaitlis == 2){
+                for (int i = 1; i < 13; i++) {
+                    aizpildamaisMasivs[i] += "\033[23G" + K.TPELEKS + IstabuIzskati.arkuGaismasAizpilditajs[0] + K.RESET + "\033[82G";
+                }
+                return aizpildamaisMasivs;
+            }
+        }
+        else if (Main.varonaIstabasSkaitlis == 2) {
+            if (!Main.istabuGaismasIeslegtas[3] && Main.varonaVirzienaSkaitlis == 2) {
+                for (int i = 2; i < 13; i++) {
+                    aizpildamaisMasivs[i] += "\033[20G" + K.TPELEKS + IstabuIzskati.arkuGaismasAizpilditajs[0] + K.RESET + "\033[82G";
+                }
+                return aizpildamaisMasivs;
+            }
+            else if (!Main.istabuGaismasIeslegtas[1] && Main.varonaVirzienaSkaitlis == 3){
+                aizpildamaisMasivs[1] += "\033[24G" + K.TPELEKS + IstabuIzskati.arkuGaismasAizpilditajs[1] + K.RESET + "\033[82G";
+                for (int i = 2; i < 13; i++) {
+                    aizpildamaisMasivs[i] += "\033[22G" + K.TPELEKS + IstabuIzskati.arkuGaismasAizpilditajs[0] + K.RESET + "\033[82G";
+                }
+                return aizpildamaisMasivs;
+            }
+        }
+        else if (Main.varonaIstabasSkaitlis == 3) {
+            if (!Main.istabuGaismasIeslegtas[0] && Main.varonaVirzienaSkaitlis == 3) {
+                for (int i = 1; i < 13; i++) {
+                    aizpildamaisMasivs[i] += "\033[26G" + K.TPELEKS + IstabuIzskati.arkuGaismasAizpilditajs[0] + K.RESET + "\033[82G";
+                }
+                return aizpildamaisMasivs;
+            }
+            else if (!Main.istabuGaismasIeslegtas[2] && Main.varonaVirzienaSkaitlis == 0){
+                for (int i = 2; i < 13; i++) {
+                    aizpildamaisMasivs[i] += "\033[48G" + K.TPELEKS + IstabuIzskati.arkuGaismasAizpilditajs[0] + K.RESET + "\033[82G";
+                }
+                return aizpildamaisMasivs;
+            }
+        }
+        return null;
+    }
 }

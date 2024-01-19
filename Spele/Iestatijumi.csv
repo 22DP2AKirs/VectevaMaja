@@ -22,16 +22,18 @@ virtuvesSpokaDrosibasRobezas=3
 3. Istabu Iestatijumi jeb istabuGaismasIeslegtas.
 {
 // Sākuma gaismu stāvokļi.
-gultasGaisma=T
-divanaGaisma=T
-durvjuGaisma=T
+gultasGaisma=F
+divanaGaisma=F
+durvjuGaisma=F
 virtuvesGaisma=T
+
 
 elektribaIeslegta=T
 pagrabaGaisma=T
+pagrabaGaismaStrada=T
 }
 
 4. Papildus iestatījumi.
 {
-spokiSledzAraGaismu=F
+spokiSledzAraGaismu=T
 }

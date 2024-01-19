@@ -1,8 +1,8 @@
 package Spele.SpelesProcesi;
 
 import Spele.Spoki;
-import Spele.VaronaDarbibas;
 import Spele.FailuLietotaji.SkanasSpeletajs;
+import Spele.Varonis.VaronaDarbibas;
 
 
 public class Laiks extends Thread {
@@ -10,7 +10,7 @@ public class Laiks extends Thread {
     public static String laikaTeksts = "1 2 P M ";
     public static int vienaStunda = Main.spelesIlgums / 6;
 
-    public static int gaidisanasLaiks;
+    public static int laiksCikIlgiElektribaBusIzslegta;
 
     @Override
     public void run() {
@@ -38,24 +38,24 @@ public class Laiks extends Thread {
             virtuvesSpoks.spokuVirzisanasUzPrieksu();
 
             // Vizuālo skatu atjaunošana.
-            logaSpoks.istabuBildesFazuAtjaunosana(logaSpoks.spokaVeids, logaSpoks.spokaIstaba);
-            durvjuSpoks.istabuBildesFazuAtjaunosana(durvjuSpoks.spokaVeids, durvjuSpoks.spokaIstaba);
-            virtuvesSpoks.istabuBildesFazuAtjaunosana(virtuvesSpoks.spokaVeids, virtuvesSpoks.spokaIstaba);
+            logaSpoks.istabuBildesFazuAtjaunosana(logaSpoks.spokaVeids);
+            durvjuSpoks.istabuBildesFazuAtjaunosana(durvjuSpoks.spokaVeids);
+            virtuvesSpoks.istabuBildesFazuAtjaunosana(virtuvesSpoks.spokaVeids);
 
             // Iespēja padarīt spokus aktīvus.
             logaSpoks.iespejaPadaritSpokuAktivu();
             durvjuSpoks.iespejaPadaritSpokuAktivu();
             virtuvesSpoks.iespejaPadaritSpokuAktivu();
 
-            randomIespejaIzslegtKadasIstabasGaismu();
+            randomIespejaIzslegtKadasIstabasGaismu(); // Iestatījums.
 
             // Skaita, cik ilgi līdz elektrības pieslēgšanas.
             if (!Main.elektribaIeslegta) { // Ja false, tad ...
-                if (gaidisanasLaiks <= 0) {
+                if (laiksCikIlgiElektribaBusIzslegta < 1) {
                     SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\fuse-box-turning-on-off.wav", 0);
                     Main.elektribaIeslegta = true;
                 }
-                gaidisanasLaiks--;
+                laiksCikIlgiElektribaBusIzslegta--;
             }
 
             if (VaronaDarbibas.aizdedzinatsSerkocins && VaronaDarbibas.serkocinaDeksanasLaikaSkaititajs != Main.maxSerkocinaDegsanasLaiks) {
@@ -103,16 +103,9 @@ public class Laiks extends Thread {
             laikaTeksts = " 4 A M  ";
         } else if (spelesLaiks == vienaStunda * 5) {
             laikaTeksts = " 5 A M  ";
-        } else if (spelesLaiks == vienaStunda * 6) {
+        } else if (spelesLaiks > vienaStunda * 6) {
             laikaTeksts = " 6 A M  ";
             Main.spelePalaista = false;
-
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {}
-
-            Main.tiritEkranu();
-            System.out.println("Jus izdzivojat!!\n\n\n\n\n");
         }
     }
 }

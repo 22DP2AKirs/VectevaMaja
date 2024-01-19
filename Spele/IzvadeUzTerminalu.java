@@ -39,6 +39,7 @@ public class IzvadeUzTerminalu {
         System.out.print("\033[H"); // Noliek kursoru sākuma pozīcijā 0,0 jeb pirmās rindas pirmajā kolonnā.
     }
 
+    
     public static void masivuIzvade(String[] masivs) {
         int masivaGarums = masivs.length;
         for (int i = 0; i < masivaGarums; i++) {

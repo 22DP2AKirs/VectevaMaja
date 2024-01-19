@@ -1,10 +1,10 @@
 package Spele.Izskati;
 
 import Spele.K;
-import Spele.VaronaDarbibas;
 import Spele.SpelesProcesi.Ievade;
 import Spele.SpelesProcesi.Laiks;
 import Spele.SpelesProcesi.Main;
+import Spele.Varonis.VaronaDarbibas;
 
 public class UIizskats {
     static String[] ievadesMasivs = Ievade.ieprieksejaIevade("");
@@ -140,5 +140,6 @@ public class UIizskats {
         return noteiktaMapesBultina;
     }
 
+    
     
 }

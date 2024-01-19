@@ -3,6 +3,7 @@ package Spele;
 import java.util.Random;
 
 import Spele.SpelesProcesi.Main;
+import Spele.Varonis.VaronaStatusaEfekti;
 import Spele.Izskati.SpokuIzskati;
 import Spele.SpelesProcesi.Laiks;
 
@@ -12,22 +13,23 @@ public class Spoki {
     // Statistikas objekti.
     int spokuSkaits; // Nedefinēta int vērtība ir 0. !!! NAV IZMANTOTS !!!
 
-    public volatile static boolean logaSpoksAktivs;
+    // Mainīgie, kas nodrošina spoku izslēgšanos no citām Klasēm.
+    public static boolean logaSpoksAktivs;
     public static boolean durvjuSpoksAktivs;
     public static boolean virtuvesSpoksAktivs;
 
-    // Klases instances jeb objekti, jeb mainīgie.
-    boolean spoksAktivs;
-    public String spokaVeids;
-
+    // Klases instances, jeb klases mainīgie.
+    boolean bilesAtjaunosanaIespejaPirmsIzslegsanas;
+    boolean vaiSpoksKustas; // Nosaka vai spoks šinī iespējā kustas.
+    public boolean spoksAktivs;
+    
     int spokaAgresivitatesLimits; // Šo pielīdzina RAND ciparam un nosaka vai spoks kustēsies.
     int randomKustibasIespejasCipars; // Dod spokam RAND ciparu, lai to pielīdzinātu agresivitātes limitam un noteiktu vai spoks kustēsies.
 
-    boolean vaiSpoksKustas; // Nosaka vai spoks šinī iespējā kustas.
-
-    int spokaFazesIndeks; // Nosaka spoka fāzi.
+    public int spokaFazesIndeks; // Nosaka spoka fāzi.
     int spokaDrosibasRobezas; // Nosaka cik robežas spokam ir jāpāriet, lai palielinātu savu fāzi.
 
+    public String spokaVeids;
     public String spokaIstaba; // Nosaka, kurā istabā ir loga spoks.
 
     // Spoku masīvi jeb array's.
@@ -42,12 +44,14 @@ public class Spoki {
         spokaFazesIndeks = 0; // 0 nozīmē, ka spoks nav sācis uzbrukt.
         vaiSpoksKustas = false;
         spoksAktivs = false;
-        spokaIstaba = ""; // Svarīgs tikai loga spokam.
+        bilesAtjaunosanaIespejaPirmsIzslegsanas = true;
     }
 
     public void randomKustibasCiparaAtjaunosana() {
-        randomKustibasIespejasCipars = rand.nextInt(20) + 1; // + 1, lai skaitļa intervāls būtu no 1 - 20, nevis no 0 - 19.
-        vaiSpoksKustas = randomKustibasIespejasCipars < spokaAgresivitatesLimits;
+        if (spoksAktivs) { // Darbojas tikai tad, kad spoks ir aktīvs (optimizācija).
+            randomKustibasIespejasCipars = rand.nextInt(20) + 1; // + 1, lai skaitļa intervāls būtu no 1 - 20, nevis no 0 - 19.
+            vaiSpoksKustas = randomKustibasIespejasCipars < spokaAgresivitatesLimits;
+        }
     }
 
     void spokuRobezuKapsana() {
@@ -66,39 +70,46 @@ public class Spoki {
         }
     }
 
-    public void istabuBildesFazuAtjaunosana(String spokaVeids, String istaba) {
-        if (spokaVeids.equals("loga") && spokaFazesIndeks < 9) {
-            if (istaba.equals("Gulta")) {
-                SpokuIzskati.gultasLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieGultas[spokaFazesIndeks];
+    public void istabuBildesFazuAtjaunosana(String spokaVeids) {
+        // Atjauno fāzi tikai tad, kad spoks ir aktīvs vai aizbiedēts, un tam vajag nomainīt bildi.
+        if (spoksAktivs || bilesAtjaunosanaIespejaPirmsIzslegsanas) {
+            if (spokaVeids.equals("loga") && spokaFazesIndeks < 9 && spokaIstaba != null) {
+                if (spokaIstaba.equals("Gulta")) {
+                    SpokuIzskati.gultasLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieGultas[spokaFazesIndeks];
+                }
+                else if (spokaIstaba.equals("Divans")) {
+                    SpokuIzskati.divanaLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieDivana[spokaFazesIndeks];
+                }
+                else if (spokaIstaba.equals("Durvis")) {
+                    SpokuIzskati.durvjuLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieDurvim[spokaFazesIndeks];
+                }
+                else if (spokaIstaba.equals("Virtuve")) {
+                    SpokuIzskati.virtuvesLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieVirtuves[spokaFazesIndeks];
+                }
             }
-            else if (istaba.equals("Divans")) {
-                SpokuIzskati.divanaLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieDivana[spokaFazesIndeks];
+            else if (spokaVeids.equals("durvju") && spokaFazesIndeks < 10) {
+                SpokuIzskati.durSpokaFazesBilde = SpokuIzskati.durvjuSpokaIzskati[spokaFazesIndeks];
             }
-            else if (istaba.equals("Durvis")) {
-                SpokuIzskati.durvjuLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieDurvim[spokaFazesIndeks];
+            else if (spokaVeids.equals("virtuves") && spokaFazesIndeks < 11) {
+                SpokuIzskati.virtPrieksasPagrabaBildesArSpoku = SpokuIzskati.virtuvesSpokaIzskati[spokaFazesIndeks];
+                Main.pagrabaGaismaStrada = false;
             }
-            else if (istaba.equals("Virtuve")) {
-                SpokuIzskati.virtuvesLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieVirtuves[spokaFazesIndeks];
-            }
-        }
-        else if (spokaVeids.equals("durvju") && spokaFazesIndeks < 10) {
-            SpokuIzskati.durSpokaFazesBilde = SpokuIzskati.durvjuSpokaIzskati[spokaFazesIndeks];
-        }
-        else if (spokaVeids.equals("virtuves") && spokaFazesIndeks < 11) {
-            SpokuIzskati.virtPrieksasPagrabaBildesArSpoku = SpokuIzskati.virtuvesSpokaIzskati[spokaFazesIndeks];
-        }
-        else { // Kods kurš strādās, tikai tad, kad spēlētājs nomirs no spoka. ! ! ! Z A U D Ē Š A N A S   K O D S ! ! !
-            if (!Main.varonaNemirstiba) {
-                Main.spelePalaista = false;
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {}
+            else { // Kods kurš strādās, tikai tad, kad spēlētājs nomirs no spoka. ! ! ! Z A U D Ē Š A N A S   K O D S ! ! !
+                if (!Main.varonaNemirstiba) {
+                    VaronaStatusaEfekti.varonaBojaeja(spokaVeids);
+                    
 
-                Main.tiritEkranu();
-                System.out.println("Jus nomirat!\nNaves iemesls: " + spokaVeids + " spoks.");
+                    Main.tiritEkranu();
+                    System.out.println("Jus nomirat!\nNaves iemesls: " + spokaVeids + " spoks.");
+                }
+            }
+
+            if (!spoksAktivs) {
+                bilesAtjaunosanaIespejaPirmsIzslegsanas = false;
             }
         }
     }
+
 
     public void iespejaPadaritSpokuAktivu() { 
         if (!spoksAktivs) {
@@ -113,10 +124,13 @@ public class Spoki {
                 else if (spokaVeids.equals("virtuves")){
                     virtuvesSpoksAktivs =  true;
                 }
+
                 spoksAktivs = true;
+                bilesAtjaunosanaIespejaPirmsIzslegsanas = true;
             }
         }  
     }
+
 
     public static Spoki[] spokuInformacijasSavaksana(Spoki logaSpoks, Spoki durvjuSpoks, Spoki virtuvesSpoks) {
         Spoki[] visiSpoki = new Spoki[3];
@@ -126,6 +140,7 @@ public class Spoki {
 
         return visiSpoki;
     }
+
 
     public static Spoki[] spokuStati = {
         new Spoki("loga", Main.logaSpokaAgresivitatesLimits),
@@ -140,7 +155,8 @@ public class Spoki {
         System.out.println("Durvju spoks" + K.VIOLETS + " aktivs?: " + spokuStati[1].spoksAktivs + K.ZALS + " RAND cipars: " + spokuStati[1].randomKustibasIespejasCipars + K.ZILS + " Drosibas robezas: " + spokuStati[1].spokaDrosibasRobezas + " Fazes indekss: " + spokuStati[1].spokaFazesIndeks + K.RESET + "\033[0K");
         System.out.println("Virtuves spoks" + K.VIOLETS + " aktivs?: " + spokuStati[2].spoksAktivs + K.ZALS + " RAND cipars: " + spokuStati[2].randomKustibasIespejasCipars + K.ZILS + " Drosibas robezas: " + spokuStati[2].spokaDrosibasRobezas + " Fazes indekss: " + spokuStati[2].spokaFazesIndeks + K.RESET + "\033[0K");
         
-        System.out.println("Laiks ms: " + Laiks.spelesLaiks + " / " + Laiks.vienaStunda * 6 + K.RESET + "\033[0K");
+        System.out.println("Laiks ms: " + Laiks.spelesLaiks + " / " + Laiks.vienaStunda * 6 + K.RESET + ", Stressa limenis: " + VaronaStatusaEfekti.varonaStresaLimenis + "\033[0K");
+        
     }
 
     public void izslegtSpoku() {
