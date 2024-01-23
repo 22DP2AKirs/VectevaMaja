@@ -2,6 +2,7 @@ package Spele.SpelesProcesi;
 
 import Spele.IzvadeUzTerminalu;
 import Spele.Spoki;
+import Spele.Testi;
 import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Izskati.EkranuIzskati;
@@ -58,6 +59,9 @@ public class Main {
     static int spelesIlgums = 100;// 6 min 360;
 
     public static void main(String[] args) throws InterruptedException {
+        // Programmas sākums.
+        Testi.testaProgramma();
+
         //* /////// T H R E D I //////////
         // Jaunie rīki jeb thredi.
         Ievade ievadesLasitajs = new Ievade(); // Arī threads, bet šis lasa ievadi.
