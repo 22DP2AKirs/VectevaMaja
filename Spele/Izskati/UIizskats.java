@@ -128,13 +128,13 @@ public class UIizskats {
     static String varonaMapesBultinasVirzienaDevejs() {
         String noteiktaMapesBultina = "";
         if(Main.varonaVirzienaSkaitlis == 0) {
-            noteiktaMapesBultina = "^";
+            noteiktaMapesBultina = K.DEBESU_ZILS + "^" + K.RESET;
         } else if (Main.varonaVirzienaSkaitlis == 1) {
-            noteiktaMapesBultina = ">";
+            noteiktaMapesBultina = K.DEBESU_ZILS + ">" + K.RESET;
         } else if (Main.varonaVirzienaSkaitlis == 2) {
-            noteiktaMapesBultina = "v";
+            noteiktaMapesBultina = K.DEBESU_ZILS + "v" + K.RESET;
         } else if (Main.varonaVirzienaSkaitlis == 3) {
-            noteiktaMapesBultina = "<";
+            noteiktaMapesBultina = K.DEBESU_ZILS + "<" + K.RESET;
         }
         
         return noteiktaMapesBultina;

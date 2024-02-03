@@ -92,7 +92,7 @@ public class Spoki {
             }
             else if (spokaVeids.equals("virtuves") && spokaFazesIndeks < 11) {
                 SpokuIzskati.virtPrieksasPagrabaBildesArSpoku = SpokuIzskati.virtuvesSpokaIzskati[spokaFazesIndeks];
-                Main.pagrabaGaismaStrada = false;
+                Main.pagrabaGaismaStrada = true;
             }
             else { // Kods kurš strādās, tikai tad, kad spēlētājs nomirs no spoka. ! ! ! Z A U D Ē Š A N A S   K O D S ! ! !
                 if (!Main.varonaNemirstiba) {

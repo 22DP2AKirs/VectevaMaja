@@ -23,7 +23,7 @@ virtuvesSpokaDrosibasRobezas=3
 {
 // Sākuma gaismu stāvokļi.
 gultasGaisma=F
-divanaGaisma=F
+divanaGaisma=T
 durvjuGaisma=F
 virtuvesGaisma=T
 
@@ -35,5 +35,5 @@ pagrabaGaismaStrada=T
 
 4. Papildus iestatījumi.
 {
-spokiSledzAraGaismu=T
+spokiSledzAraGaismu=F
 }

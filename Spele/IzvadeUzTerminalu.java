@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import Spele.SpelesProcesi.Main;
 import Spele.Izskati.IstabuIzskati;
 import Spele.Izskati.UIizskats;
+import Spele.Parklajumi.BildesParklajumi;
 import Spele.SpelesProcesi.Ievade;
 
 public class IzvadeUzTerminalu {
@@ -14,7 +15,7 @@ public class IzvadeUzTerminalu {
         System.out.println("\r▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\033[0K"); // Ekrāna augšējā daļa.
 
         // Pievieno apstrādātas mājas bildes ar "Overlayiem (Pārklājumiem)".
-        for (String parklataLinija : BildesParklajumi.istabasArParklajumiem(IstabuIzskati.istabuMasivaAtjaunosana()[Main.varonaIstabasSkaitlis][Main.varonaVirzienaSkaitlis])) {
+        for (String parklataLinija : BildesParklajumi.istabasArParklajumiem(IstabuIzskati.istabuMasivs[Main.varonaIstabasSkaitlis][Main.varonaVirzienaSkaitlis])) {
             programmasGalejaIzvadeUzEkrana.add("\r|" + parklataLinija + "|");
         }
         
