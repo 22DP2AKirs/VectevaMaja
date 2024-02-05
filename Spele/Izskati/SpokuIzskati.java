@@ -660,7 +660,7 @@ public class SpokuIzskati {
 	};
 
 	public static final String[] virtuvesSp8 = {
-		"--           ",
+		"             ",
 		"  \\           /  ",
 		" ___\\       /___ ",
 		"/   \\ \\/ \\/ /   \\",
@@ -675,7 +675,7 @@ public class SpokuIzskati {
 	};
 
 	public static final String[] virtuvesSp9 = {
-		K.TPELEKS + "--░░░░░░░░░░░" + K.RESET,
+		K.TPELEKS + "░░░░░░░░░░░░░" + K.RESET,
 		K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET,
 		K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET,
 		K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET,

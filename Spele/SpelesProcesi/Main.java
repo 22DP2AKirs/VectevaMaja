@@ -24,13 +24,14 @@ public class Main {
 		// Gaismas dati.
 		public static boolean[] istabuGaismasIeslegtas = {FailuRedigetajs.booleanDatuAtgriezejs("gultasGaisma"), FailuRedigetajs.booleanDatuAtgriezejs("divanaGaisma"), FailuRedigetajs.booleanDatuAtgriezejs("durvjuGaisma"), FailuRedigetajs.booleanDatuAtgriezejs("virtuvesGaisma")}; // Indeksi: 0. Gulta, 1. Dīvāns, 2. Durvis, 3. Virtuve.
 		static boolean spokiSledzAraGaismu = FailuRedigetajs.booleanDatuAtgriezejs("spokiSledzAraGaismu");
+		public static boolean ieslegtaSkana = FailuRedigetajs.booleanDatuAtgriezejs("ieslegtaSkana");
 
 		static int spelesNakts = 6;
 
 
 		// Spelētāja pozīcija.
-		public static int varonaIstabasSkaitlis = 1; // 0, no gultas istabas. 2, jo testā sāku no durvju istabas. 3, no virtuves istabas.
-		public static int varonaVirzienaSkaitlis = 2;
+		public static int varonaIstabasSkaitlis = 0; // 0, no gultas istabas. 2, jo testā sāku no durvju istabas. 3, no virtuves istabas.
+		public static int varonaVirzienaSkaitlis = 1;
 
 		public static boolean elektribaIeslegta = FailuRedigetajs.booleanDatuAtgriezejs("elektribaIeslegta");
 		public static boolean pagrabaGaisma = FailuRedigetajs.booleanDatuAtgriezejs("pagrabaGaisma");
