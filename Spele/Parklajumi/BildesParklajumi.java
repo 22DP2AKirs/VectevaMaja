@@ -7,6 +7,7 @@ import Spele.Izskati.SpokuIzskati;
 import Spele.SpelesProcesi.Main;
 import Spele.Varonis.VaronaDarbibas;
 
+
 public class BildesParklajumi {
 	// * Atgriež masīvu, kuru izvadīs terminālī (Pēdējā bildes apstrāde).
 	// * Metode uz bildes saliek visus pārklājumus.
@@ -175,7 +176,7 @@ public class BildesParklajumi {
 				if (!Main.istabuGaismasIeslegtas[2]) {
 					divanaLejasKreisaPuse[0] = "\033[6G" + K.TPELEKS + "░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
 					divanaLejasKreisaPuse[1] = K.TPELEKS + "░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-					divanaLejasKreisaPuse[2] = "\033[4G" + K.TPELEKS + "░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA; // Dīvaini 4 atstarpju bīdējumi??????
+					divanaLejasKreisaPuse[2] = "\033[4G" + K.TPELEKS + "░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA; // Dīvaini 4 atstarpju bīdējumi?????? Tie bija saistīti ar TAB un SPACES.
 					divanaLejasKreisaPuse[3] = "\033[3G" + K.TPELEKS + "░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
 					divanaLejasKreisaPuse[4] = "\033[2G" + K.TPELEKS + "░░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
 				}

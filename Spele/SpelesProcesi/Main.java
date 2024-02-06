@@ -30,8 +30,8 @@ public class Main {
 
 
 		// Spelētāja pozīcija.
-		public static int varonaIstabasSkaitlis = 0; // 0, no gultas istabas. 2, jo testā sāku no durvju istabas. 3, no virtuves istabas.
-		public static int varonaVirzienaSkaitlis = 1;
+		public static int varonaIstabasSkaitlis = 3; // 0, no gultas istabas. 2, jo testā sāku no durvju istabas. 3, no virtuves istabas.
+		public static int varonaVirzienaSkaitlis = 0;
 
 		public static boolean elektribaIeslegta = FailuRedigetajs.booleanDatuAtgriezejs("elektribaIeslegta");
 		public static boolean pagrabaGaisma = FailuRedigetajs.booleanDatuAtgriezejs("pagrabaGaisma");
@@ -49,8 +49,6 @@ public class Main {
 		static int logaSpokaDrosibasRobezas = FailuRedigetajs.intDatuAtgriezejs("logaSpokaDrosibasRobezas");
 		static int durvjuSpokaDrosibasRobezas = FailuRedigetajs.intDatuAtgriezejs("durvjuSpokaDrosibasRobezas");
 		static int virtuvesSpokaDrosibasRobezas = FailuRedigetajs.intDatuAtgriezejs("virtuvesSpokaDrosibasRobezas");
-
-
 
 		//* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		static String[] visiVaronaUzdevumi = {"Pildit majasdarbus", "Est", "Mazgat", "Kartot", "Lasit", "Tirit"}; // TODO: Izmantot vai pārveidot.

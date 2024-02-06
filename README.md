@@ -17,15 +17,16 @@ Komandas bieži būs redzamas uz ekrāna, viss kas Jums ir jādara ir pēc katra
 - [ ] Jaunas mehānikas vecajiem spokiem. {Loga spoks var izvēlēties savu istabu.}
 - [ ] Jauni spoki:
 - [ ] Mājas arku jeb durvju monstrs.
-- [o] Strādājošs laiks.
-- [ ] Mājas darbības.
+- [x] Strādājošs laiks.
+- [ ] Mājas darbības. {Karātavas , skill check , }
+- [ ] Mājas darbību pienākošais laiks, piem., tīrīt traukus 2 AM, pildīt mājas darbus no 4 - 5 AM.
 - [ ] Lietotāja UI - User interface.
+- [ ] Sienas pulksteņa darbības???
 - [ ] Skaņa.
 - [ ] Izskrāsot durvis brūnas un logus zilus (Ādama ideja).
 - [ ] Jāpieiet pie loga. cits spoks?
 - [ ] Aizdedzināt spoku :|?????
 - ...
-
 
 ## Spēles nobeiguma stress.
 1. Istabās sprāgst lampas, padarot to tumšu (sprāgst ar skaņu).
