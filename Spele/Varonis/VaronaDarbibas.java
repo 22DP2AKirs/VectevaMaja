@@ -56,7 +56,7 @@ public class VaronaDarbibas {
 
     private static void parastasDarbibas(String panemtaIevade) {
         if (panemtaIevade.equals("F") && Main.atlikusoSerkocinuDaudzums != 0 && !aizdedzinatsSerkocins) {
-            if (Spoki.rand.nextInt(3) == 0) { // 33.33 % iespēja aizdedzināt sērkociņu.
+            if (Main.rand.nextInt(3) == 0) { // 33.33 % iespēja aizdedzināt sērkociņu.
                 SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\lighting-matches.wav", 0);
                 aizdedzinatsSerkocins = true;
                 Main.atlikusoSerkocinuDaudzums--;
@@ -164,6 +164,9 @@ public class VaronaDarbibas {
             if (panemtaIevade.equals("DURVIS") && Spoki.spokuStati[1].spoksAktivs) {
                 Spoki.durvjuSpoksAktivs = false;
             }
+            else if (panemtaIevade.equals("E")) {
+                // TODO : Karātavu kods.
+            }
         }
         else if (Main.varonaVirzienaSkaitlis == 2) { // Lejas darbības.
             if (panemtaIevade.equals("G") && Main.elektribaIeslegta) {
@@ -240,8 +243,8 @@ public class VaronaDarbibas {
         Laiks.laiksCikIlgiElektribaBusIzslegta = 3;
     }
 
-
     private static void sakumaEkranaDarbibas(String panemtaIevade) {
+        // * Šī metode nosaka, kādas darbības būs pieejamas sākuma ekrānā (Main screen), un to darbību izpilde.
         if (panemtaIevade.equals("W")) {
             if (EkranuIzskati.izvelnesSkaits > 1) {
                 EkranuIzskati.izvelnesSkaits--;

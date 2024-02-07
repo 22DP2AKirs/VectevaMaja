@@ -8,7 +8,6 @@ import Spele.Izskati.SpokuIzskati;
 import Spele.SpelesProcesi.Laiks;
 
 public class Spoki {
-    public static Random rand = new Random(); // Priekš random darbībām.
     public static boolean spokuInfoIzvadeBoolean = false;
     // Statistikas objekti.
     int spokuSkaits; // Nedefinēta int vērtība ir 0. !!! NAV IZMANTOTS !!!
@@ -49,7 +48,7 @@ public class Spoki {
 
     public void randomKustibasCiparaAtjaunosana() {
         if (spoksAktivs) { // Darbojas tikai tad, kad spoks ir aktīvs (optimizācija).
-            randomKustibasIespejasCipars = rand.nextInt(20) + 1; // + 1, lai skaitļa intervāls būtu no 1 - 20, nevis no 0 - 19.
+            randomKustibasIespejasCipars = Main.rand.nextInt(20) + 1; // + 1, lai skaitļa intervāls būtu no 1 - 20, nevis no 0 - 19.
             vaiSpoksKustas = randomKustibasIespejasCipars < spokaAgresivitatesLimits;
         }
     }
@@ -113,9 +112,9 @@ public class Spoki {
 
     public void iespejaPadaritSpokuAktivu() { 
         if (!spoksAktivs) {
-            if ((rand.nextInt(2) + 1) == 1) { // Ja 1/20-ā jeb 5/100-ās iespēja ir patiesa, tad spoks paliek aktīvs.
+            if ((Main.rand.nextInt(2) + 1) == 1) { // Ja 1/20-ā jeb 5/100-ās iespēja ir patiesa, tad spoks paliek aktīvs.
                 if (spokaVeids.equals("loga")) {
-                    spokaIstaba = logaSpokaIstabas[rand.nextInt(4)]; // 4, jo mājā ir četras istabas.
+                    spokaIstaba = logaSpokaIstabas[Main.rand.nextInt(4)]; // 4, jo mājā ir četras istabas.
                     logaSpoksAktivs = true;
                 }
                 else if (spokaVeids.equals("durvju")) {

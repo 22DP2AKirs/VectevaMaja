@@ -16,6 +16,7 @@ public class BildesParklajumi {
 		// kopija - drīkst mainīt, oriģinālā - NEDRĪKST MAINĪT.
 		String[] varonaIstabasKopija = Arrays.copyOf(originalaisMasivs, originalaisMasivs.length); // Masīva elementu pārkopēšana. copyOf(kopējamaisMasīvs, cik elementus no masīva nokopēts)
 
+
 		spokaParklajumuUzlicejs(varonaIstabasKopija); // Uzliek spoka bildes.
 		istabuParklajumuUzlicejs(varonaIstabasKopija); // Uzliek apgaismojuma bildes.
 		izmantojamoObjektuUzlicejs(varonaIstabasKopija); // Uzliek objektus.
@@ -32,8 +33,10 @@ public class BildesParklajumi {
 		return varonaIstabasKopija;
 	}
 
-	// * Metode uz masīva uzliks visus pārklājumus ar spoka fāzēm.
+	
+
 	private static void spokaParklajumuUzlicejs(String[] mainamaisMasivs) {
+		// * Metode uz masīva uzliks visus pārklājumus ar spoka fāzēm.
 		// Virtuve ar skatu uz izlietni.
 		if (Main.varonaIstabasSkaitlis == 3 && Main.varonaVirzienaSkaitlis == 2) {
 			// Pie masīva kopijas pievieno spoka fāzes bildi.
@@ -75,8 +78,8 @@ public class BildesParklajumi {
 		}
 	}
 
-	// * Metode uz masīva uzliks visus pārklājumus ar istabu stāvokļiem, piem., istabu gaismas, gaismas istabas stūros, u.c.
 	private static void istabuParklajumuUzlicejs(String[] mainamaisMasivs) {
+		// * Metode uz masīva uzliks visus pārklājumus ar istabu stāvokļiem, piem., istabu gaismas, gaismas istabas stūros, u.c.
 		// * Nosaka varona atrasanās vietu ; virzienu uz kurieni skatās varonis.
 		// 0. Gulta. ; Prieksa.
 		// 1. Dīvāns. ; Laba puse.
@@ -319,8 +322,8 @@ public class BildesParklajumi {
 	}
 
 
-	// * Masīva elementus izmanto, lai aizpildītu arkas jeb durvju rāmīšus.
 	private static String[] arkuGaismasAizpilditajs = { 
+	// * Masīva elementus izmanto, lai aizpildītu arkas jeb durvju rāmīšus.
 	 K.TPELEKS + "░░░░░░░░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA,
 	 K.TPELEKS +  "░░░░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA
 	};
@@ -350,24 +353,24 @@ public class BildesParklajumi {
 	}
 
 
-	// * Pārbauda istabu, kurā ir varonis, un nosaka vai gaisma tanī būs ieslēgta vai izslēgta, tas pats ar sērkociņu.
 	public static String[] istabasGaismasUnSerkocinaParklajumi(String[] mainamaisMasivs, String[] originalaisMasivs) {
-			if (!Main.istabuGaismasIeslegtas[Main.varonaIstabasSkaitlis] && !VaronaDarbibas.aizdedzinatsSerkocins) { // Ja gaismas nav, un sērkocins nav aizdedzināts. 0 0
-					istabaArIzslegtuGaismu(mainamaisMasivs);
-			}
-			else if (!Main.istabuGaismasIeslegtas[Main.varonaIstabasSkaitlis] && VaronaDarbibas.aizdedzinatsSerkocins) { // Ja gaismas nav, un aizdedzināts sērkocins. 0 1
-					tumsaIstabaArAizdedzinatuSerkocinu(mainamaisMasivs, originalaisMasivs);
-			}
-			else if (Main.istabuGaismasIeslegtas[Main.varonaIstabasSkaitlis] && VaronaDarbibas.aizdedzinatsSerkocins) { // Ja ir gaisma, un aizdedzināts sērkocins. 1 1
-					serkocinaPieliksanaPieBildes(mainamaisMasivs);
-			}
+		// * Pārbauda istabu, kurā ir varonis, un nosaka vai gaisma tanī būs ieslēgta vai izslēgta, tas pats ar sērkociņu.
+		if (!Main.istabuGaismasIeslegtas[Main.varonaIstabasSkaitlis] && !VaronaDarbibas.aizdedzinatsSerkocins) { // Ja gaismas nav, un sērkocins nav aizdedzināts. 0 0
+				istabaArIzslegtuGaismu(mainamaisMasivs);
+		}
+		else if (!Main.istabuGaismasIeslegtas[Main.varonaIstabasSkaitlis] && VaronaDarbibas.aizdedzinatsSerkocins) { // Ja gaismas nav, un aizdedzināts sērkocins. 0 1
+				tumsaIstabaArAizdedzinatuSerkocinu(mainamaisMasivs, originalaisMasivs);
+		}
+		else if (Main.istabuGaismasIeslegtas[Main.varonaIstabasSkaitlis] && VaronaDarbibas.aizdedzinatsSerkocins) { // Ja ir gaisma, un aizdedzināts sērkocins. 1 1
+				serkocinaPieliksanaPieBildes(mainamaisMasivs);
+		}
 
-			return mainamaisMasivs;
+		return mainamaisMasivs;
 	}
 
 
-	// * Pie apstrādjamā masīva pieliek ar sērkociņu apgaismoto laukumu.
 	public static String[] tumsaIstabaArAizdedzinatuSerkocinu(String[] apstradajamaisMasivs, String[] originalaisMasivs) {
+		// * Pie apstrādjamā masīva pieliek ar sērkociņu apgaismoto laukumu.
 		istabaArIzslegtuGaismu(apstradajamaisMasivs);
 		apstradajamaisMasivs[8] = K.TPELEKS + originalaisMasivs[8] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[70G░░░░░░░░░░░░" + K.RESET;
 		apstradajamaisMasivs[9] = K.TPELEKS + originalaisMasivs[9] + K.RESET + "\r|" + K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.TPELEKS + "\033[73G░░░░░░░░░" + K.RESET;

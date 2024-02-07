@@ -1,11 +1,15 @@
 package Spele.SpelesProcesi;
 
+import java.util.Random;
+
 import Spele.IzvadeUzTerminalu;
 import Spele.Spoki;
 import Spele.Testi;
 import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Izskati.EkranuIzskati;
+import Spele.MazasSpeles.Karatavas;
+import Spele.Parklajumi.EkranuParklajumi;
 import Spele.Varonis.VaronaDarbibas;
 import Spele.Varonis.VaronaStatusaEfekti;
 
@@ -14,6 +18,7 @@ public class Main {
 		public static volatile boolean programmaPalaista = true; // booleans, kas palaiž visu programmu.
 		public static boolean sakumaEkrans = false; // Nosaka vai spēles sākumā rādīs sākuma ekrānu vai nē.
 		public static volatile boolean spelePalaista = true; // Mainīgais bool, kas pašu spēli.
+		public static boolean karatavas = true;
 
 		public static boolean varonaNemirstiba = true; // Vai varonis var zaudēt spēli vai nē.
 		static boolean kluduLasisana = false;
@@ -51,6 +56,11 @@ public class Main {
 		static int virtuvesSpokaDrosibasRobezas = FailuRedigetajs.intDatuAtgriezejs("virtuvesSpokaDrosibasRobezas");
 
 		//* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static Random rand = new Random(); // Priekš random darbībām.
+    public static String[] rAtstarpes = new String[17];
+    public static String karatavasVards;
+    
+
 		static String[] visiVaronaUzdevumi = {"Pildit majasdarbus", "Est", "Mazgat", "Kartot", "Lasit", "Tirit"}; // TODO: Izmantot vai pārveidot.
 
 		// Iestata tikšķa jeb 1 "refreša" periodu.
@@ -59,7 +69,11 @@ public class Main {
 
 		public static void main(String[] args) throws InterruptedException {
 				// Programmas sākums.
-				// ! Testi.testaProgramma();
+				// Testi.testaProgramma();
+        for (int i = 0; i < rAtstarpes.length ;i++) {
+          rAtstarpes[i] = EkranuParklajumi.atgrieztRandAtstarpi();
+        }
+
 
 				//* /////// T H R E D I //////////
 				// Jaunie rīki jeb thredi.
@@ -69,6 +83,8 @@ public class Main {
 				// Sākas atsevišķās darbības jeb patstāvīgie procesi.
 				skanasSpeletajs.start(); // Strādā, kamēr spelePalaista bools ir true.
 				ievadesLasitajs.start(); // Strādā, kamēr programmaPalaista bools ir true.
+
+        Karatavas karatavasObjekts = new Karatavas(rand.nextInt(3), rand.nextInt(3));
 
 				// * Palaiž programmu.
 				while (programmaPalaista) {
@@ -89,17 +105,31 @@ public class Main {
 
 						// * /////////////////////////////////////////// S Ā K A S   S P Ē L E S   K O D S /////////////////////////////////////////////////////////////////////////////////////////
 						while (spelePalaista) { // Kamēr laiks nav beidzies, turpināt ciklu jeb spēli.
+              
+
 								VaronaDarbibas.varonaDarbibas(Ievade.ievade); // Lietotāja jeb varoņa ievade un tās darbības (komandas un to darbības).
 								VaronaStatusaEfekti.varonaStress();
 
 								// Spoku informācijas izvade. --Debuging--
 								if (Spoki.spokuInfoIzvadeBoolean) {
-										Spoki.spokuInformacijasIzvade();
+									Spoki.spokuInformacijasIzvade();
 								}
+               
+
 
 								// Visām fāzēm, bildēm un visam vizuālajam ir jābūt gatavam pirms šīs metodes izsaukšanas!!!
 								// Spoku vizuālais atjaunojums notiek Laiks.java Klasē.
-								IzvadeUzTerminalu.salipinataUIIzvade(); // Izvade uz ekrāna.
+                 // TODO : Šeit jānomaina bilde uz grāmatu. salipinataUIIzvade ir Jāizvieto.
+                if (karatavas) {
+                  karatavasVards = karatavasObjekts.toString();
+                  // Izvada masīvu vispirms pārklājot to.
+                  IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuIzskati.ekranuAtjaunosana()[3]));
+                  karatavasObjekts.parbauditBurtu(Ievade.ievade);
+                }
+                else {
+                  IzvadeUzTerminalu.salipinataUIIzvade(); // Izvade uz ekrāna.
+                }
+								
 
 								Ievade.notiritIevadi(); // Cikla beigās notīra Ievadi, jo visas matodes, kurām tā bija vajadzīga jau to ir paņēmušas.
 

@@ -8,12 +8,12 @@ public class EkranuIzskati {
         String[] [] atjaunotaisMasivs = {
             sakumaEkranaBildesAtjaunosana(),
             zaudesanasBildesAtjaunosana(),
-            uzvarasBildesAtjaunosana()
+            uzvarasBildesAtjaunosana(),
+            karatavuEkrans
         };
-
         return atjaunotaisMasivs;
     }
-       
+
 
     public static int izvelnesSkaits = 1;
     static String[] sakumaEkranaIzvelesVarduVarianti = {"", "", "", "", "", ""};
@@ -36,7 +36,7 @@ public class EkranuIzskati {
         } else {
             sakumaEkranaIzvelesVarduVarianti[2] = "  I E S T A T I J U M I  ";
         }
-        
+
         if (izvelnesSkaits == 4) {
             sakumaEkranaIzvelesVarduVarianti[3] = izvelnesBultinas[0] + " P A M A C I B A " + izvelnesBultinas[1];
         } else {
@@ -89,10 +89,10 @@ public class EkranuIzskati {
             "\r|    V E R S I J A : K A U T   K A S   S A L I P I N A T S   A R   L I M L E N T I                     |",
             "\r|______________________________________________________________________________________________________|",
         };
-        
+
         return sakumaEkranaIzvelne;
     }
-    
+
     static String[] izvelnesBultinas = {Spele.K.DEBESU_ZILS + ">", "<" + Spele.K.RESET};
 
 
@@ -100,7 +100,8 @@ public class EkranuIzskati {
 
         String[] zaudesanasEkrans = {
 
-        K.SARKANS + "\r▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓",
+        K.SARKANS +
+            "\r▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓",
             "\r|                                                                                                      |",
             "\r|             :::::::                                             ::           ::::::             ::   |",
             "\r|        ::  ..     ..  .:::::     ::.   ::   .::::.   ::.   .::      ::'''.  .::::::.  ::::::::  ::   |",
@@ -140,7 +141,8 @@ public class EkranuIzskati {
 
         String[] zaudesanasEkrans = {
 
-        K.ZALS + "\r▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓",
+        K.ZALS +
+            "\r▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓",
             "\r|                                                                                                      |",
             "\r|          :::::::            ::                       ::::::                         ::::::: :::::::: |",
             "\r|      :: ..     .. .:::::       ::::::: :::::.  :::::::    ::     ::  .::::.      :: .:''':.    ::    |",
@@ -175,4 +177,43 @@ public class EkranuIzskati {
 
         return zaudesanasEkrans;
     }
+
+    
+    static String[] karatavuEkrans = {
+        K.BRUNS +
+            "\r                                                                                                        ",
+            "\r __.......-----'''''''''''''''''''''-----------...._....-------------''''''''''''''''''--------......__ ",
+            "\r||                    _                            |                                                 |:|",
+            "\r||           K  A  R  A  T  A  V  A  S             |                                                 | |",
+            "\r||                                                 |                                                 | |",
+            "\r||                                                 |                                                 | |",
+            "\r||    B  U  R  T  I :                              |                                                 |:|",
+            "\r||                                                |                                                  |:|",
+            "\r||                                                |                                                  | |",
+            "\r||                                                |                                                  |:|",
+            "\r||                                                |                                                  | |",
+            "\r||                                                |                                                  | |",
+            "\r||                                                |                                                  | |",
+            "\r||                                                |                                                  | |",
+            "\r||                                                |                                                  | |",
+            "\r||                                                |                                                  | |",
+            "\r||                                                |                                                  | |",
+            "\r||                                                |                                                  | |",
+            "\r||                                                |                                                  | |",
+            "\r||                                                |                                                  | |",
+            "\r||                                                |                                                  | |",
+            "\r||                                                |                                                  | |",
+            "\r||                                                |                                                  | |",
+            "\r||                                                 |                                                 |:|",
+            "\r||                                                 |                                                 | |",
+            "\r||                                                 |                                                 | |",
+            "\r||                                                 |                                                 | |",
+            "\r||                                                 |                  __________________             |:|",
+            "\r||           ___________________                   |  __-------------- ---------------  ------------_|.|",
+            "\r||___-------   _______________    ''''''''''----_.--'_----'''''''''''''  -----------  '''''''''''''---||",
+            "\r|__----'''''''''              ''''''''''''-------|__|-------''''''''''''              '''''''''----____|"
+    };
+
+
+
 }

@@ -5,23 +5,29 @@ import Spele.MazasSpeles.Karatavas;
 import Spele.SpelesProcesi.Main;
 
 public class Testi {
-    public static void testaProgramma() throws InterruptedException {
+    public static void testaProgramma() throws InterruptedException { // throws  InterruptedException, Lai varētu izmantot: Thread.sleep(0); bez try_catch.
+        // Sagatave pirms spēles cikla.
         Scanner iLasitajs = new Scanner(System.in);
         Main.tiritEkranu();
+
+        Karatavas vards = new Karatavas(Main.rand.nextInt(4), Main.rand.nextInt(4));
+
+        // Cikls.
         while (true) {
+            // Lietotāja ievade.
             System.out.print("\rJusu ievade: ");
             String ievade = iLasitajs.nextLine();
 
+            // Apstrādā karātavas procesus.
+            vards.parbauditBurtu(ievade);
 
-            Karatavas.apvienotaisKaratavasKods(ievade);
+            // Izvada vārdu gan "_ _ _ _", gan "B _ _ I".
+            System.out.println(vards.toString());
 
-            for (String burts : Karatavas.ieprieksejieAtklatieBurti) {
-                System.out.print(burts);
-            }
+            System.out.print("\033[F"); // Noliek mirgojošo kursoru vienu līniju uz augšu.
             System.out.print("\033[F"); // Noliek mirgojošo kursoru vienu līniju uz augšu.
 
-
-            Thread.sleep(0);
+            // Thread.sleep(0);
         }
     }
 }

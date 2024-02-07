@@ -80,8 +80,8 @@ public class Laiks extends Thread {
 
     void randomIespejaIzslegtKadasIstabasGaismu() {
         if (Main.spokiSledzAraGaismu) { // Spēles iestatījums.
-            int randomIzveletasIstabasCipars = Spoki.rand.nextInt(4);
-            if (Spoki.rand.nextInt(60) + 1 == 1) {
+            int randomIzveletasIstabasCipars = Main.rand.nextInt(4);
+            if (Main.rand.nextInt(60) + 1 == 1) {
                 if (Main.istabuGaismasIeslegtas[randomIzveletasIstabasCipars] == true) {
                     Main.istabuGaismasIeslegtas[randomIzveletasIstabasCipars] = false;
                     SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-off.wav", 0);
