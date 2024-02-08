@@ -5,8 +5,8 @@ public final class K {
 
     public static final String MELNS = "\u001B[30m";
 
-    // public static final String TPELEKS = "\u001B[38;5;237m"; Īstais
-    public static final String TPELEKS = "\u001B[38;5;105m"; // Labāk redzams.
+    public static final String TPELEKS = "\u001B[38;5;237m"; //Īstais
+    // public static final String TPELEKS = "\u001B[38;5;105m"; // Labāk redzams.
 
     public static final String SARKANS = "\u001B[31m";
 
@@ -25,6 +25,8 @@ public final class K {
     public static final String VIOLETS = "\u001B[35m";
 
     public static final String BALTS = "\u001B[37m";
+
+    public static final String GRAMATA = "\u001B[38;5;180m";
 
     public static final String OBJEKTS = "\u001B[38;5;187m";
 

@@ -19,7 +19,7 @@ public class Testi {
             String ievade = iLasitajs.nextLine();
 
             // Apstrādā karātavas procesus.
-            vards.parbauditBurtu(ievade);
+            // vards.parbauditBurtu(ievade);
 
             // Izvada vārdu gan "_ _ _ _", gan "B _ _ I".
             System.out.println(vards.toString());

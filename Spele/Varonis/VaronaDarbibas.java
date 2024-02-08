@@ -166,6 +166,8 @@ public class VaronaDarbibas {
             }
             else if (panemtaIevade.equals("E")) {
                 // TODO : Karātavu kods.
+                Main.karatavas = true;
+                Ievade.ievade = "}";
             }
         }
         else if (Main.varonaVirzienaSkaitlis == 2) { // Lejas darbības.

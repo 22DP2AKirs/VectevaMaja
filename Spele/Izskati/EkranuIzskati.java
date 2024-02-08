@@ -180,7 +180,7 @@ public class EkranuIzskati {
 
     
     static String[] karatavuEkrans = {
-        K.BRUNS +
+        K.GRAMATA +
             "\r                                                                                                        ",
             "\r __.......-----'''''''''''''''''''''-----------...._....-------------''''''''''''''''''--------......__ ",
             "\r||                    _                            |                                                 |:|",
