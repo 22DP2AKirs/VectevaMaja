@@ -24,8 +24,14 @@ public class VaronaDarbibas {
             Ievade.vaiIevadiIzpildija = true;
         }
 
+        if (Main.varonisIrMazajaSpele) {
+          if (ievade.equals("Q")) {
+            Main.varonisIrMazajaSpele = false;
+          }
+        }
+
         // Ja ievades nebija, tad nepārbauda pārējās komandas.
-        if (!ievade.equals("}")) {
+        if (!ievade.equals("}") && !Main.varonisIrMazajaSpele) {
             // Darbības jeb komandas pareizai situācijai.
             if (Main.sakumaEkrans) {
                 sakumaEkranaDarbibas(ievade);
@@ -166,6 +172,7 @@ public class VaronaDarbibas {
             }
             else if (panemtaIevade.equals("E")) {
                 // TODO : Karātavu kods.
+                Main.varonisIrMazajaSpele = true;
                 Main.karatavas = true;
                 Ievade.ievade = "}";
             }

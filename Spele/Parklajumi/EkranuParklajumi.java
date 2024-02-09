@@ -28,7 +28,7 @@ public class EkranuParklajumi {
     mainamaisMasivs[17] += "\033[18G" + burti[19] + Main.rAtstarpes[15] + burti[20] + Main.rAtstarpes[16] + burti[21] + "\033[106G";
 
     // Grāmatā ievieto izvēlēto vārdu.
-    mainamaisMasivs[24] += "\033[15G" + Main.karatavasVards + "\033[106G";
+    mainamaisMasivs[22] += "\033[15G" + Main.karatavasVards + "\033[106G";
 
     // Grāmatā uzzīmē zīmējumu.
     String[] zimejumaVeids = KaratavuIzskati.karatavuZimejums[Karatavas.karatavuKluduSkaits];

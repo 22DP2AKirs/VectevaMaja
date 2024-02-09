@@ -18,8 +18,10 @@ public class Main {
   public static volatile boolean programmaPalaista = true; // booleans, kas palaiž visu programmu.
   public static boolean sakumaEkrans = false; // Nosaka vai spēles sākumā rādīs sākuma ekrānu vai nē.
   public static volatile boolean spelePalaista = true; // Mainīgais bool, kas pašu spēli.
+
   public static boolean karatavas;
-  public static boolean mazasSpelesUzvara = true;
+  public static boolean mazasSpelesRezultataParskats = false;
+  public static boolean varonisIrMazajaSpele; // true, ja varonis ir iegājis mazajā spēlē, false, ja nav.
 
   public static boolean varonaNemirstiba = true; // Vai varonis var zaudēt spēli vai nē.
   static boolean kluduLasisana = false;
@@ -85,13 +87,13 @@ public class Main {
     skanasSpeletajs.start(); // Strādā, kamēr spelePalaista bools ir true.
     ievadesLasitajs.start(); // Strādā, kamēr programmaPalaista bools ir true.
 
-    Karatavas karatavasObjekts = new Karatavas(rand.nextInt(3), rand.nextInt(3));
+    
 
     // * Palaiž programmu.
     while (programmaPalaista) {
       tiritEkranu();
 
-      // * ////////////////////////////////////////////////////// S P Ē L E S   I Z V Ē L N E //////////////////////////////////////////////////////
+      // * ////////////////////////////////////////////////////// S P Ē L E S   I Z V Ē L N E (M A I N   M E N U)//////////////////////////////////////////////////////
       while (sakumaEkrans) {
         VaronaDarbibas.varonaDarbibas(Ievade.ievade);
         IzvadeUzTerminalu.masivuIzvade(EkranuIzskati.ekranuAtjaunosana()[0]);
@@ -104,7 +106,7 @@ public class Main {
       Laiks laiks = new Laiks(); // Katru reizi, kad ir palaista spēle, veido jaunu Laika thredu.
       laiks.start(); // Strādā, kamēr spelePalaista bools ir true.
 
-      // * /////////////////////////////////////////// S Ā K A S   S P Ē L E S   K O D S /////////////////////////////////////////////////////////////////////////////////////////
+      // * /////////////////////////////////////////// S Ā K A S   S P Ē L E S   K O D S (G A M E   C O D E) //////////////////////////////////////////////////////////////////////////////
       while (spelePalaista) { // Kamēr laiks nav beidzies, turpināt ciklu jeb spēli.
 
         VaronaDarbibas.varonaDarbibas(Ievade.ievade); // Lietotāja jeb varoņa ievade un tās darbības (komandas un to darbības).
@@ -117,30 +119,8 @@ public class Main {
 
         // Visām fāzēm, bildēm un visam vizuālajam ir jābūt gatavam pirms šīs metodes izsaukšanas!!!
         // Spoku vizuālais atjaunojums notiek Laiks.java Klasē.
-
-        // TODO : Jāizdara, lai varoņa darbības nebūtu pieejamas karātavu laikā, un jāsalabo iespēja redzēt atbildi 3 sekundes. Jāizveido iespēja noiet nost no grāmatas.
-        if (karatavas || !mazasSpelesUzvara) { // Ja karātavas ir palaistas vai, ja varonis tiko uzvarēja karātavas.
-          // Izdara tā, lai nezināmo vārdu izvadītu uz ekrānu.
-          karatavasVards = karatavasObjekts.toString();
-          
-          // Kamēr varonis nav uzvarējis karātavas, tikmēr viņš var ievadīt burtus.
-          if (karatavas) {
-            karatavasObjekts.parbauditBurtu(Ievade.ievade, EkranuParklajumi.burti);
-          }
-          
-          // Izvada masīvu vispirms pārklājot to.
-          IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuIzskati.ekranuAtjaunosana()[3]));
-          
-          // Ļauj varonim redzēt pabeigto vārdu n sekundes.
-          if (!karatavas) {
-            Thread.sleep(3000);
-            mazasSpelesUzvara = true;
-          }
-
-          // Ja karātavu vārds ir atminēts, tad karātavas padara false.
-          if (Karatavas.atlikusoBurtuSkaits == 0) {
-            karatavas = false;
-          }
+        if (varonisIrMazajaSpele) {
+          Karatavas.karatavuKods();
         }
         else {
           IzvadeUzTerminalu.salipinataUIIzvade(); // Izvade uz ekrāna.

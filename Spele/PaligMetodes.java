@@ -1,7 +1,7 @@
 package Spele;
 
 public class PaligMetodes {
-  // Šeit ir metodes, kuras atvieglos koda saprašanu.
+  // Šeit ir metodes, kuras atvieglos koda saprašanu un manu dzīvi.
   
   public static String[] nomainitMasivaElementu(String[] masivs, String mainamaisElements, String jaunaisElements) {
     // * Metode pareizi izpildās tikai tad, ja masīvā nav identisku elementu.
@@ -18,6 +18,12 @@ public class PaligMetodes {
     return masivs;
   }
 
-
-
+  public static void gulet(int sekundes) {
+    // * Metode atvieglo dzīvi visu laiku, kad man vajag izmantot
+    // * Thread.sleep(); Vairs nevajag uztraukties par try_catch 
+    // * rakstīšanu.
+    try {
+      Thread.sleep(sekundes * 1000);
+    } catch (Exception e) {}
+  }
 }
