@@ -9,6 +9,7 @@ import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Izskati.EkranuIzskati;
 import Spele.MazasSpeles.Karatavas;
+import Spele.MazasSpeles.MazoSpeluPalaisanasKods;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.Varonis.VaronaDarbibas;
 import Spele.Varonis.VaronaStatusaEfekti;
@@ -38,8 +39,8 @@ public class Main {
 
 
   // Spelētāja pozīcija.
-  public static int varonaIstabasSkaitlis = 3; // 0, no gultas istabas. 2, jo testā sāku no durvju istabas. 3, no virtuves istabas.
-  public static int varonaVirzienaSkaitlis = 0;
+  public static int varonaIstabasSkaitlis = 2; // 0, no gultas istabas. 2, jo testā sāku no durvju istabas. 3, no virtuves istabas.
+  public static int varonaVirzienaSkaitlis = 1;
 
   public static boolean elektribaIeslegta = FailuRedigetajs.booleanDatuAtgriezejs("elektribaIeslegta");
   public static boolean pagrabaGaisma = FailuRedigetajs.booleanDatuAtgriezejs("pagrabaGaisma");
@@ -106,6 +107,8 @@ public class Main {
       Laiks laiks = new Laiks(); // Katru reizi, kad ir palaista spēle, veido jaunu Laika thredu.
       laiks.start(); // Strādā, kamēr spelePalaista bools ir true.
 
+      MazoSpeluPalaisanasKods.izveidotJaunuKaratavasSpeli();
+
       // * /////////////////////////////////////////// S Ā K A S   S P Ē L E S   K O D S (G A M E   C O D E) //////////////////////////////////////////////////////////////////////////////
       while (spelePalaista) { // Kamēr laiks nav beidzies, turpināt ciklu jeb spēli.
 
@@ -119,11 +122,11 @@ public class Main {
 
         // Visām fāzēm, bildēm un visam vizuālajam ir jābūt gatavam pirms šīs metodes izsaukšanas!!!
         // Spoku vizuālais atjaunojums notiek Laiks.java Klasē.
-        if (varonisIrMazajaSpele) {
-          Karatavas.karatavuKods();
+        if (!varonisIrMazajaSpele) {
+          IzvadeUzTerminalu.salipinataUIIzvade(); // Izvade uz ekrāna.
         }
         else {
-          IzvadeUzTerminalu.salipinataUIIzvade(); // Izvade uz ekrāna.
+          MazoSpeluPalaisanasKods.karatavuKods();
         }
 
 
@@ -136,6 +139,7 @@ public class Main {
         else if (Karatavas.karatavuKluduSkaits > 7) {
           VaronaStatusaEfekti.varonaBojaeja("karatavas");
         }
+        
 
         try { // Vienas bildes izvade jeb beigas.
           Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 30 FPS.

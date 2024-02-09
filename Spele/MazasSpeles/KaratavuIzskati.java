@@ -47,7 +47,6 @@ public class KaratavuIzskati {
     "                                  ",
     "                                  ",
     "                                  ",
-    "                                  "
   };
 
   private static String[] karatavuZimejums1 = {
@@ -71,7 +70,6 @@ public class KaratavuIzskati {
     "     ||                           ",
     "     ||                           ",
     "     ||                           ",
-    "                                  "
   };
 
   private static String[] karatavuZimejums2 = {
@@ -95,7 +93,6 @@ public class KaratavuIzskati {
     "     ||                           ",
     "     ||                           ",
     "     ||                           ",
-    "                                  "
   };
 
   private static String[] karatavuZimejums3 = {
@@ -119,7 +116,6 @@ public class KaratavuIzskati {
     "     ||                           ",
     "     ||                           ",
     "     ||                           ",
-    "                                  "
   };
 
   private static String[] karatavuZimejums4 = {
@@ -143,7 +139,6 @@ public class KaratavuIzskati {
     "     ||                           ",
     "     ||                           ",
     "     ||                           ",
-    "                                  "
   };
 
   private static String[] karatavuZimejums5 = {
@@ -167,7 +162,6 @@ public class KaratavuIzskati {
     "     ||                           ",
     "     ||                           ",
     "     ||                           ",
-    "                                  "
   };
 
   private static String[] karatavuZimejums6 = {
@@ -191,7 +185,6 @@ public class KaratavuIzskati {
     "     ||                           ",
     "     ||                           ",
     "     ||                           ",
-    "                                  "
   };
 
   private static String[] karatavuZimejums7 = {
@@ -215,10 +208,32 @@ public class KaratavuIzskati {
     "     ||             '   '         ",
     "     ||             \"   \"         ",
     "     ||                           ",
-    "                                  "
+  };
+  
+  private static String[] karatavuZimejums8 = {
+    "     ||                           ",
+    "     ||========================== ",
+    "     ||    .'         |           ",
+    "     ||  .'           |           ",
+    "     ||.'             |           ",
+    "     ||            -'''''-    -'  ",
+    "     ||           './''-_.'       ",
+    "     ||           |  0 o  |       ",
+    "     ||            '.___.'        ",
+    "     ||       .:'     |     -.    ",
+    "     ||             .-|-.         ",
+    "     ||            /|-|-|\\        ",
+    "     ||           / '-|-' \\       ",
+    "     ||          ''  '|'  ''      ",
+    "     ||               |           ",
+    "     ||              '-'          ",
+    "     ||             '   '         ",
+    "     ||             '   '         ",
+    "     ||             '   '         ",
+    "     ||             \"   \"         ",
   };
 
   // Masīvs satur visus karātavas zīmējumus.
   public static final String[] [] karatavuZimejums = 
-  { karatavuZimejums0 , karatavuZimejums1 , karatavuZimejums2 , karatavuZimejums3 , karatavuZimejums4 , karatavuZimejums5 , karatavuZimejums6 , karatavuZimejums7 };
+  { karatavuZimejums0 , karatavuZimejums1 , karatavuZimejums2 , karatavuZimejums3 , karatavuZimejums4 , karatavuZimejums5 , karatavuZimejums6 , karatavuZimejums7 , karatavuZimejums8 };
 }

@@ -23,7 +23,7 @@ public class SkanasSpeletajs extends Thread {
         }
     }
 
-    public static void SpeletSkanu(String celsUzFailu, float skalumsDecibelos) {
+    public static void SpeletSkanu(String celsUzFailu, float skalumsDecibelosMax6) {
         if (Main.ieslegtaSkana) {  // Nosaka vai spēlē būs skaņa.
             try {
                 File skanasCels = new File(celsUzFailu);
@@ -32,7 +32,7 @@ public class SkanasSpeletajs extends Thread {
                     Clip klips = AudioSystem.getClip();
                     klips.open(audioIevade);
                     FloatControl iegutKontroli = (FloatControl) klips.getControl(FloatControl.Type.MASTER_GAIN);
-                    iegutKontroli.setValue(skalumsDecibelos); // Reduce volume by 10 decibels.
+                    iegutKontroli.setValue(skalumsDecibelosMax6); // Reduce volume by 10 decibels.
                     klips.start();
                 } else {
                     throw new RuntimeException("Nevar atrast skaņas failu.");

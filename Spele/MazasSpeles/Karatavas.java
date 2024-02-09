@@ -3,18 +3,16 @@ package Spele.MazasSpeles;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import Spele.IzvadeUzTerminalu;
 import Spele.K;
 import Spele.PaligMetodes;
-import Spele.Izskati.EkranuIzskati;
-import Spele.Parklajumi.EkranuParklajumi;
-import Spele.SpelesProcesi.Ievade;
-import Spele.SpelesProcesi.Main;
+
 
 // Karātavas algoritms jeb spēle.
 public class Karatavas {
   public static int karatavuKluduSkaits = 0;
   public static boolean atminejaVardu = false;
+  
+  private String atstarpe = "";
 
   private String izveletaisVards;
   private String[] vardaSkelets;
@@ -33,46 +31,27 @@ public class Karatavas {
   // 1234567891
   // 
 
-
-  // Karātavu kods savienots izmantojamā jeb spēlējamā stāvoklī:
-  static Karatavas karatavasObjekts = new Karatavas(0,1); // rand.nextInt(3), rand.nextInt(3)
-  
-  public static void karatavuKods() {
-    if (Main.karatavas || Main.mazasSpelesRezultataParskats) { // Ja karātavas ir palaistas vai, ja varonis tiko uzvarēja karātavas.
-      // Kamēr varonis nav uzvarējis karātavas, tikmēr viņš var ievadīt burtus.
-      if (Main.karatavas) {
-        // Izdara tā, lai nezināmo vārdu izvadītu uz ekrānu.
-        Main.karatavasVards = karatavasObjekts.toString();
-        karatavasObjekts.parbauditBurtu(Ievade.ievade, EkranuParklajumi.burti);
-      }
-      else {
-        Main.karatavasVards = karatavasObjekts.nokrasotToString();
-      }
-      
-      // Izvada masīvu vispirms pārklājot to.
-      IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuIzskati.ekranuAtjaunosana()[3]));
-      
-      // Ļauj varonim redzēt pabeigto vārdu n sekundes.
-      if (!Main.karatavas && Main.mazasSpelesRezultataParskats == true) {
-        PaligMetodes.gulet(3);
-        Main.mazasSpelesRezultataParskats = false;
-        Main.varonisIrMazajaSpele = false;
-      }
-      // Ja karātavu vārds ir atminēts, tad karātavas padara false, un minigamePārskatu padara true.
-      if (Karatavas.atminejaVardu && Main.karatavas == true) {
-        Main.karatavas = false;
-        Main.mazasSpelesRezultataParskats = true;
-      }
-    }
-  }
-
   public Karatavas(int vardaGrutiba, int vardsPecKartas) {
     // Konstruktors izvēlas vārdu, izveido vārdam skeleta izmēru un aizpilda to ar tukša burta simbolu "_ ".
     izveletaisVards = karatavasVardi[vardaGrutiba][vardsPecKartas];
     vardaSkelets = new String[izveletaisVards.length()];
+    atstarpe = noteiktAtstarpesIzmeru(izveletaisVards.length());
+
     Arrays.fill(vardaSkelets, "_  ");
 
     neatminetieBurti = izveletaisVards.toCharArray();
+  }
+
+//   private void atklatDazusBurtus() {
+
+//   }
+
+  private String noteiktAtstarpesIzmeru(int vardaGarums) {
+    while (vardaGarums < 10) {
+      atstarpe += " ";
+      vardaGarums++;
+    }
+    return atstarpe;
   }
 
   public String nokrasotToString() {
@@ -117,7 +96,7 @@ public class Karatavas {
     for (String elemetns : vardaSkelets) {
       vards += elemetns;
     }
-    return vards;
+    return atstarpe + vards;
   }
 
   private void noteiktBurtaPareizibu(boolean pareizs, String ievaditaisBurts, String[] iespejamieBurti) {
