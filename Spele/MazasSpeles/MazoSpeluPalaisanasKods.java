@@ -3,6 +3,7 @@ package Spele.MazasSpeles;
 import Spele.IzvadeUzTerminalu;
 import Spele.PaligMetodes;
 import Spele.Izskati.EkranuIzskati;
+import Spele.Izskati.EkranuIzskati.EkranuVeidi;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SpelesProcesi.Ievade;
 import Spele.SpelesProcesi.Main;
@@ -23,7 +24,7 @@ public class MazoSpeluPalaisanasKods {
       }
       
       // Izvada masīvu vispirms pārklājot to.
-      IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuIzskati.ekranuAtjaunosana()[3]));
+      IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuIzskati.visiEkrani[3], EkranuVeidi.KARATAVU_EKRANS));
       
       // Ļauj varonim redzēt pabeigto vārdu n sekundes.
       if (!Main.karatavas && Main.mazasSpelesRezultataParskats == true) {
@@ -42,9 +43,11 @@ public class MazoSpeluPalaisanasKods {
   public static void izveidotJaunuKaratavasSpeli() {
     // * Šī metode izveido jaunu objektu, lai to varētu izmantot spēlē ar citām vērtībām.
     karatavasObjekts = new Karatavas(3, Main.rand.nextInt(3));
+    EkranuParklajumi.saliktRandAtstarpesKaratavuGramata(); // Papild process.
   }
 
   public static void palaistKaratavas() {
+    
     Main.varonisIrMazajaSpele = true;
     Main.karatavas = true;
     Ievade.ievade = "}";

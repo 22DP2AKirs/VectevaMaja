@@ -315,7 +315,7 @@ public class IstabuIzskati {
   };
   
   // Masīvs satur visas istabas un visus istabas virzienus.
-  public static final String[][] [] istabuMasivs = // String[][] - dimensijas. [] - Masīvs,
+  public static final String[][] [] istabuMasivs = // String[] - masīvs, String[] [] - viendimensijas masīvs, kurš satur masīvus, String[][] [] - divdimensiju masīvs, kurš satur masīvus.
 	{ // { Priekša , LabāPuse , Leja , KreisāPuse } // Istabas virzieni.
 	{ gultasPrieksa , gultasLabaPuse , gultasLeja , gultasKreisaPuse },                            // Gultas istaba [x][].
 	{ divanaPrieksa , divanaLabaPuse , divanaLeja , divanaKreisaPuse },                              // Dīvāna istaba [x][].

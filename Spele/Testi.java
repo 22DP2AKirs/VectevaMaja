@@ -1,5 +1,4 @@
 package Spele;
-import java.util.Scanner;
 
 import Spele.MazasSpeles.Karatavas;
 import Spele.SpelesProcesi.Main;
@@ -7,7 +6,7 @@ import Spele.SpelesProcesi.Main;
 public class Testi {
   public static void testaProgramma() throws InterruptedException { // throws  InterruptedException, Lai varētu izmantot: Thread.sleep(0); bez try_catch.
     // Sagatave pirms spēles cikla.
-    Scanner iLasitajs = new Scanner(System.in);
+    // Scanner iLasitajs = new Scanner(System.in);
     Main.tiritEkranu();
 
     Karatavas vards = new Karatavas(Main.rand.nextInt(4), Main.rand.nextInt(4));
@@ -16,7 +15,7 @@ public class Testi {
     while (true) {
       // Lietotāja ievade.
       System.out.print("\rJusu ievade: ");
-      String ievade = iLasitajs.nextLine();
+    //   String ievade = iLasitajs.nextLine();
 
       // Apstrādā karātavas procesus.
       // vards.parbauditBurtu(ievade);

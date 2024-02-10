@@ -1,9 +1,8 @@
 package Spele;
 
-import java.util.Random;
-
 import Spele.SpelesProcesi.Main;
 import Spele.Varonis.VaronaStatusaEfekti;
+import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Izskati.SpokuIzskati;
 import Spele.SpelesProcesi.Laiks;
 
@@ -70,43 +69,42 @@ public class Spoki {
     }
 
     public void istabuBildesFazuAtjaunosana(String spokaVeids) {
-        // Atjauno fāzi tikai tad, kad spoks ir aktīvs vai aizbiedēts, un tam vajag nomainīt bildi.
-        if (spoksAktivs || bilesAtjaunosanaIespejaPirmsIzslegsanas) {
-            if (spokaVeids.equals("loga") && spokaFazesIndeks < 9 && spokaIstaba != null) {
-                if (spokaIstaba.equals("Gulta")) {
-                    SpokuIzskati.gultasLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieGultas[spokaFazesIndeks];
-                }
-                else if (spokaIstaba.equals("Divans")) {
-                    SpokuIzskati.divanaLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieDivana[spokaFazesIndeks];
-                }
-                else if (spokaIstaba.equals("Durvis")) {
-                    SpokuIzskati.durvjuLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieDurvim[spokaFazesIndeks];
-                }
-                else if (spokaIstaba.equals("Virtuve")) {
-                    SpokuIzskati.virtuvesLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieVirtuves[spokaFazesIndeks];
-                }
-            }
-            else if (spokaVeids.equals("durvju") && spokaFazesIndeks < 10) {
-                SpokuIzskati.durSpokaFazesBilde = SpokuIzskati.durvjuSpokaIzskati[spokaFazesIndeks];
-            }
-            else if (spokaVeids.equals("virtuves") && spokaFazesIndeks < 11) {
-                SpokuIzskati.virtPrieksasPagrabaBildesArSpoku = SpokuIzskati.virtuvesSpokaIzskati[spokaFazesIndeks];
-                Main.pagrabaGaismaStrada = true;
-            }
-            else { // Kods kurš strādās, tikai tad, kad spēlētājs nomirs no spoka. ! ! ! Z A U D Ē Š A N A S   K O D S ! ! !
-                if (!Main.varonaNemirstiba) {
-                    VaronaStatusaEfekti.varonaBojaeja(spokaVeids);
-                    
-
-                    Main.tiritEkranu();
-                    System.out.println("Jus nomirat!\nNaves iemesls: " + spokaVeids + " spoks.");
-                }
-            }
-
-            if (!spoksAktivs) {
-                bilesAtjaunosanaIespejaPirmsIzslegsanas = false;
-            }
+      // Atjauno fāzi tikai tad, kad spoks ir aktīvs vai aizbiedēts, un tam vajag nomainīt bildi.
+      if (spoksAktivs || bilesAtjaunosanaIespejaPirmsIzslegsanas) {
+        if (spokaVeids.equals("loga") && spokaFazesIndeks < 9 && spokaIstaba != null) {
+          if (spokaIstaba.equals("Gulta")) {
+            SpokuIzskati.gultasLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieGultas[spokaFazesIndeks];
+          }
+          else if (spokaIstaba.equals("Divans")) {
+            SpokuIzskati.divanaLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieDivana[spokaFazesIndeks];
+          }
+          else if (spokaIstaba.equals("Durvis")) {
+            SpokuIzskati.durvjuLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieDurvim[spokaFazesIndeks];
+          }
+          else if (spokaIstaba.equals("Virtuve")) {
+            SpokuIzskati.virtuvesLogaSpokaFazesBilde = SpokuIzskati.logaSpokaSkatiPieVirtuves[spokaFazesIndeks];
+          }
         }
+        else if (spokaVeids.equals("durvju") && spokaFazesIndeks < 10) {
+          SpokuIzskati.durSpokaFazesBilde = SpokuIzskati.durvjuSpokaIzskati[spokaFazesIndeks];
+        }
+        else if (spokaVeids.equals("virtuves") && spokaFazesIndeks < 11) {
+          SpokuIzskati.virtPrieksasPagrabaBildesArSpoku = SpokuIzskati.virtuvesSpokaIzskati[spokaFazesIndeks];
+          IestatijumuDati.pagrabaGaismaStrada = true;
+        }
+        else { // Kods kurš strādās, tikai tad, kad spēlētājs nomirs no spoka. ! ! ! Z A U D Ē Š A N A S   K O D S ! ! !
+          if (!Main.varonaNemirstiba) {
+            VaronaStatusaEfekti.noteiktSpelesGalaRezultatu(spokaVeids.toUpperCase());
+            
+            Main.tiritEkranu();
+            System.out.println("Jus nomirat!\nNaves iemesls: " + spokaVeids + " spoks.");
+          }
+        }
+
+        if (!spoksAktivs) {
+          bilesAtjaunosanaIespejaPirmsIzslegsanas = false;
+        }
+      }
     }
 
 
@@ -142,9 +140,9 @@ public class Spoki {
 
 
     public static Spoki[] spokuStati = {
-        new Spoki("loga", Main.logaSpokaAgresivitatesLimits),
-        new Spoki("durvju", Main.durvjuSpokaAgresivitatesLimits),
-        new Spoki("virtuves", Main.virtuvesSpokaAgresivitatesLimits)
+        new Spoki("loga", IestatijumuDati.logaSpokaAgresivitatesLimits),
+        new Spoki("durvju", IestatijumuDati.durvjuSpokaAgresivitatesLimits),
+        new Spoki("virtuves", IestatijumuDati.virtuvesSpokaAgresivitatesLimits)
     };
 
     public static void spokuInformacijasIzvade() {

@@ -10,7 +10,7 @@ import java.io.FileWriter;
 public class FailuRedigetajs {
     // Izprintē jeb izvada visus faila datus.
     static void failuPrintetajs() {
-        try (BufferedReader failuLasitajs = new BufferedReader(new FileReader("Spele\\Iestatijumi.csv"))) {
+        try (BufferedReader failuLasitajs = new BufferedReader(new FileReader("Spele\\Iestatijumi\\Iestatijumi.csv"))) {
             String linija;
             while ((linija = failuLasitajs.readLine()) != null) { // Lasa kamēr nav ticis līdz faila pēdējai līnijai.
                 System.out.println(linija);
@@ -20,7 +20,7 @@ public class FailuRedigetajs {
 
     // Jebkurā uzrādītajā failā ieraksta norādīto tekstu.
     static void failuRakstitajs(String rakstamaisTeksts) {
-        try (BufferedWriter rakstitajs = new BufferedWriter(new FileWriter("Spele\\Iestatijumi.csv", true))) { // FileWriter(x, y) x - Faila nosaukums, y - append režīms (true - pieraksta, false - pārraksta).
+        try (BufferedWriter rakstitajs = new BufferedWriter(new FileWriter("Spele\\Iestatijumi\\Iestatijumi.csv", true))) { // FileWriter(x, y) x - Faila nosaukums, y - append režīms (true - pieraksta, false - pārraksta).
             rakstitajs.write(rakstamaisTeksts);
             rakstitajs.close();
         } catch (Exception e) {}
@@ -29,7 +29,7 @@ public class FailuRedigetajs {
     // * Atgriež vērtības no nolasītā faila.
     // int.
     public static int intDatuAtgriezejs(String mainigaNosaukums) {
-        try (BufferedReader mainigoDatuLasitajs = new BufferedReader(new FileReader("Spele\\Iestatijumi.csv"))) {
+        try (BufferedReader mainigoDatuLasitajs = new BufferedReader(new FileReader("Spele\\Iestatijumi\\Iestatijumi.csv"))) {
             // Pareizās līnijas atrašana.
             String linija;
             // Darbošanās princips. !(boolean) => definē mainīgo "linija", katru reizi, kad nosacījums tiek pārbaudīts un pārbauda vai definējuma iekšā ir norādītā burtu virkne.
@@ -45,7 +45,7 @@ public class FailuRedigetajs {
 
     // String.
     static String stringDatuAtgriezejs(String mainigaNosaukums) {
-        try (BufferedReader mainigoDatuLasitajs = new BufferedReader(new FileReader("Spele\\Iestatijumi.csv"))) {
+        try (BufferedReader mainigoDatuLasitajs = new BufferedReader(new FileReader("Spele\\Iestatijumi\\Iestatijumi.csv"))) {
             // Pareizās līnijas atrašana.
             String linija;
             // Darbošanās princips. !(boolean) => definē mainīgo "linija", katru reizi, kad nosacījums tiek pārbaudīts un pārbauda vai definējuma iekšā ir norādītā burtu virkne.
@@ -59,7 +59,7 @@ public class FailuRedigetajs {
 
     // boolean.
     public static boolean booleanDatuAtgriezejs(String mainigaNosaukums) {
-        try (BufferedReader mainigoDatuLasitajs = new BufferedReader(new FileReader("Spele\\Iestatijumi.csv"))) {
+        try (BufferedReader mainigoDatuLasitajs = new BufferedReader(new FileReader("Spele\\Iestatijumi\\Iestatijumi.csv"))) {
             // Pareizās līnijas atrašana.
             String linija;
             // Darbošanās princips. !(boolean) => definē mainīgo "linija", katru reizi, kad nosacījums tiek pārbaudīts un pārbauda vai definējuma iekšā ir norādītā burtu virkne.

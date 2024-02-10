@@ -3,101 +3,85 @@ package Spele.Izskati;
 import Spele.K;
 
 public class EkranuIzskati {
-
-  public static String[] [] ekranuAtjaunosana() {
-    String[] [] atjaunotaisMasivs = {
-      sakumaEkranaBildesAtjaunosana(),
-      zaudesanasBildesAtjaunosana(),
-      uzvarasBildesAtjaunosana(),
-      karatavuEkrans
-    };
-    return atjaunotaisMasivs;
+  public enum EkranuVeidi {
+    GALVENAIS_EKRANS,
+    KARATAVU_EKRANS,
+    UZVARAS_EKRANS
   }
 
-  // TODO: Pārveidot, lai ekrānus pārklātu EkranuParklajumu klasē. Šeit jābūt tikai bildes izskatam kā grāmata.
-  public static int izvelnesSkaits = 1;
-  static String[] sakumaEkranaIzvelesVarduVarianti = {"", "", "", "", "", ""};
-  public static String[] sakumaEkranaBildesAtjaunosana() {
+  private static final String[] GALVENAIS_EKRANS = {
 
-      if (izvelnesSkaits == 1) { // Spēlēt.
-          sakumaEkranaIzvelesVarduVarianti[0] = izvelnesBultinas[0] + " T U R P I N A T " + izvelnesBultinas[1];
-      } else {
-          sakumaEkranaIzvelesVarduVarianti[0] = "  T U R P I N A T  ";
-      }
-
-      if (izvelnesSkaits == 2) { // Spēlēt.
-          sakumaEkranaIzvelesVarduVarianti[1] = izvelnesBultinas[0] + " S P E L E T " + izvelnesBultinas[1];
-      } else {
-          sakumaEkranaIzvelesVarduVarianti[1] = "  S P E L E T  ";
-      }
-
-      if (izvelnesSkaits == 3) {
-          sakumaEkranaIzvelesVarduVarianti[2] = izvelnesBultinas[0] + " I E S T A T I J U M I " + izvelnesBultinas[1];
-      } else {
-          sakumaEkranaIzvelesVarduVarianti[2] = "  I E S T A T I J U M I  ";
-      }
-
-      if (izvelnesSkaits == 4) {
-          sakumaEkranaIzvelesVarduVarianti[3] = izvelnesBultinas[0] + " P A M A C I B A " + izvelnesBultinas[1];
-      } else {
-          sakumaEkranaIzvelesVarduVarianti[3] = "  P A M A C I B A  ";
-      }
-
-      if (izvelnesSkaits == 5) {
-          sakumaEkranaIzvelesVarduVarianti[4] = izvelnesBultinas[0] + " A K A U N T S " + izvelnesBultinas[1];
-      } else {
-          sakumaEkranaIzvelesVarduVarianti[4] = "  A K A U N T S  ";
-      }
-
-      if (izvelnesSkaits == 6) {
-          sakumaEkranaIzvelesVarduVarianti[5] = izvelnesBultinas[0] + " I Z I E T " + izvelnesBultinas[1];
-      } else {
-          sakumaEkranaIzvelesVarduVarianti[5] = "  I Z I E T  ";
-      }
-
-      String[] sakumaEkranaIzvelne = {
-
-          "\r▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓",
-          "\r|                                           :::::                                                      |",
-          "\r|   :::    :::  :::::::  ::::::  ::::::::  :::::::  :::    :::  .::::::.                               |",
-          "\r|    :::  :::   ::....   ::         ::     ::....    :::  :::   ::    ::                               |",
-          "\r|     ::::::    ::''''   ::         ::     ::''''     ::::::    ::''''::                               |",
-          "\r|      ::::     :::::::  ::::::     ::     :::::::     ::::     ::    ::                               |",
-          "\r|                                                                          ::::::                      |",
-          "\r|                                                              ::.   .::  .::::::.      ::  .::::::.   |",
-          "\r|                                                              ::::.::::  ::    ::      ::  ::    ::   |",
-          "\r|                                                              :: ':' ::  ::''''::      ::  ::''''::   |",
-          "\r|                                                              ::     ::  ::    ::  ::::'   ::    ::   |",
-          "\r|             " + Spele.K.SARKANS + sakumaEkranaIzvelesVarduVarianti[0] + Spele.K.RESET + "                                                                      |",
-          "\r|                                                                                                      |",
-          "\r|               " + sakumaEkranaIzvelesVarduVarianti[1] + "                                                                        |",
-          "\r|                                                                                                      |",
-          "\r|          " + Spele.K.SARKANS + sakumaEkranaIzvelesVarduVarianti[2] + Spele.K.RESET + "                                                                   |",
-          "\r|                                                                                                      |",
-          "\r|             " + Spele.K.SARKANS + sakumaEkranaIzvelesVarduVarianti[3] + Spele.K.RESET + "                                                                      |",
-          "\r|                                                                                                      |",
-          "\r|              " + Spele.K.SARKANS + sakumaEkranaIzvelesVarduVarianti[4] + Spele.K.RESET + "                                                                       |",
-          "\r|                                                                                                      |",
-          "\r|                " + sakumaEkranaIzvelesVarduVarianti[5] + "                                                                         |",
-          "\r|                                                                                                ::    |",
-          "\r|                                                                   .         :::                ::    |",
-          "\r|                                                                 .:::.       :::            .:  ::    |",
-          "\r|                                                                  :::       .:::.          :::::::    |",
-          "\r|                                                             [w]  :::   [s]  ':'   [ENTER]  ':        |",
-          "\r|    L I E T O T A J S : _ _ _ _ _ _ _ _ _ _                                                           |",
-          "\r|                                                                                                      |",
-          "\r|    V E R S I J A : K A U T   K A S   S A L I P I N A T S   A R   L I M L E N T I                     |",
-          "\r|______________________________________________________________________________________________________|",
-      };
-
-      return sakumaEkranaIzvelne;
-  }
-
-  public static final String[] izvelnesBultinas = {Spele.K.DEBESU_ZILS + ">", "<" + Spele.K.RESET};
-
-  private static final String[] zaudesanasBildesAtjaunosana() {
-    String[] zaudesanasEkrans = {
-    K.SARKANS +
+    "\r▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓",
+    "\r|                                           :::::                                                      |",
+    "\r|   :::    :::  :::::::  ::::::  ::::::::  :::::::  :::    :::  .::::::.                               |",
+    "\r|    :::  :::   ::....   ::         ::     ::....    :::  :::   ::    ::                               |",
+    "\r|     ::::::    ::''''   ::         ::     ::''''     ::::::    ::''''::                               |",
+    "\r|      ::::     :::::::  ::::::     ::     :::::::     ::::     ::    ::                               |",
+    "\r|                                                                          ::::::                      |",
+    "\r|                                                              ::.   .::  .::::::.      ::  .::::::.   |",
+    "\r|                                                              ::::.::::  ::    ::      ::  ::    ::   |",
+    "\r|                                                              :: ':' ::  ::''''::      ::  ::''''::   |",
+    "\r|                                                              ::     ::  ::    ::  ::::'   ::    ::   |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                ::    |",
+    "\r|                                                                   .         :::                ::    |",
+    "\r|                                                                 .:::.       :::            .:  ::    |",
+    "\r|                                                                  :::       .:::.          :::::::    |",
+    "\r|                                                             [w]  :::   [s]  ':'   [ENTER]  ':        |",
+    "\r|    L I E T O T A J S : _ _ _ _ _ _ _ _ _ _                                                           |",
+    "\r|                                                                                                      |",
+    "\r|    V E R S I J A : K A U T   K A S   S A L I P I N A T S   A R   L I M L E N T I                     |",
+    "\r|______________________________________________________________________________________________________|",
+  };
+  
+  
+  private static final String[] UZVARAS_EKRANS = {
+    K.ZALS +
+    "\r▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓",
+    "\r|                                                                                                      |",
+    "\r|          :::::::            ::                       ::::::                         ::::::: :::::::: |",
+    "\r|      :: ..     .. .:::::       ::::::: :::::.  :::::::    ::     ::  .::::.      :: .:''':.    ::    |",
+    "\r|      :: ::     :: :.....    ::    .:'  ::   ::    .:'  ::  ::   ::  ::    ::     :: ::...::    ::    |",
+    "\r|      :: ::     ::  ''''::   ::  .:'    ::   ::  .:'    ::   :: ::   ::    ::     :: ::   ::    ::    |",
+    "\r|  ::::'   ':::::'  :::::'    :: ::::::: :::::'  ::::::: ::    :::     '::::'  ::::'  ::   ::    ::    |",
+    "\r|                                                                                                      |",
+    "\r|  .::::::::::::...........                   ............:::::::::::::::::::...............        .| |",
+    "\r| |'           ''''''''''''':::::::::::::::::''''''''''''''                 ''''''''''''''':::::::::'  |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                    _                                                                                 |",
+    "\r|    S T R E S A   L I M E N I S :                                                                     |",
+    "\r|                v       _                                                                             |",
+    "\r|    A T L I K U S O   S E R K O C I N U   S K A I T S :                                               |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|______________________________________________________________________________________________________|"
+  };
+  
+  private static final String[] ZAUDESANAS_EKRANS = {
+      K.SARKANS +
     "\r▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓",
     "\r|                                                                                                      |",
     "\r|             :::::::                                             ::           ::::::             ::   |",
@@ -114,12 +98,12 @@ public class EkranuIzskati {
     "\r|                                                                                                      |",
     "\r|          v                                                                                           |",
     "\r|    M I R S A N A S   I E M E S L S :                                                                 |",
-    "\r|                                                                                                      |",
-    "\r|    I E T E I K U M S :                                                                               |",
     "\r|                        _                                                                             |",
     "\r|    S E K U N D E S   L I D Z   6 A M :                                                               |",
-    "\r|                    _                                                                                 |",
-    "\r|    S T R E S A   L I M E N I S :                                                                     |",
+    "\r|                                                                                                      |",
+    "\r|    I E T E I K U M S :                                                                               |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
     "\r|                                                                                                      |",
     "\r|                                                                                                      |",
     "\r|                                                                                                      |",
@@ -129,51 +113,9 @@ public class EkranuIzskati {
     "\r|                                                                                                      |",
     "\r|                                                                                                      |",
     "\r|______________________________________________________________________________________________________|"
-    };
+  };
 
-    return zaudesanasEkrans;
-  }
-
-  private static final String[] uzvarasBildesAtjaunosana() {
-    String[] zaudesanasEkrans = {
-    K.ZALS +
-    "\r▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓",
-    "\r|                                                                                                      |",
-    "\r|          :::::::            ::                       ::::::                         ::::::: :::::::: |",
-    "\r|      :: ..     .. .:::::       ::::::: :::::.  :::::::    ::     ::  .::::.      :: .:''':.    ::    |",
-    "\r|      :: ::     :: :.....    ::    .:'  ::   ::    .:'  ::  ::   ::  ::    ::     :: ::...::    ::    |",
-    "\r|      :: ::     ::  ''''::   ::  .:'    ::   ::  .:'    ::   :: ::   ::    ::     :: ::   ::    ::    |",
-    "\r|  ::::'   ':::::'  :::::'    :: ::::::: :::::'  ::::::: ::    :::     '::::'  ::::'  ::   ::    ::    |",
-    "\r|                                                                                                      |",
-    "\r|  .::::::::::::...........                   ............:::::::::::::::::::...............        .| |",
-    "\r| |'           ''''''''''''':::::::::::::::::''''''''''''''                 ''''''''''''''':::::::::'  |",
-    "\r|                                                                                                      |",
-    "\r|          v                                                                                           |",
-    "\r|    M I R S A N A S   I E M E S L S :                                                                 |",
-    "\r|                                                                                                      |",
-    "\r|    I E T E I K U M S :                                                                               |",
-    "\r|                        _                                                                             |",
-    "\r|    S E K U N D E S   L I D Z   6 A M :                                                               |",
-    "\r|                    _                                                                                 |",
-    "\r|    S T R E S A   L I M E N I S :                                                                     |",
-    "\r|          _   _ v                                                                                     |",
-    "\r|    A T N A K U S O   S P O K U   S K A I T S :                                                       |",
-    "\r|                v       _                                                                             |",
-    "\r|    A T L I K U S O   S E R K O C I N U   S K A I T S :                                               |",
-    "\r|                                                                                                      |",
-    "\r|                                                                                                      |",
-    "\r|                                                                                                      |",
-    "\r|                                                                                                      |",
-    "\r|                                                                                                      |",
-    "\r|                                                                                                      |",
-    "\r|                                                                                                      |",
-    "\r|______________________________________________________________________________________________________|"
-    };
-
-    return zaudesanasEkrans;
-  }
-
-  private static final String[] karatavuEkrans = {
+  private static final String[] KARATAVU_EKRANS = {
     K.GRAMATA +
     "\r                                                                                                        ",
     "\r __.......-----'''''''''''''''''''''-----------...._....-------------''''''''''''''''''--------......__ ",
@@ -206,5 +148,12 @@ public class EkranuIzskati {
     "\r||           ___________________                   |  __-------------- ---------------  ------------_|.|",
     "\r||___-------   _______________    ''''''''''----_.--'_----'''''''''''''  -----------  '''''''''''''---||",
     "\r|__----'''''''''              ''''''''''''-------|__|-------''''''''''''              '''''''''----____|"
+  };
+
+  public static String[] [] visiEkrani = { // String[] - masīvs, String[] [] - viendimensijas masīvs, kurš satur masīvus, String[][] [] - divdimensiju masīvs, kurš satur masīvus.
+    GALVENAIS_EKRANS,
+    UZVARAS_EKRANS,
+    ZAUDESANAS_EKRANS,
+    KARATAVU_EKRANS
   };
 }

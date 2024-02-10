@@ -2,20 +2,133 @@ package Spele.Parklajumi;
 
 import java.util.Arrays;
 
+import Spele.FailuLietotaji.SkanasSpeletajs;
+import Spele.Iestatijumi.IestatijumuDati;
+import Spele.Izskati.EkranuIzskati.EkranuVeidi;
 import Spele.MazasSpeles.Karatavas;
 import Spele.MazasSpeles.KaratavuIzskati;
+import Spele.SpelesProcesi.Laiks;
 import Spele.SpelesProcesi.Main;
+import Spele.Varonis.VaronaStatusaEfekti;
 
+// * Pārklāj Ekrānu.
 public class EkranuParklajumi {
-  public static String[] burti = "A B C D E F G H I J K L M N O P R S T U V Z".split(" "); // Burti, kurus var izmantot vārdu minēšanai.
-
-  public static String[] parklatEkranu(String[] originalaisEkrans) {
+  
+  public static String[] parklatEkranu(String[] originalaisEkrans, EkranuVeidi EKRANA_TIPS) {
     String[] ekranaKopija = Arrays.copyOf(originalaisEkrans, originalaisEkrans.length);
-    gramatasParklasana(ekranaKopija);
+
+    // Caur iesniegto enum "EKRANA_TIPS", šī metode var viegli noteikt, kurus pārklājumus izmantot.
+    if (EKRANA_TIPS.equals(EkranuVeidi.GALVENAIS_EKRANS)) {
+      galvenaEkranaParklasana(ekranaKopija);
+    }
+    else if (EKRANA_TIPS.equals(EkranuVeidi.KARATAVU_EKRANS)) {
+      gramatasParklasana(ekranaKopija);
+    }
+    else if (EKRANA_TIPS.equals(EkranuVeidi.UZVARAS_EKRANS)) {
+      uzvarasEkranaParklasana(ekranaKopija);
+    }
 
     return ekranaKopija;
   }
 
+  public static String[] parklatZaudesanasEkranu(String[] originalaisEkrans, String iemesls) {
+    String[] ekranaKopija = Arrays.copyOf(originalaisEkrans, originalaisEkrans.length);
+
+    zaudesanasEkranaParklasana(ekranaKopija, zaudesanasInformacijasNoteiksana(iemesls));
+
+    return ekranaKopija;
+  }
+
+  private static void uzvarasEkranaParklasana(String[] mainamaisMasivs) {
+    mainamaisMasivs[15] += "\033[37G" + VaronaStatusaEfekti.varonaStresaLimenis + "\033[106G";
+    mainamaisMasivs[17] += "\033[59G" + IestatijumuDati.atlikusoSerkocinuDaudzums + "\033[106G";
+  }
+
+  private static String[] zaudesanasInformacijasNoteiksana(String iemesls) {
+    // * Metode sagatavo visu informāciju, par nāves iemeslu.
+
+    // Informācijas elementu saturs.
+    // 0 - Nāves iemesls;
+    // 1 - Laiks līdz 6 AM;
+    // 2 - Ieteikums.
+    // 3 - Ieteikums.
+    // 4 - Ieteikums.
+    // 5 - Ieteikums.
+
+    String[] informacija = new String[6];
+
+    informacija[0] = iemesls;
+    informacija[1] = "" + (Main.spelesIlgums - Laiks.spelesLaiks); // Pārveido int uz String.
+    if (iemesls.equals("KARATAVAS")) {
+      informacija[2] = "G E T   G U D.";
+      informacija[3] = "";
+      informacija[4] = "";
+      informacija[5] = "";
+      // Papildus darbības:
+      SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\karatavas_pakarts.wav", 6);
+    } 
+    else if (iemesls.equals("LOGA")) {
+      informacija[2] = "                                    _   _                   _               _                               _                                 _";
+      informacija[3] = "L O G A   S P O K S   V A R   P A R A D I T I E S   V I E N A   N O   4   M A J A S   L O G I E M.  P I E V E R S I E T   T I E M   U Z M A N I B U !";
+      informacija[4] = "";
+      informacija[5] = "";
+    }
+    else if (iemesls.equals("DURVJU")) {
+      informacija[2] = "                                      _   _               _             _       _             _        _       _       V _       _";
+      informacija[3] = "D U R V J U   S P O K S   L I E N   M A J A   C A U R   T A S   V I E N I G A J A M   D U R V I M.   T A S   M E D Z   C I K S T E T .";
+      informacija[4] = "                                _                               _           _   _       _                 _";
+      informacija[5] = "D U R V I S   V A R   A I Z S L E G T,  L A I   S P O K A M   B U T U   G R U T A K   T A S   A T T A I S I T .";
+    }
+    else if (iemesls.equals("VIRTUVES")) {
+      informacija[2] = "                                                      _                           _                 _";
+      informacija[3] = "V I R T U V E S   S P O K S   P A L I E K   A G R E S I V S,  K A D   P A G R A B A   I R   I E S L E G T A   G A I S M A .";
+      informacija[4] = "        _               _                     _                                   _";
+      informacija[5] = "I Z S L E D Z I E T   M A J A S   E L E K T R I B U,  L A I   T O   A I Z B I E D E T U !";
+    }
+    else if (iemesls.equals("STRESS")) {
+      informacija[2] = "                                    _                                     v _             _";
+      informacija[3] = "J U M S   N A V   B A I G I   P A T I K A M I   A T R A S T I E S   T U M S A   I S T A B A . . .";
+      informacija[4] = "        _             _                   _";
+      informacija[5] = "V A R B U T   I E S L E D Z I E T   T A J A   G A I S M U ?";
+    }
+
+    return informacija;
+  }
+
+  private static void zaudesanasEkranaParklasana(String[] mainamaisMasivs, String[] informacija) {
+    // * Metode saliek visu sagatavoto informāciju nāves jeb Zaudesanas ekrānā.
+    mainamaisMasivs[15] += "\033[41G" + informacija[0] + "\033[106G";
+    mainamaisMasivs[17] += "\033[43G" + informacija[1] + "\033[106G";
+    mainamaisMasivs[20] += "\033[10G" + informacija[2] + "\033[106G";
+    mainamaisMasivs[21] += "\033[10G" + informacija[3] + "\033[106G";
+    mainamaisMasivs[22] += "\033[10G" + informacija[4] + "\033[106G";
+    mainamaisMasivs[23] += "\033[10G" + informacija[5] + "\033[106G";
+  }
+
+  public static int izvelnesCipars = 0;
+  private static void galvenaEkranaParklasana(String[] mainamaisMasivs) {
+    // * Metode pārklās galveno ekrānu.
+
+    // Pie teksta pieliek bultiņas.
+    ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[izvelnesCipars] = 
+    ParklajumuIzskati.izvelnesBultinas[0] + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[izvelnesCipars]
+    .substring(1) + ParklajumuIzskati.izvelnesBultinas[1];
+
+    // Uzklāj tekstus.
+    mainamaisMasivs[11] += "\033[13G" + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[0] + "\033[106G";
+    mainamaisMasivs[13] += "\033[15G" + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[1] + "\033[106G";
+    mainamaisMasivs[15] += "\033[10G" + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[2] + "\033[106G";
+    mainamaisMasivs[17] += "\033[13G" + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[3] + "\033[106G";
+    mainamaisMasivs[19] += "\033[14G" + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[4] + "\033[106G";
+    mainamaisMasivs[21] += "\033[16G" + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[5] + "\033[106G";
+
+    // No teksta noņem pieliktās bultiņas.
+    ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[izvelnesCipars] = 
+    " " + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[izvelnesCipars]
+    .substring(12, ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[izvelnesCipars].length() - 5);
+  }
+
+  public static String[] burti = "A B C D E F G H I J K L M N O P R S T U V Z".split(" "); // Burti, kurus var izmantot vārdu minēšanai.
   private static void gramatasParklasana(String[] mainamaisMasivs) {
     // * Metode pārklās grāmatu ar burtiem un zīmējumu.
 
@@ -43,5 +156,11 @@ public class EkranuParklajumi {
       atstarpesLielums += " ";
     }
     return atstarpesLielums;
+  }
+
+  public static void saliktRandAtstarpesKaratavuGramata() {
+    for (int i = 0; i < Main.rAtstarpes.length ;i++) {
+      Main.rAtstarpes[i] = EkranuParklajumi.atgrieztRandAtstarpi();
+    }
   }
 }

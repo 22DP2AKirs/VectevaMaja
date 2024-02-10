@@ -4,10 +4,9 @@ import java.util.Random;
 
 import Spele.IzvadeUzTerminalu;
 import Spele.Spoki;
-import Spele.Testi;
-import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Izskati.EkranuIzskati;
+import Spele.Izskati.EkranuIzskati.EkranuVeidi;
 import Spele.MazasSpeles.Karatavas;
 import Spele.MazasSpeles.MazoSpeluPalaisanasKods;
 import Spele.Parklajumi.EkranuParklajumi;
@@ -15,72 +14,49 @@ import Spele.Varonis.VaronaDarbibas;
 import Spele.Varonis.VaronaStatusaEfekti;
 
 public class Main {
-  // Mainīgie jeb objekti.
+  // ? Mainīgie.
+
+  // Lai noteiktu darbības, kādā no programmas fāzēm.
   public static volatile boolean programmaPalaista = true; // booleans, kas palaiž visu programmu.
-  public static boolean sakumaEkrans = false; // Nosaka vai spēles sākumā rādīs sākuma ekrānu vai nē.
+  public static boolean mainMenu = false; // Nosaka vai spēles sākumā rādīs sākuma ekrānu vai nē.
   public static volatile boolean spelePalaista = true; // Mainīgais bool, kas pašu spēli.
+
+  // Priekš minigames.
+  public static boolean varonisIrMazajaSpele; // true, ja varonis ir iegājis mazajā spēlē, false, ja nav.
+
+  // Priekš karātaām.
+  public static String[] rAtstarpes = new String[17];
+  public static String karatavasVards;
 
   public static boolean karatavas;
   public static boolean mazasSpelesRezultataParskats = false;
-  public static boolean varonisIrMazajaSpele; // true, ja varonis ir iegājis mazajā spēlē, false, ja nav.
 
+  // Varoņa īpašības.
   public static boolean varonaNemirstiba = true; // Vai varonis var zaudēt spēli vai nē.
   static boolean kluduLasisana = false;
   public static boolean varonisDzivs = true;
 
-  //* ////////////////////////////////////////////////// S P Ē L E S   I E S T A T Ī J U M I /////////////////////////////////////////////////////////////////
-
-  // Gaismas dati.
-  public static boolean[] istabuGaismasIeslegtas = {FailuRedigetajs.booleanDatuAtgriezejs("gultasGaisma"), FailuRedigetajs.booleanDatuAtgriezejs("divanaGaisma"), FailuRedigetajs.booleanDatuAtgriezejs("durvjuGaisma"), FailuRedigetajs.booleanDatuAtgriezejs("virtuvesGaisma")}; // Indeksi: 0. Gulta, 1. Dīvāns, 2. Durvis, 3. Virtuve.
-  static boolean spokiSledzAraGaismu = FailuRedigetajs.booleanDatuAtgriezejs("spokiSledzAraGaismu");
-  public static boolean ieslegtaSkana = FailuRedigetajs.booleanDatuAtgriezejs("ieslegtaSkana");
-
-  static int spelesNakts = 6;
-
-
   // Spelētāja pozīcija.
   public static int varonaIstabasSkaitlis = 2; // 0, no gultas istabas. 2, jo testā sāku no durvju istabas. 3, no virtuves istabas.
   public static int varonaVirzienaSkaitlis = 1;
-
-  public static boolean elektribaIeslegta = FailuRedigetajs.booleanDatuAtgriezejs("elektribaIeslegta");
-  public static boolean pagrabaGaisma = FailuRedigetajs.booleanDatuAtgriezejs("pagrabaGaisma");
-  public static boolean pagrabaGaismaStrada = FailuRedigetajs.booleanDatuAtgriezejs("pagrabaGaismaStrada");
-
-  // Sērkociņa dati.
-  public static int atlikusoSerkocinuDaudzums = FailuRedigetajs.intDatuAtgriezejs("atlikusoSerkocinuDaudzums");
-  static int maxSerkocinaDegsanasLaiks = FailuRedigetajs.intDatuAtgriezejs("maxSerkocinaDegsanasLaiks");
-
-  // Spoku dati.
-  public static int logaSpokaAgresivitatesLimits = FailuRedigetajs.intDatuAtgriezejs("logaSpokaAgresivitatesLimits");
-  public static int durvjuSpokaAgresivitatesLimits = FailuRedigetajs.intDatuAtgriezejs("durvjuSpokaAgresivitatesLimits");
-  public static int virtuvesSpokaAgresivitatesLimits = FailuRedigetajs.intDatuAtgriezejs("virtuvesSpokaAgresivitatesLimits");
-
-  static int logaSpokaDrosibasRobezas = FailuRedigetajs.intDatuAtgriezejs("logaSpokaDrosibasRobezas");
-  static int durvjuSpokaDrosibasRobezas = FailuRedigetajs.intDatuAtgriezejs("durvjuSpokaDrosibasRobezas");
-  static int virtuvesSpokaDrosibasRobezas = FailuRedigetajs.intDatuAtgriezejs("virtuvesSpokaDrosibasRobezas");
-
-  //* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  
+  // Objekti.
   public static Random rand = new Random(); // Priekš random darbībām.
-  public static String[] rAtstarpes = new String[17];
-  public static String karatavasVards;
-
-
-  static String[] visiVaronaUzdevumi = {"Pildit majasdarbus", "Est", "Mazgat", "Kartot", "Lasit", "Tirit"}; // TODO: Izmantot vai pārveidot.
 
   // Iestata tikšķa jeb 1 "refreša" periodu.
   static int framesPerSecond = 1000 / 25; // Pēc cik ilga laika ekrāns "refrešojas". (Milisekundēs)
-  static int spelesIlgums = 360;// 6 min 360;
+  public static int spelesIlgums = 360;// 6 min 360;
+  
+  // Cits.
+  static String[] visiVaronaUzdevumi = {"Pildit majasdarbus", "Est", "Mazgat", "Kartot", "Lasit", "Tirit"}; // TODO: Izmantot vai pārveidot.
 
-  public static void main(String[] args) throws InterruptedException {
-    // Programmas sākums.
+  public static void main(String[] args) throws InterruptedException { // throws InterruptedException nozīmē, ka var neizmantot try_catch.
+    // * Galvenais programmas process.
+
     // Testi.testaProgramma();
-    for (int i = 0; i < rAtstarpes.length ;i++) {
-      rAtstarpes[i] = EkranuParklajumi.atgrieztRandAtstarpi();
-    }
 
-
-    //* /////// T H R E D I //////////
-    // Jaunie rīki jeb thredi.
+    // ? /////// T H R E D I //////////
+    // Jaunie rīki jeb thredi jeb objekti.
     Ievade ievadesLasitajs = new Ievade(); // Arī threads, bet šis lasa ievadi.
     SkanasSpeletajs skanasSpeletajs = new SkanasSpeletajs();
 
@@ -88,19 +64,17 @@ public class Main {
     skanasSpeletajs.start(); // Strādā, kamēr spelePalaista bools ir true.
     ievadesLasitajs.start(); // Strādā, kamēr programmaPalaista bools ir true.
 
-    
-
     // * Palaiž programmu.
     while (programmaPalaista) {
       tiritEkranu();
 
       // * ////////////////////////////////////////////////////// S P Ē L E S   I Z V Ē L N E (M A I N   M E N U)//////////////////////////////////////////////////////
-      while (sakumaEkrans) {
+      while (mainMenu) {
         VaronaDarbibas.varonaDarbibas(Ievade.ievade);
-        IzvadeUzTerminalu.masivuIzvade(EkranuIzskati.ekranuAtjaunosana()[0]);
-        try { // Vienas bildes izvade jeb beigas.
-          Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 30 FPS.
-        } catch (Exception e) {}
+        IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuIzskati.visiEkrani[0], EkranuVeidi.GALVENAIS_EKRANS));
+
+        // Vienas bildes izvade jeb beigas.
+        Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 30 FPS.
       }
 
       tiritEkranu();
@@ -129,50 +103,41 @@ public class Main {
           MazoSpeluPalaisanasKods.karatavuKods();
         }
 
-
         Ievade.notiritIevadi(); // Cikla beigās notīra Ievadi, jo visas matodes, kurām tā bija vajadzīga jau to ir paņēmušas.
 
-        // Ja varona stresa līmenis pārsniedz 100, tad varonis iet bojā.
+        // ? Varoņa bojāiešanas nosacījumi.
+        // Ja varona stresa līmenis pārsniedz 100.
         if (VaronaStatusaEfekti.varonaStresaLimenis > 100.0) {
-          VaronaStatusaEfekti.varonaBojaeja("stress");
+          VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("STRESS");
         }
+        // Ja zaudē karātavas.
         else if (Karatavas.karatavuKluduSkaits > 7) {
-          VaronaStatusaEfekti.varonaBojaeja("karatavas");
+          VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("KARATAVAS");
         }
+
+        Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 30 FPS.
         
-
-        try { // Vienas bildes izvade jeb beigas.
-          Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 30 FPS.
-        } catch (Exception e) {
-          // Kods ko pildīs, ja "try" kods izmetīs kļūdu.
-        }
-
         if (kluduLasisana) { // Apstādina spēli, lai varētu izlasīt kļūdas aprakstu.
           Thread.sleep(100000);
         }
       }
+
       tiritEkranu();
 
-      int skaitlis = 0;
       if (varonisDzivs) {
         // * Uzvaras ekrāns.
-        while ((skaitlis++) < 5) {
-          IzvadeUzTerminalu.masivuIzvade(EkranuIzskati.ekranuAtjaunosana()[2]);
-          Thread.sleep(1000); // 1 sek.
-        }
+        
       }
       else {
         // * Zaudēšanas ekrāns.
-        while ((skaitlis++) < 5) {
-          IzvadeUzTerminalu.masivuIzvade(EkranuIzskati.ekranuAtjaunosana()[1]);
-          Thread.sleep(1000); // 1 sek.
-        }
+        IzvadeUzTerminalu.masivuIzvade(EkranuIzskati.visiEkrani[2]);
+        Thread.sleep(5000); // 5 sek.
       }
 
-      // Apstādina Laika thredu un izveido jaunu, kad palaiž spēli.
+      // Apstādina Laika thredu un izveido jaunu, kad palaiž spēli no jauna.
       laiks.join(); // wait for the thread to stop
       Laiks.spelesLaiks = 0; // Lai laika threads momentāli neapstātos pēc tā pališanas, atjauno spēles laiku.
-      sakumaEkrans = true;
+      mainMenu = true;
       varonisDzivs = true;
     }
     //* ///////////////////// L I E K   T H R E D I E M   B E I G T I E S /////////////////////////

@@ -1,6 +1,7 @@
 package Spele.Izskati;
 
 import Spele.K;
+import Spele.Iestatijumi.IestatijumuDati;
 import Spele.SpelesProcesi.Ievade;
 import Spele.SpelesProcesi.Laiks;
 import Spele.SpelesProcesi.Main;
@@ -97,14 +98,14 @@ public class UIizskats {
             "_____________________"
         };
 
-        if (Main.atlikusoSerkocinuDaudzums > 9) { // Nomaina atlikušo sērkociņu daudzuma rindu.
-            gatavsLabasPusesUI[10] = " Serkocini : " + Main.atlikusoSerkocinuDaudzums + "      ";
+        if (IestatijumuDati.atlikusoSerkocinuDaudzums > 9) { // Nomaina atlikušo sērkociņu daudzuma rindu.
+            gatavsLabasPusesUI[10] = " Serkocini : " + IestatijumuDati.atlikusoSerkocinuDaudzums + "      ";
         } else {
-            gatavsLabasPusesUI[10] = " Serkocini : " + Main.atlikusoSerkocinuDaudzums + "       ";
+            gatavsLabasPusesUI[10] = " Serkocini : " + IestatijumuDati.atlikusoSerkocinuDaudzums + "       ";
         }
 
         // Mapes varoņa bultiņas pozīcijas noteicējs.
-        if (Main.elektribaIeslegta) {
+        if (IestatijumuDati.elektribaIeslegta) {
             if (Main.varonaIstabasSkaitlis == 0) {
                 gatavsLabasPusesUI[7] = "     " + varonaMapesBultinasVirzienaDevejs() + "               ";
             } else if (Main.varonaIstabasSkaitlis == 1) {

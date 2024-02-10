@@ -2,7 +2,9 @@ package Spele.SpelesProcesi;
 
 import Spele.Spoki;
 import Spele.FailuLietotaji.SkanasSpeletajs;
+import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Varonis.VaronaDarbibas;
+import Spele.Varonis.VaronaStatusaEfekti;
 
 
 public class Laiks extends Thread {
@@ -15,9 +17,9 @@ public class Laiks extends Thread {
     @Override
     public void run() {
         // Izveido visus spokus.
-        Spoki logaSpoks = new Spoki("loga", Main.logaSpokaAgresivitatesLimits);
-        Spoki durvjuSpoks = new Spoki("durvju", Main.durvjuSpokaAgresivitatesLimits);
-        Spoki virtuvesSpoks = new Spoki("virtuves", Main.virtuvesSpokaAgresivitatesLimits);
+        Spoki logaSpoks = new Spoki("loga", IestatijumuDati.logaSpokaAgresivitatesLimits);
+        Spoki durvjuSpoks = new Spoki("durvju", IestatijumuDati.durvjuSpokaAgresivitatesLimits);
+        Spoki virtuvesSpoks = new Spoki("virtuves", IestatijumuDati.virtuvesSpokaAgresivitatesLimits);
 
         while (Main.spelePalaista) {
             laikaVadiba(); // Skaita laiku un nosaka, kad spēle ir beigusies.
@@ -50,15 +52,15 @@ public class Laiks extends Thread {
             randomIespejaIzslegtKadasIstabasGaismu(); // Iestatījums.
 
             // Skaita, cik ilgi līdz elektrības pieslēgšanas.
-            if (!Main.elektribaIeslegta) { // Ja false, tad ...
+            if (!IestatijumuDati.elektribaIeslegta) { // Ja false, tad ...
                 if (laiksCikIlgiElektribaBusIzslegta < 1) {
                     SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\fuse-box-turning-on-off.wav", 0);
-                    Main.elektribaIeslegta = true;
+                    IestatijumuDati.elektribaIeslegta = true;
                 }
                 laiksCikIlgiElektribaBusIzslegta--;
             }
 
-            if (VaronaDarbibas.aizdedzinatsSerkocins && VaronaDarbibas.serkocinaDeksanasLaikaSkaititajs != Main.maxSerkocinaDegsanasLaiks) {
+            if (VaronaDarbibas.aizdedzinatsSerkocins && VaronaDarbibas.serkocinaDeksanasLaikaSkaititajs != IestatijumuDati.maxSerkocinaDegsanasLaiks) {
                 VaronaDarbibas.serkocinaDeksanasLaikaSkaititajs++;
             } else {
                 VaronaDarbibas.aizdedzinatsSerkocins = false;
@@ -79,33 +81,34 @@ public class Laiks extends Thread {
     }
 
     void randomIespejaIzslegtKadasIstabasGaismu() {
-        if (Main.spokiSledzAraGaismu) { // Spēles iestatījums.
+        if (IestatijumuDati.spokiSledzAraGaismu) { // Spēles iestatījums.
             int randomIzveletasIstabasCipars = Main.rand.nextInt(4);
             if (Main.rand.nextInt(60) + 1 == 1) {
-                if (Main.istabuGaismasIeslegtas[randomIzveletasIstabasCipars] == true) {
-                    Main.istabuGaismasIeslegtas[randomIzveletasIstabasCipars] = false;
-                    SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-off.wav", 0);
+                if (IestatijumuDati.istabuGaismasIeslegtas[randomIzveletasIstabasCipars] == true) {
+                  IestatijumuDati.istabuGaismasIeslegtas[randomIzveletasIstabasCipars] = false;
+                  SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-off.wav", 0);
                 }
             }
         }
     }
 
     void laikaVadiba() {
-        Laiks.spelesLaiks++; // Spēles laiks palielinas, katru sekundi jeb spēlesĀtrumu.
-            
-        if (spelesLaiks == vienaStunda) {
-            laikaTeksts = " 1 A M  ";
-        } else if (spelesLaiks == vienaStunda * 2) {
-            laikaTeksts = " 2 A M  ";
-        } else if (spelesLaiks == vienaStunda * 3) {
-            laikaTeksts = " 3 A M  ";
-        } else if (spelesLaiks == vienaStunda * 4) {
-            laikaTeksts = " 4 A M  ";
-        } else if (spelesLaiks == vienaStunda * 5) {
-            laikaTeksts = " 5 A M  ";
-        } else if (spelesLaiks > vienaStunda * 6) {
-            laikaTeksts = " 6 A M  ";
-            Main.spelePalaista = false;
-        }
+      Laiks.spelesLaiks++; // Spēles laiks palielinas, katru sekundi jeb spēlesĀtrumu.
+          
+      if (spelesLaiks == vienaStunda) {
+        laikaTeksts = " 1 A M  ";
+      } else if (spelesLaiks == vienaStunda * 2) {
+        laikaTeksts = " 2 A M  ";
+      } else if (spelesLaiks == vienaStunda * 3) {
+        laikaTeksts = " 3 A M  ";
+      } else if (spelesLaiks == vienaStunda * 4) {
+        laikaTeksts = " 4 A M  ";
+      } else if (spelesLaiks == vienaStunda * 5) {
+        laikaTeksts = " 5 A M  ";
+      } else if (spelesLaiks > vienaStunda * 6) {
+        laikaTeksts = " 6 A M  ";
+        Main.spelePalaista = false;
+        VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("UZVARA");
+      }
     }
 }
