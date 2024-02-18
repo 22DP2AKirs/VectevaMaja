@@ -54,8 +54,10 @@ public class EkranuParklajumi {
     // 3 - Ieteikums.
     // 4 - Ieteikums.
     // 5 - Ieteikums.
+    // 6 - Ieteikums.
+    // 7 - Ieteikums.
 
-    String[] informacija = new String[6];
+    String[] informacija = new String[8];
 
     informacija[0] = iemesls;
     informacija[1] = "" + (Main.spelesIlgums - Laiks.spelesLaiks); // Pārveido int uz String.
@@ -64,32 +66,42 @@ public class EkranuParklajumi {
       informacija[3] = "";
       informacija[4] = "";
       informacija[5] = "";
+      informacija[6] = "";
+      informacija[7] = "";
       // Papildus darbības:
       SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\karatavas_pakarts.wav", 6);
     } 
     else if (iemesls.equals("LOGA")) {
-      informacija[2] = "                                    _   _                   _               _                               _                                 _";
-      informacija[3] = "L O G A   S P O K S   V A R   P A R A D I T I E S   V I E N A   N O   4   M A J A S   L O G I E M.  P I E V E R S I E T   T I E M   U Z M A N I B U !";
-      informacija[4] = "";
-      informacija[5] = "";
+      informacija[2] = "                                    _   _                   _               _";
+      informacija[3] = "L O G A   S P O K S   V A R   P A R A D I T I E S   V I E N A   N O   4   M A J A S   L O G I E M .";
+      informacija[4] = "        _                                 _";
+      informacija[5] = "P I E V E R S I E T   T I E M   U Z M A N I B U !";
+      informacija[6] = "";
+      informacija[7] = "";
     }
     else if (iemesls.equals("DURVJU")) {
-      informacija[2] = "                                      _   _               _             _       _             _        _       _       V _       _";
-      informacija[3] = "D U R V J U   S P O K S   L I E N   M A J A   C A U R   T A S   V I E N I G A J A M   D U R V I M.   T A S   M E D Z   C I K S T E T .";
-      informacija[4] = "                                _                               _           _   _       _                 _";
-      informacija[5] = "D U R V I S   V A R   A I Z S L E G T,  L A I   S P O K A M   B U T U   G R U T A K   T A S   A T T A I S I T .";
+      informacija[2] = "                                      _   _               _             _       _             _";
+      informacija[3] = "D U R V J U   S P O K S   L I E N   M A J A   C A U R   T A S   V I E N I G A J A M   D U R V I M .";
+      informacija[4] = "  _       _       V _       _";
+      informacija[5] = "T A S   M E D Z   C I K S T E T .";
+      informacija[6] = "                                _                               _           _   _       _                 _";
+      informacija[7] = "D U R V I S   V A R   A I Z S L E G T,  L A I   S P O K A M   B U T U   G R U T A K   T A S   A T T A I S I T .";
     }
     else if (iemesls.equals("VIRTUVES")) {
-      informacija[2] = "                                                      _                           _                 _";
-      informacija[3] = "V I R T U V E S   S P O K S   P A L I E K   A G R E S I V S,  K A D   P A G R A B A   I R   I E S L E G T A   G A I S M A .";
-      informacija[4] = "        _               _                     _                                   _";
-      informacija[5] = "I Z S L E D Z I E T   M A J A S   E L E K T R I B U,  L A I   T O   A I Z B I E D E T U !";
+      informacija[2] = "                                                      _";
+      informacija[3] = "V I R T U V E S   S P O K S   P A L I E K   A G R E S I V S,";
+      informacija[4] = "                    _                 _";
+      informacija[5] = "K A D   P A G R A B A   I R   I E S L E G T A   G A I S M A .";
+      informacija[6] = "        _               _                     _                                   _";
+      informacija[7] = "I Z S L E D Z I E T   M A J A S   E L E K T R I B U,  L A I   T O   A I Z B I E D E T U !";
     }
     else if (iemesls.equals("STRESS")) {
       informacija[2] = "                                    _                                     v _             _";
       informacija[3] = "J U M S   N A V   B A I G I   P A T I K A M I   A T R A S T I E S   T U M S A   I S T A B A . . .";
       informacija[4] = "        _             _                   _";
       informacija[5] = "V A R B U T   I E S L E D Z I E T   T A J A   G A I S M U ?";
+      informacija[6] = "";
+      informacija[7] = "";
     }
 
     return informacija;
@@ -99,10 +111,12 @@ public class EkranuParklajumi {
     // * Metode saliek visu sagatavoto informāciju nāves jeb Zaudesanas ekrānā.
     mainamaisMasivs[15] += "\033[41G" + informacija[0] + "\033[106G";
     mainamaisMasivs[17] += "\033[43G" + informacija[1] + "\033[106G";
-    mainamaisMasivs[20] += "\033[10G" + informacija[2] + "\033[106G";
-    mainamaisMasivs[21] += "\033[10G" + informacija[3] + "\033[106G";
-    mainamaisMasivs[22] += "\033[10G" + informacija[4] + "\033[106G";
-    mainamaisMasivs[23] += "\033[10G" + informacija[5] + "\033[106G";
+    mainamaisMasivs[20] += "\033[7G" + informacija[2] + "\033[106G";
+    mainamaisMasivs[21] += "\033[7G" + informacija[3] + "\033[106G";
+    mainamaisMasivs[22] += "\033[7G" + informacija[4] + "\033[106G";
+    mainamaisMasivs[23] += "\033[7G" + informacija[5] + "\033[106G";
+    mainamaisMasivs[24] += "\033[7G" + informacija[6] + "\033[106G";
+    mainamaisMasivs[25] += "\033[7G" + informacija[7] + "\033[106G";
   }
 
   public static int izvelnesCipars = 0;

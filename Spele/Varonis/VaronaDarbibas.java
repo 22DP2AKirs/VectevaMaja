@@ -5,10 +5,8 @@ import Spele.SpelesProcesi.Main;
 import Spele.Spoki;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Iestatijumi.IestatijumuDati;
-import Spele.Izskati.EkranuIzskati;
 import Spele.MazasSpeles.MazoSpeluPalaisanasKods;
 import Spele.Parklajumi.EkranuParklajumi;
-import Spele.Parklajumi.ParklajumuIzskati;
 import Spele.SpelesProcesi.Ievade;
 import Spele.SpelesProcesi.Laiks;
 
@@ -174,7 +172,7 @@ public class VaronaDarbibas {
       if (panemtaIevade.equals("DURVIS") && Spoki.spokuStati[1].spoksAktivs) {
         Spoki.durvjuSpoksAktivs = false;
       }
-      else if (panemtaIevade.equals("E")) {
+      else if (panemtaIevade.equals("E") && Main.karatavas) {
         MazoSpeluPalaisanasKods.palaistKaratavas();
       }
     }
@@ -216,31 +214,34 @@ public class VaronaDarbibas {
 
 
   private static void gultasDarbibas(String panemtaIevade) {
-      if (Main.varonaVirzienaSkaitlis == 0) { // Priekšas darbības.
-          if (panemtaIevade.equals("G") && IestatijumuDati.elektribaIeslegta) {
-              if (IestatijumuDati.istabuGaismasIeslegtas[0]) {
-                  SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-off.wav", 0);
-                  IestatijumuDati.istabuGaismasIeslegtas[0] = false;
-              } 
-              else {
-                  SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-on.wav", 0);
-                  IestatijumuDati.istabuGaismasIeslegtas[0] = true;
-              }
-          }
+    if (Main.varonaVirzienaSkaitlis == 0) { // Priekšas darbības.
+      if (panemtaIevade.equals("G") && IestatijumuDati.elektribaIeslegta) {
+        if (IestatijumuDati.istabuGaismasIeslegtas[0]) {
+          SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-off.wav", 0);
+          IestatijumuDati.istabuGaismasIeslegtas[0] = false;
+        } 
+        else {
+          SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-on.wav", 0);
+          IestatijumuDati.istabuGaismasIeslegtas[0] = true;
+        }
       }
-      else if (Main.varonaVirzienaSkaitlis == 1) { // Labās puses darbības.
-          if (panemtaIevade.equals("E") && IestatijumuDati.elektribaIeslegta) { //* Elektrības izslēgšana.
-              izslegtasElektribasNosacijumi();
-          }
+    }
+    else if (Main.varonaVirzienaSkaitlis == 1) { // Labās puses darbības.
+      if (panemtaIevade.equals("E") && IestatijumuDati.elektribaIeslegta) { //* Elektrības izslēgšana.
+        if (Spoki.virtuvesSpoksAktivs) {
+          SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\spoks_krit_leja_pa_kapnem.wav", Spoki.spokuStati[2].spokaFazesIndeks - 17);
+        }
+        izslegtasElektribasNosacijumi();
       }
-      else if (Main.varonaVirzienaSkaitlis == 2) { // Lejas darbības.
+    }
+    else if (Main.varonaVirzienaSkaitlis == 2) { // Lejas darbības.
 
+    }
+    else if (Main.varonaVirzienaSkaitlis == 3) { // Kreisās puses darbības.
+      if (panemtaIevade.equals("LOGS") && Spoki.spokuStati[0].spokaIstaba.equals("Gulta") && Spoki.spokuStati[0].spoksAktivs) {
+        Spoki.logaSpoksAktivs = false;
       }
-      else if (Main.varonaVirzienaSkaitlis == 3) { // Kreisās puses darbības.
-          if (panemtaIevade.equals("LOGS") && Spoki.spokuStati[0].spokaIstaba.equals("Gulta") && Spoki.spokuStati[0].spoksAktivs) {
-              Spoki.logaSpoksAktivs = false;
-          }
-      }
+    }
   }
 
 

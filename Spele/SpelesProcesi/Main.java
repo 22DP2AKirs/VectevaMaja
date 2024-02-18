@@ -23,6 +23,7 @@ public class Main {
 
   // Priekš minigames.
   public static boolean varonisIrMazajaSpele; // true, ja varonis ir iegājis mazajā spēlē, false, ja nav.
+  public static boolean izveletaMazaSpele; // true, ja spēle izvēlējās, kādu no iespējamajām spēlēm, katru stundu. 
 
   // Priekš karātaām.
   public static String[] rAtstarpes = new String[17];
@@ -34,7 +35,7 @@ public class Main {
   // Varoņa īpašības.
   public static boolean varonaNemirstiba = true; // Vai varonis var zaudēt spēli vai nē.
   static boolean kluduLasisana = false;
-  public static boolean varonisDzivs = true;
+  
 
   // Spelētāja pozīcija.
   public static int varonaIstabasSkaitlis = 2; // 0, no gultas istabas. 2, jo testā sāku no durvju istabas. 3, no virtuves istabas.
@@ -45,7 +46,7 @@ public class Main {
 
   // Iestata tikšķa jeb 1 "refreša" periodu.
   static int framesPerSecond = 1000 / 25; // Pēc cik ilga laika ekrāns "refrešojas". (Milisekundēs)
-  public static int spelesIlgums = 360;// 6 min 360;
+  public static int spelesIlgums = 100;// 6 min 360;
   
   // Cits.
   static String[] visiVaronaUzdevumi = {"Pildit majasdarbus", "Est", "Mazgat", "Kartot", "Lasit", "Tirit"}; // TODO: Izmantot vai pārveidot.
@@ -121,24 +122,11 @@ public class Main {
           Thread.sleep(100000);
         }
       }
-
       tiritEkranu();
-
-      if (varonisDzivs) {
-        // * Uzvaras ekrāns.
-        
-      }
-      else {
-        // * Zaudēšanas ekrāns.
-        IzvadeUzTerminalu.masivuIzvade(EkranuIzskati.visiEkrani[2]);
-        Thread.sleep(5000); // 5 sek.
-      }
 
       // Apstādina Laika thredu un izveido jaunu, kad palaiž spēli no jauna.
       laiks.join(); // wait for the thread to stop
-      Laiks.spelesLaiks = 0; // Lai laika threads momentāli neapstātos pēc tā pališanas, atjauno spēles laiku.
-      mainMenu = true;
-      varonisDzivs = true;
+      
     }
     //* ///////////////////// L I E K   T H R E D I E M   B E I G T I E S /////////////////////////
     skanasSpeletajs.join();

@@ -35,14 +35,14 @@ public class Spoki {
     String[] spokuVeidi = {"loga", "durvju", "virtuves"};
 
     public Spoki(String spokaVeids, int spokaAgresivitatesLimits) { // Konstruktors.
-        this.spokaAgresivitatesLimits = spokaAgresivitatesLimits;
-        this.spokaVeids = spokaVeids;
+      this.spokaAgresivitatesLimits = spokaAgresivitatesLimits;
+      this.spokaVeids = spokaVeids;
 
-        spokaDrosibasRobezas = 3;
-        spokaFazesIndeks = 0; // 0 nozīmē, ka spoks nav sācis uzbrukt.
-        vaiSpoksKustas = false;
-        spoksAktivs = false;
-        bilesAtjaunosanaIespejaPirmsIzslegsanas = true;
+      spokaDrosibasRobezas = 3;
+      spokaFazesIndeks = 0; // 0 nozīmē, ka spoks nav sācis uzbrukt.
+      vaiSpoksKustas = false;
+      spoksAktivs = false;
+      bilesAtjaunosanaIespejaPirmsIzslegsanas = true;
     }
 
     public void randomKustibasCiparaAtjaunosana() {
@@ -53,19 +53,19 @@ public class Spoki {
     }
 
     void spokuRobezuKapsana() {
-        spokaDrosibasRobezas--; // Noņem vienu drošības robežu.
+      spokaDrosibasRobezas--; // Noņem vienu drošības robežu.
     }
 
     public void spokuVirzisanasUzPrieksu() { // Nosaka, vai spoks kustās uz priekšu, vai pārkāpj robežu.
-        if (spoksAktivs) {
-            if (vaiSpoksKustas && spokaDrosibasRobezas < 1) {
-                spokaFazesIndeks++; // Pietuvina spoku mērķim.
-                spokaDrosibasRobezas = 4;
-            }
-            else if (spokaDrosibasRobezas > 0) {
-                spokuRobezuKapsana();
-            }
+      if (spoksAktivs) {
+        if (vaiSpoksKustas && spokaDrosibasRobezas < 1) {
+          spokaFazesIndeks++; // Pietuvina spoku mērķim.
+          spokaDrosibasRobezas = 4;
         }
+        else if (spokaDrosibasRobezas > 0) {
+          spokuRobezuKapsana();
+        }
+      }
     }
 
     public void istabuBildesFazuAtjaunosana(String spokaVeids) {
@@ -100,7 +100,7 @@ public class Spoki {
             System.out.println("Jus nomirat!\nNaves iemesls: " + spokaVeids + " spoks.");
           }
         }
-
+        // Kad aizbiedē spoku, tad bildei dod iespēju nomainīties uz bildi bez spoka.
         if (!spoksAktivs) {
           bilesAtjaunosanaIespejaPirmsIzslegsanas = false;
         }

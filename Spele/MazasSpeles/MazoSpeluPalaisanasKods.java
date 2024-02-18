@@ -26,9 +26,10 @@ public class MazoSpeluPalaisanasKods {
       // Izvada masīvu vispirms pārklājot to.
       IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuIzskati.visiEkrani[3], EkranuVeidi.KARATAVU_EKRANS));
       
-      // Ļauj varonim redzēt pabeigto vārdu n sekundes.
+      // * Ļauj varonim redzēt pabeigto vārdu n sekundes. // Pēdējais izpildāmais kods.
       if (!Main.karatavas && Main.mazasSpelesRezultataParskats == true) {
-        PaligMetodes.gulet(3);
+        Main.izveletaMazaSpele = false;
+        PaligMetodes.gulet(2);
         Main.mazasSpelesRezultataParskats = false;
         Main.varonisIrMazajaSpele = false;
       }
@@ -40,16 +41,25 @@ public class MazoSpeluPalaisanasKods {
     }
   }
 
+
   public static void izveidotJaunuKaratavasSpeli() {
     // * Šī metode izveido jaunu objektu, lai to varētu izmantot spēlē ar citām vērtībām.
-    karatavasObjekts = new Karatavas(3, Main.rand.nextInt(3));
+    restartetKaratavas();
+    karatavasObjekts = new Karatavas(Main.rand.nextInt(3), Main.rand.nextInt(3));
     EkranuParklajumi.saliktRandAtstarpesKaratavuGramata(); // Papild process.
   }
 
   public static void palaistKaratavas() {
-    
     Main.varonisIrMazajaSpele = true;
     Main.karatavas = true;
     Ievade.ievade = "}";
+  }
+
+  public static void restartetKaratavas() {
+    // Metode restartē visus karātavas datus, lai sākot jaunu spēli varētu spēlēt no jauna.
+    Main.varonisIrMazajaSpele = false;
+    Karatavas.karatavuKluduSkaits = 0;
+    Karatavas.atminejaVardu = false;
+    EkranuParklajumi.burti = "A B C D E F G H I J K L M N O P R S T U V Z".split(" ");
   }
 }
