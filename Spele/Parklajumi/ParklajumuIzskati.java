@@ -29,7 +29,13 @@ public class ParklajumuIzskati {
   // Durvju arkām.
   public static final String[] arkuGaismasAizpilditajs = { 
     // * Masīva elementus izmanto, lai aizpildītu arkas jeb durvju rāmīšus.
-      K.TPELEKS + "░░░░░░░░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA,
-      K.TPELEKS +  "░░░░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA
-    };
+    K.TPELEKS + "░░░░░░░░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA,
+    K.TPELEKS +  "░░░░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA
+  };
+
+  // Virtuves pagraba arka.
+  public static final String[] virtuvesPagrabaParklajs = {
+    "\033[10G" + K.TPELEKS + "░░░░░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA,
+    "\033[8G" + K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA
+  };
 }

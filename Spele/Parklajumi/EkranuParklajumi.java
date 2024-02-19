@@ -5,8 +5,8 @@ import java.util.Arrays;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Izskati.EkranuIzskati.EkranuVeidi;
-import Spele.MazasSpeles.Karatavas;
-import Spele.MazasSpeles.KaratavuIzskati;
+import Spele.MazasSpeles.Karatavas.Karatavas;
+import Spele.MazasSpeles.Karatavas.KaratavuIzskati;
 import Spele.SpelesProcesi.Laiks;
 import Spele.SpelesProcesi.Main;
 import Spele.Varonis.VaronaStatusaEfekti;
@@ -100,6 +100,14 @@ public class EkranuParklajumi {
       informacija[3] = "J U M S   N A V   B A I G I   P A T I K A M I   A T R A S T I E S   T U M S A   I S T A B A . . .";
       informacija[4] = "        _             _                   _";
       informacija[5] = "V A R B U T   I E S L E D Z I E T   T A J A   G A I S M U ?";
+      informacija[6] = "";
+      informacija[7] = "";
+    }
+    else if (iemesls.equals("MAJASDARBA_LAIKS")) {
+      informacija[2] = "                      _                                       _                           _";
+      informacija[3] = "I Z P I L D I E T   M A J A S D A R B U S   N O T E I K T A J A   L A I K A   P E R I O D A !";
+      informacija[4] = "";
+      informacija[5] = "";
       informacija[6] = "";
       informacija[7] = "";
     }

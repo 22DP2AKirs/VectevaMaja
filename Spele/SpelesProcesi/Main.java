@@ -3,12 +3,12 @@ package Spele.SpelesProcesi;
 import java.util.Random;
 
 import Spele.IzvadeUzTerminalu;
+import Spele.K;
 import Spele.Spoki;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Izskati.EkranuIzskati;
 import Spele.Izskati.EkranuIzskati.EkranuVeidi;
-import Spele.MazasSpeles.Karatavas;
-import Spele.MazasSpeles.MazoSpeluPalaisanasKods;
+import Spele.MazasSpeles.Karatavas.SavienotaisKaratavuKods;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.Varonis.VaronaDarbibas;
 import Spele.Varonis.VaronaStatusaEfekti;
@@ -16,14 +16,18 @@ import Spele.Varonis.VaronaStatusaEfekti;
 public class Main {
   // ? Mainīgie.
 
+  // Informācijas booli.
+  public static boolean spokuInfo;
+  public static boolean mSpeluInfo;
+
   // Lai noteiktu darbības, kādā no programmas fāzēm.
   public static volatile boolean programmaPalaista = true; // booleans, kas palaiž visu programmu.
   public static boolean mainMenu = false; // Nosaka vai spēles sākumā rādīs sākuma ekrānu vai nē.
   public static volatile boolean spelePalaista = true; // Mainīgais bool, kas pašu spēli.
 
   // Priekš minigames.
-  public static boolean varonisIrMazajaSpele; // true, ja varonis ir iegājis mazajā spēlē, false, ja nav.
-  public static boolean izveletaMazaSpele; // true, ja spēle izvēlējās, kādu no iespējamajām spēlēm, katru stundu. 
+  public static volatile boolean varonisIrMazajaSpele; // true, ja varonis ir iegājis mazajā spēlē, false, ja nav.
+  public static volatile boolean izveletaMazaSpele; // true, ja spēle izvēlējās, kādu no iespējamajām spēlēm, katru stundu. 
 
   // Priekš karātaām.
   public static String[] rAtstarpes = new String[17];
@@ -50,6 +54,7 @@ public class Main {
   
   // Cits.
   static String[] visiVaronaUzdevumi = {"Pildit majasdarbus", "Est", "Mazgat", "Kartot", "Lasit", "Tirit"}; // TODO: Izmantot vai pārveidot.
+  public static volatile boolean thrediGul; // Apstādina Laiks thredu uz noteiktu laiku.
 
   public static void main(String[] args) throws InterruptedException { // throws InterruptedException nozīmē, ka var neizmantot try_catch.
     // * Galvenais programmas process.
@@ -65,35 +70,30 @@ public class Main {
     skanasSpeletajs.start(); // Strādā, kamēr spelePalaista bools ir true.
     ievadesLasitajs.start(); // Strādā, kamēr programmaPalaista bools ir true.
 
-    // * Palaiž programmu.
+    // * P R O G R A M M A S   C I K L S //
     while (programmaPalaista) {
       tiritEkranu();
 
-      // * ////////////////////////////////////////////////////// S P Ē L E S   I Z V Ē L N E (M A I N   M E N U)//////////////////////////////////////////////////////
+      // * ///// S A K U M A   E K R A N A   C I K L S //////
       while (mainMenu) {
         VaronaDarbibas.varonaDarbibas(Ievade.ievade);
         IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuIzskati.visiEkrani[0], EkranuVeidi.GALVENAIS_EKRANS));
 
-        // Vienas bildes izvade jeb beigas.
-        Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 30 FPS.
+        Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 25 FPS.
       }
 
       tiritEkranu();
       Laiks laiks = new Laiks(); // Katru reizi, kad ir palaista spēle, veido jaunu Laika thredu.
       laiks.start(); // Strādā, kamēr spelePalaista bools ir true.
 
-      MazoSpeluPalaisanasKods.izveidotJaunuKaratavasSpeli();
-
-      // * /////////////////////////////////////////// S Ā K A S   S P Ē L E S   K O D S (G A M E   C O D E) //////////////////////////////////////////////////////////////////////////////
+      // * ///// S P Ē L E S   C I K L S ///////
       while (spelePalaista) { // Kamēr laiks nav beidzies, turpināt ciklu jeb spēli.
 
         VaronaDarbibas.varonaDarbibas(Ievade.ievade); // Lietotāja jeb varoņa ievade un tās darbības (komandas un to darbības).
         VaronaStatusaEfekti.varonaStress();
 
-        // Spoku informācijas izvade. --Debuging--
-        if (Spoki.spokuInfoIzvadeBoolean) {
-          Spoki.spokuInformacijasIzvade();
-        }
+        
+        informacijasIzvade(); // Spoku informācijas izvade. --Debuging--
 
         // Visām fāzēm, bildēm un visam vizuālajam ir jābūt gatavam pirms šīs metodes izsaukšanas!!!
         // Spoku vizuālais atjaunojums notiek Laiks.java Klasē.
@@ -101,36 +101,57 @@ public class Main {
           IzvadeUzTerminalu.salipinataUIIzvade(); // Izvade uz ekrāna.
         }
         else {
-          MazoSpeluPalaisanasKods.karatavuKods();
+          SavienotaisKaratavuKods.karatavuKods();
         }
 
         Ievade.notiritIevadi(); // Cikla beigās notīra Ievadi, jo visas matodes, kurām tā bija vajadzīga jau to ir paņēmušas.
+        VaronaStatusaEfekti.parbauditEffektus(); // Varoņa bojāiešanas nosacījumi.
 
-        // ? Varoņa bojāiešanas nosacījumi.
-        // Ja varona stresa līmenis pārsniedz 100.
-        if (VaronaStatusaEfekti.varonaStresaLimenis > 100.0) {
-          VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("STRESS");
-        }
-        // Ja zaudē karātavas.
-        else if (Karatavas.karatavuKluduSkaits > 7) {
-          VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("KARATAVAS");
-        }
-
-        Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 30 FPS.
-        
+        Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 25 FPS.
         if (kluduLasisana) { // Apstādina spēli, lai varētu izlasīt kļūdas aprakstu.
           Thread.sleep(100000);
         }
       }
-      tiritEkranu();
 
-      // Apstādina Laika thredu un izveido jaunu, kad palaiž spēli no jauna.
-      laiks.join(); // wait for the thread to stop
-      
+      tiritEkranu();
+      laiks.join(); // wait for the thread to stop // Apstādina Laika thredu un izveido jaunu, kad palaiž spēli no jauna.
     }
-    //* ///////////////////// L I E K   T H R E D I E M   B E I G T I E S /////////////////////////
+    // * /// L I E K   T H R E D I E M   B E I G T I E S ///////
     skanasSpeletajs.join();
     ievadesLasitajs.join();
+  }
+
+  private static void informacijasIzvade() {
+    // * Metode ievāc info. kategoriju, kuru izvadīt virs ekrana.
+    // * Testeru metode.
+
+    // Izvada informāciju par spokiem.
+    if (Main.spokuInfo) { 
+      Spoki.spokuInformacijasIzvade();
+    }
+    // Izvada informāciju par m-spēlēm.
+    else if (Main.mSpeluInfo) {
+      izvaditMSpelesInfo();
+    }
+  }
+
+  private static void izvaditMSpelesInfo() {
+    System.out.println();
+    System.out.println();
+    System.out.println();
+    System.out.println();
+    System.out.println();
+    System.out.println();
+    System.out.println();
+    System.out.println();
+    System.out.println();
+    System.out.println();
+    System.out.println();
+
+    System.out.println("Ieksa m-spele: " + Main.varonisIrMazajaSpele + ", Izveleta m-spele: " + Main.izveletaMazaSpele + "\033[0K");
+    System.out.println("Izveleta spele: Karatavas: " + Main.karatavas + ", Atrodi pari: " + "\033[0K");
+    
+    System.out.println("Laiks ms: " + Laiks.spelesLaiks + " / " + Laiks.vienaStunda * 6 + K.RESET + ", Stressa limenis: " + VaronaStatusaEfekti.varonaStresaLimenis + "\033[0K");
   }
 
   public static void tiritEkranu() {

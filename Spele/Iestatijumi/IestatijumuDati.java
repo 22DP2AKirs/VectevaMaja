@@ -8,7 +8,13 @@ public class IestatijumuDati {
 
   // ? Visi iestatījumi, kuri tiek lietoti spēlē:
   // Gaismas dati.
-  public static boolean[] istabuGaismasIeslegtas = {FailuRedigetajs.booleanDatuAtgriezejs("gultasGaisma"), FailuRedigetajs.booleanDatuAtgriezejs("divanaGaisma"), FailuRedigetajs.booleanDatuAtgriezejs("durvjuGaisma"), FailuRedigetajs.booleanDatuAtgriezejs("virtuvesGaisma")}; // Indeksi: 0. Gulta, 1. Dīvāns, 2. Durvis, 3. Virtuve.
+  public static boolean[] istabuGaismasIeslegtas = { // Indeksi: 0. Gulta, 1. Dīvāns, 2. Durvis, 3. Virtuve.
+    FailuRedigetajs.booleanDatuAtgriezejs("gultasGaisma"), 
+    FailuRedigetajs.booleanDatuAtgriezejs("divanaGaisma"), 
+    FailuRedigetajs.booleanDatuAtgriezejs("durvjuGaisma"), 
+    FailuRedigetajs.booleanDatuAtgriezejs("virtuvesGaisma")
+  }; 
+  
   public static boolean spokiSledzAraGaismu = FailuRedigetajs.booleanDatuAtgriezejs("spokiSledzAraGaismu");
   public static boolean ieslegtaSkana = FailuRedigetajs.booleanDatuAtgriezejs("ieslegtaSkana");
 

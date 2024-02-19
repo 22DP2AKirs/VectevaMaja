@@ -6,8 +6,8 @@ import Spele.Spoki;
 import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Izskati.EkranuIzskati;
 import Spele.Izskati.EkranuIzskati.EkranuVeidi;
-import Spele.MazasSpeles.Karatavas;
-import Spele.MazasSpeles.MazoSpeluPalaisanasKods;
+import Spele.MazasSpeles.Karatavas.Karatavas;
+import Spele.MazasSpeles.Karatavas.SavienotaisKaratavuKods;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SpelesProcesi.Laiks;
 import Spele.SpelesProcesi.Main;
@@ -19,6 +19,17 @@ public class VaronaStatusaEfekti {
     // Viss, kas ietekmē varoņa stresa līmeni.
     if (!IestatijumuDati.istabuGaismasIeslegtas[Main.varonaIstabasSkaitlis] && !VaronaDarbibas.aizdedzinatsSerkocins) { // Ja istabā, kurā atrodas varonis ir izslēgta gaisma, tad ...
       varonaStresaLimenis += 0.1;
+    }
+  }
+
+  public static void parbauditEffektus() {
+    // Ja varona stresa līmenis pārsniedz 100.
+    if (VaronaStatusaEfekti.varonaStresaLimenis > 100.0) {
+      VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("STRESS");
+    }
+    // Ja zaudē karātavas.
+    else if (Karatavas.karatavuKluduSkaits > 7) {
+      VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("KARATAVAS");
     }
   }
 
@@ -49,7 +60,9 @@ public class VaronaStatusaEfekti {
     Spoki.durvjuSpoksAktivs = false;
     Spoki.virtuvesSpoksAktivs = false;
 
+    SavienotaisKaratavuKods.restartetKaratavas();
     Laiks.spelesLaiks = 0; // Lai laika threads momentāli neapstātos pēc tā pališanas, atjauno spēles laiku.
     varonaStresaLimenis = 0;
+    Main.varonisIrMazajaSpele = false;
   }
 }

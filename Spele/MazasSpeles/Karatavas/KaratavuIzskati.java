@@ -1,4 +1,4 @@
-package Spele.MazasSpeles;
+package Spele.MazasSpeles.Karatavas;
 
 public class KaratavuIzskati {
 

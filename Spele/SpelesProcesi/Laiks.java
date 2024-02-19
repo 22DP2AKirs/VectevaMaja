@@ -4,7 +4,7 @@ import Spele.PaligMetodes;
 import Spele.Spoki;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Iestatijumi.IestatijumuDati;
-import Spele.MazasSpeles.MazoSpeluPalaisanasKods;
+import Spele.MazasSpeles.Karatavas.SavienotaisKaratavuKods;
 import Spele.Varonis.VaronaDarbibas;
 import Spele.Varonis.VaronaStatusaEfekti;
 
@@ -18,12 +18,17 @@ public class Laiks extends Thread {
 
   @Override
   public void run() {
+
     // Izveido visus spokus.
     Spoki logaSpoks = new Spoki("loga", IestatijumuDati.logaSpokaAgresivitatesLimits);
     Spoki durvjuSpoks = new Spoki("durvju", IestatijumuDati.durvjuSpokaAgresivitatesLimits);
     Spoki virtuvesSpoks = new Spoki("virtuves", IestatijumuDati.virtuvesSpokaAgresivitatesLimits);
 
+  
     while (Main.spelePalaista) {
+      // Ja kāds proces padara thrediGul boolu true, tad šis threds gulēs 3 sekundes.
+      paguletNoteiktuLaiku();
+
       laikaVadiba(); // Skaita laiku un nosaka, kad spēle ir beigusies.
 
       // Spoku izslēgšana.
@@ -80,7 +85,16 @@ public class Laiks extends Thread {
     virtuvesSpoks.izslegtSpoku();
   }
 
+  private void paguletNoteiktuLaiku() {
+    // * Metode apstādina thredu uz noteiktu laiku.
+    if (Main.thrediGul) {
+      PaligMetodes.gulet(3);
+      Main.thrediGul = false;
+    }
+  }
+
   private void randomIespejaIzslegtKadasIstabasGaismu() {
+    // * Metode izslēdz vienu no 4-trām mājas gaismām.
     if (IestatijumuDati.spokiSledzAraGaismu) { // Spēles iestatījums.
       int randomIzveletasIstabasCipars = Main.rand.nextInt(4);
       if (Main.rand.nextInt(60) + 1 == 1) {
@@ -97,7 +111,11 @@ public class Laiks extends Thread {
 
     // Zemāk norādītais kods izpildās tikai tad, kad laiks ir precīzs norādītajam.
     // Tas nozīmē, ka izvēle izpildīsies vienu reizi norādītajā laikā.
-    if (spelesLaiks == vienaStunda) {
+    if (spelesLaiks < 2) {
+      laikaTeksts = "1 2 A M ";
+
+    }
+    else if (spelesLaiks == vienaStunda) {
       laikaTeksts = " 1 A M  ";
 
       // Mājasdarbu kods.
@@ -135,7 +153,6 @@ public class Laiks extends Thread {
 
   private void apskatitMajasdarbu() {
     // * Metode pārbauda un ieslēdz mājasdarbu.
-
     parbauditVaiVaronisPaspejaIzpilditMajasdarbu();
     ieslegtKaduMajasdarbu();
   }
@@ -144,17 +161,20 @@ public class Laiks extends Thread {
     // * Metode pārbauda vai varonis ir izpildījis mājasdarbu noteiktajā laikā.
     // * Ja nav, tad viņš zaudē.
 
-    if (Main.izveletaMazaSpele) {
+    if (Main.izveletaMazaSpele && !Main.varonaNemirstiba) {
       VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("MAJASDARBA_LAIKS");
+    }
+    else {
+
     }
   }
 
   private void ieslegtKaduMajasdarbu() {
     // * Metode norādītajā laikā ieslēdz vieno no m-spēlēm.
-
-    int randCipars = Main.rand.nextInt(1); // No 0 ieskaitot, līdz "norādītais" neieskaitot.
+    // Main.rand.nextInt(1);
+    int randCipars = 0; // No 0 ieskaitot, līdz "norādītais" neieskaitot.
     if (randCipars == 0) {
-      MazoSpeluPalaisanasKods.izveidotJaunuKaratavasSpeli();
+      SavienotaisKaratavuKods.izveidotJaunuKaratavasSpeli();
       Main.karatavas = true;
     }
     else if (randCipars == 1) {

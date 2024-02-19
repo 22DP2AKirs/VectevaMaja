@@ -130,30 +130,29 @@ public class Spoki {
 
 
     public static Spoki[] spokuInformacijasSavaksana(Spoki logaSpoks, Spoki durvjuSpoks, Spoki virtuvesSpoks) {
-        Spoki[] visiSpoki = new Spoki[3];
-        visiSpoki[0] = logaSpoks;
-        visiSpoki[1] = durvjuSpoks;
-        visiSpoki[2] = virtuvesSpoks;
+      Spoki[] visiSpoki = new Spoki[3];
+      visiSpoki[0] = logaSpoks;
+      visiSpoki[1] = durvjuSpoks;
+      visiSpoki[2] = virtuvesSpoks;
 
-        return visiSpoki;
+      return visiSpoki;
     }
 
 
     public static Spoki[] spokuStati = {
-        new Spoki("loga", IestatijumuDati.logaSpokaAgresivitatesLimits),
-        new Spoki("durvju", IestatijumuDati.durvjuSpokaAgresivitatesLimits),
-        new Spoki("virtuves", IestatijumuDati.virtuvesSpokaAgresivitatesLimits)
+      new Spoki("loga", IestatijumuDati.logaSpokaAgresivitatesLimits),
+      new Spoki("durvju", IestatijumuDati.durvjuSpokaAgresivitatesLimits),
+      new Spoki("virtuves", IestatijumuDati.virtuvesSpokaAgresivitatesLimits)
     };
 
     public static void spokuInformacijasIzvade() {
-        System.out.println();
+      System.out.println();
 
-        System.out.println("Loga spoks" + K.VIOLETS + " aktivs?: " + spokuStati[0].spoksAktivs + K.ZALS + " RAND cipars: " + spokuStati[0].randomKustibasIespejasCipars + K.ZILS + " Drosibas robezas: " + spokuStati[0].spokaDrosibasRobezas + " Fazes indekss: " + spokuStati[0].spokaFazesIndeks + " Istaba: " + spokuStati[0].spokaIstaba + K.RESET + "\033[0K");
-        System.out.println("Durvju spoks" + K.VIOLETS + " aktivs?: " + spokuStati[1].spoksAktivs + K.ZALS + " RAND cipars: " + spokuStati[1].randomKustibasIespejasCipars + K.ZILS + " Drosibas robezas: " + spokuStati[1].spokaDrosibasRobezas + " Fazes indekss: " + spokuStati[1].spokaFazesIndeks + K.RESET + "\033[0K");
-        System.out.println("Virtuves spoks" + K.VIOLETS + " aktivs?: " + spokuStati[2].spoksAktivs + K.ZALS + " RAND cipars: " + spokuStati[2].randomKustibasIespejasCipars + K.ZILS + " Drosibas robezas: " + spokuStati[2].spokaDrosibasRobezas + " Fazes indekss: " + spokuStati[2].spokaFazesIndeks + K.RESET + "\033[0K");
-        
-        System.out.println("Laiks ms: " + Laiks.spelesLaiks + " / " + Laiks.vienaStunda * 6 + K.RESET + ", Stressa limenis: " + VaronaStatusaEfekti.varonaStresaLimenis + "\033[0K");
-        
+      System.out.println("Loga spoks" + K.VIOLETS + " aktivs?: " + spokuStati[0].spoksAktivs + K.ZALS + " RAND cipars: " + spokuStati[0].randomKustibasIespejasCipars + K.ZILS + " Drosibas robezas: " + spokuStati[0].spokaDrosibasRobezas + " Fazes indekss: " + spokuStati[0].spokaFazesIndeks + " Istaba: " + spokuStati[0].spokaIstaba + K.RESET + "\033[0K");
+      System.out.println("Durvju spoks" + K.VIOLETS + " aktivs?: " + spokuStati[1].spoksAktivs + K.ZALS + " RAND cipars: " + spokuStati[1].randomKustibasIespejasCipars + K.ZILS + " Drosibas robezas: " + spokuStati[1].spokaDrosibasRobezas + " Fazes indekss: " + spokuStati[1].spokaFazesIndeks + K.RESET + "\033[0K");
+      System.out.println("Virtuves spoks" + K.VIOLETS + " aktivs?: " + spokuStati[2].spoksAktivs + K.ZALS + " RAND cipars: " + spokuStati[2].randomKustibasIespejasCipars + K.ZILS + " Drosibas robezas: " + spokuStati[2].spokaDrosibasRobezas + " Fazes indekss: " + spokuStati[2].spokaFazesIndeks + K.RESET + "\033[0K");
+      
+      System.out.println("Laiks ms: " + Laiks.spelesLaiks + " / " + Laiks.vienaStunda * 6 + K.RESET + ", Stressa limenis: " + VaronaStatusaEfekti.varonaStresaLimenis + "\033[0K");
     }
 
     public void izslegtSpoku() {

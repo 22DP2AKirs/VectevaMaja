@@ -5,7 +5,7 @@ import Spele.SpelesProcesi.Main;
 import Spele.Spoki;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Iestatijumi.IestatijumuDati;
-import Spele.MazasSpeles.MazoSpeluPalaisanasKods;
+import Spele.MazasSpeles.Karatavas.SavienotaisKaratavuKods;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SpelesProcesi.Ievade;
 import Spele.SpelesProcesi.Laiks;
@@ -17,7 +17,7 @@ public class VaronaDarbibas {
   public static int serkocinaDeksanasLaikaSkaititajs;
 
   // Šie masīvi tiek pārbaudīti, lai labāk spētu noteikt, kāda darbība ir, kādai metodei.
-  private static final String[] testesanasKomandas = {"INFO", "EXIT", "POWER OFF", "KILL", "WIN"};
+  private static final String[] testesanasKomandas = {"SI", "MI", "EXIT", "POWER OFF", "KILL", "WIN"};
   private static final String[] parastasKomandas = {"F", "A", "W", "D", "1", "2", "3", "4"};
   
   public static void varonaDarbibas(String ievade) {
@@ -98,34 +98,51 @@ public class VaronaDarbibas {
 
 
   private static void testesanasDarbibas(String panemtaIevade) {
-      if (panemtaIevade.equals("INFO")) {
-          if (Spoki.spokuInfoIzvadeBoolean) {
-              Spoki.spokuInfoIzvadeBoolean = false;
-          } 
-          else {
-              Spoki.spokuInfoIzvadeBoolean = true;
-          }
-          Main.tiritEkranu();
+    // * Metodē ir darbības, kuras ir domātas spēles testēšanai.
+
+    // Spoku info. izvade.
+    if (panemtaIevade.equals("SI")) {
+      if (Main.spokuInfo) {
+        Main.spokuInfo = false;
       } 
-      else if (panemtaIevade.equals("EXIT")) {
-          Main.programmaPalaista = false;
-          System.exit(0);
+      else {
+        Main.spokuInfo = true;
       }
-      else if (panemtaIevade.equals("POWER OFF")) {
-          if(IestatijumuDati.elektribaIeslegta) {
-            IestatijumuDati.elektribaIeslegta = false;
-            Laiks.laiksCikIlgiElektribaBusIzslegta = 10;
-          } 
-          else {
-            IestatijumuDati.elektribaIeslegta = true;
-          }
+      Main.tiritEkranu();
+    }
+    // M-Spēļu info. izvade.
+    else if (panemtaIevade.equals("MI")) {
+      if (Main.mSpeluInfo) {
+        Main.mSpeluInfo = false;
+      } 
+      else {
+        Main.mSpeluInfo = true;
       }
-      else if (panemtaIevade.equals("KILL")) {
-          VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("PASNAVIBA");
+      Main.tiritEkranu();
+    }
+    // Iziet no spēles.
+    else if (panemtaIevade.equals("EXIT")) {
+      Main.programmaPalaista = false;
+      System.exit(0);
+    }
+    // Izslēdz mājas elektrību.
+    else if (panemtaIevade.equals("POWER OFF")) {
+      if(IestatijumuDati.elektribaIeslegta) {
+        IestatijumuDati.elektribaIeslegta = false;
+        Laiks.laiksCikIlgiElektribaBusIzslegta = 10;
+      } 
+      else {
+        IestatijumuDati.elektribaIeslegta = true;
       }
-      else if (panemtaIevade.equals("WIN")) {
-          Laiks.spelesLaiks = 1000;
-      }
+    }
+    // Novāc varoni.
+    else if (panemtaIevade.equals("KILL")) {
+      VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("PASNAVIBA");
+    }
+    // Uzvar spēli.
+    else if (panemtaIevade.equals("WIN")) {
+      Laiks.spelesLaiks = 1000;
+    }
   }
 
 
@@ -173,7 +190,7 @@ public class VaronaDarbibas {
         Spoki.durvjuSpoksAktivs = false;
       }
       else if (panemtaIevade.equals("E") && Main.karatavas) {
-        MazoSpeluPalaisanasKods.palaistKaratavas();
+        SavienotaisKaratavuKods.palaistKaratavas();
       }
     }
     else if (Main.varonaVirzienaSkaitlis == 2) { // Lejas darbības.

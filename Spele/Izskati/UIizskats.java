@@ -75,13 +75,13 @@ public class UIizskats {
             "Gul       |Vir       ",
             "                     ",
             "__________|__________",
+            " MAJASDARBS:         ",
             "                     ",
-            " Serkocini :         ",
             "                     ",
+            "_____________________",
             "                     ", // 13
-            "                     ",
+            " Serkocini :         ",
             "                     ", // 15
-            "                     ",
             "                     ",
             "                     ",
             "                     ", // 13
@@ -98,10 +98,16 @@ public class UIizskats {
             "_____________________"
         };
 
-        if (IestatijumuDati.atlikusoSerkocinuDaudzums > 9) { // Nomaina atlikušo sērkociņu daudzuma rindu.
-            gatavsLabasPusesUI[10] = " Serkocini : " + IestatijumuDati.atlikusoSerkocinuDaudzums + "      ";
+        if (Main.karatavas) {
+          gatavsLabasPusesUI[11] = "  K A R A T A V A S  ";
         } else {
-            gatavsLabasPusesUI[10] = " Serkocini : " + IestatijumuDati.atlikusoSerkocinuDaudzums + "       ";
+          gatavsLabasPusesUI[11] = "                     ";
+        }
+
+        if (IestatijumuDati.atlikusoSerkocinuDaudzums > 9) { // Nomaina atlikušo sērkociņu daudzuma rindu.
+            gatavsLabasPusesUI[14] = " Serkocini : " + IestatijumuDati.atlikusoSerkocinuDaudzums + "      ";
+        } else {
+            gatavsLabasPusesUI[14] = " Serkocini : " + IestatijumuDati.atlikusoSerkocinuDaudzums + "       ";
         }
 
         // Mapes varoņa bultiņas pozīcijas noteicējs.

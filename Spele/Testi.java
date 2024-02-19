@@ -1,6 +1,6 @@
 package Spele;
 
-import Spele.MazasSpeles.Karatavas;
+import Spele.MazasSpeles.Karatavas.Karatavas;
 import Spele.SpelesProcesi.Main;
 
 public class Testi {

@@ -20,14 +20,7 @@ public class BildesParklajumi {
 
     spokaParklajumuUzlicejs(varonaIstabasKopija); // Uzliek spoka bildes.
     istabuParklajumuUzlicejs(varonaIstabasKopija); // Uzliek apgaismojuma bildes.
-    izmantojamoObjektuUzlicejs(varonaIstabasKopija); // Uzliek objektus.
-
-    // TODO: Pagraba gaisma. Interesants....
-    if (Main.varonaIstabasSkaitlis == 3 && Main.varonaVirzienaSkaitlis == 2) {
-        if (!IestatijumuDati.pagrabaGaisma && Spoki.spokuStati[2].spokaFazesIndeks < 11) {
-            virtuvesPagrabaParklajs(varonaIstabasKopija, originalaisMasivs);
-        }
-    }
+    izmantojamoObjektuUzlicejs(varonaIstabasKopija); // Uzliek objektus ar kuriem var darboties varonis.
 
     istabasGaismasUnSerkocinaParklajumi(varonaIstabasKopija, originalaisMasivs);
 
@@ -94,6 +87,7 @@ public class BildesParklajumi {
 
       // * Gulta.
       if (Main.varonaIstabasSkaitlis == 0) {
+
           // ? Priekša.
           if (Main.varonaVirzienaSkaitlis == 0) {
               // ^
@@ -103,6 +97,7 @@ public class BildesParklajumi {
                   }
               }
           }
+
           // ? Labā puse.
           else if (Main.varonaVirzienaSkaitlis == 1) {
               // <
@@ -134,6 +129,7 @@ public class BildesParklajumi {
                   }
               }
           }
+
           // ? Leja.
           else if (Main.varonaVirzienaSkaitlis == 2) {
               // <
@@ -157,6 +153,7 @@ public class BildesParklajumi {
 
       // * Dīvāns.
       else if (Main.varonaIstabasSkaitlis == 1) {
+
           // ? Labā puse.
           if (Main.varonaVirzienaSkaitlis == 1) {
               if (!IestatijumuDati.istabuGaismasIeslegtas[2]) {
@@ -166,6 +163,7 @@ public class BildesParklajumi {
                   }
               }
           }
+
           // ? Leja.
           else if (Main.varonaVirzienaSkaitlis == 2) {
               // ^
@@ -206,26 +204,29 @@ public class BildesParklajumi {
 
       // * Durvis.
       else if (Main.varonaIstabasSkaitlis == 2) {
-          // ? Labā puse.
-          if (Main.varonaVirzienaSkaitlis == 1) {
-              // >
-              if (!IestatijumuDati.istabuGaismasIeslegtas[3]) {
-                  String[] durvjuLabasPusesLabaPuse = new String[2];
-                  if (!IestatijumuDati.istabuGaismasIeslegtas[3]) {
-                      durvjuLabasPusesLabaPuse[0] = "\033[80G" + K.TPELEKS + "░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-                      durvjuLabasPusesLabaPuse[1] = "\033[79G" + K.TPELEKS + "░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-                  } 
-                  else {
-                      durvjuLabasPusesLabaPuse[0] = "\033[80G" + "  " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-                      durvjuLabasPusesLabaPuse[1] = "\033[79G" + "   " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-                  }
 
-                  mainamaisMasivs[4] += durvjuLabasPusesLabaPuse[0];
-                  for (int i = 5; i < K.BILDES_MASIVA_IZMERS; i++) {
-                      mainamaisMasivs[i] += durvjuLabasPusesLabaPuse[1];
-                  }
-              }
+        // ? Labā puse (Durvju puse).
+        if (Main.varonaVirzienaSkaitlis == 1) {
+          // >
+          if (!IestatijumuDati.istabuGaismasIeslegtas[3]) {
+            String[] durvjuLabasPusesLabaPuse = new String[2];
+            if (!IestatijumuDati.istabuGaismasIeslegtas[3]) {
+              durvjuLabasPusesLabaPuse[0] = "\033[80G" + K.TPELEKS + "░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+              durvjuLabasPusesLabaPuse[1] = "\033[79G" + K.TPELEKS + "░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+            } 
+            else {
+              durvjuLabasPusesLabaPuse[0] = "\033[80G" + "  " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+              durvjuLabasPusesLabaPuse[1] = "\033[79G" + "   " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+            }
+
+            mainamaisMasivs[4] += durvjuLabasPusesLabaPuse[0];
+            for (int i = 5; i < K.BILDES_MASIVA_IZMERS; i++) {
+              mainamaisMasivs[i] += durvjuLabasPusesLabaPuse[1];
+            }
           }
+          
+        }
+
           // ? Leja.
           else if (Main.varonaVirzienaSkaitlis == 2) {
               // ^
@@ -235,6 +236,7 @@ public class BildesParklajumi {
                   }
               }
           }
+
           // ? Kreisa puse.
           else if (Main.varonaVirzienaSkaitlis == 3) {
               // ^
@@ -247,9 +249,9 @@ public class BildesParklajumi {
           }
       }
 
-
       // * Virtuve.
       else if (Main.varonaIstabasSkaitlis == 3) {
+
           // ? Priekša.
           if (Main.varonaVirzienaSkaitlis == 0) {
               // ^
@@ -259,6 +261,7 @@ public class BildesParklajumi {
                   }
               }
           }
+
           // ? Labā puse.
           else if (Main.varonaVirzienaSkaitlis == 1) {
               // <
@@ -310,6 +313,18 @@ public class BildesParklajumi {
               mainamaisMasivs[14] += virtuvesLabasPusesPagrabaSkats[4];
               mainamaisMasivs[15] += virtuvesLabasPusesPagrabaSkats[5];
           }
+
+          // ? Leja.
+          else if (Main.varonaVirzienaSkaitlis == 2) {
+            // ^
+            if (!IestatijumuDati.pagrabaGaisma && Spoki.spokuStati[2].spokaFazesIndeks < 11) {
+              mainamaisMasivs[1] += ParklajumuIzskati.virtuvesPagrabaParklajs[0];
+              for (int i = 2; i < 13; i++) {
+                mainamaisMasivs[i] += ParklajumuIzskati.virtuvesPagrabaParklajs[1];
+              }
+            }
+          }
+
           // ? Kreisā puse.
           else if (Main.varonaVirzienaSkaitlis == 3) {
               // ^
@@ -344,8 +359,19 @@ public class BildesParklajumi {
         }	
       }
     }
+    else if (Main.varonaIstabasSkaitlis == 2) {
+      if (Main.varonaVirzienaSkaitlis == 1) {
+        if (Main.karatavas) {
+          mainamaisMasivs[9] += "\033[21G" + K.OBJEKTS + "/  ~~ /" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+          mainamaisMasivs[10] += "\033[20G" + K.OBJEKTS + "/_____/" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+        }
+        else {
+          mainamaisMasivs[9] += "\033[21G" + "/  ~~ /" + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+          mainamaisMasivs[10] += "\033[20G" + "/_____/" + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+        }
+      }
+    }
   }
-
 
   public static String[] istabasGaismasUnSerkocinaParklajumi(String[] mainamaisMasivs, String[] originalaisMasivs) {
     // * Pārbauda istabu, kurā ir varonis, un nosaka vai gaisma tanī būs ieslēgta vai izslēgta, tas pats ar sērkociņu.
@@ -393,24 +419,5 @@ public class BildesParklajumi {
     Arrays.fill(aizpildamaisMasivs, K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET); // Aizpilda visus masīva indeksus ar vienu un to pašu elementu.
 
     return aizpildamaisMasivs;
-  }
-
-
-  public static String[] virtuvesPagrabaParklajs(String[] parklajamaisMasivs, String[] originalaisMasivs) {
-    // Nosaka, ko izvadīs, ja pagramba gaisma ir izslēgta.
-    parklajamaisMasivs[1] += "\033[10G" + K.TPELEKS + "░░░░░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-    parklajamaisMasivs[2] += "\033[8G" + K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-    parklajamaisMasivs[3] += "\033[8G" + K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-    parklajamaisMasivs[4] += "\033[8G" + K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-    parklajamaisMasivs[5] += "\033[8G" + K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-    parklajamaisMasivs[6] += "\033[8G" + K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-    parklajamaisMasivs[7] += "\033[8G" + K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-    parklajamaisMasivs[8] += "\033[8G" + K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-    parklajamaisMasivs[9] += "\033[8G" + K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-    parklajamaisMasivs[10] += "\033[8G" + K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-    parklajamaisMasivs[11] += "\033[8G" + K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-    parklajamaisMasivs[12] += "\033[8G" + K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-
-    return parklajamaisMasivs;
   }
 }
