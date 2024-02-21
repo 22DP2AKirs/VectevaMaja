@@ -524,28 +524,13 @@ public class SpokuIzskati {
   };
 
   // =========================================================================================== Virtuves spoks ======================================================================================= //
-  private static final String[] ieslegtaPagrabaGaisma = {
-    "---------------",
-    "|---------------|",
-    "| |-----------| |",
-    "| | |-------| | |",
-    "| | | |---| | | |",
-    "| | | |   | | | |",
-    "| | | |   | | | |",
-    "| | | |___| | | |",
-    "| | |_/___\\_| | |",
-    "| |_/_______\\_| |",
-    "|_/___________\\_|",
-    "/               \\"
-  };
-
   private static final String[] virtuvesSp0 = {
     "---------------",
     "|---------------|",
     "| |-----------| |",
     "| | |-------| | |",
     "| | | |---| | | |",
-    "| | | |.. | | | |",
+    "| | | |   | | | |",
     "| | | |   | | | |",
     "| | | |___| | | |",
     "| | |_/___\\_| | |",
@@ -561,7 +546,7 @@ public class SpokuIzskati {
     "| | |-------| | |",
     "| | | |---| | | |",
     "| | | |.. | | | |",
-    "| | | |  -| | | |",
+    "| | | |   | | | |",
     "| | | |___| | | |",
     "| | |_/___\\_| | |",
     "| |_/_______\\_| |",
@@ -570,6 +555,21 @@ public class SpokuIzskati {
   };
 
   private static final String[] virtuvesSp2 = {
+    "---------------",
+    "|---------------|",
+    "| |-----------| |",
+    "| | |-------| | |",
+    "| | | |---| | | |",
+    "| | | |.. | | | |",
+    "| | | |  -| | | |",
+    "| | | |___| | | |",
+    "| | |_/___\\_| | |",
+    "| |_/_______\\_| |",
+    "|_/___________\\_|",
+    "/               \\"
+  };
+
+  private static final String[] virtuvesSp3 = {
     "---------------",
     "|---------------|",
     "| |-----------| |",
@@ -584,7 +584,7 @@ public class SpokuIzskati {
     "/               \\"
   };
 
-  private static final String[] virtuvesSp3 = {
+  private static final String[] virtuvesSp4 = {
     "---------------",
     "|---------------|",
     "| |-----------| |",
@@ -599,7 +599,7 @@ public class SpokuIzskati {
     "/               \\"
   };
 
-  private static final String[] virtuvesSp4 = {
+  private static final String[] virtuvesSp5 = {
     "---------------",
     "|---------------|",
     "| |-----------| |",
@@ -614,7 +614,7 @@ public class SpokuIzskati {
     "/               \\"
   };
 
-  private static final String[] virtuvesSp5 = {
+  private static final String[] virtuvesSp6 = {
     "---------------",
     "|---------------|",
     "| |-----------| |",
@@ -629,7 +629,7 @@ public class SpokuIzskati {
     "/               \\"
   };
 
-  private static final String[] virtuvesSp6 = {
+  private static final String[] virtuvesSp7 = {
     "---------------",
     "|---------------|",
     "| |-----------| |",
@@ -644,7 +644,7 @@ public class SpokuIzskati {
     "/               \\"
   };
 
-  private static final String[] virtuvesSp7 = {
+  private static final String[] virtuvesSp8 = {
     "---------------",
     "|---------------|",
     "| ^          ^  |",
@@ -659,7 +659,7 @@ public class SpokuIzskati {
     "/               \\"
   };
 
-  private static final String[] virtuvesSp8 = {
+  private static final String[] virtuvesSp9 = {
     "             ",
     "  \\           /  ",
     " ___\\       /___ ",
@@ -674,7 +674,7 @@ public class SpokuIzskati {
     "/ v v       v v \\"
   };
 
-  private static final String[] virtuvesSp9 = {
+  private static final String[] virtuvesSp10 = {
     K.TPELEKS + "░░░░░░░░░░░░░" + K.RESET,
     K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET,
     K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET,
@@ -691,14 +691,14 @@ public class SpokuIzskati {
 
   // * Visu spoku fāzes izskatu masīvi.
   // Loga.
-  public static final String[] [] logaSpokaSkatiPieDurvim = {durvjuLogsCiet, logaSpPieDurvim0, logaSpPieDurvim1, logaSpPieDurvim2, logaSpPieDurvim3, logaSpPieDurvim4, logaSpPieDurvim5, logaSpPieDurvim6, durvjuLogsVala};
-  public static final String[] [] logaSpokaSkatiPieDivana = {divanaLogsCiet, logaSpPieDivana0, logaSpPieDivana1, logaSpPieDivana2, logaSpPieDivana3, logaSpPieDivana4, logaSpPieDivana5, logaSpPieDivana6, divanaLogsVala};
-  public static final String[] [] logaSpokaSkatiPieGultas = {gultasLogsCiet, logaSpPieGultas0, logaSpPieGultas1, logaSpPieGultas2, logaSpPieGultas3, logaSpPieGultas4, logaSpPieGultas5, logaSpPieGultas6, gultasLogsVala};
-  public static final String[] [] logaSpokaSkatiPieVirtuves = {virtuvesLogsCiet, logaSpPieVirtuves0, logaSpPieVirtuves1, logaSpPieVirtuves2, logaSpPieVirtuves3, logaSpPieVirtuves4, logaSpPieVirtuves5, logaSpPieVirtuves6, virtuvesLogsVala};
+  public static final String[] [] logaSpokaBildesDurvjuIstaba = {durvjuLogsCiet, logaSpPieDurvim0, logaSpPieDurvim1, logaSpPieDurvim2, logaSpPieDurvim3, logaSpPieDurvim4, logaSpPieDurvim5, logaSpPieDurvim6, durvjuLogsVala};
+  public static final String[] [] logaSpokaBildesDivanaIstaba = {divanaLogsCiet, logaSpPieDivana0, logaSpPieDivana1, logaSpPieDivana2, logaSpPieDivana3, logaSpPieDivana4, logaSpPieDivana5, logaSpPieDivana6, divanaLogsVala};
+  public static final String[] [] logaSpokaBildesGultasIstaba = {gultasLogsCiet, logaSpPieGultas0, logaSpPieGultas1, logaSpPieGultas2, logaSpPieGultas3, logaSpPieGultas4, logaSpPieGultas5, logaSpPieGultas6, gultasLogsVala};
+  public static final String[] [] logaSpokaBildesVirtuve = {virtuvesLogsCiet, logaSpPieVirtuves0, logaSpPieVirtuves1, logaSpPieVirtuves2, logaSpPieVirtuves3, logaSpPieVirtuves4, logaSpPieVirtuves5, logaSpPieVirtuves6, virtuvesLogsVala};
 
   // Durvju un virtuves.
-  public static final String[] [] durvjuSpokaIzskati = {durvisCiet, durvjuSp0, durvjuSp1, durvjuSp2, durvjuSp3, durvjuSp4, durvjuSp5, durvjuSp6, durvjuSp7, durvisVala};
-  public static final String[] [] virtuvesSpokaIzskati = {ieslegtaPagrabaGaisma, virtuvesSp0, virtuvesSp1, virtuvesSp2, virtuvesSp3, virtuvesSp4, virtuvesSp5, virtuvesSp6, virtuvesSp7, virtuvesSp8, virtuvesSp9};
+  public static final String[] [] durvjuSpokaFazesBildes = {durvisCiet, durvjuSp0, durvjuSp1, durvjuSp2, durvjuSp3, durvjuSp4, durvjuSp5, durvjuSp6, durvjuSp7, durvisVala};
+  public static final String[] [] virtuvesSpokaFazesBildes = {virtuvesSp0, virtuvesSp1, virtuvesSp2, virtuvesSp3, virtuvesSp4, virtuvesSp5, virtuvesSp6, virtuvesSp7, virtuvesSp8, virtuvesSp9, virtuvesSp10 };
 
   // * Izveido masīvus, un liek tiem cita masīva ceļu, lai kad to izmanto, viņš neatgriež vērtību "null".
   // Loga spoka masīvi, kurus pielieto, katru savā istabā.
@@ -709,6 +709,6 @@ public class SpokuIzskati {
 
   // Durvju un virtuves spoka izskata masīvi.
   public static String[] virtPrieksasPagrabaBildesArSpoku = SpokuIzskati.virtuvesSp0;
-  public static String[] durSpokaFazesBilde = SpokuIzskati.durvisCiet;
+  public static String[] durvjuSpokaFazesBilde = SpokuIzskati.durvisCiet;
 }
   

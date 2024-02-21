@@ -1,0 +1,83 @@
+package Spele.Spoki;
+
+import Spele.Iestatijumi.IestatijumuDati;
+import Spele.Izskati.SpokuIzskati;
+import Spele.SpelesProcesi.Main;
+import Spele.Varonis.VaronaStatusaEfekti;
+
+public class VirtuvesSpoks extends Spoks {
+  /* Spoka apraksts:
+     Virtuves spoks nāk no pagraba, kas atrodas virtuvē. Tas ir jūtīgs uz gaismu,
+     tādēļ, ja pagrabā ir ieslēgta gaisma, tad spoks ātrāk kāps pa kāpnēm, ātrāk
+     tuvojoties pie sava mērķa. Mērķis ir novākt varoni. Pagraba gaisma mēdz reizēm
+     pati ieslēgties, to var izslēgt ar komandu "G". Kad virtuves spoks ir pie virtuves
+     (Pirmspēdējā fāze), tad viņš saplēsīs pagraba gaismu, padarot to par neizmantojamu.
+
+     Lai spoku aizbiedētu varonim ir jāizslēdz mājas elektrība, liekot spokam šoka
+     stāvoklī nokrist lejā pa kāpnēm uz viņa sākuma pozīciju (To var dzirdēt).
+  */
+
+  public static VirtuvesSpoks virtuvesSpoks = new VirtuvesSpoks(IestatijumuDati.virtuvesSpokaAtlautaAgresivitate, IestatijumuDati.virtuvesSpokaAtputasLaiks);
+
+  private boolean spuldziteIrSaplesta;
+  private boolean irIeslegtaPagrabaGaisma;
+  private int ieslegtasGaismasAgresivitate;
+
+  public VirtuvesSpoks(int spokaAtlautaAgresivitate, int spokaAtputasLaiks) {
+    super(spokaAtlautaAgresivitate, spokaAtputasLaiks);
+    ieslegtasGaismasAgresivitate = spokaAtlautaAgresivitate + 5;
+  }
+  
+  // Metodes:
+  public String[] izveletiesBildiPecFazes() {
+    if (getSpokaFazesIndekss() < 10) {
+      return SpokuIzskati.virtuvesSpokaFazesBildes[getSpokaFazesIndekss()];
+    }
+    // Saplēš spuldzīti.
+    else if (getSpokaFazesIndekss() == 10) {
+      spuldziteIrSaplesta = true;
+      return SpokuIzskati.virtuvesSpokaFazesBildes[getSpokaFazesIndekss()];
+    }
+    // Uzbrūk varonim.
+    else {
+      VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("V I R T U V E S   S P O K S");
+      return null;
+    }
+  }
+
+  public String toString() {
+    return "Virt sp aktivs: " + !virtuvesSpoks.getSpoksIrAizbiedets() + ", Atputas gajieni: " + getSpokaAtputasLaikaMainamaKopija() + ", Fazes indekss: " + getSpokaFazesIndekss();
+  }
+
+  public static void meginatIzveidotVirtuvesSpoku() {
+    if (virtuvesSpoks.getSpoksIrAizbiedets() && Main.rand.nextInt(1) + 1 == 0) {
+      izveidotJaunuVirtuvesSpokaObjektu();
+    }
+  }
+
+  public static void izveidotJaunuVirtuvesSpokaObjektu() {
+    virtuvesSpoks = new VirtuvesSpoks(IestatijumuDati.virtuvesSpokaAtlautaAgresivitate, IestatijumuDati.virtuvesSpokaAtputasLaiks);
+  }
+
+  // Set metodes:
+  public void setIrIeslegtaPagrabaGaisma(boolean vertiba) {
+    irIeslegtaPagrabaGaisma = vertiba;
+  }
+
+  // Get metodes:
+  public static VirtuvesSpoks getVirtuvesSpoks() {
+    return virtuvesSpoks;
+  }
+
+  public int getIeslegtasGaismasAgresivitate() {
+    return ieslegtasGaismasAgresivitate;
+  }
+      
+  public boolean getIrIeslegtaPagrabaGaisma() {
+    return irIeslegtaPagrabaGaisma;
+  }
+
+  public boolean getSpuldziteIrSaplesta() {
+    return spuldziteIrSaplesta;
+  }
+}

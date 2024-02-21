@@ -2,7 +2,6 @@ package Spele.Varonis;
 
 import Spele.IzvadeUzTerminalu;
 import Spele.PaligMetodes;
-import Spele.Spoki;
 import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Izskati.EkranuIzskati;
 import Spele.Izskati.EkranuIzskati.EkranuVeidi;
@@ -11,6 +10,9 @@ import Spele.MazasSpeles.Karatavas.SavienotaisKaratavuKods;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SpelesProcesi.Laiks;
 import Spele.SpelesProcesi.Main;
+import Spele.Spoki.DurvjuSpoks;
+import Spele.Spoki.LogaSpoks;
+import Spele.Spoki.VirtuvesSpoks;
 
 public class VaronaStatusaEfekti {
   public static float varonaStresaLimenis;
@@ -56,13 +58,14 @@ public class VaronaStatusaEfekti {
     }
     
     // Spēles beigu kods.
-    Spoki.logaSpoksAktivs = false;
-    Spoki.durvjuSpoksAktivs = false;
-    Spoki.virtuvesSpoksAktivs = false;
+    LogaSpoks.logaSpoks.izslegtSpoku();
+    DurvjuSpoks.durvjuSpoks.izslegtSpoku();
+    VirtuvesSpoks.virtuvesSpoks.izslegtSpoku();
 
     SavienotaisKaratavuKods.restartetKaratavas();
     Laiks.spelesLaiks = 0; // Lai laika threads momentāli neapstātos pēc tā pališanas, atjauno spēles laiku.
     varonaStresaLimenis = 0;
     Main.varonisIrMazajaSpele = false;
+    Main.tiritEkranu();
   }
 }

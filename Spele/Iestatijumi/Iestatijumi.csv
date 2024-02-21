@@ -9,14 +9,14 @@ maxSerkocinaDegsanasLaiks=3
 2. Spoku dati.
 {
 // Agresivitāte.
-logaSpokaAgresivitatesLimits=5
-durvjuSpokaAgresivitatesLimits=15
-virtuvesSpokaAgresivitatesLimits=20
+logaSpokaAtlautaAgresivitate=5
+durvjuSpokaAtlautaAgresivitate=15
+virtuvesSpokaAtlautaAgresivitate=20
 
-// Drošības robežas.
-logaSpokaDrosibasRobezas=3
-durvjuSpokaDrosibasRobezas=3
-virtuvesSpokaDrosibasRobezas=3
+// Atpūtas laiks.
+logaSpokaAtputasLaiks=3
+durvjuSpokaAtputasLaiks=3
+virtuvesSpokaAtputasLaiks=3
 }
 
 3. Istabu Iestatijumi jeb istabuGaismasIeslegtas.

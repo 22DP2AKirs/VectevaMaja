@@ -20,7 +20,7 @@ public class IzvadeUzTerminalu {
         }
         
         // Pievieno apakšējo UI pie gala izvades, pēc mājas bildēm.
-        for (String linija : UIizskats.apaksasUISagatavosana(Ievade.ievade)) {
+        for (String linija : UIizskats.apaksasUISagatavosana(Ievade.lietotajaIevade)) {
             programmasGalejaIzvadeUzEkrana.add("\r|" + linija + "|");
         }
 

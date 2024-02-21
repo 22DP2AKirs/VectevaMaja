@@ -4,12 +4,15 @@ import java.util.Random;
 
 import Spele.IzvadeUzTerminalu;
 import Spele.K;
-import Spele.Spoki;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Izskati.EkranuIzskati;
 import Spele.Izskati.EkranuIzskati.EkranuVeidi;
 import Spele.MazasSpeles.Karatavas.SavienotaisKaratavuKods;
 import Spele.Parklajumi.EkranuParklajumi;
+import Spele.Spoki.DurvjuSpoks;
+import Spele.Spoki.LogaSpoks;
+import Spele.Spoki.Spoks;
+import Spele.Spoki.VirtuvesSpoks;
 import Spele.Varonis.VaronaDarbibas;
 import Spele.Varonis.VaronaStatusaEfekti;
 
@@ -37,24 +40,22 @@ public class Main {
   public static boolean mazasSpelesRezultataParskats = false;
 
   // Varoņa īpašības.
-  public static boolean varonaNemirstiba = true; // Vai varonis var zaudēt spēli vai nē.
-  static boolean kluduLasisana = false;
+  public static boolean varonaNemirstiba = false; // Vai varonis var zaudēt spēli vai nē.
   
-
   // Spelētāja pozīcija.
   public static int varonaIstabasSkaitlis = 2; // 0, no gultas istabas. 2, jo testā sāku no durvju istabas. 3, no virtuves istabas.
   public static int varonaVirzienaSkaitlis = 1;
   
   // Objekti.
   public static Random rand = new Random(); // Priekš random darbībām.
-
+  
   // Iestata tikšķa jeb 1 "refreša" periodu.
   static int framesPerSecond = 1000 / 25; // Pēc cik ilga laika ekrāns "refrešojas". (Milisekundēs)
   public static int spelesIlgums = 100;// 6 min 360;
   
   // Cits.
-  static String[] visiVaronaUzdevumi = {"Pildit majasdarbus", "Est", "Mazgat", "Kartot", "Lasit", "Tirit"}; // TODO: Izmantot vai pārveidot.
   public static volatile boolean thrediGul; // Apstādina Laiks thredu uz noteiktu laiku.
+  static boolean programmasKluduLasisana = false;
 
   public static void main(String[] args) throws InterruptedException { // throws InterruptedException nozīmē, ka var neizmantot try_catch.
     // * Galvenais programmas process.
@@ -62,9 +63,14 @@ public class Main {
     // Testi.testaProgramma();
 
     // ? /////// T H R E D I //////////
-    // Jaunie rīki jeb thredi jeb objekti.
+    // Jaunie rīki jeb thredi, jeb objekti.
     Ievade ievadesLasitajs = new Ievade(); // Arī threads, bet šis lasa ievadi.
     SkanasSpeletajs skanasSpeletajs = new SkanasSpeletajs();
+
+    // Izveido un izslēdz spokus. (inicializē, lai pēc tam tos izmantotu spēlē)
+    LogaSpoks.getLogaSpoks().izslegtSpoku();
+    DurvjuSpoks.getDurvjuSpoks().izslegtSpoku();
+    VirtuvesSpoks.getVirtuvesSpoks().izslegtSpoku();
 
     // Sākas atsevišķās darbības jeb patstāvīgie procesi.
     skanasSpeletajs.start(); // Strādā, kamēr spelePalaista bools ir true.
@@ -76,7 +82,7 @@ public class Main {
 
       // * ///// S A K U M A   E K R A N A   C I K L S //////
       while (mainMenu) {
-        VaronaDarbibas.varonaDarbibas(Ievade.ievade);
+        VaronaDarbibas.apstradatKomandu(Ievade.lietotajaIevade);
         IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuIzskati.visiEkrani[0], EkranuVeidi.GALVENAIS_EKRANS));
 
         Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 25 FPS.
@@ -89,7 +95,7 @@ public class Main {
       // * ///// S P Ē L E S   C I K L S ///////
       while (spelePalaista) { // Kamēr laiks nav beidzies, turpināt ciklu jeb spēli.
 
-        VaronaDarbibas.varonaDarbibas(Ievade.ievade); // Lietotāja jeb varoņa ievade un tās darbības (komandas un to darbības).
+        VaronaDarbibas.apstradatKomandu(Ievade.lietotajaIevade); // Lietotāja jeb varoņa ievade un tās darbības (komandas un to darbības).
         VaronaStatusaEfekti.varonaStress();
 
         
@@ -108,7 +114,7 @@ public class Main {
         VaronaStatusaEfekti.parbauditEffektus(); // Varoņa bojāiešanas nosacījumi.
 
         Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 25 FPS.
-        if (kluduLasisana) { // Apstādina spēli, lai varētu izlasīt kļūdas aprakstu.
+        if (programmasKluduLasisana) { // Apstādina spēli, lai varētu izlasīt kļūdas aprakstu.
           Thread.sleep(100000);
         }
       }
@@ -127,7 +133,8 @@ public class Main {
 
     // Izvada informāciju par spokiem.
     if (Main.spokuInfo) { 
-      Spoki.spokuInformacijasIzvade();
+      Spoks.spokuInfo();
+      System.out.println("Laiks ms: " + Laiks.spelesLaiks + " / " + Laiks.vienaStunda * 6 + K.RESET + ", Stressa limenis: " + VaronaStatusaEfekti.varonaStresaLimenis + "\033[0K");
     }
     // Izvada informāciju par m-spēlēm.
     else if (Main.mSpeluInfo) {
@@ -136,16 +143,6 @@ public class Main {
   }
 
   private static void izvaditMSpelesInfo() {
-    System.out.println();
-    System.out.println();
-    System.out.println();
-    System.out.println();
-    System.out.println();
-    System.out.println();
-    System.out.println();
-    System.out.println();
-    System.out.println();
-    System.out.println();
     System.out.println();
 
     System.out.println("Ieksa m-spele: " + Main.varonisIrMazajaSpele + ", Izveleta m-spele: " + Main.izveletaMazaSpele + "\033[0K");

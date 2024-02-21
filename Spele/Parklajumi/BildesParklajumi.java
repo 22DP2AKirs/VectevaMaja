@@ -2,7 +2,6 @@ package Spele.Parklajumi;
 import java.util.Arrays;
 
 import Spele.K;
-import Spele.Spoki;
 import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Izskati.SpokuIzskati;
 import Spele.SpelesProcesi.Main;
@@ -65,8 +64,8 @@ public class BildesParklajumi {
     }
     // Durvis ar skatu uz durvīm...
     else if (Main.varonaIstabasSkaitlis == 2 && Main.varonaVirzienaSkaitlis == 1) {
-      for (int i = 2; i - 2 < SpokuIzskati.durSpokaFazesBilde.length; i++) {
-        mainamaisMasivs[i] += "\033[40G" + SpokuIzskati.durSpokaFazesBilde[i - 2] + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA; // -2, jo i = mainamāMasīva kārtas rinda. i - 2 = sākt rediģēšanu no otrās rindas.
+      for (int i = 2; i - 2 < SpokuIzskati.durvjuSpokaFazesBilde.length; i++) {
+        mainamaisMasivs[i] += "\033[40G" + SpokuIzskati.durvjuSpokaFazesBilde[i - 2] + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA; // -2, jo i = mainamāMasīva kārtas rinda. i - 2 = sākt rediģēšanu no otrās rindas.
       }
     }
   }
@@ -317,7 +316,7 @@ public class BildesParklajumi {
           // ? Leja.
           else if (Main.varonaVirzienaSkaitlis == 2) {
             // ^
-            if (!IestatijumuDati.pagrabaGaisma && Spoki.spokuStati[2].spokaFazesIndeks < 11) {
+            if (!IestatijumuDati.pagrabaGaisma) {
               mainamaisMasivs[1] += ParklajumuIzskati.virtuvesPagrabaParklajs[0];
               for (int i = 2; i < 13; i++) {
                 mainamaisMasivs[i] += ParklajumuIzskati.virtuvesPagrabaParklajs[1];

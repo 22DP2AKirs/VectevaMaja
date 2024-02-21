@@ -71,7 +71,7 @@ public class EkranuParklajumi {
       // Papildus darbības:
       SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\karatavas_pakarts.wav", 6);
     } 
-    else if (iemesls.equals("LOGA")) {
+    else if (iemesls.equals("L O G A   S P O K S")) {
       informacija[2] = "                                    _   _                   _               _";
       informacija[3] = "L O G A   S P O K S   V A R   P A R A D I T I E S   V I E N A   N O   4   M A J A S   L O G I E M .";
       informacija[4] = "        _                                 _";
@@ -79,7 +79,7 @@ public class EkranuParklajumi {
       informacija[6] = "";
       informacija[7] = "";
     }
-    else if (iemesls.equals("DURVJU")) {
+    else if (iemesls.equals("D U R V J U   S P O K S")) {
       informacija[2] = "                                      _   _               _             _       _             _";
       informacija[3] = "D U R V J U   S P O K S   L I E N   M A J A   C A U R   T A S   V I E N I G A J A M   D U R V I M .";
       informacija[4] = "  _       _       V _       _";
@@ -87,7 +87,7 @@ public class EkranuParklajumi {
       informacija[6] = "                                _                               _           _   _       _                 _";
       informacija[7] = "D U R V I S   V A R   A I Z S L E G T,  L A I   S P O K A M   B U T U   G R U T A K   T A S   A T T A I S I T .";
     }
-    else if (iemesls.equals("VIRTUVES")) {
+    else if (iemesls.equals("V I R T U V E S   S P O K S")) {
       informacija[2] = "                                                      _";
       informacija[3] = "V I R T U V E S   S P O K S   P A L I E K   A G R E S I V S,";
       informacija[4] = "                    _                 _";

@@ -1,10 +1,11 @@
 package Spele.SpelesProcesi;
 
 import Spele.PaligMetodes;
-import Spele.Spoki;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Iestatijumi.IestatijumuDati;
 import Spele.MazasSpeles.Karatavas.SavienotaisKaratavuKods;
+import Spele.Spoki.Spoks;
+import Spele.Spoki.VirtuvesSpoks;
 import Spele.Varonis.VaronaDarbibas;
 import Spele.Varonis.VaronaStatusaEfekti;
 
@@ -18,12 +19,6 @@ public class Laiks extends Thread {
 
   @Override
   public void run() {
-
-    // Izveido visus spokus.
-    Spoki logaSpoks = new Spoki("loga", IestatijumuDati.logaSpokaAgresivitatesLimits);
-    Spoki durvjuSpoks = new Spoki("durvju", IestatijumuDati.durvjuSpokaAgresivitatesLimits);
-    Spoki virtuvesSpoks = new Spoki("virtuves", IestatijumuDati.virtuvesSpokaAgresivitatesLimits);
-
   
     while (Main.spelePalaista) {
       // Ja kāds proces padara thrediGul boolu true, tad šis threds gulēs 3 sekundes.
@@ -31,30 +26,9 @@ public class Laiks extends Thread {
 
       laikaVadiba(); // Skaita laiku un nosaka, kad spēle ir beigusies.
 
-      // Spoku izslēgšana.
-      if (!Spoki.logaSpoksAktivs) {logaSpoks.izslegtSpoku();}
-      if (!Spoki.durvjuSpoksAktivs) {durvjuSpoks.izslegtSpoku();}
-      if (!Spoki.virtuvesSpoksAktivs) {virtuvesSpoks.izslegtSpoku();}
-      
-      // Spoku objektu RAND kustības atjaunošana.
-      logaSpoks.randomKustibasCiparaAtjaunosana();
-      durvjuSpoks.randomKustibasCiparaAtjaunosana();
-      virtuvesSpoks.randomKustibasCiparaAtjaunosana();
-
-      // Robezu pārkāpšana un fāzes palielināšana.
-      logaSpoks.spokuVirzisanasUzPrieksu();
-      durvjuSpoks.spokuVirzisanasUzPrieksu();
-      virtuvesSpoks.spokuVirzisanasUzPrieksu();
-
-      // Vizuālo skatu atjaunošana.
-      logaSpoks.istabuBildesFazuAtjaunosana(logaSpoks.spokaVeids);
-      durvjuSpoks.istabuBildesFazuAtjaunosana(durvjuSpoks.spokaVeids);
-      virtuvesSpoks.istabuBildesFazuAtjaunosana(virtuvesSpoks.spokaVeids);
-
-      // Iespēja padarīt spokus aktīvus.
-      logaSpoks.iespejaPadaritSpokuAktivu();
-      durvjuSpoks.iespejaPadaritSpokuAktivu();
-      virtuvesSpoks.iespejaPadaritSpokuAktivu();
+      // Spoku kods.
+      Spoks.meginatIeslegtSpokus();
+      Spoks.atjauninatSpokus();
 
       randomIespejaIzslegtKadasIstabasGaismu(); // Iestatījums.
 
@@ -73,16 +47,10 @@ public class Laiks extends Thread {
         VaronaDarbibas.aizdedzinatsSerkocins = false;
         VaronaDarbibas.serkocinaDeksanasLaikaSkaititajs = 0;
       }
-
-      // Spoku informācijas savākšana.
-      Spoki.spokuStati = Spoki.spokuInformacijasSavaksana(logaSpoks, durvjuSpoks, virtuvesSpoks);
       
       // Gulēšana līdz nākamam kadram.
       PaligMetodes.gulet(1);
     }
-    logaSpoks.izslegtSpoku();
-    durvjuSpoks.izslegtSpoku();
-    virtuvesSpoks.izslegtSpoku();
   }
 
   private void paguletNoteiktuLaiku() {
@@ -153,7 +121,7 @@ public class Laiks extends Thread {
 
   private void apskatitMajasdarbu() {
     // * Metode pārbauda un ieslēdz mājasdarbu.
-    parbauditVaiVaronisPaspejaIzpilditMajasdarbu();
+    // TODO: parbauditVaiVaronisPaspejaIzpilditMajasdarbu();
     ieslegtKaduMajasdarbu();
   }
 

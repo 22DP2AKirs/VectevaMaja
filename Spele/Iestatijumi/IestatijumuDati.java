@@ -22,18 +22,18 @@ public class IestatijumuDati {
 
   public static boolean elektribaIeslegta = FailuRedigetajs.booleanDatuAtgriezejs("elektribaIeslegta");
   public static boolean pagrabaGaisma = FailuRedigetajs.booleanDatuAtgriezejs("pagrabaGaisma");
-  public static boolean pagrabaGaismaStrada = FailuRedigetajs.booleanDatuAtgriezejs("pagrabaGaismaStrada");
+  public static boolean stradaPagrabaGaisma = FailuRedigetajs.booleanDatuAtgriezejs("pagrabaGaismaStrada");
 
   // Sērkociņa dati.
   public static int atlikusoSerkocinuDaudzums = FailuRedigetajs.intDatuAtgriezejs("atlikusoSerkocinuDaudzums");
   public static int maxSerkocinaDegsanasLaiks = FailuRedigetajs.intDatuAtgriezejs("maxSerkocinaDegsanasLaiks");
 
   // Spoku dati.
-  public static int logaSpokaAgresivitatesLimits = FailuRedigetajs.intDatuAtgriezejs("logaSpokaAgresivitatesLimits");
-  public static int durvjuSpokaAgresivitatesLimits = FailuRedigetajs.intDatuAtgriezejs("durvjuSpokaAgresivitatesLimits");
-  public static int virtuvesSpokaAgresivitatesLimits = FailuRedigetajs.intDatuAtgriezejs("virtuvesSpokaAgresivitatesLimits");
+  public static int logaSpokaAtlautaAgresivitate = FailuRedigetajs.intDatuAtgriezejs("logaSpokaAtlautaAgresivitate");
+  public static int durvjuSpokaAtlautaAgresivitate = FailuRedigetajs.intDatuAtgriezejs("durvjuSpokaAtlautaAgresivitate");
+  public static int virtuvesSpokaAtlautaAgresivitate = FailuRedigetajs.intDatuAtgriezejs("virtuvesSpokaAtlautaAgresivitate");
 
-  int logaSpokaDrosibasRobezas = FailuRedigetajs.intDatuAtgriezejs("logaSpokaDrosibasRobezas");
-  int durvjuSpokaDrosibasRobezas = FailuRedigetajs.intDatuAtgriezejs("durvjuSpokaDrosibasRobezas");
-  int virtuvesSpokaDrosibasRobezas = FailuRedigetajs.intDatuAtgriezejs("virtuvesSpokaDrosibasRobezas");
+  public static int logaSpokaAtputasLaiks = FailuRedigetajs.intDatuAtgriezejs("logaSpokaAtputasLaiks");
+  public static int durvjuSpokaAtputasLaiks = FailuRedigetajs.intDatuAtgriezejs("durvjuSpokaAtputasLaiks");
+  public static int virtuvesSpokaAtputasLaiks = FailuRedigetajs.intDatuAtgriezejs("virtuvesSpokaAtputasLaiks");
 }

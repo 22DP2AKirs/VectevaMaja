@@ -22,7 +22,7 @@ public class SavienotaisKaratavuKods {
       if (Main.karatavas) {
         // Karātavas vārds tiek atjaunots, kad lietotājs ievada iespējamo vārda burtu.
         Main.karatavasVards = karatavasObjekts.toString();
-        karatavasObjekts.parbauditBurtu(Ievade.ievade, EkranuParklajumi.burti);
+        karatavasObjekts.parbauditBurtu(Ievade.lietotajaIevade, EkranuParklajumi.burti);
       }
       else {
         // Ja vārds ir atminēts, tad to nokrāso zaļā krāsā.
@@ -62,7 +62,7 @@ public class SavienotaisKaratavuKods {
 
   public static void palaistKaratavas() {
     Main.varonisIrMazajaSpele = true;
-    Ievade.ievade = "}";
+    Ievade.lietotajaIevade = "}";
   }
 
   public static void restartetKaratavas() {

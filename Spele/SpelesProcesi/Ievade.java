@@ -5,14 +5,14 @@ import java.util.Scanner;
 public class Ievade extends Thread {
   // volatile modifier ir, lai objekts sinhronizējas starp visiem Thrediem.
   private Scanner ievadesLasitajs = new Scanner(System.in); // Parastais lasītājs, kurš lasīs lietotāja ievadi.
-  public static volatile String ievade = "}"; // Definēju mainīgo, lai kods tālāk spētu viņu visu laiku dublicēt (šinī gadījumā saglabāt).
+  public static volatile String lietotajaIevade = "}"; // Definēju mainīgo, lai kods tālāk spētu viņu visu laiku dublicēt (šinī gadījumā saglabāt).
 
   public static boolean vaiIevadiIzpildija = true; // Ļauj ievadītajām darbībām būt izpildītām pirms tās tiek nodzēstas.
   
   public void run() { // Threds vienmēr lasa ievadi, vienalga uz to, kas notiek apkārt.
     // Threds strādās, kamēr cikls ir aktīvs.
     while (Main.programmaPalaista) {
-      ievade = ievadesLasitajs.nextLine().toUpperCase(); // Pārveido visas ievades uz liliem burtiem.
+      lietotajaIevade = ievadesLasitajs.nextLine().toUpperCase(); // Pārveido visas ievades uz liliem burtiem.
       vaiIevadiIzpildija = false; // Pēc ievades saglabāšanas, notiritIevadi() netīrīs ievadi, līdz VaronaDarbibas izpildīs ievadīto komandu.
       System.out.print("\033[F"); // Noliek mirgojošo kursoru vienu līniju uz augšu.
       
@@ -58,7 +58,7 @@ public class Ievade extends Thread {
 
     // Ja komanda tika izpildīta, tad to var nodzēst.
     if (vaiIevadiIzpildija) { 
-      Ievade.ievade = "}";
+      Ievade.lietotajaIevade = "}";
     }
   }
 }
