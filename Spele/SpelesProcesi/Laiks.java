@@ -26,7 +26,7 @@ public class Laiks extends Thread {
       laikaVadiba(); // Skaita laiku un nosaka, kad spēle ir beigusies.
 
       // Spoku kods.
-      Spoks.meginatIeslegtSpokus();
+      Spoks.meginatIeslegtSpokus(); // Ja spoks ir neaktīvs, tad ir rand iespēja to aktivizēt.
       Spoks.atjauninatSpokus();
 
       randomIespejaIzslegtKadasIstabasGaismu(); // Iestatījums.

@@ -5,10 +5,10 @@ import Spele.SpelesProcesi.Main;
 import Spele.Spoki.DurvjuSpoks;
 // import Spele.Spoki.DurvjuSpoks;
 import Spele.Spoki.LogaSpoks;
+import Spele.Spoki.VirtuvesSpoks;
 // import Spele.Spoki.VirtuvesSpoks;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Iestatijumi.IestatijumuDati;
-import Spele.MazasSpeles.Karatavas.SavienotaisKaratavuKods;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SpelesProcesi.Ievade;
 import Spele.SpelesProcesi.Laiks;
@@ -258,9 +258,9 @@ public class VaronaDarbibas {
     }
     else if (Main.varonaVirzienaSkaitlis == 1) { // Labās puses darbības.
       if (panemtaIevade.equals("E") && IestatijumuDati.elektribaIeslegta) { //* Elektrības izslēgšana.
-        // if (!VirtuvesSpoks.virtuvesSpoks.getSpoksIrAizbiedets()) {
-        //   SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\spoks_krit_leja_pa_kapnem.wav", VirtuvesSpoks.virtuvesSpoks.getSpokaFazesIndekss() - 17);
-        // }
+        if (VirtuvesSpoks.virtuvesSpoks.getSpoksIrAktivs()) {
+          SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\spoks_krit_leja_pa_kapnem.wav", VirtuvesSpoks.virtuvesSpoks.getSpokaFazesIndekss() - 17);
+        }
         izslegtasElektribasNosacijumi();
       }
     }
@@ -278,7 +278,7 @@ public class VaronaDarbibas {
   private static void izslegtasElektribasNosacijumi() { // Kad izslēdz elektrību nosaka, kādi iestatījumi vai mainīgie mainās.
       SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\fuse-box-turning-on-off.wav", 0);
       IestatijumuDati.elektribaIeslegta = false;
-    //   VirtuvesSpoks.virtuvesSpoks.izslegtSpoku();
+      VirtuvesSpoks.virtuvesSpoks.deaktivizetSpoku();
       Arrays.fill(IestatijumuDati.istabuGaismasIeslegtas, false); // Visās istabās izslēdz gaismu.
       IestatijumuDati.stradaPagrabaGaisma = true; // Salabo pagraba gaismu.
       Laiks.laiksCikIlgiElektribaBusIzslegta = 3;

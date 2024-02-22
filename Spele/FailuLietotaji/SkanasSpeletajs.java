@@ -15,7 +15,7 @@ public class SkanasSpeletajs extends Thread {
   public void run() {
     if (IestatijumuDati.ieslegtaSkana) { // Nosaka vai spēlē būs skaņa.
       while (Main.spelePalaista) {
-        SpeletSkanu("Spele\\SkanasFaili\\ambiance-sakana.wav", -5);
+        SpeletSkanu("Spele\\SkanasFaili\\ambiance-sakana.wav", -3);
         PaligMetodes.gulet(360);
       }
     }

@@ -77,7 +77,7 @@ public class VirtuvesSpoks extends Spoks {
 
   // Protected:
   protected void meginatIzveidotVirtuvesSpoku() {
-    if (getSpoksIrAktivs() && Main.rand.nextInt(1) + 1 == 0) {
+    if (getSpoksIrAktivs() && Main.rand.nextInt(5) + 1 == 5) {
       izveidotJaunuVirtuvesSpokaObjektu();
     }
   }

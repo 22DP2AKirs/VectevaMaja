@@ -57,10 +57,6 @@ public class Spoks {
     return randKustibasIespeja;
   }
 
-  protected int getSpokaFazesIndekss() {
-    return spokaFazesIndekss;
-  }
-
   /// Public (Izmantojami jebkurā failā):
   public boolean getSpoksIrAktivs() {
     return spoksIrAktivs;
@@ -68,6 +64,10 @@ public class Spoks {
   
   public int getAtnakusoSpokuSkaits() {
     return atnakusoSpokuSkaits;
+  }
+
+  public int getSpokaFazesIndekss() {
+    return spokaFazesIndekss;
   }
   
   // * Citas metodes:
@@ -121,6 +121,7 @@ public class Spoks {
   }
   
   public static void meginatIeslegtSpokus() {
+    // Ja spoks ir neaktīvs, tad ir rand iespēja to aktivizēt.
     LogaSpoks.logaSpoks.meginatIzveidotLogaSpoku();
     DurvjuSpoks.durvjuSpoks.meginatIzveidotDurvjuSpoku();
     VirtuvesSpoks.virtuvesSpoks.meginatIzveidotVirtuvesSpoku();

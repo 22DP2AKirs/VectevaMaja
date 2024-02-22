@@ -57,7 +57,7 @@ public class DurvjuSpoks extends Spoks {
 
   /// Protected:
   protected void meginatIzveidotDurvjuSpoku() {
-    if (!getSpoksIrAktivs() && Main.rand.nextInt(1) + 1 == 0) {
+    if (!getSpoksIrAktivs() && Main.rand.nextInt(5) + 1 == 5) {
       izveidotJaunuDurvjuSpokaObjektu();
     }
   }

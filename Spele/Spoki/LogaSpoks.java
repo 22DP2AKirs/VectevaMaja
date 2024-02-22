@@ -66,7 +66,7 @@ public class LogaSpoks extends Spoks {
   /// Protected:
   protected void meginatIzveidotLogaSpoku() {
     // ja (Spoks nav aktīvs un random iespēja).
-    if (!getSpoksIrAktivs() && Main.rand.nextInt(1) + 1 == 1) {
+    if (!getSpoksIrAktivs() && Main.rand.nextInt(5) + 1 == 5) {
       izveidotJaunuLogaSpokaObjektu();
     }
   }

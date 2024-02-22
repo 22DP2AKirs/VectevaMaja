@@ -5,6 +5,9 @@ import Spele.K;
 import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Izskati.SpokuIzskati;
 import Spele.SpelesProcesi.Main;
+import Spele.Spoki.DurvjuSpoks;
+import Spele.Spoki.LogaSpoks;
+import Spele.Spoki.VirtuvesSpoks;
 import Spele.Varonis.VaronaDarbibas;
 
 // * Pārklāj bildes.
@@ -32,40 +35,60 @@ public class BildesParklajumi {
     // Virtuve ar skatu uz izlietni.
     if (Main.varonaIstabasSkaitlis == 3 && Main.varonaVirzienaSkaitlis == 2) {
       // Pie masīva kopijas pievieno spoka fāzes bildi.
-      mainamaisMasivs[1] += "\033[10G" + SpokuIzskati.virtPrieksasPagrabaBildesArSpoku[0] + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+      mainamaisMasivs[1] += "\033[10G" + VirtuvesSpoks.virtuvesSpoks.izveletiesBildiPecFazes()[0] + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
       for (int i = 2; i - 1 < SpokuIzskati.virtPrieksasPagrabaBildesArSpoku.length; i++) { // i - 1, lai sāktu skaitīšanu no 0. rindas.
-        mainamaisMasivs[i] += "\033[8G" + SpokuIzskati.virtPrieksasPagrabaBildesArSpoku[i - 1] + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA; // -1, jo i = mainamāMasīva kārtas rinda. i - 1 = sākt rediģēšanu no otrās rindas.
+        mainamaisMasivs[i] += "\033[8G" + VirtuvesSpoks.virtuvesSpoks.izveletiesBildiPecFazes()[i - 1] + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA; // -1, jo i = mainamāMasīva kārtas rinda. i - 1 = sākt rediģēšanu no otrās rindas.
       }
     }
     // Virtuve ar skatu uz logu.
     else if (Main.varonaIstabasSkaitlis == 3 && Main.varonaVirzienaSkaitlis == 1) {
       // Pie masīva kopijas pievieno spoka fāzes bildi.
       for (int i = 3; i - 3 < SpokuIzskati.virtuvesLogaSpokaFazesBilde.length; i++) { // i - 1, lai sāktu skaitīšanu no 0. rindas.
-        mainamaisMasivs[i] += "\033[35G" + SpokuIzskati.virtuvesLogaSpokaFazesBilde[i - 3] + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA; // -1, jo i = mainamāMasīva kārtas rinda. i - 1 = sākt rediģēšanu no otrās rindas.
+        if (!LogaSpoks.logaSpoks.getLSIstabu().equals("VIRTUVE")) {
+          mainamaisMasivs[i] += "\033[35G" + SpokuIzskati.logaSpokaBildesVirtuve[0][i - 3] + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA; // -1, jo i = mainamāMasīva kārtas rinda. i - 1 = sākt rediģēšanu no otrās rindas.
+        }
+        else {
+          mainamaisMasivs[i] += "\033[35G" + LogaSpoks.logaSpoks.izveletiesBildiPecFazes()[i - 3] + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA; // -1, jo i = mainamāMasīva kārtas rinda. i - 1 = sākt rediģēšanu no otrās rindas.
+        }
       }
     }
     // Gulta ar skatu uz logu.
     else if (Main.varonaIstabasSkaitlis == 0 && Main.varonaVirzienaSkaitlis == 3) {
       for (int i = 1; i - 1 < SpokuIzskati.gultasLogaSpokaFazesBilde.length; i++) {
-        mainamaisMasivs[i] += "\033[40G" + SpokuIzskati.gultasLogaSpokaFazesBilde[i - 1] + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA; // -1, jo i = mainamāMasīva kārtas rinda. i - 1 = sākt rediģēšanu no otrās rindas.
+        if (!LogaSpoks.logaSpoks.getLSIstabu().equals("GULTA")) {
+          mainamaisMasivs[i] += "\033[40G" + SpokuIzskati.logaSpokaBildesGultasIstaba[0][i - 1] + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA; // -1, jo i = mainamāMasīva kārtas rinda. i - 1 = sākt rediģēšanu no otrās rindas.
+        }
+        else {
+          mainamaisMasivs[i] += "\033[40G" + LogaSpoks.logaSpoks.izveletiesBildiPecFazes()[i - 1] + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA; // -1, jo i = mainamāMasīva kārtas rinda. i - 1 = sākt rediģēšanu no otrās rindas.
+        }
       }
     }
     // Divans ar skatu uz logu.
     else if (Main.varonaIstabasSkaitlis == 1 && Main.varonaVirzienaSkaitlis == 0) {
       for (int i = 1; i - 1 < SpokuIzskati.divanaLogaSpokaFazesBilde.length; i++) {
-        mainamaisMasivs[i] += "\033[26G" + SpokuIzskati.divanaLogaSpokaFazesBilde[i - 1] + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA; // -1, jo i = mainamāMasīva kārtas rinda. i - 1 = sākt rediģēšanu no otrās rindas.
+        if (!LogaSpoks.logaSpoks.getLSIstabu().equals("DIVANS")) {
+          mainamaisMasivs[i] += "\033[26G" + SpokuIzskati.logaSpokaBildesDivanaIstaba[0][i - 1] + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA; // -1, jo i = mainamāMasīva kārtas rinda. i - 1 = sākt rediģēšanu no otrās rindas.
+        }
+        else {
+          mainamaisMasivs[i] += "\033[26G" + LogaSpoks.logaSpoks.izveletiesBildiPecFazes()[i - 1] + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA; // -1, jo i = mainamāMasīva kārtas rinda. i - 1 = sākt rediģēšanu no otrās rindas.
+        }
       }
     }
     // Durvis ar skatu uz logu.
     else if (Main.varonaIstabasSkaitlis == 2 && Main.varonaVirzienaSkaitlis == 0) {
       for (int i = 1; i - 1 < SpokuIzskati.durvjuLogaSpokaFazesBilde.length; i++) {
-        mainamaisMasivs[i] += "\033[18G" + SpokuIzskati.durvjuLogaSpokaFazesBilde[i - 1] + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA; // -1, jo i = mainamāMasīva kārtas rinda. i - 1 = sākt rediģēšanu no otrās rindas.
+        if (!LogaSpoks.logaSpoks.getLSIstabu().equals("DURVIS")) {
+          mainamaisMasivs[i] += "\033[18G" + SpokuIzskati.logaSpokaBildesDurvjuIstaba[0][i - 1] + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA; // -1, jo i = mainamāMasīva kārtas rinda. i - 1 = sākt rediģēšanu no otrās rindas.
+        }
+        else {
+          mainamaisMasivs[i] += "\033[18G" + LogaSpoks.logaSpoks.izveletiesBildiPecFazes()[i - 1] + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA; // -1, jo i = mainamāMasīva kārtas rinda. i - 1 = sākt rediģēšanu no otrās rindas.
+        }
       }
     }
     // Durvis ar skatu uz durvīm...
     else if (Main.varonaIstabasSkaitlis == 2 && Main.varonaVirzienaSkaitlis == 1) {
       for (int i = 2; i - 2 < SpokuIzskati.durvjuSpokaFazesBilde.length; i++) {
-        mainamaisMasivs[i] += "\033[40G" + SpokuIzskati.durvjuSpokaFazesBilde[i - 2] + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA; // -2, jo i = mainamāMasīva kārtas rinda. i - 2 = sākt rediģēšanu no otrās rindas.
+        mainamaisMasivs[i] += "\033[40G" + DurvjuSpoks.durvjuSpoks.izveletiesBildiPecFazes()[i - 2] + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA; // -2, jo i = mainamāMasīva kārtas rinda. i - 2 = sākt rediģēšanu no otrās rindas.
       }
     }
   }
