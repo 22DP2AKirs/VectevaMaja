@@ -19,16 +19,46 @@ public class VirtuvesSpoks extends Spoks {
 
   public static VirtuvesSpoks virtuvesSpoks = new VirtuvesSpoks(IestatijumuDati.virtuvesSpokaAtlautaAgresivitate, IestatijumuDati.virtuvesSpokaAtputasLaiks);
 
+  // Mainīgie.
   private boolean spuldziteIrSaplesta;
   private boolean irIeslegtaPagrabaGaisma;
+
   private int ieslegtasGaismasAgresivitate;
 
   public VirtuvesSpoks(int spokaAtlautaAgresivitate, int spokaAtputasLaiks) {
     super(spokaAtlautaAgresivitate, spokaAtputasLaiks);
     ieslegtasGaismasAgresivitate = spokaAtlautaAgresivitate + 5;
   }
+
+  // * Getters:
+  public String toString() {
+    return "Virt sp aktivs: " + getSpoksIrAktivs() + 
+    ", Atputas gajieni: " + getMainamoAtputasLaiku() + 
+    ", Fazes indekss: " + getSpokaFazesIndekss() +
+    ", Pagraba gaisma ieslegta: " + getIrIeslegtaPagrabaGaisma() +
+    ", Spuldzite saplesta: " + getSpuldziteIrSaplesta() + ", " +
+    getRandKustibasIespeja() + " < " + getSpokaAtlautaAgresivitate() + "\033[0K";
+  }
+
+  public int getIeslegtasGaismasAgresivitate() {
+    return ieslegtasGaismasAgresivitate;
+  }
+      
+  public boolean getIrIeslegtaPagrabaGaisma() {
+    return irIeslegtaPagrabaGaisma;
+  }
+
+  public boolean getSpuldziteIrSaplesta() {
+    return spuldziteIrSaplesta;
+  }
+
+  // * Setters:
+  public void setIrIeslegtaPagrabaGaisma(boolean vertiba) {
+    irIeslegtaPagrabaGaisma = vertiba;
+  }
   
-  // Metodes:
+  // * Citas metodes:
+  /// Public:
   public String[] izveletiesBildiPecFazes() {
     if (getSpokaFazesIndekss() < 10) {
       return SpokuIzskati.virtuvesSpokaFazesBildes[getSpokaFazesIndekss()];
@@ -45,39 +75,15 @@ public class VirtuvesSpoks extends Spoks {
     }
   }
 
-  public String toString() {
-    return "Virt sp aktivs: " + !virtuvesSpoks.getSpoksIrAizbiedets() + ", Atputas gajieni: " + getSpokaAtputasLaikaMainamaKopija() + ", Fazes indekss: " + getSpokaFazesIndekss();
-  }
-
-  public static void meginatIzveidotVirtuvesSpoku() {
-    if (virtuvesSpoks.getSpoksIrAizbiedets() && Main.rand.nextInt(1) + 1 == 0) {
+  // Protected:
+  protected void meginatIzveidotVirtuvesSpoku() {
+    if (getSpoksIrAktivs() && Main.rand.nextInt(1) + 1 == 0) {
       izveidotJaunuVirtuvesSpokaObjektu();
     }
   }
 
-  public static void izveidotJaunuVirtuvesSpokaObjektu() {
+  /// Private:
+  private static void izveidotJaunuVirtuvesSpokaObjektu() {
     virtuvesSpoks = new VirtuvesSpoks(IestatijumuDati.virtuvesSpokaAtlautaAgresivitate, IestatijumuDati.virtuvesSpokaAtputasLaiks);
-  }
-
-  // Set metodes:
-  public void setIrIeslegtaPagrabaGaisma(boolean vertiba) {
-    irIeslegtaPagrabaGaisma = vertiba;
-  }
-
-  // Get metodes:
-  public static VirtuvesSpoks getVirtuvesSpoks() {
-    return virtuvesSpoks;
-  }
-
-  public int getIeslegtasGaismasAgresivitate() {
-    return ieslegtasGaismasAgresivitate;
-  }
-      
-  public boolean getIrIeslegtaPagrabaGaisma() {
-    return irIeslegtaPagrabaGaisma;
-  }
-
-  public boolean getSpuldziteIrSaplesta() {
-    return spuldziteIrSaplesta;
   }
 }

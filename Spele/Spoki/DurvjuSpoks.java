@@ -20,9 +20,31 @@ public class DurvjuSpoks extends Spoks {
 
   public DurvjuSpoks(int spokaAtlautaAgresivitate, int spokaAtputasLaiks) {
     super(spokaAtlautaAgresivitate, spokaAtputasLaiks);
+    // setSpokaAtlautaAgresivitate(IestatijumuDati.durvjuSpokaAtlautaAgresivitate);
+    
   }
-  
-  // Metodes:
+
+  // * Getters:
+  public String toString() {
+    return 
+    "Durvju sp aktivs: " + durvjuSpoks.getSpoksIrAktivs() + 
+    ", Atputas gajieni: " + getMainamoAtputasLaiku() + 
+    ", Fazes indekss: " + getSpokaFazesIndekss() + 
+    ", Durvis aizslegtas: " + getDurvisIrSlegtas() + ", " +
+    getRandKustibasIespeja() + " < " + getSpokaAtlautaAgresivitate() + "\033[0K";
+  }
+
+  public boolean getDurvisIrSlegtas() {
+    return durvisIrSlegtas;
+  }
+
+  // * Setters:
+  public void setDurvisIrSlegtas(boolean vertiba) {
+    durvisIrSlegtas = vertiba;
+  }
+
+  // * Citas Metodes:
+  /// Public:
   public String[] izveletiesBildiPecFazes() {
     if (getSpokaFazesIndekss() < 10) {
       return SpokuIzskati.durvjuSpokaFazesBildes[getSpokaFazesIndekss()];
@@ -33,32 +55,15 @@ public class DurvjuSpoks extends Spoks {
     }
   }
 
-  public String toString() {
-    return "Durvju sp aktivs: " + !durvjuSpoks.getSpoksIrAizbiedets() + ", Atputas gajieni: " + getSpokaAtputasLaikaMainamaKopija() + ", Fazes indekss: " + getSpokaFazesIndekss();
-  }
-
-  public static DurvjuSpoks getDurvjuSpoks() {
-    return durvjuSpoks;
-  }
-
-  public static void meginatIzveidotDurvjuSpoku() {
-    if (durvjuSpoks.getSpoksIrAizbiedets() && Main.rand.nextInt(1) + 1 == 0) {
+  /// Protected:
+  protected void meginatIzveidotDurvjuSpoku() {
+    if (!getSpoksIrAktivs() && Main.rand.nextInt(1) + 1 == 0) {
       izveidotJaunuDurvjuSpokaObjektu();
     }
   }
 
-  private static void izveidotJaunuDurvjuSpokaObjektu() {
+  /// Private:
+  private void izveidotJaunuDurvjuSpokaObjektu() {
     durvjuSpoks = new DurvjuSpoks(IestatijumuDati.durvjuSpokaAtlautaAgresivitate, IestatijumuDati.durvjuSpokaAtputasLaiks);
   }
-
-  // Get metodes:
-  public boolean getDurvisIrSlegtas() {
-    return durvisIrSlegtas;
-  }
-
-  // Set metodes:
-  public void setDurvisIrSlegtas(boolean vertiba) {
-    durvisIrSlegtas = vertiba;
-  }
-
 }

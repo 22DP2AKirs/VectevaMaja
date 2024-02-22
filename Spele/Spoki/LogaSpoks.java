@@ -11,16 +11,33 @@ public class LogaSpoks extends Spoks {
      vērt vaļā logu. Kad logs ir pietiekami atvērts tas ielien mājā, ar ko viņa mērķis beidzas, tas ir, 
      viņš novāc varoni. To var aizbiedēt ar komandu "LOGS", pēc kuras varonis aizver logu, aizbiedējot spoku.
   */
-  public static LogaSpoks logaSpoks = new LogaSpoks(IestatijumuDati.logaSpokaAtlautaAgresivitate, IestatijumuDati.logaSpokaAtputasLaiks); // Objekts, kuru var atjaunot (izveidot jaunu n reizes) spēles gaitas laikā.
 
-  private static String istaba; // Nosaka, kurā istabā parādīsies spoks.
+  // Objekts, kuru var atjaunot (izveidot no jauna n reizes) spēles gaitas laikā.
+  public static LogaSpoks logaSpoks = new LogaSpoks(IestatijumuDati.logaSpokaAtlautaAgresivitate, IestatijumuDati.logaSpokaAtputasLaiks); 
+
+  private String istaba; // Nosaka, kurā istabā parādīsies spoks.
 
   public LogaSpoks(int spokaAtlautaAgresivitate, int spokaAtputasLaiks) {
     super(spokaAtlautaAgresivitate, spokaAtputasLaiks);
     izveletiesIstabu(Main.rand.nextInt(4));
   }
+
+  // * Getters:
+  public String getLSIstabu() {
+    return istaba;
+  }
+
+  public String toString() {
+    return 
+    "Loga sp aktivs: " + getSpoksIrAktivs() + 
+    ", Atputas gajieni: " + getMainamoAtputasLaiku() +
+    ", Fazes indekss: " + getSpokaFazesIndekss() + 
+    ", Istaba: " + getLSIstabu() + ", " +
+    getRandKustibasIespeja() + " < " + getSpokaAtlautaAgresivitate() + "\033[0K";
+  }
  
-  // Metodes:
+  // * Citas Metodes:
+  /// Public:
   public String[] izveletiesBildiPecFazes() {
     // Pārbauda vai spoks nav izgājis visas savas fāzes.
     if (getSpokaFazesIndekss() < 9) {
@@ -46,35 +63,19 @@ public class LogaSpoks extends Spoks {
     }
   }
 
-  public String toString() {
-    return "Loga sp aktivs: " + !getSpoksIrAizbiedets() + ", Atputas gajieni: " + getSpokaAtputasLaikaMainamaKopija() + ", Fazes indekss: " + getSpokaFazesIndekss();
-  }
-
-//   public static boolean logaSpoksIrAktivs() {
-//     if (!getSpoksIrAizbiedets() && ) {
-//       return true;
-//     }
-//     return false;
-//   }
-
-  public static LogaSpoks getLogaSpoks() {
-    return logaSpoks;
-  }
-
-  public static void meginatIzveidotLogaSpoku() {
-    if (logaSpoks.getSpoksIrAizbiedets() && Main.rand.nextInt(1) + 1 == 1) {
+  /// Protected:
+  protected void meginatIzveidotLogaSpoku() {
+    // ja (Spoks nav aktīvs un random iespēja).
+    if (!getSpoksIrAktivs() && Main.rand.nextInt(1) + 1 == 1) {
       izveidotJaunuLogaSpokaObjektu();
     }
   }
 
-  public static String getIstabu() {
-    return istaba;
-  }
-
-  private static void izveidotJaunuLogaSpokaObjektu() {
+  /// Private:
+  private void izveidotJaunuLogaSpokaObjektu() {
     logaSpoks = new LogaSpoks(IestatijumuDati.logaSpokaAtlautaAgresivitate, IestatijumuDati.logaSpokaAtputasLaiks);
   }
-    
+
   private void izveletiesIstabu(int istabasNum) {
     if (istabasNum == 0) {
       istaba = "GULTA";

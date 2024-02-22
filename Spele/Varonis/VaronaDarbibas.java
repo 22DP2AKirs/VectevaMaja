@@ -3,8 +3,9 @@ import java.util.Arrays;
 
 import Spele.SpelesProcesi.Main;
 import Spele.Spoki.DurvjuSpoks;
+// import Spele.Spoki.DurvjuSpoks;
 import Spele.Spoki.LogaSpoks;
-import Spele.Spoki.VirtuvesSpoks;
+// import Spele.Spoki.VirtuvesSpoks;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Iestatijumi.IestatijumuDati;
 import Spele.MazasSpeles.Karatavas.SavienotaisKaratavuKods;
@@ -19,7 +20,7 @@ public class VaronaDarbibas {
   public static int serkocinaDeksanasLaikaSkaititajs;
 
   // Šie masīvi tiek pārbaudīti, lai labāk spētu noteikt, kāda darbība ir, kādai metodei.
-  private static final String[] testesanasKomandas = {"SI", "MI", "EXIT", "POWER OFF", "KILL", "WIN"};
+  private static final String[] testesanasKomandas = { "I", "O", "P" , "SI", "MI", "EXIT", "POWER OFF", "KILL", "WIN"};
   private static final String[] parastasKomandas = {"F", "A", "W", "D", "1", "2", "3", "4"};
   
   public static void apstradatKomandu(String lietotajaIevade) {
@@ -123,6 +124,15 @@ public class VaronaDarbibas {
       }
       Main.tiritEkranu();
     }
+    else if (panemtaIevade.equals("I")) {
+      DurvjuSpoks.durvjuSpoks.setSpokaAtputasLaikaMainamaKopija(0);
+    }
+    else if (panemtaIevade.equals("O")) {
+
+    }
+    else if (panemtaIevade.equals("P")) {
+
+    }
     // Iziet no spēles.
     else if (panemtaIevade.equals("EXIT")) {
       Main.programmaPalaista = false;
@@ -151,21 +161,21 @@ public class VaronaDarbibas {
 
   private static void pilditVirtuvesDarbibas(String panemtaIevade) {
     if (Main.varonaVirzienaSkaitlis == 1) { // Labās puses darbības.
-      if (panemtaIevade.equals("LOGS") && LogaSpoks.getIstabu().equals("VIRTUVE") && !LogaSpoks.logaSpoks.getSpoksIrAizbiedets()) {
-        LogaSpoks.logaSpoks.izslegtSpoku();
+      if (panemtaIevade.equals("LOGS") && LogaSpoks.logaSpoks.getLSIstabu().equals("VIRTUVE") && LogaSpoks.logaSpoks.getSpoksIrAktivs()) {
+        LogaSpoks.logaSpoks.deaktivizetSpoku();
       }
     }
     else if (Main.varonaVirzienaSkaitlis == 2) {
-      if (panemtaIevade.equals("G") && VirtuvesSpoks.virtuvesSpoks.getSpokaFazesIndekss() < 10) {
-        if (IestatijumuDati.pagrabaGaisma) {
-          SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-off.wav", 0);
-          IestatijumuDati.pagrabaGaisma = false;
-        }
-        else {
-          SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-on.wav", 0);
-          IestatijumuDati.pagrabaGaisma = true;
-        }
-      }
+    //   if (panemtaIevade.equals("G") && VirtuvesSpoks.virtuvesSpoks.getSpokaFazesIndekss() < 10) {
+    //     if (IestatijumuDati.pagrabaGaisma) {
+    //       SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-off.wav", 0);
+    //       IestatijumuDati.pagrabaGaisma = false;
+    //     }
+    //     else {
+    //       SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-on.wav", 0);
+    //       IestatijumuDati.pagrabaGaisma = true;
+    //     }
+    //   }
     }
     else if (Main.varonaVirzienaSkaitlis == 3) { // Kreisās puses darbības.
       if (panemtaIevade.equals("G") && IestatijumuDati.elektribaIeslegta) {
@@ -184,17 +194,17 @@ public class VaronaDarbibas {
 
   private static void pilditDurvjuDarbibas(String panemtaIevade) {
     if (Main.varonaVirzienaSkaitlis == 0) { // Priekšas darbības.
-      if (panemtaIevade.equals("LOGS") && LogaSpoks.getIstabu().equals("DURVIS") && !LogaSpoks.logaSpoks.getSpoksIrAizbiedets()) {
-        LogaSpoks.logaSpoks.izslegtSpoku();
+      if (panemtaIevade.equals("LOGS") && LogaSpoks.logaSpoks.getLSIstabu().equals("DURVIS") && LogaSpoks.logaSpoks.getSpoksIrAktivs()) {
+        LogaSpoks.logaSpoks.deaktivizetSpoku();
       }
     }
     else if (Main.varonaVirzienaSkaitlis == 1) {
-      if (panemtaIevade.equals("DURVIS") && !DurvjuSpoks.durvjuSpoks.getSpoksIrAizbiedets()) {
-        DurvjuSpoks.durvjuSpoks.izslegtSpoku();
-      }
-      else if (panemtaIevade.equals("E") && Main.karatavas) {
-        SavienotaisKaratavuKods.palaistKaratavas();
-      }
+    //   if (panemtaIevade.equals("DURVIS") && !DurvjuSpoks.durvjuSpoks.getSpoksIrAizbiedets()) {
+    //     DurvjuSpoks.durvjuSpoks.izslegtSpoku();
+    //   }
+    //   else if (panemtaIevade.equals("E") && Main.karatavas) {
+    //     SavienotaisKaratavuKods.palaistKaratavas();
+    //   }
     }
     else if (Main.varonaVirzienaSkaitlis == 2) { // Lejas darbības.
       if (panemtaIevade.equals("G") && IestatijumuDati.elektribaIeslegta) {
@@ -213,8 +223,8 @@ public class VaronaDarbibas {
 
   private static void pilditDivanaDarbibas(String panemtaIevade) {
       if (Main.varonaVirzienaSkaitlis == 0) { // Priekšas darbības.
-          if (panemtaIevade.equals("LOGS") && LogaSpoks.getIstabu().equals("DIVANS") && !LogaSpoks.logaSpoks.getSpoksIrAizbiedets()) {
-            LogaSpoks.logaSpoks.izslegtSpoku();
+          if (panemtaIevade.equals("LOGS") && LogaSpoks.logaSpoks.getLSIstabu().equals("DIVANS") && LogaSpoks.logaSpoks.getSpoksIrAktivs()) {
+            LogaSpoks.logaSpoks.deaktivizetSpoku();
           }
       }
       else if (Main.varonaVirzienaSkaitlis == 1) { // Labās puses darbības.
@@ -248,9 +258,9 @@ public class VaronaDarbibas {
     }
     else if (Main.varonaVirzienaSkaitlis == 1) { // Labās puses darbības.
       if (panemtaIevade.equals("E") && IestatijumuDati.elektribaIeslegta) { //* Elektrības izslēgšana.
-        if (!VirtuvesSpoks.virtuvesSpoks.getSpoksIrAizbiedets()) {
-          SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\spoks_krit_leja_pa_kapnem.wav", VirtuvesSpoks.virtuvesSpoks.getSpokaFazesIndekss() - 17);
-        }
+        // if (!VirtuvesSpoks.virtuvesSpoks.getSpoksIrAizbiedets()) {
+        //   SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\spoks_krit_leja_pa_kapnem.wav", VirtuvesSpoks.virtuvesSpoks.getSpokaFazesIndekss() - 17);
+        // }
         izslegtasElektribasNosacijumi();
       }
     }
@@ -258,8 +268,8 @@ public class VaronaDarbibas {
 
     }
     else if (Main.varonaVirzienaSkaitlis == 3) { // Kreisās puses darbības.
-      if (panemtaIevade.equals("LOGS") && LogaSpoks.getIstabu().equals("GULTA") && !LogaSpoks.logaSpoks.getSpoksIrAizbiedets()) {
-        LogaSpoks.logaSpoks.izslegtSpoku();
+      if (panemtaIevade.equals("LOGS") && LogaSpoks.logaSpoks.getLSIstabu().equals("GULTA") && LogaSpoks.logaSpoks.getSpoksIrAktivs()) {
+        LogaSpoks.logaSpoks.deaktivizetSpoku();
       }
     }
   }
@@ -268,7 +278,7 @@ public class VaronaDarbibas {
   private static void izslegtasElektribasNosacijumi() { // Kad izslēdz elektrību nosaka, kādi iestatījumi vai mainīgie mainās.
       SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\fuse-box-turning-on-off.wav", 0);
       IestatijumuDati.elektribaIeslegta = false;
-      VirtuvesSpoks.virtuvesSpoks.izslegtSpoku();
+    //   VirtuvesSpoks.virtuvesSpoks.izslegtSpoku();
       Arrays.fill(IestatijumuDati.istabuGaismasIeslegtas, false); // Visās istabās izslēdz gaismu.
       IestatijumuDati.stradaPagrabaGaisma = true; // Salabo pagraba gaismu.
       Laiks.laiksCikIlgiElektribaBusIzslegta = 3;

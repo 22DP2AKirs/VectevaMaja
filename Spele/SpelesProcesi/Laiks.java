@@ -5,7 +5,6 @@ import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Iestatijumi.IestatijumuDati;
 import Spele.MazasSpeles.Karatavas.SavienotaisKaratavuKods;
 import Spele.Spoki.Spoks;
-import Spele.Spoki.VirtuvesSpoks;
 import Spele.Varonis.VaronaDarbibas;
 import Spele.Varonis.VaronaStatusaEfekti;
 

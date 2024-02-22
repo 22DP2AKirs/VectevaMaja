@@ -9,10 +9,10 @@ import Spele.Izskati.EkranuIzskati;
 import Spele.Izskati.EkranuIzskati.EkranuVeidi;
 import Spele.MazasSpeles.Karatavas.SavienotaisKaratavuKods;
 import Spele.Parklajumi.EkranuParklajumi;
-import Spele.Spoki.DurvjuSpoks;
+// import Spele.Spoki.DurvjuSpoks;
 import Spele.Spoki.LogaSpoks;
 import Spele.Spoki.Spoks;
-import Spele.Spoki.VirtuvesSpoks;
+// import Spele.Spoki.VirtuvesSpoks;
 import Spele.Varonis.VaronaDarbibas;
 import Spele.Varonis.VaronaStatusaEfekti;
 
@@ -68,9 +68,9 @@ public class Main {
     SkanasSpeletajs skanasSpeletajs = new SkanasSpeletajs();
 
     // Izveido un izslēdz spokus. (inicializē, lai pēc tam tos izmantotu spēlē)
-    LogaSpoks.getLogaSpoks().izslegtSpoku();
-    DurvjuSpoks.getDurvjuSpoks().izslegtSpoku();
-    VirtuvesSpoks.getVirtuvesSpoks().izslegtSpoku();
+    LogaSpoks.logaSpoks.deaktivizetSpoku();
+    // DurvjuSpoks.getDurvjuSpoks().izslegtSpoku();
+    // VirtuvesSpoks.getVirtuvesSpoks().izslegtSpoku();
 
     // Sākas atsevišķās darbības jeb patstāvīgie procesi.
     skanasSpeletajs.start(); // Strādā, kamēr spelePalaista bools ir true.
@@ -98,7 +98,6 @@ public class Main {
         VaronaDarbibas.apstradatKomandu(Ievade.lietotajaIevade); // Lietotāja jeb varoņa ievade un tās darbības (komandas un to darbības).
         VaronaStatusaEfekti.varonaStress();
 
-        
         informacijasIzvade(); // Spoku informācijas izvade. --Debuging--
 
         // Visām fāzēm, bildēm un visam vizuālajam ir jābūt gatavam pirms šīs metodes izsaukšanas!!!

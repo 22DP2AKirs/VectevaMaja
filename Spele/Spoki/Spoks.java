@@ -4,110 +4,86 @@ import Spele.SpelesProcesi.Main;
 
 public class Spoks {
   // ? Katra spoka mērķis ir vainu traucēt, vainu novākt varoni.
-  private int atnakusoSpokuSkaits = 0; // Statistikas mainīgais, nosaka cik spoku objekti tika izvaidoti.
+  // Statistika.
+  private int atnakusoSpokuSkaits = 0; // Statu mainīgias, kurš skaita cik spoka objekti ir izveidoti spēles laikā.
 
-  private static int spokaAtlautaAgresivitate; // Nosaka cik agresīvs var būt spoks. Max = 20.
+  // Spoka limiti. (Nemainīgas vērtības)
+  private int spokaAtlautaAgresivitate; // Nosaka cik agresīvs var būt spoks. Max = 20.
   private int spokaAtputasLaiks; // Nosaka cik spoka iespējas gājienus tas stāvēs uz vietas. Glabāšanas mainīgais.
-  private static int spokaAtputasLaikaMainamaKopija; // Šo mainīgo visu laiku maina.
-  private static int spokaFazesIndekss; // Nosaka, kādu bildi rādīs spēlē. (Progress līdz mērķa izpildei)
+  
+  // Spoka progressa vērtības. (Mainīgās vērtības)
+  private int spokaAtputasLaikaMainamaKopija; // Šo mainīgo visu laiku maina.
+  private int spokaFazesIndekss; // Nosaka, kādu bildi rādīs spēlē. (Progress līdz mērķa izpildei)
   private int randKustibasIespeja; // Skaitlis, kuru salīdzina ar spoka agresivitāti, lai tas spētu kustēties. Vērtība no 1 - 20 aktīvs, 0 neaktīvs.
-  private boolean spoksKustasNakosaGajiena; // Kad spoks ir izgaidījis visu savu atpūtas laiku, tad nākošajā gājienā tas kustās uz nākošo fāzi (indeksu).
-  private static boolean spoksIrAizbiedets; // Ja spoks ir aizbiedēts, tad viņš pazūd no spēles. (vairs nekustās)
+
+  // Spoka stāvoklis. (ON vai OFF)
+  private boolean spoksIrAktivs; // Ja spoks ir aktīvs, tad tas var kustēties, savādāk tas stāvēs netiks atjaunināts.
 
   public Spoks(int spokaAtlautaAgresivitate, int spokaAtputasLaiks) {
-    Spoks.spokaAtlautaAgresivitate = spokaAtlautaAgresivitate;
-    this.spokaAtputasLaiks = spokaAtputasLaiks;
-    spokaAtputasLaikaMainamaKopija = spokaAtputasLaiks; // Izveido mainīgo, kuru mainīs programmas laikā.
+    this.spokaAtlautaAgresivitate = spokaAtlautaAgresivitate;
+    this.spokaAtputasLaiks = spokaAtputasLaikaMainamaKopija = spokaAtputasLaiks;
+
     spokaFazesIndekss = 0; // Visi spoki sāk no nultās (sākuma) pozīcijas.
-    spoksIrAizbiedets = false;
-    atnakusoSpokuSkaits++;
+    spoksIrAktivs = true; // Kad izveido spoku, tad to uzreiz aktivizē.
+    atnakusoSpokuSkaits++; // + 1.
   }
 
-  // Get metodes.
-  public int getAtnakusoSpokuSkaits() {
-    return atnakusoSpokuSkaits;
+  // * setters:
+  /// Public (Izmantojami jebkurā failā):
+  public void setSpokaAtputasLaikaMainamaKopija(int spokaAtputasLaikaMainamaKopija) {
+    this.spokaAtputasLaikaMainamaKopija = spokaAtputasLaikaMainamaKopija;
   }
-  public static int getSpokaAtlautaAgresivitate() {
+
+  public void setSpoksIrAktivs(boolean vertiba) {
+    spoksIrAktivs = vertiba;
+  }
+
+  public void deaktivizetSpoku() {
+    setSpoksIrAktivs(false);
+    spokaFazesIndekss = 0;
+  }
+  
+  // * Getters:
+  /// Protected (Izmantojami tikai starp inheritējamiem bērniem (children)):
+  protected int getSpokaAtlautaAgresivitate() {
     return spokaAtlautaAgresivitate;
   }
 
-  public static int getSpokaAtputasLaikaMainamaKopija() {
+  protected int getMainamoAtputasLaiku() {
     return spokaAtputasLaikaMainamaKopija;
   }
 
-  public int getSpokaAtputasLaiks() {
-    return spokaAtputasLaiks;
+  protected int getRandKustibasIespeja() {
+    return randKustibasIespeja;
   }
 
-  public int getSpokaFazesIndekss() {
+  protected int getSpokaFazesIndekss() {
     return spokaFazesIndekss;
   }
 
-  public boolean getSpoksKustasNakosaGajiena() {
-    return spoksKustasNakosaGajiena;
+  /// Public (Izmantojami jebkurā failā):
+  public boolean getSpoksIrAktivs() {
+    return spoksIrAktivs;
   }
-
-  public boolean getSpoksIrAizbiedets() {
-    return spoksIrAizbiedets;
+  
+  public int getAtnakusoSpokuSkaits() {
+    return atnakusoSpokuSkaits;
   }
-
-  // Set metodes.
-  public void setSpokaFazesIndekss(int vertiba) {
-    spokaFazesIndekss = vertiba;
-  }
-
-  public void setSpoksKustasNakosaGajiena(boolean vertiba) {
-    spoksKustasNakosaGajiena = vertiba;
-  }
-
-  public void setSpoksIrAizbiedets(boolean vertiba) {
-    spoksIrAizbiedets = vertiba;
-  }
-
-  // Citas metodes.
-  public static void meginatIeslegtSpokus() {
-    LogaSpoks.meginatIzveidotLogaSpoku();
-    DurvjuSpoks.meginatIzveidotDurvjuSpoku();
-    VirtuvesSpoks.meginatIzveidotVirtuvesSpoku();
-  }
-
-  public static void spokuInfo() {
-    System.out.println();
-    System.out.println(LogaSpoks.getLogaSpoks().toString());
-    System.out.println(DurvjuSpoks.getDurvjuSpoks().toString());
-    System.out.println(VirtuvesSpoks.getVirtuvesSpoks().toString());
-  }
-
-  public static void atjauninatSpokus() {
-    if (!LogaSpoks.logaSpoks.getSpoksIrAizbiedets()) {
-      LogaSpoks.getLogaSpoks().atjauninatSpoku();
-    }
-    
-    if (!DurvjuSpoks.durvjuSpoks.getSpoksIrAizbiedets()) {
-      DurvjuSpoks.getDurvjuSpoks().atjauninatSpoku();
-    }
-
-    if (!VirtuvesSpoks.virtuvesSpoks.getSpoksIrAizbiedets()) {
-      VirtuvesSpoks.getVirtuvesSpoks().atjauninatSpoku();
-    }
-  }
-
-  public void izslegtSpoku() {
-    setSpoksIrAizbiedets(true);
-    spokaFazesIndekss = 0;
-  }
-
+  
+  // * Citas metodes:
+  /// Public:
   public void atjauninatSpoku() {
-    if (!spoksIrAizbiedets) {
+    // Ja spoks ir aktīvs, tad tam atļauj kustēties.
+    if (spoksIrAktivs) {
       noteiktGajienaRezultatu();
     }
   }
 
+  /// Private:
   private void noteiktGajienaRezultatu() {
-    atjaunotRandKustibasIespeju();
     // Nosaka vai spoks cenšas kustēties vai nē.
-    if (randKustibasIespeja < spokaAtlautaAgresivitate) {
-      if (spoksKustasNakosaGajiena) {
+    if (atgrieztRandomKustibasSkaitli() < spokaAtlautaAgresivitate) {
+      if (spokaAtputasLaikaMainamaKopija == 0) {
         pieietTuvak();
       }
       else {
@@ -116,22 +92,44 @@ public class Spoks {
     }
   }
 
-  private void atpustiesVienuGajienu() {
-    if (spokaAtputasLaikaMainamaKopija == 0) {
-      spoksKustasNakosaGajiena = true;
-    }
-    else {  
-      spokaAtputasLaikaMainamaKopija--;
-    }
-  }
-
   private void pieietTuvak() {
     spokaFazesIndekss++;
-    spoksKustasNakosaGajiena = false;
-    spokaAtputasLaikaMainamaKopija = spokaAtputasLaiks;
+    spokaAtputasLaikaMainamaKopija = spokaAtputasLaiks; // Atjauno atpūtas jeb gaidīšanas laiku.
   }
 
-  private void atjaunotRandKustibasIespeju() {
-    randKustibasIespeja = Main.rand.nextInt(20) + 1;
+  private void atpustiesVienuGajienu() {
+    spokaAtputasLaikaMainamaKopija--;
+  }
+
+  private int atgrieztRandomKustibasSkaitli() {
+    return randKustibasIespeja =  Main.rand.nextInt(20) + 1; // Vērtības no 1 - 20.
+  }
+  
+  /// Statiskās metodes (Izmantojamas main programmā):
+  public static void atjauninatSpokus() {
+    if (LogaSpoks.logaSpoks.getSpoksIrAktivs()) {
+      LogaSpoks.logaSpoks.atjauninatSpoku();
+    }
+    
+    if (DurvjuSpoks.durvjuSpoks.getSpoksIrAktivs()) {
+      DurvjuSpoks.durvjuSpoks.atjauninatSpoku();
+    }
+
+    if (VirtuvesSpoks.virtuvesSpoks.getSpoksIrAktivs()) {
+      VirtuvesSpoks.virtuvesSpoks.atjauninatSpoku();
+    }
+  }
+  
+  public static void meginatIeslegtSpokus() {
+    LogaSpoks.logaSpoks.meginatIzveidotLogaSpoku();
+    DurvjuSpoks.durvjuSpoks.meginatIzveidotDurvjuSpoku();
+    VirtuvesSpoks.virtuvesSpoks.meginatIzveidotVirtuvesSpoku();
+  }
+
+  public static void spokuInfo() {
+    System.out.println(); // Vieta priekš ievades.
+    System.out.println(LogaSpoks.logaSpoks.toString());
+    System.out.println(DurvjuSpoks.durvjuSpoks.toString());
+    System.out.println(VirtuvesSpoks.virtuvesSpoks.toString());
   }
 }

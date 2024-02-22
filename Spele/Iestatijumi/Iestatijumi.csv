@@ -9,13 +9,13 @@ maxSerkocinaDegsanasLaiks=3
 2. Spoku dati.
 {
 // Agresivitāte.
-logaSpokaAtlautaAgresivitate=5
+logaSpokaAtlautaAgresivitate=20
 durvjuSpokaAtlautaAgresivitate=15
 virtuvesSpokaAtlautaAgresivitate=20
 
 // Atpūtas laiks.
-logaSpokaAtputasLaiks=3
-durvjuSpokaAtputasLaiks=3
+logaSpokaAtputasLaiks=5
+durvjuSpokaAtputasLaiks=20
 virtuvesSpokaAtputasLaiks=3
 }
 
