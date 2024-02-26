@@ -2,11 +2,12 @@ package Spele.SpelesProcesi;
 
 import java.util.Random;
 
+import Spele.Enums;
 import Spele.IzvadeUzTerminalu;
 import Spele.K;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Izskati.EkranuIzskati;
-import Spele.Izskati.EkranuIzskati.EkranuVeidi;
+import Spele.Enums.EkranuVeidi;
 import Spele.MazasSpeles.Karatavas.SavienotaisKaratavuKods;
 import Spele.Parklajumi.EkranuParklajumi;
 // import Spele.Spoki.DurvjuSpoks;
@@ -41,10 +42,6 @@ public class Main {
 
   // Varoņa īpašības.
   public static boolean varonaNemirstiba = false; // Vai varonis var zaudēt spēli vai nē.
-  
-  // Spelētāja pozīcija.
-  public static int varonaIstabasSkaitlis = 2; // 0, no gultas istabas. 2, jo testā sāku no durvju istabas. 3, no virtuves istabas.
-  public static int varonaVirzienaSkaitlis = 1;
   
   // Objekti.
   public static Random rand = new Random(); // Priekš random darbībām.
@@ -97,6 +94,7 @@ public class Main {
 
         VaronaDarbibas.apstradatKomandu(Ievade.lietotajaIevade); // Lietotāja jeb varoņa ievade un tās darbības (komandas un to darbības).
         VaronaStatusaEfekti.varonaStress();
+        Enums.mainitIstabasUnVirzienaEnumus();
 
         informacijasIzvade(); // Spoku informācijas izvade. --Debuging--
 

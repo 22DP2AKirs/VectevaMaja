@@ -2,8 +2,9 @@ package Spele.MazasSpeles.Karatavas;
 
 import Spele.IzvadeUzTerminalu;
 import Spele.PaligMetodes;
+import Spele.Enums.EkranuVeidi;
 import Spele.Izskati.EkranuIzskati;
-import Spele.Izskati.EkranuIzskati.EkranuVeidi;
+
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SpelesProcesi.Ievade;
 import Spele.SpelesProcesi.Main;

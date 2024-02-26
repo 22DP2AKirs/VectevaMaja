@@ -3,11 +3,6 @@ package Spele.Izskati;
 import Spele.K;
 
 public class EkranuIzskati {
-  public enum EkranuVeidi {
-    GALVENAIS_EKRANS,
-    KARATAVU_EKRANS,
-    UZVARAS_EKRANS
-  }
 
   private static final String[] GALVENAIS_EKRANS = {
 

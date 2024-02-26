@@ -92,16 +92,16 @@ public class Spoks {
     }
   }
 
-  private void pieietTuvak() {
+  protected void pieietTuvak() {
     spokaFazesIndekss++;
     spokaAtputasLaikaMainamaKopija = spokaAtputasLaiks; // Atjauno atpūtas jeb gaidīšanas laiku.
   }
 
-  private void atpustiesVienuGajienu() {
+  protected void atpustiesVienuGajienu() {
     spokaAtputasLaikaMainamaKopija--;
   }
 
-  private int atgrieztRandomKustibasSkaitli() {
+  protected int atgrieztRandomKustibasSkaitli() {
     return randKustibasIespeja =  Main.rand.nextInt(20) + 1; // Vērtības no 1 - 20.
   }
   

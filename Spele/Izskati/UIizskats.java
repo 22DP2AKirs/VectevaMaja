@@ -1,6 +1,9 @@
 package Spele.Izskati;
 
+import Spele.Enums;
 import Spele.K;
+import Spele.Enums.Istabas;
+import Spele.Enums.Virzieni;
 import Spele.Iestatijumi.IestatijumuDati;
 import Spele.SpelesProcesi.Ievade;
 import Spele.SpelesProcesi.Laiks;
@@ -112,13 +115,13 @@ public class UIizskats {
 
         // Mapes varoņa bultiņas pozīcijas noteicējs.
         if (IestatijumuDati.elektribaIeslegta) {
-            if (Main.varonaIstabasSkaitlis == 0) {
+            if (Enums.V_Istaba.equals(Istabas.GULTA)) {
                 gatavsLabasPusesUI[7] = "     " + varonaMapesBultinasVirzienaDevejs() + "               ";
-            } else if (Main.varonaIstabasSkaitlis == 1) {
+            } else if (Enums.V_Istaba.equals(Istabas.DIVANS)) {
                 gatavsLabasPusesUI[4] = "     " + varonaMapesBultinasVirzienaDevejs() + "               ";
-            } else if (Main.varonaIstabasSkaitlis == 2) {
+            } else if (Enums.V_Istaba.equals(Istabas.DURVIS)) {
                 gatavsLabasPusesUI[4] = "                " + varonaMapesBultinasVirzienaDevejs() + "    ";
-            } else if (Main.varonaIstabasSkaitlis == 3) {
+            } else if (Enums.V_Istaba.equals(Istabas.VIRTUVE)) {
                 gatavsLabasPusesUI[7] = "                " + varonaMapesBultinasVirzienaDevejs() + "    ";
             }
         } else {
@@ -134,13 +137,13 @@ public class UIizskats {
 
     static String varonaMapesBultinasVirzienaDevejs() {
         String noteiktaMapesBultina = "";
-        if(Main.varonaVirzienaSkaitlis == 0) {
+        if(Enums.V_Virziens.equals(Virzieni.PRIEKSA)) {
             noteiktaMapesBultina = K.DEBESU_ZILS + "^" + K.RESET;
-        } else if (Main.varonaVirzienaSkaitlis == 1) {
+        } else if (Enums.V_Virziens.equals(Virzieni.LABA_PUSE)) {
             noteiktaMapesBultina = K.DEBESU_ZILS + ">" + K.RESET;
-        } else if (Main.varonaVirzienaSkaitlis == 2) {
+        } else if (Enums.V_Virziens.equals(Virzieni.LEJA)) {
             noteiktaMapesBultina = K.DEBESU_ZILS + "v" + K.RESET;
-        } else if (Main.varonaVirzienaSkaitlis == 3) {
+        } else if (Enums.V_Virziens.equals(Virzieni.KREISA_PUSE)) {
             noteiktaMapesBultina = K.DEBESU_ZILS + "<" + K.RESET;
         }
         

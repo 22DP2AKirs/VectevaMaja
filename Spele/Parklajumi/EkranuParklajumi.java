@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Iestatijumi.IestatijumuDati;
-import Spele.Izskati.EkranuIzskati.EkranuVeidi;
+import Spele.Enums.EkranuVeidi;
 import Spele.MazasSpeles.Karatavas.Karatavas;
 import Spele.MazasSpeles.Karatavas.KaratavuIzskati;
 import Spele.SpelesProcesi.Laiks;

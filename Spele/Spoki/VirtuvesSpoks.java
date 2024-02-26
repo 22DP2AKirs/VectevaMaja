@@ -52,6 +52,13 @@ public class VirtuvesSpoks extends Spoks {
     return spuldziteIrSaplesta;
   }
 
+  private int getSpokaAktualoAgresivitati() {
+    if (irIeslegtaPagrabaGaisma) {
+      return ieslegtasGaismasAgresivitate;
+    }
+    return getSpokaAtlautaAgresivitate();
+  }
+
   // * Setters:
   public void setIrIeslegtaPagrabaGaisma(boolean vertiba) {
     irIeslegtaPagrabaGaisma = vertiba;
@@ -59,6 +66,22 @@ public class VirtuvesSpoks extends Spoks {
   
   // * Citas metodes:
   /// Public:
+  
+  public void atjauninatSpoku() {
+    // * Metode overwrito super metodi, lai tā atbilsu virtuves spoka unikālajai agresivitātei.
+    if (getSpoksIrAktivs()) {
+      // Nosaka vai spoks cenšas kustēties vai nē.
+      if (atgrieztRandomKustibasSkaitli() < getSpokaAktualoAgresivitati()) {
+        if (getMainamoAtputasLaiku() == 0) {
+          pieietTuvak();
+        }
+        else {
+          atpustiesVienuGajienu();
+        }
+      }
+    }
+  }
+
   public String[] izveletiesBildiPecFazes() {
     if (getSpokaFazesIndekss() < 10) {
       return SpokuIzskati.virtuvesSpokaFazesBildes[getSpokaFazesIndekss()];
@@ -74,6 +97,8 @@ public class VirtuvesSpoks extends Spoks {
       return null;
     }
   }
+
+  
 
   // Protected:
   protected void meginatIzveidotVirtuvesSpoku() {

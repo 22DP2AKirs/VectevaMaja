@@ -13,7 +13,7 @@ public class IestatijumuDati {
     FailuRedigetajs.booleanDatuAtgriezejs("divanaGaisma"), 
     FailuRedigetajs.booleanDatuAtgriezejs("durvjuGaisma"), 
     FailuRedigetajs.booleanDatuAtgriezejs("virtuvesGaisma")
-  }; 
+  };
   
   public static boolean spokiSledzAraGaismu = FailuRedigetajs.booleanDatuAtgriezejs("spokiSledzAraGaismu");
   public static boolean ieslegtaSkana = FailuRedigetajs.booleanDatuAtgriezejs("ieslegtaSkana");

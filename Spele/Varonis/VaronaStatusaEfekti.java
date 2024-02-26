@@ -4,7 +4,8 @@ import Spele.IzvadeUzTerminalu;
 import Spele.PaligMetodes;
 import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Izskati.EkranuIzskati;
-import Spele.Izskati.EkranuIzskati.EkranuVeidi;
+import Spele.Enums;
+import Spele.Enums.EkranuVeidi;
 import Spele.MazasSpeles.Karatavas.Karatavas;
 import Spele.MazasSpeles.Karatavas.SavienotaisKaratavuKods;
 import Spele.Parklajumi.EkranuParklajumi;
@@ -19,7 +20,7 @@ public class VaronaStatusaEfekti {
 
   public static void varonaStress() {
     // Viss, kas ietekmē varoņa stresa līmeni.
-    if (!IestatijumuDati.istabuGaismasIeslegtas[Main.varonaIstabasSkaitlis] && !VaronaDarbibas.aizdedzinatsSerkocins) { // Ja istabā, kurā atrodas varonis ir izslēgta gaisma, tad ...
+    if (!IestatijumuDati.istabuGaismasIeslegtas[Enums.V_Istaba.CIPARS] && !VaronaDarbibas.aizdedzinatsSerkocins) { // Ja istabā, kurā atrodas varonis ir izslēgta gaisma, tad ...
       varonaStresaLimenis += 0.1;
     }
   }
