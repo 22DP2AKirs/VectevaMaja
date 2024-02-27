@@ -24,51 +24,10 @@ public class VaronaDarbibas {
   // Šie masīvi tiek pārbaudīti, lai labāk spētu noteikt, kāda darbība ir, kādai metodei.
   private static final String[] testesanasKomandas = { "I", "O", "P" , "SI", "MI", "EXIT", "POWER OFF", "KILL", "WIN"};
   private static final String[] parastasKomandas = {"F", "A", "W", "D", "1", "2", "3", "4"};
-  
-  public static void apstradatKomandu(String lietotajaIevade) {
-    // * Metode ievāc lietotāja ievadi un nosaka atbilstošo darbību.
-    // Garantē, lai lietotāja ievade tiktu izpildīta, pirms tā ir nodzēsta ar notiritIevadi().
-    if (!Ievade.vaiIevadiIzpildija) { 
-      Ievade.vaiIevadiIzpildija = true;
-    }
-
-    // Iziet ārā no m-spēles.
-    if (Main.varonisIrMazajaSpele) {
-      if (lietotajaIevade.equals("Q")) {
-        Main.varonisIrMazajaSpele = false;
-      }
-    }
-    // Ja ievades nebija, tad nepārbauda pārējās komandas.
-    else if (!lietotajaIevade.equals("}")) {
-      // Darbības jeb komandas pareizai situācijai.
-      if (Main.mainMenu) {
-        sakumaEkranaDarbibas(lietotajaIevade);
-      } 
-      else if (Main.spelePalaista) {
-        if (Arrays.asList(testesanasKomandas).contains(lietotajaIevade)) {
-          testesanasDarbibas(lietotajaIevade);
-        }
-        else if (Arrays.asList(parastasKomandas).contains(lietotajaIevade)) {
-          parastasDarbibas(lietotajaIevade);
-        }
-        else if (Main.varonaIstabasSkaitlis == 0) { // Gultas darbības.
-          pilditGultasDarbibas(lietotajaIevade);
-        }
-        else if (Main.varonaIstabasSkaitlis == 1) { // Divana darbības.
-          pilditDivanaDarbibas(lietotajaIevade);
-        }
-        else if (Main.varonaIstabasSkaitlis == 2) { // Durvju darbības.
-          pilditDurvjuDarbibas(lietotajaIevade);
-        }
-        else if (Main.varonaIstabasSkaitlis == 3) { // Virtuves darbības.
-          pilditVirtuvesDarbibas(lietotajaIevade);
-        }
-      }
-    }
-  }
 
 
-  private static void parastasDarbibas(String panemtaIevade) {
+
+  public static void parastasDarbibas(String panemtaIevade) {
       if (panemtaIevade.equals("F") && IestatijumuDati.atlikusoSerkocinuDaudzums != 0 && !aizdedzinatsSerkocins) {
           if (Main.rand.nextInt(3) == 0) { // 33.33 % iespēja aizdedzināt sērkociņu.
             SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\lighting-matches.wav", 0);
@@ -103,7 +62,7 @@ public class VaronaDarbibas {
   }
 
 
-  private static void testesanasDarbibas(String panemtaIevade) {
+  public static void testesanasDarbibas(String panemtaIevade) {
     // * Metodē ir darbības, kuras ir domātas spēles testēšanai.
 
     // Spoku info. izvade.
@@ -148,21 +107,141 @@ public class VaronaDarbibas {
     }
   }
 
-  // * Darbības kā metodes:
-  public void ieslegtIzslegtIstabasGaismu(Istabas istaba) {
-    if (IestatijumuDati.istabuGaismasIeslegtas[istaba.CIPARS]) {
-      SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-off.wav", 0);
-      IestatijumuDati.istabuGaismasIeslegtas[istaba.CIPARS] = false;
-    } 
-    else {
-      SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-on.wav", 0);
-      IestatijumuDati.istabuGaismasIeslegtas[istaba.CIPARS] = true;
+
+  // * Darbības izsauktas pēc komandas:
+  /// * Gultas darbības:
+  public static void gultasPrieksasKomandas(String komanda) {
+    if (komanda.equals("W")) {
+      ietUzPrieksu(); ////////////////////////////////////////
+    }
+    else if (komanda.equals("G")) {
+      ieslegtIzslegtIstabasGaismu(Istabas.GULTA);
     }
   }
 
-  public void izslegtElektribu() { // Kad izslēdz elektrību nosaka, kādi iestatījumi vai mainīgie mainās.
+  public static void gultasLabasPusesKomandas(String komanda) {
+    if (komanda.equals("W")) {
+      ietUzPrieksu(); ////////////////////////////////////////
+    }
+    else if (komanda.equals("E")) {
+      izslegtElektribu();
+    }
+  }
+
+  public static void gultasLejasKomandas(String komanda) {
+    // Kods:
+  }
+
+  public static void gultasKreisasPusesKomandas(String komanda) {
+    if (komanda.equals("LOGS")) {
+      aizbiedetLogaSpoku(Istabas.GULTA);
+    }
+  }
+
+  /// * Dīvāna darbības:
+  public static void divanaPrieksasKomandas(String komanda) {
+    if (komanda.equals("LOGS")) {
+      aizbiedetLogaSpoku(Istabas.DIVANS);
+    }
+  }
+
+  public static void divanaLabasPusesKomandas(String komanda) {
+    if (komanda.equals("W")) {
+      ietUzPrieksu(); ////////////////////////////////////////
+    }
+    else if (komanda.equals("G")) {
+      ieslegtIzslegtIstabasGaismu(Istabas.DIVANS);
+    }
+  }
+
+  public static void divanaLejasKomandas(String komanda) {
+    if (komanda.equals("W")) {
+      ietUzPrieksu(); ////////////////////////////////////////
+    }
+  }
+
+  public static void divanaKreisasPusesKomandas(String komanda) {
+    // Kods:
+  }
+
+  /// * Durvju darbības:
+  public static void durvjuPrieksasKomandas(String komanda) {
+    if (komanda.equals("LOGS")) {
+      aizbiedetLogaSpoku(Istabas.DURVIS);
+    }
+  }
+
+  public static void durvjuLabasPusesKomandas(String komanda) {
+    if (komanda.equals("DURVIS")) {
+      aizbiedetDurvjuSpoku();
+    }
+    else if (komanda.equals("E")) {
+      // TODO: Karātavu palaišanas kods.
+    }
+  }
+
+  public static void durvjuLejasKomandas(String komanda) {
+    if (komanda.equals("W")) {
+      ietUzPrieksu(); ////////////////////////////////////////
+    }
+    else if (komanda.equals("G")) {
+      ieslegtIzslegtIstabasGaismu(Istabas.DURVIS);
+    }
+  }
+
+  public static void durvjuKreisasPusesKomandas(String komanda) {
+    if (komanda.equals("W")) {
+      ietUzPrieksu(); ////////////////////////////////////////
+    }
+  }
+
+  /// * Virtuves darbības.
+  public static void virtuvesPrieksasKomandas(String komanda) {
+    if (komanda.equals("W")) {
+      ietUzPrieksu(); ////////////////////////////////////////
+    }
+  }
+
+  public static void virtuvesLabasPusesKomandas(String komanda) {
+    if (komanda.equals("LOGS")) {
+      aizbiedetLogaSpoku(Istabas.VIRTUVE);
+    }
+  }
+
+  public static void virtuvesLejasKomandas(String komanda) {
+    // Ieslēgt izslēgt pagraba gaismu uz kom. 'G'.
+  }
+
+  public static void virtuvesKreisaPuseKomandas(String komanda) {
+    if (komanda.equals("W")) {
+      ietUzPrieksu(); ////////////////////////////////////////
+    }
+    else if (komanda.equals("G")) {
+      ieslegtIzslegtIstabasGaismu(Istabas.VIRTUVE);
+    }
+  }
+  
+
+
+
+  // * Darbības kā metodes:
+  public static void ieslegtIzslegtIstabasGaismu(Istabas istaba) {
+    // Ja ir ieslēgta elektrība, tad var aiztikt lampas/istabu gaismas.
+    if (IestatijumuDati.elektribaIeslegta) {
+      if (IestatijumuDati.istabuGaismasIeslegtas[istaba.CIPARS]) {
+        SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-off.wav", 0);
+        IestatijumuDati.istabuGaismasIeslegtas[istaba.CIPARS] = false;
+      } 
+      else {
+        SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-on.wav", 0);
+        IestatijumuDati.istabuGaismasIeslegtas[istaba.CIPARS] = true;
+      }
+    }
+  }
+
+  public static void izslegtElektribu() { // Kad izslēdz elektrību nosaka, kādi iestatījumi vai mainīgie mainās.
     SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\fuse-box-turning-on-off.wav", 0);
-    VirtuvesSpoks.virtuvesSpoks.deaktivizetSpoku();
+    aizbiedetVirtuvesSpoku();
 
     Arrays.fill(IestatijumuDati.istabuGaismasIeslegtas, false); // Visās istabās izslēdz gaismu.
 
@@ -171,7 +250,7 @@ public class VaronaDarbibas {
     Laiks.laiksCikIlgiElektribaBusIzslegta = 3;
   }
 
-  public void ieslegtIzslegtMspelesInformaciju() {
+  public static void ieslegtIzslegtMspelesInformaciju() {
     if (Main.mSpeluInfo) {
       Main.mSpeluInfo = false;
     } 
@@ -181,7 +260,7 @@ public class VaronaDarbibas {
     Main.tiritEkranu();
   }
 
-  public void ieslegtIzslegtSpokuInformaciju() {
+  public static void ieslegtIzslegtSpokuInformaciju() {
     if (Main.spokuInfo) {
       Main.spokuInfo = false;
     } 
@@ -191,122 +270,46 @@ public class VaronaDarbibas {
     Main.tiritEkranu();
   }
 
-
-
-
-
-  private static void pilditVirtuvesDarbibas(String panemtaIevade) {
-    if (Main.varonaVirzienaSkaitlis == 1) { // Labās puses darbības.
-      if (panemtaIevade.equals("LOGS") && LogaSpoks.logaSpoks.getLSIstabu().equals("VIRTUVE") && LogaSpoks.logaSpoks.getSpoksIrAktivs()) {
-        LogaSpoks.logaSpoks.deaktivizetSpoku();
-      }
+  public static void aizbiedetLogaSpoku(Istabas istaba) {
+    // Metode var būt izsaukta tikai tad, kad varonis skatās uz iespējamo loga spoka vietu (Visi logi).
+    // 1. Pārbauda vai loga spoks ir varoņa aktuālajā istabā. 2. Pārbauda vai spoks ir ieslēgts jeb aktīvs.
+    if (LogaSpoks.logaSpoks.getLSIstabu().equals(istaba.ISTABA) && LogaSpoks.logaSpoks.getSpoksIrAktivs()) {
+      // Skaņa -->
+      LogaSpoks.logaSpoks.deaktivizetSpoku();
     }
-    else if (Main.varonaVirzienaSkaitlis == 2) {
-    //   if (panemtaIevade.equals("G") && VirtuvesSpoks.virtuvesSpoks.getSpokaFazesIndekss() < 10) {
-    //     if (IestatijumuDati.pagrabaGaisma) {
-    //       SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-off.wav", 0);
-    //       IestatijumuDati.pagrabaGaisma = false;
-    //     }
-    //     else {
-    //       SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-on.wav", 0);
-    //       IestatijumuDati.pagrabaGaisma = true;
-    //     }
-    //   }
+  }
+
+  public static void aizbiedetVirtuvesSpoku() {
+    if (VirtuvesSpoks.virtuvesSpoks.getSpoksIrAktivs()) {
+      SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\spoks_krit_leja_pa_kapnem.wav", VirtuvesSpoks.virtuvesSpoks.getSpokaFazesIndekss() - 17);
+      VirtuvesSpoks.virtuvesSpoks.deaktivizetSpoku();
     }
-    else if (Main.varonaVirzienaSkaitlis == 3) { // Kreisās puses darbības.
-      if (panemtaIevade.equals("G") && IestatijumuDati.elektribaIeslegta) {
-        
+  }
+
+  public static void aizbiedetDurvjuSpoku() {
+    if (DurvjuSpoks.durvjuSpoks.getSpoksIrAktivs()) {
+      // Skaņa -->
+      DurvjuSpoks.durvjuSpoks.deaktivizetSpoku();
+    }
+  }
+
+  public static void izietAraNoMspeles(String ievade) {
+    if (Main.varonisIrMazajaSpele) {
+      if (ievade.equals("Q")) {
+        Main.varonisIrMazajaSpele = false;
       }
     }
   }
 
 
-  private static void pilditDurvjuDarbibas(String panemtaIevade) {
-    if (Main.varonaVirzienaSkaitlis == 0) { // Priekšas darbības.
-      if (panemtaIevade.equals("LOGS") && LogaSpoks.logaSpoks.getLSIstabu().equals("DURVIS") && LogaSpoks.logaSpoks.getSpoksIrAktivs()) {
-        LogaSpoks.logaSpoks.deaktivizetSpoku();
-      }
-    }
-    else if (Main.varonaVirzienaSkaitlis == 1) {
-    //   if (panemtaIevade.equals("DURVIS") && !DurvjuSpoks.durvjuSpoks.getSpoksIrAizbiedets()) {
-    //     DurvjuSpoks.durvjuSpoks.izslegtSpoku();
-    //   }
-    //   else if (panemtaIevade.equals("E") && Main.karatavas) {
-    //     SavienotaisKaratavuKods.palaistKaratavas();
-    //   }
-    }
-    else if (Main.varonaVirzienaSkaitlis == 2) { // Lejas darbības.
-      if (panemtaIevade.equals("G") && IestatijumuDati.elektribaIeslegta) {
-        if (IestatijumuDati.istabuGaismasIeslegtas[2]) {
-          SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-off.wav", 0);
-          IestatijumuDati.istabuGaismasIeslegtas[2] = false;
-        } 
-        else {
-          SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-on.wav", 0);
-          IestatijumuDati.istabuGaismasIeslegtas[2] = true;
-        }
-      }
-    }
-  }
 
-
-  private static void pilditDivanaDarbibas(String panemtaIevade) {
-      if (Main.varonaVirzienaSkaitlis == 0) { // Priekšas darbības.
-          if (panemtaIevade.equals("LOGS") && LogaSpoks.logaSpoks.getLSIstabu().equals("DIVANS") && LogaSpoks.logaSpoks.getSpoksIrAktivs()) {
-            LogaSpoks.logaSpoks.deaktivizetSpoku();
-          }
-      }
-      else if (Main.varonaVirzienaSkaitlis == 1) { // Labās puses darbības.
-          if (panemtaIevade.equals("G") && IestatijumuDati.elektribaIeslegta) {
-              if (IestatijumuDati.istabuGaismasIeslegtas[1]) {
-                  SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-off.wav", 0);
-                  IestatijumuDati.istabuGaismasIeslegtas[1] = false;
-              } 
-              else {
-                  SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-on.wav", 0);
-                  IestatijumuDati.istabuGaismasIeslegtas[1] = true;
-              }
-          }
-          
-      }
-  }
-
-
-  private static void pilditGultasDarbibas(String panemtaIevade) {
-    if (Main.varonaVirzienaSkaitlis == 0) { // Priekšas darbības.
-      if (panemtaIevade.equals("G") && IestatijumuDati.elektribaIeslegta) {
-        if (IestatijumuDati.istabuGaismasIeslegtas[0]) {
-          SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-off.wav", 0);
-          IestatijumuDati.istabuGaismasIeslegtas[0] = false;
-        } 
-        else {
-          SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-on.wav", 0);
-          IestatijumuDati.istabuGaismasIeslegtas[0] = true;
-        }
-      }
-    }
-    else if (Main.varonaVirzienaSkaitlis == 1) { // Labās puses darbības.
-      if (panemtaIevade.equals("E") && IestatijumuDati.elektribaIeslegta) { //* Elektrības izslēgšana.
-        if (VirtuvesSpoks.virtuvesSpoks.getSpoksIrAktivs()) {
-          SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\spoks_krit_leja_pa_kapnem.wav", VirtuvesSpoks.virtuvesSpoks.getSpokaFazesIndekss() - 17);
-        }
-        izslegtElektribu();
-      }
-    }
-    else if (Main.varonaVirzienaSkaitlis == 2) { // Lejas darbības.
-
-    }
-    else if (Main.varonaVirzienaSkaitlis == 3) { // Kreisās puses darbības.
-      if (panemtaIevade.equals("LOGS") && LogaSpoks.logaSpoks.getLSIstabu().equals("GULTA") && LogaSpoks.logaSpoks.getSpoksIrAktivs()) {
-        LogaSpoks.logaSpoks.deaktivizetSpoku();
-      }
-    }
-  }
 
 
   
 
-  private static void sakumaEkranaDarbibas(String panemtaIevade) {
+  
+
+  public static void sakumaEkranaDarbibas(String panemtaIevade) {
     // * Šī metode nosaka, kādas darbības būs pieejamas sākuma ekrānā (Main screen), un to darbību izpilde.
 
     // Skatoties, kāda ir ievade, tāda būs darbība.

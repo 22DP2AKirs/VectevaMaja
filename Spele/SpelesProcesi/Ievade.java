@@ -7,16 +7,23 @@ public class Ievade extends Thread {
   private Scanner ievadesLasitajs = new Scanner(System.in); // Parastais lasītājs, kurš lasīs lietotāja ievadi.
   public static volatile String lietotajaIevade = "}"; // Definēju mainīgo, lai kods tālāk spētu viņu visu laiku dublicēt (šinī gadījumā saglabāt).
 
-  public static boolean vaiIevadiIzpildija = true; // Ļauj ievadītajām darbībām būt izpildītām pirms tās tiek nodzēstas.
+  public static boolean vaiKomanduIzpildija = true; // Ļauj ievadītajām darbībām būt izpildītām pirms tās tiek nodzēstas.
   
   public void run() { // Threds vienmēr lasa ievadi, vienalga uz to, kas notiek apkārt.
     // Threds strādās, kamēr cikls ir aktīvs.
     while (Main.programmaPalaista) {
       lietotajaIevade = ievadesLasitajs.nextLine().toUpperCase(); // Pārveido visas ievades uz liliem burtiem.
-      vaiIevadiIzpildija = false; // Pēc ievades saglabāšanas, notiritIevadi() netīrīs ievadi, līdz VaronaDarbibas izpildīs ievadīto komandu.
+      vaiKomanduIzpildija = false; // Pēc ievades saglabāšanas, notiritIevadi() netīrīs ievadi, līdz VaronaDarbibas izpildīs ievadīto komandu.
       System.out.print("\033[F"); // Noliek mirgojošo kursoru vienu līniju uz augšu.
       
       // - !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Problēmas ar \033[F , jāatrod aizvietojums. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    }
+  }
+
+  public static void parbauditVaiKomandaTikaIzpildita() {
+    // Šai komandai ir jāizpildas visu komandu metodes beigās.
+    if (!vaiKomanduIzpildija) { 
+      vaiKomanduIzpildija = true;
     }
   }
   
@@ -57,7 +64,7 @@ public class Ievade extends Thread {
     // * jo šinī spēlē tas simbols nozīmē tukša ievade jeb ievades nav (simbols tiks ignorēts).
 
     // Ja komanda tika izpildīta, tad to var nodzēst.
-    if (vaiIevadiIzpildija) { 
+    if (vaiKomanduIzpildija) { 
       Ievade.lietotajaIevade = "}";
     }
   }

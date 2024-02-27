@@ -15,6 +15,7 @@ import Spele.Spoki.LogaSpoks;
 import Spele.Spoki.Spoks;
 // import Spele.Spoki.VirtuvesSpoks;
 import Spele.Varonis.VaronaDarbibas;
+import Spele.Varonis.VaronaPozicijaUnSkataVirziens;
 import Spele.Varonis.VaronaStatusaEfekti;
 
 public class Main {
@@ -79,7 +80,7 @@ public class Main {
 
       // * ///// S A K U M A   E K R A N A   C I K L S //////
       while (mainMenu) {
-        VaronaDarbibas.apstradatKomandu(Ievade.lietotajaIevade);
+        VaronaPozicijaUnSkataVirziens.noteiktVisasAktualasDarbibas(null, null);
         IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuIzskati.visiEkrani[0], EkranuVeidi.GALVENAIS_EKRANS));
 
         Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 25 FPS.
@@ -92,10 +93,10 @@ public class Main {
       // * ///// S P Ē L E S   C I K L S ///////
       while (spelePalaista) { // Kamēr laiks nav beidzies, turpināt ciklu jeb spēli.
 
-        VaronaDarbibas.apstradatKomandu(Ievade.lietotajaIevade); // Lietotāja jeb varoņa ievade un tās darbības (komandas un to darbības).
-        VaronaStatusaEfekti.varonaStress();
+        // ------------------ Apstrādā lietotāja ievadi.
+        VaronaPozicijaUnSkataVirziens.noteiktVisasAktualasDarbibas(Enums.V_Istaba, Enums.V_Virziens); // Pilnībā aizvieto 'VaronaDarbibas.apstradatKomandu(Ievade.lietotajaIevade);'.
         Enums.mainitIstabasUnVirzienaEnumus();
-
+        // ------
         informacijasIzvade(); // Spoku informācijas izvade. --Debuging--
 
         // Visām fāzēm, bildēm un visam vizuālajam ir jābūt gatavam pirms šīs metodes izsaukšanas!!!
@@ -108,6 +109,7 @@ public class Main {
         }
 
         Ievade.notiritIevadi(); // Cikla beigās notīra Ievadi, jo visas matodes, kurām tā bija vajadzīga jau to ir paņēmušas.
+        VaronaStatusaEfekti.varonaStress();
         VaronaStatusaEfekti.parbauditEffektus(); // Varoņa bojāiešanas nosacījumi.
 
         Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 25 FPS.

@@ -32,15 +32,21 @@ public class Enums {
 }
 
   public enum Istabas {
-    GULTA(0),
-    DIVANS(1),
-    DURVIS(2),
-    VIRTUVE(3);
+    GULTA(0 , "GULTA"),
+    DIVANS(1 , "DIVANS"),
+    DURVIS(2 , "DURVIS"),
+    VIRTUVE(3 , "VIRTUVE");
 
     // Ļauj enumiem piešķirt vērtību.
     public final int CIPARS;
-    private Istabas (int CIPARS) {
+    public final String ISTABA;
+
+    private Istabas (int CIPARS, String ISTABA) {
+      // Šie dati ir vajadzīgi, lai šo enum varētu salīdzināt ne tikai ar citiem enumiem,
+      // bet arī ar citiem String un int tipiem, kuri atbilst to lietotai secībai un vērtībām.
+      // Lai būtu ērtāk lietot.
       this.CIPARS = CIPARS;
+      this.ISTABA = ISTABA;
     }
   }
 
@@ -52,6 +58,7 @@ public class Enums {
 
     // Ļauj enumiem piešķirt vērtību.
     public final int CIPARS;
+
     private Virzieni (int CIPARS) {
       this.CIPARS = CIPARS;
     }
