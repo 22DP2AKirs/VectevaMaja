@@ -21,11 +21,7 @@ public class VaronaDarbibas {
   public static boolean aizdedzinatsSerkocins = false; 
   public static int serkocinaDeksanasLaikaSkaititajs;
 
-  // Šie masīvi tiek pārbaudīti, lai labāk spētu noteikt, kāda darbība ir, kādai metodei.
-  private static final String[] testesanasKomandas = { "I", "O", "P" , "SI", "MI", "EXIT", "POWER OFF", "KILL", "WIN"};
-  private static final String[] parastasKomandas = {"F", "A", "W", "D", "1", "2", "3", "4"};
-
-
+  
 
   public static void parastasDarbibas(String panemtaIevade) {
       if (panemtaIevade.equals("F") && IestatijumuDati.atlikusoSerkocinuDaudzums != 0 && !aizdedzinatsSerkocins) {

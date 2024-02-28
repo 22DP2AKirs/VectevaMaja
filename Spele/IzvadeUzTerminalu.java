@@ -15,7 +15,7 @@ public class IzvadeUzTerminalu {
         System.out.println("\r▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\033[0K"); // Ekrāna augšējā daļa.
 
         // Pievieno apstrādātas mājas bildes ar "Overlayiem (Pārklājumiem)".
-        for (String parklataLinija : BildesParklajumi.istabasArParklajumiem(IstabuIzskati.istabuMasivs[Enums.V_Istaba.CIPARS][Enums.V_Virziens.CIPARS])) {
+        for (String parklataLinija : BildesParklajumi.parklataIstaba) {
             programmasGalejaIzvadeUzEkrana.add("\r|" + parklataLinija + "|");
         }
         
