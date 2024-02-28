@@ -10,11 +10,10 @@ import Spele.Izskati.EkranuIzskati;
 import Spele.Enums.EkranuVeidi;
 import Spele.MazasSpeles.Karatavas.SavienotaisKaratavuKods;
 import Spele.Parklajumi.EkranuParklajumi;
-// import Spele.Spoki.DurvjuSpoks;
+import Spele.Spoki.DurvjuSpoks;
 import Spele.Spoki.LogaSpoks;
 import Spele.Spoki.Spoks;
-// import Spele.Spoki.VirtuvesSpoks;
-import Spele.Varonis.VaronaDarbibas;
+import Spele.Spoki.VirtuvesSpoks;
 import Spele.Varonis.VaronaPozicijaUnSkataVirziens;
 import Spele.Varonis.VaronaStatusaEfekti;
 
@@ -67,8 +66,8 @@ public class Main {
 
     // Izveido un izslēdz spokus. (inicializē, lai pēc tam tos izmantotu spēlē)
     LogaSpoks.logaSpoks.deaktivizetSpoku();
-    // DurvjuSpoks.getDurvjuSpoks().izslegtSpoku();
-    // VirtuvesSpoks.getVirtuvesSpoks().izslegtSpoku();
+    DurvjuSpoks.durvjuSpoks.deaktivizetSpoku();
+    VirtuvesSpoks.virtuvesSpoks.deaktivizetSpoku();
 
     // Sākas atsevišķās darbības jeb patstāvīgie procesi.
     skanasSpeletajs.start(); // Strādā, kamēr spelePalaista bools ir true.

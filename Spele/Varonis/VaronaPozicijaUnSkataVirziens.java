@@ -51,11 +51,13 @@ public class VaronaPozicijaUnSkataVirziens {
       } 
       // Spēles komandas.
       else if (Main.spelePalaista) {
-        if (Arrays.asList(testesanasKomandas).contains(ievade)) { // Testēšanas komands.
-          VaronaDarbibas.testesanasDarbibas(ievade);
-        }
-        else if (Arrays.asList(parastasKomandas).contains(ievade)) { // Parastās komandas.
-          VaronaDarbibas.parastasDarbibas(ievade);
+        if (!ievade.equals("}")) {
+          if (Arrays.asList(testesanasKomandas).contains(ievade)) { // Testēšanas komands.
+            VaronaDarbibas.testesanasDarbibas(ievade);
+          }
+          else if (Arrays.asList(parastasKomandas).contains(ievade)) { // Parastās komandas.
+            VaronaDarbibas.parastasDarbibas(ievade);
+          }
         }
 
         // Pārējās komandas, kuras ir saistītas ar istabas poz. un vir..

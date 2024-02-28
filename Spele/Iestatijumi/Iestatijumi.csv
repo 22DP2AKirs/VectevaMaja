@@ -10,12 +10,12 @@ maxSerkocinaDegsanasLaiks=3
 {
 // Agresivitāte.
 logaSpokaAtlautaAgresivitate=20
-durvjuSpokaAtlautaAgresivitate=15
+durvjuSpokaAtlautaAgresivitate=20
 virtuvesSpokaAtlautaAgresivitate=20
 
 // Atpūtas laiks.
 logaSpokaAtputasLaiks=5
-durvjuSpokaAtputasLaiks=20
+durvjuSpokaAtputasLaiks=2
 virtuvesSpokaAtputasLaiks=3
 }
 
