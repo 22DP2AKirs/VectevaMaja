@@ -524,6 +524,21 @@ public class SpokuIzskati {
   };
 
   // =========================================================================================== Virtuves spoks ======================================================================================= //
+  private static final String[] izslegtsPagrabs = {
+    K.TPELEKS + "░░░░░░░░░░░░░" + K.RESET,
+    K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET,
+    K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET,
+    K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET,
+    K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET,
+    K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET,
+    K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET,
+    K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET,
+    K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET,
+    K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET,
+    K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET,
+    K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET
+  };
+  
   private static final String[] virtuvesSp0 = {
     "---------------",
     "|---------------|",
@@ -697,8 +712,8 @@ public class SpokuIzskati {
   public static final String[] [] logaSpokaBildesVirtuve = {virtuvesLogsCiet, logaSpPieVirtuves0, logaSpPieVirtuves1, logaSpPieVirtuves2, logaSpPieVirtuves3, logaSpPieVirtuves4, logaSpPieVirtuves5, logaSpPieVirtuves6, virtuvesLogsVala};
 
   // Durvju un virtuves.
-  public static final String[] [] durvjuSpokaFazesBildes = {durvisCiet, durvjuSp0, durvjuSp1, durvjuSp2, durvjuSp3, durvjuSp4, durvjuSp5, durvjuSp6, durvjuSp7, durvisVala};
-  public static final String[] [] virtuvesSpokaFazesBildes = {virtuvesSp0, virtuvesSp1, virtuvesSp2, virtuvesSp3, virtuvesSp4, virtuvesSp5, virtuvesSp6, virtuvesSp7, virtuvesSp8, virtuvesSp9, virtuvesSp10 };
+  public static final String[] [] durvjuSpokaFazesBildes = {durvjuSp0, durvjuSp1, durvjuSp2, durvjuSp3, durvjuSp4, durvjuSp5, durvjuSp6, durvjuSp7, durvisVala , durvisCiet };
+  public static final String[] [] virtuvesSpokaFazesBildes = {virtuvesSp0 , virtuvesSp1 , virtuvesSp2 , virtuvesSp3 , virtuvesSp4 , virtuvesSp5 , virtuvesSp6 , virtuvesSp7 , virtuvesSp8 , virtuvesSp9 , virtuvesSp10 , izslegtsPagrabs };
 
   // * Izveido masīvus, un liek tiem cita masīva ceļu, lai kad to izmanto, viņš neatgriež vērtību "null".
   // Loga spoka masīvi, kurus pielieto, katru savā istabā.

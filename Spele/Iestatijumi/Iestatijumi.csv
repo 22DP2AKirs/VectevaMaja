@@ -9,14 +9,14 @@ maxSerkocinaDegsanasLaiks=3
 2. Spoku dati.
 {
 // Agresivitāte.
-logaSpokaAtlautaAgresivitate=20
-durvjuSpokaAtlautaAgresivitate=20
-virtuvesSpokaAtlautaAgresivitate=20
+logaSpokaAtlautaAgresivitate=0
+durvjuSpokaAtlautaAgresivitate=0
+virtuvesSpokaAtlautaAgresivitate=0
 
 // Atpūtas laiks.
 logaSpokaAtputasLaiks=5
-durvjuSpokaAtputasLaiks=2
-virtuvesSpokaAtputasLaiks=3
+durvjuSpokaAtputasLaiks=5
+virtuvesSpokaAtputasLaiks=2
 }
 
 3. Istabu Iestatijumi jeb istabuGaismasIeslegtas.
@@ -28,13 +28,14 @@ durvjuGaisma=T
 virtuvesGaisma=T
 
 
-elektribaIeslegta=T
-pagrabaGaisma=T
-pagrabaGaismaStrada=T
 }
 
 4. Papildus iestatījumi.
 {
+durvisSlegtas=T
+elektribaIeslegta=T
+pagrabaGaisma=F
+spuldziteSaplesta=F
 ieslegtaSkana=T
 spokiSledzAraGaismu=F
 }

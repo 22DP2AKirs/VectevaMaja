@@ -97,7 +97,7 @@ public class BildesParklajumi {
   }
 
   public static void uzliktVirtuvesLejasParklajumus(String[] mainamaisMasivs) {
-    uzliktVirtuvesLejasApgaismojumaParklajumus(mainamaisMasivs);
+    // uzliktVirtuvesLejasApgaismojumaParklajumus(mainamaisMasivs);
     uzliktVirtuvesSpParklajumu(mainamaisMasivs);
   }
 
@@ -391,15 +391,15 @@ public class BildesParklajumi {
     mainamaisMasivs[15] += virtuvesLabasPusesPagrabaSkats[5];
   }
 
-  private static void uzliktVirtuvesLejasApgaismojumaParklajumus(String[] mainamaisMasivs) {
-    // Saliek durvju arkas gaismu ekrāna priekšā.
-    if (!IestatijumuDati.pagrabaGaisma) {
-      mainamaisMasivs[1] += ParklajumuIzskati.virtuvesPagrabaParklajs[0];
-      for (int i = 2; i < 13; i++) {
-        mainamaisMasivs[i] += ParklajumuIzskati.virtuvesPagrabaParklajs[1];
-      }
-    }
-  }
+//   private static void uzliktVirtuvesLejasApgaismojumaParklajumus(String[] mainamaisMasivs) {
+//     // Saliek durvju arkas gaismu ekrāna priekšā.
+//     if (!IestatijumuDati.pagrabaGaisma) {
+//       mainamaisMasivs[1] += ParklajumuIzskati.virtuvesPagrabaParklajs[0];
+//       for (int i = 2; i < 13; i++) {
+//         mainamaisMasivs[i] += ParklajumuIzskati.virtuvesPagrabaParklajs[1];
+//       }
+//     }
+//   }
 
   private static void uzliktVirtuvesKreisasPusesApgaismojumaParklajumus(String[] mainamaisMasivs) {
     // Saliek durvju arkas gaismu ekrāna priekšā.

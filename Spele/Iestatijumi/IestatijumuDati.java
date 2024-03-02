@@ -20,9 +20,10 @@ public class IestatijumuDati {
 
   public static int spelesNakts = 6;
 
+  public static boolean durvisSlegtas = FailuRedigetajs.booleanDatuAtgriezejs("durvisSlegtas");
   public static boolean elektribaIeslegta = FailuRedigetajs.booleanDatuAtgriezejs("elektribaIeslegta");
   public static boolean pagrabaGaisma = FailuRedigetajs.booleanDatuAtgriezejs("pagrabaGaisma");
-  public static boolean stradaPagrabaGaisma = FailuRedigetajs.booleanDatuAtgriezejs("pagrabaGaismaStrada");
+  public static boolean spuldziteSaplesta = FailuRedigetajs.booleanDatuAtgriezejs("spuldziteSaplesta");
 
   // Sērkociņa dati.
   public static int atlikusoSerkocinuDaudzums = FailuRedigetajs.intDatuAtgriezejs("atlikusoSerkocinuDaudzums");

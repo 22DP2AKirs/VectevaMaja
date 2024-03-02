@@ -1,8 +1,6 @@
 package Spele;
 import java.util.ArrayList;
 
-import Spele.SpelesProcesi.Main;
-import Spele.Izskati.IstabuIzskati;
 import Spele.Izskati.UIizskats;
 import Spele.Parklajumi.BildesParklajumi;
 import Spele.SpelesProcesi.Ievade;

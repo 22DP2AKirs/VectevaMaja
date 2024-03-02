@@ -23,7 +23,8 @@ public class Ievade extends Thread {
   }
 
   public static void sagatavotKomanduDzesanai() {
-    // Šai metodei ir jābūt komandu izpildes metodes beigās.
+      // ! Metode atļauj programmas cikla beigās notīrīt ievadi.
+      // Šai metodei ir jābūt 'komandu izpildes' metodes beigās.
     if (!vaiKomanduIzpildija) { 
       vaiKomanduIzpildija = true;
     }

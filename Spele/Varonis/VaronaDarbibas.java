@@ -3,18 +3,12 @@ import java.util.Arrays;
 
 import Spele.SpelesProcesi.Main;
 import Spele.Spoki.DurvjuSpoks;
-// import Spele.Spoki.DurvjuSpoks;
 import Spele.Spoki.LogaSpoks;
 import Spele.Spoki.VirtuvesSpoks;
-import Spele.Enums;
 import Spele.Enums.Istabas;
-// import Spele.Spoki.VirtuvesSpoks;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Iestatijumi.IestatijumuDati;
-import Spele.MazasSpeles.Karatavas.Karatavas;
 import Spele.MazasSpeles.Karatavas.SavienotaisKaratavuKods;
-import Spele.Parklajumi.EkranuParklajumi;
-import Spele.SpelesProcesi.Ievade;
 import Spele.SpelesProcesi.Laiks;
 
 public class VaronaDarbibas {
@@ -22,8 +16,6 @@ public class VaronaDarbibas {
 
   public static boolean aizdedzinatsSerkocins = false; 
   public static int serkocinaDeksanasLaikaSkaititajs;
-
-  
 
   public static void parastasDarbibas(String panemtaIevade) {
       if (panemtaIevade.equals("F") && IestatijumuDati.atlikusoSerkocinuDaudzums != 0 && !aizdedzinatsSerkocins) {
@@ -58,7 +50,6 @@ public class VaronaDarbibas {
           infoLapasSecibasSkaitlis = 4;
       } 
   }
-
 
   public static void testesanasDarbibas(String panemtaIevade) {
     // * Metodē ir darbības, kuras ir domātas spēles testēšanai.
@@ -173,6 +164,10 @@ public class VaronaDarbibas {
     if (komanda.equals("DURVIS")) {
       aizbiedetDurvjuSpoku();
     }
+    else if (komanda.equals("SLEGT")) {
+      // TODO
+      aizslegtDurvis();
+    }
     else if (komanda.equals("E") && Main.karatavas) {
       SavienotaisKaratavuKods.palaistKaratavas();
     }
@@ -208,6 +203,9 @@ public class VaronaDarbibas {
 
   public static void virtuvesLejasKomandas(String komanda) {
     // Ieslēgt izslēgt pagraba gaismu uz kom. 'G'.
+    if (komanda.equals("G")) {
+      ieslegtIzslegtPagrabaGaismu();
+    }
   }
 
   public static void virtuvesKreisaPuseKomandas(String komanda) {
@@ -244,7 +242,6 @@ public class VaronaDarbibas {
     Arrays.fill(IestatijumuDati.istabuGaismasIeslegtas, false); // Visās istabās izslēdz gaismu.
 
     IestatijumuDati.elektribaIeslegta = false;
-    IestatijumuDati.stradaPagrabaGaisma = true; // Salabo pagraba gaismu.
     Laiks.laiksCikIlgiElektribaBusIzslegta = 3;
   }
 
@@ -296,6 +293,25 @@ public class VaronaDarbibas {
       if (ievade.equals("Q")) {
         Main.varonisIrMazajaSpele = false;
       }
+    }
+  }
+
+  private static void ieslegtIzslegtPagrabaGaismu() {
+    if(!IestatijumuDati.spuldziteSaplesta) {
+      if (IestatijumuDati.pagrabaGaisma) {
+        SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-off.wav", 0);
+        IestatijumuDati.pagrabaGaisma = false;
+      }
+      else {
+        SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-on.wav", 0);
+        IestatijumuDati.pagrabaGaisma = true;
+      }
+    }
+  }
+
+  private static void aizslegtDurvis() {
+    if (!IestatijumuDati.durvisSlegtas && DurvjuSpoks.durvjuSpoks.getSpokaFazesIndekss() == 0) {
+      IestatijumuDati.durvisSlegtas = true;
     }
   }
 

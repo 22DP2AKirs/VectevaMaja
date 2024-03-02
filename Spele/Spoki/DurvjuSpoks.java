@@ -16,12 +16,8 @@ public class DurvjuSpoks extends Spoks {
 
   public static DurvjuSpoks durvjuSpoks = new DurvjuSpoks(IestatijumuDati.durvjuSpokaAtlautaAgresivitate, IestatijumuDati.durvjuSpokaAtputasLaiks); // Publiskais spoka objekts.
 
-  private boolean durvisIrSlegtas; // Nosaka vai durvis ir slēgtas, vai nē.
-
   public DurvjuSpoks(int spokaAtlautaAgresivitate, int spokaAtputasLaiks) {
     super(spokaAtlautaAgresivitate, spokaAtputasLaiks);
-    // setSpokaAtlautaAgresivitate(IestatijumuDati.durvjuSpokaAtlautaAgresivitate);
-    
   }
 
   // * Getters:
@@ -30,23 +26,17 @@ public class DurvjuSpoks extends Spoks {
     "Durvju sp aktivs: " + durvjuSpoks.getSpoksIrAktivs() + 
     ", Atputas gajieni: " + getMainamoAtputasLaiku() + 
     ", Fazes indekss: " + getSpokaFazesIndekss() + 
-    ", Durvis aizslegtas: " + getDurvisIrSlegtas() + ", " +
+    ", Durvis aizslegtas: " + IestatijumuDati.durvisSlegtas + ", " +
     getRandKustibasIespeja() + " < " + getSpokaAtlautaAgresivitate() + "\033[0K";
-  }
-
-  public boolean getDurvisIrSlegtas() {
-    return durvisIrSlegtas;
-  }
-
-  // * Setters:
-  public void setDurvisIrSlegtas(boolean vertiba) {
-    durvisIrSlegtas = vertiba;
   }
 
   // * Citas Metodes:
   /// Public:
   public String[] izveletiesBildiPecFazes() {
-    if (getSpokaFazesIndekss() < 10) {
+    if (getSpokaFazesIndekss() < 9) {
+      if (IestatijumuDati.durvisSlegtas) {
+        return SpokuIzskati.durvjuSpokaFazesBildes[9];
+      }
       return SpokuIzskati.durvjuSpokaFazesBildes[getSpokaFazesIndekss()];
     }
     else {
@@ -54,6 +44,30 @@ public class DurvjuSpoks extends Spoks {
       return SpokuIzskati.durvjuSpokaFazesBildes[0];
     }
   }
+
+  public void noteiktGajienaRezultatu() {
+    // Nosaka vai spoks cenšas kustēties vai nē.
+    if (atgrieztRandomKustibasSkaitli() < getSpokaAtlautaAgresivitate()) {
+      if (getMainamoAtputasLaiku() == 0) {
+        if (!IestatijumuDati.durvisSlegtas) {
+          // Ja durvis nebija aizslēgtas, tad ...
+          pieietTuvak();
+        }
+        else {
+          // citādi ...
+          if (Main.rand.nextInt(5) + 1 == 5) {
+            // Skaņa --->
+            IestatijumuDati.durvisSlegtas = false;
+          }
+        }
+      }
+      else {
+        atpustiesVienuGajienu();
+      }
+    }
+  }
+  
+
 
   /// Protected:
   protected void meginatIzveidotDurvjuSpoku() {

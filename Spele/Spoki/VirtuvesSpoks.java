@@ -19,10 +19,6 @@ public class VirtuvesSpoks extends Spoks {
 
   public static VirtuvesSpoks virtuvesSpoks = new VirtuvesSpoks(IestatijumuDati.virtuvesSpokaAtlautaAgresivitate, IestatijumuDati.virtuvesSpokaAtputasLaiks);
 
-  // Mainīgie.
-  private boolean spuldziteIrSaplesta;
-  private boolean irIeslegtaPagrabaGaisma;
-
   private int ieslegtasGaismasAgresivitate;
 
   public VirtuvesSpoks(int spokaAtlautaAgresivitate, int spokaAtputasLaiks) {
@@ -32,63 +28,58 @@ public class VirtuvesSpoks extends Spoks {
 
   // * Getters:
   public String toString() {
-    return "Virt sp aktivs: " + getSpoksIrAktivs() + 
+    return
+    getRandKustibasIespeja() + " < " + getSpokaAktualoAgresivitati() +
+    ", Virt sp aktivs: " + getSpoksIrAktivs() + 
     ", Atputas gajieni: " + getMainamoAtputasLaiku() + 
     ", Fazes indekss: " + getSpokaFazesIndekss() +
-    ", Pagraba gaisma ieslegta: " + getIrIeslegtaPagrabaGaisma() +
-    ", Spuldzite saplesta: " + getSpuldziteIrSaplesta() + ", " +
-    getRandKustibasIespeja() + " < " + getSpokaAtlautaAgresivitate() + "\033[0K";
+    ", Pagraba gaisma ieslegta: " + IestatijumuDati.pagrabaGaisma +
+    ", Spuldzite saplesta: " + IestatijumuDati.spuldziteSaplesta +
+    "\033[0K";
   }
 
   public int getIeslegtasGaismasAgresivitate() {
     return ieslegtasGaismasAgresivitate;
   }
       
-  public boolean getIrIeslegtaPagrabaGaisma() {
-    return irIeslegtaPagrabaGaisma;
-  }
-
-  public boolean getSpuldziteIrSaplesta() {
-    return spuldziteIrSaplesta;
-  }
 
   private int getSpokaAktualoAgresivitati() {
-    if (irIeslegtaPagrabaGaisma) {
+    if (IestatijumuDati.pagrabaGaisma) {
       return ieslegtasGaismasAgresivitate;
     }
     return getSpokaAtlautaAgresivitate();
-  }
-
-  // * Setters:
-  public void setIrIeslegtaPagrabaGaisma(boolean vertiba) {
-    irIeslegtaPagrabaGaisma = vertiba;
   }
   
   // * Citas metodes:
   /// Public:
   
-  public void atjauninatSpoku() {
+  protected void noteiktGajienaRezultatu() {
     // * Metode overwrito super metodi, lai tā atbilsu virtuves spoka unikālajai agresivitātei.
-    if (getSpoksIrAktivs()) {
-      // Nosaka vai spoks cenšas kustēties vai nē.
-      if (atgrieztRandomKustibasSkaitli() < getSpokaAktualoAgresivitati()) {
-        if (getMainamoAtputasLaiku() == 0) {
-          pieietTuvak();
-        }
-        else {
-          atpustiesVienuGajienu();
-        }
+    // Nosaka vai spoks cenšas kustēties vai nē.
+    if (atgrieztRandomKustibasSkaitli() < getSpokaAktualoAgresivitati()) {
+      if (getMainamoAtputasLaiku() == 0) {
+        pieietTuvak();
+      }
+      else {
+        atpustiesVienuGajienu();
       }
     }
   }
 
   public String[] izveletiesBildiPecFazes() {
+    // Izvēlas labāko bildi.
     if (getSpokaFazesIndekss() < 10) {
-      return SpokuIzskati.virtuvesSpokaFazesBildes[getSpokaFazesIndekss()];
+      if (IestatijumuDati.spuldziteSaplesta || !IestatijumuDati.pagrabaGaisma) {
+        return SpokuIzskati.virtuvesSpokaFazesBildes[11]; // Izslēgta pagraba gaisma.
+      }
+      else {
+        return SpokuIzskati.virtuvesSpokaFazesBildes[getSpokaFazesIndekss()];
+      }
     }
     // Saplēš spuldzīti.
     else if (getSpokaFazesIndekss() == 10) {
-      spuldziteIrSaplesta = true;
+      // Skaņa --->
+      IestatijumuDati.spuldziteSaplesta = true;
       return SpokuIzskati.virtuvesSpokaFazesBildes[getSpokaFazesIndekss()];
     }
     // Uzbrūk varonim.

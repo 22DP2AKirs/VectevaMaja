@@ -71,16 +71,15 @@ public class Spoks {
   }
   
   // * Citas metodes:
-  /// Public:
-  public void atjauninatSpoku() {
+  /// Protected:
+  protected void atjauninatSpoku() {
     // Ja spoks ir aktīvs, tad tam atļauj kustēties.
     if (spoksIrAktivs) {
       noteiktGajienaRezultatu();
     }
   }
 
-  /// Private:
-  private void noteiktGajienaRezultatu() {
+  protected void noteiktGajienaRezultatu() {
     // Nosaka vai spoks cenšas kustēties vai nē.
     if (atgrieztRandomKustibasSkaitli() < spokaAtlautaAgresivitate) {
       if (spokaAtputasLaikaMainamaKopija == 0) {
@@ -102,7 +101,7 @@ public class Spoks {
   }
 
   protected int atgrieztRandomKustibasSkaitli() {
-    return randKustibasIespeja =  Main.rand.nextInt(20) + 1; // Vērtības no 1 - 20.
+    return randKustibasIespeja = Main.rand.nextInt(20) + 1; // Vērtības no 1 - 20.
   }
   
   /// Statiskās metodes (Izmantojamas main programmā):
@@ -140,4 +139,7 @@ public class Spoks {
     System.out.println(DurvjuSpoks.durvjuSpoks.toString());
     System.out.println(VirtuvesSpoks.virtuvesSpoks.toString());
   }
+
+
+  // TODO: Spoki neuzbrūk, ja nav viņu virzienā!!!!!!!!!!!!!! Katram spokam ir jāuzliek pārbaude vai tam ir max fāze, un jānoņem uzbrukšanas kods no fazesbildes metodēm!!!!!!!!!!
 }
