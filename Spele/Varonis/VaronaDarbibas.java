@@ -11,6 +11,8 @@ import Spele.Enums.Istabas;
 // import Spele.Spoki.VirtuvesSpoks;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Iestatijumi.IestatijumuDati;
+import Spele.MazasSpeles.Karatavas.Karatavas;
+import Spele.MazasSpeles.Karatavas.SavienotaisKaratavuKods;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SpelesProcesi.Ievade;
 import Spele.SpelesProcesi.Laiks;
@@ -171,8 +173,8 @@ public class VaronaDarbibas {
     if (komanda.equals("DURVIS")) {
       aizbiedetDurvjuSpoku();
     }
-    else if (komanda.equals("E")) {
-      // TODO: Karātavu palaišanas kods.
+    else if (komanda.equals("E") && Main.karatavas) {
+      SavienotaisKaratavuKods.palaistKaratavas();
     }
   }
 
@@ -253,7 +255,7 @@ public class VaronaDarbibas {
     else {
       Main.mSpeluInfo = true;
     }
-    Main.tiritEkranu();
+    Main.nodzestTerminali();
   }
 
   public static void ieslegtIzslegtSpokuInformaciju() {
@@ -263,7 +265,7 @@ public class VaronaDarbibas {
     else {
       Main.spokuInfo = true;
     }
-    Main.tiritEkranu();
+    Main.nodzestTerminali();
   }
 
   public static void aizbiedetLogaSpoku(Istabas istaba) {
@@ -305,58 +307,21 @@ public class VaronaDarbibas {
 
   
 
-  public static void sakumaEkranaDarbibas(String panemtaIevade) {
-    // * Šī metode nosaka, kādas darbības būs pieejamas sākuma ekrānā (Main screen), un to darbību izpilde.
-
-    // Skatoties, kāda ir ievade, tāda būs darbība.
-    if (panemtaIevade.equals("W")) {
-      if (EkranuParklajumi.izvelnesCipars > 0) {
-        EkranuParklajumi.izvelnesCipars--;
-      }
-    } 
-    else if (panemtaIevade.equals("S")) {
-      if (EkranuParklajumi.izvelnesCipars < 5) {
-        EkranuParklajumi.izvelnesCipars++;
-      }
-    } 
-    else if (panemtaIevade.equals("")) {
-      if (EkranuParklajumi.izvelnesCipars == 0) {
-
-      }
-      else if (EkranuParklajumi.izvelnesCipars == 1) { // Spēlēt.
-        Main.mainMenu = false;
-        Main.spelePalaista = true;
-      } 
-      else if (EkranuParklajumi.izvelnesCipars == 2) {
-      
-      } 
-      else if (EkranuParklajumi.izvelnesCipars == 3) {
-      
-      } 
-      else if (EkranuParklajumi.izvelnesCipars == 4) {
-
-      } 
-      else if (EkranuParklajumi.izvelnesCipars == 5) {
-        Main.programmaPalaista = false;
-        System.exit(0); // Pārtrauc spēles darbību.
-      } 
-    }
-    Ievade.notiritIevadi();
-  }
+  
 
 
   private static void pagrieztiesPaKreisi() {
-    VaronaPozicijaUnSkataVirziens.varonaVirzienaCipars--;
-      if (VaronaPozicijaUnSkataVirziens.varonaVirzienaCipars < 0) { // Lai masīvs neizietu no diapazonas.
-        VaronaPozicijaUnSkataVirziens.varonaVirzienaCipars = 3;
+    DarbibuIzpilde.varonaVirzienaCipars--;
+      if (DarbibuIzpilde.varonaVirzienaCipars < 0) { // Lai masīvs neizietu no diapazonas.
+        DarbibuIzpilde.varonaVirzienaCipars = 3;
       }
   }
 
 
   private static void pagrieztiesPaLabi() {
-    VaronaPozicijaUnSkataVirziens.varonaVirzienaCipars++;
-      if (VaronaPozicijaUnSkataVirziens.varonaVirzienaCipars > 3) { // Lai masīvs neizietu no diapazonas.
-        VaronaPozicijaUnSkataVirziens.varonaVirzienaCipars = 0;
+    DarbibuIzpilde.varonaVirzienaCipars++;
+      if (DarbibuIzpilde.varonaVirzienaCipars > 3) { // Lai masīvs neizietu no diapazonas.
+        DarbibuIzpilde.varonaVirzienaCipars = 0;
       }
   }
 
@@ -369,29 +334,29 @@ public class VaronaDarbibas {
 
       
 
-      if (VaronaPozicijaUnSkataVirziens.varonaIstabasCipars == 0) {
-          if (VaronaPozicijaUnSkataVirziens.varonaVirzienaCipars == 0) {
-            VaronaPozicijaUnSkataVirziens.varonaIstabasCipars++;
-          } else if (VaronaPozicijaUnSkataVirziens.varonaVirzienaCipars == 1) {
-            VaronaPozicijaUnSkataVirziens.varonaIstabasCipars = 3; // Pret "pulksteņrādītāja secības" cikla: 0 -3- 2 1 0 -3- 2 1 0.
+      if (DarbibuIzpilde.varonaIstabasCipars == 0) {
+          if (DarbibuIzpilde.varonaVirzienaCipars == 0) {
+            DarbibuIzpilde.varonaIstabasCipars++;
+          } else if (DarbibuIzpilde.varonaVirzienaCipars == 1) {
+            DarbibuIzpilde.varonaIstabasCipars = 3; // Pret "pulksteņrādītāja secības" cikla: 0 -3- 2 1 0 -3- 2 1 0.
           }
-      } else if (VaronaPozicijaUnSkataVirziens.varonaIstabasCipars == 1) {
-          if (VaronaPozicijaUnSkataVirziens.varonaVirzienaCipars == 1) { // Labās durvis.
-            VaronaPozicijaUnSkataVirziens.varonaIstabasCipars++;
-          } else if (VaronaPozicijaUnSkataVirziens.varonaVirzienaCipars == 2) { // Lejas durvis.
-            VaronaPozicijaUnSkataVirziens.varonaIstabasCipars--;
+      } else if (DarbibuIzpilde.varonaIstabasCipars == 1) {
+          if (DarbibuIzpilde.varonaVirzienaCipars == 1) { // Labās durvis.
+            DarbibuIzpilde.varonaIstabasCipars++;
+          } else if (DarbibuIzpilde.varonaVirzienaCipars == 2) { // Lejas durvis.
+            DarbibuIzpilde.varonaIstabasCipars--;
           }
-      } else if (VaronaPozicijaUnSkataVirziens.varonaIstabasCipars == 2) {
-          if (VaronaPozicijaUnSkataVirziens.varonaVirzienaCipars == 2) { // Lejas durvis.
-            VaronaPozicijaUnSkataVirziens.varonaIstabasCipars++;
-          } else if (VaronaPozicijaUnSkataVirziens.varonaVirzienaCipars == 3) { // Kreisās durvis.
-            VaronaPozicijaUnSkataVirziens.varonaIstabasCipars--;
+      } else if (DarbibuIzpilde.varonaIstabasCipars == 2) {
+          if (DarbibuIzpilde.varonaVirzienaCipars == 2) { // Lejas durvis.
+            DarbibuIzpilde.varonaIstabasCipars++;
+          } else if (DarbibuIzpilde.varonaVirzienaCipars == 3) { // Kreisās durvis.
+            DarbibuIzpilde.varonaIstabasCipars--;
           }
-      } else if (VaronaPozicijaUnSkataVirziens.varonaIstabasCipars == 3) {
-          if (VaronaPozicijaUnSkataVirziens.varonaVirzienaCipars == 3) {
-            VaronaPozicijaUnSkataVirziens.varonaIstabasCipars = 0; //  Pēdējā no 4 istabām. Ciparam ir jāmainās pēc "pulksteņrādītāja secības" cikla: 0 1 2 3 -0- 1 2 3 -0-.
-          } else if (VaronaPozicijaUnSkataVirziens.varonaVirzienaCipars == 0) {
-            VaronaPozicijaUnSkataVirziens.varonaIstabasCipars--;
+      } else if (DarbibuIzpilde.varonaIstabasCipars == 3) {
+          if (DarbibuIzpilde.varonaVirzienaCipars == 3) {
+            DarbibuIzpilde.varonaIstabasCipars = 0; //  Pēdējā no 4 istabām. Ciparam ir jāmainās pēc "pulksteņrādītāja secības" cikla: 0 1 2 3 -0- 1 2 3 -0-.
+          } else if (DarbibuIzpilde.varonaVirzienaCipars == 0) {
+            DarbibuIzpilde.varonaIstabasCipars--;
           }
       }
   }

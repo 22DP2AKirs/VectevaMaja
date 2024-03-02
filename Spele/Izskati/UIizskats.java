@@ -48,8 +48,8 @@ public class UIizskats {
             gatavsApaksasUI[8] = "      [ G ] - I E S L E G T   V A I   I Z S L E G T   G A I S M U               ";
         }
         
-        if (!panemtaIevade.equals("}")) { // Izveido jauno.
-            ievadesMasivs = Ievade.ieprieksejaIevade(panemtaIevade);
+        if (!panemtaIevade.equals(K.TUKSA_IEVADE)) { // Izveido jauno.
+          ievadesMasivs = Ievade.ieprieksejaIevade(panemtaIevade);
         } 
 
         // Sagatavo 10 rindiņu.

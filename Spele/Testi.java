@@ -7,7 +7,7 @@ public class Testi {
   public static void testaProgramma() throws InterruptedException { // throws  InterruptedException, Lai varētu izmantot: Thread.sleep(0); bez try_catch.
     // Sagatave pirms spēles cikla.
     // Scanner iLasitajs = new Scanner(System.in);
-    Main.tiritEkranu();
+    Main.nodzestTerminali();
 
     Karatavas vards = new Karatavas(Main.rand.nextInt(4), Main.rand.nextInt(4));
 

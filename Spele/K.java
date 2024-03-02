@@ -1,6 +1,9 @@
 package Spele;
 
 public final class K {
+  // * K - Konstanti (Constants).
+  // * Mainīgie, kuriem ir nemainīga vērtība.
+
   // Krāsas:
   public static final String RESET = "\u001B[0m";
 
@@ -34,4 +37,7 @@ public final class K {
   // Masīvu izmēri.
   public static final int BILDES_MASIVA_IZMERS = 16;
   public static final String BILDES_MASIVA_BEIGU_KURSORA_POZICIJA = "\033[82G";
+
+  // Tukšā ievade:
+  public static String TUKSA_IEVADE = "}";
 }

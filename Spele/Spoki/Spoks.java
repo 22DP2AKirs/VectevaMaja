@@ -127,6 +127,13 @@ public class Spoks {
     VirtuvesSpoks.virtuvesSpoks.meginatIzveidotVirtuvesSpoku();
   }
 
+  public static void izslegtSpokus() {
+    // Izslēdz visus spokus.
+    LogaSpoks.logaSpoks.deaktivizetSpoku();
+    DurvjuSpoks.durvjuSpoks.deaktivizetSpoku();
+    VirtuvesSpoks.virtuvesSpoks.deaktivizetSpoku();
+  }
+
   public static void spokuInfo() {
     System.out.println(); // Vieta priekš ievades.
     System.out.println(LogaSpoks.logaSpoks.toString());

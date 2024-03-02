@@ -94,7 +94,7 @@ public class VirtuvesSpoks extends Spoks {
     // Uzbrūk varonim.
     else {
       VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("V I R T U V E S   S P O K S");
-      return null;
+      return SpokuIzskati.virtuvesSpokaFazesBildes[0];
     }
   }
 

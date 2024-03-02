@@ -1,6 +1,6 @@
 package Spele;
 
-import Spele.Varonis.VaronaPozicijaUnSkataVirziens;
+import Spele.Varonis.DarbibuIzpilde;
 
 public class Enums {
   // * Šī klase satur sevī visas enum klases, priekš vieglākas atrašanas un organizēšanas.
@@ -17,19 +17,6 @@ public class Enums {
   public enum NavesIemesli {
 
   }
-
-  public enum Element {
-    H("Hydrogen"),
-    HE("Helium"),
-    // ...
-    NE("Neon");
-
-    public final String label;
-
-    private Element(String label) {
-        this.label = label;
-    }
-}
 
   public enum Istabas {
     GULTA(0 , "GULTA"),
@@ -66,30 +53,30 @@ public class Enums {
 
   public static void mainitIstabasUnVirzienaEnumus() {
     // Nosaka varona Istabu.
-    if (VaronaPozicijaUnSkataVirziens.varonaIstabasCipars == 0) {
+    if (DarbibuIzpilde.varonaIstabasCipars == 0) {
       V_Istaba = Istabas.GULTA;
     }
-    else if (VaronaPozicijaUnSkataVirziens.varonaIstabasCipars == 1) {
+    else if (DarbibuIzpilde.varonaIstabasCipars == 1) {
       V_Istaba = Istabas.DIVANS;
     }
-    else if (VaronaPozicijaUnSkataVirziens.varonaIstabasCipars == 2) {
+    else if (DarbibuIzpilde.varonaIstabasCipars == 2) {
       V_Istaba = Istabas.DURVIS;
     }
-    else if (VaronaPozicijaUnSkataVirziens.varonaIstabasCipars == 3) {
+    else if (DarbibuIzpilde.varonaIstabasCipars == 3) {
       V_Istaba = Istabas.VIRTUVE;
     }
 
     // Nosaka varona Virzienu.
-    if (VaronaPozicijaUnSkataVirziens.varonaVirzienaCipars == 0) {
+    if (DarbibuIzpilde.varonaVirzienaCipars == 0) {
       V_Virziens = Virzieni.PRIEKSA;
     }
-    else if (VaronaPozicijaUnSkataVirziens.varonaVirzienaCipars == 1) {
+    else if (DarbibuIzpilde.varonaVirzienaCipars == 1) {
       V_Virziens = Virzieni.LABA_PUSE;
     }
-    else if (VaronaPozicijaUnSkataVirziens.varonaVirzienaCipars == 2) {
+    else if (DarbibuIzpilde.varonaVirzienaCipars == 2) {
       V_Virziens = Virzieni.LEJA;
     }
-    else if (VaronaPozicijaUnSkataVirziens.varonaVirzienaCipars == 3) {
+    else if (DarbibuIzpilde.varonaVirzienaCipars == 3) {
       V_Virziens = Virzieni.KREISA_PUSE;
     }
   }

@@ -2,10 +2,12 @@ package Spele.SpelesProcesi;
 
 import java.util.Scanner;
 
+import Spele.K;
+
 public class Ievade extends Thread {
   // volatile modifier ir, lai objekts sinhronizējas starp visiem Thrediem.
   private Scanner ievadesLasitajs = new Scanner(System.in); // Parastais lasītājs, kurš lasīs lietotāja ievadi.
-  public static volatile String lietotajaIevade = "}"; // Definēju mainīgo, lai kods tālāk spētu viņu visu laiku dublicēt (šinī gadījumā saglabāt).
+  public static volatile String lietotajaIevade = K.TUKSA_IEVADE; // Definēju mainīgo, lai kods tālāk spētu viņu visu laiku dublicēt (šinī gadījumā saglabāt).
 
   public static boolean vaiKomanduIzpildija = true; // Ļauj ievadītajām darbībām būt izpildītām pirms tās tiek nodzēstas.
   
@@ -20,8 +22,8 @@ public class Ievade extends Thread {
     }
   }
 
-  public static void parbauditVaiKomandaTikaIzpildita() {
-    // Šai komandai ir jāizpildas visu komandu metodes beigās.
+  public static void sagatavotKomanduDzesanai() {
+    // Šai metodei ir jābūt komandu izpildes metodes beigās.
     if (!vaiKomanduIzpildija) { 
       vaiKomanduIzpildija = true;
     }
@@ -60,12 +62,13 @@ public class Ievade extends Thread {
   }
 
   public static void notiritIevadi() {
+    // ! Ievade ir jātīra cikla beigās, lai visas metodes (tās, kuras izmanto ievadi) izpildītos pareizi.
     // * Šī metode nomaina ievadi uz [ } ] simbolu,
     // * jo šinī spēlē tas simbols nozīmē tukša ievade jeb ievades nav (simbols tiks ignorēts).
 
     // Ja komanda tika izpildīta, tad to var nodzēst.
     if (vaiKomanduIzpildija) { 
-      Ievade.lietotajaIevade = "}";
+      Ievade.lietotajaIevade = K.TUKSA_IEVADE;
     }
   }
 }

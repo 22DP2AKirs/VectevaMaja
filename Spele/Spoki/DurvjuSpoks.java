@@ -51,7 +51,7 @@ public class DurvjuSpoks extends Spoks {
     }
     else {
       VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("D U R V J U   S P O K S");
-      return null;
+      return SpokuIzskati.durvjuSpokaFazesBildes[0];
     }
   }
 

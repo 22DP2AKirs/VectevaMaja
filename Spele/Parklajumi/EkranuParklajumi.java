@@ -127,6 +127,7 @@ public class EkranuParklajumi {
     mainamaisMasivs[25] += "\033[7G" + informacija[7] + "\033[106G";
   }
 
+  
   public static int izvelnesCipars = 0;
   private static void galvenaEkranaParklasana(String[] mainamaisMasivs) {
     // * Metode pārklās galveno ekrānu.

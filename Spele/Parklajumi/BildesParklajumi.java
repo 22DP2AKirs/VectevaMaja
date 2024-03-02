@@ -29,12 +29,14 @@ public class BildesParklajumi {
     return varonaIstabasKopija;
   }
 
+  /// Gultas pārklājumi:
   public static void uzliktGultasPrieksasParklajumus(String[] mainamaisMasivs) {
     uzliktGultasPrieksasApgaismojumaParklajumus(mainamaisMasivs);
   }
 
   public static void uzliktGultasLabasPusesParklajumus(String[] mainamaisMasivs) {
     uzliktGultasLabasPusesApgaismojumaParklajumus(mainamaisMasivs);
+    uzliktElektriskoPaneli(mainamaisMasivs);
   }
 
   public static void uzliktGultasLejasParklajumus(String[] mainamaisMasivs) {
@@ -73,6 +75,7 @@ public class BildesParklajumi {
   public static void uzliktDurvjuLabasPusesParklajumus(String[] mainamaisMasivs) {
     uzliktDurvjuLabasPusesApgaismojumaParklajumus(mainamaisMasivs);
     uzliktDurvjuSpParklajumu(mainamaisMasivs);
+    uzliktKaratavuGramatu(mainamaisMasivs);
   }
 
   public static void uzliktDurvjuLejasParklajumus(String[] mainamaisMasivs) {

@@ -59,7 +59,8 @@ public class LogaSpoks extends Spoks {
     // Spoks uzbrūk varonim.
     else {
       VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("L O G A   S P O K S");
-      return null;
+      String[] tuksMasivs = new String[10];
+      return tuksMasivs;
     }
   }
 
