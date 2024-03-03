@@ -13,8 +13,10 @@ public class Spoks {
   
   // Spoka progressa vērtības. (Mainīgās vērtības)
   private int spokaAtputasLaikaMainamaKopija; // Šo mainīgo visu laiku maina.
+  private int SPOKA_FAZU_SKAITS;
   private int spokaFazesIndekss; // Nosaka, kādu bildi rādīs spēlē. (Progress līdz mērķa izpildei)
   private int randKustibasIespeja; // Skaitlis, kuru salīdzina ar spoka agresivitāti, lai tas spētu kustēties. Vērtība no 1 - 20 aktīvs, 0 neaktīvs.
+
 
   // Spoka stāvoklis. (ON vai OFF)
   private boolean spoksIrAktivs; // Ja spoks ir aktīvs, tad tas var kustēties, savādāk tas stāvēs netiks atjaunināts.
@@ -42,9 +44,18 @@ public class Spoks {
     setSpoksIrAktivs(false);
     spokaFazesIndekss = 0;
   }
+
+  /// Protected:
+  protected void setSpokuFazuSkaitu(int vertiba) {
+    SPOKA_FAZU_SKAITS = vertiba;
+  }
   
   // * Getters:
   /// Protected (Izmantojami tikai starp inheritējamiem bērniem (children)):
+  protected int getSpokuFazuSkaitu() {
+    return SPOKA_FAZU_SKAITS;
+  }
+
   protected int getSpokaAtlautaAgresivitate() {
     return spokaAtlautaAgresivitate;
   }
@@ -104,7 +115,7 @@ public class Spoks {
     return randKustibasIespeja = Main.rand.nextInt(20) + 1; // Vērtības no 1 - 20.
   }
   
-  /// Statiskās metodes (Izmantojamas main programmā):
+  /// Statiskās metodes (Izmantojamas main programmā vai citās metodēs vai thredos, kuri ir aktivizēti vai izmantoti main metodē):
   public static void atjauninatSpokus() {
     if (LogaSpoks.logaSpoks.getSpoksIrAktivs()) {
       LogaSpoks.logaSpoks.atjauninatSpoku();
@@ -140,6 +151,10 @@ public class Spoks {
     System.out.println(VirtuvesSpoks.virtuvesSpoks.toString());
   }
 
-
-  // TODO: Spoki neuzbrūk, ja nav viņu virzienā!!!!!!!!!!!!!! Katram spokam ir jāuzliek pārbaude vai tam ir max fāze, un jānoņem uzbrukšanas kods no fazesbildes metodēm!!!!!!!!!!
+  public static void parbauditSpokuFazes() {
+    // Metode pārbauda visu spoku fāzes, lai tie varētu uzbrukt spēlētājam.
+    LogaSpoks.logaSpoks.parbauditSpokaFazi();
+    DurvjuSpoks.durvjuSpoks.parbauditSpokaFazi();
+    VirtuvesSpoks.virtuvesSpoks.parbauditSpokaFazi();
+  }
 }

@@ -40,4 +40,10 @@ public final class K {
 
   // Tukšā ievade:
   public static String TUKSA_IEVADE = "}";
+
+  // Spoku pēdējās fāzes:
+  public static int LOGA_SPOKA_FAZES = 9;
+  public static int DURVJU_SPOKA_FAZES = 9;
+  public static int VIRTUVES_SPOKA_FAZES = 11;
+
 }

@@ -1,5 +1,8 @@
 package Spele;
 
+import Spele.Enums.Istabas;
+import Spele.Enums.Virzieni;
+
 public class PaligMetodes {
   // Šeit ir metodes, kuras atvieglos koda saprašanu un manu dzīvi.
   
@@ -25,5 +28,28 @@ public class PaligMetodes {
     try {
       Thread.sleep(sekundes * 1000);
     } catch (Exception e) {}
+  }
+
+
+  public static Istabas atrastIstabasEnumuPecTaCiparaVertibas(int vertiba) {
+    // * Metode atrod no Istabas enumiem enumu, kura vērtība atbilsts norādītajai
+    // * vērtībai, un pēc tam atgriež to.
+    for (Istabas istaba : Istabas.values()) {
+      if (istaba.CIPARS == vertiba) {
+        return istaba;
+      }
+    }
+    throw new RuntimeException(" Istabas enums ar norādīto vērtību " + vertiba + " neeksistē! ");
+  }
+
+  public static Virzieni atrastVirzienaEnumuPecTaCiparaVertibas(int vertiba) {
+    // * Metode atrod no Virziena enumiem enumu, kura vērtība atbilsts norādītajai
+    // * vērtībai, un pēc tam atgriež to.
+    for (Virzieni virziens : Virzieni.values()) {
+      if (virziens.CIPARS == vertiba) {
+        return virziens;
+      }
+    }
+    throw new RuntimeException(" Virziena enums ar norādīto vērtību " + vertiba + " neeksistē! ");
   }
 }

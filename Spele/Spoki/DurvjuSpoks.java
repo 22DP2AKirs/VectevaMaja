@@ -1,5 +1,6 @@
 package Spele.Spoki;
 
+import Spele.K;
 import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Izskati.SpokuIzskati;
 import Spele.SpelesProcesi.Main;
@@ -18,6 +19,7 @@ public class DurvjuSpoks extends Spoks {
 
   public DurvjuSpoks(int spokaAtlautaAgresivitate, int spokaAtputasLaiks) {
     super(spokaAtlautaAgresivitate, spokaAtputasLaiks);
+    setSpokuFazuSkaitu(K.DURVJU_SPOKA_FAZES);
   }
 
   // * Getters:
@@ -25,7 +27,7 @@ public class DurvjuSpoks extends Spoks {
     return 
     "Durvju sp aktivs: " + durvjuSpoks.getSpoksIrAktivs() + 
     ", Atputas gajieni: " + getMainamoAtputasLaiku() + 
-    ", Fazes indekss: " + getSpokaFazesIndekss() + 
+    ", Fazes indekss: " + getSpokaFazesIndekss() + " no " + getSpokuFazuSkaitu() +
     ", Durvis aizslegtas: " + IestatijumuDati.durvisSlegtas + ", " +
     getRandKustibasIespeja() + " < " + getSpokaAtlautaAgresivitate() + "\033[0K";
   }
@@ -40,7 +42,6 @@ public class DurvjuSpoks extends Spoks {
       return SpokuIzskati.durvjuSpokaFazesBildes[getSpokaFazesIndekss()];
     }
     else {
-      VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("D U R V J U   S P O K S");
       return SpokuIzskati.durvjuSpokaFazesBildes[0];
     }
   }
@@ -66,10 +67,14 @@ public class DurvjuSpoks extends Spoks {
       }
     }
   }
-  
-
 
   /// Protected:
+  protected void parbauditSpokaFazi() {
+    if (getSpokaFazesIndekss() == getSpokuFazuSkaitu()) {
+      VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("D U R V J U   S P O K S");
+    }
+  }
+
   protected void meginatIzveidotDurvjuSpoku() {
     if (!getSpoksIrAktivs() && Main.rand.nextInt(5) + 1 == 5) {
       izveidotJaunuDurvjuSpokaObjektu();

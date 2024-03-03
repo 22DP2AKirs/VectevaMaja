@@ -91,7 +91,7 @@ public class Main {
       // * ///// S P Ē L E S   C I K L S ///////
       while (spelePalaista) { // Kamēr laiks nav beidzies, turpināt ciklu jeb spēli.
         // ------------------ Apstrādā lietotāja ievadi.
-        Enums.mainitIstabasUnVirzienaEnumus(); // * Jāmaina pozīcija!!!
+        // Enums.mainitIstabasUnVirzienaEnumus(); // * Jāmaina pozīcija!!!
         DarbibuIzpilde.izpilditSpelesDarbibas(Enums.V_Istaba, Enums.V_Virziens, Ievade.lietotajaIevade); // Pilnībā aizvieto 'VaronaDarbibas.apstradatKomandu(Ievade.lietotajaIevade);'.
         // ------------------ Papildus informācijas izvade --Debuging--
         informacijasIzvade();

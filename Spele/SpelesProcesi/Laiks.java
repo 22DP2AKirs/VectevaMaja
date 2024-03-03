@@ -14,8 +14,6 @@ public class Laiks extends Thread {
   public static String laikaTeksts = "1 2 P M ";
   public static int vienaStunda = Main.spelesIlgums / 6;
 
-  public static int laiksCikIlgiElektribaBusIzslegta;
-
   @Override
   public void run() {
   
@@ -23,29 +21,19 @@ public class Laiks extends Thread {
       // Ja kāds proces padara thrediGul boolu true, tad šis threds gulēs 3 sekundes.
       paguletNoteiktuLaiku();
 
-      laikaVadiba(); // Skaita laiku un nosaka, kad spēle ir beigusies.
+      // Skaita laiku un nosaka, kad spēle ir beigusies.
+      laikaVadiba(); 
 
       // Spoku kods.
       Spoks.meginatIeslegtSpokus(); // Ja spoks ir neaktīvs, tad ir rand iespēja to aktivizēt.
-      Spoks.atjauninatSpokus();
+      Spoks.atjauninatSpokus(); // Nosaka, kāds būs spoka kustības rezultāts.
+      Spoks.parbauditSpokuFazes(); // Pārbauda vai spoks var uzbrukt varonim.
 
       randomIespejaIzslegtKadasIstabasGaismu(); // Iestatījums.
 
-      // Skaita, cik ilgi līdz elektrības pieslēgšanas.
-      if (!IestatijumuDati.elektribaIeslegta) { // Ja false, tad ...
-        if (laiksCikIlgiElektribaBusIzslegta < 1) {
-          SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\fuse-box-turning-on-off.wav", 0);
-          IestatijumuDati.elektribaIeslegta = true;
-        }
-        laiksCikIlgiElektribaBusIzslegta--;
-      }
-
-      if (VaronaDarbibas.aizdedzinatsSerkocins && VaronaDarbibas.serkocinaDeksanasLaikaSkaititajs != IestatijumuDati.maxSerkocinaDegsanasLaiks) {
-        VaronaDarbibas.serkocinaDeksanasLaikaSkaititajs++;
-      } else {
-        VaronaDarbibas.aizdedzinatsSerkocins = false;
-        VaronaDarbibas.serkocinaDeksanasLaikaSkaititajs = 0;
-      }
+      // Skaitītāji.
+      VaronaDarbibas.skaititCikIlgiLidzElektribasPieslegsanas();
+      VaronaDarbibas.skaititCikIlgiDegsSerkocins();
       
       // Gulēšana līdz nākamam kadram.
       PaligMetodes.gulet(1);
@@ -127,12 +115,8 @@ public class Laiks extends Thread {
   private void parbauditVaiVaronisPaspejaIzpilditMajasdarbu() {
     // * Metode pārbauda vai varonis ir izpildījis mājasdarbu noteiktajā laikā.
     // * Ja nav, tad viņš zaudē.
-
     if (Main.izveletaMazaSpele && !Main.varonaNemirstiba) {
       VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("MAJASDARBA_LAIKS");
-    }
-    else {
-
     }
   }
 

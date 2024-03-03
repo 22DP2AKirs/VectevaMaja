@@ -1,5 +1,6 @@
 package Spele.Spoki;
 
+import Spele.K;
 import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Izskati.SpokuIzskati;
 import Spele.SpelesProcesi.Main;
@@ -19,6 +20,7 @@ public class LogaSpoks extends Spoks {
 
   public LogaSpoks(int spokaAtlautaAgresivitate, int spokaAtputasLaiks) {
     super(spokaAtlautaAgresivitate, spokaAtputasLaiks);
+    setSpokuFazuSkaitu(K.LOGA_SPOKA_FAZES);
     izveletiesIstabu(Main.rand.nextInt(4));
   }
 
@@ -31,7 +33,7 @@ public class LogaSpoks extends Spoks {
     return 
     "Loga sp aktivs: " + getSpoksIrAktivs() + 
     ", Atputas gajieni: " + getMainamoAtputasLaiku() +
-    ", Fazes indekss: " + getSpokaFazesIndekss() + 
+    ", Fazes indekss: " + getSpokaFazesIndekss() + " no " + getSpokuFazuSkaitu() +
     ", Istaba: " + getLSIstabu() + ", " +
     getRandKustibasIespeja() + " < " + getSpokaAtlautaAgresivitate() + "\033[0K";
   }
@@ -56,15 +58,20 @@ public class LogaSpoks extends Spoks {
 
       throw new RuntimeException("Loga spoka istaba ir arpus pārbaudes vertibam." + istaba + ".-=");
     }
-    // Spoks uzbrūk varonim.
+    // Spoks uzbrūk varonim (nav vajadzīga bilde).
     else {
-      VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("L O G A   S P O K S");
       String[] tuksMasivs = new String[10];
       return tuksMasivs;
     }
   }
 
   /// Protected:
+  protected void parbauditSpokaFazi() {
+    if (getSpokaFazesIndekss() == getSpokuFazuSkaitu()) {
+      VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("L O G A   S P O K S");
+    }
+  }
+
   protected void meginatIzveidotLogaSpoku() {
     // ja (Spoks nav aktīvs un random iespēja).
     if (!getSpoksIrAktivs() && Main.rand.nextInt(5) + 1 == 5) {

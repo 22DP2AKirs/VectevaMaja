@@ -5,6 +5,9 @@ import Spele.SpelesProcesi.Main;
 import Spele.Spoki.DurvjuSpoks;
 import Spele.Spoki.LogaSpoks;
 import Spele.Spoki.VirtuvesSpoks;
+import Spele.Enums;
+import Spele.PaligMetodes;
+import Spele.Enums.KustibasVirziens;
 import Spele.Enums.Istabas;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Iestatijumi.IestatijumuDati;
@@ -16,39 +19,30 @@ public class VaronaDarbibas {
 
   public static boolean aizdedzinatsSerkocins = false; 
   public static int serkocinaDeksanasLaikaSkaititajs;
+  public static int laiksCikIlgiElektribaBusIzslegta;
 
   public static void parastasDarbibas(String panemtaIevade) {
-      if (panemtaIevade.equals("F") && IestatijumuDati.atlikusoSerkocinuDaudzums != 0 && !aizdedzinatsSerkocins) {
-          if (Main.rand.nextInt(3) == 0) { // 33.33 % iespēja aizdedzināt sērkociņu.
-            SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\lighting-matches.wav", 0);
-            aizdedzinatsSerkocins = true;
-            IestatijumuDati.atlikusoSerkocinuDaudzums--;
-          } 
-          else {
-              SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\failing-to-lit-matches.wav", 0);
-          }
-      } 
-      else if (panemtaIevade.equals("A")) { // Pagriezties pa kreisi.
-          pagrieztiesPaKreisi();
-      } 
-      else if (panemtaIevade.equals("W")) { // Iet uz priekšu.
-          ietUzPrieksu();
-      } 
-      else if (panemtaIevade.equals("D")) { // Pagriezties pa labi.
-          pagrieztiesPaLabi();
-      } 
-      else if (panemtaIevade.equals("1")) { // Pārslēdz režīmu.
-          infoLapasSecibasSkaitlis = 1;
-      } 
-      else if (panemtaIevade.equals("2")){
-          infoLapasSecibasSkaitlis = 2;
-      } 
-      else if (panemtaIevade.equals("3")) {
-          infoLapasSecibasSkaitlis = 3;
-      } 
-      else if (panemtaIevade.equals("4")) {
-          infoLapasSecibasSkaitlis = 4;
-      } 
+    if (panemtaIevade.equals("F") && IestatijumuDati.atlikusoSerkocinuDaudzums != 0 && !aizdedzinatsSerkocins) {
+      meginatAizdedzinatSerkocinu();
+    } 
+    else if (panemtaIevade.equals("A")) { // Pagriezties pa kreisi.
+      pagrieztGalvu(KustibasVirziens.NEGATIVS);
+    } 
+    else if (panemtaIevade.equals("D")) { // Pagriezties pa labi.
+      pagrieztGalvu(KustibasVirziens.POZITIVS);
+    } 
+    else if (panemtaIevade.equals("1")) { // Pārslēdz režīmu.
+      infoLapasSecibasSkaitlis = 1;
+    } 
+    else if (panemtaIevade.equals("2")){
+      infoLapasSecibasSkaitlis = 2;
+    } 
+    else if (panemtaIevade.equals("3")) {
+      infoLapasSecibasSkaitlis = 3;
+    } 
+    else if (panemtaIevade.equals("4")) {
+      infoLapasSecibasSkaitlis = 4;
+    } 
   }
 
   public static void testesanasDarbibas(String panemtaIevade) {
@@ -80,7 +74,7 @@ public class VaronaDarbibas {
     else if (panemtaIevade.equals("POWER OFF")) {
       if(IestatijumuDati.elektribaIeslegta) {
         IestatijumuDati.elektribaIeslegta = false;
-        Laiks.laiksCikIlgiElektribaBusIzslegta = 10;
+        laiksCikIlgiElektribaBusIzslegta = 10;
       } 
       else {
         IestatijumuDati.elektribaIeslegta = true;
@@ -101,7 +95,7 @@ public class VaronaDarbibas {
   /// * Gultas darbības:
   public static void gultasPrieksasKomandas(String komanda) {
     if (komanda.equals("W")) {
-      ietUzPrieksu(); ////////////////////////////////////////
+      kustetiesPaMaju(KustibasVirziens.POZITIVS); ////////////////////////////////////////
     }
     else if (komanda.equals("G")) {
       ieslegtIzslegtIstabasGaismu(Istabas.GULTA);
@@ -110,7 +104,7 @@ public class VaronaDarbibas {
 
   public static void gultasLabasPusesKomandas(String komanda) {
     if (komanda.equals("W")) {
-      ietUzPrieksu(); ////////////////////////////////////////
+      kustetiesPaMaju(KustibasVirziens.NEGATIVS); ////////////////////////////////////////
     }
     else if (komanda.equals("E")) {
       izslegtElektribu();
@@ -136,7 +130,7 @@ public class VaronaDarbibas {
 
   public static void divanaLabasPusesKomandas(String komanda) {
     if (komanda.equals("W")) {
-      ietUzPrieksu(); ////////////////////////////////////////
+      kustetiesPaMaju(KustibasVirziens.POZITIVS); ////////////////////////////////////////
     }
     else if (komanda.equals("G")) {
       ieslegtIzslegtIstabasGaismu(Istabas.DIVANS);
@@ -145,7 +139,7 @@ public class VaronaDarbibas {
 
   public static void divanaLejasKomandas(String komanda) {
     if (komanda.equals("W")) {
-      ietUzPrieksu(); ////////////////////////////////////////
+      kustetiesPaMaju(KustibasVirziens.NEGATIVS); ////////////////////////////////////////
     }
   }
 
@@ -165,7 +159,6 @@ public class VaronaDarbibas {
       aizbiedetDurvjuSpoku();
     }
     else if (komanda.equals("SLEGT")) {
-      // TODO
       aizslegtDurvis();
     }
     else if (komanda.equals("E") && Main.karatavas) {
@@ -175,7 +168,7 @@ public class VaronaDarbibas {
 
   public static void durvjuLejasKomandas(String komanda) {
     if (komanda.equals("W")) {
-      ietUzPrieksu(); ////////////////////////////////////////
+      kustetiesPaMaju(KustibasVirziens.POZITIVS); ////////////////////////////////////////
     }
     else if (komanda.equals("G")) {
       ieslegtIzslegtIstabasGaismu(Istabas.DURVIS);
@@ -184,14 +177,14 @@ public class VaronaDarbibas {
 
   public static void durvjuKreisasPusesKomandas(String komanda) {
     if (komanda.equals("W")) {
-      ietUzPrieksu(); ////////////////////////////////////////
+      kustetiesPaMaju(KustibasVirziens.NEGATIVS); ////////////////////////////////////////
     }
   }
 
   /// * Virtuves darbības.
   public static void virtuvesPrieksasKomandas(String komanda) {
     if (komanda.equals("W")) {
-      ietUzPrieksu(); ////////////////////////////////////////
+      kustetiesPaMaju(KustibasVirziens.NEGATIVS); ////////////////////////////////////////
     }
   }
 
@@ -210,7 +203,7 @@ public class VaronaDarbibas {
 
   public static void virtuvesKreisaPuseKomandas(String komanda) {
     if (komanda.equals("W")) {
-      ietUzPrieksu(); ////////////////////////////////////////
+      kustetiesPaMaju(KustibasVirziens.POZITIVS); ////////////////////////////////////////
     }
     else if (komanda.equals("G")) {
       ieslegtIzslegtIstabasGaismu(Istabas.VIRTUVE);
@@ -221,7 +214,28 @@ public class VaronaDarbibas {
 
 
   // * Darbības kā metodes:
-  public static void ieslegtIzslegtIstabasGaismu(Istabas istaba) {
+  /// Public:
+  public static void izietAraNoMspeles(String ievade) {
+    if (Main.varonisIrMazajaSpele) {
+      if (ievade.equals("Q")) {
+        Main.varonisIrMazajaSpele = false;
+      }
+    }
+  }
+
+  /// Private:
+  private static void meginatAizdedzinatSerkocinu() {
+    if (Main.rand.nextInt(3) == 0) { // 33.33 % iespēja aizdedzināt sērkociņu.
+      SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\lighting-matches.wav", 0);
+      aizdedzinatsSerkocins = true;
+      IestatijumuDati.atlikusoSerkocinuDaudzums--;
+    } 
+    else {
+      SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\failing-to-lit-matches.wav", 0);
+    }
+  }
+
+  private static void ieslegtIzslegtIstabasGaismu(Istabas istaba) {
     // Ja ir ieslēgta elektrība, tad var aiztikt lampas/istabu gaismas.
     if (IestatijumuDati.elektribaIeslegta) {
       if (IestatijumuDati.istabuGaismasIeslegtas[istaba.CIPARS]) {
@@ -235,17 +249,17 @@ public class VaronaDarbibas {
     }
   }
 
-  public static void izslegtElektribu() { // Kad izslēdz elektrību nosaka, kādi iestatījumi vai mainīgie mainās.
+  private static void izslegtElektribu() { // Kad izslēdz elektrību nosaka, kādi iestatījumi vai mainīgie mainās.
     SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\fuse-box-turning-on-off.wav", 0);
     aizbiedetVirtuvesSpoku();
 
     Arrays.fill(IestatijumuDati.istabuGaismasIeslegtas, false); // Visās istabās izslēdz gaismu.
 
     IestatijumuDati.elektribaIeslegta = false;
-    Laiks.laiksCikIlgiElektribaBusIzslegta = 3;
+    laiksCikIlgiElektribaBusIzslegta = 3;
   }
 
-  public static void ieslegtIzslegtMspelesInformaciju() {
+  private static void ieslegtIzslegtMspelesInformaciju() {
     if (Main.mSpeluInfo) {
       Main.mSpeluInfo = false;
     } 
@@ -255,7 +269,7 @@ public class VaronaDarbibas {
     Main.nodzestTerminali();
   }
 
-  public static void ieslegtIzslegtSpokuInformaciju() {
+  private static void ieslegtIzslegtSpokuInformaciju() {
     if (Main.spokuInfo) {
       Main.spokuInfo = false;
     } 
@@ -265,7 +279,7 @@ public class VaronaDarbibas {
     Main.nodzestTerminali();
   }
 
-  public static void aizbiedetLogaSpoku(Istabas istaba) {
+  private static void aizbiedetLogaSpoku(Istabas istaba) {
     // Metode var būt izsaukta tikai tad, kad varonis skatās uz iespējamo loga spoka vietu (Visi logi).
     // 1. Pārbauda vai loga spoks ir varoņa aktuālajā istabā. 2. Pārbauda vai spoks ir ieslēgts jeb aktīvs.
     if (LogaSpoks.logaSpoks.getLSIstabu().equals(istaba.ISTABA) && LogaSpoks.logaSpoks.getSpoksIrAktivs()) {
@@ -274,25 +288,17 @@ public class VaronaDarbibas {
     }
   }
 
-  public static void aizbiedetVirtuvesSpoku() {
+  private static void aizbiedetVirtuvesSpoku() {
     if (VirtuvesSpoks.virtuvesSpoks.getSpoksIrAktivs()) {
       SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\spoks_krit_leja_pa_kapnem.wav", VirtuvesSpoks.virtuvesSpoks.getSpokaFazesIndekss() - 17);
       VirtuvesSpoks.virtuvesSpoks.deaktivizetSpoku();
     }
   }
 
-  public static void aizbiedetDurvjuSpoku() {
+  private static void aizbiedetDurvjuSpoku() {
     if (DurvjuSpoks.durvjuSpoks.getSpoksIrAktivs()) {
       // Skaņa -->
       DurvjuSpoks.durvjuSpoks.deaktivizetSpoku();
-    }
-  }
-
-  public static void izietAraNoMspeles(String ievade) {
-    if (Main.varonisIrMazajaSpele) {
-      if (ievade.equals("Q")) {
-        Main.varonisIrMazajaSpele = false;
-      }
     }
   }
 
@@ -312,68 +318,70 @@ public class VaronaDarbibas {
   private static void aizslegtDurvis() {
     if (!IestatijumuDati.durvisSlegtas && DurvjuSpoks.durvjuSpoks.getSpokaFazesIndekss() == 0) {
       IestatijumuDati.durvisSlegtas = true;
+      DurvjuSpoks.durvjuSpoks.deaktivizetSpoku();
+    }
+  }
+
+  // * Laika threda metodes:
+  public static void skaititCikIlgiLidzElektribasPieslegsanas() {
+    // Skaita, cik ilgi līdz elektrības pieslēgšanas.
+    if (!IestatijumuDati.elektribaIeslegta) { // Ja false, tad ...
+      if (laiksCikIlgiElektribaBusIzslegta < 1) {
+        SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\fuse-box-turning-on-off.wav", 0);
+        IestatijumuDati.elektribaIeslegta = true;
+      }
+      laiksCikIlgiElektribaBusIzslegta--;
+    }
+  }
+
+  public static void skaititCikIlgiDegsSerkocins() {
+    // * Metode skaita, cik ilgi līdz sērkociņš izdegs, un pēc tam izdzēš to.
+    // Ja sērkociņš ir aizdedzināts un tagadējais degšanas laiks nav vienāds ar iestatījumos uzstādīto laiku, tad ...
+    if (aizdedzinatsSerkocins && serkocinaDeksanasLaikaSkaititajs != IestatijumuDati.maxSerkocinaDegsanasLaiks) {
+      serkocinaDeksanasLaikaSkaititajs++;
+    } 
+    // Citādi ...
+    else {
+      aizdedzinatsSerkocins = false;
+      serkocinaDeksanasLaikaSkaititajs = 0;
     }
   }
 
 
+  // * Varoņa kustību metodes:
+  private static void pagrieztGalvu(KustibasVirziens vertiba) { // vērtības -1  vai  1.
+    // * Metode ir atbildīga par varoņa galvas pagriežšanu pa labi (poz. vērtība), un pa kreisi (neg. vērtība).
+    int varonaVirziens = Enums.V_Virziens.CIPARS;
 
+    varonaVirziens += vertiba.CIPARS;
 
+    // Pārbauda, lai vērtība neaiziet aiz robežas.
+    if (varonaVirziens == 4) {
+      varonaVirziens = 0;
+    }
+    else if (varonaVirziens == -1) {
+      varonaVirziens = 3;
+    }
 
-  
-
-  
-
-  
-
-
-  private static void pagrieztiesPaKreisi() {
-    DarbibuIzpilde.varonaVirzienaCipars--;
-      if (DarbibuIzpilde.varonaVirzienaCipars < 0) { // Lai masīvs neizietu no diapazonas.
-        DarbibuIzpilde.varonaVirzienaCipars = 3;
-      }
+    Enums.V_Virziens = PaligMetodes.atrastVirzienaEnumuPecTaCiparaVertibas(varonaVirziens);
   }
 
+  private static void kustetiesPaMaju(KustibasVirziens vertiba) { // vērtības -1  vai  1.
+    // * Metode ir atbildīga par kustību pa māju.
+    // Kopā mājā ir 4 istabas, kurās var iet iekšā gan pulksteņrādītāja virzienā, gan pret to (vērtība neg. vai poz.).
+    // Istabu indeksi: 0. Gulta, 1. Dīvāna istaba, 2. Durvju istaba, 3. Virtuve.
+    int istabasCipars = Enums.V_Istaba.CIPARS;
+    
+    istabasCipars += vertiba.CIPARS;
 
-  private static void pagrieztiesPaLabi() {
-    DarbibuIzpilde.varonaVirzienaCipars++;
-      if (DarbibuIzpilde.varonaVirzienaCipars > 3) { // Lai masīvs neizietu no diapazonas.
-        DarbibuIzpilde.varonaVirzienaCipars = 0;
-      }
-  }
+    // Pārbauda, lai vērtība neaiziet aiz robežas.
+    if (istabasCipars == 4) {
+      istabasCipars = 0;
+    }
+    else if (istabasCipars == -1) {
+      istabasCipars = 3;
+    }
 
-
-  private static void ietUzPrieksu() {  // Kustība pa māju.
-      // Kopā mājā ir 4 istabas, kurās var iet iekšā gan pulksteņrādītāja virzienā, gan pret to.
-      // 0. Gulta, 1. Dīvāna istaba, 2. Durvju istaba, 3. Virtuve.
-      // Istabas virzieni:
-      // 0. Priekša, 1. Labā puse, 2. Leja, 3. Kreisā puse.
-
-      
-
-      if (DarbibuIzpilde.varonaIstabasCipars == 0) {
-          if (DarbibuIzpilde.varonaVirzienaCipars == 0) {
-            DarbibuIzpilde.varonaIstabasCipars++;
-          } else if (DarbibuIzpilde.varonaVirzienaCipars == 1) {
-            DarbibuIzpilde.varonaIstabasCipars = 3; // Pret "pulksteņrādītāja secības" cikla: 0 -3- 2 1 0 -3- 2 1 0.
-          }
-      } else if (DarbibuIzpilde.varonaIstabasCipars == 1) {
-          if (DarbibuIzpilde.varonaVirzienaCipars == 1) { // Labās durvis.
-            DarbibuIzpilde.varonaIstabasCipars++;
-          } else if (DarbibuIzpilde.varonaVirzienaCipars == 2) { // Lejas durvis.
-            DarbibuIzpilde.varonaIstabasCipars--;
-          }
-      } else if (DarbibuIzpilde.varonaIstabasCipars == 2) {
-          if (DarbibuIzpilde.varonaVirzienaCipars == 2) { // Lejas durvis.
-            DarbibuIzpilde.varonaIstabasCipars++;
-          } else if (DarbibuIzpilde.varonaVirzienaCipars == 3) { // Kreisās durvis.
-            DarbibuIzpilde.varonaIstabasCipars--;
-          }
-      } else if (DarbibuIzpilde.varonaIstabasCipars == 3) {
-          if (DarbibuIzpilde.varonaVirzienaCipars == 3) {
-            DarbibuIzpilde.varonaIstabasCipars = 0; //  Pēdējā no 4 istabām. Ciparam ir jāmainās pēc "pulksteņrādītāja secības" cikla: 0 1 2 3 -0- 1 2 3 -0-.
-          } else if (DarbibuIzpilde.varonaVirzienaCipars == 0) {
-            DarbibuIzpilde.varonaIstabasCipars--;
-          }
-      }
+    Enums.V_Istaba = PaligMetodes.atrastIstabasEnumuPecTaCiparaVertibas(istabasCipars);
   }
 }

@@ -1,5 +1,6 @@
 package Spele.Spoki;
 
+import Spele.K;
 import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Izskati.SpokuIzskati;
 import Spele.SpelesProcesi.Main;
@@ -23,6 +24,7 @@ public class VirtuvesSpoks extends Spoks {
 
   public VirtuvesSpoks(int spokaAtlautaAgresivitate, int spokaAtputasLaiks) {
     super(spokaAtlautaAgresivitate, spokaAtputasLaiks);
+    setSpokuFazuSkaitu(K.VIRTUVES_SPOKA_FAZES);
     ieslegtasGaismasAgresivitate = spokaAtlautaAgresivitate + 5;
   }
 
@@ -32,7 +34,7 @@ public class VirtuvesSpoks extends Spoks {
     getRandKustibasIespeja() + " < " + getSpokaAktualoAgresivitati() +
     ", Virt sp aktivs: " + getSpoksIrAktivs() + 
     ", Atputas gajieni: " + getMainamoAtputasLaiku() + 
-    ", Fazes indekss: " + getSpokaFazesIndekss() +
+    ", Fazes indekss: " + getSpokaFazesIndekss() + " no " + getSpokuFazuSkaitu() +
     ", Pagraba gaisma ieslegta: " + IestatijumuDati.pagrabaGaisma +
     ", Spuldzite saplesta: " + IestatijumuDati.spuldziteSaplesta +
     "\033[0K";
@@ -52,7 +54,6 @@ public class VirtuvesSpoks extends Spoks {
   
   // * Citas metodes:
   /// Public:
-  
   protected void noteiktGajienaRezultatu() {
     // * Metode overwrito super metodi, lai tā atbilsu virtuves spoka unikālajai agresivitātei.
     // Nosaka vai spoks cenšas kustēties vai nē.
@@ -84,14 +85,17 @@ public class VirtuvesSpoks extends Spoks {
     }
     // Uzbrūk varonim.
     else {
-      VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("V I R T U V E S   S P O K S");
       return SpokuIzskati.virtuvesSpokaFazesBildes[0];
     }
   }
 
-  
+  /// Protected:
+  protected void parbauditSpokaFazi() {
+    if (getSpokaFazesIndekss() == getSpokuFazuSkaitu()) {
+      VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("V I R T U V E S   S P O K S");
+    }
+  }
 
-  // Protected:
   protected void meginatIzveidotVirtuvesSpoku() {
     if (!getSpoksIrAktivs() && Main.rand.nextInt(5) + 1 == 5) {
       izveidotJaunuVirtuvesSpokaObjektu();
