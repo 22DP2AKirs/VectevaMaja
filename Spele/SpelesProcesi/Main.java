@@ -5,6 +5,7 @@ import java.util.Random;
 import Spele.Enums;
 import Spele.IzvadeUzTerminalu;
 import Spele.K;
+import Spele.Testi;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Izskati.EkranuIzskati;
 import Spele.Enums.EkranuVeidi;
@@ -54,7 +55,7 @@ public class Main {
   public static void main(String[] args) throws InterruptedException { // throws InterruptedException nozīmē, ka var neizmantot try_catch.
     // * Galvenais programmas process.
 
-    // Testi.testaProgramma();
+    Testi.testaProgramma();
 
     // ? /////// T H R E D I //////////
     // Jaunie rīki jeb thredi, jeb objekti.

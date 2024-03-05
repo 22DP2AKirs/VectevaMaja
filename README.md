@@ -14,14 +14,14 @@ Komandas bieži būs redzamas uz ekrāna, viss kas Jums ir jādara ir pēc katra
 ## Idejas:
 - [x] Iespēja mierīgi staigāt apkārt pa māju.
 - [x] Ielikt iepriekšējās spēles spokus.
-- [ ] Jaunas mehānikas vecajiem spokiem. {Loga spoks var izvēlēties savu istabu.}
+- [x] Jaunas mehānikas vecajiem spokiem. {Loga spoks var izvēlēties savu istabu.}
 - [ ] Jauni spoki:
 - [ ] Mājas arku jeb durvju monstrs.
 - [ ] Papildus loga spoks.
 - [x] Strādājošs laiks.
 - [ ] Mājas darbības. {Karātavas , skill check , }
 - [ ] Mājas darbību pienākošais laiks, piem., tīrīt traukus 2 AM, pildīt mājas darbus no 4 - 5 AM.
-- [ ] Lietotāja UI - User interface.
+- [x] Lietotāja UI - User interface.
 - [ ] Sienas pulksteņa darbības???
 - [ ] Skaņa.
 - [ ] Izskrāsot durvis brūnas un logus zilus (Ādama ideja).
