@@ -11,14 +11,17 @@ public class Testi {
     Scanner iLasitajs = new Scanner(System.in);
     Main.nodzestTerminali();
 
-    AtrodiPari atrodiPari = new AtrodiPari(2, 8);
+    AtrodiPari atrodiPari = new AtrodiPari(4, 4);
 
     // Cikls.
     while (true) {
       // Lietotāja ievade.
       Main.nodzestTerminali();
       System.out.println("Jusu Tabula: ");
+      atrodiPari.aizpilditRezgi();
       atrodiPari.izvaditRezgi();
+
+
       System.out.print("\rJusu ievade: ");
       String ievade = iLasitajs.nextLine();
       
