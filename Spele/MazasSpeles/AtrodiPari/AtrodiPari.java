@@ -1,5 +1,6 @@
 package Spele.MazasSpeles.AtrodiPari;
 
+import Spele.SpelesProcesi.Ievade;
 import Spele.SpelesProcesi.Main;
 
 // Atrodi pāri algoritms.
@@ -15,6 +16,9 @@ public class AtrodiPari {
   */ // Režģis jeb grid:
   private int kolonnas;
   private int rindas;
+  int karsuDaudzums;
+
+  int ieprieksejaisIevadesSkaitlis;
 
   // Iespējamie pozitīvie skaitļi:
   int[] pozitivie = { 2 , 4 , 6 , 8 };
@@ -34,22 +38,57 @@ public class AtrodiPari {
     this.rindas = rindas;
     this.kolonnas = kolonnas;
     rezgis = new int[rindas][kolonnas];
-    
+    karsuDaudzums = rindas * kolonnas;
   }
 
+  public void izveletiesDivasKartis() {
+    ieprieksejaisIevadesSkaitlis = Integer.parseInt(Ievade.lietotajaIevade);
+  }
+
+
   public void aizpilditRezgi() {
-    // Metode aizpilda režģi jeb masīvu ar random cipariem, kuri neatkārtojas vairāk par 2 reizēm,
-    // bet atkārtojas vismaz 2 reizes (vienmēr būs 2 vienādi cipari).
+    /* Metode aizpilda režģi jeb masīvu ar cipariem no 1 - n.
+       Katrs cipars atkārtojas 1 reizi.
+    */
+    int ciparsXskaitlis = 0; // cipars vai skaitlis, kuru definē kā masīva elementu
+    int skaititajs = -1; // Skaita cik reizes iekšējais cikls ir atkārtojies.
+
+    // Cikla beigās, katram skaitlim vai ciparam ir jābūt savam pārim.
     for (int i = 0; i < rindas; i++) {
       for (int j = 0; j < kolonnas ; j++) {
-        // while (true) {
-          rezgis[i][Main.rand.nextInt(kolonnas)] = rezgaCipari[i][j];
-
-        // }
+        skaititajs++;
+        // Pārbauda vai cikls jau ir atkārtojies 1 reizi un palielina pie masīva pieliekamo ciparu.
+        if (skaititajs % 2 == 0) {
+          ciparsXskaitlis++;
+        }
+        // Masīvā ieliek apstrādāto skaitli.
+        rezgis[i][j] = ciparsXskaitlis;
       }
     }
+  }
 
+  public void samaisitRezgi() {
+    int maisisanasReizes = 30; // 30 reizes, labi samaisa kārtis.
+    int elementsKuruMainit; // Saglabā izvēlēto emelento uz noteiktu laiku.
 
+    while (maisisanasReizes-- != 0) {
+      // Elementa poz. kuru mainīs.
+      int randRinda = Main.rand.nextInt(rindas);
+      int randKolonna = Main.rand.nextInt(kolonnas);
+
+      elementsKuruMainit = rezgis[randRinda][randKolonna];
+
+      // Otrā elementa poz. uz kuru mainīs.
+      int randRinda2 = Main.rand.nextInt(rindas);
+      int randKolonna2 = Main.rand.nextInt(kolonnas);
+
+      // Nomaina pirmo (izvēlēto) elementu uz otro.
+      rezgis[randRinda][randKolonna] = rezgis[randRinda2][randKolonna2];
+
+      // Nomaina otro (izvēlēto) elementu uz saglabāto pirmo.
+      rezgis[randRinda2][randKolonna2] = elementsKuruMainit;
+    }
+    System.out.println("Done");
   }
 
   public void izvaditRezgi() {
@@ -63,7 +102,4 @@ public class AtrodiPari {
     }
     System.out.println("Atrasti " + karsuPari + " karsu pari!");
   }
-
-
-
 }

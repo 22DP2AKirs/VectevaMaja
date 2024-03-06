@@ -11,7 +11,7 @@ public class Testi {
     Scanner iLasitajs = new Scanner(System.in);
     Main.nodzestTerminali();
 
-    AtrodiPari atrodiPari = new AtrodiPari(4, 4);
+    AtrodiPari atrodiPari = new AtrodiPari(4, 5);
 
     // Cikls.
     while (true) {
@@ -19,6 +19,7 @@ public class Testi {
       Main.nodzestTerminali();
       System.out.println("Jusu Tabula: ");
       atrodiPari.aizpilditRezgi();
+      atrodiPari.samaisitRezgi();
       atrodiPari.izvaditRezgi();
 
 
