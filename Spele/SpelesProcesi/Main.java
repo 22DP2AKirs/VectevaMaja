@@ -9,6 +9,7 @@ import Spele.Testi;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Izskati.EkranuIzskati;
 import Spele.Enums.EkranuVeidi;
+import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienotaisKods;
 import Spele.MazasSpeles.Karatavas.SavienotaisKaratavuKods;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.Spoki.Spoks;
@@ -38,6 +39,8 @@ public class Main {
   public static boolean karatavas;
   public static boolean mazasSpelesRezultataParskats = false;
 
+  public static boolean atrodiPari;
+
   // Varoņa īpašības.
   public static boolean varonaNemirstiba = false; // Vai varonis var zaudēt spēli vai nē.
   
@@ -55,20 +58,21 @@ public class Main {
   public static void main(String[] args) throws InterruptedException { // throws InterruptedException nozīmē, ka var neizmantot try_catch.
     // * Galvenais programmas process.
 
+    // Dažādu metožu un ideju testēšanas fails.
     Testi.testaProgramma();
-
+    
     // ? /////// T H R E D I //////////
     // Jaunie rīki jeb thredi, jeb objekti.
     Ievade ievadesLasitajs = new Ievade(); // Arī threads, bet šis lasa ievadi.
     SkanasSpeletajs skanasSpeletajs = new SkanasSpeletajs();
-
+    
     // Sākas atsevišķās darbības jeb patstāvīgie procesi.
     skanasSpeletajs.start(); // Strādā, kamēr spelePalaista bools ir true.
     ievadesLasitajs.start(); // Strādā, kamēr programmaPalaista bools ir true.
-    
+
     // Izveido un izslēdz spokus (inicializē, lai pēc tam tos izmantotu spēlē).
     Spoks.izslegtSpokus(); 
-
+    
     // * P R O G R A M M A S   C I K L S //
     while (programmaPalaista) {
       nodzestTerminali();
@@ -125,7 +129,12 @@ public class Main {
       IzvadeUzTerminalu.salipinataUIIzvade(); // Izvade uz ekrāna.
     }
     else {
-      SavienotaisKaratavuKods.karatavuKods();
+      if (karatavas) {
+        SavienotaisKaratavuKods.karatavuKods();
+      }
+      else if (atrodiPari) {
+        AtrodiPariSavienotaisKods.palaistKarsuSpeli();
+      }
     }
   }
 

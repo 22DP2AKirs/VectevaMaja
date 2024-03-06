@@ -5,6 +5,33 @@ import Spele.Enums.Virzieni;
 
 public class PaligMetodes {
   // Šeit ir metodes, kuras atvieglos koda saprašanu un manu dzīvi.
+
+  public static boolean navTuksasIevades(String ievade) {
+    // * Pārbauda vai ievadē ir 'tukšas ievades' simbols [ } ].
+    if (ievade.equals(K.TUKSA_IEVADE) || ievade.equals("")) {
+      return false;
+    }
+    return true;
+  }
+
+  public static boolean navTuksaisIevadesSimbols(String ievade) {
+    // * Pārbauda vai ievadē ir 'tukšas ievades' simbols [ } ].
+    if (ievade.equals(K.TUKSA_IEVADE)) {
+      return false;
+    }
+    return true;
+  }
+
+  public static boolean irSkaitlis(String ievade) {
+    // * Pārbauda vai ievadi var pārveidot par skaitli.
+    try {
+      Integer.parseInt(ievade);
+      return true;
+    } 
+    catch (Exception e) {
+      return false;
+    }
+  }
   
   public static String[] nomainitMasivaElementu(String[] masivs, String mainamaisElements, String jaunaisElements) {
     // * Metode pareizi izpildās tikai tad, ja masīvā nav identisku elementu.

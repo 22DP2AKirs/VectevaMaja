@@ -1,5 +1,6 @@
 package Spele;
 
+
 import java.util.Scanner;
 
 import Spele.MazasSpeles.AtrodiPari.AtrodiPari;
@@ -10,21 +11,26 @@ public class Testi {
     // Sagatave pirms spēles cikla.
     Scanner iLasitajs = new Scanner(System.in);
     Main.nodzestTerminali();
+    
+    String ievade = iLasitajs.nextLine();
 
-    AtrodiPari atrodiPari = new AtrodiPari(4, 5);
+    AtrodiPari.izveidotJaunuKarsuSpeli();
+    AtrodiPari.atrodiPari.sagatavotRezgiSpelesanai();
 
     // Cikls.
     while (true) {
       // Lietotāja ievade.
       Main.nodzestTerminali();
+      AtrodiPari.atrodiPari.parbauditKarsuRezultatu();
       System.out.println("Jusu Tabula: ");
-      atrodiPari.aizpilditRezgi();
-      atrodiPari.samaisitRezgi();
-      atrodiPari.izvaditRezgi();
-
+      AtrodiPari.atrodiPari.izvaditRezgi();
+      AtrodiPari.atrodiPari.izvaditAtklatoRezgi();
+      AtrodiPari.atrodiPari.izveletiesKarsuPozicijas(ievade);
+      
+      AtrodiPari.atrodiPari.salipinatKartisVienaBilde();
 
       System.out.print("\rJusu ievade: ");
-      String ievade = iLasitajs.nextLine();
+      ievade = iLasitajs.nextLine();
       
     //   System.out.print("\033[F"); // Noliek mirgojošo kursoru vienu līniju uz augšu.
 

@@ -3,6 +3,8 @@ package Spele.SpelesProcesi;
 import Spele.PaligMetodes;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Iestatijumi.IestatijumuDati;
+import Spele.MazasSpeles.AtrodiPari.AtrodiPari;
+import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienotaisKods;
 import Spele.MazasSpeles.Karatavas.SavienotaisKaratavuKods;
 import Spele.Spoki.Spoks;
 import Spele.Varonis.VaronaDarbibas;
@@ -129,7 +131,8 @@ public class Laiks extends Thread {
       Main.karatavas = true;
     }
     else if (randCipars == 1) {
-      // kods.
+      AtrodiPari.izveidotJaunuKarsuSpeli();
+      Main.atrodiPari = true;
     }
     Main.izveletaMazaSpele = true;
   }

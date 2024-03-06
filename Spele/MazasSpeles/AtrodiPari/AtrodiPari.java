@@ -1,6 +1,9 @@
 package Spele.MazasSpeles.AtrodiPari;
 
-import Spele.SpelesProcesi.Ievade;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import Spele.PaligMetodes;
 import Spele.SpelesProcesi.Main;
 
 // Atrodi pāri algoritms.
@@ -16,35 +19,103 @@ public class AtrodiPari {
   */ // Režģis jeb grid:
   private int kolonnas;
   private int rindas;
-  int karsuDaudzums;
+  private int karsuPari;
 
-  int ieprieksejaisIevadesSkaitlis;
+  private boolean izvelejasPirmoKarti;
 
-  // Iespējamie pozitīvie skaitļi:
-  int[] pozitivie = { 2 , 4 , 6 , 8 };
-  int[] negativie = { 1 , 3 , 5 , 7 };
+  private int[] otrasKartsPozicija = new int[2];
+  private int[] pirmasKartsPozicija = new int[2];
 
-  double karsuPari = 0.0;
+  private static int[] rindasSkaitli = { 1 , 2 , 3 }; // Rindām.
+  private static int[] kolonnasSkaitli = { 2 , 4 }; // Kolonnām.
 
-  public static int[][] rezgis;
+  public static int[][] atklataisRezgis;
+  public static int[][] speletajaRezgis;
 
-  int[][] rezgaCipari = {
-    { 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 }, 
-    { 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 }
-  };
+  public static AtrodiPari atrodiPari;
 
   public AtrodiPari(int rindas, int kolonnas) {
-    
     this.rindas = rindas;
     this.kolonnas = kolonnas;
-    rezgis = new int[rindas][kolonnas];
-    karsuDaudzums = rindas * kolonnas;
+    speletajaRezgis = new int[rindas][kolonnas];
+    atklataisRezgis = new int[rindas][kolonnas];
+    karsuPari = rindas * kolonnas / 2;
   }
 
-  public void izveletiesDivasKartis() {
-    ieprieksejaisIevadesSkaitlis = Integer.parseInt(Ievade.lietotajaIevade);
+  // * Getters:
+  public int getRindas() {
+    return rindas;
   }
 
+  public int getKolonnas() {
+    return kolonnas;
+  }
+  // TODO var ievadīt kāršu pozīcijas, kuras ir ārpus array robežas!!!!!!!!!!!!!!
+
+  // * Metodes:
+  /// Public:
+  public String[] salipinatKartisVienaBilde() {
+    ArrayList<String> salimetaBilde = new ArrayList<>();
+    
+    String[] bildesRinda = new String[9];
+    Arrays.fill(bildesRinda, "| ");
+    bildesRinda[8] = "+"; // Lai dizains sakristu.
+    for (int i = 0; i < getRindas() ; i++) { // Rindu cikls.
+      for (int j = 0 ; j < getKolonnas() ; j++ ) { // Kolonnu cikls.
+        // Cikls izpildās tik reizes, cik karsu masīva bildes līniju, ar indeksu no spēlētājaRežģa masīva.
+        for (int k = 0 ; k < 8; k++) {
+          bildesRinda[k] += AtrodiPariIzskati.karsuMasivs[speletajaRezgis[i][j]][k] + " | ";
+        }
+        bildesRinda[8] += "----------------+";
+      }
+
+      // Pievieno bildes rindu kopējai bildei.
+      for (String linija : bildesRinda) {
+        salimetaBilde.add(linija);
+      }
+
+      // Attīra masīvu no elementiem.
+      Arrays.fill(bildesRinda, "| ");
+      bildesRinda[8] = "+"; // Lai dizains sakristu.
+    }
+
+    for (String linija : salimetaBilde) {
+      System.out.println(linija);
+    }
+
+
+
+    return null;
+  }
+  public static void izveidotJaunuKarsuSpeli() {
+    atrodiPari = new AtrodiPari(rindasSkaitli[2] , kolonnasSkaitli[1]); // rindasSkaitli[Main.rand.nextInt(3)], kolonnasSkaitli[Main.rand.nextInt(2)]
+  }
+
+  public void sagatavotRezgiSpelesanai() {
+    aizpilditRezgi();
+    samaisitRezgi();
+  }
+
+  public void parbauditKarsuRezultatu() {
+    if (karsuPari == 0) {
+      System.out.println("VICTORYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
+      System.out.println("VICTORYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
+      System.out.println("VICTORYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
+      System.out.println("VICTORYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
+      System.out.println("VICTORYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
+      System.out.println("VICTORYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
+      System.out.println("VICTORYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
+      System.out.println("VICTORYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
+      System.out.println("VICTORYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
+      System.out.println("VICTORYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
+    }
+  }
+  
+  public void izveletiesKarsuPozicijas(String ievade) {
+    if (PaligMetodes.navTuksasIevades(ievade) && PaligMetodes.irSkaitlis(ievade)) {
+      parveidotPozicijasIevadiUzIndeksiem(ievade);
+    }
+  }
 
   public void aizpilditRezgi() {
     /* Metode aizpilda režģi jeb masīvu ar cipariem no 1 - n.
@@ -62,7 +133,7 @@ public class AtrodiPari {
           ciparsXskaitlis++;
         }
         // Masīvā ieliek apstrādāto skaitli.
-        rezgis[i][j] = ciparsXskaitlis;
+        atklataisRezgis[i][j] = ciparsXskaitlis;
       }
     }
   }
@@ -76,30 +147,96 @@ public class AtrodiPari {
       int randRinda = Main.rand.nextInt(rindas);
       int randKolonna = Main.rand.nextInt(kolonnas);
 
-      elementsKuruMainit = rezgis[randRinda][randKolonna];
+      elementsKuruMainit = atklataisRezgis[randRinda][randKolonna];
 
       // Otrā elementa poz. uz kuru mainīs.
       int randRinda2 = Main.rand.nextInt(rindas);
       int randKolonna2 = Main.rand.nextInt(kolonnas);
 
       // Nomaina pirmo (izvēlēto) elementu uz otro.
-      rezgis[randRinda][randKolonna] = rezgis[randRinda2][randKolonna2];
+      atklataisRezgis[randRinda][randKolonna] = atklataisRezgis[randRinda2][randKolonna2];
 
       // Nomaina otro (izvēlēto) elementu uz saglabāto pirmo.
-      rezgis[randRinda2][randKolonna2] = elementsKuruMainit;
+      atklataisRezgis[randRinda2][randKolonna2] = elementsKuruMainit;
     }
     System.out.println("Done");
   }
 
   public void izvaditRezgi() {
     // Metode izvada izveidoto masīvu.
+    System.out.println("   0. 1. 2. 3.");
     for (int i = 0; i < rindas; i++) {
+      System.out.print(i + ". ");
       for (int j = 0; j < kolonnas; j++) {
-        System.out.print(rezgis[i][j] + "  ");
-        karsuPari += 0.5;
+        System.out.print(speletajaRezgis[i][j] + "  ");
       }
       System.out.println();
     }
-    System.out.println("Atrasti " + karsuPari + " karsu pari!");
   }
+
+  public void izvaditAtklatoRezgi() {
+    // Metode izvada izveidoto masīvu.
+    System.out.println();
+    for (int i = 0; i < rindas; i++) {
+      for (int j = 0; j < kolonnas; j++) {
+        System.out.print(atklataisRezgis[i][j] + "  ");
+      }
+      System.out.println();
+    }
+  }
+
+  /// Private:
+  private void nodzestAbuKarsuKoordinatas() {
+    // Nodzēš abu kāršu koord. jeb izveido jaunus masīvus.
+    pirmasKartsPozicija = new int[2];
+    otrasKartsPozicija = new int[2];
+  }
+  
+  private void apgriestKartis() {
+    // Ja abu kāršu vērtības ir identiskas, tad tās apgriež (parāda spēlētājaRežģī).
+    if (atklataisRezgis[pirmasKartsPozicija[0]][pirmasKartsPozicija[1]] == atklataisRezgis[otrasKartsPozicija[0]][otrasKartsPozicija[1]]) {
+      // Nomaina abas spēlētāja režģa elementus.
+      speletajaRezgis[pirmasKartsPozicija[0]][pirmasKartsPozicija[1]] = 
+      speletajaRezgis[otrasKartsPozicija[0]][otrasKartsPozicija[1]] = 
+      atklataisRezgis[pirmasKartsPozicija[0]][pirmasKartsPozicija[1]];
+
+      // Noņem atrastās kārtis no kopējā neatrasto kāršu skaita.
+      karsuPari--;
+    }
+  }
+
+  private void parveidotPozicijasIevadiUzIndeksiem(String ievade) {
+    // * Pārbauda vai ievade var būt sadalīta uz 2 elementiem, un ja var, tad sadla tos
+    if (ievade.length() == 2) { // 02 vai 53, vai 90 u.t.t..
+      String[] masivs = ievade.split(""); // sadala uz , piem., 0 2 vai 5 3, vai 9 0 u.t.t..
+      if (!izvelejasPirmoKarti) {
+        pirmasKartsPozicija[0] = Integer.parseInt(masivs[0]);
+        pirmasKartsPozicija[1] = Integer.parseInt(masivs[1]);
+        // Vieta kārts bildītes nomaiņai.
+
+        System.out.println(pirmasKartsPozicija[0] + ", " + pirmasKartsPozicija[1]);
+        System.out.println(otrasKartsPozicija[0] + ", " + otrasKartsPozicija[1]);
+
+        izvelejasPirmoKarti = true;
+      }
+      else {
+        otrasKartsPozicija[0] = Integer.parseInt(masivs[0]);
+        otrasKartsPozicija[1] = Integer.parseInt(masivs[1]);
+        // Vieta kārts bildītes nomaiņai.
+
+        System.out.println(pirmasKartsPozicija[0] + ", " + pirmasKartsPozicija[1]);
+        System.out.println(otrasKartsPozicija[0] + ", " + otrasKartsPozicija[1]);
+
+        // Tālākais izpildes kods:
+        if (!Arrays.equals(pirmasKartsPozicija, otrasKartsPozicija)) {
+          apgriestKartis();
+        }
+
+        // Nodzēš abu kāršu pozicijas.
+        nodzestAbuKarsuKoordinatas();
+
+        izvelejasPirmoKarti = false;
+      }
+    }
+  } 
 }
