@@ -1,10 +1,19 @@
 package Spele;
 
+import java.util.ArrayList;
+
 import Spele.Enums.Istabas;
 import Spele.Enums.Virzieni;
 
 public class PaligMetodes {
   // Šeit ir metodes, kuras atvieglos koda saprašanu un manu dzīvi.
+
+  public static void izvaditArrayListElementus(ArrayList saraksts) {
+    for (Object object : saraksts) {
+      System.out.println(object);
+    }
+    System.out.println(saraksts.size());
+  }
 
   public static boolean navTuksasIevades(String ievade) {
     // * Pārbauda vai ievadē ir 'tukšas ievades' simbols [ } ].

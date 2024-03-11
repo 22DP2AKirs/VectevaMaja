@@ -90,5 +90,35 @@ public class AtrodiPariIzskati {
     "|__......____|",
   };
 
+  private final static String[] cipars1 = {
+    "  .':     ",
+    " '  :     ",
+    "    :     ",
+    "    :  :: ",
+  };
+
+  private final static String[] cipars2 = {
+    " .--.     ",
+    "'    :    ",
+    "   .'     ",
+    " .:... :: ",
+  };
+
+  private final static String[] cipars3 = {
+    " .--.     ",
+    "     '    ",
+    "  --'.    ",
+    " .__.' :: ",
+  };
+
+  private final static String[] cipars4 = {
+    " :    .   ",
+    " :    :   ",
+    " ''''':   ",
+    "      : ::",
+  };
+
+  public final static String[] [] ciparuMasivs = {cipars1 , cipars2 , cipars3 , cipars4};
+
   public final static String[] [] karsuMasivs = {kartsAizmugure , karts1 , karts2 , karts3 , karts4 , karts5 , karts6 , karts7};
 }

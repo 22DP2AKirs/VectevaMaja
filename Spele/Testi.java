@@ -22,19 +22,16 @@ public class Testi {
       // Lietotāja ievade.
       Main.nodzestTerminali();
       AtrodiPari.atrodiPari.parbauditKarsuRezultatu();
-      System.out.println("Jusu Tabula: ");
-      AtrodiPari.atrodiPari.izvaditRezgi();
-      AtrodiPari.atrodiPari.izvaditAtklatoRezgi();
+    //   System.out.println("Jusu Tabula: ");
+    //   AtrodiPari.atrodiPari.izvaditRezgi();
+    //   AtrodiPari.atrodiPari.izvaditAtklatoRezgi();
       AtrodiPari.atrodiPari.izveletiesKarsuPozicijas(ievade);
+      PaligMetodes.izvaditArrayListElementus(AtrodiPari.atrodiPari.salipinatKartisVienaSaraksta());
       
-      AtrodiPari.atrodiPari.salipinatKartisVienaBilde();
+      AtrodiPari.atrodiPari.salipinatKartisVienaSaraksta();
 
       System.out.print("\rJusu ievade: ");
       ievade = iLasitajs.nextLine();
-      
-    //   System.out.print("\033[F"); // Noliek mirgojošo kursoru vienu līniju uz augšu.
-
-      // Thread.sleep(0);
     }
   }
 }
