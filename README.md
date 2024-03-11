@@ -1,4 +1,4 @@
-# VectevaMaja-Java
+# VectevaMaja
 ## Stāsts.
 Viendien Jūs staigājāt pa veikalu un pamanījāt, ka uz pārdošanu ir izlikta jauna videokarte, kura spēj pavilkt jebkuru spēli uz maksimālo kvalitāti.
 Tās cena bija gandrīz tāda pati kā citām videokartēm, 700 Eiro. Jūs tik ļoti gribējāt iegādāties to videokarti, bet zinājāt, ka ar tehnikuma stipendiju to nopirkt nebūs iespējams.
