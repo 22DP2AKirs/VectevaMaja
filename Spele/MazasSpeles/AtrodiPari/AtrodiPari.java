@@ -99,7 +99,7 @@ public class AtrodiPari {
         bildesRinda[8] += "----------------+";
       }
 
-      // Pievieno lielo saraksta rindu kopējai bildei.
+      // Pievieno katru masīva līniju (elementu) sarakstam.
       for (String linija : bildesRinda) {
         salimetaBilde.add(linija);
       }
@@ -114,31 +114,18 @@ public class AtrodiPari {
 
   public static void izveidotJaunuKarsuSpeli() {
     atrodiPari = new AtrodiPari(rindasSkaitli[2] , kolonnasSkaitli[1]); // rindasSkaitli[Main.rand.nextInt(3)], kolonnasSkaitli[Main.rand.nextInt(2)]
+    atrodiPari.sagatavotRezgiSpelesanai();
   }
 
-  public void sagatavotRezgiSpelesanai() {
+  private void sagatavotRezgiSpelesanai() {
     aizpilditRezgi();
     samaisitRezgi();
   }
 
   public void parbauditKarsuRezultatu() {
     if (karsuPari == 0) {
-      System.out.println("VICTORYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
-      System.out.println("VICTORYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
-      System.out.println("VICTORYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
-      System.out.println("VICTORYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
-      System.out.println("VICTORYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
-      System.out.println("VICTORYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
-      System.out.println("VICTORYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
-      System.out.println("VICTORYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
-      System.out.println("VICTORYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
-      System.out.println("VICTORYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
-    }
-  }
-  
-  public void izveletiesKarsuPozicijas(String ievade) {
-    if (PaligMetodes.navTuksasIevades(ievade) && PaligMetodes.irSkaitlis(ievade)) {
-      parveidotPozicijasIevadiUzIndeksiem(ievade);
+      Main.atrodiPari = false;
+      Main.varonisIrMazajaSpele = false;
     }
   }
 
@@ -168,8 +155,7 @@ public class AtrodiPari {
   /// Private:
   private void aizpilditRezgi() {
     /* Metode aizpilda režģi jeb masīvu ar cipariem no 1 - n.
-       Katrs cipars atkārtojas 1 reizi.
-    */
+       Katrs cipars atkārtojas 1 reizi.*/
     int ciparsXskaitlis = 0; // cipars vai skaitlis, kuru definē kā masīva elementu
     int skaititajs = -1; // Skaita cik reizes iekšējais cikls ir atkārtojies.
 
@@ -216,7 +202,7 @@ public class AtrodiPari {
     otrasKartsPozicija = new int[2];
   }
   
-  private void apgriestKartis() {
+  private void apgriestKartisAtpakal() {
     // Ja abu kāršu vērtības ir identiskas, tad tās apgriež (parāda spēlētājaRežģī).
     if (atklataisRezgis[pirmasKartsPozicija[0]][pirmasKartsPozicija[1]] == atklataisRezgis[otrasKartsPozicija[0]][otrasKartsPozicija[1]]) {
       // Nodzēš skaitli no atklātā režģa, aizliedzot to atminēt vēlreiz.
@@ -236,55 +222,46 @@ public class AtrodiPari {
     }
   }
 
-  private void parveidotPozicijasIevadiUzIndeksiem(String ievade) {
-    // * Metode iegūst skaitļa ievades teksta veidā.
-    // * Pārbauda vai ievade var būt sadalīta uz 2 elementiem, un ja var, tad sadla tos.
-    if (ievade.length() == 2) { // 02 vai 53, vai 90 u.t.t..
-      String[] masivs = ievade.split(""); // sadala uz , piem., 0 2 vai 5 3, vai 9 0 u.t.t..
-      int[] ciparuMasivs = {Integer.parseInt(masivs[0]), Integer.parseInt(masivs[1])}; // Pārveido abus masīva teksta elementus par int.
+  public void izveletiesKarsuPozicijas(String ievade) {
+    // Ievadei ir jāsastāv no 2 cipariem, piem., '25' vai '91', vai '02' u.t.t.
+    if (PaligMetodes.navTuksasIevades(ievade) && PaligMetodes.irSkaitlis(ievade) && ievade.length() == 2) {
+      apstradatIevadi(ievade);
+    }
+  }
 
-      // Ja ievadītie skaitļi ir ārpus masīva robežām, tad to ievadi ignorē.
-      if (ciparuMasivs[0] <= rindas && ciparuMasivs[1] <= kolonnas) {
-        if (!izvelejasPirmoKarti) {
-          // ciparuMasivs[x] '- 1' Samazina lietotāja ievadīto skaitli par 1 vērtību, lai to varētu izmantot kā masīva indeksu.
-          pirmasKartsPozicija[0] = ciparuMasivs[0] - 1;
-          pirmasKartsPozicija[1] = ciparuMasivs[1] - 1;
-  
-          
+  private void apstradatIevadi(String ievade) {
+    // * Metode pārveido iegūto tekstu par 2 int[] elementiem, kuri atbilsts 0 - rindai, 1 - kolonnai.
+    String[] masivs = ievade.split(""); // sadala uz , piem., 0 2 vai 5 3, vai 9 0 u.t.t..
+    int[] ciparuMasivs = {Integer.parseInt(masivs[0]), Integer.parseInt(masivs[1])}; // Pārveido abus masīva teksta elementus par int.
 
-          System.out.println(pirmasKartsPozicija[0] + ", " + pirmasKartsPozicija[1]);
-          System.out.println(otrasKartsPozicija[0] + ", " + otrasKartsPozicija[1]);
-  
-          // Pārbaude, vai ievadītās koordinātes ir atļautas (nav jau atminētas).
-          if (speletajaRezgis[pirmasKartsPozicija[0]][pirmasKartsPozicija[1]] == 0) {
-            // Vieta kārts bildītes nomaiņai.
-            apgriestIzveletoKarti(pirmasKartsPozicija);
-            izvelejasPirmoKarti = true;
-          }
-          else {
-            System.out.println("Nepareiza koordinata1");
-          }
-        }
-        else {
-          otrasKartsPozicija[0] = ciparuMasivs[0]- 1;
-          otrasKartsPozicija[1] = ciparuMasivs[1] - 1;
-          
-          
+    // Ja ievadītie skaitļi ir ārpus masīva robežām, tad to ievadi ignorē.
+    if (ciparuMasivs[0] <= rindas && ciparuMasivs[1] <= kolonnas) {
+      saglabatKarsuPozicijas(ciparuMasivs);
+    }
+  }
 
-          System.out.println(pirmasKartsPozicija[0] + ", " + pirmasKartsPozicija[1]);
-          System.out.println(otrasKartsPozicija[0] + ", " + otrasKartsPozicija[1]);
+  private void saglabatKarsuPozicijas(int[] kartsKoordinatas) {
+    if (!izvelejasPirmoKarti) {
+      // ciparuMasivs[x] '- 1' Samazina lietotāja ievadīto skaitli par 1 vērtību, lai to varētu izmantot kā masīva indeksu.
+      pirmasKartsPozicija[0] = kartsKoordinatas[0] - 1;
+      pirmasKartsPozicija[1] = kartsKoordinatas[1] - 1;
 
-          if (speletajaRezgis[otrasKartsPozicija[0]][otrasKartsPozicija[1]] == 0) {
-            // Vieta kārts bildītes nomaiņai.
-            apgriestIzveletoKarti(otrasKartsPozicija);
-            izvelejasOtroKarti = true;
-          }
-          else {
-            System.out.println("Nepareiza koordinata2");
-          }
-  
-        //   abuKarsuKoordinasuParbaude();
-        }
+      // Pārbaude, vai ievadītās koordinātes ir atļautas (nav jau atminētas).
+      if (speletajaRezgis[pirmasKartsPozicija[0]][pirmasKartsPozicija[1]] == 0) {
+        // Vieta kārts bildītes nomaiņai.
+        apgriestIzveletoKarti(pirmasKartsPozicija);
+        izvelejasPirmoKarti = true;
+      }
+    }
+    else {
+      otrasKartsPozicija[0] = kartsKoordinatas[0]- 1;
+      otrasKartsPozicija[1] = kartsKoordinatas[1] - 1;
+
+      // Pārbaude, vai ievadītās koordinātes ir atļautas (nav jau atminētas).
+      if (speletajaRezgis[otrasKartsPozicija[0]][otrasKartsPozicija[1]] == 0) {
+        // Vieta kārts bildītes nomaiņai.
+        apgriestIzveletoKarti(otrasKartsPozicija);
+        izvelejasOtroKarti = true;
       }
     }
   }
@@ -292,10 +269,16 @@ public class AtrodiPari {
   public void abuKarsuKoordinasuParbaude() {
     // Tālākais izpildes kods:
     if (!Arrays.equals(pirmasKartsPozicija, otrasKartsPozicija) && izvelejasPirmoKarti && izvelejasOtroKarti) {
-      PaligMetodes.gulet(2);
-      apgriestKartis();
+      // Ļauj lietotājam redzēt kādas kārtis ir apgriestas.
+      PaligMetodes.gulet(1);
+      
+      // Nevienādās kārtis apgriež ar muguru uz augšu.
+      apgriestKartisAtpakal();
+
       // Nodzēš abu kāršu pozicijas.
       nodzestAbuKarsuKoordinatas();
+
+      // Atļauj vadīt jaunas koord. priekš kārtīm.
       izvelejasPirmoKarti = izvelejasOtroKarti = false;
     }
   }

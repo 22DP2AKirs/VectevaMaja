@@ -119,6 +119,5 @@ public class AtrodiPariIzskati {
   };
 
   public final static String[] [] ciparuMasivs = {cipars1 , cipars2 , cipars3 , cipars4};
-
   public final static String[] [] karsuMasivs = {kartsAizmugure , karts1 , karts2 , karts3 , karts4 , karts5 , karts6 , karts7};
 }

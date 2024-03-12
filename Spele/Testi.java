@@ -15,7 +15,7 @@ public class Testi {
     String ievade = iLasitajs.nextLine();
 
     AtrodiPari.izveidotJaunuKarsuSpeli();
-    AtrodiPari.atrodiPari.sagatavotRezgiSpelesanai();
+    // AtrodiPari.atrodiPari.sagatavotRezgiSpelesanai();
 
     // Cikls.
     while (true) {

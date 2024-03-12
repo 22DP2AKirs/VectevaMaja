@@ -9,6 +9,7 @@ import Spele.Testi;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Izskati.EkranuIzskati;
 import Spele.Enums.EkranuVeidi;
+import Spele.MazasSpeles.AtrodiPari.AtrodiPari;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienotaisKods;
 import Spele.MazasSpeles.Karatavas.SavienotaisKaratavuKods;
 import Spele.Parklajumi.EkranuParklajumi;
@@ -29,7 +30,7 @@ public class Main {
   public static volatile boolean spelePalaista = true; // Mainīgais bool, kas pašu spēli.
 
   // Priekš minigames.
-  public static volatile boolean varonisIrMazajaSpele; // true, ja varonis ir iegājis mazajā spēlē, false, ja nav.
+  public static volatile boolean varonisIrMazajaSpele = true; // true, ja varonis ir iegājis mazajā spēlē, false, ja nav.
   public static volatile boolean izveletaMazaSpele; // true, ja spēle izvēlējās, kādu no iespējamajām spēlēm, katru stundu. 
 
   // Priekš karātaām.
@@ -39,7 +40,7 @@ public class Main {
   public static boolean karatavas;
   public static boolean mazasSpelesRezultataParskats = false;
 
-  public static boolean atrodiPari;
+  public static boolean atrodiPari = true;
 
   // Varoņa īpašības.
   public static boolean varonaNemirstiba = false; // Vai varonis var zaudēt spēli vai nē.
@@ -49,7 +50,7 @@ public class Main {
   
   // Iestata tikšķa jeb 1 "refreša" periodu.
   static int framesPerSecond = 1000 / 25; // Pēc cik ilga laika ekrāns "refrešojas". (Milisekundēs)
-  public static int spelesIlgums = 100;// 6 min 360;
+  public static int spelesIlgums = 10000;// 6 min 360;
   
   // Cits.
   public static volatile boolean thrediGul; // Apstādina Laiks thredu uz noteiktu laiku.
@@ -59,7 +60,8 @@ public class Main {
     // * Galvenais programmas process.
 
     // Dažādu metožu un ideju testēšanas fails.
-    Testi.testaProgramma();
+    // Testi.testaProgramma();
+    AtrodiPari.izveidotJaunuKarsuSpeli();
     
     // ? /////// T H R E D I //////////
     // Jaunie rīki jeb thredi, jeb objekti.
@@ -109,6 +111,7 @@ public class Main {
         Ievade.notiritIevadi();
         // ------------------ 1 'freims' spēlē.
         Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 25 FPS.
+        // ------------------ Papildus.
         if (programmasKluduLasisana) { // Apstādina spēli, lai varētu izlasīt kļūdas aprakstu.
           Thread.sleep(100000);
         }

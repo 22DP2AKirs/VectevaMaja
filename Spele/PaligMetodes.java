@@ -13,6 +13,7 @@ public class PaligMetodes {
       System.out.println(object);
     }
     System.out.println(saraksts.size());
+    System.out.print("\033[H"); // Kursora poz. 0.0
   }
 
   public static boolean navTuksasIevades(String ievade) {

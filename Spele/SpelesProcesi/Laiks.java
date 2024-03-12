@@ -4,7 +4,6 @@ import Spele.PaligMetodes;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Iestatijumi.IestatijumuDati;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPari;
-import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienotaisKods;
 import Spele.MazasSpeles.Karatavas.SavienotaisKaratavuKods;
 import Spele.Spoki.Spoks;
 import Spele.Varonis.VaronaDarbibas;
@@ -111,7 +110,7 @@ public class Laiks extends Thread {
   private void apskatitMajasdarbu() {
     // * Metode pārbauda un ieslēdz mājasdarbu.
     // TODO: parbauditVaiVaronisPaspejaIzpilditMajasdarbu();
-    ieslegtKaduMajasdarbu();
+    // TODO: ieslegtKaduMajasdarbu();
   }
 
   private void parbauditVaiVaronisPaspejaIzpilditMajasdarbu() {

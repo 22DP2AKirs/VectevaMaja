@@ -1,7 +1,5 @@
 package Spele;
 
-import Spele.Varonis.DarbibuIzpilde;
-
 public class Enums {
   // * Šī klase satur sevī visas enum klases, priekš vieglākas atrašanas un organizēšanas.
 

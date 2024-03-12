@@ -40,11 +40,11 @@ public class IzvadeUzTerminalu {
 
     
     public static void masivuIzvade(String[] masivs) {
-        int masivaGarums = masivs.length;
-        for (int i = 0; i < masivaGarums; i++) {
-            System.out.println(masivs[i] + "\033[0K");
-        }
-        System.out.println("\033[0J"); // Izdzēš visu tekstu līdz ekrāna beigām.
-        System.out.print("\033[H"); // Noliek kursoru sākuma pozīcijā 0,0 jeb pirmās rindas pirmajā kolonnā.
+      int masivaGarums = masivs.length;
+      for (int i = 0; i < masivaGarums; i++) {
+          System.out.println(masivs[i] + "\033[0K");
+      }
+      System.out.println("\033[0J"); // Izdzēš visu tekstu līdz ekrāna beigām.
+      System.out.print("\033[H"); // Noliek kursoru sākuma pozīcijā 0,0 jeb pirmās rindas pirmajā kolonnā.
     }
 }
