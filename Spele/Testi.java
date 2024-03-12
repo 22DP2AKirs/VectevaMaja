@@ -27,6 +27,7 @@ public class Testi {
     //   AtrodiPari.atrodiPari.izvaditAtklatoRezgi();
       AtrodiPari.atrodiPari.izveletiesKarsuPozicijas(ievade);
       PaligMetodes.izvaditArrayListElementus(AtrodiPari.atrodiPari.salipinatKartisVienaSaraksta());
+      AtrodiPari.atrodiPari.abuKarsuKoordinasuParbaude();
       
       AtrodiPari.atrodiPari.salipinatKartisVienaSaraksta();
 
