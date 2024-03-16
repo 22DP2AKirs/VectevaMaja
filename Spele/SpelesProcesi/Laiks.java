@@ -3,8 +3,10 @@ package Spele.SpelesProcesi;
 import Spele.PaligMetodes;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Iestatijumi.IestatijumuDati;
+import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPari;
-import Spele.MazasSpeles.Karatavas.SavienotaisKaratavuKods;
+import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
+import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
 import Spele.Spoki.Spoks;
 import Spele.Varonis.VaronaDarbibas;
 import Spele.Varonis.VaronaStatusaEfekti;
@@ -69,6 +71,7 @@ public class Laiks extends Thread {
     // Tas nozīmē, ka izvēle izpildīsies vienu reizi norādītajā laikā.
     if (spelesLaiks < 2) {
       laikaTeksts = "1 2 A M ";
+      apskatitMajasdarbu();
 
     }
     else if (spelesLaiks == vienaStunda) {
@@ -110,13 +113,13 @@ public class Laiks extends Thread {
   private void apskatitMajasdarbu() {
     // * Metode pārbauda un ieslēdz mājasdarbu.
     // TODO: parbauditVaiVaronisPaspejaIzpilditMajasdarbu();
-    // TODO: ieslegtKaduMajasdarbu();
+    ieslegtKaduMajasdarbu();
   }
 
   private void parbauditVaiVaronisPaspejaIzpilditMajasdarbu() {
     // * Metode pārbauda vai varonis ir izpildījis mājasdarbu noteiktajā laikā.
     // * Ja nav, tad viņš zaudē.
-    if (Main.izveletaMazaSpele && !Main.varonaNemirstiba) {
+    if (MazoSpeluIzvelesKods.izveletaMazaSpele && !Main.varonaNemirstiba) {
       VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("MAJASDARBA_LAIKS");
     }
   }
@@ -124,16 +127,16 @@ public class Laiks extends Thread {
   private void ieslegtKaduMajasdarbu() {
     // * Metode norādītajā laikā ieslēdz vieno no m-spēlēm.
     // Main.rand.nextInt(1);
-    int randCipars = 0; // No 0 ieskaitot, līdz "norādītais" neieskaitot.
+    int randCipars = 1; // No 0 ieskaitot, līdz "norādītais" neieskaitot.
     if (randCipars == 0) {
-      SavienotaisKaratavuKods.izveidotJaunuKaratavasSpeli();
-      Main.karatavas = true;
+      KaratavasSavienojums.izveidotJaunuKaratavasSpeli();
+      KaratavasSavienojums.mSpeleKaratavas = true;
     }
     else if (randCipars == 1) {
       AtrodiPari.izveidotJaunuKarsuSpeli();
-      Main.atrodiPari = true;
+      AtrodiPariSavienojums.mSpeleAtrodiPari = true;
     }
-    Main.izveletaMazaSpele = true;
+    MazoSpeluIzvelesKods.izveletaMazaSpele = true;
   }
 
 }

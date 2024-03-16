@@ -11,7 +11,9 @@ import Spele.Enums.KustibasVirziens;
 import Spele.Enums.Istabas;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Iestatijumi.IestatijumuDati;
-import Spele.MazasSpeles.Karatavas.SavienotaisKaratavuKods;
+import Spele.MazasSpeles.MazoSpeluIzvelesKods;
+import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
+import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
 import Spele.SpelesProcesi.Laiks;
 
 public class VaronaDarbibas {
@@ -141,6 +143,13 @@ public class VaronaDarbibas {
     if (komanda.equals("W")) {
       kustetiesPaMaju(KustibasVirziens.NEGATIVS); ////////////////////////////////////////
     }
+    else if (komanda.equals("E")) {
+      // TODO: atrodi pāri kods.
+      // Ja mājasdarbs ir izvēlēts, tad tajā varēs ieiet.
+      if (AtrodiPariSavienojums.mSpeleAtrodiPari) {
+        MazoSpeluIzvelesKods.varonisIrMazajaSpele = true;
+      }
+    }
   }
 
   public static void divanaKreisasPusesKomandas(String komanda) {
@@ -161,8 +170,8 @@ public class VaronaDarbibas {
     else if (komanda.equals("SLEGT")) {
       aizslegtDurvis();
     }
-    else if (komanda.equals("E") && Main.karatavas) {
-      SavienotaisKaratavuKods.palaistKaratavas();
+    else if (komanda.equals("E") && KaratavasSavienojums.mSpeleKaratavas) {
+      KaratavasSavienojums.palaistKaratavas();
     }
   }
 
@@ -216,9 +225,15 @@ public class VaronaDarbibas {
   // * Darbības kā metodes:
   /// Public:
   public static void izietAraNoMspeles(String ievade) {
-    if (Main.varonisIrMazajaSpele) {
+    if (MazoSpeluIzvelesKods.varonisIrMazajaSpele) {
       if (ievade.equals("Q")) {
-        Main.varonisIrMazajaSpele = false;
+        MazoSpeluIzvelesKods.varonisIrMazajaSpele = false;
+      }
+      else if (ievade.equals("WIN")) {
+        // Kas vēl, lai beigtu m-spēli.
+        MazoSpeluIzvelesKods.varonisIrMazajaSpele = false;
+        MazoSpeluIzvelesKods.izveletaMazaSpele = false;
+        AtrodiPariSavienojums.mSpeleAtrodiPari = false;
       }
     }
   }

@@ -21,15 +21,15 @@ public class Testi {
     while (true) {
       // Lietotāja ievade.
       Main.nodzestTerminali();
-      AtrodiPari.atrodiPari.parbauditKarsuRezultatu();
+      AtrodiPari.atrodiPariObjekts.parbauditKarsuRezultatu();
     //   System.out.println("Jusu Tabula: ");
     //   AtrodiPari.atrodiPari.izvaditRezgi();
     //   AtrodiPari.atrodiPari.izvaditAtklatoRezgi();
-      AtrodiPari.atrodiPari.izveletiesKarsuPozicijas(ievade);
-      PaligMetodes.izvaditArrayListElementus(AtrodiPari.atrodiPari.salipinatKartisVienaSaraksta());
-      AtrodiPari.atrodiPari.abuKarsuKoordinasuParbaude();
+      AtrodiPari.atrodiPariObjekts.parbauditIevadi(ievade);
+      PaligMetodes.izvaditArrayListElementus(AtrodiPari.atrodiPariObjekts.salipinatKartisVienaSaraksta());
+      AtrodiPari.atrodiPariObjekts.abuKarsuKoordinasuParbaude();
       
-      AtrodiPari.atrodiPari.salipinatKartisVienaSaraksta();
+      AtrodiPari.atrodiPariObjekts.salipinatKartisVienaSaraksta();
 
       System.out.print("\rJusu ievade: ");
       ievade = iLasitajs.nextLine();

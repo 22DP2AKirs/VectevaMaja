@@ -4,38 +4,37 @@ import Spele.IzvadeUzTerminalu;
 import Spele.PaligMetodes;
 import Spele.Enums.EkranuVeidi;
 import Spele.Izskati.EkranuIzskati;
-
+import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SpelesProcesi.Ievade;
 import Spele.SpelesProcesi.Main;
 
 // Karātavu kods savienots izmantojamā jeb spēlējamā stāvoklī:
-public class SavienotaisKaratavuKods {
-  // Definē karātavu objektu šeit, lai pēc tam to mierīgi varētu mainīt, netraucējot main ciklu.
-  public static Karatavas karatavasObjekts; // 
+public class KaratavasSavienojums {
+  public static boolean mSpeleKaratavas = false;
 
   // Metode caur kuru spēlē strādā karātavu kods.
   public static void karatavuKods() {
     // Ja karātavas ir palaistas vai, ja varonis tiko uzvarēja karātavas.
-    if (Main.karatavas || Main.mazasSpelesRezultataParskats) {
+    if (KaratavasSavienojums.mSpeleKaratavas || Main.mazasSpelesRezultataParskats) {
 
       // Kamēr varonis nav uzvarējis karātavas, tikmēr viņš var ievadīt burtus.
-      if (Main.karatavas) {
+      if (KaratavasSavienojums.mSpeleKaratavas) {
         // Karātavas vārds tiek atjaunots, kad lietotājs ievada iespējamo vārda burtu.
-        Main.karatavasVards = karatavasObjekts.toString();
-        karatavasObjekts.parbauditBurtu(Ievade.lietotajaIevade, EkranuParklajumi.burti);
+        Main.karatavasVards = Karatavas.karatavasObjekts.toString();
+        Karatavas.karatavasObjekts.parbauditBurtu(Ievade.lietotajaIevade, EkranuParklajumi.burti);
       }
       else {
         // Ja vārds ir atminēts, tad to nokrāso zaļā krāsā.
-        Main.karatavasVards = karatavasObjekts.nokrasotToString();
+        Main.karatavasVards = Karatavas.karatavasObjekts.nokrasotToString();
       }
       
       // Pārklāj un izvada masīvu jeb grāmatu.
       IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuIzskati.visiEkrani[3], EkranuVeidi.KARATAVU_EKRANS));
       
       // * Ļauj varonim redzēt pabeigto vārdu n sekundes. // Pēdējais izpildāmais kods.
-      if (!Main.karatavas && Main.mazasSpelesRezultataParskats == true) {
-        Main.izveletaMazaSpele = false; // Atjauno m-spēles izvēli uz "neizvēlēta m-spēle".
+      if (!KaratavasSavienojums.mSpeleKaratavas && Main.mazasSpelesRezultataParskats == true) {
+        MazoSpeluIzvelesKods.izveletaMazaSpele = false; // Atjauno m-spēles izvēli uz "neizvēlēta m-spēle".
 
         // Liek laika thredam gulēt vienlaicīgi ar main thredu.
         Main.thrediGul = true;
@@ -43,12 +42,12 @@ public class SavienotaisKaratavuKods {
 
         // Izmet varoni no mazās spēles skata atpakaļ uz māju.
         Main.mazasSpelesRezultataParskats = false;
-        Main.varonisIrMazajaSpele = false;
+        MazoSpeluIzvelesKods.varonisIrMazajaSpele = false;
       }
 
       // Ļauj karātavu ekrānam atjaunoties vēl vienu reizi, lai lietotājs redzētu atminēto vārdu.
-      if (Karatavas.atminejaVardu && Main.karatavas == true) {
-        Main.karatavas = false;
+      if (Karatavas.atminejaVardu && KaratavasSavienojums.mSpeleKaratavas == true) {
+        KaratavasSavienojums.mSpeleKaratavas = false;
         Main.mazasSpelesRezultataParskats = true;
       }
     }
@@ -57,12 +56,12 @@ public class SavienotaisKaratavuKods {
   public static void izveidotJaunuKaratavasSpeli() {
     // * Šī metode izveido jaunu karātavas objektu, lai to varētu izmantot spēlē ar citām vērtībām.
     restartetKaratavas();
-    karatavasObjekts = new Karatavas(Main.rand.nextInt(4), Main.rand.nextInt(7));
+    Karatavas.karatavasObjekts = new Karatavas(Main.rand.nextInt(4), Main.rand.nextInt(7));
     EkranuParklajumi.saliktRandAtstarpesKaratavuGramata(); // Papild process.
   }
 
   public static void palaistKaratavas() {
-    Main.varonisIrMazajaSpele = true;
+    MazoSpeluIzvelesKods.varonisIrMazajaSpele = true;
     Ievade.lietotajaIevade = "}";
   }
 

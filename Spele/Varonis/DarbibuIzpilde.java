@@ -7,6 +7,7 @@ import Spele.K;
 import Spele.Enums.Istabas;
 import Spele.Enums.Virzieni;
 import Spele.Izskati.IstabuIzskati;
+import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.Parklajumi.BildesParklajumi;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SpelesProcesi.Ievade;
@@ -48,7 +49,7 @@ public class DarbibuIzpilde {
 
       
     // Spēles komandas.
-    if (!Main.varonisIrMazajaSpele) {
+    if (!MazoSpeluIzvelesKods.varonisIrMazajaSpele) {
       if (!komanda.equals(K.TUKSA_IEVADE)) {
         if (Arrays.asList(testesanasKomandas).contains(komanda)) { // Testēšanas komands.
           VaronaDarbibas.testesanasDarbibas(komanda);

@@ -9,9 +9,10 @@ import Spele.Testi;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Izskati.EkranuIzskati;
 import Spele.Enums.EkranuVeidi;
+import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPari;
-import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienotaisKods;
-import Spele.MazasSpeles.Karatavas.SavienotaisKaratavuKods;
+import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
+import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.Spoki.Spoks;
 import Spele.Varonis.DarbibuIzpilde;
@@ -29,18 +30,11 @@ public class Main {
   public static boolean sakumaEkrans = false; // Nosaka vai spēles sākumā rādīs sākuma ekrānu vai nē.
   public static volatile boolean spelePalaista = true; // Mainīgais bool, kas pašu spēli.
 
-  // Priekš minigames.
-  public static volatile boolean varonisIrMazajaSpele = true; // true, ja varonis ir iegājis mazajā spēlē, false, ja nav.
-  public static volatile boolean izveletaMazaSpele; // true, ja spēle izvēlējās, kādu no iespējamajām spēlēm, katru stundu. 
-
   // Priekš karātaām.
   public static String[] rAtstarpes = new String[17];
   public static String karatavasVards;
 
-  public static boolean karatavas;
   public static boolean mazasSpelesRezultataParskats = false;
-
-  public static boolean atrodiPari = true;
 
   // Varoņa īpašības.
   public static boolean varonaNemirstiba = false; // Vai varonis var zaudēt spēli vai nē.
@@ -128,15 +122,15 @@ public class Main {
   private static void izvaditBildiUzEkranu() {
     // Visām fāzēm, bildēm un visam vizuālajam ir jābūt gatavam pirms šīs metodes izsaukšanas!!!
     // Spoku vizuālais atjaunojums notiek Laiks.java Klasē.
-    if (!varonisIrMazajaSpele) {
+    if (!MazoSpeluIzvelesKods.varonisIrMazajaSpele) {
       IzvadeUzTerminalu.salipinataUIIzvade(); // Izvade uz ekrāna.
     }
     else {
-      if (karatavas) {
-        SavienotaisKaratavuKods.karatavuKods();
+      if (KaratavasSavienojums.mSpeleKaratavas) {
+        KaratavasSavienojums.karatavuKods();
       }
-      else if (atrodiPari) {
-        AtrodiPariSavienotaisKods.palaistKarsuSpeli();
+      else if (AtrodiPariSavienojums.mSpeleAtrodiPari) {
+        AtrodiPariSavienojums.palaistKarsuSpeli();
       }
     }
   }
@@ -148,7 +142,7 @@ public class Main {
     // Izvada informāciju par spokiem.
     if (Main.spokuInfo) { 
       Spoks.spokuInfo();
-      System.out.println("Laiks ms: " + Laiks.spelesLaiks + " / " + Laiks.vienaStunda * 6 + K.RESET + ", Stressa limenis: " + VaronaStatusaEfekti.varonaStresaLimenis + "\033[0K");
+      izvaditSpelesPapildinformaciju();
     }
     // Izvada informāciju par m-spēlēm.
     else if (Main.mSpeluInfo) {
@@ -158,8 +152,12 @@ public class Main {
 
   private static void izvaditMSpelesInfo() {
     System.out.println();
-    System.out.println("Ieksa m-spele: " + Main.varonisIrMazajaSpele + ", Izveleta m-spele: " + Main.izveletaMazaSpele + "\033[0K");
-    System.out.println("Izveleta spele: Karatavas: " + Main.karatavas + ", Atrodi pari: " + "\033[0K");
+    System.out.println("Ieksa m-spele: " + MazoSpeluIzvelesKods.varonisIrMazajaSpele + ", Izveleta m-spele: " + MazoSpeluIzvelesKods.izveletaMazaSpele + "\033[0K");
+    System.out.println("Izveleta spele: (Karatavas : " + KaratavasSavienojums.mSpeleKaratavas + "), (Atrodi pari : " + AtrodiPariSavienojums.mSpeleAtrodiPari + ")\033[0K");
+    izvaditSpelesPapildinformaciju();
+  }
+
+  private static void izvaditSpelesPapildinformaciju() {
     System.out.println("Laiks ms: " + Laiks.spelesLaiks + " / " + Laiks.vienaStunda * 6 + K.RESET + ", Stressa limenis: " + VaronaStatusaEfekti.varonaStresaLimenis + "\033[0K");
   }
 

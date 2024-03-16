@@ -6,6 +6,7 @@ import Spele.K;
 import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Izskati.IstabuIzskati;
 import Spele.Izskati.SpokuIzskati;
+import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
 import Spele.SpelesProcesi.Main;
 import Spele.Spoki.DurvjuSpoks;
 import Spele.Spoki.LogaSpoks;
@@ -433,7 +434,7 @@ public class BildesParklajumi {
   }
 
   private static void uzliktKaratavuGramatu(String[] mainamaisMasivs) {
-    if (Main.karatavas) {
+    if (KaratavasSavienojums.mSpeleKaratavas) {
       mainamaisMasivs[9] += "\033[21G" + K.OBJEKTS + "/  ~~ /" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
       mainamaisMasivs[10] += "\033[20G" + K.OBJEKTS + "/_____/" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
     }

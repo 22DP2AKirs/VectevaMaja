@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import Spele.PaligMetodes;
+import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.SpelesProcesi.Main;
 
 // Atrodi pāri algoritms.
@@ -19,21 +20,25 @@ public class AtrodiPari {
   */ // Režģis jeb grid:
   private int kolonnas;
   private int rindas;
-  private int karsuPari;
+  private int karsuPari; 
 
   private boolean izvelejasPirmoKarti;
   private boolean izvelejasOtroKarti;
 
+  // Saglabātās kāršu pozīcijas:
   private int[] otrasKartsPozicija = new int[2];
   private int[] pirmasKartsPozicija = new int[2];
 
+  // Iespējamie tabulas izskati (izmēri):
   private static int[] rindasSkaitli = { 1 , 2 , 3 }; // Rindām.
   private static int[] kolonnasSkaitli = { 2 , 4 }; // Kolonnām.
 
+  // Tabulas ar paslēpto informāciju:
   public static int[][] atklataisRezgis;
   public static int[][] speletajaRezgis;
 
-  public static AtrodiPari atrodiPari;
+  // Objekts.
+  public static AtrodiPari atrodiPariObjekts;
 
   public AtrodiPari(int rindas, int kolonnas) {
     this.rindas = rindas;
@@ -113,8 +118,8 @@ public class AtrodiPari {
   }
 
   public static void izveidotJaunuKarsuSpeli() {
-    atrodiPari = new AtrodiPari(rindasSkaitli[2] , kolonnasSkaitli[1]); // rindasSkaitli[Main.rand.nextInt(3)], kolonnasSkaitli[Main.rand.nextInt(2)]
-    atrodiPari.sagatavotRezgiSpelesanai();
+    atrodiPariObjekts = new AtrodiPari(rindasSkaitli[2] , kolonnasSkaitli[1]); // rindasSkaitli[Main.rand.nextInt(3)], kolonnasSkaitli[Main.rand.nextInt(2)]
+    atrodiPariObjekts.sagatavotRezgiSpelesanai();
   }
 
   private void sagatavotRezgiSpelesanai() {
@@ -124,8 +129,8 @@ public class AtrodiPari {
 
   public void parbauditKarsuRezultatu() {
     if (karsuPari == 0) {
-      Main.atrodiPari = false;
-      Main.varonisIrMazajaSpele = false;
+      AtrodiPariSavienojums.mSpeleAtrodiPari = false;
+      MazoSpeluIzvelesKods.varonisIrMazajaSpele = false;
     }
   }
 
@@ -222,7 +227,7 @@ public class AtrodiPari {
     }
   }
 
-  public void izveletiesKarsuPozicijas(String ievade) {
+  public void parbauditIevadi(String ievade) {
     // Ievadei ir jāsastāv no 2 cipariem, piem., '25' vai '91', vai '02' u.t.t.
     if (PaligMetodes.navTuksasIevades(ievade) && PaligMetodes.irSkaitlis(ievade) && ievade.length() == 2) {
       apstradatIevadi(ievade);
@@ -235,7 +240,7 @@ public class AtrodiPari {
     int[] ciparuMasivs = {Integer.parseInt(masivs[0]), Integer.parseInt(masivs[1])}; // Pārveido abus masīva teksta elementus par int.
 
     // Ja ievadītie skaitļi ir ārpus masīva robežām, tad to ievadi ignorē.
-    if (ciparuMasivs[0] <= rindas && ciparuMasivs[1] <= kolonnas) {
+    if (ciparuMasivs[0] <= rindas && ciparuMasivs[0] > 0 && ciparuMasivs[1] <= kolonnas && ciparuMasivs[1] > 0) {
       saglabatKarsuPozicijas(ciparuMasivs);
     }
   }

@@ -5,6 +5,8 @@ import Spele.K;
 import Spele.Enums.Istabas;
 import Spele.Enums.Virzieni;
 import Spele.Iestatijumi.IestatijumuDati;
+import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
+import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
 import Spele.SpelesProcesi.Ievade;
 import Spele.SpelesProcesi.Laiks;
 import Spele.SpelesProcesi.Main;
@@ -100,10 +102,16 @@ public class UIizskats {
             "                     ",
             "_____________________"
         };
-
-        if (Main.karatavas) {
-          gatavsLabasPusesUI[11] = "  K A R A T A V A S  ";
+        
+        // Izvēlas mājasdarba nosaukumu.
+        if (KaratavasSavienojums.mSpeleKaratavas) {
+          gatavsLabasPusesUI[10] = "  K A R A T A V A S  ";
+        }
+        else if (AtrodiPariSavienojums.mSpeleAtrodiPari) {
+          gatavsLabasPusesUI[10] = "     A T R O D I     ";
+          gatavsLabasPusesUI[11] = "       P A R I       ";
         } else {
+          gatavsLabasPusesUI[10] = "                     ";
           gatavsLabasPusesUI[11] = "                     ";
         }
 
