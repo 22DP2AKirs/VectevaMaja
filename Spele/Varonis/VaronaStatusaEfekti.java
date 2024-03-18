@@ -8,7 +8,6 @@ import Spele.Enums;
 import Spele.Enums.EkranuVeidi;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.MazasSpeles.Karatavas.Karatavas;
-import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SpelesProcesi.Laiks;
 import Spele.SpelesProcesi.Main;
@@ -66,7 +65,7 @@ public class VaronaStatusaEfekti {
     DurvjuSpoks.durvjuSpoks.deaktivizetSpoku();
     VirtuvesSpoks.virtuvesSpoks.deaktivizetSpoku();
 
-    KaratavasSavienojums.restartetKaratavas();
+    Karatavas.karatavasObjekts.restartetKaratavas();
     Laiks.spelesLaiks = 0; // Lai laika threads momentāli neapstātos pēc tā pališanas, atjauno spēles laiku.
     varonaStresaLimenis = 0;
     MazoSpeluIzvelesKods.varonisIrMazajaSpele = false;

@@ -7,7 +7,7 @@ import Spele.SpelesProcesi.Ievade;
 public class AtrodiPariSavienojums {
   public static boolean mSpeleAtrodiPari = false;
 
-  public static void palaistKarsuSpeli() {
+  public static void palaistAtrodiPariMazoSpeli() {
     // -------- Pārbauda vai visas kārtis ir apgriestas (atrastas).
     AtrodiPari.atrodiPariObjekts.parbauditKarsuRezultatu();
     // -------- Galvenā domāšana.

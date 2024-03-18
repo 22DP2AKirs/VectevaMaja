@@ -143,12 +143,8 @@ public class VaronaDarbibas {
     if (komanda.equals("W")) {
       kustetiesPaMaju(KustibasVirziens.NEGATIVS); ////////////////////////////////////////
     }
-    else if (komanda.equals("E")) {
-      // TODO: atrodi pāri kods.
-      // Ja mājasdarbs ir izvēlēts, tad tajā varēs ieiet.
-      if (AtrodiPariSavienojums.mSpeleAtrodiPari) {
-        MazoSpeluIzvelesKods.varonisIrMazajaSpele = true;
-      }
+    else if (komanda.equals("E") && AtrodiPariSavienojums.mSpeleAtrodiPari) {
+      MazoSpeluIzvelesKods.varonisIrMazajaSpele = true; 
     }
   }
 
@@ -171,7 +167,7 @@ public class VaronaDarbibas {
       aizslegtDurvis();
     }
     else if (komanda.equals("E") && KaratavasSavienojums.mSpeleKaratavas) {
-      KaratavasSavienojums.palaistKaratavas();
+      MazoSpeluIzvelesKods.varonisIrMazajaSpele = true; 
     }
   }
 

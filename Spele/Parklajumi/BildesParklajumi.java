@@ -7,7 +7,6 @@ import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Izskati.IstabuIzskati;
 import Spele.Izskati.SpokuIzskati;
 import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
-import Spele.SpelesProcesi.Main;
 import Spele.Spoki.DurvjuSpoks;
 import Spele.Spoki.LogaSpoks;
 import Spele.Spoki.VirtuvesSpoks;

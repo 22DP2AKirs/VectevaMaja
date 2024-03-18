@@ -6,6 +6,7 @@ import Spele.Iestatijumi.IestatijumuDati;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPari;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
+import Spele.MazasSpeles.Karatavas.Karatavas;
 import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
 import Spele.Spoki.Spoks;
 import Spele.Varonis.VaronaDarbibas;
@@ -127,9 +128,9 @@ public class Laiks extends Thread {
   private void ieslegtKaduMajasdarbu() {
     // * Metode norādītajā laikā ieslēdz vieno no m-spēlēm.
     // Main.rand.nextInt(1);
-    int randCipars = 1; // No 0 ieskaitot, līdz "norādītais" neieskaitot.
+    int randCipars = 0; // No 0 ieskaitot, līdz "norādītais" neieskaitot.
     if (randCipars == 0) {
-      KaratavasSavienojums.izveidotJaunuKaratavasSpeli();
+      Karatavas.izveidotJaunuKaratavasSpeli();
       KaratavasSavienojums.mSpeleKaratavas = true;
     }
     else if (randCipars == 1) {

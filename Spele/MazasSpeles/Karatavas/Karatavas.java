@@ -5,14 +5,26 @@ import java.util.Arrays;
 
 import Spele.K;
 import Spele.PaligMetodes;
+import Spele.MazasSpeles.MazoSpeluIzvelesKods;
+import Spele.Parklajumi.EkranuParklajumi;
+import Spele.SpelesProcesi.Ievade;
+import Spele.SpelesProcesi.Main;
 
 
 // Karātavas algoritms jeb spēle.
 public class Karatavas {
   // Mainīgie, kuri ir lietoti citās programmas daļās.
   public static int karatavuKluduSkaits = 0;
-  public static boolean atminejaVardu = false;
   
+
+
+  public static String[] burti = "A B C D E F G H I J K L M N O P R S T U V Z".split(" "); // Burti, kurus var izmantot vārdu minēšanai.
+  // Priekš karātaām.
+  public static String[] rAtstarpes = new String[17];
+  public static String karatavasVards;
+
+
+
   // Viss tiek noteikts ar konstruktoru.
   private String atstarpe = "";
   private String izveletaisVards;
@@ -38,58 +50,56 @@ public class Karatavas {
   public Karatavas(int vardaGrutiba, int vardsPecKartas) {
     // Konstruktors izvēlas vārdu, izveido vārdam skeleta izmēru un aizpilda to ar tukša burta simbolu "_ ".
     izveletaisVards = karatavasVardi[vardaGrutiba][vardsPecKartas];
-    vardaSkelets = new String[izveletaisVards.length()];
+    // Izveido vārda skeleta masīvu pēc izvēlētā vārda garuma, kur vēlāk parādīsies atminētie burti. 
+    // Un pārdefinē katra tā elementu ar tukšu jeb neatminētu burtu simbolu '_  '.
+    Arrays.fill(vardaSkelets = new String[izveletaisVards.length()], "_  ");
+    // Izveido atstarpi no kreisās malas sākuma, lai centrētu doto vārdu pa vidu grāmatai.
     atstarpe = noteiktAtstarpesIzmeru(izveletaisVards.length());
-
-    Arrays.fill(vardaSkelets, "_  ");
-
+    // Izveido char masīvu, kuru izmantos, lai noteiktu vai visi burti ir atminēti, piem., atrastā burta indekss
+    // šim masīvam tiks aizvietots ar '*' simbolu. Vārds būs atminēts, kad viss šis masīvs būs aizpildīts ar '*'.
     neatminetieBurti = izveletaisVards.toCharArray();
   }
 
-  public String toString() {
-    String vards = "";
-    // Cikls "salīmē" visus masīva elementus kopā, veidojot vienu vārdu.
-    for (String elemetns : vardaSkelets) {
-      vards += elemetns;
-    }
-    return atstarpe + vards;
-  }
-  
-  public String nokrasotToString() {
-      // * Metode nokrāso vārdu izvēlētajā krāsā.
-      return K.ZALS + toString() + K.GRAMATA;
-    }
-    
-  public void parbauditBurtu(String ievaditaisBurts, String[] iespejamieBurti) {
-    // * Metode pārbauda ievadīto burtu, ja tas burts ir vārdā, tad to parāda.
-    // [ } ] - simbols tiek skaitīts kā tukša ievade jeb nekas nebija ievadīts.
-    // [ Q ] - simbols tiek izmantots, lai izietu ārā no minigame.
-    // [ trešais arguments ] - pārbauda vai ievadītais burts nebija ievadīts jau agrāk.
-    if (ievaditaisBurts != "}" && ievaditaisBurts != "Q") {
-      if (izveletaisVards.contains(ievaditaisBurts) && !ievaditaisBurts.equals("*")) { //  && !neatminetieBurti.toString().contains(ievaditaisBurts)
-        noteiktBurtaPareizibu(true, ievaditaisBurts, iespejamieBurti); // Nomaina burta krāsu.
-        atklatBurtus(atrastBurtaIndeksus(ievaditaisBurts), ievaditaisBurts);
-      }
-      else {
-        noteiktBurtaPareizibu(false, ievaditaisBurts, iespejamieBurti); // Nomaina burta krāsu.
-      }
-      atminejaVardu = parbauditVardaStavokli();
-    }
-  }
-          
-  private String noteiktAtstarpesIzmeru(int vardaGarums) {
-    // * Metode centrē vārdu grāmatā ar atstarpju palīdzību.
-    while (vardaGarums < 10) {
-      atstarpe += " ";
-      vardaGarums++;
-    }
-    return atstarpe;
+  public static void izveidotJaunuKaratavasSpeli() {
+    // * Izveido jaunu karātavas objektu, lai to varētu izmantot spēlē ar citām vērtībām.
+    karatavasObjekts = new Karatavas(Main.rand.nextInt(1), Main.rand.nextInt(7)); // old (4, 7)
+    karatavasObjekts.sagatavotGramatuSpelesanai();
   }
 
-  private boolean parbauditVardaStavokli() {
-    // * Metode pārbauda vai visi masīva simboli ir vienādi.
-    // * Spēles kodā tiek izmantots, lai uzvarētu karātavu minigame.
-    // Paņem pirmo masīva elementu, lai pārbaudītu ar pārējiem.
+  public static void palaistKaratavas() {
+    MazoSpeluIzvelesKods.varonisIrMazajaSpele = true;
+    Ievade.lietotajaIevade = "}";
+  }
+
+  private void sagatavotGramatuSpelesanai() {
+    restartetKaratavas();
+    EkranuParklajumi.saliktRandAtstarpesKaratavuGramata();
+    atklatDazusBurtus();
+  }
+
+  // Grāmatas vārda salikšana.
+  public void saliktCentretuVardaSkeletu() {
+    String vards = "";
+    // Cikls "salīmē" visus masīva elementus kopā, veidojot vienu vārdu.
+    for (String burtaVieta : vardaSkelets) {
+      vards += burtaVieta;
+    }
+    karatavasVards = atstarpe + vards;
+  }
+
+  // Grāmatas vārda krāsošana.
+  public void nokrasotCentretoVardaSkeletu() {
+    // * Nokrāso vārdu izvēlētajā krāsā.
+    karatavasVards = K.ZALS + karatavasVards + K.GRAMATA;
+  }
+
+  public boolean irAtminetsVards() {
+    /*
+    * Pārbauda vai visi masīva simboli ir vienādi, tas ir, vai vārds ir atminēts.
+    char masīvs ir izvēlētais vārds, un to progresa laikā lēnām aizvieto ar '*' simboliem.
+    Piemēram: banans -> b*n*ns -> **n*ns, u.t.t.*/
+
+    // Paņem pirmo masīva elementu, lai salīdzinātu to ar pārējiem.
     char pirmaisSimbols = neatminetieBurti[0];
     for (char simbols : neatminetieBurti) {
       // Ja kāds simbols nav vienāds ar pirmo simbolu, tad visi elementi nav vienādi.
@@ -100,22 +110,54 @@ public class Karatavas {
     return true;
   }
 
-  private void noteiktBurtaPareizibu(boolean pareizs, String ievaditaisBurts, String[] iespejamieBurti) {
-    // * Metode nomaina "Grāmatā" burtu krāsu. Zaļā ja pareizs. Sarkanā ja nepareizs.
-    if (pareizs) {
-      PaligMetodes.nomainitMasivaElementu(iespejamieBurti, ievaditaisBurts, K.ZALS + ievaditaisBurts + K.GRAMATA);
+  public void parbauditBurtu(String ievaditaisBurts) {
+    // * Metode pārbauda ievadīto burtu, ja tas burts ir vārdā, tad to parāda.
+    // [ } ] - simbols tiek skaitīts kā tukša ievade jeb nekas nebija ievadīts.
+    // [ Q ] - simbols tiek izmantots, lai izietu ārā no minigame.
+    if (ievaditaisBurts != "}" && ievaditaisBurts != "Q" && ievaditaisBurts != "*") {
+      apstradatBurtu(ievaditaisBurts);
+    }
+  }
+
+  private void apstradatBurtu(String ievaditaisBurts) {
+    // Ja ievadītais burts ir vārdā, tad ...
+    if (izveletaisVards.contains(ievaditaisBurts)) {
+
+      atklatBurtus(atrastBurtaIndeksus(ievaditaisBurts), ievaditaisBurts);
+      // Nokrāso burtu zaļā krāsā.
+      noteiktBurtaPareizibu(true, ievaditaisBurts); // Nomaina burta krāsu.
     }
     else {
-      PaligMetodes.nomainitMasivaElementu(iespejamieBurti, ievaditaisBurts, K.TPELEKS + ievaditaisBurts + K.GRAMATA);
+      // Nokrāso burtu sarkanā krāsā.
+      noteiktBurtaPareizibu(false, ievaditaisBurts); // Nomaina burta krāsu.
+    }
+  }
+   
+  private String noteiktAtstarpesIzmeru(int vardaGarums) {
+    // * Metode centrē vārdu grāmatā ar atstarpju palīdzību.
+    while (vardaGarums < 10) {
+      atstarpe += " ";
+      vardaGarums++;
+    }
+    return atstarpe;
+  }
+
+  private void noteiktBurtaPareizibu(boolean pareizs, String ievaditaisBurts) {
+    // * Metode nomaina "Grāmatā" burtu krāsu. Zaļā ja pareizs. Sarkanā ja nepareizs.
+    if (pareizs) {
+      PaligMetodes.nomainitMasivaElementu(burti, ievaditaisBurts, K.ZALS + ievaditaisBurts + K.GRAMATA);
+    }
+    else {
+      PaligMetodes.nomainitMasivaElementu(burti, ievaditaisBurts, K.TPELEKS + ievaditaisBurts + K.GRAMATA);
       karatavuKluduSkaits++;
     }
   }
   
   private void atklatBurtus(ArrayList<Integer> indeksuSaraksts, String ievaditaisBurts) {
-    // * Metode ciklā nomaina visus indeksus ar vienādo burtu uz ievadīto burtu. 
+    // * Nomaina visus indeksus ar vienādo burtu uz ievadīto burtu. 
     // * Piem.: vārds "bumba" => _ _ _ _ _ , burts: B => B _ _ B _ .
 
-    // Aizvieto visus norādītos indeksa elementus ar burtu.
+    // Visus saraksta indeksu elementus apmaina ar '*' simbolu.
     for (int indeks : indeksuSaraksts) {
       vardaSkelets[indeks] = ievaditaisBurts + "  "; // "  " ir izvadei atstarpe starp burtiem.
       neatminetieBurti[indeks] = '*';
@@ -123,22 +165,36 @@ public class Karatavas {
   }
 
   private ArrayList<Integer> atrastBurtaIndeksus(String ievaditaisBurts) {
-    // * Metode pārbauda sadala mināmo vārdu pa burtiem, un pārbauda katru burtu.
+    // * Pārbauda, sadala nezināmo vārdu pa burtiem, un pārbauda katru burtu.
     // * Ja atrod lietotāja ievadīto burtu, tad tā indeksu pievieno sarakstam "indeksuSaraksts".
-
     // Sadala vārdu pa burtiem.
     String[] sadalitaisVards = izveletaisVards.split("");
-
     // Šis saraksts uzglabā visus atrastos burtu indeksus.
     ArrayList<Integer> indeksuSaraksts = new ArrayList<>();
-
     // Pārbauda katru saraksta elementu jeb burtu.
     for (int i = 0; i < sadalitaisVards.length; i++) {
       // Ja atrod burtu, tad pievieno tā indeksu indeksuSarakstā.
-      if (sadalitaisVards[i].equals(ievaditaisBurts)) {indeksuSaraksts.add(i);}
+      if (sadalitaisVards[i].equals(ievaditaisBurts)) {
+        indeksuSaraksts.add(i);
+      }
     }
-
     // Atgriež indeksuSarakstu.
     return indeksuSaraksts;
+  }
+
+  private void atklatDazusBurtus() {
+    // * Atklāj random burtus, lai spēlētājam būtu vieglāk atminēt vārdu.
+    
+    // Rand. iespēja atklāt 2 burtus.
+    for (int i = Main.rand.nextInt(2) + 1 ; i > 0 ; i--) {
+      // Sadala izvēlēto vārdu pa burtiem, un paņem random indeksa elementu jeb vienu burtu.
+      apstradatBurtu(izveletaisVards.split("")[Main.rand.nextInt(izveletaisVards.length())]);
+    }
+  }
+
+  public void restartetKaratavas() {
+    // * Metode restartē visus karātavas datus, lai sākot jaunu spēli varētu spēlēt no jauna.
+    Karatavas.karatavuKluduSkaits = 0;
+    burti = "A B C D E F G H I J K L M N O P R S T U V Z".split(" ");
   }
 }

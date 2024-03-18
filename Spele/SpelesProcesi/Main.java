@@ -5,12 +5,10 @@ import java.util.Random;
 import Spele.Enums;
 import Spele.IzvadeUzTerminalu;
 import Spele.K;
-import Spele.Testi;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Izskati.EkranuIzskati;
 import Spele.Enums.EkranuVeidi;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
-import Spele.MazasSpeles.AtrodiPari.AtrodiPari;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
 import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
 import Spele.Parklajumi.EkranuParklajumi;
@@ -29,10 +27,6 @@ public class Main {
   public static volatile boolean programmaPalaista = true; // booleans, kas palaiž visu programmu.
   public static boolean sakumaEkrans = false; // Nosaka vai spēles sākumā rādīs sākuma ekrānu vai nē.
   public static volatile boolean spelePalaista = true; // Mainīgais bool, kas pašu spēli.
-
-  // Priekš karātaām.
-  public static String[] rAtstarpes = new String[17];
-  public static String karatavasVards;
 
   public static boolean mazasSpelesRezultataParskats = false;
 
@@ -55,7 +49,6 @@ public class Main {
 
     // Dažādu metožu un ideju testēšanas fails.
     // Testi.testaProgramma();
-    AtrodiPari.izveidotJaunuKarsuSpeli();
     
     // ? /////// T H R E D I //////////
     // Jaunie rīki jeb thredi, jeb objekti.
@@ -127,10 +120,10 @@ public class Main {
     }
     else {
       if (KaratavasSavienojums.mSpeleKaratavas) {
-        KaratavasSavienojums.karatavuKods();
+        KaratavasSavienojums.palaistKaratavasMazoSpeli();
       }
       else if (AtrodiPariSavienojums.mSpeleAtrodiPari) {
-        AtrodiPariSavienojums.palaistKarsuSpeli();
+        AtrodiPariSavienojums.palaistAtrodiPariMazoSpeli();
       }
     }
   }

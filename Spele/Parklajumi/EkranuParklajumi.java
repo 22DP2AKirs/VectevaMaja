@@ -151,19 +151,18 @@ public class EkranuParklajumi {
     .substring(12, ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[izvelnesCipars].length() - 5);
   }
 
-  public static String[] burti = "A B C D E F G H I J K L M N O P R S T U V Z".split(" "); // Burti, kurus var izmantot vārdu minēšanai.
   private static void gramatasParklasana(String[] mainamaisMasivs) {
     // * Metode pārklās grāmatu ar burtiem un zīmējumu.
 
     // Uz grāmatas saliek burtus.
-    mainamaisMasivs[9] += "\033[13G" + burti[0] + Main.rAtstarpes[0] + burti[1] + Main.rAtstarpes[1] + burti[2] + Main.rAtstarpes[2] + burti[3] + Main.rAtstarpes[3] + burti[4] + "\033[106G";
-    mainamaisMasivs[11] += "\033[8G" + burti[5] + Main.rAtstarpes[4] + burti[6] + Main.rAtstarpes[5] + burti[7] + Main.rAtstarpes[6] + burti[8] + Main.rAtstarpes[7] + burti[9] + "\033[106G";
-    mainamaisMasivs[13] += "\033[11G" + burti[10] + Main.rAtstarpes[8] + burti[11] + Main.rAtstarpes[9] + burti[12] + Main.rAtstarpes[10] + burti[13] + "\033[106G";
-    mainamaisMasivs[15] += "\033[9G" + burti[14] + Main.rAtstarpes[11] + burti[15] + Main.rAtstarpes[12] + burti[16] + Main.rAtstarpes[13] + burti[17] + Main.rAtstarpes[14] + burti[18] + "\033[106G";
-    mainamaisMasivs[17] += "\033[18G" + burti[19] + Main.rAtstarpes[15] + burti[20] + Main.rAtstarpes[16] + burti[21] + "\033[106G";
+    mainamaisMasivs[9] += "\033[13G" + Karatavas.burti[0] + Karatavas.rAtstarpes[0] + Karatavas.burti[1] + Karatavas.rAtstarpes[1] + Karatavas.burti[2] + Karatavas.rAtstarpes[2] + Karatavas.burti[3] + Karatavas.rAtstarpes[3] + Karatavas.burti[4] + "\033[106G";
+    mainamaisMasivs[11] += "\033[8G" + Karatavas.burti[5] + Karatavas.rAtstarpes[4] + Karatavas.burti[6] + Karatavas.rAtstarpes[5] + Karatavas.burti[7] + Karatavas.rAtstarpes[6] + Karatavas.burti[8] + Karatavas.rAtstarpes[7] + Karatavas.burti[9] + "\033[106G";
+    mainamaisMasivs[13] += "\033[11G" + Karatavas.burti[10] + Karatavas.rAtstarpes[8] + Karatavas.burti[11] + Karatavas.rAtstarpes[9] + Karatavas.burti[12] + Karatavas.rAtstarpes[10] + Karatavas.burti[13] + "\033[106G";
+    mainamaisMasivs[15] += "\033[9G" + Karatavas.burti[14] + Karatavas.rAtstarpes[11] + Karatavas.burti[15] + Karatavas.rAtstarpes[12] + Karatavas.burti[16] + Karatavas.rAtstarpes[13] + Karatavas.burti[17] + Karatavas.rAtstarpes[14] + Karatavas.burti[18] + "\033[106G";
+    mainamaisMasivs[17] += "\033[18G" + Karatavas.burti[19] + Karatavas.rAtstarpes[15] + Karatavas.burti[20] + Karatavas.rAtstarpes[16] + Karatavas.burti[21] + "\033[106G";
 
     // Grāmatā ievieto izvēlēto vārdu.
-    mainamaisMasivs[22] += "\033[13G" + Main.karatavasVards + "\033[106G";
+    mainamaisMasivs[22] += "\033[13G" + Karatavas.karatavasVards + "\033[106G";
 
     // Grāmatā uzzīmē zīmējumu.
     String[] zimejumaVeids = KaratavuIzskati.karatavuZimejums[Karatavas.karatavuKluduSkaits];
@@ -182,8 +181,8 @@ public class EkranuParklajumi {
   }
 
   public static void saliktRandAtstarpesKaratavuGramata() {
-    for (int i = 0; i < Main.rAtstarpes.length ;i++) {
-      Main.rAtstarpes[i] = EkranuParklajumi.atgrieztRandAtstarpi();
+    for (int i = 0; i < Karatavas.rAtstarpes.length ;i++) {
+      Karatavas.rAtstarpes[i] = EkranuParklajumi.atgrieztRandAtstarpi();
     }
   }
 }
