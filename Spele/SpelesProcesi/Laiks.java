@@ -72,72 +72,41 @@ public class Laiks extends Thread {
     // Tas nozīmē, ka izvēle izpildīsies vienu reizi norādītajā laikā.
     if (spelesLaiks < 2) {
       laikaTeksts = "1 2 A M ";
-      apskatitMajasdarbu();
-
+      MazoSpeluIzvelesKods.apskatitMajasdarbu();
     }
     else if (spelesLaiks == vienaStunda) {
       laikaTeksts = " 1 A M  ";
 
       // Mājasdarbu kods.
-      apskatitMajasdarbu();
+      MazoSpeluIzvelesKods.apskatitMajasdarbu();
     }
     else if (spelesLaiks == vienaStunda * 2) {
       laikaTeksts = " 2 A M  ";
 
       // Mājasdarbu kods.
-      apskatitMajasdarbu();
+      MazoSpeluIzvelesKods.apskatitMajasdarbu();
     } 
     else if (spelesLaiks == vienaStunda * 3) {
       laikaTeksts = " 3 A M  ";
 
       // Mājasdarbu kods.
-      apskatitMajasdarbu();
+      MazoSpeluIzvelesKods.apskatitMajasdarbu();
     } 
     else if (spelesLaiks == vienaStunda * 4) {
       laikaTeksts = " 4 A M  ";
       
       // Mājasdarbu kods.
-      apskatitMajasdarbu();
+      MazoSpeluIzvelesKods.apskatitMajasdarbu();
     } 
     else if (spelesLaiks == vienaStunda * 5) {
       laikaTeksts = " 5 A M  ";
 
       // Mājasdarbu kods.
-      apskatitMajasdarbu();
+      MazoSpeluIzvelesKods.apskatitMajasdarbu();
     } 
     else if (spelesLaiks > vienaStunda * 6) {
       laikaTeksts = " 6 A M  ";
       VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("UZVARA");
     }
   }
-
-  private void apskatitMajasdarbu() {
-    // * Metode pārbauda un ieslēdz mājasdarbu.
-    // TODO: parbauditVaiVaronisPaspejaIzpilditMajasdarbu();
-    ieslegtKaduMajasdarbu();
-  }
-
-  private void parbauditVaiVaronisPaspejaIzpilditMajasdarbu() {
-    // * Metode pārbauda vai varonis ir izpildījis mājasdarbu noteiktajā laikā.
-    // * Ja nav, tad viņš zaudē.
-    if (MazoSpeluIzvelesKods.izveletaMazaSpele && !Main.varonaNemirstiba) {
-      VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("MAJASDARBA_LAIKS");
-    }
-  }
-
-  private void ieslegtKaduMajasdarbu() {
-    // * Metode norādītajā laikā ieslēdz vieno no m-spēlēm.
-    // Main.rand.nextInt(1);
-    int randCipars = 0; // No 0 ieskaitot, līdz "norādītais" neieskaitot.
-    if (randCipars == 0) {
-      Karatavas.izveidotJaunuKaratavasSpeli();
-      KaratavasSavienojums.mSpeleKaratavas = true;
-    }
-    else if (randCipars == 1) {
-      AtrodiPari.izveidotJaunuKarsuSpeli();
-      AtrodiPariSavienojums.mSpeleAtrodiPari = true;
-    }
-    MazoSpeluIzvelesKods.izveletaMazaSpele = true;
-  }
-
 }

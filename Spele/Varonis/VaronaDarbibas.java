@@ -13,6 +13,7 @@ import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Iestatijumi.IestatijumuDati;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
+import Spele.MazasSpeles.Karatavas.Karatavas;
 import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
 import Spele.SpelesProcesi.Laiks;
 
@@ -167,7 +168,7 @@ public class VaronaDarbibas {
       aizslegtDurvis();
     }
     else if (komanda.equals("E") && KaratavasSavienojums.mSpeleKaratavas) {
-      MazoSpeluIzvelesKods.varonisIrMazajaSpele = true; 
+      Karatavas.palaistKaratavas(); 
     }
   }
 

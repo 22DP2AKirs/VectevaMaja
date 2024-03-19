@@ -27,5 +27,4 @@ public class KaratavasSavienojums {
       MazoSpeluIzvelesKods.varonisIrMazajaSpele = false;
     }
   }
-  // TODO: atrastais vārds ir jāpadara zaļš!!!
 }

@@ -9,6 +9,13 @@
             "name": "Main",
             "request": "launch",
             "mainClass": "Spele.SpelesProcesi.Main",
+            "projectName": "VectevaMaja_b0cbe519"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Spele.SpelesProcesi.Main",
             "projectName": "VectevaMaja_1d91e1f0"
         },
         {

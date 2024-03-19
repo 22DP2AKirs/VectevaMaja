@@ -15,15 +15,11 @@ import Spele.SpelesProcesi.Main;
 public class Karatavas {
   // Mainīgie, kuri ir lietoti citās programmas daļās.
   public static int karatavuKluduSkaits = 0;
-  
-
 
   public static String[] burti = "A B C D E F G H I J K L M N O P R S T U V Z".split(" "); // Burti, kurus var izmantot vārdu minēšanai.
-  // Priekš karātaām.
+
   public static String[] rAtstarpes = new String[17];
   public static String karatavasVards;
-
-
 
   // Viss tiek noteikts ar konstruktoru.
   private String atstarpe = "";
@@ -62,7 +58,7 @@ public class Karatavas {
 
   public static void izveidotJaunuKaratavasSpeli() {
     // * Izveido jaunu karātavas objektu, lai to varētu izmantot spēlē ar citām vērtībām.
-    karatavasObjekts = new Karatavas(Main.rand.nextInt(1), Main.rand.nextInt(7)); // old (4, 7)
+    karatavasObjekts = new Karatavas(Main.rand.nextInt(4), Main.rand.nextInt(7)); // old (4, 7)
     karatavasObjekts.sagatavotGramatuSpelesanai();
   }
 

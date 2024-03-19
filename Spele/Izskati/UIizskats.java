@@ -9,7 +9,6 @@ import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
 import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
 import Spele.SpelesProcesi.Ievade;
 import Spele.SpelesProcesi.Laiks;
-import Spele.SpelesProcesi.Main;
 import Spele.Varonis.VaronaDarbibas;
 
 public class UIizskats {

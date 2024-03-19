@@ -2,8 +2,8 @@
 
 1. Sērkociņa dati.
 { 
-atlikusoSerkocinuDaudzums=10
-maxSerkocinaDegsanasLaiks=3
+atlikusoSerkocinuDaudzums=25
+maxSerkocinaDegsanasLaiks=1
 }
 
 2. Spoku dati.

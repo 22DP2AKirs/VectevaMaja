@@ -27,9 +27,7 @@ public class Main {
   public static volatile boolean programmaPalaista = true; // booleans, kas palaiž visu programmu.
   public static boolean sakumaEkrans = false; // Nosaka vai spēles sākumā rādīs sākuma ekrānu vai nē.
   public static volatile boolean spelePalaista = true; // Mainīgais bool, kas pašu spēli.
-
-  public static boolean mazasSpelesRezultataParskats = false;
-
+ 
   // Varoņa īpašības.
   public static boolean varonaNemirstiba = false; // Vai varonis var zaudēt spēli vai nē.
   
