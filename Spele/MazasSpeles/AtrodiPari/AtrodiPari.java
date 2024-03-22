@@ -30,8 +30,21 @@ public class AtrodiPari {
   private int[] pirmasKartsPozicija = new int[2];
 
   // Iespējamie tabulas izskati (izmēri):
-  private static int[] rindasSkaitli = { 1 , 2 , 3 }; // Rindām.
-  private static int[] kolonnasSkaitli = { 2 , 4 }; // Kolonnām.
+  private static int[][] tabulasIzmeri = 
+  {
+    // R - rinda, K - kolonna.
+    // R , K.
+    { 1 , 2 },
+    { 1 , 4 },
+    { 2 , 1 },
+    { 2 , 2 },
+    { 2 , 3 },
+    { 2 , 4 },
+    { 2 , 5 },
+    { 3 , 2 },
+    { 3 , 4 },
+    { 3 , 6 }
+  };
 
   // Tabulas ar paslēpto informāciju:
   public static int[][] atklataisRezgis;
@@ -118,7 +131,10 @@ public class AtrodiPari {
   }
 
   public static void izveidotJaunuKarsuSpeli() {
-    atrodiPariObjekts = new AtrodiPari(rindasSkaitli[2] , kolonnasSkaitli[1]); // rindasSkaitli[Main.rand.nextInt(3)], kolonnasSkaitli[Main.rand.nextInt(2)]
+    // Izvēlas vienu no 10 tabulas izmēru kombinācijām.
+    int izmeruKombinacija = Main.rand.nextInt(10);
+    // Izveido tabulu pēc izvēlētās kombinācijas izmēriem (0 - pirmais cipars (y), 1 - otrs (x)).
+    atrodiPariObjekts = new AtrodiPari(tabulasIzmeri[izmeruKombinacija][0], tabulasIzmeri[izmeruKombinacija][1]);
     atrodiPariObjekts.sagatavotRezgiSpelesanai();
   }
 
@@ -131,6 +147,7 @@ public class AtrodiPari {
     if (karsuPari == 0) {
       AtrodiPariSavienojums.mSpeleAtrodiPari = false;
       MazoSpeluIzvelesKods.varonisIrMazajaSpele = false;
+      MazoSpeluIzvelesKods.izveletaMazaSpele = false;
     }
   }
 

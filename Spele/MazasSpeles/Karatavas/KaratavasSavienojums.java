@@ -25,6 +25,7 @@ public class KaratavasSavienojums {
       PaligMetodes.gulet(2); // Ļauj spēlētājam redzēt atminēto vārdu.
       mSpeleKaratavas = false;
       MazoSpeluIzvelesKods.varonisIrMazajaSpele = false;
+      MazoSpeluIzvelesKods.izveletaMazaSpele = false;
     }
   }
 }

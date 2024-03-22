@@ -25,18 +25,18 @@ public class Main {
 
   // Lai noteiktu darbības, kādā no programmas fāzēm.
   public static volatile boolean programmaPalaista = true; // booleans, kas palaiž visu programmu.
-  public static boolean sakumaEkrans = false; // Nosaka vai spēles sākumā rādīs sākuma ekrānu vai nē.
+  public static boolean sakumaEkrans = true; // Nosaka vai spēles sākumā rādīs sākuma ekrānu vai nē.
   public static volatile boolean spelePalaista = true; // Mainīgais bool, kas pašu spēli.
  
   // Varoņa īpašības.
-  public static boolean varonaNemirstiba = false; // Vai varonis var zaudēt spēli vai nē.
+  public static boolean varonaNemirstiba = true; // Vai varonis var zaudēt spēli vai nē.
   
   // Objekti.
   public static Random rand = new Random(); // Priekš random darbībām.
   
   // Iestata tikšķa jeb 1 "refreša" periodu.
-  static int framesPerSecond = 1000 / 25; // Pēc cik ilga laika ekrāns "refrešojas". (Milisekundēs)
-  public static int spelesIlgums = 10000;// 6 min 360;
+  public static int framesPerSecond = 1000 / 25; // Pēc cik ilga laika ekrāns "refrešojas". (Milisekundēs)
+  public static int spelesIlgums = 360;// 6 min 360;
   
   // Cits.
   public static volatile boolean thrediGul; // Apstādina Laiks thredu uz noteiktu laiku.

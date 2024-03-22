@@ -145,7 +145,8 @@ public class VaronaDarbibas {
       kustetiesPaMaju(KustibasVirziens.NEGATIVS); ////////////////////////////////////////
     }
     else if (komanda.equals("E") && AtrodiPariSavienojums.mSpeleAtrodiPari) {
-      MazoSpeluIzvelesKods.varonisIrMazajaSpele = true; 
+      MazoSpeluIzvelesKods.varonisIrMazajaSpele = true;
+      Main.nodzestTerminali();
     }
   }
 

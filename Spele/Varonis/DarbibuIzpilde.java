@@ -7,6 +7,7 @@ import Spele.K;
 import Spele.Enums.Istabas;
 import Spele.Enums.Virzieni;
 import Spele.Izskati.IstabuIzskati;
+import Spele.Konts.LietotajaRegistracija;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.Parklajumi.BildesParklajumi;
 import Spele.Parklajumi.EkranuParklajumi;
@@ -184,6 +185,8 @@ public class DarbibuIzpilde {
         } 
         else if (EkranuParklajumi.izvelnesCipars == 4) {
           // Konta rģistrācijas kods:
+          Ievade.lietotajaIevade = K.TUKSA_IEVADE;
+          LietotajaRegistracija.pieslegsanasLogs();
         } 
         else if (EkranuParklajumi.izvelnesCipars == 5) {
           // Aizvērt programmu:

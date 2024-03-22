@@ -90,6 +90,28 @@ public class AtrodiPariIzskati {
     "|__......____|",
   };
 
+  private final static String[] karts8 = {
+    "|'''''''---''|",
+    "| VIII       |",
+    "|   .''''.   |",
+    "|   '.__.'   |",
+    "|   :    :   |",
+    "|   '.__.'   |",
+    "|       VIII |",
+    "|__......____|",
+  };
+
+  private final static String[] karts9 = {
+    "|'''''''---''|",
+    "| IX         |",
+    "|   .''''.   |",
+    "|   '.__.!   |",
+    "|        :   |",
+    "|    ....'   |",
+    "|         IX |",
+    "|__......____|",
+  };
+
   private final static String[] cipars1 = {
     "  .':     ",
     " '  :     ",
@@ -118,6 +140,20 @@ public class AtrodiPariIzskati {
     "      : ::",
   };
 
-  public final static String[] [] ciparuMasivs = {cipars1 , cipars2 , cipars3 , cipars4};
-  public final static String[] [] karsuMasivs = {kartsAizmugure , karts1 , karts2 , karts3 , karts4 , karts5 , karts6 , karts7};
+  private final static String[] cipars5 = {
+    " :'''':   ",
+    " :____    ",
+    "      :   ",
+    " .___.' ::",
+  };
+
+  private final static String[] cipars6 = {
+    " .''''.   ",
+    " :        ",
+    " :''''.   ",
+    " '.__.' ::",
+  };
+
+  public final static String[] [] ciparuMasivs = {cipars1 , cipars2 , cipars3 , cipars4 , cipars5 , cipars6};
+  public final static String[] [] karsuMasivs = {kartsAizmugure , karts1 , karts2 , karts3 , karts4 , karts5 , karts6 , karts7 , karts8 , karts9};
 }

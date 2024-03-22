@@ -9,7 +9,10 @@ public class Enums {
   public enum EkranuVeidi {
     GALVENAIS_EKRANS,
     KARATAVU_EKRANS,
-    UZVARAS_EKRANS
+    UZVARAS_EKRANS,
+    KONTA_IZVELES_EKRANS,
+    REGISTRACIJAS_EKRANS,
+    KONTA_EKRANS
   }
 
   public enum NavesIemesli {

@@ -7,7 +7,15 @@ public class ParklajumuIzskati {
 
   // Galvenā ekrāna (main menu) pārklājumi.
   public static final String[] izvelnesBultinas = { Spele.K.DEBESU_ZILS + ">", "<" + Spele.K.RESET };
-  public static String[] sakumaEkranaIzvelesVarduVarianti = {"  T U R P I N A T   X ", "  S P E L E T ", "  I E S T A T I J U M I   X ", "  P A M A C I B A   X ", "  A K A U N T S   X ", "  I Z I E T "};
+  public static String[] sakumaEkranaIzvelesVarduVarianti = 
+  {
+  "  T U R P I N A T   X ",
+  "  S P E L E T ",
+  "  I E S T A T I J U M I   X ",
+  "  P A M A C I B A   X ",
+  "  K O N T S ",
+  "  I Z I E T "
+};
  
   // Sērkocins.
   public static String[] serkocinaIzskats = {
