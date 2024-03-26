@@ -10,7 +10,6 @@ import Spele.Izskati.IstabuIzskati;
 import Spele.Konts.LietotajaRegistracija;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.Parklajumi.BildesParklajumi;
-import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SpelesProcesi.Ievade;
 import Spele.SpelesProcesi.Main;
 
@@ -147,16 +146,17 @@ public class DarbibuIzpilde {
     Ievade.sagatavotKomanduDzesanai();
   }
 
-  // TODO:   ASDSADASDADASD
   public static void izvelnesKustiba(String ievade, int izvelesIespejas) {
     // * Ļauj kontrolēt spēles izvēlnes ar dažādiem lielumiem.
     if (ievade.equals("W") && izvelnesSkaitlis > 0) {
       // Pārvieto izvēli uz augšu (^).
       izvelnesSkaitlis--;
+      Ievade.sagatavotKomanduDzesanai();
     } 
     else if (ievade.equals("S") && izvelnesSkaitlis < izvelesIespejas - 1) {
       // Pārvieto izvēli uz leju (v).
       izvelnesSkaitlis++;
+      Ievade.sagatavotKomanduDzesanai();
     }
   }
 
@@ -197,7 +197,7 @@ public class DarbibuIzpilde {
         else if (izvelnesSkaitlis == 4) {
           // Konta rģistrācijas kods:
           Ievade.lietotajaIevade = K.TUKSA_IEVADE;
-          LietotajaRegistracija.pieslegsanasLogs();
+          LietotajaRegistracija.kontaIzvelesDarbibas();
         } 
         else if (izvelnesSkaitlis == 5) {
           // Aizvērt programmu:

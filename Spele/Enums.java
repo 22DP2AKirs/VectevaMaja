@@ -10,10 +10,15 @@ public class Enums {
     GALVENAIS_EKRANS,
     KARATAVU_EKRANS,
     UZVARAS_EKRANS,
-    KONTA_IZVELES_EKRANS,
+    KONTA_IZVELES_EKRANS, // 
+    KONTA_APSKATES_EKRANS,
     REGISTRACIJAS_EKRANS,
-    KONTA_EKRANS
+    PIESLEGSANAS_EKRANS
   }
+  // Konta apskates ekrāns (apskata visus konta datus).
+  // Konta izvēles ekrāns (pieslēgties, reģistrēties).
+  // Reģistrācijas ekrāns (izveido kontu).
+  // Pieslēgšanās ekrāns (pieslēdzas jau izveidotam kontam).
 
   public enum NavesIemesli {
 

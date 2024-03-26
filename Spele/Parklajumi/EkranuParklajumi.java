@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Iestatijumi.IestatijumuDati;
+import Spele.K;
 import Spele.Enums.EkranuVeidi;
 import Spele.MazasSpeles.Karatavas.Karatavas;
 import Spele.MazasSpeles.Karatavas.KaratavuIzskati;
@@ -28,9 +29,53 @@ public class EkranuParklajumi {
     else if (EKRANA_TIPS.equals(EkranuVeidi.UZVARAS_EKRANS)) {
       uzvarasEkranaParklasana(ekranaKopija);
     }
+    else if (EKRANA_TIPS.equals(EkranuVeidi.KONTA_IZVELES_EKRANS)) {
+      kontaIzvelesParklasana(ekranaKopija);
+    }
+    else if (EKRANA_TIPS.equals(EkranuVeidi.REGISTRACIJAS_EKRANS)) {
+      registracijasParklasana(ekranaKopija);
+    }
 
     return ekranaKopija;
   }
+
+  private static void registracijasParklasana(String[] mainamaisMasivs) {
+    if (DarbibuIzpilde.izvelnesSkaitlis == 0) {
+      mainamaisMasivs[4] += K.DEBESU_ZILS + "\033[72G.:" + K.RESET + "\033[106G";
+      mainamaisMasivs[5] += K.DEBESU_ZILS + "\033[68G. '  :.............." + K.RESET + "\033[106G";
+      mainamaisMasivs[6] += K.DEBESU_ZILS + "\033[68G' .  :''''''''''''''" + K.RESET + "\033[106G";
+      mainamaisMasivs[7] += K.DEBESU_ZILS + "\033[72G':" + K.RESET + "\033[106G";
+    }
+    else if (DarbibuIzpilde.izvelnesSkaitlis == 1) {
+      mainamaisMasivs[12] += K.DEBESU_ZILS + "\033[72G.:" + K.RESET + "\033[106G";
+      mainamaisMasivs[13] += K.DEBESU_ZILS + "\033[68G. '  :.............." + K.RESET + "\033[106G";
+      mainamaisMasivs[14] += K.DEBESU_ZILS + "\033[68G' .  :''''''''''''''" + K.RESET + "\033[106G";
+      mainamaisMasivs[15] += K.DEBESU_ZILS + "\033[72G':" + K.RESET + "\033[106G";
+    }
+    else if (DarbibuIzpilde.izvelnesSkaitlis == 2) {
+      mainamaisMasivs[20] += K.DEBESU_ZILS + "\033[72G.:" + K.RESET + "\033[106G";
+      mainamaisMasivs[21] += K.DEBESU_ZILS + "\033[68G. '  :.............." + K.RESET + "\033[106G";
+      mainamaisMasivs[22] += K.DEBESU_ZILS + "\033[68G' .  :''''''''''''''" + K.RESET + "\033[106G";
+      mainamaisMasivs[23] += K.DEBESU_ZILS + "\033[72G':" + K.RESET + "\033[106G";
+    }
+  }
+
+
+  private static void kontaIzvelesParklasana(String[] mainamaisMasivs) {
+    if (DarbibuIzpilde.izvelnesSkaitlis == 0) {
+      mainamaisMasivs[13] += K.DEBESU_ZILS + "\033[30G\\" + "\033[74G/" + K.RESET + "\033[106G";
+      mainamaisMasivs[14] += K.DEBESU_ZILS + "\033[31G\\" + "\033[73G/" + K.RESET + "\033[106G";
+      mainamaisMasivs[15] += K.DEBESU_ZILS + "\033[31G/" + "\033[73G\\" + K.RESET + "\033[106G";
+      mainamaisMasivs[16] += K.DEBESU_ZILS + "\033[30G/" + "\033[74G\\" + K.RESET + "\033[106G";
+    }
+    else if (DarbibuIzpilde.izvelnesSkaitlis == 1) {
+      mainamaisMasivs[19] += K.DEBESU_ZILS + "\033[30G\\" + "\033[74G/" + K.RESET + "\033[106G";
+      mainamaisMasivs[20] += K.DEBESU_ZILS + "\033[31G\\" + "\033[73G/" + K.RESET + "\033[106G";
+      mainamaisMasivs[21] += K.DEBESU_ZILS + "\033[31G/" + "\033[73G\\" + K.RESET + "\033[106G";
+      mainamaisMasivs[22] += K.DEBESU_ZILS + "\033[30G/" + "\033[74G\\" + K.RESET + "\033[106G";
+    }
+  }
+
 
   public static String[] parklatZaudesanasEkranu(String[] originalaisEkrans, String iemesls) {
     String[] ekranaKopija = Arrays.copyOf(originalaisEkrans, originalaisEkrans.length);

@@ -72,4 +72,9 @@ public class Ievade extends Thread {
       Ievade.lietotajaIevade = K.TUKSA_IEVADE;
     }
   }
+
+  public static void pilnibaNotiritIevadi() {
+    // Notīra ievadi bez pārbaudēm un nosacījumiem.
+    Ievade.lietotajaIevade = K.TUKSA_IEVADE;
+  }
 }
