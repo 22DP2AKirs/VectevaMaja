@@ -9,6 +9,7 @@ import Spele.MazasSpeles.Karatavas.Karatavas;
 import Spele.MazasSpeles.Karatavas.KaratavuIzskati;
 import Spele.SpelesProcesi.Laiks;
 import Spele.SpelesProcesi.Main;
+import Spele.Varonis.DarbibuIzpilde;
 import Spele.Varonis.VaronaStatusaEfekti;
 
 // * Pārklāj Ekrānu.
@@ -127,14 +128,12 @@ public class EkranuParklajumi {
     mainamaisMasivs[25] += "\033[7G" + informacija[7] + "\033[106G";
   }
 
-  
-  public static int izvelnesCipars = 0;
   private static void galvenaEkranaParklasana(String[] mainamaisMasivs) {
     // * Metode pārklās galveno ekrānu.
 
     // Pie teksta pieliek bultiņas.
-    ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[izvelnesCipars] = 
-    ParklajumuIzskati.izvelnesBultinas[0] + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[izvelnesCipars]
+    ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[DarbibuIzpilde.izvelnesSkaitlis] = 
+    ParklajumuIzskati.izvelnesBultinas[0] + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[DarbibuIzpilde.izvelnesSkaitlis]
     .substring(1) + ParklajumuIzskati.izvelnesBultinas[1];
 
     // Uzklāj tekstus.
@@ -146,9 +145,9 @@ public class EkranuParklajumi {
     mainamaisMasivs[21] += "\033[16G" + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[5] + "\033[106G";
 
     // No teksta noņem pieliktās bultiņas.
-    ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[izvelnesCipars] = 
-    " " + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[izvelnesCipars]
-    .substring(12, ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[izvelnesCipars].length() - 5);
+    ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[DarbibuIzpilde.izvelnesSkaitlis] = 
+    " " + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[DarbibuIzpilde.izvelnesSkaitlis]
+    .substring(12, ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[DarbibuIzpilde.izvelnesSkaitlis].length() - 5);
   }
 
   private static void gramatasParklasana(String[] mainamaisMasivs) {

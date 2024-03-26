@@ -12,9 +12,7 @@ import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SpelesProcesi.Laiks;
 import Spele.SpelesProcesi.Main;
 import Spele.Spoki.DurvjuSpoks;
-// import Spele.Spoki.DurvjuSpoks;
 import Spele.Spoki.LogaSpoks;
-// import Spele.Spoki.VirtuvesSpoks;
 import Spele.Spoki.VirtuvesSpoks;
 
 public class VaronaStatusaEfekti {

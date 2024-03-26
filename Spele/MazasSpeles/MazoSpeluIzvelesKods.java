@@ -34,7 +34,7 @@ public class MazoSpeluIzvelesKods {
     izveletaMazaSpele = true;
 
     // Main.rand.nextInt(3); // No 0 ieskaitot, līdz "norādītais" neieskaitot.
-    int randCipars = 1; 
+    int randCipars = 0; 
     if (randCipars == 0) {
       // Karātavas.
       Karatavas.izveidotJaunuKaratavasSpeli();

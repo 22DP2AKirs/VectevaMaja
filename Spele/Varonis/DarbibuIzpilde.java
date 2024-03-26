@@ -34,6 +34,9 @@ public class DarbibuIzpilde {
   private static final String[] testesanasKomandas = { "I", "O", "P" , "SI", "MI", "EXIT", "POWER OFF", "KILL", "WIN"};
   private static final String[] parastasKomandas = {"F", "A", "D", "1", "2", "3", "4"};
 
+  // Izvelnes skaitlis (Izmantots, lai kustinātu dažāda veida 'main menus').
+  public static int izvelnesSkaitlis = 0;
+
   // Veiksmīgai un pareizai spēles darbībai, katrā virziena izvēlē pirmajam ir jābūt komandas apstrādei,
   // un tikai tad vizuālajai izvadei.
 
@@ -144,6 +147,19 @@ public class DarbibuIzpilde {
     Ievade.sagatavotKomanduDzesanai();
   }
 
+  // TODO:   ASDSADASDADASD
+  public static void izvelnesKustiba(String ievade, int izvelesIespejas) {
+    // * Ļauj kontrolēt spēles izvēlnes ar dažādiem lielumiem.
+    if (ievade.equals("W") && izvelnesSkaitlis > 0) {
+      // Pārvieto izvēli uz augšu (^).
+      izvelnesSkaitlis--;
+    } 
+    else if (ievade.equals("S") && izvelnesSkaitlis < izvelesIespejas - 1) {
+      // Pārvieto izvēli uz leju (v).
+      izvelnesSkaitlis++;
+    }
+  }
+
   public static void izpilditSakumaEkranaDarbibas(String komanda) {
     // * Šī metode nosaka, kādas darbības būs pieejamas sākuma ekrānā (Main screen), un to darbību izpilde.
     // Skatoties, kāda ir ievade, tāda būs darbība.
@@ -162,33 +178,28 @@ public class DarbibuIzpilde {
         5. Iziet.
       */
 
-      if (komanda.equals("W") && EkranuParklajumi.izvelnesCipars > 0) {
-        EkranuParklajumi.izvelnesCipars--;
-      } 
-      else if (komanda.equals("S") && EkranuParklajumi.izvelnesCipars < 5) {
-        EkranuParklajumi.izvelnesCipars++;
-      } 
-      else if (komanda.equals("")) { // "" = 'ENTER'.
-        if (EkranuParklajumi.izvelnesCipars == 0) {
+      izvelnesKustiba(komanda, 6);
+      if (komanda.equals("")) { // "" = 'ENTER'.
+        if (izvelnesSkaitlis == 0) {
           // Turpinājuma kods:
         }
-        else if (EkranuParklajumi.izvelnesCipars == 1) {
+        else if (izvelnesSkaitlis == 1) {
           // Spēlēšanas kods:
           Main.sakumaEkrans = false;
           Main.spelePalaista = true;
         } 
-        else if (EkranuParklajumi.izvelnesCipars == 2) {
+        else if (izvelnesSkaitlis == 2) {
           // Iestatījumu kods:
         } 
-        else if (EkranuParklajumi.izvelnesCipars == 3) {
+        else if (izvelnesSkaitlis == 3) {
           // Pamācības kods:
         } 
-        else if (EkranuParklajumi.izvelnesCipars == 4) {
+        else if (izvelnesSkaitlis == 4) {
           // Konta rģistrācijas kods:
           Ievade.lietotajaIevade = K.TUKSA_IEVADE;
           LietotajaRegistracija.pieslegsanasLogs();
         } 
-        else if (EkranuParklajumi.izvelnesCipars == 5) {
+        else if (izvelnesSkaitlis == 5) {
           // Aizvērt programmu:
           Main.programmaPalaista = false;
           System.exit(0); // Pārtrauc spēles darbību.
