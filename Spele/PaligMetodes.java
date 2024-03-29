@@ -8,6 +8,21 @@ import Spele.Enums.Virzieni;
 public class PaligMetodes {
   // Šeit ir metodes, kuras atvieglos koda saprašanu un manu dzīvi.
 
+  public static String nonemtAtstarpes(String ievade) {
+    int garums = ievade.length();
+    String jaunaisVards = "";
+
+    // Pārbauda visu vārdu.
+    for (int i = 0 ; i < garums ; i++) {
+      // Ja simbols nav atstarpe, tad ... .
+      if (!(ievade.charAt(i) == ' ')) {
+        jaunaisVards += ievade.charAt(i);
+      }
+    }
+
+    return jaunaisVards;
+  }
+
   public static void izvaditArrayListElementus(ArrayList saraksts) {
     for (Object object : saraksts) {
       System.out.println(object);

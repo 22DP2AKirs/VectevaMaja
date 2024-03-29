@@ -8,13 +8,16 @@ public class Ievade extends Thread {
   // volatile modifier ir, lai objekts sinhronizējas starp visiem Thrediem.
   private Scanner ievadesLasitajs = new Scanner(System.in); // Parastais lasītājs, kurš lasīs lietotāja ievadi.
   public static volatile String lietotajaIevade = K.TUKSA_IEVADE; // Definēju mainīgo, lai kods tālāk spētu viņu visu laiku dublicēt (šinī gadījumā saglabāt).
+  public static String neapstradataLietotajaIevade = ""; // Nepārveidota uz lieliem burtiem.
 
   public static boolean vaiKomanduIzpildija = true; // Ļauj ievadītajām darbībām būt izpildītām pirms tās tiek nodzēstas.
   
   public void run() { // Threds vienmēr lasa ievadi, vienalga uz to, kas notiek apkārt.
     // Threds strādās, kamēr cikls ir aktīvs.
     while (Main.programmaPalaista) {
-      lietotajaIevade = ievadesLasitajs.nextLine().toUpperCase(); // Pārveido visas ievades uz liliem burtiem.
+      neapstradataLietotajaIevade = ievadesLasitajs.nextLine();
+      lietotajaIevade = neapstradataLietotajaIevade.toUpperCase(); // Pārveido visas ievades uz liliem burtiem.
+
       vaiKomanduIzpildija = false; // Pēc ievades saglabāšanas, notiritIevadi() netīrīs ievadi, līdz VaronaDarbibas izpildīs ievadīto komandu.
       System.out.print("\033[F"); // Noliek mirgojošo kursoru vienu līniju uz augšu.
       

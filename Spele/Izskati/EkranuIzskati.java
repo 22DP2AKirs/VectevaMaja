@@ -154,7 +154,7 @@ public class EkranuIzskati {
     "\r|      |                                _     _           |                                            |",
     "\r|      |  I E V A D I E T   L I E T O T A J V A R D U :   |                                            |",
     "\r|      |                                                  |                                            |",
-    "\r|      |     >>>                                          |                                            |",
+    "\r|      |     >>>             | M A X   10   S I M B O L I |                                            |",
     "\r|      |__________________________________________________|                                            |",
     "\r|                                                                                                      |",
     "\r|                                                                                                      |",
@@ -162,7 +162,7 @@ public class EkranuIzskati {
     "\r|      |                                                  |                                            |",
     "\r|      |        I E V A D I E T   P A R O L I :           |                                            |",
     "\r|      |                                                  |                                            |",
-    "\r|      |     >>>                                          |                                            |",
+    "\r|      |     >>>                  | M A X   15   S I M B. |                                            |",
     "\r|      |__________________________________________________|                                            |",
     "\r|                                                                                                      |",
     "\r|                                                                                                      |",
@@ -170,11 +170,11 @@ public class EkranuIzskati {
     "\r|      |                          v _           _         |                                            |",
     "\r|      |  I E V A D I E T   D R O S I B A S   V A R D U : |                                            |",
     "\r|      |                                                  |                                            |",
-    "\r|      |     >>>                                          |                                            |",
+    "\r|      |     >>>                  | M A X   15   S I M B. |                                            |",
     "\r|      |__________________________________________________|                                            |",
     "\r|                                                                                                      |",
     "\r|                                                                                                      |",
-    "\r|       [ Q ] - A T P A K A L                                                                          |",
+    "\r|       [ Q ] - A T P A K A L                             [ SAVE ] - I Z V E I D O T   K O N T U       |",
     "\r|                           '                                                                          |",
     "\r|______________________________________________________________________________________________________|",
   };
@@ -247,6 +247,40 @@ public class EkranuIzskati {
     "\r|______________________________________________________________________________________________________|",
   };
 
+  private static final String[] VARDA_IEVADES_EKRANS = {
+
+    "\r▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|______________________________________________________________________________________________________|",
+  };
+
   public static String[] [] visiEkrani = { // String[] - masīvs, String[] [] - viendimensijas masīvs, kurš satur masīvus, String[][] [] - divdimensiju masīvs, kurš satur masīvus.
     GALVENAIS_EKRANS,
     UZVARAS_EKRANS,
@@ -256,5 +290,6 @@ public class EkranuIzskati {
     KONTA_APSKATES_EKRANS,
     REGISTRACIJAS_EKRANS,
     // PIESLEGSANAS_EKRANS
+    VARDA_IEVADES_EKRANS
   };
 }

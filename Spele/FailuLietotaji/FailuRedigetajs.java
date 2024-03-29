@@ -2,12 +2,35 @@ package Spele.FailuLietotaji;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 
 // try (Scanner failuLasitajs = new Scanner(Paths.get("Iestatijumi.csv"))) { // Scanner() konstruktorā ieliek datus jeb failu, kuru viņam ir jālasa un Paths.get() iegūst ceļu uz šo failu pēc dotā faila nosaukuma.
 
 public class FailuRedigetajs {
+
+  public static String failuParveidotajsParTekstu() {
+    String failuTeksts = "";
+    String linija;
+
+    try (BufferedReader failuLasitajs = new BufferedReader(new FileReader("Spele/Iestatijumi/Iestatijumi.csv"))) {
+      while ((linija = failuLasitajs.readLine()) != null) { // Lasa kamēr nav ticis līdz faila pēdējai līnijai.
+        failuTeksts += linija + "\n";
+      }
+    } catch (Exception e) {}
+
+    return failuTeksts;
+  }
+
+  public static void failuVeidotajs(String rakstamaisTeksts) {
+    System.out.println(new File("Spele/Konts/Konti").list().length);
+    try (BufferedWriter rakstitajs = new BufferedWriter(new FileWriter("Spele/Konts/Konti/Konts" + new File("Spele/Konts/Konti").list().length + ".txt", false))) { // FileWriter(x, y) x - Faila nosaukums, y - append režīms (true - pieraksta, false - pārraksta).
+      rakstitajs.write(rakstamaisTeksts);
+      rakstitajs.close();
+    } catch (Exception e) {}
+  }
+
     // Izprintē jeb izvada visus faila datus.
     static void failuPrintetajs() {
         try (BufferedReader failuLasitajs = new BufferedReader(new FileReader("Spele/Iestatijumi/Iestatijumi.csv"))) {
@@ -17,6 +40,8 @@ public class FailuRedigetajs {
             }
         } catch (Exception e) {}
     }
+
+    
 
     // Jebkurā uzrādītajā failā ieraksta norādīto tekstu.
     static void failuRakstitajs(String rakstamaisTeksts) {

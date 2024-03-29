@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Iestatijumi.IestatijumuDati;
+import Spele.Konts.LietotajaRegistracija;
 import Spele.K;
 import Spele.Enums.EkranuVeidi;
 import Spele.MazasSpeles.Karatavas.Karatavas;
@@ -40,6 +41,7 @@ public class EkranuParklajumi {
   }
 
   private static void registracijasParklasana(String[] mainamaisMasivs) {
+    // Pārvieto bultiņu.
     if (DarbibuIzpilde.izvelnesSkaitlis == 0) {
       mainamaisMasivs[4] += K.DEBESU_ZILS + "\033[72G.:" + K.RESET + "\033[106G";
       mainamaisMasivs[5] += K.DEBESU_ZILS + "\033[68G. '  :.............." + K.RESET + "\033[106G";
@@ -58,6 +60,10 @@ public class EkranuParklajumi {
       mainamaisMasivs[22] += K.DEBESU_ZILS + "\033[68G' .  :''''''''''''''" + K.RESET + "\033[106G";
       mainamaisMasivs[23] += K.DEBESU_ZILS + "\033[72G':" + K.RESET + "\033[106G";
     }
+
+    mainamaisMasivs[7] += "\033[20G" + LietotajaRegistracija.lietotajvards + "\033[106G";
+    mainamaisMasivs[15] += "\033[20G" + LietotajaRegistracija.parole + "\033[106G";
+    mainamaisMasivs[23] += "\033[20G" + LietotajaRegistracija.drosibasVards + "\033[106G";
   }
 
 
