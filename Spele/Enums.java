@@ -14,6 +14,7 @@ public class Enums {
     KONTA_APSKATES_EKRANS,
     REGISTRACIJAS_EKRANS,
     PIESLEGSANAS_EKRANS,
+    DROSIBAS_VARDA_EKRANS
   }
   // Konta apskates ekrāns (apskata visus konta datus).
   // Konta izvēles ekrāns (pieslēgties, reģistrēties).

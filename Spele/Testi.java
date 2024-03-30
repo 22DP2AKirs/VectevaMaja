@@ -1,10 +1,7 @@
 package Spele;
 
-
 import java.util.Scanner;
-
 import Spele.Enums.EkranuVeidi;
-import Spele.Izskati.EkranuIzskati;
 import Spele.MazasSpeles.Karatavas.Karatavas;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SpelesProcesi.Main;
@@ -32,7 +29,7 @@ public class Testi {
         Karatavas.karatavasObjekts.saliktCentretuVardaSkeletu();
 
         // Izvade terminālī.
-        IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuIzskati.visiEkrani[3], EkranuVeidi.KARATAVU_EKRANS));
+        IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.KARATAVU_EKRANS));
         // Izslēgšanas jeb uzvaras kods:
         if (Karatavas.karatavasObjekts.irAtminetsVards()) {
           PaligMetodes.gulet(2); // Gulēšana.

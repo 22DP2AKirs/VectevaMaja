@@ -49,7 +49,7 @@ public class VaronaStatusaEfekti {
 
     // Nosaka spēles gala rezultātu.
     if (iemesls.equals("UZVARA")) { // Uzvaras kods.
-      IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuIzskati.visiEkrani[1], EkranuVeidi.UZVARAS_EKRANS));
+      IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.UZVARAS_EKRANS));
       PaligMetodes.gulet(5);
       IestatijumuDati.spelesNakts++;
     }

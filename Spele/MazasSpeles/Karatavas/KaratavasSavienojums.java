@@ -3,7 +3,6 @@ package Spele.MazasSpeles.Karatavas;
 import Spele.IzvadeUzTerminalu;
 import Spele.PaligMetodes;
 import Spele.Enums.EkranuVeidi;
-import Spele.Izskati.EkranuIzskati;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SpelesProcesi.Ievade;
@@ -19,7 +18,7 @@ public class KaratavasSavienojums {
     // -------- Izveido vārdu, kuru rādīs grāmatas lejā.
     Karatavas.karatavasObjekts.saliktCentretuVardaSkeletu();
     // -------- Izvade terminālī.
-    IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuIzskati.visiEkrani[3], EkranuVeidi.KARATAVU_EKRANS));
+    IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.KARATAVU_EKRANS));
     // Izslēgšanas jeb uzvaras kods:
     if (Karatavas.karatavasObjekts.irAtminetsVards()) {
       PaligMetodes.gulet(2); // Ļauj spēlētājam redzēt atminēto vārdu.

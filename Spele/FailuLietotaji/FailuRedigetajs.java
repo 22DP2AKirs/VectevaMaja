@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 
+import Spele.KontaKods.Konts;
+
 // try (Scanner failuLasitajs = new Scanner(Paths.get("Iestatijumi.csv"))) { // Scanner() konstruktorā ieliek datus jeb failu, kuru viņam ir jālasa un Paths.get() iegūst ceļu uz šo failu pēc dotā faila nosaukuma.
 
 public class FailuRedigetajs {
@@ -24,8 +26,8 @@ public class FailuRedigetajs {
   }
 
   public static void failuVeidotajs(String rakstamaisTeksts) {
-    System.out.println(new File("Spele/Konts/Konti").list().length);
-    try (BufferedWriter rakstitajs = new BufferedWriter(new FileWriter("Spele/Konts/Konti/Konts" + new File("Spele/Konts/Konti").list().length + ".txt", false))) { // FileWriter(x, y) x - Faila nosaukums, y - append režīms (true - pieraksta, false - pārraksta).
+    System.out.println(new File("Spele/KontaKods/Konti").list().length);
+    try (BufferedWriter rakstitajs = new BufferedWriter(new FileWriter("Spele/KontaKods/Konti/Konts" + new File("Spele/KontaKods/Konti").list().length + ".txt", false))) { // FileWriter(x, y) x - Faila nosaukums, y - append režīms (true - pieraksta, false - pārraksta).
       rakstitajs.write(rakstamaisTeksts);
       rakstitajs.close();
     } catch (Exception e) {}
@@ -44,7 +46,7 @@ public class FailuRedigetajs {
     
 
     // Jebkurā uzrādītajā failā ieraksta norādīto tekstu.
-    static void failuRakstitajs(String rakstamaisTeksts) {
+    public static void failuRakstitajs(String rakstamaisTeksts) {
         try (BufferedWriter rakstitajs = new BufferedWriter(new FileWriter("Spele/Iestatijumi/Iestatijumi.csv", true))) { // FileWriter(x, y) x - Faila nosaukums, y - append režīms (true - pieraksta, false - pārraksta).
             rakstitajs.write(rakstamaisTeksts);
             rakstitajs.close();
@@ -69,8 +71,8 @@ public class FailuRedigetajs {
     }
 
     // String.
-    static String stringDatuAtgriezejs(String mainigaNosaukums) {
-        try (BufferedReader mainigoDatuLasitajs = new BufferedReader(new FileReader("Spele/Iestatijumi/Iestatijumi.csv"))) {
+    public static String stringDatuAtgriezejs(String mainigaNosaukums, String celsUzFailu) {
+        try (BufferedReader mainigoDatuLasitajs = new BufferedReader(new FileReader(celsUzFailu))) {
             // Pareizās līnijas atrašana.
             String linija;
             // Darbošanās princips. !(boolean) => definē mainīgo "linija", katru reizi, kad nosacījums tiek pārbaudīts un pārbauda vai definējuma iekšā ir norādītā burtu virkne.
@@ -79,7 +81,7 @@ public class FailuRedigetajs {
             // Atrastās līnijas apstrāde.
             return linija.substring(linija.indexOf("=") + 1);
         } catch (Exception e) {}
-        throw new RuntimeException("Iestatijumos vai ka parametrs mainigais String ar nosaukumu: " + mainigaNosaukums + " ir nepareizs!");
+        throw new RuntimeException("Iestatijumos vai ka parametrs mainigais String ar nosaukumu: " + mainigaNosaukums + " ir nepareizs! : " + Konts.lietotajaKontaCels);
     }
 
     // boolean.

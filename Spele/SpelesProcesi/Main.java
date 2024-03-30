@@ -6,7 +6,6 @@ import Spele.Enums;
 import Spele.IzvadeUzTerminalu;
 import Spele.K;
 import Spele.FailuLietotaji.SkanasSpeletajs;
-import Spele.Izskati.EkranuIzskati;
 import Spele.Enums.EkranuVeidi;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
@@ -69,7 +68,7 @@ public class Main {
         // ------------------ Apstrādā lietotāja ievadi.
         DarbibuIzpilde.izpilditSakumaEkranaDarbibas(Ievade.lietotajaIevade);
         // ------------------ Izvada bildi terminālī.
-        IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuIzskati.visiEkrani[0], EkranuVeidi.GALVENAIS_EKRANS));
+        IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.GALVENAIS_EKRANS));
         // ------------------ Notīra ievadi.
         Ievade.notiritIevadi();
         // ------------------ 1 'freims' jeb cikls spēlē.

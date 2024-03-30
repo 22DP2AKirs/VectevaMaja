@@ -1,13 +1,10 @@
 #Iestatijumi.
 
-1. Sērkociņa dati.
-{ 
+##Sērkociņa dati:
 atlikusoSerkocinuDaudzums=25
 maxSerkocinaDegsanasLaiks=1
-}
 
-2. Spoku dati.
-{
+##Spoku dati:
 // Agresivitāte.
 logaSpokaAtlautaAgresivitate=5
 durvjuSpokaAtlautaAgresivitate=5
@@ -17,25 +14,18 @@ virtuvesSpokaAtlautaAgresivitate=5
 logaSpokaAtputasLaiks=2
 durvjuSpokaAtputasLaiks=2
 virtuvesSpokaAtputasLaiks=2
-}
 
-3. Istabu Iestatijumi jeb istabuGaismasIeslegtas.
-{
+##Istabu Iestatijumi jeb istabuGaismasIeslegtas:
 // Sākuma gaismu stāvokļi.
 gultasGaisma=T
 divanaGaisma=T
 durvjuGaisma=T
 virtuvesGaisma=T
 
-
-}
-
-4. Papildus iestatījumi.
-{
+##Papildus iestatījumi:
 durvisSlegtas=T
 elektribaIeslegta=T
 pagrabaGaisma=F
 spuldziteSaplesta=F
-ieslegtaSkana=T
+ieslegtaSkana=F
 spokiSledzAraGaismu=F
-}

@@ -2,9 +2,11 @@ package Spele.Parklajumi;
 
 import java.util.Arrays;
 
+import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Iestatijumi.IestatijumuDati;
-import Spele.Konts.LietotajaRegistracija;
+import Spele.Izskati.EkranuIzskati;
+import Spele.KontaKods.Konts;
 import Spele.K;
 import Spele.Enums.EkranuVeidi;
 import Spele.MazasSpeles.Karatavas.Karatavas;
@@ -17,27 +19,76 @@ import Spele.Varonis.VaronaStatusaEfekti;
 // * Pārklāj Ekrānu.
 public class EkranuParklajumi {
   
-  public static String[] parklatEkranu(String[] originalaisEkrans, EkranuVeidi EKRANA_TIPS) {
-    String[] ekranaKopija = Arrays.copyOf(originalaisEkrans, originalaisEkrans.length);
+  public static String[] parklatEkranu(EkranuVeidi EKRANA_TIPS) {
+    String[] ekranaKopija = null;
 
-    // Caur iesniegto enum "EKRANA_TIPS", šī metode var viegli noteikt, kurus pārklājumus izmantot.
+    // Caur iesniegto enum "EKRANA_TIPS", šī metode var viegli noteikt, kurus ekrānus un to pārklājumus izmantot.
     if (EKRANA_TIPS.equals(EkranuVeidi.GALVENAIS_EKRANS)) {
-      galvenaEkranaParklasana(ekranaKopija);
-    }
-    else if (EKRANA_TIPS.equals(EkranuVeidi.KARATAVU_EKRANS)) {
-      gramatasParklasana(ekranaKopija);
+      galvenaEkranaParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[0], EkranuIzskati.visiEkrani[0].length));
     }
     else if (EKRANA_TIPS.equals(EkranuVeidi.UZVARAS_EKRANS)) {
-      uzvarasEkranaParklasana(ekranaKopija);
+      uzvarasEkranaParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[1], EkranuIzskati.visiEkrani[1].length));
+    }
+    else if (EKRANA_TIPS.equals(EkranuVeidi.KARATAVU_EKRANS)) {
+      gramatasParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[3], EkranuIzskati.visiEkrani[3].length));
     }
     else if (EKRANA_TIPS.equals(EkranuVeidi.KONTA_IZVELES_EKRANS)) {
-      kontaIzvelesParklasana(ekranaKopija);
+      kontaIzvelesParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[4], EkranuIzskati.visiEkrani[4].length));
+    }
+    else if (EKRANA_TIPS.equals(EkranuVeidi.KONTA_APSKATES_EKRANS)) {
+      kontaApskatesParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[5], EkranuIzskati.visiEkrani[5].length));
     }
     else if (EKRANA_TIPS.equals(EkranuVeidi.REGISTRACIJAS_EKRANS)) {
-      registracijasParklasana(ekranaKopija);
+      registracijasParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[6], EkranuIzskati.visiEkrani[6].length));
+    }
+    else if (EKRANA_TIPS.equals(EkranuVeidi.PIESLEGSANAS_EKRANS)) {
+      pieslegsanasParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[7], EkranuIzskati.visiEkrani[7].length));
+    }
+    else if (EKRANA_TIPS.equals(EkranuVeidi.DROSIBAS_VARDA_EKRANS)) {
+      pieslegsanasParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[8], EkranuIzskati.visiEkrani[8].length));
     }
 
     return ekranaKopija;
+  }
+
+  private static void kontaApskatesParklasana(String[] mainamaisMasivs) {
+    mainamaisMasivs[7] += "\033[47G" + FailuRedigetajs.stringDatuAtgriezejs("Lietotajvards", Konts.lietotajaKontaCels) + "\033[106G";
+    mainamaisMasivs[15] += "\033[47G" + FailuRedigetajs.stringDatuAtgriezejs("Parole", Konts.lietotajaKontaCels) + "\033[106G";
+    mainamaisMasivs[23] += "\033[47G" + FailuRedigetajs.stringDatuAtgriezejs("DrosibasVards", Konts.lietotajaKontaCels) + "\033[106G";
+  }
+
+private static void pieslegsanasParklasana(String[] mainamaisMasivs) {
+    if (!Konts.ievaditsLietotajvards) {
+      mainamaisMasivs[18] += "\033[27G" + K.TPELEKS + "|''''''''''''''''''''''''''''''''''''''''''''''''''|" + K.RESET + "\033[106G";
+      mainamaisMasivs[19] += "\033[27G" + K.TPELEKS + "|                                                  |" + K.RESET + "\033[106G"; 
+      mainamaisMasivs[20] += "\033[27G" + K.TPELEKS + "|        I E V A D I E T   P A R O L I :           |" + K.RESET + "\033[106G"; 
+      mainamaisMasivs[21] += "\033[27G" + K.TPELEKS + "|                                                  |" + K.RESET + "\033[106G"; 
+      mainamaisMasivs[22] += "\033[27G" + K.TPELEKS + "|     >>>                  | M A X   15   S I M B. |" + K.RESET + "\033[106G"; 
+      mainamaisMasivs[23] += "\033[27G" + K.TPELEKS + "|__________________________________________________|" + K.RESET + "\033[106G";
+
+      mainamaisMasivs[25] += "\033[29G" + K.TPELEKS + "[ AIZMIRSU ] - A I Z M I R S A T   P A R O L I ?" + K.RESET + "\033[106G";
+    }
+    
+
+    // Pārvieto bultiņu.
+    if (DarbibuIzpilde.izvelnesSkaitlis == 0) {
+      mainamaisMasivs[11] += K.DEBESU_ZILS + "\033[23G\\" + "\033[82G/" + K.RESET + "\033[106G";
+      mainamaisMasivs[12] += K.DEBESU_ZILS + "\033[24G\\" + "\033[81G/" + K.RESET + "\033[106G";
+      mainamaisMasivs[13] += K.DEBESU_ZILS + "\033[24G/" + "\033[81G\\" + K.RESET + "\033[106G";
+      mainamaisMasivs[14] += K.DEBESU_ZILS + "\033[23G/" + "\033[82G\\" + K.RESET + "\033[106G";
+    }
+    else if (DarbibuIzpilde.izvelnesSkaitlis == 1) {
+      mainamaisMasivs[19] += K.DEBESU_ZILS + "\033[23G\\" + "\033[82G/" + K.RESET + "\033[106G";
+      mainamaisMasivs[20] += K.DEBESU_ZILS + "\033[24G\\" + "\033[81G/" + K.RESET + "\033[106G";
+      mainamaisMasivs[21] += K.DEBESU_ZILS + "\033[24G/" + "\033[81G\\" + K.RESET + "\033[106G";
+      mainamaisMasivs[22] += K.DEBESU_ZILS + "\033[23G/" + "\033[82G\\" + K.RESET + "\033[106G";
+    }
+
+    // Ievieto vārdus to pozīcijās.
+    mainamaisMasivs[14] += "\033[37G" + Konts.lietotajvards + "\033[106G";
+    mainamaisMasivs[22] += "\033[37G" + Konts.parole + "\033[106G";
+
+    mainamaisMasivs[24] += Konts.lietotajaKontaCels; // TODO jānoņem.
   }
 
   private static void registracijasParklasana(String[] mainamaisMasivs) {
@@ -61,13 +112,14 @@ public class EkranuParklajumi {
       mainamaisMasivs[23] += K.DEBESU_ZILS + "\033[72G':" + K.RESET + "\033[106G";
     }
 
-    mainamaisMasivs[7] += "\033[20G" + LietotajaRegistracija.lietotajvards + "\033[106G";
-    mainamaisMasivs[15] += "\033[20G" + LietotajaRegistracija.parole + "\033[106G";
-    mainamaisMasivs[23] += "\033[20G" + LietotajaRegistracija.drosibasVards + "\033[106G";
+    mainamaisMasivs[7] += "\033[20G" + Konts.lietotajvards + "\033[106G";
+    mainamaisMasivs[15] += "\033[20G" + Konts.parole + "\033[106G";
+    mainamaisMasivs[23] += "\033[20G" + Konts.drosibasVards + "\033[106G";
   }
 
 
   private static void kontaIzvelesParklasana(String[] mainamaisMasivs) {
+    // Pārvieto bultiņu.
     if (DarbibuIzpilde.izvelnesSkaitlis == 0) {
       mainamaisMasivs[13] += K.DEBESU_ZILS + "\033[30G\\" + "\033[74G/" + K.RESET + "\033[106G";
       mainamaisMasivs[14] += K.DEBESU_ZILS + "\033[31G\\" + "\033[73G/" + K.RESET + "\033[106G";
