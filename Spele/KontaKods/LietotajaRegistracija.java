@@ -13,13 +13,20 @@ import Spele.Varonis.DarbibuIzpilde;
 public class LietotajaRegistracija {
   public static void registreties() {
     while (!Ievade.lietotajaIevade.equals("Q")) {
-      // Ja lietotājs ir pieslēdzies, tad viņu aizsūta uz konta apskati.
-      if (Konts.lietotajsPiesledzies) {
-        break;
-      }
 
+      if (!Konts.redigeKontu) {
+        // Ja lietotājs ir pieslēdzies, tad viņu aizsūta uz konta apskati.
+        if (Konts.lietotajsPiesledzies) {
+          break;
+        }
+      }
       // Izvada izvadi.
-      IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.REGISTRACIJAS_EKRANS));
+      if (Konts.redigeKontu) {
+        IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.REDIGESANAS_EKRANS));
+      }
+      else {
+        IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.REGISTRACIJAS_EKRANS));
+      }
       
       // Kustina izvēlni.
       DarbibuIzpilde.izvelnesKustiba(Ievade.lietotajaIevade, 3);
@@ -40,13 +47,21 @@ public class LietotajaRegistracija {
       /// Konta veidošanas kods:
       else if (Ievade.lietotajaIevade.equals("SAVE")) {
         if (Konts.ievaditsLietotajvards && Konts.ievaditaParole && Konts.ieavaditsDrosibasVards) {
-          // Teksts, kas tiks ievadīts (ierakstīts), katra jaunā konta sākumā.
-          String kontaDati = "#KontaDati:\nLietotajvards=" + Konts.lietotajvards + "\nParole=" + Konts.parole + "\nDrosibasVards=" + Konts.drosibasVards + "\n\n";
-          FailuRedigetajs.failuVeidotajs(kontaDati + FailuRedigetajs.failuParveidotajsParTekstu());
-
-          // Tiek mainīti svarīgie dati un izveidots ceļš uz konta failu.
-          Konts.lietotajsPiesledzies = true;
-          Konts.lietotajaKontaCels = "Spele/KontaKods/Konti/" + Konts.atrastKontuPecLietotajavarda(Konts.lietotajvards);
+          if (Konts.redigeKontu) {
+            // Lietotāja konta dati tiek mainīti uz jaunajiem.
+            FailuRedigetajs.mainitFailaMainigaVertibu("Lietotajvards", Konts.lietotajvards, Konts.lietotajaKontaCels);
+            FailuRedigetajs.mainitFailaMainigaVertibu("Parole", Konts.parole, Konts.lietotajaKontaCels);
+            FailuRedigetajs.mainitFailaMainigaVertibu("DrosibasVards", Konts.drosibasVards, Konts.lietotajaKontaCels);
+          }
+          else {
+            // Teksts, kas tiks ievadīts (ierakstīts), katra jaunā konta sākumā.
+            String kontaDati = "#KontaDati:\nLietotajvards=" + Konts.lietotajvards + "\nParole=" + Konts.parole + "\nDrosibasVards=" + Konts.drosibasVards + "\n\n";
+            FailuRedigetajs.failuVeidotajs(kontaDati + FailuRedigetajs.failuParveidotajsParTekstu());
+  
+            // Tiek mainīti svarīgie dati un izveidots ceļš uz konta failu.
+            Konts.lietotajsPiesledzies = true;
+            Konts.lietotajaKontaCels = "Spele/KontaKods/Konti/" + Konts.atrastKontuPecLietotajavarda(Konts.lietotajvards);
+          }
 
           // Nodzēš liekos datus.
           Ievade.pilnibaNotiritIevadi(); // Lai neveidotu +150 kontus triju sekunžu laikā.
@@ -56,7 +71,7 @@ public class LietotajaRegistracija {
 
       // FPS (Frames per second).
       try {Thread.sleep(Main.framesPerSecond);} catch (Exception e) {}
-      Ievade.notiritIevadi();
+      Ievade.notiritKomandu();
     }
     Ievade.pilnibaNotiritIevadi(); // Notīra ievadi, lai ieejot iepriekšējā ciklā, momentāli neiziet arī no tā, jo [ Q ] ir kā unikālais 'atpakaļ' taustiņš.
     DarbibuIzpilde.izvelnesSkaitlis = 0; // Novieto izvēlnes poz. uz pirmo jeb pēc indeksa 0.
@@ -71,7 +86,12 @@ public class LietotajaRegistracija {
 
       // Izvada ekrānu vēlreizs, lai nodzēstu visu lieko tekstu.
       Main.nodzestTerminali();
-      IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.REGISTRACIJAS_EKRANS));
+      if (Konts.redigeKontu) {
+        IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.REDIGESANAS_EKRANS));
+      }
+      else {
+        IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.REGISTRACIJAS_EKRANS));
+      }
 
       // Ļauj lietotājam iziet no ievades cikla.
       if (Ievade.lietotajaIevade.equals("Q")) {
@@ -117,7 +137,12 @@ public class LietotajaRegistracija {
 
       // Izvada ekrānu vēlreizs, lai nodzēstu visu lieko tekstu.
       Main.nodzestTerminali();
-      IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.REGISTRACIJAS_EKRANS));
+      if (Konts.redigeKontu) {
+        IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.REDIGESANAS_EKRANS));
+      }
+      else {
+        IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.REGISTRACIJAS_EKRANS));
+      }
     }
     Ievade.pilnibaNotiritIevadi();
   }
@@ -143,7 +168,12 @@ public class LietotajaRegistracija {
 
       // Izvada ekrānu vēlreizs, lai nodzēstu visu lieko tekstu.
       Main.nodzestTerminali();
-      IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.REGISTRACIJAS_EKRANS));
+      if (Konts.redigeKontu) {
+        IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.REDIGESANAS_EKRANS));
+      }
+      else {
+        IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.REGISTRACIJAS_EKRANS));
+      }
     }
     Ievade.pilnibaNotiritIevadi();
   }

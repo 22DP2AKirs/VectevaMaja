@@ -45,16 +45,53 @@ public class EkranuParklajumi {
       pieslegsanasParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[7], EkranuIzskati.visiEkrani[7].length));
     }
     else if (EKRANA_TIPS.equals(EkranuVeidi.DROSIBAS_VARDA_EKRANS)) {
-      pieslegsanasParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[8], EkranuIzskati.visiEkrani[8].length));
+      drosibasVardaParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[8], EkranuIzskati.visiEkrani[8].length));
+    }
+    else if (EKRANA_TIPS.equals(EkranuVeidi.REDIGESANAS_EKRANS)) {
+      redigesanasParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[9], EkranuIzskati.visiEkrani[9].length));
     }
 
     return ekranaKopija;
   }
 
+  private static void redigesanasParklasana(String[] mainamaisMasivs) {
+    if (DarbibuIzpilde.izvelnesSkaitlis == 0) {
+      mainamaisMasivs[4] += K.DEBESU_ZILS + "\033[68G.:" + K.RESET + "\033[106G";
+      mainamaisMasivs[5] += K.DEBESU_ZILS + "\033[64G. '  :" + K.RESET + "\033[106G";
+      mainamaisMasivs[6] += K.DEBESU_ZILS + "\033[64G' .  :" + K.RESET + "\033[106G";
+      mainamaisMasivs[7] += K.DEBESU_ZILS + "\033[68G':" + K.RESET + "\033[106G";
+    }
+    else if (DarbibuIzpilde.izvelnesSkaitlis == 1) {
+      mainamaisMasivs[12] += K.DEBESU_ZILS + "\033[68G.:" + K.RESET + "\033[106G";
+      mainamaisMasivs[13] += K.DEBESU_ZILS + "\033[64G. '  :" + K.RESET + "\033[106G";
+      mainamaisMasivs[14] += K.DEBESU_ZILS + "\033[64G' .  :" + K.RESET + "\033[106G";
+      mainamaisMasivs[15] += K.DEBESU_ZILS + "\033[68G':" + K.RESET + "\033[106G";
+    }
+    else if (DarbibuIzpilde.izvelnesSkaitlis == 2) {
+      mainamaisMasivs[20] += K.DEBESU_ZILS + "\033[68G.:" + K.RESET + "\033[106G";
+      mainamaisMasivs[21] += K.DEBESU_ZILS + "\033[64G. '  :" + K.RESET + "\033[106G";
+      mainamaisMasivs[22] += K.DEBESU_ZILS + "\033[64G' .  :" + K.RESET + "\033[106G";
+      mainamaisMasivs[23] += K.DEBESU_ZILS + "\033[68G':" + K.RESET + "\033[106G";
+    }
+
+    mainamaisMasivs[7] += "\033[20G" + Konts.lietotajvards + "\033[82G" + FailuRedigetajs.stringDatuAtgriezejs("Lietotajvards", Konts.lietotajaKontaCels) + "\033[106G";
+    mainamaisMasivs[15] += "\033[20G" + Konts.parole + "\033[82G" + FailuRedigetajs.stringDatuAtgriezejs("Parole", Konts.lietotajaKontaCels) + "\033[106G";
+    mainamaisMasivs[23] += "\033[20G" + Konts.drosibasVards + "\033[82G" + FailuRedigetajs.stringDatuAtgriezejs("DrosibasVards", Konts.lietotajaKontaCels) + "\033[106G";
+  }
+
+  private static void drosibasVardaParklasana(String[] mainamaisMasivs) {
+    mainamaisMasivs[17] += "\033[37G" + Konts.drosibasVards + "\033[106G";
+  }
+
   private static void kontaApskatesParklasana(String[] mainamaisMasivs) {
-    mainamaisMasivs[7] += "\033[47G" + FailuRedigetajs.stringDatuAtgriezejs("Lietotajvards", Konts.lietotajaKontaCels) + "\033[106G";
-    mainamaisMasivs[15] += "\033[47G" + FailuRedigetajs.stringDatuAtgriezejs("Parole", Konts.lietotajaKontaCels) + "\033[106G";
-    mainamaisMasivs[23] += "\033[47G" + FailuRedigetajs.stringDatuAtgriezejs("DrosibasVards", Konts.lietotajaKontaCels) + "\033[106G";
+    mainamaisMasivs[6] += "\033[47G" + FailuRedigetajs.stringDatuAtgriezejs("Lietotajvards", Konts.lietotajaKontaCels) + "\033[106G";
+    mainamaisMasivs[14] += "\033[47G" + FailuRedigetajs.stringDatuAtgriezejs("Parole", Konts.lietotajaKontaCels) + "\033[106G";
+    mainamaisMasivs[22] += "\033[47G" + FailuRedigetajs.stringDatuAtgriezejs("DrosibasVards", Konts.lietotajaKontaCels) + "\033[106G";
+
+    if (Konts.atceretiesMani) {
+      mainamaisMasivs[24] += K.ZALS + "\033[53G_" + K.RESET + "\033[106G"; 
+      mainamaisMasivs[25] += K.ZALS + "\033[33G[ ATC ] - A T C E R E T I E S   M A N I" + K.RESET + "\033[106G"; 
+    }
   }
 
 private static void pieslegsanasParklasana(String[] mainamaisMasivs) {

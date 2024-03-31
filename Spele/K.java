@@ -3,6 +3,10 @@ package Spele;
 public final class K {
   // * K - Konstanti (Constants).
   // * Mainīgie, kuriem ir nemainīga vērtība.
+  // Folderu jeb mapju lokācijas:
+  public static final String KONTU_MAPE = "Spele/KontaKods/Konti";
+  public static final String SAKUMA_DATU_MAPE = "Spele/SpelesProcesi/SakumaDati.txt";
+  public static final String IESTATIJUMU_FAILS = "Spele/Iestatijumi/Iestatijumi.csv";
 
   // Krāsas:
   public static final String RESET = "\u001B[0m";

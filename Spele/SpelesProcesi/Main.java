@@ -5,7 +5,9 @@ import java.util.Random;
 import Spele.Enums;
 import Spele.IzvadeUzTerminalu;
 import Spele.K;
+import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.FailuLietotaji.SkanasSpeletajs;
+import Spele.KontaKods.Konts;
 import Spele.Enums.EkranuVeidi;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
@@ -59,6 +61,12 @@ public class Main {
     // Izveido un izslēdz spokus (inicializē, lai pēc tam tos izmantotu spēlē).
     Spoks.izslegtSpokus(); 
     
+    // Pieslēdz lietotāja kontu.
+    if (Konts.atceretiesMani) {
+      Konts.lietotajaKontaCels = FailuRedigetajs.stringDatuAtgriezejs("lietotajaKontaCels", K.SAKUMA_DATU_MAPE);
+      Konts.lietotajsPiesledzies = true;
+    }
+
     // * P R O G R A M M A S   C I K L S //
     while (programmaPalaista) {
       nodzestTerminali();
@@ -70,7 +78,7 @@ public class Main {
         // ------------------ Izvada bildi terminālī.
         IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.GALVENAIS_EKRANS));
         // ------------------ Notīra ievadi.
-        Ievade.notiritIevadi();
+        Ievade.notiritKomandu();
         // ------------------ 1 'freims' jeb cikls spēlē.
         Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 25 FPS.
       }
@@ -92,7 +100,7 @@ public class Main {
         VaronaStatusaEfekti.varonaStress();
         VaronaStatusaEfekti.parbauditEffektus(); // Varoņa bojāiešanas nosacījumi.
         // ------------------ Notīra ievadi.
-        Ievade.notiritIevadi();
+        Ievade.notiritKomandu();
         // ------------------ 1 'freims' spēlē.
         Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 25 FPS.
         // ------------------ Papildus.

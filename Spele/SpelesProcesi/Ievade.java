@@ -65,7 +65,7 @@ public class Ievade extends Thread {
     return galaIevade; 
   }
 
-  public static void notiritIevadi() {
+  public static void notiritKomandu() {
     // ! Ievade ir jātīra cikla beigās, lai visas metodes (tās, kuras izmanto ievadi) izpildītos pareizi.
     // * Šī metode nomaina ievadi uz [ } ] simbolu,
     // * jo šinī spēlē tas simbols nozīmē tukša ievade jeb ievades nav (simbols tiks ignorēts).

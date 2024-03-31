@@ -5,7 +5,6 @@ import Spele.IzvadeUzTerminalu;
 import Spele.K;
 import Spele.PaligMetodes;
 import Spele.FailuLietotaji.FailuRedigetajs;
-import Spele.Izskati.EkranuIzskati;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SpelesProcesi.Ievade;
 import Spele.SpelesProcesi.Main;
@@ -41,7 +40,7 @@ public class LietotajaPieslegsanas {
 
       // FPS (Frames per second).
       try {Thread.sleep(Main.framesPerSecond);} catch (Exception e) {}
-      Ievade.notiritIevadi();
+      Ievade.notiritKomandu();
     }
     Ievade.pilnibaNotiritIevadi(); // Notīra ievadi, lai ieejot iepriekšējā ciklā, momentāli neiziet arī no tā, jo [ Q ] ir kā unikālais 'atpakaļ' taustiņš.
     DarbibuIzpilde.izvelnesSkaitlis = 0; // Novieto izvēlnes poz. uz pirmo jeb pēc indeksa 0.
@@ -111,8 +110,13 @@ public class LietotajaPieslegsanas {
 
   private static void drosibasVardaCikls() {
     while (!Ievade.lietotajaIevade.equals("Q")) {
+      // Ja lietotājs ir pieslēdzies, tad viņu aizsūta uz konta apskati.
+      if (Konts.lietotajsPiesledzies) {
+        break;
+      }
+
       // Izvada izvadi.
-      IzvadeUzTerminalu.masivuIzvade(EkranuIzskati.visiEkrani[8]);
+      IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.DROSIBAS_VARDA_EKRANS));
 
       if (Ievade.lietotajaIevade.equals("")) {
         drosibasVardaIevade();
@@ -120,7 +124,7 @@ public class LietotajaPieslegsanas {
 
       // FPS (Frames per second).
       try {Thread.sleep(Main.framesPerSecond);} catch (Exception e) {}
-      Ievade.notiritIevadi();
+      Ievade.notiritKomandu();
     }
     Ievade.pilnibaNotiritIevadi(); // Notīra ievadi, lai ieejot iepriekšējā ciklā, momentāli neiziet arī no tā, jo [ Q ] ir kā unikālais 'atpakaļ' taustiņš.
     DarbibuIzpilde.izvelnesSkaitlis = 0; // Novieto izvēlnes poz. uz pirmo jeb pēc indeksa 0.
@@ -129,7 +133,7 @@ public class LietotajaPieslegsanas {
   private static void drosibasVardaIevade() {
     // Max. 15 simboli.
     while (true) {
-      String drosibasVards = PaligMetodes.nonemtAtstarpes(vardaIevadesCikls(2));
+      Konts.drosibasVards = PaligMetodes.nonemtAtstarpes(vardaIevadesCikls(2));
 
       // Ļauj lietotājam iziet no ievades cikla.
       if (Ievade.lietotajaIevade.equals("Q")) {
@@ -138,7 +142,7 @@ public class LietotajaPieslegsanas {
       }
 
       // Pārbauda vai vārds atbilst prasībām.
-      if (drosibasVards.length() < 16 && drosibasVards.equals(FailuRedigetajs.stringDatuAtgriezejs("DrosibasVards", Konts.lietotajaKontaCels))) {
+      if (Konts.drosibasVards.length() < 16 && Konts.drosibasVards.equals(FailuRedigetajs.stringDatuAtgriezejs("DrosibasVards", Konts.lietotajaKontaCels))) {
         Main.nodzestTerminali();
         Konts.lietotajsPiesledzies = true;
         break;
@@ -163,7 +167,7 @@ public class LietotajaPieslegsanas {
       pozicija = "\033[23;37H";
     }
     else if (izvelne == 2) {
-      pozicija = "\033[15;37H";
+      pozicija = "\033[18;37H";
     }
     System.out.print(pozicija);
     

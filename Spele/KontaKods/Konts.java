@@ -4,6 +4,7 @@ import java.io.File;
 
 import Spele.Enums.EkranuVeidi;
 import Spele.IzvadeUzTerminalu;
+import Spele.K;
 import Spele.PaligMetodes;
 import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.Parklajumi.EkranuParklajumi;
@@ -24,6 +25,9 @@ public class Konts {
   public static boolean ieavaditsDrosibasVards;
 
   public static boolean lietotajsPiesledzies;
+  public static boolean atceretiesMani = FailuRedigetajs.booleanDatuAtgriezejs("atceretiesMani", K.SAKUMA_DATU_MAPE);
+
+  public static boolean redigeKontu;
 
   public static void kontaIzvelesDarbibas() {
 
@@ -33,15 +37,44 @@ public class Konts {
       while (!Ievade.lietotajaIevade.equals("Q")) {
         // -------- Izvade uz terminālu.
         IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.KONTA_APSKATES_EKRANS));
+
         // -------- Izvēles:
         if (Ievade.lietotajaIevade.equals("RED")) {
-
+        //   DarbibuIzpilde.izvelnesSkaitlis = 0;
+        //   Ievade.pilnibaNotiritIevadi();
+        //   DatuRedigesana.rediget();
+          Konts.redigeKontu = true;
+          DarbibuIzpilde.izvelnesSkaitlis = 0;
+          Ievade.pilnibaNotiritIevadi();
+          LietotajaRegistracija.registreties();
+          Konts.redigeKontu = false;
+        }
+        else if (Ievade.lietotajaIevade.equals("ATC")) {
+          // 'Toggle' slēdzis.
+          if (Konts.atceretiesMani) {
+            Konts.atceretiesMani = false;
+            FailuRedigetajs.mainitFailaMainigaVertibu("atceretiesMani", "F", K.SAKUMA_DATU_MAPE);
+            FailuRedigetajs.mainitFailaMainigaVertibu("lietotajaKontaCels",  "", K.SAKUMA_DATU_MAPE);
+          }
+          else {
+            Konts.atceretiesMani = true;
+            FailuRedigetajs.mainitFailaMainigaVertibu("atceretiesMani", "T", K.SAKUMA_DATU_MAPE);
+            FailuRedigetajs.mainitFailaMainigaVertibu("lietotajaKontaCels",  Konts.lietotajaKontaCels, K.SAKUMA_DATU_MAPE);
+          }
+          Ievade.sagatavotKomanduDzesanai();
         }
         else if (Ievade.lietotajaIevade.equals("IZI")) {
+          FailuRedigetajs.mainitFailaMainigaVertibu("atceretiesMani", "F", K.SAKUMA_DATU_MAPE);
+          FailuRedigetajs.mainitFailaMainigaVertibu("lietotajaKontaCels",  "", K.SAKUMA_DATU_MAPE);
+          Konts.atceretiesMani = false;
           Konts.lietotajsPiesledzies = false;
+          Ievade.sagatavotKomanduDzesanai();
+
+          break; // Iziet ārā no šī ekrāna.
         }
         // -------- Cikla 'framerate'.
         try {Thread.sleep(Main.framesPerSecond);} catch (Exception e) {}
+        Ievade.notiritKomandu();
       }
     }
     // Citādi redzēs izvēli starp pieslēgšanos un reģistrēšanos.
@@ -72,7 +105,7 @@ public class Konts {
         }
         // -------- Cikla beigas.
         try {Thread.sleep(Main.framesPerSecond);} catch (Exception e) {}
-        Ievade.notiritIevadi();
+        Ievade.notiritKomandu();
       }
       Ievade.pilnibaNotiritIevadi();
       DarbibuIzpilde.izvelnesSkaitlis = 0;

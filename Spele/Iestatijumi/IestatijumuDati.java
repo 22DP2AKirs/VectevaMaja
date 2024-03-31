@@ -1,5 +1,6 @@
 package Spele.Iestatijumi;
 
+import Spele.K;
 import Spele.FailuLietotaji.FailuRedigetajs;
 
 public class IestatijumuDati {
@@ -9,21 +10,21 @@ public class IestatijumuDati {
   // ? Visi iestatījumi, kuri tiek lietoti spēlē:
   // Gaismas dati.
   public static boolean[] istabuGaismasIeslegtas = { // Indeksi: 0. Gulta, 1. Dīvāns, 2. Durvis, 3. Virtuve.
-    FailuRedigetajs.booleanDatuAtgriezejs("gultasGaisma"), 
-    FailuRedigetajs.booleanDatuAtgriezejs("divanaGaisma"), 
-    FailuRedigetajs.booleanDatuAtgriezejs("durvjuGaisma"), 
-    FailuRedigetajs.booleanDatuAtgriezejs("virtuvesGaisma")
+    FailuRedigetajs.booleanDatuAtgriezejs("gultasGaisma", K.IESTATIJUMU_FAILS), 
+    FailuRedigetajs.booleanDatuAtgriezejs("divanaGaisma", K.IESTATIJUMU_FAILS), 
+    FailuRedigetajs.booleanDatuAtgriezejs("durvjuGaisma", K.IESTATIJUMU_FAILS), 
+    FailuRedigetajs.booleanDatuAtgriezejs("virtuvesGaisma", K.IESTATIJUMU_FAILS)
   };
   
-  public static boolean spokiSledzAraGaismu = FailuRedigetajs.booleanDatuAtgriezejs("spokiSledzAraGaismu");
-  public static boolean ieslegtaSkana = FailuRedigetajs.booleanDatuAtgriezejs("ieslegtaSkana");
+  public static boolean spokiSledzAraGaismu = FailuRedigetajs.booleanDatuAtgriezejs("spokiSledzAraGaismu", K.IESTATIJUMU_FAILS);
+  public static boolean ieslegtaSkana = FailuRedigetajs.booleanDatuAtgriezejs("ieslegtaSkana", K.IESTATIJUMU_FAILS);
 
   public static int spelesNakts = 6;
 
-  public static boolean durvisSlegtas = FailuRedigetajs.booleanDatuAtgriezejs("durvisSlegtas");
-  public static boolean elektribaIeslegta = FailuRedigetajs.booleanDatuAtgriezejs("elektribaIeslegta");
-  public static boolean pagrabaGaisma = FailuRedigetajs.booleanDatuAtgriezejs("pagrabaGaisma");
-  public static boolean spuldziteSaplesta = FailuRedigetajs.booleanDatuAtgriezejs("spuldziteSaplesta");
+  public static boolean durvisSlegtas = FailuRedigetajs.booleanDatuAtgriezejs("durvisSlegtas", K.IESTATIJUMU_FAILS);
+  public static boolean elektribaIeslegta = FailuRedigetajs.booleanDatuAtgriezejs("elektribaIeslegta", K.IESTATIJUMU_FAILS);
+  public static boolean pagrabaGaisma = FailuRedigetajs.booleanDatuAtgriezejs("pagrabaGaisma", K.IESTATIJUMU_FAILS);
+  public static boolean spuldziteSaplesta = FailuRedigetajs.booleanDatuAtgriezejs("spuldziteSaplesta", K.IESTATIJUMU_FAILS);
 
   // Sērkociņa dati.
   public static int atlikusoSerkocinuDaudzums = FailuRedigetajs.intDatuAtgriezejs("atlikusoSerkocinuDaudzums");
