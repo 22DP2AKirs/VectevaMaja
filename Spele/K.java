@@ -6,6 +6,7 @@ public final class K {
   // Folderu jeb mapju lokācijas:
   public static final String KONTU_MAPE = "Spele/KontaKods/Konti";
   public static final String SAKUMA_DATU_MAPE = "Spele/SpelesProcesi/SakumaDati.txt";
+  
   public static final String IESTATIJUMU_FAILS = "Spele/Iestatijumi/Iestatijumi.csv";
 
   // Krāsas:

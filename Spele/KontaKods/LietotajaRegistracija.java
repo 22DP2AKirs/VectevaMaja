@@ -46,14 +46,24 @@ public class LietotajaRegistracija {
       }
       /// Konta veidošanas kods:
       else if (Ievade.lietotajaIevade.equals("SAVE")) {
-        if (Konts.ievaditsLietotajvards && Konts.ievaditaParole && Konts.ieavaditsDrosibasVards) {
-          if (Konts.redigeKontu) {
-            // Lietotāja konta dati tiek mainīti uz jaunajiem.
+        // Konta datu rediģēšanas kods:
+        if (Konts.redigeKontu) {
+          // Lietotāja konta dati tiek mainīti uz jaunajiem.
+          if (Konts.ievaditsLietotajvards) {
             FailuRedigetajs.mainitFailaMainigaVertibu("Lietotajvards", Konts.lietotajvards, Konts.lietotajaKontaCels);
+          }
+          
+          if (Konts.ievaditaParole) {
             FailuRedigetajs.mainitFailaMainigaVertibu("Parole", Konts.parole, Konts.lietotajaKontaCels);
+          }
+          
+          if (Konts.ieavaditsDrosibasVards) {
             FailuRedigetajs.mainitFailaMainigaVertibu("DrosibasVards", Konts.drosibasVards, Konts.lietotajaKontaCels);
           }
-          else {
+        }
+        // Reģistrācijas kods:
+        else {
+          if (Konts.ievaditsLietotajvards && Konts.ievaditaParole && Konts.ieavaditsDrosibasVards) {
             // Teksts, kas tiks ievadīts (ierakstīts), katra jaunā konta sākumā.
             String kontaDati = "#KontaDati:\nLietotajvards=" + Konts.lietotajvards + "\nParole=" + Konts.parole + "\nDrosibasVards=" + Konts.drosibasVards + "\n\n";
             FailuRedigetajs.failuVeidotajs(kontaDati + FailuRedigetajs.failuParveidotajsParTekstu());
@@ -62,11 +72,10 @@ public class LietotajaRegistracija {
             Konts.lietotajsPiesledzies = true;
             Konts.lietotajaKontaCels = "Spele/KontaKods/Konti/" + Konts.atrastKontuPecLietotajavarda(Konts.lietotajvards);
           }
-
-          // Nodzēš liekos datus.
-          Ievade.pilnibaNotiritIevadi(); // Lai neveidotu +150 kontus triju sekunžu laikā.
-          Konts.notiritLietotajaDatus(); // Nodzēš visu datu vērtības.
         }
+        // Nodzēš liekos datus.
+        Ievade.pilnibaNotiritIevadi(); // Lai neveidotu +150 kontus triju sekunžu laikā.
+        Konts.notiritLietotajaDatus(); // Nodzēš visu datu vērtības.
       }
 
       // FPS (Frames per second).

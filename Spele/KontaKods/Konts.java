@@ -1,7 +1,6 @@
 package Spele.KontaKods;
 
 import java.io.File;
-
 import Spele.Enums.EkranuVeidi;
 import Spele.IzvadeUzTerminalu;
 import Spele.K;
