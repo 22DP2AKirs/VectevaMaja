@@ -30,7 +30,7 @@ public class DarbibuIzpilde {
   public static int varonaVirzienaCipars = 1;
 
   // Šie masīvi tiek pārbaudīti, lai labāk spētu noteikt, kāda darbība ir, kādai metodei.
-  private static final String[] testesanasKomandas = { "I", "O", "P" , "SI", "MI", "EXIT", "POWER OFF", "KILL", "WIN"};
+  private static final String[] testesanasKomandas = { "I", "O", "P" , "SI", "MI", "EXIT", "POWER OFF", "KILL", "WIN", "H1", "H2", "H3", "H4", "H5", "MS"};
   private static final String[] parastasKomandas = {"F", "A", "D", "1", "2", "3", "4"};
 
   // Izvelnes skaitlis (Izmantots, lai kustinātu dažāda veida 'main menus').

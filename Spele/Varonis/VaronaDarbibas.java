@@ -91,6 +91,25 @@ public class VaronaDarbibas {
     else if (panemtaIevade.equals("WIN")) {
       Laiks.spelesLaiks = 1000;
     }
+    else if (panemtaIevade.equals("H1")) {
+      Laiks.spelesLaiks = Laiks.vienaStunda - 1;
+    } 
+    else if (panemtaIevade.equals("H2")) {
+      Laiks.spelesLaiks = (Laiks.vienaStunda * 2) - 1;
+    } 
+    else if (panemtaIevade.equals("H3")) {
+      Laiks.spelesLaiks = (Laiks.vienaStunda * 3) - 1;
+    } 
+    else if (panemtaIevade.equals("H4")) {
+      Laiks.spelesLaiks = (Laiks.vienaStunda * 4) - 1;
+    } 
+    else if (panemtaIevade.equals("H5")) {
+      Laiks.spelesLaiks = (Laiks.vienaStunda * 5) - 1;
+    } 
+    else if (panemtaIevade.equals("MS")) {
+      MazoSpeluIzvelesKods.izslegtVisasMazasSpeles();
+      MazoSpeluIzvelesKods.izveletaMazaSpele = false;
+    } 
   }
 
 

@@ -11,7 +11,9 @@ import Spele.Varonis.VaronaStatusaEfekti;
 
 public class Laiks extends Thread {
   public static volatile int spelesLaiks; // Visiem pieejamais objekts.
-  public static String laikaTeksts = "1 2 P M ";
+  public static int stundasLaiks = 0;
+  public static String laikaTeksts = "1 2 PM";
+  
   public static int vienaStunda = Main.spelesIlgums / 6;
 
   @Override
@@ -67,42 +69,46 @@ public class Laiks extends Thread {
     // Zemāk norādītais kods izpildās tikai tad, kad laiks ir precīzs norādītajam.
     // Tas nozīmē, ka izvēle izpildīsies vienu reizi norādītajā laikā.
     if (spelesLaiks < 2) {
-      laikaTeksts = "1 2 A M ";
+      laikaTeksts = "1 2 PM  ";
       MazoSpeluIzvelesKods.apskatitMajasdarbu();
     }
     else if (spelesLaiks == vienaStunda) {
-      laikaTeksts = " 1 A M  ";
+      laikaTeksts = "  " + ++stundasLaiks + " AM  ";
 
       // Mājasdarbu kods.
       MazoSpeluIzvelesKods.apskatitMajasdarbu();
     }
     else if (spelesLaiks == vienaStunda * 2) {
-      laikaTeksts = " 2 A M  ";
+      laikaTeksts = "  " + ++stundasLaiks + " AM  ";
 
       // Mājasdarbu kods.
       MazoSpeluIzvelesKods.apskatitMajasdarbu();
     } 
     else if (spelesLaiks == vienaStunda * 3) {
-      laikaTeksts = " 3 A M  ";
+      laikaTeksts = "  " + ++stundasLaiks + " AM  ";
 
       // Mājasdarbu kods.
       MazoSpeluIzvelesKods.apskatitMajasdarbu();
     } 
     else if (spelesLaiks == vienaStunda * 4) {
-      laikaTeksts = " 4 A M  ";
+      laikaTeksts = "  " + ++stundasLaiks + " AM  ";
       
       // Mājasdarbu kods.
       MazoSpeluIzvelesKods.apskatitMajasdarbu();
     } 
     else if (spelesLaiks == vienaStunda * 5) {
-      laikaTeksts = " 5 A M  ";
+      laikaTeksts = "  " + ++stundasLaiks + " AM  ";
 
       // Mājasdarbu kods.
       MazoSpeluIzvelesKods.apskatitMajasdarbu();
     } 
     else if (spelesLaiks > vienaStunda * 6) {
-      laikaTeksts = " 6 A M  ";
-      VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("UZVARA");
+      if (MazoSpeluIzvelesKods.izveletaMazaSpele) {
+        MazoSpeluIzvelesKods.parbauditVaiVaronisPaspejaIzpilditMajasdarbu(); // Pārbauda vai varonis izpildīja pēdējo mājasdarbu.
+      }
+      else {
+        VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("UZVARA");
+      }
     }
   }
 }

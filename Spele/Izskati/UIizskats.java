@@ -5,6 +5,7 @@ import Spele.K;
 import Spele.Enums.Istabas;
 import Spele.Enums.Virzieni;
 import Spele.Iestatijumi.IestatijumuDati;
+import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
 import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
 import Spele.SpelesProcesi.Ievade;
@@ -69,78 +70,78 @@ public class UIizskats {
     }
 
     public static String[] labasPusesUISagatavosana() {
-        String[] gatavsLabasPusesUI = {
-            "                     ",
-            " L A I K S : " + Laiks.laikaTeksts,
-            "_____________________",
-            "Div       |Dur       ",
-            "                     ",
-            "____   ___|____   ___",
-            "Gul       |Vir       ",
-            "                     ",
-            "__________|__________",
-            " MAJASDARBS:         ",
-            "                     ",
-            "                     ",
-            "_____________________",
-            "                     ", // 13
-            " Serkocini :         ",
-            "                     ", // 15
-            "                     ",
-            "                     ",
-            "                     ", // 13
-            "                     ",
-            "                     ", // 15
-            "                     ",
-            "                     ",
-            "                     ",
-            "                     ", // 13
-            "                     ",
-            "                     ", // 15
-            "                     ",
-            "                     ",
-            "_____________________"
-        };
-        
-        // Izvēlas mājasdarba nosaukumu.
-        if (KaratavasSavienojums.mSpeleKaratavas) {
-          gatavsLabasPusesUI[10] = "  K A R A T A V A S  ";
-        }
-        else if (AtrodiPariSavienojums.mSpeleAtrodiPari) {
-          gatavsLabasPusesUI[10] = "     A T R O D I     ";
-          gatavsLabasPusesUI[11] = "       P A R I       ";
-        } else {
-          gatavsLabasPusesUI[10] = "                     ";
-          gatavsLabasPusesUI[11] = "                     ";
-        }
+      String[] gatavsLabasPusesUI = {
+          "                     ",
+          " L A I K S : " + Laiks.laikaTeksts,
+          "_____________________",
+          "Div       |Dur       ",
+          "                     ",
+          "____   ___|____   ___",
+          "Gul       |Vir       ",
+          "                     ",
+          "__________|__________",
+          "     MAJASDARBS:     ",
+          "                     ",
+          "                     ",
+          "      _________      ",
+          "    IZPILDIT LIDZ:   ", 
+          "        " + MazoSpeluIzvelesKods.majasdarbaIzpildesTermins + "  A M       ", 
+          "_____________________",
+          "      INVENTARS:     ",
+          "                     ", 
+          " Serkocini :         ",
+          "                     ",
+          "                     ",
+          "                     ",
+          "                     ",
+          "                     ",
+          "                     ", 
+          "                     ",
+          "                     ",
+          "                     ",
+          "                     ",
+          "_____________________"
+      };
+      
+      // Izvēlas mājasdarba nosaukumu.
+      if (KaratavasSavienojums.mSpeleKaratavas) {
+        gatavsLabasPusesUI[10] = "  K A R A T A V A S  ";
+      }
+      else if (AtrodiPariSavienojums.mSpeleAtrodiPari) {
+        gatavsLabasPusesUI[10] = "     A T R O D I     ";
+        gatavsLabasPusesUI[11] = "       P A R I       ";
+      } else {
+        gatavsLabasPusesUI[10] = "                     ";
+        gatavsLabasPusesUI[11] = "                     ";
+      }
 
-        if (IestatijumuDati.atlikusoSerkocinuDaudzums > 9) { // Nomaina atlikušo sērkociņu daudzuma rindu.
-            gatavsLabasPusesUI[14] = " Serkocini : " + IestatijumuDati.atlikusoSerkocinuDaudzums + "      ";
-        } else {
-            gatavsLabasPusesUI[14] = " Serkocini : " + IestatijumuDati.atlikusoSerkocinuDaudzums + "       ";
-        }
+      if (IestatijumuDati.atlikusoSerkocinuDaudzums > 9) { // Nomaina atlikušo sērkociņu daudzuma rindu.
+          gatavsLabasPusesUI[18] = " Serkocini : " + IestatijumuDati.atlikusoSerkocinuDaudzums + "      ";
+      } else {
+          gatavsLabasPusesUI[18] = " Serkocini : " + IestatijumuDati.atlikusoSerkocinuDaudzums + "       ";
+      }
 
-        // Mapes varoņa bultiņas pozīcijas noteicējs.
-        if (IestatijumuDati.elektribaIeslegta) {
-            if (Enums.V_Istaba.equals(Istabas.GULTA)) {
-                gatavsLabasPusesUI[7] = "     " + varonaMapesBultinasVirzienaDevejs() + "               ";
-            } else if (Enums.V_Istaba.equals(Istabas.DIVANS)) {
-                gatavsLabasPusesUI[4] = "     " + varonaMapesBultinasVirzienaDevejs() + "               ";
-            } else if (Enums.V_Istaba.equals(Istabas.DURVIS)) {
-                gatavsLabasPusesUI[4] = "                " + varonaMapesBultinasVirzienaDevejs() + "    ";
-            } else if (Enums.V_Istaba.equals(Istabas.VIRTUVE)) {
-                gatavsLabasPusesUI[7] = "                " + varonaMapesBultinasVirzienaDevejs() + "    ";
-            }
-        } else {
-            gatavsLabasPusesUI[3] = K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░" + K.RESET;
-            gatavsLabasPusesUI[4] = K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░" + K.RESET;
-            gatavsLabasPusesUI[5] = K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░" + K.RESET;
-            gatavsLabasPusesUI[6] = K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░" + K.RESET;
-            gatavsLabasPusesUI[7] = K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░" + K.RESET;
-            gatavsLabasPusesUI[8] = K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░" + K.RESET;
-        }
-        return gatavsLabasPusesUI;
-    }
+      // Mapes varoņa bultiņas pozīcijas noteicējs.
+      if (IestatijumuDati.elektribaIeslegta) {
+          if (Enums.V_Istaba.equals(Istabas.GULTA)) {
+              gatavsLabasPusesUI[7] = "     " + varonaMapesBultinasVirzienaDevejs() + "               ";
+          } else if (Enums.V_Istaba.equals(Istabas.DIVANS)) {
+              gatavsLabasPusesUI[4] = "     " + varonaMapesBultinasVirzienaDevejs() + "               ";
+          } else if (Enums.V_Istaba.equals(Istabas.DURVIS)) {
+              gatavsLabasPusesUI[4] = "                " + varonaMapesBultinasVirzienaDevejs() + "    ";
+          } else if (Enums.V_Istaba.equals(Istabas.VIRTUVE)) {
+              gatavsLabasPusesUI[7] = "                " + varonaMapesBultinasVirzienaDevejs() + "    ";
+          }
+      } else {
+          gatavsLabasPusesUI[3] = K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░" + K.RESET;
+          gatavsLabasPusesUI[4] = K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░" + K.RESET;
+          gatavsLabasPusesUI[5] = K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░" + K.RESET;
+          gatavsLabasPusesUI[6] = K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░" + K.RESET;
+          gatavsLabasPusesUI[7] = K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░" + K.RESET;
+          gatavsLabasPusesUI[8] = K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░" + K.RESET;
+      }
+      return gatavsLabasPusesUI;
+  }
 
     static String varonaMapesBultinasVirzienaDevejs() {
         String noteiktaMapesBultina = "";
