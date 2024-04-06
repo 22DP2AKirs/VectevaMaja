@@ -13,6 +13,8 @@ public class MazoSpeluIzvelesKods {
   // Priekš minigames.
   public static volatile boolean varonisIrMazajaSpele = false; // true, ja varonis ir iegājis mazajā spēlē, false, ja nav.
   public static volatile boolean izveletaMazaSpele; // true, ja spēle izvēlējās, kādu no iespējamajām spēlēm, paratsti, katru stundu. 
+  
+  public static int mdPapildusLaikaIespeja; // Procentu iespēja, ka būs ilgāks mājasdarbu izpildes termiņš.
 
   public static int majasdarbaIzpildesTermins = 0; // Spēles laiks, līdz cikiem varonis var pildīt mājasdarbu.
 
@@ -48,12 +50,11 @@ public class MazoSpeluIzvelesKods {
       AtrodiPariSavienojums.mSpeleAtrodiPari = true;
     }
     
-    // TODO: rand cipars ir atkarīgs no natks. Jo lielāka nakts, jo mazāks skaitlis.
     // 2. Izvēlas cik stundas būs varonim, lai izpildītu mājasdarbus.
-    randCipars = Main.rand.nextInt(101); // Skaitlis no 0 - 100 ieskaitot.
+    randCipars = Main.rand.nextInt(mdPapildusLaikaIespeja) + 1;
     
-    if (randCipars > 50) { // 50% iespēja.
-      if (randCipars > 80) { // 20% iespēja.
+    if (randCipars > 50) { 
+      if (randCipars > 80) {
         majasdarbaIzpildesTermins += 3;
       }
       else {
@@ -69,7 +70,7 @@ public class MazoSpeluIzvelesKods {
       majasdarbaIzpildesTermins--;
     }
 
-    // 3. Apstiprina, ka mājasdarbs ir ieslēgts.
+    // 4. Apstiprina, ka mājasdarbs ir ieslēgts.
     izveletaMazaSpele = true; // Ļauj pārbaudīt vai varonis ir uzvarējis m-spēli.
   }
 

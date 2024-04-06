@@ -6,6 +6,7 @@ import Spele.Enums;
 import Spele.K;
 import Spele.Enums.Istabas;
 import Spele.Enums.Virzieni;
+import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.Izskati.IstabuIzskati;
 import Spele.KontaKods.Konts;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
@@ -182,9 +183,12 @@ public class DarbibuIzpilde {
       if (komanda.equals("")) { // "" = 'ENTER'.
         if (izvelnesSkaitlis == 0) {
           // Turpinājuma kods:
+          Main.sakumaEkrans = false;
+          Main.spelePalaista = true;
         }
         else if (izvelnesSkaitlis == 1) {
-          // Spēlēšanas kods:
+          // Jaunas spēles kods:
+          FailuRedigetajs.mainitFailaMainigaVertibu("spelesNakts", "1", Konts.lietotajaKontaCels);
           Main.sakumaEkrans = false;
           Main.spelePalaista = true;
         } 

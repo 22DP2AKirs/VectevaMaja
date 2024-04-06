@@ -9,8 +9,8 @@ public class ParklajumuIzskati {
   public static final String[] izvelnesBultinas = { Spele.K.DEBESU_ZILS + ">", "<" + Spele.K.RESET };
   public static String[] sakumaEkranaIzvelesVarduVarianti = 
   {
-  "  T U R P I N A T   X ",
-  "  S P E L E T ",
+  "  T U R P I N A T ",
+  "  J A U N A   S P E L E ",
   "  I E S T A T I J U M I   X ",
   "  P A M A C I B A   X ",
   "  K O N T S ",

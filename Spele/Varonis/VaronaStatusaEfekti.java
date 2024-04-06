@@ -4,8 +4,10 @@ import Spele.IzvadeUzTerminalu;
 import Spele.PaligMetodes;
 import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Izskati.EkranuIzskati;
+import Spele.KontaKods.Konts;
 import Spele.Enums;
 import Spele.Enums.EkranuVeidi;
+import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.MazasSpeles.Karatavas.Karatavas;
 import Spele.Parklajumi.EkranuParklajumi;
@@ -38,7 +40,6 @@ public class VaronaStatusaEfekti {
 
   public static void noteiktSpelesGalaRezultatu(String iemesls) {
     // * Metode beigs spēles procesu un izvadīs noteikto spēles rezultātu.
-
     // Pārtrauc spēli.
     Main.sakumaEkrans = true;
     Main.spelePalaista = false;
@@ -51,7 +52,10 @@ public class VaronaStatusaEfekti {
     if (iemesls.equals("UZVARA")) { // Uzvaras kods.
       IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.UZVARAS_EKRANS));
       PaligMetodes.gulet(5);
-      IestatijumuDati.spelesNakts++;
+      // Palielina konta nakts vērtību par vienu (+1).
+      if (IestatijumuDati.spelesNakts != 5) {
+        FailuRedigetajs.mainitFailaMainigaVertibu("spelesNakts", FailuRedigetajs.intDatuAtgriezejs("spelesNakts", Konts.lietotajaKontaCels) + 1 + "", Konts.lietotajaKontaCels);
+      }
     }
     else {
       IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatZaudesanasEkranu(EkranuIzskati.visiEkrani[2], iemesls));

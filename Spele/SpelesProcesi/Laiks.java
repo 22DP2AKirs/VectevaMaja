@@ -86,9 +86,10 @@ public class Laiks extends Thread {
     } 
     else if (spelesLaiks == vienaStunda * 3) {
       laikaTeksts = "  " + ++stundasLaiks + " AM  ";
-
       // Mājasdarbu kods.
       MazoSpeluIzvelesKods.apskatitMajasdarbu();
+
+      IestatijumuDati.uzstaditSpokusUzPusnaktsRezimu();
     } 
     else if (spelesLaiks == vienaStunda * 4) {
       laikaTeksts = "  " + ++stundasLaiks + " AM  ";
@@ -103,7 +104,7 @@ public class Laiks extends Thread {
       MazoSpeluIzvelesKods.apskatitMajasdarbu();
     } 
     else if (spelesLaiks > vienaStunda * 6) {
-      if (MazoSpeluIzvelesKods.izveletaMazaSpele) {
+      if (MazoSpeluIzvelesKods.izveletaMazaSpele && Main.varonaNemirstiba == false) {
         MazoSpeluIzvelesKods.parbauditVaiVaronisPaspejaIzpilditMajasdarbu(); // Pārbauda vai varonis izpildīja pēdējo mājasdarbu.
       }
       else {

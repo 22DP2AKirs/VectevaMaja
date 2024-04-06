@@ -6,6 +6,7 @@ import Spele.K;
 import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Izskati.IstabuIzskati;
 import Spele.Izskati.SpokuIzskati;
+import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
 import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
 import Spele.Spoki.DurvjuSpoks;
 import Spele.Spoki.LogaSpoks;
@@ -60,6 +61,7 @@ public class BildesParklajumi {
 
   public static void uzliktDivanaLejasParklajumus(String[] mainamaisMasivs) {
     uzliktDivanaLejasApgaismojumaParklajumus(mainamaisMasivs);
+    uzliktAtrodiPariKasti(mainamaisMasivs);
   }
 
   public static void uzliktDivanaKreisasPusesParklajumus(String[] mainamaisMasivs) {
@@ -188,19 +190,13 @@ public class BildesParklajumi {
       gultasLabasPusesKreisaPuse[1] = "\033[4G" + K.TPELEKS + "░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
       gultasLabasPusesKreisaPuse[2] = "\033[3G" + K.TPELEKS + "░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
       gultasLabasPusesKreisaPuse[3] = "\033[2G" + K.TPELEKS + "░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-    }
-    else {
-      gultasLabasPusesKreisaPuse[0] = "\033[5G" + "     " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-      gultasLabasPusesKreisaPuse[1] = "\033[4G" + "       " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-      gultasLabasPusesKreisaPuse[2] = "\033[3G" + "        " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-      gultasLabasPusesKreisaPuse[3] = "\033[2G" + "         " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-    }
-
-    mainamaisMasivs[2] += gultasLabasPusesKreisaPuse[0];
-    mainamaisMasivs[3] += gultasLabasPusesKreisaPuse[1];
-    mainamaisMasivs[4] += gultasLabasPusesKreisaPuse[2];
-    for (int i = 5; i < K.BILDES_MASIVA_IZMERS; i++) {
-      mainamaisMasivs[i] += gultasLabasPusesKreisaPuse[3];
+    
+      mainamaisMasivs[2] += gultasLabasPusesKreisaPuse[0];
+      mainamaisMasivs[3] += gultasLabasPusesKreisaPuse[1];
+      mainamaisMasivs[4] += gultasLabasPusesKreisaPuse[2];
+      for (int i = 5; i < K.BILDES_MASIVA_IZMERS; i++) {
+        mainamaisMasivs[i] += gultasLabasPusesKreisaPuse[3];
+      }
     }
 
     // Saliek durvju arkas gaismu ekrāna priekšā.
@@ -217,15 +213,11 @@ public class BildesParklajumi {
     if (!IestatijumuDati.istabuGaismasIeslegtas[3]) {
       gultasLejasKreisaPuse[0] = "\033[2G" + K.TPELEKS + "░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
       gultasLejasKreisaPuse[1] = "\033[2G" + K.TPELEKS + "░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-    }
-    else {
-      gultasLejasKreisaPuse[0] = "\033[2G" + "  " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-      gultasLejasKreisaPuse[1] = "\033[2G" + "   " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-    }
-
-    mainamaisMasivs[2] += gultasLejasKreisaPuse[0];
-    for (int i = 3; i < K.BILDES_MASIVA_IZMERS; i++) {
-      mainamaisMasivs[i] += gultasLejasKreisaPuse[1];
+    
+      mainamaisMasivs[2] += gultasLejasKreisaPuse[0];
+      for (int i = 3; i < K.BILDES_MASIVA_IZMERS; i++) {
+        mainamaisMasivs[i] += gultasLejasKreisaPuse[1];
+      }
     }
   }
 
@@ -263,23 +255,16 @@ public class BildesParklajumi {
       divanaLejasKreisaPuse[2] = "\033[4G" + K.TPELEKS + "░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA; // Dīvaini 4 atstarpju bīdējumi?????? Tie bija saistīti ar TAB un SPACES.
       divanaLejasKreisaPuse[3] = "\033[3G" + K.TPELEKS + "░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
       divanaLejasKreisaPuse[4] = "\033[2G" + K.TPELEKS + "░░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+    
+      mainamaisMasivs[3] += divanaLejasKreisaPuse[0];
+      mainamaisMasivs[4] += "\033[5G" + divanaLejasKreisaPuse[1];
+      mainamaisMasivs[5] += divanaLejasKreisaPuse[2];
+      mainamaisMasivs[6] += divanaLejasKreisaPuse[3];
+      for (int i = 7; i < K.BILDES_MASIVA_IZMERS - 1; i++) {
+        mainamaisMasivs[i] += divanaLejasKreisaPuse[4];
+      }
+      mainamaisMasivs[15] += "\033[2G" +  divanaLejasKreisaPuse[1];
     }
-    else {
-      divanaLejasKreisaPuse[0] = "\033[6G" + "      " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-      divanaLejasKreisaPuse[1] = "       " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-      divanaLejasKreisaPuse[2] = "\033[4G" + "        " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-      divanaLejasKreisaPuse[3] = "\033[3G" + "         " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-      divanaLejasKreisaPuse[4] = "\033[2G" + "          " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-    }
-
-    mainamaisMasivs[3] += divanaLejasKreisaPuse[0];
-    mainamaisMasivs[4] += "\033[5G" + divanaLejasKreisaPuse[1];
-    mainamaisMasivs[5] += divanaLejasKreisaPuse[2];
-    mainamaisMasivs[6] += divanaLejasKreisaPuse[3];
-    for (int i = 7; i < K.BILDES_MASIVA_IZMERS - 1; i++) {
-      mainamaisMasivs[i] += divanaLejasKreisaPuse[4];
-    }
-    mainamaisMasivs[15] += "\033[2G" +  divanaLejasKreisaPuse[1];
   }
 
   private static void uzliktDivanaKreisasPusesApgaismojumaParklajumus(String[] mainamaisMasivs) {
@@ -298,15 +283,11 @@ public class BildesParklajumi {
       if (!IestatijumuDati.istabuGaismasIeslegtas[3]) {
         durvjuLabasPusesLabaPuse[0] = "\033[80G" + K.TPELEKS + "░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
         durvjuLabasPusesLabaPuse[1] = "\033[79G" + K.TPELEKS + "░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-      } 
-      else {
-        durvjuLabasPusesLabaPuse[0] = "\033[80G" + "  " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-        durvjuLabasPusesLabaPuse[1] = "\033[79G" + "   " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-      }
-
-      mainamaisMasivs[4] += durvjuLabasPusesLabaPuse[0];
-      for (int i = 5; i < K.BILDES_MASIVA_IZMERS; i++) {
-        mainamaisMasivs[i] += durvjuLabasPusesLabaPuse[1];
+      
+        mainamaisMasivs[4] += durvjuLabasPusesLabaPuse[0];
+        for (int i = 5; i < K.BILDES_MASIVA_IZMERS; i++) {
+          mainamaisMasivs[i] += durvjuLabasPusesLabaPuse[1];
+        }
       }
     }
   }
@@ -348,58 +329,33 @@ public class BildesParklajumi {
       virtuvesLabasPusesKreisaPuse[1] = "\033[4G" + K.TPELEKS + "░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
       virtuvesLabasPusesKreisaPuse[2] = "\033[3G" + K.TPELEKS + "░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
       virtuvesLabasPusesKreisaPuse[3] = "\033[2G" + K.TPELEKS + "░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-    } else {
-      virtuvesLabasPusesKreisaPuse[0] = "\033[5G" + "   " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-      virtuvesLabasPusesKreisaPuse[1] = "\033[4G" + "    " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-      virtuvesLabasPusesKreisaPuse[2] = "\033[3G" + "     " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-      virtuvesLabasPusesKreisaPuse[3] = "\033[2G" + "      " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-    }
-
-    mainamaisMasivs[4] += virtuvesLabasPusesKreisaPuse[0];
-    mainamaisMasivs[5] += virtuvesLabasPusesKreisaPuse[1];
-    mainamaisMasivs[6] += virtuvesLabasPusesKreisaPuse[2];
-    for (int i = 7; i < K.BILDES_MASIVA_IZMERS; i++) {
-      mainamaisMasivs[i] += virtuvesLabasPusesKreisaPuse[3];
+    
+      mainamaisMasivs[4] += virtuvesLabasPusesKreisaPuse[0];
+      mainamaisMasivs[5] += virtuvesLabasPusesKreisaPuse[1];
+      mainamaisMasivs[6] += virtuvesLabasPusesKreisaPuse[2];
+      for (int i = 7; i < K.BILDES_MASIVA_IZMERS; i++) {
+        mainamaisMasivs[i] += virtuvesLabasPusesKreisaPuse[3];
+      }
     }
 
     // > Pagraba gaisma.
-    String[] virtuvesLabasPusesPagrabaSkats = new String[6];
+    String[] virtuvesLabasPusesPagrabaSkats = new String[5];
     if (!IestatijumuDati.pagrabaGaisma) {
       virtuvesLabasPusesPagrabaSkats[0] = "\033[71G" + K.TPELEKS + "░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
       virtuvesLabasPusesPagrabaSkats[1] = "\033[70G" + K.TPELEKS + "░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-      virtuvesLabasPusesPagrabaSkats[2] = "\033[70G" + K.TPELEKS + "░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA; // Identisks ar [3] elementu.
-      virtuvesLabasPusesPagrabaSkats[3] = "\033[70G" + K.TPELEKS + "░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA; // Identisks ar [2] elementu.
-      virtuvesLabasPusesPagrabaSkats[4] = "\033[72G" + K.TPELEKS + "░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-      virtuvesLabasPusesPagrabaSkats[5] = "\033[74G" + K.TPELEKS + "░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-    } 
-    else {
-      virtuvesLabasPusesPagrabaSkats[0] = "\033[70G" + "	   " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-      virtuvesLabasPusesPagrabaSkats[1] = "\033[69G" + "		" + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-      virtuvesLabasPusesPagrabaSkats[2] = "\033[69G" + "		 " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-      virtuvesLabasPusesPagrabaSkats[3] = "\033[70G" + "___      " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-      virtuvesLabasPusesPagrabaSkats[4] = "\033[72G" + " \\ __  " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-      virtuvesLabasPusesPagrabaSkats[5] = "\033[74G" + "\\  \\ " + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-    }
+      virtuvesLabasPusesPagrabaSkats[2] = "\033[70G" + K.TPELEKS + "░░░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+      virtuvesLabasPusesPagrabaSkats[3] = "\033[72G" + K.TPELEKS + "░░░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+      virtuvesLabasPusesPagrabaSkats[4] = "\033[74G" + K.TPELEKS + "░░░░░" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
 
-    mainamaisMasivs[3] += virtuvesLabasPusesPagrabaSkats[0];
-    mainamaisMasivs[4] += virtuvesLabasPusesPagrabaSkats[1];
-    for (int i = 5; i < K.BILDES_MASIVA_IZMERS - 3; i++) {
-      mainamaisMasivs[i] += virtuvesLabasPusesPagrabaSkats[2];
+      mainamaisMasivs[3] += virtuvesLabasPusesPagrabaSkats[0];
+      mainamaisMasivs[4] += virtuvesLabasPusesPagrabaSkats[1];
+      for (int i = 5; i < K.BILDES_MASIVA_IZMERS - 2; i++) {
+        mainamaisMasivs[i] += virtuvesLabasPusesPagrabaSkats[2];
+      }
+      mainamaisMasivs[14] += virtuvesLabasPusesPagrabaSkats[3];
+      mainamaisMasivs[15] += virtuvesLabasPusesPagrabaSkats[4];
     }
-    mainamaisMasivs[13] += virtuvesLabasPusesPagrabaSkats[3];
-    mainamaisMasivs[14] += virtuvesLabasPusesPagrabaSkats[4];
-    mainamaisMasivs[15] += virtuvesLabasPusesPagrabaSkats[5];
   }
-
-//   private static void uzliktVirtuvesLejasApgaismojumaParklajumus(String[] mainamaisMasivs) {
-//     // Saliek durvju arkas gaismu ekrāna priekšā.
-//     if (!IestatijumuDati.pagrabaGaisma) {
-//       mainamaisMasivs[1] += ParklajumuIzskati.virtuvesPagrabaParklajs[0];
-//       for (int i = 2; i < 13; i++) {
-//         mainamaisMasivs[i] += ParklajumuIzskati.virtuvesPagrabaParklajs[1];
-//       }
-//     }
-//   }
 
   private static void uzliktVirtuvesKreisasPusesApgaismojumaParklajumus(String[] mainamaisMasivs) {
     // Saliek durvju arkas gaismu ekrāna priekšā.
@@ -412,6 +368,23 @@ public class BildesParklajumi {
 
 
   // * Objektu pārklāja metodes.
+
+  private static void uzliktAtrodiPariKasti(String[] mainamaisMasivs) {
+    if (AtrodiPariSavienojums.mSpeleAtrodiPari) {
+      mainamaisMasivs[10] += "\033[42G" + K.OBJEKTS + "_______________" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+      mainamaisMasivs[11] += "\033[41G" + K.OBJEKTS + "/___/_____/___/ |" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+      mainamaisMasivs[12] += "\033[41G" + K.OBJEKTS + "|   $     $   | |" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+      mainamaisMasivs[13] += "\033[41G" + K.OBJEKTS + "|   |     |   | |" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+      mainamaisMasivs[14] += "\033[41G" + K.OBJEKTS + "|_____________|/" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+    }
+    else {
+      mainamaisMasivs[10] += "\033[42G_______________" + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+      mainamaisMasivs[11] += "\033[41G/___/_____/___/ |" + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+      mainamaisMasivs[12] += "\033[41G|   $     $   | |" + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+      mainamaisMasivs[13] += "\033[41G|   |     |   | |" + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+      mainamaisMasivs[14] += "\033[41G|_____________|/" + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+    }
+  }
   
   private static void uzliktElektriskoPaneli(String[] mainamaisMasivs) {
     String[] elektriskaKaste = new String[9]; // Masīvs priekš elektriskās kastes bildes.
@@ -438,8 +411,8 @@ public class BildesParklajumi {
       mainamaisMasivs[10] += "\033[20G" + K.OBJEKTS + "/_____/" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
     }
     else {
-      mainamaisMasivs[9] += "\033[21G" + "/  ~~ /" + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
-      mainamaisMasivs[10] += "\033[20G" + "/_____/" + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+      mainamaisMasivs[9] += "\033[21G/  ~~ /" + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+      mainamaisMasivs[10] += "\033[20G/_____/" + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
     }
   }
 

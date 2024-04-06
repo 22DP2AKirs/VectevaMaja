@@ -1,48 +1,29 @@
 package Spele;
 
 import java.util.Scanner;
-import Spele.Enums.EkranuVeidi;
-import Spele.MazasSpeles.Karatavas.Karatavas;
-import Spele.Parklajumi.EkranuParklajumi;
+import Spele.Iestatijumi.IestatijumuDati;
 import Spele.SpelesProcesi.Main;
 
 public class Testi {
+  public static boolean testesana = false;
+
   public static void testaProgramma() throws InterruptedException { // throws  InterruptedException, Lai varētu izmantot: Thread.sleep(0); bez try_catch.
     try ( Scanner iLasitajs = new Scanner(System.in) ) { // Izslēdz erroru 'lasītājs nav aizvērts'.
       Main.nodzestTerminali();
       
-      System.out.print("Piespiesta ievade: ");
-      String ievade = iLasitajs.nextLine();
-
-      // AtrodiPari.izveidotJaunuKarsuSpeli();
-      // AtrodiPari.atrodiPariObjekts.sagatavotRezgiSpelesanai();
-
-    //   Karatavas.izveidotJaunuKaratavasSpeli();
-    //   Karatavas.karatavasObjekts.sagatavotGramatuSpelesanai();
+      String ievade;
 
       // Cikls.
       while (true) {
-        // Galvenā domāšana.
-        Karatavas.karatavasObjekts.parbauditBurtu(ievade);
+        PaligMetodes.izvaditArrayListElementus(IestatijumuDati.naktsDati);
 
-        // Izveido vārdu, kuru rādīs grāmatas lejā.
-        Karatavas.karatavasObjekts.saliktCentretuVardaSkeletu();
+        ievade = iLasitajs.nextLine();
 
-        // Izvade terminālī.
-        IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.KARATAVU_EKRANS));
-        // Izslēgšanas jeb uzvaras kods:
-        if (Karatavas.karatavasObjekts.irAtminetsVards()) {
-          PaligMetodes.gulet(2); // Gulēšana.
+        if (ievade.equals("EXIT")) {
           break;
         }
-        
-        // Lietotāja ievade:
-        System.out.print("\rJusu ievade: " + "\033[0K");
-        ievade = iLasitajs.nextLine().toUpperCase();
+        Main.nodzestTerminali();
       }
-
-      Main.nodzestTerminali();
-      System.out.println("Vards atminets!!!!");
     }
   }
 }

@@ -27,7 +27,7 @@ public class PaligMetodes {
     for (Object object : saraksts) {
       System.out.println(object);
     }
-    System.out.println(saraksts.size());
+    System.out.println("--Elementu skaits: " + saraksts.size() + "--");
     System.out.print("\033[H"); // Kursora poz. 0.0
   }
 

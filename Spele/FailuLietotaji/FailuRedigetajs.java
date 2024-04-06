@@ -69,7 +69,7 @@ public class FailuRedigetajs {
   // * Atrod specifisku jeb norādīto daļu no visa teksta.
   //
 
-  public static ArrayList<String> atgriestDaluNoFaila(String celsUzFailu, String failaDalasSakums) {
+  public static ArrayList<String> atgriestDaluNoFaila(String failaDalasSakums, String celsUzFailu) {
     // Atrod failā norādīto teikuma daļu, piem., # RAND Tēma, un saglabā sarakstā visas līnijas līdz nākamai daļai.
     // ? Daļa tiek noteikta failos ar simbolu [ # ].
     try (BufferedReader failaLasitajs = new BufferedReader(new FileReader(celsUzFailu))) { // Atver norādīto failu.
@@ -85,14 +85,16 @@ public class FailuRedigetajs {
           linija = failaLasitajs.readLine(); // Aiziet uz nākošo līniju, lai nesaglabātu līniju, kur nav datu (Daļas sākuma līniju).
         }
 
-        // 2. Ja var, tad saglabā faila daļu.
         if (atlautSaglabatLinijas) {
-          failaSaturs.add(linija);
-        }
+          // 2. Pārbauda vai var beigt.
+          if (linija.contains("#")) { // Ja ir daļas beigas jeb citas daļas sākums, tad ... .
+            break;
+          }
 
-        // 3. Beidz lasīt failu.
-        if (linija.contains("#")) { // Ja ir daļas beigas jeb citas daļas sākums, tad ... .
-          break;
+          // 3. Ja var, tad saglabā faila daļu.
+          if (!linija.equals("")) { // Ja līnija nav tukša.
+            failaSaturs.add(linija);
+          }
         }
       }
 
@@ -107,12 +109,12 @@ public class FailuRedigetajs {
   //
 
   // ? int.
-  public static int intDatuAtgriezejs(String mainigaNosaukums) {
-    try (BufferedReader mainigoDatuLasitajs = new BufferedReader(new FileReader("Spele/Iestatijumi/Iestatijumi.csv"))) {
+  public static int intDatuAtgriezejs(String mainigaNosaukums, String celsUzFailu) {
+    try (BufferedReader mainigoDatuLasitajs = new BufferedReader(new FileReader(celsUzFailu))) {
       // Pareizās līnijas atrašana.
       String linija;
       // Darbošanās princips. !(boolean) => definē mainīgo "linija", katru reizi, kad nosacījums tiek pārbaudīts un pārbauda vai definējuma iekšā ir norādītā burtu virkne.
-      while (!(linija = mainigoDatuLasitajs.readLine()).contains(mainigaNosaukums)) {}
+      while (!(linija = mainigoDatuLasitajs.readLine()).contains(mainigaNosaukums) && linija != null) {}
       
       // Atrastās līnijas apstrāde.
       int saglabataMainigaVertiba = Integer.valueOf(linija.substring(linija.indexOf("=") + 1));
@@ -160,15 +162,60 @@ public class FailuRedigetajs {
   }
 
   //
+  // * Atgriež vērtības no saraksta.
+  //
+
+  // ? int.
+  public static int intDatuAtgriezejsNoSaraktsa(String mainigaNosaukums, ArrayList<String> vertibuSaraksts) {
+    // Atrod sarakstā norādīto vērtību un atgriež to.
+    for (String linija : vertibuSaraksts) {
+      if (linija.contains(mainigaNosaukums)) {
+        return Integer.valueOf(linija.substring(linija.indexOf("=") + 1));
+      }
+    }
+    throw new RuntimeException("Iestatijumos vai ka parametrs mainigais int ar nosaukumu: " + mainigaNosaukums + " ir nepareizs!");
+  }
+
+  // ? String.
+  public static String stringDatuAtgriezejsNoSaraktsa(String mainigaNosaukums, ArrayList<String> vertibuSarakts) {
+    // Atrod sarakstā norādīto vērtību un atgriež to.
+    for (String linija : vertibuSarakts) {
+      if (linija.contains(mainigaNosaukums)) {
+        return linija.substring(linija.indexOf("=") + 1);
+      }
+    }
+    throw new RuntimeException("Iestatijumos vai ka parametrs mainigais int ar nosaukumu: " + mainigaNosaukums + " ir nepareizs!");
+  }
+
+  // ? boolean.
+  public static boolean booleanDatuAtgriezejsNoSaraktsa(String mainigaNosaukums, ArrayList<String> vertibuSarakts) {
+    String tekstaDala = null;
+    for (String linija : vertibuSarakts) {
+      if (linija.contains(mainigaNosaukums)) {
+        tekstaDala = linija.substring(linija.indexOf("=") + 1);
+        break;
+      }
+    }
+
+    if (tekstaDala.equals("T")) {
+      return true;
+    } 
+    else if (tekstaDala.equals("F")){
+      return false;
+    }
+    throw new RuntimeException("Iestatijumos vai ka parametrs mainigais boolean ar nosaukumu: " + mainigaNosaukums + " ir nepareizs!");
+  }
+
+  //
   // * Cits:
   //
 
-  public static String failuParveidotajsParTekstu() {
+  public static String failuParveidotajsParTekstu(String celsUzFailu) {
     // Nolasa un saglabā norādītā faila saturu kā vienu 'String' jeb rakstzīmju virknes līniju.
     String linija; // Uz īsu brīdi saglabā nolasīto līniju.
     String failuTeksts = ""; // Metodes darbības rezultāts, ko atgriezīs.
 
-    try (BufferedReader failuLasitajs = new BufferedReader(new FileReader("Spele/Iestatijumi/Iestatijumi.csv"))) {
+    try (BufferedReader failuLasitajs = new BufferedReader(new FileReader(celsUzFailu))) {
       while ((linija = failuLasitajs.readLine()) != null) { // Lasa kamēr nav ticis līdz faila pēdējai līnijai.
         failuTeksts += linija + "\n";
       }

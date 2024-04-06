@@ -8,8 +8,8 @@ public class Spoks {
   private int atnakusoSpokuSkaits = 0; // Statu mainīgias, kurš skaita cik spoka objekti ir izveidoti spēles laikā.
 
   // Spoka limiti. (Nemainīgas vērtības)
-  private int spokaAtlautaAgresivitate; // Nosaka cik agresīvs var būt spoks. Max = 20.
-  private int spokaAtputasLaiks; // Nosaka cik spoka iespējas gājienus tas stāvēs uz vietas. Glabāšanas mainīgais.
+  public int spokaAtlautaAgresivitate; // Nosaka cik agresīvs var būt spoks. Max = 20.
+  public int spokaAtputasLaiks; // Nosaka cik spoka iespējas gājienus tas stāvēs uz vietas. Glabāšanas mainīgais.
   
   // Spoka progressa vērtības. (Mainīgās vērtības)
   private int spokaAtputasLaikaMainamaKopija; // Šo mainīgo visu laiku maina.
@@ -26,7 +26,11 @@ public class Spoks {
     this.spokaAtputasLaiks = spokaAtputasLaikaMainamaKopija = spokaAtputasLaiks;
 
     spokaFazesIndekss = 0; // Visi spoki sāk no nultās (sākuma) pozīcijas.
-    spoksIrAktivs = true; // Kad izveido spoku, tad to uzreiz aktivizē.
+
+    if (spokaAtlautaAgresivitate != 0) {
+      spoksIrAktivs = true;
+    }
+
     atnakusoSpokuSkaits++; // + 1.
   }
 

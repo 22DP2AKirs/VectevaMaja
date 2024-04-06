@@ -5,8 +5,10 @@ import java.util.Random;
 import Spele.Enums;
 import Spele.IzvadeUzTerminalu;
 import Spele.K;
+import Spele.Testi;
 import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.FailuLietotaji.SkanasSpeletajs;
+import Spele.Iestatijumi.IestatijumuDati;
 import Spele.KontaKods.Konts;
 import Spele.Enums.EkranuVeidi;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
@@ -26,11 +28,11 @@ public class Main {
 
   // Lai noteiktu darbības, kādā no programmas fāzēm.
   public static volatile boolean programmaPalaista = true; // booleans, kas palaiž visu programmu.
-  public static boolean sakumaEkrans = false; // Nosaka vai spēles sākumā rādīs sākuma ekrānu vai nē.
+  public static boolean sakumaEkrans = true; // Nosaka vai spēles sākumā rādīs sākuma ekrānu vai nē.
   public static volatile boolean spelePalaista = true; // Mainīgais bool, kas pašu spēli.
  
   // Varoņa īpašības.
-  public static boolean varonaNemirstiba = false; // Vai varonis var zaudēt spēli vai nē.
+  public static boolean varonaNemirstiba = true; // Vai varonis var zaudēt spēli vai nē.
   
   // Objekti.
   public static Random rand = new Random(); // Priekš random darbībām.
@@ -46,20 +48,18 @@ public class Main {
   public static void main(String[] args) throws InterruptedException { // throws InterruptedException nozīmē, ka var neizmantot try_catch.
     // * Galvenais programmas process.
 
-    // Dažādu metožu un ideju testēšanas fails.
-    // Testi.testaProgramma();
+    // Dažādu metožu un ideju testēšana.
+    if (Testi.testesana) {
+      Testi.testaProgramma();
+    }
     
     // ? /////// T H R E D I //////////
     // Jaunie rīki jeb thredi, jeb objekti.
     Ievade ievadesLasitajs = new Ievade(); // Arī threads, bet šis lasa ievadi.
     SkanasSpeletajs skanasSpeletajs = new SkanasSpeletajs();
-    
     // Sākas atsevišķās darbības jeb patstāvīgie procesi.
     skanasSpeletajs.start(); // Strādā, kamēr spelePalaista bools ir true.
     ievadesLasitajs.start(); // Strādā, kamēr programmaPalaista bools ir true.
-
-    // Izveido un izslēdz spokus (inicializē, lai pēc tam tos izmantotu spēlē).
-    Spoks.izslegtSpokus(); 
     
     // Pieslēdz lietotāja kontu.
     if (Konts.atceretiesMani) {
@@ -70,18 +70,29 @@ public class Main {
     // * P R O G R A M M A S   C I K L S //
     while (programmaPalaista) {
       nodzestTerminali();
+      // ? Nolasīt konta datus.
+      IestatijumuDati.spelesNakts = FailuRedigetajs.intDatuAtgriezejs("spelesNakts", Konts.lietotajaKontaCels);
+      
 
       // * ///// S A K U M A   E K R A N A   C I K L S //////
       while (sakumaEkrans) {
-        // ------------------ Apstrādā lietotāja ievadi.
+        // 1. Apstrādā lietotāja ievadi.
         DarbibuIzpilde.izpilditSakumaEkranaDarbibas(Ievade.lietotajaIevade);
-        // ------------------ Izvada bildi terminālī.
+        // 2. Izvada bildi terminālī.
         IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.GALVENAIS_EKRANS));
-        // ------------------ Notīra ievadi.
+        // 3. Notīra ievadi.
         Ievade.notiritKomandu();
-        // ------------------ 1 'freims' jeb cikls spēlē.
+        // 4. 1 'freims' jeb cikls spēlē.
         Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 25 FPS.
       }
+
+      // ? Nolasīt iestatījuma datus.
+      IestatijumuDati.naktsDati = FailuRedigetajs.atgriestDaluNoFaila("#Nakts" + FailuRedigetajs.intDatuAtgriezejs("spelesNakts", Konts.lietotajaKontaCels), K.NAKTS_DATU_FAILS);
+      IestatijumuDati.sagatavotDatusNaktij();
+
+
+      // Izveido un izslēdz spokus (inicializē, lai pēc tam tos izmantotu spēlē).
+      Spoks.izslegtSpokus(); 
 
       nodzestTerminali();
       Laiks laiks = new Laiks(); // Katru reizi, kad ir palaista spēle, veido jaunu Laika thredu.
@@ -89,30 +100,30 @@ public class Main {
 
       // * ///// S P Ē L E S   C I K L S ///////
       while (spelePalaista) { // Kamēr laiks nav beidzies, turpināt ciklu jeb spēli.
-        // ------------------ Apstrādā lietotāja ievadi.
-        // Enums.mainitIstabasUnVirzienaEnumus(); // * Jāmaina pozīcija!!!
+        // 1. Apstrādā lietotāja ievadi.
         DarbibuIzpilde.izpilditSpelesDarbibas(Enums.V_Istaba, Enums.V_Virziens, Ievade.lietotajaIevade); // Pilnībā aizvieto 'VaronaDarbibas.apstradatKomandu(Ievade.lietotajaIevade);'.
-        // ------------------ Papildus informācijas izvade --Debuging--
+        // 2. Papildus informācijas izvade --Debuging--
         informacijasIzvade();
-        // ------------------ Izvade uz ekrānu jeb termināli.
+        // 3. Izvade uz ekrānu jeb termināli.
         izvaditBildiUzEkranu();
-        // ------------------ Varoņa zaudēšanas nosacījumu pārbaude.
+        // 4. Varoņa zaudēšanas nosacījumu pārbaude.
         VaronaStatusaEfekti.varonaStress();
         VaronaStatusaEfekti.parbauditEffektus(); // Varoņa bojāiešanas nosacījumi.
-        // ------------------ Notīra ievadi.
+        // 5. Notīra ievadi.
         Ievade.notiritKomandu();
-        // ------------------ 1 'freims' spēlē.
+        // 6. 1 'freims' spēlē.
         Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 25 FPS.
         // ------------------ Papildus.
-        if (programmasKluduLasisana) { // Apstādina spēli, lai varētu izlasīt kļūdas aprakstu.
+        if (programmasKluduLasisana) { // Apstādina spēli, lai varētu izlasīt kļūdas aprakstu (parasti vienmēr izslēgts).
           Thread.sleep(100000);
         }
       }
 
       nodzestTerminali();
+      // * /// L I E K   T H R E D I E M   B E I G T I E S ///////
       laiks.join(); // wait for the thread to stop // Apstādina Laika thredu un izveido jaunu, kad palaiž spēli no jauna.
+      
     }
-    // * /// L I E K   T H R E D I E M   B E I G T I E S ///////
     skanasSpeletajs.join();
     ievadesLasitajs.join();
   }

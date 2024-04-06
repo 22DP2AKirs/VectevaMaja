@@ -4,8 +4,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import Spele.MazasSpeles.MazoSpeluIzvelesKods;
-import Spele.SpelesProcesi.Laiks;
 import Spele.SpelesProcesi.Main;
 
 // import org.junit.Assert;

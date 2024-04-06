@@ -41,7 +41,7 @@ public class Karatavas {
   // PILDSPALVA
 
   // Definē karātavu objektu šeit, lai pēc tam to mierīgi varētu mainīt, netraucējot main ciklu.
-  public static Karatavas karatavasObjekts;
+  public static Karatavas karatavasObjekts = new Karatavas(0, 0);
 
   public Karatavas(int vardaGrutiba, int vardsPecKartas) {
     // Konstruktors izvēlas vārdu, izveido vārdam skeleta izmēru un aizpilda to ar tukša burta simbolu "_ ".

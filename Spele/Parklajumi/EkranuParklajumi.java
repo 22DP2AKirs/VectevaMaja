@@ -277,8 +277,8 @@ private static void pieslegsanasParklasana(String[] mainamaisMasivs) {
     .substring(1) + ParklajumuIzskati.izvelnesBultinas[1];
 
     // Uzklāj tekstus.
-    mainamaisMasivs[11] += "\033[13G" + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[0] + "\033[106G";
-    mainamaisMasivs[13] += "\033[15G" + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[1] + "\033[106G";
+    mainamaisMasivs[11] += "\033[13G" + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[0] + "   " + IestatijumuDati.spelesNakts + ".  N A K T I " + "\033[106G";
+    mainamaisMasivs[13] += "\033[10G" + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[1] + "\033[106G";
     mainamaisMasivs[15] += "\033[10G" + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[2] + "\033[106G";
     mainamaisMasivs[17] += "\033[13G" + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[3] + "\033[106G";
     mainamaisMasivs[19] += "\033[16G" + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[4] + "\033[106G";

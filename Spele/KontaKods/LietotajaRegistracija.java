@@ -66,7 +66,7 @@ public class LietotajaRegistracija {
           if (Konts.ievaditsLietotajvards && Konts.ievaditaParole && Konts.ieavaditsDrosibasVards) {
             // Teksts, kas tiks ievadīts (ierakstīts), katra jaunā konta sākumā.
             String kontaDati = "#KontaDati:\nLietotajvards=" + Konts.lietotajvards + "\nParole=" + Konts.parole + "\nDrosibasVards=" + Konts.drosibasVards + "\n\n";
-            FailuRedigetajs.failuVeidotajs(kontaDati + FailuRedigetajs.failuParveidotajsParTekstu());
+            FailuRedigetajs.failuVeidotajs(kontaDati + FailuRedigetajs.failuParveidotajsParTekstu("Spele/KontaKods/Konti/KontaParaugs.txt"));
   
             // Tiek mainīti svarīgie dati un izveidots ceļš uz konta failu.
             Konts.lietotajsPiesledzies = true;
