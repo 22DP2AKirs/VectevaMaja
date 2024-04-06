@@ -37,12 +37,14 @@ public class UIizskats {
             gatavsApaksasUI[4] = "      [ W ] - K U S T E T I E S   U Z   P R I E K S U                           ";
             gatavsApaksasUI[6] = "      [ A ] - P A G R I E Z T I E S   P A   L A B I                             ";
             gatavsApaksasUI[8] = "      [ D ] - P A G R I E Z T I E S   P A   K R E I S I                         ";
-            gatavsApaksasUI[10] = "      [ X ] - D A R B I B U   I N F O R M A C I J A                             ";
         } else if (VaronaDarbibas.infoLapasSecibasSkaitlis == 2){
             gatavsApaksasUI[2] = "___________________|                     |___________________________|__________";
+            gatavsApaksasUI[4] = "      [ Q ] - I Z I E T   N O   M A J A S D A R B A                             ";
         } else if (VaronaDarbibas.infoLapasSecibasSkaitlis == 3) {
             gatavsApaksasUI[2] = "___________________|_____________________|                           |__________";
             gatavsApaksasUI[4] = "      [ LOGS ] - A I Z B I E D E T   L O G A   S P O K U                        ";
+            gatavsApaksasUI[6] = "      [ DURVIS ] - A I Z B I E D E T   D U R V J U   S P O K U                  ";
+            gatavsApaksasUI[8] = "      [ SLEGT ] - A I Z S L E G T   D U R V I S                                 ";
         } else if (VaronaDarbibas.infoLapasSecibasSkaitlis == 4) {
             gatavsApaksasUI[2] = "___________________|_____________________|___________________________|          ";
             gatavsApaksasUI[4] = "      [ E ] - I Z M A N T O T   O B J E K T U                                   ";

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import Spele.K;
 import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.KontaKods.Konts;
+import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.Spoki.DurvjuSpoks;
 import Spele.Spoki.LogaSpoks;
 import Spele.Spoki.VirtuvesSpoks;
@@ -50,6 +51,7 @@ public class IestatijumuDati {
 
   public static void sagatavotDatusNaktij() {
     IestatijumuDati.spelesNakts = FailuRedigetajs.intDatuAtgriezejs("spelesNakts", Konts.lietotajaKontaCels);
+    MazoSpeluIzvelesKods.mdPapildusLaikaIespeja = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("mdPapildusLaikaIespeja",  naktsDati);
 
     atlikusoSerkocinuDaudzums = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("atlikusoSerkocinuDaudzums", naktsDati);
     maxSerkocinaDegsanasLaiks = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("maxSerkocinaDegsanasLaiks", naktsDati);

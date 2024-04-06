@@ -3,12 +3,7 @@ Lietotajvards=ola
 Parole=ola
 DrosibasVards=ola
 
-#KontaDati:
-Lietotajvards=n
-Parole=n
-DrosibasVards=n
-
 #SpelesDati:
-spelesNakts=n
+spelesNakts=4
 
 #Iestatijumi:

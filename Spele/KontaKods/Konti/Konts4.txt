@@ -3,12 +3,7 @@ Lietotajvards=abols
 Parole=abols
 DrosibasVards=abols
 
-#KontaDati:
-Lietotajvards=n
-Parole=n
-DrosibasVards=n
-
 #SpelesDati:
-spelesNakts=n
+spelesNakts=1
 
 #Iestatijumi:

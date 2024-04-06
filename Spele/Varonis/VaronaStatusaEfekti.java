@@ -70,6 +70,7 @@ public class VaronaStatusaEfekti {
     Karatavas.karatavasObjekts.restartetKaratavas();
     Laiks.spelesLaiks = 0; // Lai laika threads momentāli neapstātos pēc tā pališanas, atjauno spēles laiku.
     varonaStresaLimenis = 0;
+    MazoSpeluIzvelesKods.majasdarbaIzpildesTermins = 0;
     MazoSpeluIzvelesKods.varonisIrMazajaSpele = false;
     Main.nodzestTerminali();
   }

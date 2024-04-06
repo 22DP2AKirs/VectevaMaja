@@ -16,7 +16,7 @@ public class MazoSpeluIzvelesKods {
   
   public static int mdPapildusLaikaIespeja; // Procentu iespēja, ka būs ilgāks mājasdarbu izpildes termiņš.
 
-  public static int majasdarbaIzpildesTermins = 0; // Spēles laiks, līdz cikiem varonis var pildīt mājasdarbu.
+  public static int majasdarbaIzpildesTermins; // Spēles laiks, līdz cikiem varonis var pildīt mājasdarbu.
 
   public static void apskatitMajasdarbu() {
     // * Pārbauda un ieslēdz mājasdarbu.
@@ -51,7 +51,7 @@ public class MazoSpeluIzvelesKods {
     }
     
     // 2. Izvēlas cik stundas būs varonim, lai izpildītu mājasdarbus.
-    randCipars = Main.rand.nextInt(mdPapildusLaikaIespeja) + 1;
+    randCipars = Main.rand.nextInt(mdPapildusLaikaIespeja - 50, mdPapildusLaikaIespeja) + 1;
     
     if (randCipars > 50) { 
       if (randCipars > 80) {
