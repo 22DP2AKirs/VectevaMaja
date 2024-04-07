@@ -54,7 +54,7 @@ public class Laiks extends Thread {
     // * Metode izslēdz vienu no 4-trām mājas gaismām.
     if (IestatijumuDati.spokiSledzAraGaismu) { // Spēles iestatījums.
       int randomIzveletasIstabasCipars = Main.rand.nextInt(4);
-      if (Main.rand.nextInt(60) + 1 == 1) {
+      if (Main.rand.nextInt(60) + 1 == 1) { // 1.66 % iespēja.
         if (IestatijumuDati.istabuGaismasIeslegtas[randomIzveletasIstabasCipars] == true) {
           IestatijumuDati.istabuGaismasIeslegtas[randomIzveletasIstabasCipars] = false;
           SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-off.wav", 0);
@@ -73,32 +73,37 @@ public class Laiks extends Thread {
       MazoSpeluIzvelesKods.apskatitMajasdarbu();
     }
     else if (spelesLaiks == vienaStunda) {
-      laikaTeksts = "  " + ++stundasLaiks + " AM  ";
+      stundasLaiks = 1;
+      laikaTeksts = "  " + stundasLaiks + " AM  ";
 
       // Mājasdarbu kods.
       MazoSpeluIzvelesKods.apskatitMajasdarbu();
     }
     else if (spelesLaiks == vienaStunda * 2) {
-      laikaTeksts = "  " + ++stundasLaiks + " AM  ";
+      stundasLaiks = 2;
+      laikaTeksts = "  " + stundasLaiks + " AM  ";
 
       // Mājasdarbu kods.
       MazoSpeluIzvelesKods.apskatitMajasdarbu();
     } 
     else if (spelesLaiks == vienaStunda * 3) {
-      laikaTeksts = "  " + ++stundasLaiks + " AM  ";
+      stundasLaiks = 3;
+      laikaTeksts = "  " + stundasLaiks + " AM  ";
       // Mājasdarbu kods.
       MazoSpeluIzvelesKods.apskatitMajasdarbu();
 
       IestatijumuDati.uzstaditSpokusUzPusnaktsRezimu();
     } 
     else if (spelesLaiks == vienaStunda * 4) {
-      laikaTeksts = "  " + ++stundasLaiks + " AM  ";
+      stundasLaiks = 4;
+      laikaTeksts = "  " + stundasLaiks + " AM  ";
       
       // Mājasdarbu kods.
       MazoSpeluIzvelesKods.apskatitMajasdarbu();
     } 
     else if (spelesLaiks == vienaStunda * 5) {
-      laikaTeksts = "  " + ++stundasLaiks + " AM  ";
+      stundasLaiks = 5;
+      laikaTeksts = "  " + stundasLaiks + " AM  ";
 
       // Mājasdarbu kods.
       MazoSpeluIzvelesKods.apskatitMajasdarbu();

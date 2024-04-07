@@ -1,6 +1,7 @@
 package Spele.Spoki;
 
 import Spele.K;
+import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Izskati.SpokuIzskati;
 import Spele.SpelesProcesi.Main;
@@ -27,7 +28,7 @@ public class VirtuvesSpoks extends Spoks {
     setSpokuFazuSkaitu(K.VIRTUVES_SPOKA_FAZES);
     ieslegtasGaismasAgresivitate = spokaAtlautaAgresivitate + 5;
   }
-
+  
   // * Getters:
   public String toString() {
     return
@@ -44,7 +45,6 @@ public class VirtuvesSpoks extends Spoks {
     return ieslegtasGaismasAgresivitate;
   }
       
-
   private int getSpokaAktualoAgresivitati() {
     if (IestatijumuDati.pagrabaGaisma) {
       return ieslegtasGaismasAgresivitate;
@@ -57,6 +57,12 @@ public class VirtuvesSpoks extends Spoks {
   protected void noteiktGajienaRezultatu() {
     // * Metode overwrito super metodi, lai tā atbilsu virtuves spoka unikālajai agresivitātei.
     // Nosaka vai spoks cenšas kustēties vai nē.
+    // Iespēja ieslēgt pagraba gaismu.
+    if (!IestatijumuDati.pagrabaGaisma && Main.rand.nextInt(101) <= IestatijumuDati.virtuvesSpokaAtlautaAgresivitate * 0.5 && !IestatijumuDati.spuldziteSaplesta) {
+      IestatijumuDati.pagrabaGaisma = true;
+      SkanasSpeletajs.SpeletSkanu("Spele/SkanasFaili/gaismas-sledzis-on.wav", 0);
+    }
+
     if (atgrieztRandomKustibasSkaitli() < getSpokaAktualoAgresivitati()) {
       if (getMainamoAtputasLaiku() == 0) {
         pieietTuvak();

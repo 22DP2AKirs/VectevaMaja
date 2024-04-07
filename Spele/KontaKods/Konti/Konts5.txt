@@ -4,6 +4,6 @@ Parole=ola
 DrosibasVards=ola
 
 #SpelesDati:
-spelesNakts=4
+spelesNakts=5
 
 #Iestatijumi:

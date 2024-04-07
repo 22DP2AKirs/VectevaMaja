@@ -119,7 +119,7 @@ public class Spoks {
     return randKustibasIespeja = Main.rand.nextInt(20) + 1; // Vērtības no 1 - 20.
   }
   
-  /// Statiskās metodes (Izmantojamas main programmā vai citās metodēs vai thredos, kuri ir aktivizēti vai izmantoti main metodē):
+  /// Statiskās metodes (Izmantojamas main programmā vai citās metodēs, vai thredos, kuri ir aktivizēti vai izmantoti main metodē):
   public static void atjauninatSpokus() {
     if (LogaSpoks.logaSpoks.getSpoksIrAktivs()) {
       LogaSpoks.logaSpoks.atjauninatSpoku();

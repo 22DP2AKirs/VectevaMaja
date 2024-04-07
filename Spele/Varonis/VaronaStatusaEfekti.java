@@ -67,11 +67,16 @@ public class VaronaStatusaEfekti {
     DurvjuSpoks.durvjuSpoks.deaktivizetSpoku();
     VirtuvesSpoks.virtuvesSpoks.deaktivizetSpoku();
 
-    Karatavas.karatavasObjekts.restartetKaratavas();
     Laiks.spelesLaiks = 0; // Lai laika threads momentāli neapstātos pēc tā pališanas, atjauno spēles laiku.
+    Laiks.stundasLaiks = 0;
+    
     varonaStresaLimenis = 0;
+
     MazoSpeluIzvelesKods.majasdarbaIzpildesTermins = 0;
     MazoSpeluIzvelesKods.varonisIrMazajaSpele = false;
+    MazoSpeluIzvelesKods.izveletaMazaSpele = false;
+    MazoSpeluIzvelesKods.izslegtVisasMazasSpeles();
+
     Main.nodzestTerminali();
   }
 }

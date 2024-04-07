@@ -21,17 +21,21 @@ public class MazoSpeluIzvelesKods {
   public static void apskatitMajasdarbu() {
     // * Pārbauda un ieslēdz mājasdarbu.
     if (Laiks.stundasLaiks == majasdarbaIzpildesTermins) {
-      parbauditVaiVaronisPaspejaIzpilditMajasdarbu();
-      ieslegtKaduMajasdarbu();
+      if (parbauditVaiVaronisPaspejaIzpilditMajasdarbu()) {
+        ieslegtKaduMajasdarbu();
+      }
     }
   }
 
-  public static void parbauditVaiVaronisPaspejaIzpilditMajasdarbu() {
+  public static boolean parbauditVaiVaronisPaspejaIzpilditMajasdarbu() {
     // * Pārbauda vai varonis ir izpildījis mājasdarbu noteiktajā laikā, ja nav, tad viņš zaudē.
     // Ja m-spēle nav uzvarēta, un varonis ir mirstīgais, tad viņš zaudē.
     if (izveletaMazaSpele && !Main.varonaNemirstiba) {
       VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("MAJASDARBA_LAIKS");
+      return false;
     }
+
+    return true;
   }
 
   private static void ieslegtKaduMajasdarbu() {
