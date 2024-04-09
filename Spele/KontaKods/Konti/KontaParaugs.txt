@@ -1,3 +1,8 @@
+#KontaDati:
+Lietotajvards=n
+Parole=n
+DrosibasVards=n
+
 #SpelesDati:
 spelesNakts=1
 

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import Spele.K;
 import Spele.FailuLietotaji.FailuRedigetajs;
-import Spele.KontaKods.Konts;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.Spoki.DurvjuSpoks;
 import Spele.Spoki.LogaSpoks;
@@ -51,10 +50,6 @@ public class IestatijumuDati {
   public static int virtuvesSpokaAtputasLaiks;
 
   public static void sagatavotDatusNaktij() {
-    if (Konts.lietotajsPiesledzies) {
-      IestatijumuDati.spelesNakts = FailuRedigetajs.intDatuAtgriezejs("spelesNakts", Konts.lietotajaKontaCels);
-    }
-
     MazoSpeluIzvelesKods.mdPapildusLaikaIespeja = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("mdPapildusLaikaIespeja",  naktsDati);
 
     spokiSledzAraGaismu = FailuRedigetajs.booleanDatuAtgriezejsNoSaraktsa("spokiSledzAraGaismu", naktsDati);

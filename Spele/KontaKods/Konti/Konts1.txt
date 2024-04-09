@@ -1,9 +1,9 @@
 #KontaDati:
-Lietotajvards=s
-Parole=s
-DrosibasVards=s
+Lietotajvards=asd
+Parole=asd
+DrosibasVards=asd
 
 #SpelesDati:
-spelesNakts=2
+spelesNakts=1
 
 #Iestatijumi:

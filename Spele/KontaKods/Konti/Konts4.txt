@@ -1,9 +1,0 @@
-#KontaDati:
-Lietotajvards=abols
-Parole=abols
-DrosibasVards=abols
-
-#SpelesDati:
-spelesNakts=1
-
-#Iestatijumi:

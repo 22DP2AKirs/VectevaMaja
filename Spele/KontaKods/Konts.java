@@ -48,6 +48,11 @@ public class Konts {
           LietotajaRegistracija.registreties();
           Konts.redigeKontu = false;
         }
+        else if (Ievade.lietotajaIevade.equals("DEL")) {
+          // Konta dzēšanas kods:
+          FailuRedigetajs.kontuFailuDzesejs();
+          break;
+        }
         else if (Ievade.lietotajaIevade.equals("ATC")) {
           // 'Toggle' slēdzis.
           if (Konts.atceretiesMani) {
@@ -153,6 +158,7 @@ public class Konts {
     // Pārbauda katru failu mapē 'Konti'.
     for (String kontaNosaukums : new File("Spele/KontaKods/Konti").list()) {
       // Ja kontā norādītais vārds jau ir izmantots, tad ... .
+      // ! Ja kādā no failiem nav norādīts 'Lietotājvārds', tad programma 'nokrašos'.
       if (FailuRedigetajs.stringDatuAtgriezejs("Lietotajvards", "Spele/KontaKods/Konti/" + kontaNosaukums).equals(parbaudesVards)) {
         // Vārds nav unikāls.
         return kontaNosaukums;

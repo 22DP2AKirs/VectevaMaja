@@ -1,7 +1,0 @@
-#KontaDati:
-Lietotajvards=test
-Parole=test
-DrosibasVards=test
-
-#SpelesDati:
-spelesNakts=1

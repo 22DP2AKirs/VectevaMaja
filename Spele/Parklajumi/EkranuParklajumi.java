@@ -89,8 +89,8 @@ public class EkranuParklajumi {
     mainamaisMasivs[22] += "\033[47G" + FailuRedigetajs.stringDatuAtgriezejs("DrosibasVards", Konts.lietotajaKontaCels) + "\033[106G";
 
     if (Konts.atceretiesMani) {
-      mainamaisMasivs[24] += K.ZALS + "\033[53G_" + K.RESET + "\033[106G"; 
-      mainamaisMasivs[25] += K.ZALS + "\033[33G[ ATC ] - A T C E R E T I E S   M A N I" + K.RESET + "\033[106G"; 
+      mainamaisMasivs[24] += K.ZALS + "\033[32G_" + K.RESET + "\033[106G"; 
+      mainamaisMasivs[25] += K.ZALS + "\033[12G[ ATC ] - A T C E R E T I E S   M A N I" + K.RESET + "\033[106G"; 
     }
   }
 

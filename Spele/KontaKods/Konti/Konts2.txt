@@ -1,7 +1,0 @@
-#KontaDati:
-Lietotajvards=oks
-Parole=321
-DrosibasVards=snuS
-
-#SpelesDati:
-spelesNakts=1

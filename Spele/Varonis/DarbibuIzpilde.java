@@ -7,6 +7,7 @@ import Spele.K;
 import Spele.Enums.Istabas;
 import Spele.Enums.Virzieni;
 import Spele.FailuLietotaji.FailuRedigetajs;
+import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Izskati.IstabuIzskati;
 import Spele.KontaKods.Konts;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
@@ -181,30 +182,35 @@ public class DarbibuIzpilde {
 
       izvelnesKustiba(komanda, 6);
       if (komanda.equals("")) { // "" = 'ENTER'.
+        // Turpinājuma kods:
         if (izvelnesSkaitlis == 0) {
-          // Turpinājuma kods:
           Main.sakumaEkrans = false;
           Main.spelePalaista = true;
         }
+        // Jaunas spēles kods:
         else if (izvelnesSkaitlis == 1) {
-          // Jaunas spēles kods:
-          FailuRedigetajs.mainitFailaMainigaVertibu("spelesNakts", "1", Konts.lietotajaKontaCels);
+          // Nodzēš visu nedēļas progresu.
+          IestatijumuDati.spelesNakts = 1;
+          if (Konts.lietotajsPiesledzies) {
+            FailuRedigetajs.mainitFailaMainigaVertibu("spelesNakts", "1", Konts.lietotajaKontaCels);
+          }
+
           Main.sakumaEkrans = false;
           Main.spelePalaista = true;
         } 
+        // Iestatījumu kods:
         else if (izvelnesSkaitlis == 2) {
-          // Iestatījumu kods:
         } 
+        // Pamācības kods:
         else if (izvelnesSkaitlis == 3) {
-          // Pamācības kods:
         } 
+        // Konta rģistrācijas kods:
         else if (izvelnesSkaitlis == 4) {
-          // Konta rģistrācijas kods:
           Ievade.lietotajaIevade = K.TUKSA_IEVADE;
           Konts.kontaIzvelesDarbibas();
         } 
+        // Aizvērt programmu:
         else if (izvelnesSkaitlis == 5) {
-          // Aizvērt programmu:
           Main.programmaPalaista = false;
           System.exit(0); // Pārtrauc spēles darbību.
         }

@@ -257,7 +257,7 @@ public class VaronaDarbibas {
 
   /// Private:
   private static void meginatAizdedzinatSerkocinu() {
-    if (Main.rand.nextInt(3) == 0) { // 33.33 % iespēja aizdedzināt sērkociņu.
+    if (Main.rand.nextInt(2) == 0) { // 50 % iespēja aizdedzināt sērkociņu.
       SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\lighting-matches.wav", 0);
       aizdedzinatsSerkocins = true;
       IestatijumuDati.atlikusoSerkocinuDaudzums--;

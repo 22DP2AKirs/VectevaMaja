@@ -45,7 +45,7 @@ public class VaronaStatusaEfekti {
     Main.spelePalaista = false;
 
     // Cerība uz to, ka termināla izvade beigsies šinī laika intervālā.
-    try {Thread.sleep(200);} catch (InterruptedException e) {}
+    try {Thread.sleep(200);} catch (InterruptedException e) {} // TODO: MODS!!  CRUSH IT'S SKULL!!!!
 
 
     // Nosaka spēles gala rezultātu.
@@ -77,10 +77,7 @@ public class VaronaStatusaEfekti {
     
     varonaStresaLimenis = 0;
 
-    MazoSpeluIzvelesKods.majasdarbaIzpildesTermins = 0;
-    MazoSpeluIzvelesKods.varonisIrMazajaSpele = false;
-    MazoSpeluIzvelesKods.izveletaMazaSpele = false;
-    MazoSpeluIzvelesKods.izslegtVisasMazasSpeles();
+    MazoSpeluIzvelesKods.sagatavotMajasdarbusJaunaiSpelei();
 
     Main.nodzestTerminali();
   }

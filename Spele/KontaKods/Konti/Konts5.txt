@@ -1,9 +1,0 @@
-#KontaDati:
-Lietotajvards=ola
-Parole=ola
-DrosibasVards=ola
-
-#SpelesDati:
-spelesNakts=1
-
-#Iestatijumi:

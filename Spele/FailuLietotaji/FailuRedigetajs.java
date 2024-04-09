@@ -241,6 +241,29 @@ public class FailuRedigetajs {
     return failaTeksts;
   }
 
+
+  public static void kontuFailuDzesejs() {
+    // ? Izveidots, lai pārveidotu konta failus.
+    // ! Metode strādās tikai, tad kad mapē 'Konti' pēdējais konts ir ar skaitli, piem., Konts'n'.txt
+
+    // 1. Iegūst mapes pēdējā konta skaitli.
+    int pedejaKontaNosaukumaSkatilis = new File("Spele/KontaKods/Konti").list().length - 1; // Konts'n'.txt / -1, jo 
+    // 2. Ja lietotāja konts ir pēdējais pēc skaita, tad to izdzēš. 
+    if (Konts.lietotajaKontaCels.contains("Konts" + pedejaKontaNosaukumaSkatilis)) {
+      File lietotajaKonts = new File(Konts.lietotajaKontaCels);
+      lietotajaKonts.delete();
+    }
+    else {
+      // Citādi pārkopē pēdējā konta datus uz kontu, kuru vēlējās dzēst, un izdzēš kontu no kuro pārkopēja datus, lai nesabojātu kontu nosaukumu secību.
+      FailuRedigetajs.failuParrakstitajs(FailuRedigetajs.failuParveidotajsParTekstu("Spele/KontaKods/Konti/Konts" + pedejaKontaNosaukumaSkatilis + ".txt"), Konts.lietotajaKontaCels);
+      File pedejaisKontaFails = new File("Spele/KontaKods/Konti/Konts" + pedejaKontaNosaukumaSkatilis + ".txt");
+      pedejaisKontaFails.delete();
+    }
+    // 3. Izmet lietotāju no konta.
+    Konts.atceretiesMani = false;
+    Konts.lietotajsPiesledzies = false;
+  }
+
   public static void failuVeidotajs(String rakstamaisTeksts) {
     // ? Izveidots, lai veidotu konta failus.
     // Izveido failu norādītajā vietā.
@@ -264,6 +287,14 @@ public class FailuRedigetajs {
   public static void failuRakstitajs(String rakstamaisTeksts, String celsUzFailu) {
     // Jebkurā uzrādītajā failā ieraksta norādīto tekstu.
     try (BufferedWriter rakstitajs = new BufferedWriter(new FileWriter(celsUzFailu, true))) { // FileWriter(x, y) x - Faila nosaukums, y - append režīms (true - pieraksta, false - pārraksta).
+      rakstitajs.write(rakstamaisTeksts + "\n");
+      rakstitajs.close();
+    } catch (Exception e) {}
+  }
+
+  public static void failuParrakstitajs(String rakstamaisTeksts, String celsUzFailu) {
+    // Pilnībā pārraksta norādīto failu.
+    try (BufferedWriter rakstitajs = new BufferedWriter(new FileWriter(celsUzFailu, false))) { // FileWriter(x, y) x - Faila nosaukums, y - append režīms (true - pieraksta, false - pārraksta).
       rakstitajs.write(rakstamaisTeksts + "\n");
       rakstitajs.close();
     } catch (Exception e) {}

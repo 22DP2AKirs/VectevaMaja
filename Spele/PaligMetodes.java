@@ -23,7 +23,7 @@ public class PaligMetodes {
     return jaunaisVards;
   }
 
-  public static void izvaditArrayListElementus(ArrayList saraksts) {
+  public static void izvaditArrayListElementus(ArrayList<?> saraksts) {
     for (Object object : saraksts) {
       System.out.println(object);
     }

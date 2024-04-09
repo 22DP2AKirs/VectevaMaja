@@ -27,6 +27,12 @@ Komandas bieži būs redzamas uz ekrāna, viss kas Jums ir jādara ir pēc katra
 - [ ] Izskrāsot durvis brūnas un logus zilus (Ādama ideja).
 - [ ] Jāpieiet pie loga. cits spoks?
 - [ ] Aizdedzināt spoku :|?????
+
+- [ ] Skaņa, kad ieslēdzas mājasdarbs.
+- [ ] Nomainīt 3. nakts grūtību uz vieglāku.
+- [ ] Vairāk m-spēles.
+- [ ] Samazināt kāršu spēles kāršu daudzumu (līdz 8).
+- [ ] Samazināt iespēju izslēgt gaismu istabās.
 - ...
 
 ## Spēles nobeiguma stress.

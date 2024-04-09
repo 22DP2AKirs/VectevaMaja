@@ -32,7 +32,7 @@ public class Main {
   public static volatile boolean spelePalaista = true; // Mainīgais bool, kas pašu spēli.
  
   // Varoņa īpašības.
-  public static boolean varonaNemirstiba = false; // Vai varonis var zaudēt spēli vai nē.
+  public static boolean varonaNemirstiba = true; // Vai varonis var zaudēt spēli vai nē.
   
   // Objekti.
   public static Random rand = new Random(); // Priekš random darbībām.
@@ -76,9 +76,6 @@ public class Main {
     // * P R O G R A M M A S   C I K L S //
     while (programmaPalaista) {
       nodzestTerminali();
-      // ? Nolasīt konta datus.
-      
-      
 
       // * ///// S A K U M A   E K R A N A   C I K L S //////
       while (sakumaEkrans) {
@@ -93,7 +90,7 @@ public class Main {
       }
 
       // ? Nolasīt iestatījuma datus.
-      IestatijumuDati.naktsDati = FailuRedigetajs.atgriestDaluNoFaila("#Nakts" + FailuRedigetajs.intDatuAtgriezejs("spelesNakts", Konts.lietotajaKontaCels), K.NAKTS_DATU_FAILS);
+      IestatijumuDati.naktsDati = FailuRedigetajs.atgriestDaluNoFaila("#Nakts" + IestatijumuDati.spelesNakts, K.NAKTS_DATU_FAILS);
       IestatijumuDati.sagatavotDatusNaktij();
 
 
