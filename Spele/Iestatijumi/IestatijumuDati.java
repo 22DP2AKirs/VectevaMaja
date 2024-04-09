@@ -16,7 +16,7 @@ public class IestatijumuDati {
   // * lai tos varētu izmantot spēlē.
 
   public static boolean spokiPusnaktsRezima = false;
-  public static int spelesNakts; // Saglabā spēles nakti. // = FailuRedigetajs.intDatuAtgriezejs("spelesNakts", Konts.lietotajaKontaCels)
+  public static int spelesNakts; // Saglabā spēles nakti.
 
   public static ArrayList<String> naktsDati; //  = FailuRedigetajs.atgriestDaluNoFaila("#Nakts" + FailuRedigetajs.intDatuAtgriezejs("spelesNakts", Konts.lietotajaKontaCels), K.NAKTS_DATU_FAILS)
   // ? Visi iestatījumi, kuri tiek lietoti spēlē:
@@ -51,7 +51,10 @@ public class IestatijumuDati {
   public static int virtuvesSpokaAtputasLaiks;
 
   public static void sagatavotDatusNaktij() {
-    IestatijumuDati.spelesNakts = FailuRedigetajs.intDatuAtgriezejs("spelesNakts", Konts.lietotajaKontaCels);
+    if (Konts.lietotajsPiesledzies) {
+      IestatijumuDati.spelesNakts = FailuRedigetajs.intDatuAtgriezejs("spelesNakts", Konts.lietotajaKontaCels);
+    }
+
     MazoSpeluIzvelesKods.mdPapildusLaikaIespeja = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("mdPapildusLaikaIespeja",  naktsDati);
 
     spokiSledzAraGaismu = FailuRedigetajs.booleanDatuAtgriezejsNoSaraktsa("spokiSledzAraGaismu", naktsDati);

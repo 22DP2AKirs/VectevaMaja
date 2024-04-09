@@ -54,7 +54,12 @@ public class VaronaStatusaEfekti {
       PaligMetodes.gulet(5);
       // Palielina konta nakts vērtību par vienu (+1).
       if (IestatijumuDati.spelesNakts != 5) {
-        FailuRedigetajs.mainitFailaMainigaVertibu("spelesNakts", FailuRedigetajs.intDatuAtgriezejs("spelesNakts", Konts.lietotajaKontaCels) + 1 + "", Konts.lietotajaKontaCels);
+        IestatijumuDati.spelesNakts++;
+
+        // Ja ir konts, tad saglabā.
+        if (Konts.lietotajsPiesledzies) {
+          FailuRedigetajs.mainitFailaMainigaVertibu("spelesNakts", IestatijumuDati.spelesNakts + "", Konts.lietotajaKontaCels);
+        }
       }
     }
     else {

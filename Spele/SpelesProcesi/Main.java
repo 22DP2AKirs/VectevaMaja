@@ -61,17 +61,23 @@ public class Main {
     skanasSpeletajs.start(); // Strādā, kamēr spelePalaista bools ir true.
     ievadesLasitajs.start(); // Strādā, kamēr programmaPalaista bools ir true.
     
-    // Pieslēdz lietotāja kontu.
+    // Pieslēdz lietotāja kontu, un nolasa galvenos datus.
     if (Konts.atceretiesMani) {
       Konts.lietotajaKontaCels = FailuRedigetajs.stringDatuAtgriezejs("lietotajaKontaCels", K.SAKUMA_DATU_MAPE);
       Konts.lietotajsPiesledzies = true;
+
+      IestatijumuDati.spelesNakts = FailuRedigetajs.intDatuAtgriezejs("spelesNakts", Konts.lietotajaKontaCels);
+    }
+    // Ja nav konta, tad uzstāda parastās vērtības jeb datus.
+    else {
+      IestatijumuDati.spelesNakts = 1;
     }
 
     // * P R O G R A M M A S   C I K L S //
     while (programmaPalaista) {
       nodzestTerminali();
       // ? Nolasīt konta datus.
-      IestatijumuDati.spelesNakts = FailuRedigetajs.intDatuAtgriezejs("spelesNakts", Konts.lietotajaKontaCels);
+      
       
 
       // * ///// S A K U M A   E K R A N A   C I K L S //////
