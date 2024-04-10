@@ -103,7 +103,8 @@ private static void pieslegsanasParklasana(String[] mainamaisMasivs) {
       mainamaisMasivs[22] += "\033[27G" + K.TPELEKS + "|     >>>                  | M A X   15   S I M B. |" + K.RESET + "\033[106G"; 
       mainamaisMasivs[23] += "\033[27G" + K.TPELEKS + "|__________________________________________________|" + K.RESET + "\033[106G";
 
-      mainamaisMasivs[25] += "\033[29G" + K.TPELEKS + "[ AIZMIRSU ] - A I Z M I R S A T   P A R O L I ?" + K.RESET + "\033[106G";
+      mainamaisMasivs[26] += K.TPELEKS + "\033[78G_" + K.RESET + "\033[106G";
+      mainamaisMasivs[27] += "\033[49G" + K.TPELEKS + "[ AIZMIRSU ] - A I Z M I R S A T   P A R O L I ?" + K.RESET + "\033[106G";
     }
     
 

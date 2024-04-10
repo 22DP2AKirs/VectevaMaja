@@ -142,10 +142,11 @@ public class Konts {
   }
 
   public static boolean parbauditLietotajvardaPieejamibu(String parbaudesVards) {
-    // Pārbauda katru failu mapē 'Konti'.
-    for (String kontaNosaukums : new File("Spele/KontaKods/Konti").list()) {
+    // Pārbauda katru failu mapē 'Konti', kas nav parauga fails.
+    String[] mapesFaili = new File("Spele/KontaKods/Konti").list();
+    for (int i = 1; i < mapesFaili.length ; i++) { // ! Ciklu sāk no 1. faila, jo 0. fails ir paraugs, kuru nav jāuzskata par kontu.
       // Ja kontā norādītais vārds jau ir izmantots, tad ... .
-      if (FailuRedigetajs.stringDatuAtgriezejs("Lietotajvards", "Spele/KontaKods/Konti/" + kontaNosaukums).equals(parbaudesVards)) {
+      if (FailuRedigetajs.stringDatuAtgriezejs("Lietotajvards", "Spele/KontaKods/Konti/" + mapesFaili[i]).equals(parbaudesVards)) {
         // Vārds nav unikāls.
         return false;
       }
@@ -155,13 +156,13 @@ public class Konts {
   }
 
   public static String atrastKontuPecLietotajavarda(String parbaudesVards) {
-    // Pārbauda katru failu mapē 'Konti'.
-    for (String kontaNosaukums : new File("Spele/KontaKods/Konti").list()) {
-      // Ja kontā norādītais vārds jau ir izmantots, tad ... .
-      // ! Ja kādā no failiem nav norādīts 'Lietotājvārds', tad programma 'nokrašos'.
-      if (FailuRedigetajs.stringDatuAtgriezejs("Lietotajvards", "Spele/KontaKods/Konti/" + kontaNosaukums).equals(parbaudesVards)) {
-        // Vārds nav unikāls.
-        return kontaNosaukums;
+    // Pārbauda katru failu mapē 'Konti', kas nav parauga fails.
+    String[] mapesFaili = new File("Spele/KontaKods/Konti").list();
+    for (int i = 1; i < mapesFaili.length ; i++) { // ! Ciklu sāk no 1. faila, jo 0. fails ir paraugs, kuru nav jāuzskata par kontu.
+      // Ja konta failā ir atrasts norādītais lietotājvārds, tad ...
+      if (FailuRedigetajs.stringDatuAtgriezejs("Lietotajvards", "Spele/KontaKods/Konti/" + mapesFaili[i]).equals(parbaudesVards)) {
+        // ... atgriež faila nosaukumu.
+        return mapesFaili[i];
       }
     }
     // Vārds ir unikāls.
