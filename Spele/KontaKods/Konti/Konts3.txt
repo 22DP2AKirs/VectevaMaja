@@ -1,0 +1,9 @@
+#KontaDati:
+Lietotajvards=123
+Parole=123
+DrosibasVards=213
+
+#SpelesDati:
+spelesNakts=1
+
+#Iestatijumi:

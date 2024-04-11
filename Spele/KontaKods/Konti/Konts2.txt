@@ -1,0 +1,9 @@
+#KontaDati:
+Lietotajvards=dsa
+Parole=dsa
+DrosibasVards=dsa
+
+#SpelesDati:
+spelesNakts=1
+
+#Iestatijumi:

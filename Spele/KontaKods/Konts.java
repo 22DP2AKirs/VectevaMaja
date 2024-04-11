@@ -18,6 +18,7 @@ public class Konts {
   public static String lietotajvards = ""; // (Username).
   public static String parole = ""; 
   public static String drosibasVards = ""; // Vārds ar kā palīdzību var pieslēgties kontā, ja ir aizmirsta parole.
+  public static String displejaLietotajvards = "_ _ _ _ _ _ _ _ _ _";
 
   public static boolean ievaditsLietotajvards;
   public static boolean ievaditaParole;
@@ -36,12 +37,8 @@ public class Konts {
       while (!Ievade.lietotajaIevade.equals("Q")) {
         // -------- Izvade uz terminālu.
         IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.KONTA_APSKATES_EKRANS));
-
         // -------- Izvēles:
         if (Ievade.lietotajaIevade.equals("RED")) {
-        //   DarbibuIzpilde.izvelnesSkaitlis = 0;
-        //   Ievade.pilnibaNotiritIevadi();
-        //   DatuRedigesana.rediget();
           Konts.redigeKontu = true;
           DarbibuIzpilde.izvelnesSkaitlis = 0;
           Ievade.pilnibaNotiritIevadi();
@@ -51,6 +48,7 @@ public class Konts {
         else if (Ievade.lietotajaIevade.equals("DEL")) {
           // Konta dzēšanas kods:
           FailuRedigetajs.kontuFailuDzesejs();
+          displejaLietotajvards = "_ _ _ _ _ _ _ _ _ _";
           break;
         }
         else if (Ievade.lietotajaIevade.equals("ATC")) {
@@ -72,6 +70,7 @@ public class Konts {
           FailuRedigetajs.mainitFailaMainigaVertibu("lietotajaKontaCels",  "", K.SAKUMA_DATU_MAPE);
           Konts.atceretiesMani = false;
           Konts.lietotajsPiesledzies = false;
+          displejaLietotajvards = "_ _ _ _ _ _ _ _ _ _";
           Ievade.sagatavotKomanduDzesanai();
 
           break; // Iziet ārā no šī ekrāna.

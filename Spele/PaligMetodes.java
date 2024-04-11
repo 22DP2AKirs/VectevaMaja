@@ -8,10 +8,24 @@ import Spele.Enums.Virzieni;
 public class PaligMetodes {
   // Šeit ir metodes, kuras atvieglos koda saprašanu un manu dzīvi.
 
-  public static String saliktAtstarpesStarpBurtiem(String vards, int atstarpes) {
-    // Atgriež vārdu ar atstarpēm starp burtiem.
-    
-    return null;
+  public static String saliktAtstarpesSimboluVirkne(String vards, int atstarpes) {
+    // Atgriež vārdu ar atstarpēm starp burtiem jeb simboliem.
+    String atstarpe = "";
+    String apstradataVirkne = "";
+    char[] virknesSimboli = vards.toCharArray();
+
+    // 1. Izveido atstarpi pēc pieprasījuma.
+    for (int i = atstarpes ; i > 0 ; i --) {
+      atstarpe += " ";
+    }
+
+    // 2. Saliek atstarpes starp simboliem.
+    for (char simbols : virknesSimboli) {
+      apstradataVirkne += simbols + atstarpe;
+    }
+
+    // 3. Nogriež liekās atstarpes ' ' un atgriež rezultātu.
+    return apstradataVirkne.strip();
   }
 
   public static String nonemtAtstarpes(String ievade) {

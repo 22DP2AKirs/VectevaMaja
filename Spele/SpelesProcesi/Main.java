@@ -1,10 +1,12 @@
 package Spele.SpelesProcesi;
 
+import java.io.IOException;
 import java.util.Random;
 
 import Spele.Enums;
 import Spele.IzvadeUzTerminalu;
 import Spele.K;
+import Spele.PaligMetodes;
 import Spele.Testi;
 import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.FailuLietotaji.SkanasSpeletajs;
@@ -45,7 +47,7 @@ public class Main {
   public static volatile boolean thrediGul; // Apstādina Laiks thredu uz noteiktu laiku.
   static boolean programmasKluduLasisana = false;
 
-  public static void main(String[] args) throws InterruptedException { // throws InterruptedException nozīmē, ka var neizmantot try_catch.
+  public static void main(String[] args) throws InterruptedException, IOException { // throws InterruptedException nozīmē, ka var neizmantot try_catch.
     // * Galvenais programmas process.
 
     // Dažādu metožu un ideju testēšana.
@@ -64,6 +66,7 @@ public class Main {
     // Pieslēdz lietotāja kontu, un nolasa galvenos datus.
     if (Konts.atceretiesMani) {
       Konts.lietotajaKontaCels = FailuRedigetajs.stringDatuAtgriezejs("lietotajaKontaCels", K.SAKUMA_DATU_MAPE);
+      Konts.displejaLietotajvards = PaligMetodes.saliktAtstarpesSimboluVirkne(FailuRedigetajs.stringDatuAtgriezejs("Lietotajvards", Konts.lietotajaKontaCels), 1);
       Konts.lietotajsPiesledzies = true;
 
       IestatijumuDati.spelesNakts = FailuRedigetajs.intDatuAtgriezejs("spelesNakts", Konts.lietotajaKontaCels);
@@ -73,6 +76,8 @@ public class Main {
       IestatijumuDati.spelesNakts = 1;
     }
 
+    TaustinuKlausitajs.palaistKlaviaturasLasitaju();
+
     // * P R O G R A M M A S   C I K L S //
     while (programmaPalaista) {
       nodzestTerminali();
@@ -80,11 +85,12 @@ public class Main {
       // * ///// S A K U M A   E K R A N A   C I K L S //////
       while (sakumaEkrans) {
         // 1. Apstrādā lietotāja ievadi.
-        DarbibuIzpilde.izpilditSakumaEkranaDarbibas(Ievade.lietotajaIevade);
+        DarbibuIzpilde.izpilditSakumaEkranaDarbibas(TaustinuKlausitajs.komanda);
         // 2. Izvada bildi terminālī.
         IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.GALVENAIS_EKRANS));
         // 3. Notīra ievadi.
-        Ievade.notiritKomandu();
+        TaustinuKlausitajs.nodzestKomandu();
+        // Ievade.notiritKomandu();
         // 4. 1 'freims' jeb cikls spēlē.
         Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 25 FPS.
       }
@@ -104,7 +110,7 @@ public class Main {
       // * ///// S P Ē L E S   C I K L S ///////
       while (spelePalaista) { // Kamēr laiks nav beidzies, turpināt ciklu jeb spēli.
         // 1. Apstrādā lietotāja ievadi.
-        DarbibuIzpilde.izpilditSpelesDarbibas(Enums.V_Istaba, Enums.V_Virziens, Ievade.lietotajaIevade); // Pilnībā aizvieto 'VaronaDarbibas.apstradatKomandu(Ievade.lietotajaIevade);'.
+        DarbibuIzpilde.izpilditSpelesDarbibas(Enums.V_Istaba, Enums.V_Virziens, TaustinuKlausitajs.komanda); // Pilnībā aizvieto 'VaronaDarbibas.apstradatKomandu(Ievade.lietotajaIevade);'.
         // 2. Papildus informācijas izvade --Debuging--
         informacijasIzvade();
         // 3. Izvade uz ekrānu jeb termināli.
@@ -113,7 +119,7 @@ public class Main {
         VaronaStatusaEfekti.varonaStress();
         VaronaStatusaEfekti.parbauditEffektus(); // Varoņa bojāiešanas nosacījumi.
         // 5. Notīra ievadi.
-        Ievade.notiritKomandu();
+        //  TODO Ievade.notiritKomandu();
         // 6. 1 'freims' spēlē.
         Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 25 FPS.
         // ------------------ Papildus.

@@ -98,6 +98,7 @@ public class LietotajaPieslegsanas {
       if (Konts.parole.length() < 16 && Konts.parole.equals(FailuRedigetajs.stringDatuAtgriezejs("Parole", Konts.lietotajaKontaCels))) {
         Main.nodzestTerminali();
         Konts.lietotajsPiesledzies = true;
+        Konts.displejaLietotajvards = PaligMetodes.saliktAtstarpesSimboluVirkne(Konts.lietotajvards, 1);
         break;
       }
 

@@ -1,29 +1,31 @@
 package Spele;
 
+import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.Scanner;
-import Spele.Iestatijumi.IestatijumuDati;
+
+import com.github.kwhat.jnativehook.GlobalScreen;
+import com.github.kwhat.jnativehook.NativeHookException;
+import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
+import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
+
 import Spele.SpelesProcesi.Main;
+import Spele.SpelesProcesi.TaustinuKlausitajs;
+
+
 
 public class Testi {
   public static boolean testesana = false;
 
-  public static void testaProgramma() throws InterruptedException { // throws  InterruptedException, Lai varētu izmantot: Thread.sleep(0); bez try_catch.
-    try ( Scanner iLasitajs = new Scanner(System.in) ) { // Izslēdz erroru 'lasītājs nav aizvērts'.
-      Main.nodzestTerminali();
+  public static void testaProgramma() { // throws  InterruptedException, Lai varētu izmantot: Thread.sleep(0); bez try_catch.
+   
+  
+
+    while (true) {
       
-      String ievade;
-
-      // Cikls.
-      while (true) {
-        PaligMetodes.izvaditArrayListElementus(IestatijumuDati.naktsDati);
-
-        ievade = iLasitajs.nextLine();
-
-        if (ievade.equals("EXIT")) {
-          break;
-        }
-        Main.nodzestTerminali();
-      }
     }
   }
+
+      
+  
 }

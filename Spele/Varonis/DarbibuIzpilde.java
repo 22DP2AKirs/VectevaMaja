@@ -14,6 +14,7 @@ import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.Parklajumi.BildesParklajumi;
 import Spele.SpelesProcesi.Ievade;
 import Spele.SpelesProcesi.Main;
+import Spele.SpelesProcesi.TaustinuKlausitajs;
 
 
 public class DarbibuIzpilde {
@@ -206,7 +207,7 @@ public class DarbibuIzpilde {
         } 
         // Konta rģistrācijas kods:
         else if (izvelnesSkaitlis == 4) {
-          Ievade.lietotajaIevade = K.TUKSA_IEVADE;
+          // Ievade.lietotajaIevade = K.TUKSA_IEVADE;
           Konts.kontaIzvelesDarbibas();
         } 
         // Aizvērt programmu:
@@ -215,7 +216,7 @@ public class DarbibuIzpilde {
           System.exit(0); // Pārtrauc spēles darbību.
         }
       }
-      Ievade.sagatavotKomanduDzesanai();
+      TaustinuKlausitajs.sagatavotKomanduDzesanai();
     }
   }
 

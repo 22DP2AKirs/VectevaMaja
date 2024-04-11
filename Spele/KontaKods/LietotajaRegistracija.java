@@ -69,8 +69,10 @@ public class LietotajaRegistracija {
             FailuRedigetajs.failuVeidotajs(kontaDati + FailuRedigetajs.failuParveidotajsParTekstu("Spele/KontaKods/Konti/KontaParaugs.txt"));
   
             // Tiek mainīti svarīgie dati un izveidots ceļš uz konta failu.
+            
             Konts.lietotajsPiesledzies = true;
             Konts.lietotajaKontaCels = "Spele/KontaKods/Konti/" + Konts.atrastKontuPecLietotajavarda(Konts.lietotajvards);
+            Konts.displejaLietotajvards = PaligMetodes.saliktAtstarpesSimboluVirkne(FailuRedigetajs.stringDatuAtgriezejs("Lietotajvards", Konts.lietotajaKontaCels), 1);
           }
         }
         // Nodzēš liekos datus.

@@ -285,6 +285,8 @@ private static void pieslegsanasParklasana(String[] mainamaisMasivs) {
     mainamaisMasivs[19] += "\033[16G" + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[4] + "\033[106G";
     mainamaisMasivs[21] += "\033[16G" + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[5] + "\033[106G";
 
+    mainamaisMasivs[27] += "\033[26G" + Konts.displejaLietotajvards + "\033[106G";
+
     // No teksta noņem pieliktās bultiņas.
     ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[DarbibuIzpilde.izvelnesSkaitlis] = 
     " " + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[DarbibuIzpilde.izvelnesSkaitlis]

@@ -13,9 +13,9 @@ import Spele.SpelesProcesi.Laiks;
 import Spele.Varonis.VaronaDarbibas;
 
 public class UIizskats {
-    static String[] ievadesMasivs = Ievade.ieprieksejaIevade("");
+    // static String[] ievadesMasivs = Ievade.ieprieksejaIevade("");
 
-    public static String[] apaksasUISagatavosana(String panemtaIevade) {
+    public static String[] apaksasUISagatavosana() { // TODO String panemtaIevade
         String[] gatavsApaksasUI = {
             "--------------------------------------------------------------------------------",
             " [1] K U S T I B A | [2] U Z D E V U M I | [3] A I Z S A R D Z I B A | [4] ...  ",
@@ -52,22 +52,22 @@ public class UIizskats {
             gatavsApaksasUI[8] = "      [ G ] - I E S L E G T   V A I   I Z S L E G T   G A I S M U               ";
         }
         
-        if (!panemtaIevade.equals(K.TUKSA_IEVADE)) { // Izveido jauno.
-          ievadesMasivs = Ievade.ieprieksejaIevade(panemtaIevade);
-        } 
+        // if (!panemtaIevade.equals(K.TUKSA_IEVADE)) { // Izveido jauno.
+        //   ievadesMasivs = Ievade.ieprieksejaIevade(panemtaIevade);
+        // } 
 
-        // Sagatavo 10 rindiņu.
-        gatavsApaksasUI[12] = "     I E P R I E K S E J A   K O M A N D A :   " 
-            + ievadesMasivs[0] + " "
-            + ievadesMasivs[1] +  " "
-            + ievadesMasivs[2] +  " "
-            + ievadesMasivs[3] +  " "
-            + ievadesMasivs[4] +  " "
-            + ievadesMasivs[5] +  " "
-            + ievadesMasivs[6] +  " "
-            + ievadesMasivs[7] +  " "
-            + ievadesMasivs[8] +  " "
-            + ievadesMasivs[9] +  "              ";
+        // // Sagatavo 10 rindiņu.
+        // gatavsApaksasUI[12] = "     I E P R I E K S E J A   K O M A N D A :   " 
+        //     + ievadesMasivs[0] + " "
+        //     + ievadesMasivs[1] +  " "
+        //     + ievadesMasivs[2] +  " "
+        //     + ievadesMasivs[3] +  " "
+        //     + ievadesMasivs[4] +  " "
+        //     + ievadesMasivs[5] +  " "
+        //     + ievadesMasivs[6] +  " "
+        //     + ievadesMasivs[7] +  " "
+        //     + ievadesMasivs[8] +  " "
+        //     + ievadesMasivs[9] +  "              ";
             return gatavsApaksasUI;
     }
 

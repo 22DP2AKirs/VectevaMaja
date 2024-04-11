@@ -1,0 +1,9 @@
+#KontaDati:
+Lietotajvards=qwe
+Parole=qwe
+DrosibasVards=qwe
+
+#SpelesDati:
+spelesNakts=1
+
+#Iestatijumi:
