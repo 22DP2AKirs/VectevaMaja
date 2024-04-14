@@ -1,9 +1,9 @@
 #KontaDati:
-Lietotajvards=321
-Parole=321
-DrosibasVards=321
+Lietotajvards=S
+Parole=S
+DrosibasVards=S
 
 #SpelesDati:
-spelesNakts=1
+spelesNakts=4
 
 #Iestatijumi:

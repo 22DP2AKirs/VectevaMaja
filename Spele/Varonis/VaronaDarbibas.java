@@ -2,6 +2,7 @@ package Spele.Varonis;
 import java.util.Arrays;
 
 import Spele.SpelesProcesi.Main;
+import Spele.SpelesProcesi.TastaturasKlausitajs;
 import Spele.Spoki.DurvjuSpoks;
 import Spele.Spoki.LogaSpoks;
 import Spele.Spoki.VirtuvesSpoks;
@@ -48,33 +49,33 @@ public class VaronaDarbibas {
     } 
   }
 
-  public static void testesanasDarbibas(String panemtaIevade) {
+  public static void testesanasDarbibas(String komanda , String komandasTeksts) {
     // * Metodē ir darbības, kuras ir domātas spēles testēšanai.
 
     // Spoku info. izvade.
-    if (panemtaIevade.equals("SI")) {
+    if (komandasTeksts.equals("SI") && komanda.equals("ENTER")) {
       ieslegtIzslegtSpokuInformaciju();
     }
     // M-Spēļu info. izvade.
-    else if (panemtaIevade.equals("MI")) {
+    else if (komandasTeksts.equals("MI") && komanda.equals("ENTER")) {
       ieslegtIzslegtMspelesInformaciju();
     }
-    else if (panemtaIevade.equals("I")) {
+    else if (komandasTeksts.equals("I") && komanda.equals("ENTER")) {
       DurvjuSpoks.durvjuSpoks.setSpokaAtputasLaikaMainamaKopija(0);
     }
-    else if (panemtaIevade.equals("O")) {
+    else if (komandasTeksts.equals("O") && komanda.equals("ENTER")) {
 
     }
-    else if (panemtaIevade.equals("P")) {
+    else if (komandasTeksts.equals("P") && komanda.equals("ENTER")) {
 
     }
     // Iziet no spēles.
-    else if (panemtaIevade.equals("EXIT")) {
+    else if (komandasTeksts.equals("EXIT") && komanda.equals("ENTER")) {
       Main.programmaPalaista = false;
       System.exit(0);
     }
     // Izslēdz mājas elektrību.
-    else if (panemtaIevade.equals("POWER OFF")) {
+    else if (komandasTeksts.equals("POWER OFF") && komanda.equals("ENTER")) {
       if(IestatijumuDati.elektribaIeslegta) {
         IestatijumuDati.elektribaIeslegta = false;
         laiksCikIlgiElektribaBusIzslegta = 10;
@@ -84,29 +85,29 @@ public class VaronaDarbibas {
       }
     }
     // Novāc varoni.
-    else if (panemtaIevade.equals("KILL")) {
+    else if (komandasTeksts.equals("KILL") && komanda.equals("ENTER")) {
       VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("PASNAVIBA");
     }
     // Uzvar spēli.
-    else if (panemtaIevade.equals("WIN")) {
+    else if (komandasTeksts.equals("WIN") && komanda.equals("ENTER")) {
       Laiks.spelesLaiks = 1000;
     }
-    else if (panemtaIevade.equals("H1")) {
+    else if (komandasTeksts.equals("H1") && komanda.equals("ENTER")) {
       Laiks.spelesLaiks = Laiks.vienaStunda - 1;
     } 
-    else if (panemtaIevade.equals("H2")) {
+    else if (komandasTeksts.equals("H2") && komanda.equals("ENTER")) {
       Laiks.spelesLaiks = (Laiks.vienaStunda * 2) - 1;
     } 
-    else if (panemtaIevade.equals("H3")) {
+    else if (komandasTeksts.equals("H3") && komanda.equals("ENTER")) {
       Laiks.spelesLaiks = (Laiks.vienaStunda * 3) - 1;
     } 
-    else if (panemtaIevade.equals("H4")) {
+    else if (komandasTeksts.equals("H4") && komanda.equals("ENTER")) {
       Laiks.spelesLaiks = (Laiks.vienaStunda * 4) - 1;
     } 
-    else if (panemtaIevade.equals("H5")) {
+    else if (komandasTeksts.equals("H5") && komanda.equals("ENTER")) {
       Laiks.spelesLaiks = (Laiks.vienaStunda * 5) - 1;
     } 
-    else if (panemtaIevade.equals("MS")) {
+    else if (komandasTeksts.equals("MS") && komanda.equals("ENTER")) {
       MazoSpeluIzvelesKods.izslegtVisasMazasSpeles();
       MazoSpeluIzvelesKods.izveletaMazaSpele = false;
     } 
@@ -137,15 +138,15 @@ public class VaronaDarbibas {
     // Kods:
   }
 
-  public static void gultasKreisasPusesKomandas(String komanda) {
-    if (komanda.equals("LOGS")) {
+  public static void gultasKreisasPusesKomandas(String komanda , String komandasTeksts) {
+    if (komandasTeksts.equals("LOGS") && komanda.equals("ENTER")) {
       aizbiedetLogaSpoku(Istabas.GULTA);
     }
   }
 
   /// * Dīvāna darbības:
-  public static void divanaPrieksasKomandas(String komanda) {
-    if (komanda.equals("LOGS")) {
+  public static void divanaPrieksasKomandas(String komanda , String komandasTeksts) {
+    if (komandasTeksts.equals("LOGS") && komanda.equals("ENTER")) {
       aizbiedetLogaSpoku(Istabas.DIVANS);
     }
   }
@@ -166,6 +167,8 @@ public class VaronaDarbibas {
     else if (komanda.equals("E") && AtrodiPariSavienojums.mSpeleAtrodiPari) {
       MazoSpeluIzvelesKods.varonisIrMazajaSpele = true;
       Main.nodzestTerminali();
+      TastaturasKlausitajs.nodzestKomandasTekstu();
+      TastaturasKlausitajs.uzreizNodzestKomandu();
     }
   }
 
@@ -174,21 +177,22 @@ public class VaronaDarbibas {
   }
 
   /// * Durvju darbības:
-  public static void durvjuPrieksasKomandas(String komanda) {
-    if (komanda.equals("LOGS")) {
+  public static void durvjuPrieksasKomandas(String komanda , String komandasTeksts) {
+    if (komandasTeksts.equals("LOGS") && komanda.equals("ENTER")) {
       aizbiedetLogaSpoku(Istabas.DURVIS);
     }
   }
 
-  public static void durvjuLabasPusesKomandas(String komanda) {
-    if (komanda.equals("DURVIS")) {
+  public static void durvjuLabasPusesKomandas(String komanda , String komandasTeksts) {
+    if (komandasTeksts.equals("DURVIS") && komanda.equals("ENTER")) {
       aizbiedetDurvjuSpoku();
     }
-    else if (komanda.equals("SLEGT")) {
+    else if (komandasTeksts.equals("SLEGT") && komanda.equals("ENTER")) {
       aizslegtDurvis();
     }
     else if (komanda.equals("E") && KaratavasSavienojums.mSpeleKaratavas) {
-      Karatavas.palaistKaratavas(); 
+      Karatavas.palaistKaratavas();
+      TastaturasKlausitajs.nodzestKomandasTekstu();
     }
   }
 
@@ -214,8 +218,8 @@ public class VaronaDarbibas {
     }
   }
 
-  public static void virtuvesLabasPusesKomandas(String komanda) {
-    if (komanda.equals("LOGS")) {
+  public static void virtuvesLabasPusesKomandas(String komanda , String komandasTeksts) {
+    if (komandasTeksts.equals("LOGS") && komanda.equals("ENTER")) {
       aizbiedetLogaSpoku(Istabas.VIRTUVE);
     }
   }
@@ -241,12 +245,12 @@ public class VaronaDarbibas {
 
   // * Darbības kā metodes:
   /// Public:
-  public static void izietAraNoMspeles(String ievade) {
+  public static void izietAraNoMspeles(String komanda) {
     if (MazoSpeluIzvelesKods.varonisIrMazajaSpele) {
-      if (ievade.equals("Q")) {
+      if (komanda.equals("Q")) {
         MazoSpeluIzvelesKods.varonisIrMazajaSpele = false;
       }
-      else if (ievade.equals("WIN")) {
+      else if (komanda.equals("WIN")) {
         // Kas vēl, lai beigtu m-spēli.
         MazoSpeluIzvelesKods.varonisIrMazajaSpele = false;
         MazoSpeluIzvelesKods.izveletaMazaSpele = false;
@@ -257,7 +261,7 @@ public class VaronaDarbibas {
 
   /// Private:
   private static void meginatAizdedzinatSerkocinu() {
-    if (Main.rand.nextInt(2) == 0) { // 50 % iespēja aizdedzināt sērkociņu.
+    if (Main.rand.nextInt(3) == 0) { // 33.33 % iespēja aizdedzināt sērkociņu.
       SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\lighting-matches.wav", 0);
       aizdedzinatsSerkocins = true;
       IestatijumuDati.atlikusoSerkocinuDaudzums--;

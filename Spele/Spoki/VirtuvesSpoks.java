@@ -54,6 +54,10 @@ public class VirtuvesSpoks extends Spoks {
   
   // * Citas metodes:
   /// Public:
+  public void izveidotJaunuVirtuvesSpokaObjektu() {
+    virtuvesSpoks = new VirtuvesSpoks(IestatijumuDati.virtuvesSpokaAtlautaAgresivitate, IestatijumuDati.virtuvesSpokaAtputasLaiks);
+  }
+
   protected void noteiktGajienaRezultatu() {
     // * Metode overwrito super metodi, lai tā atbilsu virtuves spoka unikālajai agresivitātei.
     // Nosaka vai spoks cenšas kustēties vai nē.
@@ -108,8 +112,5 @@ public class VirtuvesSpoks extends Spoks {
     }
   }
 
-  /// Private:
-  private static void izveidotJaunuVirtuvesSpokaObjektu() {
-    virtuvesSpoks = new VirtuvesSpoks(IestatijumuDati.virtuvesSpokaAtlautaAgresivitate, IestatijumuDati.virtuvesSpokaAtputasLaiks);
-  }
+  
 }

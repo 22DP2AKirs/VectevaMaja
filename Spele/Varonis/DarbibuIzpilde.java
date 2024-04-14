@@ -2,6 +2,9 @@ package Spele.Varonis;
 
 import java.util.Arrays;
 
+import com.github.kwhat.jnativehook.GlobalScreen;
+import com.github.kwhat.jnativehook.NativeHookException;
+
 import Spele.Enums;
 import Spele.K;
 import Spele.Enums.Istabas;
@@ -12,9 +15,8 @@ import Spele.Izskati.IstabuIzskati;
 import Spele.KontaKods.Konts;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.Parklajumi.BildesParklajumi;
-import Spele.SpelesProcesi.Ievade;
 import Spele.SpelesProcesi.Main;
-import Spele.SpelesProcesi.TaustinuKlausitajs;
+import Spele.SpelesProcesi.TastaturasKlausitajs;
 
 
 public class DarbibuIzpilde {
@@ -42,7 +44,7 @@ public class DarbibuIzpilde {
   // Veiksmīgai un pareizai spēles darbībai, katrā virziena izvēlē pirmajam ir jābūt komandas apstrādei,
   // un tikai tad vizuālajai izvadei.
 
-  public static void izpilditSpelesDarbibas(Istabas istaba, Virzieni virziens, String komanda) {
+  public static void izpilditSpelesDarbibas(Istabas istaba, Virzieni virziens, String komanda , String komandasTeksts) {
     // * Metode ietekmē tikai un vienīgi komandu apstrādi un bildes izvadi.
     // Mainīgie, kurus apstrādās šī metode.
     String[] mainamaisMasivs = // Šo masīvu pārklās ar pārklājumiem, kuri ir atkarīgi no varoņa konkrētajā vietā.
@@ -50,17 +52,19 @@ public class DarbibuIzpilde {
     
     
     // Darbības jeb komandas pareizai situācijai.
-    // if (!ievade.equals("}")) { // Ja ievades nebija, tad nepārbauda pārējās komandas.
     VaronaDarbibas.izietAraNoMspeles(komanda);
 
       
     // Spēles komandas.
     if (!MazoSpeluIzvelesKods.varonisIrMazajaSpele) {
+      TastaturasKlausitajs.sagatavotKomanduDzesanai();
+
       if (!komanda.equals(K.TUKSA_IEVADE)) {
-        if (Arrays.asList(testesanasKomandas).contains(komanda)) { // Testēšanas komands.
-          VaronaDarbibas.testesanasDarbibas(komanda);
+        // 1. Atrod darbību noteiktai komandai.
+        if (Arrays.asList(testesanasKomandas).contains(komanda) || Arrays.asList(testesanasKomandas).contains(komandasTeksts) ) { // Testēšanas komands.
+          VaronaDarbibas.testesanasDarbibas(komanda, komandasTeksts);
         }
-        else if (Arrays.asList(parastasKomandas).contains(komanda)) { // Parastās komandas.
+        else if (Arrays.asList(parastasKomandas).contains(komanda) || Arrays.asList(parastasKomandas).contains(komandasTeksts)) { // Parastās komandas.
           VaronaDarbibas.parastasDarbibas(komanda);
         }
       }
@@ -84,13 +88,13 @@ public class DarbibuIzpilde {
           BildesParklajumi.uzliktGultasLejasParklajumus(mainamaisMasivs);
         }
         else if (virziens.equals(Virzieni.KREISA_PUSE)) {
-          VaronaDarbibas.gultasKreisasPusesKomandas(komanda);
+          VaronaDarbibas.gultasKreisasPusesKomandas(komanda, komandasTeksts);
           BildesParklajumi.uzliktGultasKreisasPusesParklajumus(mainamaisMasivs);
         }
       }
       else if (istaba.equals(Istabas.DIVANS)) { // ----------------------- Dīvāns.
         if (virziens.equals(Virzieni.PRIEKSA)) {
-          VaronaDarbibas.divanaPrieksasKomandas(komanda);
+          VaronaDarbibas.divanaPrieksasKomandas(komanda , komandasTeksts);
           BildesParklajumi.uzliktDivanaPrieksasParklajumus(mainamaisMasivs);
         }
         else if (virziens.equals(Virzieni.LABA_PUSE)) {
@@ -108,11 +112,11 @@ public class DarbibuIzpilde {
       }
       else if (istaba.equals(Istabas.DURVIS)) { // ----------------------- Durvis.
         if (virziens.equals(Virzieni.PRIEKSA)) {
-          VaronaDarbibas.durvjuPrieksasKomandas(komanda);
+          VaronaDarbibas.durvjuPrieksasKomandas(komanda , komandasTeksts);
           BildesParklajumi.uzliktDurvjuPrieksasParklajumus(mainamaisMasivs);
         }
         else if (virziens.equals(Virzieni.LABA_PUSE)) {
-          VaronaDarbibas.durvjuLabasPusesKomandas(komanda);
+          VaronaDarbibas.durvjuLabasPusesKomandas(komanda , komandasTeksts);
           BildesParklajumi.uzliktDurvjuLabasPusesParklajumus(mainamaisMasivs);
         }
         else if (virziens.equals(Virzieni.LEJA)) {
@@ -130,7 +134,7 @@ public class DarbibuIzpilde {
           BildesParklajumi.uzliktVirtuvesPrieksasParklajumus(mainamaisMasivs);
         }
         else if (virziens.equals(Virzieni.LABA_PUSE)) {
-          VaronaDarbibas.virtuvesLabasPusesKomandas(komanda);
+          VaronaDarbibas.virtuvesLabasPusesKomandas(komanda , komandasTeksts);
           BildesParklajumi.uzliktVirtuvesLabasPusesParklajumus(mainamaisMasivs);
         }
         else if (virziens.equals(Virzieni.LEJA)) {
@@ -146,7 +150,6 @@ public class DarbibuIzpilde {
     // Metodes beigas.
     BildesParklajumi.istabasGaismasUnSerkocinaParklajumi(mainamaisMasivs, IstabuIzskati.istabuMasivs[Enums.V_Istaba.CIPARS][Enums.V_Virziens.CIPARS]);
     BildesParklajumi.atjaunotParklatoIstabu(mainamaisMasivs);
-    Ievade.sagatavotKomanduDzesanai();
   }
 
   public static void izvelnesKustiba(String ievade, int izvelesIespejas) {
@@ -154,23 +157,20 @@ public class DarbibuIzpilde {
     if (ievade.equals("W") && izvelnesSkaitlis > 0) {
       // Pārvieto izvēli uz augšu (^).
       izvelnesSkaitlis--;
-      Ievade.sagatavotKomanduDzesanai();
+      TastaturasKlausitajs.uzreizNodzestKomandu();
     } 
     else if (ievade.equals("S") && izvelnesSkaitlis < izvelesIespejas - 1) {
       // Pārvieto izvēli uz leju (v).
       izvelnesSkaitlis++;
-      Ievade.sagatavotKomanduDzesanai();
+      TastaturasKlausitajs.uzreizNodzestKomandu();
     }
   }
 
   public static void izpilditSakumaEkranaDarbibas(String komanda) {
     // * Šī metode nosaka, kādas darbības būs pieejamas sākuma ekrānā (Main screen), un to darbību izpilde.
     // Skatoties, kāda ir ievade, tāda būs darbība.
-
-    if (komanda.equals(K.TUKSA_IEVADE)) {
-      // Metode neko nemaina.
-    }
-    else {
+    
+    if (!komanda.equals(K.TUKSA_IEVADE)) {
       /* Sākuma ekrāna izvēles iespējas:
         (izvelnes cipars ir kārtas skaitlis)
         0. Turpināt.
@@ -180,9 +180,9 @@ public class DarbibuIzpilde {
         4. Konts.
         5. Iziet.
       */
-
+      TastaturasKlausitajs.sagatavotKomanduDzesanai();
       izvelnesKustiba(komanda, 6);
-      if (komanda.equals("")) { // "" = 'ENTER'.
+      if (komanda.equals("ENTER")) { // "" = 'ENTER'.
         // Turpinājuma kods:
         if (izvelnesSkaitlis == 0) {
           Main.sakumaEkrans = false;
@@ -213,10 +213,14 @@ public class DarbibuIzpilde {
         // Aizvērt programmu:
         else if (izvelnesSkaitlis == 5) {
           Main.programmaPalaista = false;
-          System.exit(0); // Pārtrauc spēles darbību.
+          try {
+            GlobalScreen.unregisterNativeHook(); // Atāķē klaviatūras klausītāju.
+            System.exit(0); // Iziet no programmas.
+          } catch (NativeHookException nativeHookException) {
+            nativeHookException.printStackTrace();
+          }
         }
       }
-      TaustinuKlausitajs.sagatavotKomanduDzesanai();
     }
   }
 

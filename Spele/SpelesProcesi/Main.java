@@ -57,11 +57,11 @@ public class Main {
     
     // ? /////// T H R E D I //////////
     // Jaunie rīki jeb thredi, jeb objekti.
-    Ievade ievadesLasitajs = new Ievade(); // Arī threads, bet šis lasa ievadi.
+    // Ievade ievadesLasitajs = new Ievade(); // Arī threads, bet šis lasa ievadi.
     SkanasSpeletajs skanasSpeletajs = new SkanasSpeletajs();
     // Sākas atsevišķās darbības jeb patstāvīgie procesi.
     skanasSpeletajs.start(); // Strādā, kamēr spelePalaista bools ir true.
-    ievadesLasitajs.start(); // Strādā, kamēr programmaPalaista bools ir true.
+    // ievadesLasitajs.start(); // Strādā, kamēr programmaPalaista bools ir true.
     
     // Pieslēdz lietotāja kontu, un nolasa galvenos datus.
     if (Konts.atceretiesMani) {
@@ -76,7 +76,7 @@ public class Main {
       IestatijumuDati.spelesNakts = 1;
     }
 
-    TaustinuKlausitajs.palaistKlaviaturasLasitaju();
+    TastaturasKlausitajs.palaistKlaviaturasLasitaju();
 
     // * P R O G R A M M A S   C I K L S //
     while (programmaPalaista) {
@@ -85,23 +85,19 @@ public class Main {
       // * ///// S A K U M A   E K R A N A   C I K L S //////
       while (sakumaEkrans) {
         // 1. Apstrādā lietotāja ievadi.
-        DarbibuIzpilde.izpilditSakumaEkranaDarbibas(TaustinuKlausitajs.komanda);
+        DarbibuIzpilde.izpilditSakumaEkranaDarbibas(TastaturasKlausitajs.komanda);
         // 2. Izvada bildi terminālī.
-        IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.GALVENAIS_EKRANS));
+        PaligMetodes.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.GALVENAIS_EKRANS));
         // 3. Notīra ievadi.
-        TaustinuKlausitajs.nodzestKomandu();
-        // Ievade.notiritKomandu();
+        TastaturasKlausitajs.nodzestKomandu();
         // 4. 1 'freims' jeb cikls spēlē.
         Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 25 FPS.
       }
 
-      // ? Nolasīt iestatījuma datus.
+      // ? Nolasa iestatījumu datus.
       IestatijumuDati.naktsDati = FailuRedigetajs.atgriestDaluNoFaila("#Nakts" + IestatijumuDati.spelesNakts, K.NAKTS_DATU_FAILS);
       IestatijumuDati.sagatavotDatusNaktij();
-
-
-      // Izveido un izslēdz spokus (inicializē, lai pēc tam tos izmantotu spēlē).
-      Spoks.izslegtSpokus(); 
+      Spoks.izveidotSpokus(); 
 
       nodzestTerminali();
       Laiks laiks = new Laiks(); // Katru reizi, kad ir palaista spēle, veido jaunu Laika thredu.
@@ -109,8 +105,10 @@ public class Main {
 
       // * ///// S P Ē L E S   C I K L S ///////
       while (spelePalaista) { // Kamēr laiks nav beidzies, turpināt ciklu jeb spēli.
+        // 0. 
+        TastaturasKlausitajs.ieslegtIespejuRakstitKomandasTekstu();
         // 1. Apstrādā lietotāja ievadi.
-        DarbibuIzpilde.izpilditSpelesDarbibas(Enums.V_Istaba, Enums.V_Virziens, TaustinuKlausitajs.komanda); // Pilnībā aizvieto 'VaronaDarbibas.apstradatKomandu(Ievade.lietotajaIevade);'.
+        DarbibuIzpilde.izpilditSpelesDarbibas(Enums.V_Istaba, Enums.V_Virziens, TastaturasKlausitajs.komanda , TastaturasKlausitajs.komandasTeksts); // Pilnībā aizvieto 'VaronaDarbibas.apstradatKomandu(Ievade.lietotajaIevade);'.
         // 2. Papildus informācijas izvade --Debuging--
         informacijasIzvade();
         // 3. Izvade uz ekrānu jeb termināli.
@@ -119,7 +117,7 @@ public class Main {
         VaronaStatusaEfekti.varonaStress();
         VaronaStatusaEfekti.parbauditEffektus(); // Varoņa bojāiešanas nosacījumi.
         // 5. Notīra ievadi.
-        //  TODO Ievade.notiritKomandu();
+        TastaturasKlausitajs.nodzestKomandu();
         // 6. 1 'freims' spēlē.
         Thread.sleep(framesPerSecond); // Spēle apstājas uz noteiktu brīdi. 25 FPS.
         // ------------------ Papildus.
@@ -134,7 +132,7 @@ public class Main {
       
     }
     skanasSpeletajs.join();
-    ievadesLasitajs.join();
+    // ievadesLasitajs.join();
   }
 
   private static void izvaditBildiUzEkranu() {

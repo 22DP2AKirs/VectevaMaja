@@ -124,4 +124,13 @@ public class PaligMetodes {
     }
     throw new RuntimeException(" Virziena enums ar norādīto vērtību " + vertiba + " neeksistē! ");
   }
+
+  public static void masivuIzvade(String[] masivs) {
+    // Izvada visus masīva elementus.
+    for (int i = 0 ; i < masivs.length ; i++) {
+      System.out.println(masivs[i] + "\033[0K");
+    }
+    System.out.println("\033[0J"); // Izdzēš visu tekstu līdz ekrāna beigām.
+    System.out.print("\033[H"); // Noliek kursoru sākuma pozīcijā 0,0 jeb pirmās rindas pirmajā kolonnā.
+  }
 }

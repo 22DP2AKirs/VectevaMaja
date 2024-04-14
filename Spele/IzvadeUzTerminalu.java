@@ -3,7 +3,6 @@ import java.util.ArrayList;
 
 import Spele.Izskati.UIizskats;
 import Spele.Parklajumi.BildesParklajumi;
-import Spele.SpelesProcesi.Ievade;
 
 public class IzvadeUzTerminalu {
     static ArrayList<String> programmasGalejaIzvadeUzEkrana = new ArrayList<>(); // Masīvs saturēs visu spēles grafisko informāciju.
@@ -39,12 +38,5 @@ public class IzvadeUzTerminalu {
     }
 
     
-    public static void masivuIzvade(String[] masivs) {
-      int masivaGarums = masivs.length;
-      for (int i = 0; i < masivaGarums; i++) {
-          System.out.println(masivs[i] + "\033[0K");
-      }
-      System.out.println("\033[0J"); // Izdzēš visu tekstu līdz ekrāna beigām.
-      System.out.print("\033[H"); // Noliek kursoru sākuma pozīcijā 0,0 jeb pirmās rindas pirmajā kolonnā.
-    }
+    
 }

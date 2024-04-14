@@ -8,7 +8,6 @@ import Spele.Iestatijumi.IestatijumuDati;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
 import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
-import Spele.SpelesProcesi.Ievade;
 import Spele.SpelesProcesi.Laiks;
 import Spele.Varonis.VaronaDarbibas;
 
@@ -37,6 +36,8 @@ public class UIizskats {
             gatavsApaksasUI[4] = "      [ W ] - K U S T E T I E S   U Z   P R I E K S U                           ";
             gatavsApaksasUI[6] = "      [ A ] - P A G R I E Z T I E S   P A   L A B I                             ";
             gatavsApaksasUI[8] = "      [ D ] - P A G R I E Z T I E S   P A   K R E I S I                         ";
+            gatavsApaksasUI[9] = "                _       _                 _ v               v _                 ";
+            gatavsApaksasUI[10] = "      [ X ] - P A R S L E G T   R A K S T I S A N A S   R E Z I M U             ";
         } else if (VaronaDarbibas.infoLapasSecibasSkaitlis == 2){
             gatavsApaksasUI[2] = "___________________|                     |___________________________|__________";
             gatavsApaksasUI[4] = "      [ Q ] - I Z I E T   N O   M A J A S D A R B A                             ";

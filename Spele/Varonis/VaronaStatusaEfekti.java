@@ -1,6 +1,5 @@
 package Spele.Varonis;
 
-import Spele.IzvadeUzTerminalu;
 import Spele.PaligMetodes;
 import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Izskati.EkranuIzskati;
@@ -44,13 +43,9 @@ public class VaronaStatusaEfekti {
     Main.sakumaEkrans = true;
     Main.spelePalaista = false;
 
-    // Cerība uz to, ka termināla izvade beigsies šinī laika intervālā.
-    try {Thread.sleep(200);} catch (InterruptedException e) {} // TODO: MODS!!  CRUSH IT'S SKULL!!!!
-
-
     // Nosaka spēles gala rezultātu.
     if (iemesls.equals("UZVARA")) { // Uzvaras kods.
-      IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.UZVARAS_EKRANS));
+      PaligMetodes.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.UZVARAS_EKRANS));
       PaligMetodes.gulet(5);
       // Palielina konta nakts vērtību par vienu (+1).
       if (IestatijumuDati.spelesNakts != 5) {
@@ -63,7 +58,7 @@ public class VaronaStatusaEfekti {
       }
     }
     else {
-      IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatZaudesanasEkranu(EkranuIzskati.visiEkrani[2], iemesls));
+      PaligMetodes.masivuIzvade(EkranuParklajumi.parklatZaudesanasEkranu(EkranuIzskati.visiEkrani[2], iemesls));
       PaligMetodes.gulet(5);
     }
     

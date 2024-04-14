@@ -44,7 +44,7 @@ public final class K {
   public static final String BILDES_MASIVA_BEIGU_KURSORA_POZICIJA = "\033[82G";
 
   // Tukšā ievade:
-  public static String TUKSA_IEVADE = "}";
+  public static String TUKSA_IEVADE = "";
 
   // Spoku pēdējās fāzes:
   public static int LOGA_SPOKA_FAZES = 9;

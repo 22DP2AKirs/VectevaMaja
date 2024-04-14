@@ -2,13 +2,12 @@ package Spele.KontaKods;
 
 import java.io.File;
 import Spele.Enums.EkranuVeidi;
-import Spele.IzvadeUzTerminalu;
 import Spele.K;
 import Spele.PaligMetodes;
 import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.Parklajumi.EkranuParklajumi;
-import Spele.SpelesProcesi.Ievade;
 import Spele.SpelesProcesi.Main;
+import Spele.SpelesProcesi.TastaturasKlausitajs;
 import Spele.Varonis.DarbibuIzpilde;
 
 public class Konts {
@@ -29,29 +28,38 @@ public class Konts {
 
   public static boolean redigeKontu;
 
-  public static void kontaIzvelesDarbibas() {
+  // Errori vai nosacījumu neievērošanas teksti:
+  public static String lietotajvardaNoteikumuKluda = "";
+  public static String parolesNoteikumuKluda = "";
+  public static String drosibasVardaNoteikumuKluda = "";
 
+  public static void kontaIzvelesDarbibas() {
+    TastaturasKlausitajs.uzreizNodzestKomandu();
     // Ja lietotājs jau ir pieslēdzies, tad viņš redzēs sava konta informāciju.
     if (lietotajsPiesledzies) {
       // Cikls turpināsies, kamēr lietotājs neievadīs burtu 'Q'.
-      while (!Ievade.lietotajaIevade.equals("Q")) {
+      while (!TastaturasKlausitajs.komanda.equals("Q")) {
+        String garaKomanda = TastaturasKlausitajs.komandasTeksts;
+
+        TastaturasKlausitajs.ieslegtIespejuRakstitKomandasTekstu();
+
         // -------- Izvade uz terminālu.
-        IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.KONTA_APSKATES_EKRANS));
+        PaligMetodes.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.KONTA_APSKATES_EKRANS));
         // -------- Izvēles:
-        if (Ievade.lietotajaIevade.equals("RED")) {
+        if (garaKomanda.equals("RED") && TastaturasKlausitajs.komanda.equals("ENTER")) {
           Konts.redigeKontu = true;
           DarbibuIzpilde.izvelnesSkaitlis = 0;
-          Ievade.pilnibaNotiritIevadi();
+          TastaturasKlausitajs.uzreizNodzestKomandu();
           LietotajaRegistracija.registreties();
           Konts.redigeKontu = false;
         }
-        else if (Ievade.lietotajaIevade.equals("DEL")) {
+        else if (garaKomanda.equals("DEL") && TastaturasKlausitajs.komanda.equals("ENTER")) {
           // Konta dzēšanas kods:
           FailuRedigetajs.kontuFailuDzesejs();
           displejaLietotajvards = "_ _ _ _ _ _ _ _ _ _";
           break;
         }
-        else if (Ievade.lietotajaIevade.equals("ATC")) {
+        else if (garaKomanda.equals("ATC") && TastaturasKlausitajs.komanda.equals("ENTER")) {
           // 'Toggle' slēdzis.
           if (Konts.atceretiesMani) {
             Konts.atceretiesMani = false;
@@ -63,70 +71,53 @@ public class Konts {
             FailuRedigetajs.mainitFailaMainigaVertibu("atceretiesMani", "T", K.SAKUMA_DATU_MAPE);
             FailuRedigetajs.mainitFailaMainigaVertibu("lietotajaKontaCels",  Konts.lietotajaKontaCels, K.SAKUMA_DATU_MAPE);
           }
-          Ievade.sagatavotKomanduDzesanai();
+          TastaturasKlausitajs.sagatavotKomanduDzesanai();
         }
-        else if (Ievade.lietotajaIevade.equals("IZI")) {
+        else if (garaKomanda.equals("IZI") && TastaturasKlausitajs.komanda.equals("ENTER")) {
           FailuRedigetajs.mainitFailaMainigaVertibu("atceretiesMani", "F", K.SAKUMA_DATU_MAPE);
           FailuRedigetajs.mainitFailaMainigaVertibu("lietotajaKontaCels",  "", K.SAKUMA_DATU_MAPE);
           Konts.atceretiesMani = false;
           Konts.lietotajsPiesledzies = false;
           displejaLietotajvards = "_ _ _ _ _ _ _ _ _ _";
-          Ievade.sagatavotKomanduDzesanai();
+          TastaturasKlausitajs.sagatavotKomanduDzesanai();
 
           break; // Iziet ārā no šī ekrāna.
         }
         // -------- Cikla 'framerate'.
         try {Thread.sleep(Main.framesPerSecond);} catch (Exception e) {}
-        Ievade.notiritKomandu();
+        TastaturasKlausitajs.nodzestKomandu();
       }
     }
     // Citādi redzēs izvēli starp pieslēgšanos un reģistrēšanos.
     else {
       DarbibuIzpilde.izvelnesSkaitlis = 0; // Uzstāda izvēlni uz 1. pozīciju.
-      while (!Ievade.lietotajaIevade.equals("Q")) {
+      while (!TastaturasKlausitajs.komanda.equals("Q")) {
         // Ja lietotājs ir pieslēdzies, tad viņu aizsūta uz konta apskati.
-        if (Konts.lietotajsPiesledzies) {
-          break;
-        }
+        if (Konts.lietotajsPiesledzies) { break; }
 
-        // -------- Apstrādāta izvade uz termināli.
-        IzvadeUzTerminalu.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.KONTA_IZVELES_EKRANS));
-        // -------- Izveido n izvēles opcijas starp kurām var pārslēgties.
-        DarbibuIzpilde.izvelnesKustiba(Ievade.lietotajaIevade, 2);
-        // -------- Visas izvēles jeb darbības, kuras var veikt šinī ekrānā.
+        // 1. Izvade uz termināli.
+        PaligMetodes.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.KONTA_IZVELES_EKRANS));
+        // 2. Izveido n izvēles opcijas starp kurām var pārslēgties.
+        DarbibuIzpilde.izvelnesKustiba(TastaturasKlausitajs.komanda, 2);
+        // 3. Visas izvēles jeb darbības, kuras var veikt šinī ekrānā.
         /// Pieslēgšanās kods.
-        if (Ievade.lietotajaIevade.equals("") && DarbibuIzpilde.izvelnesSkaitlis == 0) {
+        if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzpilde.izvelnesSkaitlis == 0) {
           DarbibuIzpilde.izvelnesSkaitlis = 0;
-          Ievade.pilnibaNotiritIevadi();
+          TastaturasKlausitajs.uzreizNodzestKomandu();
           LietotajaPieslegsanas.pieslegties();
         }
         /// Reģistrēšanās kods.
-        else if (Ievade.lietotajaIevade.equals("") && DarbibuIzpilde.izvelnesSkaitlis == 1) {
+        else if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzpilde.izvelnesSkaitlis == 1) {
           DarbibuIzpilde.izvelnesSkaitlis = 0;
-          Ievade.pilnibaNotiritIevadi();
+          TastaturasKlausitajs.uzreizNodzestKomandu();
           LietotajaRegistracija.registreties();
         }
         // -------- Cikla beigas.
         try {Thread.sleep(Main.framesPerSecond);} catch (Exception e) {}
-        Ievade.notiritKomandu();
+        TastaturasKlausitajs.nodzestKomandu();
       }
-      Ievade.pilnibaNotiritIevadi();
+      TastaturasKlausitajs.uzreizNodzestKomandu();
       DarbibuIzpilde.izvelnesSkaitlis = 0;
-    }
-  }
-
-  public static String iegutIevadiApstadinotIzvadi(String kursoraPozicija) {
-    // Apstādina ekrāna tīrīšanu, ļaujot lietotājam mierīgi ierakstīt ievadi.
-    // Ļauj rediģēt ievadi pirms to aizsūta.
-    while (true) {
-      if (PaligMetodes.navTuksasIevades(Ievade.lietotajaIevade)) {
-        return Ievade.neapstradataLietotajaIevade; // Saglabā vārdu.
-      }
-      // Noliek kursoru atpakaļ.
-      else if (Ievade.lietotajaIevade.equals("")) {
-        Ievade.pilnibaNotiritIevadi();
-        System.out.print(kursoraPozicija);
-      }
     }
   }
 
@@ -140,7 +131,7 @@ public class Konts {
     drosibasVards = "";
   }
 
-  public static boolean parbauditLietotajvardaPieejamibu(String parbaudesVards) {
+  public static boolean parbauditVaiLietotajvardsIrPieejams(String parbaudesVards) {
     // Pārbauda katru failu mapē 'Konti', kas nav parauga fails.
     String[] mapesFaili = new File("Spele/KontaKods/Konti").list();
     for (int i = 1; i < mapesFaili.length ; i++) { // ! Ciklu sāk no 1. faila, jo 0. fails ir paraugs, kuru nav jāuzskata par kontu.

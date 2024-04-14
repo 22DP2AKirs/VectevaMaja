@@ -7,8 +7,8 @@ import Spele.K;
 import Spele.PaligMetodes;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.Parklajumi.EkranuParklajumi;
-import Spele.SpelesProcesi.Ievade;
 import Spele.SpelesProcesi.Main;
+import Spele.SpelesProcesi.TastaturasKlausitajs;
 
 
 // Karātavas algoritms jeb spēle.
@@ -64,7 +64,7 @@ public class Karatavas {
 
   public static void palaistKaratavas() {
     MazoSpeluIzvelesKods.varonisIrMazajaSpele = true;
-    Ievade.lietotajaIevade = "}";
+    TastaturasKlausitajs.komanda = K.TUKSA_IEVADE;
   }
 
   private void sagatavotGramatuSpelesanai() {
@@ -110,8 +110,9 @@ public class Karatavas {
     // * Metode pārbauda ievadīto burtu, ja tas burts ir vārdā, tad to parāda.
     // [ } ] - simbols tiek skaitīts kā tukša ievade jeb nekas nebija ievadīts.
     // [ Q ] - simbols tiek izmantots, lai izietu ārā no minigame.
-    if (ievaditaisBurts != "}" && ievaditaisBurts != "Q" && ievaditaisBurts != "*") {
+    if (ievaditaisBurts != K.TUKSA_IEVADE && ievaditaisBurts != "Q" && ievaditaisBurts != "*") {
       apstradatBurtu(ievaditaisBurts);
+      TastaturasKlausitajs.sagatavotKomanduDzesanai();
     }
   }
 

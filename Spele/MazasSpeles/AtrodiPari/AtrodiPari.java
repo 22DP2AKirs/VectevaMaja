@@ -3,9 +3,11 @@ package Spele.MazasSpeles.AtrodiPari;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import Spele.K;
 import Spele.PaligMetodes;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.SpelesProcesi.Main;
+import Spele.SpelesProcesi.TastaturasKlausitajs;
 
 // Atrodi pāri algoritms.
 // M-Spēles doma:
@@ -22,6 +24,9 @@ public class AtrodiPari {
   private int rindas;
   private int karsuPari; 
 
+  private int izveletaRinda = -1;
+  private int izveletaKolonna = -1;
+
   private boolean izvelejasPirmoKarti;
   private boolean izvelejasOtroKarti;
 
@@ -34,16 +39,10 @@ public class AtrodiPari {
   {
     // R - rinda, K - kolonna.
     // R , K.
-    { 1 , 2 },
-    { 1 , 4 },
-    { 2 , 1 },
     { 2 , 2 },
     { 2 , 3 },
     { 2 , 4 },
     { 2 , 5 },
-    { 3 , 2 },
-    { 3 , 4 },
-    { 3 , 6 }
   };
 
   // Tabulas ar paslēpto informāciju:
@@ -95,8 +94,12 @@ public class AtrodiPari {
 
     // Rindu cikls.
     for (int i = 0; i < rindas ; i++) {
-      // Cikls pievieno rindas ciparu.   1. ~~~   2. ~~~ u.t.t.
+      /* Cikls pievieno rindas ciparu:
+         '1.' k k k k ...
+         '2.' k k k ...
+      */
       for (int k = 0; k < 8 ; k++) {
+        // 1. Pieliek ciparu rindas priekšā.
         if (k > 1 && k < 6) {
           bildesRinda[k] += AtrodiPariIzskati.ciparuMasivs[i][k - 2];
         }
@@ -104,6 +107,7 @@ public class AtrodiPari {
           bildesRinda[k] += "          ";
         }
         bildesRinda[8] = "----------";
+        bildesRinda[k] += K.RESET;
       }
 
       // Kolonnu cikls.
@@ -112,7 +116,18 @@ public class AtrodiPari {
            kāršu rindu, kamēr salipinās vienu lielu saraksta rindu jeb izvades rindu.    | 2 | + | pieliktā rinda. |    /  | 2 || pieliktā rinda. |
            Cikls izpildīsies tik reizes, cik izvēlētajā masīvā ir elementu (8).*/
         for (int k = 0 ; k < 8 ; k++) {
-          bildesRinda[k] += AtrodiPariIzskati.karsuMasivs[speletajaRezgis[i][j]][k] + " | ";
+          // 1. Ja lietotājs ir izvēlējies šo kolonnu, tad iekrāso to.
+          if (j == izveletaKolonna) {
+            bildesRinda[k] += K.DZELTENS;
+          }
+
+          // 1. Ja lietotājs ir izvēlējies šo rindu, tad iekrāso to.
+          if (i == izveletaRinda) {
+            bildesRinda[k] += K.DZELTENS;
+          }
+
+
+          bildesRinda[k] += AtrodiPariIzskati.karsuMasivs[speletajaRezgis[i][j]][k] + K.RESET +" | ";
         }
         bildesRinda[8] += "----------------+";
       }
@@ -132,7 +147,7 @@ public class AtrodiPari {
 
   public static void izveidotJaunuKarsuSpeli() {
     // Izvēlas vienu no 10 tabulas izmēru kombinācijām.
-    int izmeruKombinacija = Main.rand.nextInt(10);
+    int izmeruKombinacija = Main.rand.nextInt(4);
     // Izveido tabulu pēc izvēlētās kombinācijas izmēriem (0 - pirmais cipars (y), 1 - otrs (x)).
     atrodiPariObjekts = new AtrodiPari(tabulasIzmeri[izmeruKombinacija][0], tabulasIzmeri[izmeruKombinacija][1]);
     atrodiPariObjekts.sagatavotRezgiSpelesanai();
@@ -244,10 +259,14 @@ public class AtrodiPari {
     }
   }
 
-  public void parbauditIevadi(String ievade) {
+  public void parbauditIevadi(String komanda) {
     // Ievadei ir jāsastāv no 2 cipariem, piem., '25' vai '91', vai '02' u.t.t.
-    if (PaligMetodes.navTuksasIevades(ievade) && PaligMetodes.irSkaitlis(ievade) && ievade.length() == 2) {
-      apstradatIevadi(ievade);
+    String garaKomanda = TastaturasKlausitajs.komandasTeksts;
+    System.out.println(garaKomanda + "\033[0K");
+    TastaturasKlausitajs.limetVardu();
+   
+    if (komanda.equals("ENTER") && PaligMetodes.navTuksasIevades(garaKomanda) && PaligMetodes.irSkaitlis(garaKomanda) && garaKomanda.length() == 2) {
+      apstradatIevadi(garaKomanda);
     }
   }
 
@@ -309,6 +328,25 @@ public class AtrodiPari {
     // Pārbauda vai kārts jau bija atminēta.
     if (atklataisRezgis[kartsKoordinatas[0]][kartsKoordinatas[1]] != 0) {
       speletajaRezgis[kartsKoordinatas[0]][kartsKoordinatas[1]] = atklataisRezgis[kartsKoordinatas[0]][kartsKoordinatas[1]];
+    }
+  }
+
+  public void izveletiesKoIekrasot(String koordinatas) {
+    if (PaligMetodes.irSkaitlis(koordinatas)) {
+      // Ja komanda nav 'garāka par 2 simboliem'
+      if (!(koordinatas.length() > 2)) {
+        if (koordinatas.length() == 1) {
+          izveletaRinda = Character.getNumericValue(koordinatas.charAt(0)) - 1;
+          izveletaKolonna = -1; // Vērtība, kura nevar tikt izmantota sarakstā.
+        }
+        else if (koordinatas.length() == 2) {
+          izveletaKolonna = Character.getNumericValue(koordinatas.charAt(1)) - 1;
+        }      
+      }
+    }
+    else {
+      izveletaRinda = -1;
+      izveletaKolonna = -1;
     }
   }
 

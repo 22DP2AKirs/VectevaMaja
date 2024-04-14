@@ -34,6 +34,10 @@ public class DurvjuSpoks extends Spoks {
 
   // * Citas Metodes:
   /// Public:
+  public void izveidotJaunuDurvjuSpokaObjektu() {
+    durvjuSpoks = new DurvjuSpoks(IestatijumuDati.durvjuSpokaAtlautaAgresivitate, IestatijumuDati.durvjuSpokaAtputasLaiks);
+  }
+
   public String[] izveletiesBildiPecFazes() {
     if (getSpokaFazesIndekss() < 9) {
       if (IestatijumuDati.durvisSlegtas) {
@@ -81,8 +85,5 @@ public class DurvjuSpoks extends Spoks {
     }
   }
 
-  /// Private:
-  private void izveidotJaunuDurvjuSpokaObjektu() {
-    durvjuSpoks = new DurvjuSpoks(IestatijumuDati.durvjuSpokaAtlautaAgresivitate, IestatijumuDati.durvjuSpokaAtputasLaiks);
-  }
+
 }

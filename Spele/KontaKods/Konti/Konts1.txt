@@ -1,9 +1,10 @@
 #KontaDati:
-Lietotajvards=asd
-Parole=asd
-DrosibasVards=asd
+Lietotajvards=qwe
+Parole=qwe
+DrosibasVards=qwe
 
 #SpelesDati:
 spelesNakts=1
 
 #Iestatijumi:
+

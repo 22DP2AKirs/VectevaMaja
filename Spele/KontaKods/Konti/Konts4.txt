@@ -1,7 +1,7 @@
 #KontaDati:
-Lietotajvards=qwe
-Parole=qwe
-DrosibasVards=qwe
+Lietotajvards=ASD
+Parole=ASD
+DrosibasVards=ASD
 
 #SpelesDati:
 spelesNakts=1

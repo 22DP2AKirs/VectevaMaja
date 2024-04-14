@@ -64,6 +64,10 @@ public class LogaSpoks extends Spoks {
       return tuksMasivs;
     }
   }
+  
+  public void izveidotJaunuLogaSpokaObjektu() {
+    logaSpoks = new LogaSpoks(IestatijumuDati.logaSpokaAtlautaAgresivitate, IestatijumuDati.logaSpokaAtputasLaiks);
+  }
 
   /// Protected:
   protected void parbauditSpokaFazi() {
@@ -78,11 +82,8 @@ public class LogaSpoks extends Spoks {
       izveidotJaunuLogaSpokaObjektu();
     }
   }
-
+  
   /// Private:
-  private void izveidotJaunuLogaSpokaObjektu() {
-    logaSpoks = new LogaSpoks(IestatijumuDati.logaSpokaAtlautaAgresivitate, IestatijumuDati.logaSpokaAtputasLaiks);
-  }
 
   private void izveletiesIstabu(int istabasNum) {
     if (istabasNum == 0) {

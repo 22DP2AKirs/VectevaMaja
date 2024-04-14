@@ -120,6 +120,13 @@ public class Spoks {
   }
   
   /// Statiskās metodes (Izmantojamas main programmā vai citās metodēs, vai thredos, kuri ir aktivizēti vai izmantoti main metodē):
+  public static void izveidotSpokus() {
+    // Izveido spoku objektus.
+    LogaSpoks.logaSpoks.izveidotJaunuLogaSpokaObjektu();
+    DurvjuSpoks.durvjuSpoks.izveidotJaunuDurvjuSpokaObjektu();
+    VirtuvesSpoks.virtuvesSpoks.izveidotJaunuVirtuvesSpokaObjektu();
+  }
+
   public static void atjauninatSpokus() {
     if (LogaSpoks.logaSpoks.getSpoksIrAktivs()) {
       LogaSpoks.logaSpoks.atjauninatSpoku();

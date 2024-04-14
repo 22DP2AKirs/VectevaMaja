@@ -74,13 +74,13 @@ public class EkranuParklajumi {
       mainamaisMasivs[23] += K.DEBESU_ZILS + "\033[68G':" + K.RESET + "\033[106G";
     }
 
-    mainamaisMasivs[7] += "\033[20G" + Konts.lietotajvards + "\033[82G" + FailuRedigetajs.stringDatuAtgriezejs("Lietotajvards", Konts.lietotajaKontaCels) + "\033[106G";
-    mainamaisMasivs[15] += "\033[20G" + Konts.parole + "\033[82G" + FailuRedigetajs.stringDatuAtgriezejs("Parole", Konts.lietotajaKontaCels) + "\033[106G";
-    mainamaisMasivs[23] += "\033[20G" + Konts.drosibasVards + "\033[82G" + FailuRedigetajs.stringDatuAtgriezejs("DrosibasVards", Konts.lietotajaKontaCels) + "\033[106G";
+    mainamaisMasivs[7] += "\033[20G" + Konts.lietotajvards + "\033[31G" + Konts.lietotajvardaNoteikumuKluda + "\033[82G" + FailuRedigetajs.stringDatuAtgriezejs("Lietotajvards", Konts.lietotajaKontaCels) + "\033[106G";
+    mainamaisMasivs[15] += "\033[20G" + Konts.parole + "\033[36G" + Konts.parolesNoteikumuKluda +"\033[82G" + FailuRedigetajs.stringDatuAtgriezejs("Parole", Konts.lietotajaKontaCels) + "\033[106G";
+    mainamaisMasivs[23] += "\033[20G" + Konts.drosibasVards + "\033[36G" + Konts.drosibasVardaNoteikumuKluda +"\033[82G" + FailuRedigetajs.stringDatuAtgriezejs("DrosibasVards", Konts.lietotajaKontaCels) + "\033[106G";
   }
 
   private static void drosibasVardaParklasana(String[] mainamaisMasivs) {
-    mainamaisMasivs[17] += "\033[37G" + Konts.drosibasVards + "\033[106G";
+    mainamaisMasivs[17] += "\033[37G" + Konts.drosibasVards + "\033[53G" + Konts.drosibasVardaNoteikumuKluda + "\033[106G";
   }
 
   private static void kontaApskatesParklasana(String[] mainamaisMasivs) {
@@ -92,6 +92,8 @@ public class EkranuParklajumi {
       mainamaisMasivs[24] += K.ZALS + "\033[32G_" + K.RESET + "\033[106G"; 
       mainamaisMasivs[25] += K.ZALS + "\033[12G[ ATC ] - A T C E R E T I E S   M A N I" + K.RESET + "\033[106G"; 
     }
+
+    
   }
 
 private static void pieslegsanasParklasana(String[] mainamaisMasivs) {
@@ -100,7 +102,7 @@ private static void pieslegsanasParklasana(String[] mainamaisMasivs) {
       mainamaisMasivs[19] += "\033[27G" + K.TPELEKS + "|                                                  |" + K.RESET + "\033[106G"; 
       mainamaisMasivs[20] += "\033[27G" + K.TPELEKS + "|        I E V A D I E T   P A R O L I :           |" + K.RESET + "\033[106G"; 
       mainamaisMasivs[21] += "\033[27G" + K.TPELEKS + "|                                                  |" + K.RESET + "\033[106G"; 
-      mainamaisMasivs[22] += "\033[27G" + K.TPELEKS + "|     >>>                  | M A X   15   S I M B. |" + K.RESET + "\033[106G"; 
+      mainamaisMasivs[22] += "\033[27G" + K.TPELEKS + "|     >>>                  |                       |" + K.RESET + "\033[106G"; 
       mainamaisMasivs[23] += "\033[27G" + K.TPELEKS + "|__________________________________________________|" + K.RESET + "\033[106G";
 
       mainamaisMasivs[26] += K.TPELEKS + "\033[78G_" + K.RESET + "\033[106G";
@@ -123,10 +125,8 @@ private static void pieslegsanasParklasana(String[] mainamaisMasivs) {
     }
 
     // Ievieto vārdus to pozīcijās.
-    mainamaisMasivs[14] += "\033[37G" + Konts.lietotajvards + "\033[106G";
-    mainamaisMasivs[22] += "\033[37G" + Konts.parole + "\033[106G";
-
-    mainamaisMasivs[24] += Konts.lietotajaKontaCels; // TODO jānoņem.
+    mainamaisMasivs[14] += "\033[39G" + Konts.lietotajvards + "\033[51G" + Konts.lietotajvardaNoteikumuKluda + "\033[106G";
+    mainamaisMasivs[22] += "\033[39G" + Konts.parole +  "\033[56G" + Konts.parolesNoteikumuKluda + "\033[106G";
   }
 
   private static void registracijasParklasana(String[] mainamaisMasivs) {
@@ -150,9 +150,9 @@ private static void pieslegsanasParklasana(String[] mainamaisMasivs) {
       mainamaisMasivs[23] += K.DEBESU_ZILS + "\033[72G':" + K.RESET + "\033[106G";
     }
 
-    mainamaisMasivs[7] += "\033[20G" + Konts.lietotajvards + "\033[106G";
-    mainamaisMasivs[15] += "\033[20G" + Konts.parole + "\033[106G";
-    mainamaisMasivs[23] += "\033[20G" + Konts.drosibasVards + "\033[106G";
+    mainamaisMasivs[7] += "\033[20G" + Konts.lietotajvards + "\033[31G" + Konts.lietotajvardaNoteikumuKluda + "\033[106G";
+    mainamaisMasivs[15] += "\033[20G" + Konts.parole + "\033[36G" + Konts.parolesNoteikumuKluda +"\033[106G";
+    mainamaisMasivs[23] += "\033[20G" + Konts.drosibasVards + "\033[36G" + Konts.drosibasVardaNoteikumuKluda +"\033[106G";
   }
 
 
