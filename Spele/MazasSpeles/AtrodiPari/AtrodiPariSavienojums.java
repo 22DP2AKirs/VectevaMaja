@@ -6,19 +6,22 @@ import Spele.SpelesProcesi.TastaturasKlausitajs;
 // Šinī klasē būs m-spēles algoritms apvienots ar galveno spēles programmu.
 public class AtrodiPariSavienojums {
   public static boolean mSpeleAtrodiPari = false;
+  public static String ievaditasKoord = "";
 
   public static void palaistAtrodiPariMazoSpeli() {
-    // 1. Pārbauda vai visas kārtis ir apgriestas (atrastas).
+    // 1. Ļauj ievadīt koord.
+    ievaditasKoord = TastaturasKlausitajs.limetVardu(ievaditasKoord);
+    // 2. Pārbauda vai visas kārtis ir apgriestas (atrastas).
     AtrodiPari.atrodiPariObjekts.parbauditKarsuRezultatu();
-    // 2. Iekrāso izvēlēto rindu un komandu.
-    AtrodiPari.atrodiPariObjekts.izveletiesKoIekrasot(TastaturasKlausitajs.komandasTeksts);
-    // 3. Galvenā domāšana.
-    AtrodiPari.atrodiPariObjekts.parbauditIevadi(TastaturasKlausitajs.komanda);
-    // 4. Sagatavo un izvada sarakstu ar kāršu spēles galdu.
+    // 3. Iekrāso izvēlēto rindu un komandu.
+    AtrodiPari.atrodiPariObjekts.izveletiesKoIekrasot(ievaditasKoord);
+    // 4. Galvenā domāšana.
+    AtrodiPari.atrodiPariObjekts.parbauditIevadi(TastaturasKlausitajs.komanda, ievaditasKoord);
+    // 5. Sagatavo un izvada sarakstu ar kāršu spēles galdu.
     PaligMetodes.izvaditArrayListElementus(AtrodiPari.atrodiPariObjekts.salipinatKartisVienaSaraksta());
-    // 5. Pārbauda vai izvēlētās kārtis ir pareizas (vienādas vai nepareizi izvēlētas).
+    // 6. Pārbauda vai izvēlētās kārtis ir pareizas (vienādas vai nepareizi izvēlētas).
     AtrodiPari.atrodiPariObjekts.abuKarsuKoordinasuParbaude();
-    // 6. Atļauj mainīt ievadi galvenā cikla beigās.
+    // 7. Atļauj mainīt ievadi galvenā cikla beigās.
     TastaturasKlausitajs.sagatavotKomanduDzesanai();
   }
 }

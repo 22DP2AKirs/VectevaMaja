@@ -20,7 +20,7 @@ public class LietotajaPieslegsanas {
       }
 
       if (TastaturasKlausitajs.komandasTekstaRakstisana) {
-        TastaturasKlausitajs.limetVardu();
+        TastaturasKlausitajs.limetKomandasTekstu();
         System.out.println(TastaturasKlausitajs.komandasTeksts + "\033[0K");
       }
 
@@ -71,7 +71,7 @@ public class LietotajaPieslegsanas {
       // 1. Izvade uz termināli.
       PaligMetodes.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.PIESLEGSANAS_EKRANS));
       // 1. Veido lietotājvārdu.
-      TastaturasKlausitajs.limetVardu();
+      TastaturasKlausitajs.limetKomandasTekstu();
       // 2. Saglabā izveidoto lietotājvārdu.
       Konts.lietotajvards = TastaturasKlausitajs.komandasTeksts;
       // 3. Atrod kontu ar norādīto lietotājvārdu.
@@ -107,7 +107,7 @@ public class LietotajaPieslegsanas {
       // 1. Izvade uz termināli.
       PaligMetodes.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.PIESLEGSANAS_EKRANS));
       // 1. Veido paroli.
-      TastaturasKlausitajs.limetVardu();
+      TastaturasKlausitajs.limetKomandasTekstu();
       // 2. Saglabā izveidoto paroli.
       Konts.parole = TastaturasKlausitajs.komandasTeksts;
       // 4. Pārbauda vai parole atbilst prasībām.
@@ -159,7 +159,7 @@ public class LietotajaPieslegsanas {
       // 1. Izvade uz termināli.
       PaligMetodes.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.DROSIBAS_VARDA_EKRANS));
       // 1. Veido drosibas v..
-      TastaturasKlausitajs.limetVardu();
+      TastaturasKlausitajs.limetKomandasTekstu();
       // 2. Saglabā izveidoto drosibas v..
       Konts.drosibasVards = TastaturasKlausitajs.komandasTeksts;
       // 4. Pārbauda vai drosibas v. atbilst prasībām.

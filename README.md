@@ -19,8 +19,8 @@ Komandas bieži būs redzamas uz ekrāna, viss kas Jums ir jādara ir pēc katra
 - [ ] Mājas arku jeb durvju monstrs.
 - [ ] Papildus loga spoks.
 - [x] Strādājošs laiks.
-- [ ] Mājas darbības. {Karātavas , skill check , }
-- [ ] Mājas darbību pienākošais laiks, piem., tīrīt traukus 2 AM, pildīt mājas darbus no 4 - 5 AM.
+- [x] Mājas darbības. {Karātavas , skill check , }
+- [x] Mājas darbību pienākošais laiks, piem., tīrīt traukus 2 AM, pildīt mājas darbus no 4 - 5 AM.
 - [x] Lietotāja UI - User interface.
 - [ ] Sienas pulksteņa darbības???
 - [ ] Skaņa.
@@ -28,11 +28,17 @@ Komandas bieži būs redzamas uz ekrāna, viss kas Jums ir jādara ir pēc katra
 - [ ] Jāpieiet pie loga. cits spoks?
 - [ ] Aizdedzināt spoku :|?????
 
+### Balansēšana vai uzlabojumi:
 - [ ] Skaņa, kad ieslēdzas mājasdarbs.
 - [ ] Nomainīt 3. nakts grūtību uz vieglāku.
 - [ ] Vairāk m-spēles.
-- [ ] Samazināt kāršu spēles kāršu daudzumu (līdz 8).
-- [ ] Samazināt iespēju izslēgt gaismu istabās.
+- [x] Samazināt kāršu spēles kāršu daudzumu (līdz 8).
+- [x] Samazināt iespēju izslēgt gaismu istabās.
+- [ ] Pievienot 'stressa' līniju pie labās UI puses (Lai spēlētājam nevajadzētu minēt cik liels tas tam ir).
+- [ ] Pievienot spoku 'Čill' stadiju (stadija, kur spoks gulēs n gājienus).
+
+### TODO (fixi):
+- [x] Pievienot atpakaļ 'iepriekšējā komanda' lodziņu spēlē.
 - ...
 
 ## Spēles nobeiguma stress.

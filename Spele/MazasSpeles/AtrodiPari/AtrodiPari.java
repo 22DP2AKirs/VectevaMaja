@@ -7,7 +7,6 @@ import Spele.K;
 import Spele.PaligMetodes;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.SpelesProcesi.Main;
-import Spele.SpelesProcesi.TastaturasKlausitajs;
 
 // Atrodi pāri algoritms.
 // M-Spēles doma:
@@ -42,7 +41,6 @@ public class AtrodiPari {
     { 2 , 2 },
     { 2 , 3 },
     { 2 , 4 },
-    { 2 , 5 },
   };
 
   // Tabulas ar paslēpto informāciju:
@@ -147,7 +145,7 @@ public class AtrodiPari {
 
   public static void izveidotJaunuKarsuSpeli() {
     // Izvēlas vienu no 10 tabulas izmēru kombinācijām.
-    int izmeruKombinacija = Main.rand.nextInt(4);
+    int izmeruKombinacija = Main.rand.nextInt(3);
     // Izveido tabulu pēc izvēlētās kombinācijas izmēriem (0 - pirmais cipars (y), 1 - otrs (x)).
     atrodiPariObjekts = new AtrodiPari(tabulasIzmeri[izmeruKombinacija][0], tabulasIzmeri[izmeruKombinacija][1]);
     atrodiPariObjekts.sagatavotRezgiSpelesanai();
@@ -161,6 +159,8 @@ public class AtrodiPari {
   public void parbauditKarsuRezultatu() {
     if (karsuPari == 0) {
       AtrodiPariSavienojums.mSpeleAtrodiPari = false;
+      AtrodiPariSavienojums.ievaditasKoord = "";
+
       MazoSpeluIzvelesKods.varonisIrMazajaSpele = false;
       MazoSpeluIzvelesKods.izveletaMazaSpele = false;
     }
@@ -259,14 +259,15 @@ public class AtrodiPari {
     }
   }
 
-  public void parbauditIevadi(String komanda) {
+  public void parbauditIevadi(String komanda, String koordTeksts) {
     // Ievadei ir jāsastāv no 2 cipariem, piem., '25' vai '91', vai '02' u.t.t.
-    String garaKomanda = TastaturasKlausitajs.komandasTeksts;
-    System.out.println(garaKomanda + "\033[0K");
-    TastaturasKlausitajs.limetVardu();
+
+    // 1. Parāda lietotājam, ko viņš ievada.
+    System.out.println(">> " + koordTeksts + "\033[0K");
    
-    if (komanda.equals("ENTER") && PaligMetodes.navTuksasIevades(garaKomanda) && PaligMetodes.irSkaitlis(garaKomanda) && garaKomanda.length() == 2) {
-      apstradatIevadi(garaKomanda);
+    // 2. Pārbauda vai komanda atbilst prasībām.
+    if (komanda.equals("ENTER") && PaligMetodes.navTuksasIevades(koordTeksts) && PaligMetodes.irSkaitlis(koordTeksts) && koordTeksts.length() == 2) {
+      apstradatIevadi(koordTeksts);
     }
   }
 

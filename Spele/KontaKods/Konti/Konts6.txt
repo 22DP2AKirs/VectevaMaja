@@ -1,0 +1,9 @@
+#KontaDati:
+Lietotajvards=ABOLS
+Parole=ABOLITIS
+DrosibasVards=123
+
+#SpelesDati:
+spelesNakts=2
+
+#Iestatijumi:

@@ -2,6 +2,7 @@ package Spele.Izskati;
 
 import Spele.Enums;
 import Spele.K;
+import Spele.PaligMetodes;
 import Spele.Enums.Istabas;
 import Spele.Enums.Virzieni;
 import Spele.Iestatijumi.IestatijumuDati;
@@ -9,6 +10,7 @@ import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
 import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
 import Spele.SpelesProcesi.Laiks;
+import Spele.SpelesProcesi.TastaturasKlausitajs;
 import Spele.Varonis.VaronaDarbibas;
 
 public class UIizskats {
@@ -27,8 +29,8 @@ public class UIizskats {
             "                                                                                ",
             "                                                                                ",
             "                                                                                ",
-            "                                                                                ",
-            "                                                                                ",
+            "                v _   _                                                         ",
+            "  I E P R I E K S E J A   K O M A N D A :                                       ",
             "________________________________________________________________________________"
         };
         if (VaronaDarbibas.infoLapasSecibasSkaitlis == 1) {
@@ -53,23 +55,10 @@ public class UIizskats {
             gatavsApaksasUI[8] = "      [ G ] - I E S L E G T   V A I   I Z S L E G T   G A I S M U               ";
         }
         
-        // if (!panemtaIevade.equals(K.TUKSA_IEVADE)) { // Izveido jauno.
-        //   ievadesMasivs = Ievade.ieprieksejaIevade(panemtaIevade);
-        // } 
+        // Iepriekšējās komandas 'Displejs'.
+        gatavsApaksasUI[12] += "\033[45G" + PaligMetodes.saliktAtstarpesSimboluVirkne(TastaturasKlausitajs.ieprieksejaKomanda, 1) + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
 
-        // // Sagatavo 10 rindiņu.
-        // gatavsApaksasUI[12] = "     I E P R I E K S E J A   K O M A N D A :   " 
-        //     + ievadesMasivs[0] + " "
-        //     + ievadesMasivs[1] +  " "
-        //     + ievadesMasivs[2] +  " "
-        //     + ievadesMasivs[3] +  " "
-        //     + ievadesMasivs[4] +  " "
-        //     + ievadesMasivs[5] +  " "
-        //     + ievadesMasivs[6] +  " "
-        //     + ievadesMasivs[7] +  " "
-        //     + ievadesMasivs[8] +  " "
-        //     + ievadesMasivs[9] +  "              ";
-            return gatavsApaksasUI;
+      return gatavsApaksasUI;
     }
 
     public static String[] labasPusesUISagatavosana() {

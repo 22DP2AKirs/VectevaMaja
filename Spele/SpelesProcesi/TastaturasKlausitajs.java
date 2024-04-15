@@ -8,8 +8,9 @@ import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 import Spele.K;
 
 public class TastaturasKlausitajs implements NativeKeyListener {
-  public static volatile String komanda = K.TUKSA_IEVADE;
+  public static String komanda = K.TUKSA_IEVADE;
   public static String komandasTeksts = K.TUKSA_IEVADE;
+  public static String ieprieksejaKomanda = K.TUKSA_IEVADE;
 
   public static boolean lielieBurti = true;
   public static boolean komandasTekstaRakstisana;
@@ -23,7 +24,7 @@ public class TastaturasKlausitajs implements NativeKeyListener {
       vaiIzpildijaKomandu = false;
       String taustins = NativeKeyEvent.getKeyText(e.getKeyCode());
 
-      // 1. Izvēlas vai komanda būs ar lielajiem vai mazajiem burtiem.
+      // 1.1. Izvēlas vai komanda būs ar lielajiem vai mazajiem burtiem.
       if (taustins.equals("Tab")) {
         // Toggle slēdzis.
         if (lielieBurti) {
@@ -39,15 +40,20 @@ public class TastaturasKlausitajs implements NativeKeyListener {
         } else {
           komandasTekstaRakstisana = true;
         }
+
+        komanda = K.TUKSA_IEVADE; // Nodzēš ievadi, lai nebūtu konfliktu ar komandām.
         nodzestKomandasTekstu();
       }
-      // 2. Saglabā ievadi.
+      // 1.2. Saglabā ievadi.
       else if (lielieBurti) {
         komanda = taustins.toUpperCase();
       }
       else {
         komanda = taustins.toLowerCase();
       }
+
+      // 1.3. Saglabā iepriekšējo komandu.
+      ieprieksejaKomanda = komanda;
     }
 
     // 2. Iziet no spēles.
@@ -62,39 +68,54 @@ public class TastaturasKlausitajs implements NativeKeyListener {
   }
 
   public void nativeKeyReleased(NativeKeyEvent e) {
-    // System.out.println(NativeKeyEvent.getKeyText(e.getKeyCode()));
     turTaustinu = false;
   }
 
   public static void ieslegtIespejuRakstitKomandasTekstu() {
     // Atļauj jebkurā programmas daļā pieņemt 'komandasTekstu' kā ievades opciju.
     if (komandasTekstaRakstisana) {
-      limetVardu();
-      System.out.println(komandasTeksts + "\033[0K");
+      limetKomandasTekstu();
+      System.out.println(">>> " + komandasTeksts + "\033[0K");
+      ieprieksejaKomanda = komandasTeksts; // Saglabā iepriekšējo komandu.
+    }
+    else {
+      nodzestKomandasTekstu();
     }
   }
+
   public static void nodzestKomandasTekstu() {
     komandasTeksts = K.TUKSA_IEVADE;
   }
 
-  public static void limetVardu() {
+  public static String limetVardu(String vards) {
     // Līmē nospiestos burtus, lai veidotu vārdu, piem., : <- a ; :a <- b ; : ab <- o ; u.t.t.
 
     // 1. Nosaka, kāda darbība būs veikta ar simbolu virkni.
-    if (komanda.toUpperCase().equals("BACKSPACE") && komandasTeksts.length() > 0) {
+    if (komanda.toUpperCase().equals("BACKSPACE") && vards.length() > 0) {
       // Atņem pēdējo simbolu.
-      komandasTeksts = komandasTeksts.substring(0, komandasTeksts.length() - 1);
+      vards = vards.substring(0, vards.length() - 1);
     }
     else {
       // Ja komanda ir 1 simbols, tad ... .
       if (komanda.length() < 2) {
-        komandasTeksts += komanda;
+        vards += komanda;
       }
     }
+
+    return vards;
+  }
+
+  public static void limetKomandasTekstu() {
+    // 1. Ļauj līmēt komandasTekstu ar visiem pielāgojumiem programmai.
+    komandasTeksts = limetVardu(komandasTeksts);
 
     // 2. Atļauj programmā veikt 'teksts' + 'Enter' darbības.
     if (!komanda.toUpperCase().equals("ENTER")) {
       uzreizNodzestKomandu();
+    }
+    else {
+      // Izslēdz komandas teksta rakstīšanas funkc..
+      komandasTekstaRakstisana = false;
     }
   }
 

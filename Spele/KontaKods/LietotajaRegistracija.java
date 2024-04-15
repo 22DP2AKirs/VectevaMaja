@@ -100,7 +100,7 @@ public class LietotajaRegistracija {
 
     while (!TastaturasKlausitajs.komanda.toUpperCase().equals("ENTER")) {
       // 1. Ļauj rakstīt komandas tekstu.
-      TastaturasKlausitajs.limetVardu();
+      TastaturasKlausitajs.limetKomandasTekstu();
       // 2. Saglabā izveidoto lietotājvārdu.
       Konts.lietotajvards = TastaturasKlausitajs.komandasTeksts;
       // 3. Izvade uz termināli.
@@ -144,7 +144,7 @@ public class LietotajaRegistracija {
 
     while (!TastaturasKlausitajs.komanda.toUpperCase().equals("ENTER")) {
       // 1. Ļauj rakstīt komandas tekstu.
-      TastaturasKlausitajs.limetVardu();
+      TastaturasKlausitajs.limetKomandasTekstu();
       // 2. Saglabā izveidoto paroli.
       Konts.parole = TastaturasKlausitajs.komandasTeksts;
       // 3. Izvade uz termināli.
@@ -196,7 +196,7 @@ public class LietotajaRegistracija {
 
     while (!TastaturasKlausitajs.komanda.toUpperCase().equals("ENTER")) {
       // 1. Ļauj rakstīt komandas tekstu.
-      TastaturasKlausitajs.limetVardu();
+      TastaturasKlausitajs.limetKomandasTekstu();
       // 2. Saglabā izveidoto drosibas v..
       Konts.drosibasVards = TastaturasKlausitajs.komandasTeksts;
       // 3. Izvade uz termināli.

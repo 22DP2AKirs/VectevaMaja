@@ -54,7 +54,7 @@ public class Laiks extends Thread {
     // * Metode izslēdz vienu no 4-trām mājas gaismām.
     if (IestatijumuDati.spokiSledzAraGaismu) { // Spēles iestatījums.
       int randomIzveletasIstabasCipars = Main.rand.nextInt(4);
-      if (Main.rand.nextInt(60) + 1 == 1) { // 1.66 % iespēja.
+      if (Main.rand.nextInt(80) + 1 == 1) { // 1.25 % iespēja.
         if (IestatijumuDati.istabuGaismasIeslegtas[randomIzveletasIstabasCipars] == true) {
           IestatijumuDati.istabuGaismasIeslegtas[randomIzveletasIstabasCipars] = false;
           SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-off.wav", 0);
