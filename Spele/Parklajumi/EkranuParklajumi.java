@@ -16,15 +16,18 @@ import Spele.SpelesProcesi.Main;
 import Spele.Varonis.DarbibuIzpilde;
 import Spele.Varonis.VaronaStatusaEfekti;
 
-// * Pārklāj Ekrānu.
+// * Pārklāj Ekrānus jeb 31 elementu masīvus.
 public class EkranuParklajumi {
-  
+  /*  Nosaukumu Leģenda:
+    'Par' - Pārklāšana.
+    'Nosauk' - Nosaukums -umi.
+  */
   public static String[] parklatEkranu(EkranuVeidi EKRANA_TIPS) {
     String[] ekranaKopija = null;
 
     // Caur iesniegto enum "EKRANA_TIPS", šī metode var viegli noteikt, kurus ekrānus un to pārklājumus izmantot.
     if (EKRANA_TIPS.equals(EkranuVeidi.GALVENAIS_EKRANS)) {
-      galvenaEkranaParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[0], EkranuIzskati.visiEkrani[0].length));
+      sakumaEkranaPar(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[0], EkranuIzskati.visiEkrani[0].length));
     }
     else if (EKRANA_TIPS.equals(EkranuVeidi.UZVARAS_EKRANS)) {
       uzvarasEkranaParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[1], EkranuIzskati.visiEkrani[1].length));
@@ -269,28 +272,41 @@ private static void pieslegsanasParklasana(String[] mainamaisMasivs) {
     mainamaisMasivs[25] += "\033[7G" + informacija[7] + "\033[106G";
   }
 
-  private static void galvenaEkranaParklasana(String[] mainamaisMasivs) {
+  //
+  // ? Galvenais ekrāns/Sākuma ekrāns (Main menu/start menu).
+  //
+
+  public static final String[] izvelnesBultinas = { Spele.K.DEBESU_ZILS + ">", "<" + Spele.K.RESET };
+  public static String[] sakumaEkranaIzvelesNosauk = {
+    "  T U R P I N A T ",
+    "  J A U N A   S P E L E ",
+    "  V E I K A L S ",
+    "  I E S T A T I J U M I   X ",
+    "  P A M A C I B A   X ",
+    "  K O N T S ",
+    "  I Z I E T "
+  };
+
+  private static void sakumaEkranaPar(String[] mainamaisMasivs) {
     // * Metode pārklās galveno ekrānu.
 
-    // Pie teksta pieliek bultiņas.
-    ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[DarbibuIzpilde.izvelnesSkaitlis] = 
-    ParklajumuIzskati.izvelnesBultinas[0] + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[DarbibuIzpilde.izvelnesSkaitlis]
-    .substring(1) + ParklajumuIzskati.izvelnesBultinas[1];
+    // 1. Pie izvelnes teksta/opcijas pievieno bultiņas, kuras nokrāso to elementu.
+    sakumaEkranaIzvelesNosauk[DarbibuIzpilde.izvelnesSkaitlis] = izvelnesBultinas[0] + sakumaEkranaIzvelesNosauk[DarbibuIzpilde.izvelnesSkaitlis].substring(1) + izvelnesBultinas[1];
 
-    // Uzklāj tekstus.
-    mainamaisMasivs[11] += "\033[13G" + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[0] + "   " + IestatijumuDati.spelesNakts + ".  N A K T I " + "\033[106G";
-    mainamaisMasivs[13] += "\033[10G" + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[1] + "\033[106G";
-    mainamaisMasivs[15] += "\033[10G" + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[2] + "\033[106G";
-    mainamaisMasivs[17] += "\033[13G" + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[3] + "\033[106G";
-    mainamaisMasivs[19] += "\033[16G" + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[4] + "\033[106G";
-    mainamaisMasivs[21] += "\033[16G" + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[5] + "\033[106G";
+    // 2. Uzliek izvelnes iespējas.
+    mainamaisMasivs[11] += "\033[13G" + sakumaEkranaIzvelesNosauk[0] + "   " + IestatijumuDati.spelesNakts + ".  N A K T I " + "\033[106G"; // Turpinat.
+    mainamaisMasivs[13] += "\033[10G" + sakumaEkranaIzvelesNosauk[1] + "\033[106G"; // Jauna spēle.
+    mainamaisMasivs[15] += "\033[14G" + sakumaEkranaIzvelesNosauk[2] + "\033[106G"; // Veikals.
+    mainamaisMasivs[17] += "\033[10G" + sakumaEkranaIzvelesNosauk[3] + "\033[106G"; // Iestatījumi.
+    mainamaisMasivs[19] += "\033[13G" + sakumaEkranaIzvelesNosauk[4] + "\033[106G"; // Pamācība.
+    mainamaisMasivs[21] += "\033[16G" + sakumaEkranaIzvelesNosauk[5] + "\033[106G"; // Konts.
+    mainamaisMasivs[23] += "\033[16G" + sakumaEkranaIzvelesNosauk[6] + "\033[106G"; // Iziet.
 
+    // 3. No teksta/izvelnes noņem pieliktās bultiņas, lai kad spēlētājs pārslēdzas uz citu izvēlni, tad izvelne nepaliktu nokrāsota.
+    sakumaEkranaIzvelesNosauk[DarbibuIzpilde.izvelnesSkaitlis] = " " + sakumaEkranaIzvelesNosauk[DarbibuIzpilde.izvelnesSkaitlis].substring(12, sakumaEkranaIzvelesNosauk[DarbibuIzpilde.izvelnesSkaitlis].length() - 5);
+    
+    // 4. Pievieno konta nosaukumu.
     mainamaisMasivs[27] += "\033[26G" + Konts.displejaLietotajvards + "\033[106G";
-
-    // No teksta noņem pieliktās bultiņas.
-    ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[DarbibuIzpilde.izvelnesSkaitlis] = 
-    " " + ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[DarbibuIzpilde.izvelnesSkaitlis]
-    .substring(12, ParklajumuIzskati.sakumaEkranaIzvelesVarduVarianti[DarbibuIzpilde.izvelnesSkaitlis].length() - 5);
   }
 
   private static void gramatasParklasana(String[] mainamaisMasivs) {

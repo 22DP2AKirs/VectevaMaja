@@ -3,6 +3,7 @@ import java.util.Arrays;
 
 import Spele.Enums;
 import Spele.K;
+import Spele.PaligMetodes;
 import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Izskati.IstabuIzskati;
 import Spele.Izskati.SpokuIzskati;
@@ -462,5 +463,16 @@ public class BildesParklajumi {
     Arrays.fill(aizpildamaisMasivs, K.TPELEKS + "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" + K.RESET); // Aizpilda visus masīva indeksus ar vienu un to pašu elementu.
 
     return aizpildamaisMasivs;
+  }
+
+  public static String[] pievienotVideokameru(String[] apstradajamaisMasivs) {
+    /** Doto 16 elementu masīvu pārklāj ar kameras masīvu.*/
+    for (int i = 0 ; i < K.BILDES_MASIVA_IZMERS ; i++) {
+      apstradajamaisMasivs[i] += "\033[2G" + IstabuIzskati.kamera[i];
+    }
+
+    // 2. Pievieno kameras baterijas daudzumu.
+    apstradajamaisMasivs[13] += "\033[65G" + PaligMetodes.atgriestProgresaLiniju(VaronaDarbibas.videokamerasBaterija, 100, 7, true) + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+    return apstradajamaisMasivs;
   }
 }

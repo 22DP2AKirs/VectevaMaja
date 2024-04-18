@@ -23,6 +23,8 @@ public class IestatijumuDati {
   public static boolean[] istabuGaismasIeslegtas = new boolean[4]; // Indeksi: 0. Gulta, 1. Dīvāns, 2. Durvis, 3. Virtuve.
   
   public static boolean ieslegtaSkana = FailuRedigetajs.booleanDatuAtgriezejs("ieslegtaSkana", K.IESTATIJUMU_FAILS);
+
+  public static int nauda = 9000;
   
   public static boolean durvisSlegtas; 
   public static boolean elektribaIeslegta;

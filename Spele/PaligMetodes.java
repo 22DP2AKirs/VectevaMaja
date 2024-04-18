@@ -7,6 +7,21 @@ import Spele.Enums.Virzieni;
 
 public class PaligMetodes {
   // Šeit ir metodes, kuras atvieglos koda saprašanu un manu dzīvi.
+  public static String atgriestProgresaLiniju(double tagadejaisSkaitlis, int lielakaisSkaitlis, int kolonnuSkaits, boolean raditProcentus) {
+    String progLinija = "";
+    // 1. Aprēķina skaitli, kurš apzīmēs 1 iedaļu.
+    int vienaIedala = lielakaisSkaitlis / kolonnuSkaits;
+    // 2. Pieliek 'baterijas iedaļas', kamēr tagadējais sk. nav mazāks par 1 iedaļu.
+    for (int i = (int) tagadejaisSkaitlis ; i >= vienaIedala ; i -= vienaIedala) {
+      progLinija += "▒";
+    }
+    // 3. Pievieno procentus pirms progress līnijas.
+    if (raditProcentus) {
+      progLinija = (int) (tagadejaisSkaitlis / lielakaisSkaitlis * 100) + "% " + progLinija;
+    }
+
+    return progLinija;
+  }
 
   public static String saliktAtstarpesSimboluVirkne(String vards, int atstarpes) {
     // Atgriež vārdu ar atstarpēm starp burtiem jeb simboliem.

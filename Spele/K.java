@@ -41,6 +41,7 @@ public final class K {
 
   // Masīvu izmēri.
   public static final int BILDES_MASIVA_IZMERS = 16;
+  public static final String EKRANA_GARUMA_IZMERS = "\033[106G";
   public static final String BILDES_MASIVA_BEIGU_KURSORA_POZICIJA = "\033[82G";
 
   // Tukšā ievade:

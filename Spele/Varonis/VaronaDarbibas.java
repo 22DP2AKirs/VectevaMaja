@@ -24,6 +24,8 @@ public class VaronaDarbibas {
   public static boolean aizdedzinatsSerkocins = false; 
   public static int serkocinaDeksanasLaikaSkaititajs;
   public static int laiksCikIlgiElektribaBusIzslegta;
+  public static boolean ieslegtaVideokamera;
+  public static double videokamerasBaterija = 100;
 
   public static void parastasDarbibas(String panemtaIevade) {
     if (panemtaIevade.equals("F") && IestatijumuDati.atlikusoSerkocinuDaudzums != 0 && !aizdedzinatsSerkocins) {
@@ -46,7 +48,16 @@ public class VaronaDarbibas {
     } 
     else if (panemtaIevade.equals("4")) {
       infoLapasSecibasSkaitlis = 4;
-    } 
+    }
+    else if (panemtaIevade.equals("SPACE")) {
+      // Toggle.
+      if (!ieslegtaVideokamera && videokamerasBaterija > 40) {
+        ieslegtaVideokamera = true;
+      }
+      else {
+        ieslegtaVideokamera = false;
+      }
+    }
   }
 
   public static void testesanasDarbibas(String komanda , String komandasTeksts) {
@@ -419,5 +430,24 @@ public class VaronaDarbibas {
     }
 
     Enums.V_Istaba = PaligMetodes.atrastIstabasEnumuPecTaCiparaVertibas(istabasCipars);
+  }
+
+  public static void aprekinatVideokamerasBateriju() {
+    /* Aprēķina videokameras bateriju */
+    if (ieslegtaVideokamera) {
+      // 1. Ja kamera ir izlādējusies, tad to izslēdz.
+      if (videokamerasBaterija < 1) {
+        ieslegtaVideokamera = false;
+      }
+
+      // 2. Atņem n procentus no baterijas.
+      videokamerasBaterija -= 2;
+    }
+    else {
+      // 1. Lādē bateriju līdz 100%.
+      if (videokamerasBaterija < 100) {
+        videokamerasBaterija += 0.4;
+      }
+    }
   }
 }

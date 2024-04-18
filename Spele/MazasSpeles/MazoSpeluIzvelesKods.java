@@ -50,7 +50,7 @@ public class MazoSpeluIzvelesKods {
 
     // 1. Izvēlas vienu no mājasdarbiem, kurš būs jāpilda varonim.
     int randCipars = Main.rand.nextInt(2); // No 0 ieskaitot, līdz "norādītais" neieskaitot.
-    randCipars = 1;
+    // 2. Uzstāda izvēlēto mājasdarbu.
     if (randCipars == 0) {
       // Karātavas.
       Karatavas.izveidotJaunuKaratavasSpeli();
@@ -62,7 +62,7 @@ public class MazoSpeluIzvelesKods {
       AtrodiPariSavienojums.mSpeleAtrodiPari = true;
     }
     
-    // 2. Izvēlas cik stundas būs varonim, lai izpildītu mājasdarbus.
+    // 3. Izvēlas cik stundas būs varonim, lai izpildītu mājasdarbus.
     randCipars = Main.rand.nextInt(mdPapildusLaikaIespeja - 50, mdPapildusLaikaIespeja) + 1;
   
     if (randCipars > 50) { 
@@ -77,12 +77,12 @@ public class MazoSpeluIzvelesKods {
       majasdarbaIzpildesTermins++;
     }
 
-    // 3. Pamazina mājasdarba izpildes termiņu, lai tas nepārsniegtu 6 AM laiku.
+    // 4. Pamazina mājasdarba izpildes termiņu, lai tas nepārsniegtu 6 AM laiku.
     while (majasdarbaIzpildesTermins > 6) {
       majasdarbaIzpildesTermins--;
     }
 
-    // 4. Apstiprina, ka mājasdarbs ir ieslēgts.
+    // 5. Apstiprina, ka mājasdarbs ir ieslēgts.
     izveletaMazaSpele = true; // Ļauj pārbaudīt vai varonis ir uzvarējis m-spēli.
   }
 

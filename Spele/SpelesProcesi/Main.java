@@ -19,6 +19,7 @@ import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.Spoki.Spoks;
 import Spele.Varonis.DarbibuIzpilde;
+import Spele.Varonis.VaronaDarbibas;
 import Spele.Varonis.VaronaStatusaEfekti;
 
 public class Main {
@@ -115,6 +116,8 @@ public class Main {
         izvaditBildiUzEkranu();
         // 4. Varoņa zaudēšanas nosacījumu pārbaude.
         VaronaStatusaEfekti.varonaStress();
+        VaronaDarbibas.aprekinatVideokamerasBateriju();
+        
         VaronaStatusaEfekti.parbauditEffektus(); // Varoņa bojāiešanas nosacījumi.
         // 5. Notīra ievadi.
         TastaturasKlausitajs.nodzestKomandu();
@@ -140,6 +143,10 @@ public class Main {
     // Spoku vizuālais atjaunojums notiek Laiks.java Klasē.
     if (!MazoSpeluIzvelesKods.varonisIrMazajaSpele) {
       IzvadeUzTerminalu.salipinataUIIzvade(); // Izvade uz ekrāna.
+
+      if (VaronaDarbibas.ieslegtaVideokamera) {
+
+      }
     }
     else {
       if (KaratavasSavienojums.mSpeleKaratavas) {

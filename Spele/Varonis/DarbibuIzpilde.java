@@ -7,6 +7,7 @@ import com.github.kwhat.jnativehook.NativeHookException;
 
 import Spele.Enums;
 import Spele.K;
+import Spele.VeikalaKods;
 import Spele.Enums.Istabas;
 import Spele.Enums.Virzieni;
 import Spele.FailuLietotaji.FailuRedigetajs;
@@ -36,7 +37,7 @@ public class DarbibuIzpilde {
 
   // Šie masīvi tiek pārbaudīti, lai labāk spētu noteikt, kāda darbība ir, kādai metodei.
   private static final String[] testesanasKomandas = { "I", "O", "P" , "SI", "MI", "EXIT", "POWER OFF", "KILL", "WIN", "H1", "H2", "H3", "H4", "H5", "MS"};
-  private static final String[] parastasKomandas = {"F", "A", "D", "1", "2", "3", "4"};
+  private static final String[] parastasKomandas = {"F", "A", "D", "1", "2", "3", "4", "SPACE"};
 
   // Izvelnes skaitlis (Izmantots, lai kustinātu dažāda veida 'main menus').
   public static int izvelnesSkaitlis = 0;
@@ -149,6 +150,11 @@ public class DarbibuIzpilde {
     }
     // Metodes beigas.
     BildesParklajumi.istabasGaismasUnSerkocinaParklajumi(mainamaisMasivs, IstabuIzskati.istabuMasivs[Enums.V_Istaba.CIPARS][Enums.V_Virziens.CIPARS]);
+
+    if (VaronaDarbibas.ieslegtaVideokamera) {
+      BildesParklajumi.pievienotVideokameru(mainamaisMasivs);
+    }
+
     BildesParklajumi.atjaunotParklatoIstabu(mainamaisMasivs);
   }
 
@@ -181,7 +187,8 @@ public class DarbibuIzpilde {
         5. Iziet.
       */
       TastaturasKlausitajs.sagatavotKomanduDzesanai();
-      izvelnesKustiba(komanda, 6);
+      izvelnesKustiba(komanda, 7);
+
       if (komanda.equals("ENTER")) { // "" = 'ENTER'.
         // Turpinājuma kods:
         if (izvelnesSkaitlis == 0) {
@@ -199,19 +206,23 @@ public class DarbibuIzpilde {
           Main.sakumaEkrans = false;
           Main.spelePalaista = true;
         } 
-        // Iestatījumu kods:
         else if (izvelnesSkaitlis == 2) {
-        } 
-        // Pamācības kods:
+          // Veikala kods.
+          VeikalaKods.veikalaPalaisana();
+        }
+        // Iestatījumu kods:
         else if (izvelnesSkaitlis == 3) {
         } 
-        // Konta rģistrācijas kods:
+        // Pamācības kods:
         else if (izvelnesSkaitlis == 4) {
+        } 
+        // Konta rģistrācijas kods:
+        else if (izvelnesSkaitlis == 5) {
           // Ievade.lietotajaIevade = K.TUKSA_IEVADE;
           Konts.kontaIzvelesDarbibas();
         } 
         // Aizvērt programmu:
-        else if (izvelnesSkaitlis == 5) {
+        else if (izvelnesSkaitlis == 6) {
           Main.programmaPalaista = false;
           try {
             GlobalScreen.unregisterNativeHook(); // Atāķē klaviatūras klausītāju.
