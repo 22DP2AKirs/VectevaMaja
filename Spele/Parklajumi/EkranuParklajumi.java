@@ -4,13 +4,13 @@ import java.util.Arrays;
 
 import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.FailuLietotaji.SkanasSpeletajs;
-import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Izskati.EkranuIzskati;
 import Spele.KontaKods.Konts;
 import Spele.K;
 import Spele.Enums.EkranuVeidi;
 import Spele.MazasSpeles.Karatavas.Karatavas;
 import Spele.MazasSpeles.Karatavas.KaratavuIzskati;
+import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Laiks;
 import Spele.SpelesProcesi.Main;
 import Spele.Varonis.DarbibuIzpilde;
@@ -186,7 +186,7 @@ private static void pieslegsanasParklasana(String[] mainamaisMasivs) {
 
   private static void uzvarasEkranaParklasana(String[] mainamaisMasivs) {
     mainamaisMasivs[15] += "\033[37G" + VaronaStatusaEfekti.varonaStresaLimenis + "\033[106G";
-    mainamaisMasivs[17] += "\033[59G" + IestatijumuDati.atlikusoSerkocinuDaudzums + "\033[106G";
+    mainamaisMasivs[17] += "\033[59G" + SakumaDati.atlikusoSerkocinuDaudzums + "\033[106G";
   }
 
   private static String[] zaudesanasInformacijasNoteiksana(String iemesls) {
@@ -294,7 +294,7 @@ private static void pieslegsanasParklasana(String[] mainamaisMasivs) {
     sakumaEkranaIzvelesNosauk[DarbibuIzpilde.izvelnesSkaitlis] = izvelnesBultinas[0] + sakumaEkranaIzvelesNosauk[DarbibuIzpilde.izvelnesSkaitlis].substring(1) + izvelnesBultinas[1];
 
     // 2. Uzliek izvelnes iespējas.
-    mainamaisMasivs[11] += "\033[13G" + sakumaEkranaIzvelesNosauk[0] + "   " + IestatijumuDati.spelesNakts + ".  N A K T I " + "\033[106G"; // Turpinat.
+    mainamaisMasivs[11] += "\033[13G" + sakumaEkranaIzvelesNosauk[0] + "   " + SakumaDati.spelesNakts + ".  N A K T I " + "\033[106G"; // Turpinat.
     mainamaisMasivs[13] += "\033[10G" + sakumaEkranaIzvelesNosauk[1] + "\033[106G"; // Jauna spēle.
     mainamaisMasivs[15] += "\033[14G" + sakumaEkranaIzvelesNosauk[2] + "\033[106G"; // Veikals.
     mainamaisMasivs[17] += "\033[10G" + sakumaEkranaIzvelesNosauk[3] + "\033[106G"; // Iestatījumi.

@@ -5,10 +5,10 @@ import Spele.K;
 import Spele.PaligMetodes;
 import Spele.Enums.Istabas;
 import Spele.Enums.Virzieni;
-import Spele.Iestatijumi.IestatijumuDati;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
 import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
+import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Laiks;
 import Spele.SpelesProcesi.TastaturasKlausitajs;
 import Spele.Varonis.VaronaDarbibas;
@@ -67,7 +67,7 @@ public class UIizskats {
           "                     ",
           " L A I K S : " + Laiks.laikaTeksts,
           "                     ",
-          " N A K T S :   " + IestatijumuDati.spelesNakts + "     ",
+          " N A K T S :   " + SakumaDati.spelesNakts + "     ",
           "_____________________",
           "Div       |Dur       ",
           "                     ",
@@ -108,14 +108,14 @@ public class UIizskats {
         gatavsLabasPusesUI[13] = "                     ";
       }
 
-      if (IestatijumuDati.atlikusoSerkocinuDaudzums > 9) { // Nomaina atlikušo sērkociņu daudzuma rindu.
-        gatavsLabasPusesUI[20] = " Serkocini : " + IestatijumuDati.atlikusoSerkocinuDaudzums + "      ";
+      if (SakumaDati.atlikusoSerkocinuDaudzums > 9) { // Nomaina atlikušo sērkociņu daudzuma rindu.
+        gatavsLabasPusesUI[20] = " Serkocini : " + SakumaDati.atlikusoSerkocinuDaudzums + "      ";
       } else {
-        gatavsLabasPusesUI[20] = " Serkocini : " + IestatijumuDati.atlikusoSerkocinuDaudzums + "       ";
+        gatavsLabasPusesUI[20] = " Serkocini : " + SakumaDati.atlikusoSerkocinuDaudzums + "       ";
       }
 
       // Mapes varoņa bultiņas pozīcijas noteicējs.
-      if (IestatijumuDati.elektribaIeslegta) {
+      if (SakumaDati.elektribaIeslegta) {
           if (Enums.V_Istaba.equals(Istabas.GULTA)) {
               gatavsLabasPusesUI[9] = "     " + varonaMapesBultinasVirzienaDevejs() + "               ";
           } else if (Enums.V_Istaba.equals(Istabas.DIVANS)) {

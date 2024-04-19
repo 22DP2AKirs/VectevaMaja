@@ -71,6 +71,7 @@ public class FailuRedigetajs {
 
   public static ArrayList<String> atgriestDaluNoFaila(String failaDalasSakums, String celsUzFailu) {
     // Atrod failā norādīto teikuma daļu, piem., # RAND Tēma, un saglabā sarakstā visas līnijas līdz nākamai daļai.
+    // failaDalasSakums -ā ievada ar '#' simbolu, bet var arī bez.
     // ? Daļa tiek noteikta failos ar simbolu [ # ].
     try (BufferedReader failaLasitajs = new BufferedReader(new FileReader(celsUzFailu))) { // Atver norādīto failu.
       String linija; // Faila līnija.

@@ -8,14 +8,15 @@ import Spele.Spoki.LogaSpoks;
 import Spele.Spoki.VirtuvesSpoks;
 import Spele.Enums;
 import Spele.PaligMetodes;
+import Spele.VeikalaKods;
 import Spele.Enums.KustibasVirziens;
 import Spele.Enums.Istabas;
 import Spele.FailuLietotaji.SkanasSpeletajs;
-import Spele.Iestatijumi.IestatijumuDati;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
 import Spele.MazasSpeles.Karatavas.Karatavas;
 import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
+import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Laiks;
 
 public class VaronaDarbibas {
@@ -24,11 +25,11 @@ public class VaronaDarbibas {
   public static boolean aizdedzinatsSerkocins = false; 
   public static int serkocinaDeksanasLaikaSkaititajs;
   public static int laiksCikIlgiElektribaBusIzslegta;
-  public static boolean ieslegtaVideokamera;
-  public static double videokamerasBaterija = 100;
+  public static boolean ieslegtaKamera;
+  public static double kamerasBaterija = 100;
 
   public static void parastasDarbibas(String panemtaIevade) {
-    if (panemtaIevade.equals("F") && IestatijumuDati.atlikusoSerkocinuDaudzums != 0 && !aizdedzinatsSerkocins) {
+    if (panemtaIevade.equals("F") && SakumaDati.atlikusoSerkocinuDaudzums != 0 && !aizdedzinatsSerkocins) {
       meginatAizdedzinatSerkocinu();
     } 
     else if (panemtaIevade.equals("A")) { // Pagriezties pa kreisi.
@@ -49,13 +50,13 @@ public class VaronaDarbibas {
     else if (panemtaIevade.equals("4")) {
       infoLapasSecibasSkaitlis = 4;
     }
-    else if (panemtaIevade.equals("SPACE")) {
+    else if (panemtaIevade.equals("SPACE") && (VeikalaKods.izveletaFotokamera || VeikalaKods.izveletaVideokamera)) {
       // Toggle.
-      if (!ieslegtaVideokamera && videokamerasBaterija > 40) {
-        ieslegtaVideokamera = true;
+      if (!ieslegtaKamera && kamerasBaterija > 40) {
+        ieslegtaKamera = true;
       }
       else {
-        ieslegtaVideokamera = false;
+        ieslegtaKamera = false;
       }
     }
   }
@@ -87,12 +88,12 @@ public class VaronaDarbibas {
     }
     // Izslēdz mājas elektrību.
     else if (komandasTeksts.equals("POWER OFF") && komanda.equals("ENTER")) {
-      if(IestatijumuDati.elektribaIeslegta) {
-        IestatijumuDati.elektribaIeslegta = false;
+      if(SakumaDati.elektribaIeslegta) {
+        SakumaDati.elektribaIeslegta = false;
         laiksCikIlgiElektribaBusIzslegta = 10;
       } 
       else {
-        IestatijumuDati.elektribaIeslegta = true;
+        SakumaDati.elektribaIeslegta = true;
       }
     }
     // Novāc varoni.
@@ -275,7 +276,7 @@ public class VaronaDarbibas {
     if (Main.rand.nextInt(2) == 0) { // 50 % iespēja aizdedzināt sērkociņu.
       SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\lighting-matches.wav", 0);
       aizdedzinatsSerkocins = true;
-      IestatijumuDati.atlikusoSerkocinuDaudzums--;
+      SakumaDati.atlikusoSerkocinuDaudzums--;
     } 
     else {
       SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\failing-to-lit-matches.wav", 0);
@@ -284,14 +285,14 @@ public class VaronaDarbibas {
 
   private static void ieslegtIzslegtIstabasGaismu(Istabas istaba) {
     // Ja ir ieslēgta elektrība, tad var aiztikt lampas/istabu gaismas.
-    if (IestatijumuDati.elektribaIeslegta) {
-      if (IestatijumuDati.istabuGaismasIeslegtas[istaba.CIPARS]) {
+    if (SakumaDati.elektribaIeslegta) {
+      if (SakumaDati.istabuGaismasIeslegtas[istaba.CIPARS]) {
         SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-off.wav", 0);
-        IestatijumuDati.istabuGaismasIeslegtas[istaba.CIPARS] = false;
+        SakumaDati.istabuGaismasIeslegtas[istaba.CIPARS] = false;
       } 
       else {
         SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-on.wav", 0);
-        IestatijumuDati.istabuGaismasIeslegtas[istaba.CIPARS] = true;
+        SakumaDati.istabuGaismasIeslegtas[istaba.CIPARS] = true;
       }
     }
   }
@@ -300,9 +301,9 @@ public class VaronaDarbibas {
     SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\fuse-box-turning-on-off.wav", 0);
     aizbiedetVirtuvesSpoku();
 
-    Arrays.fill(IestatijumuDati.istabuGaismasIeslegtas, false); // Visās istabās izslēdz gaismu.
+    Arrays.fill(SakumaDati.istabuGaismasIeslegtas, false); // Visās istabās izslēdz gaismu.
 
-    IestatijumuDati.elektribaIeslegta = false;
+    SakumaDati.elektribaIeslegta = false;
     laiksCikIlgiElektribaBusIzslegta = 3;
   }
 
@@ -350,21 +351,21 @@ public class VaronaDarbibas {
   }
 
   private static void ieslegtIzslegtPagrabaGaismu() {
-    if(!IestatijumuDati.spuldziteSaplesta) {
-      if (IestatijumuDati.pagrabaGaisma) {
+    if(!SakumaDati.spuldziteSaplesta) {
+      if (SakumaDati.pagrabaGaisma) {
         SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-off.wav", 0);
-        IestatijumuDati.pagrabaGaisma = false;
+        SakumaDati.pagrabaGaisma = false;
       }
       else {
         SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-on.wav", 0);
-        IestatijumuDati.pagrabaGaisma = true;
+        SakumaDati.pagrabaGaisma = true;
       }
     }
   }
 
   private static void aizslegtDurvis() {
-    if (!IestatijumuDati.durvisSlegtas && DurvjuSpoks.durvjuSpoks.getSpokaFazesIndekss() == 0) {
-      IestatijumuDati.durvisSlegtas = true;
+    if (!SakumaDati.durvisSlegtas && DurvjuSpoks.durvjuSpoks.getSpokaFazesIndekss() == 0) {
+      SakumaDati.durvisSlegtas = true;
       DurvjuSpoks.durvjuSpoks.deaktivizetSpoku();
     }
   }
@@ -372,10 +373,10 @@ public class VaronaDarbibas {
   // * Laika threda metodes:
   public static void skaititCikIlgiLidzElektribasPieslegsanas() {
     // Skaita, cik ilgi līdz elektrības pieslēgšanas.
-    if (!IestatijumuDati.elektribaIeslegta) { // Ja false, tad ...
+    if (!SakumaDati.elektribaIeslegta) { // Ja false, tad ...
       if (laiksCikIlgiElektribaBusIzslegta < 1) {
         SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\fuse-box-turning-on-off.wav", 0);
-        IestatijumuDati.elektribaIeslegta = true;
+        SakumaDati.elektribaIeslegta = true;
       }
       laiksCikIlgiElektribaBusIzslegta--;
     }
@@ -384,7 +385,7 @@ public class VaronaDarbibas {
   public static void skaititCikIlgiDegsSerkocins() {
     // * Metode skaita, cik ilgi līdz sērkociņš izdegs, un pēc tam izdzēš to.
     // Ja sērkociņš ir aizdedzināts un tagadējais degšanas laiks nav vienāds ar iestatījumos uzstādīto laiku, tad ...
-    if (aizdedzinatsSerkocins && serkocinaDeksanasLaikaSkaititajs != IestatijumuDati.maxSerkocinaDegsanasLaiks) {
+    if (aizdedzinatsSerkocins && serkocinaDeksanasLaikaSkaititajs != SakumaDati.maxSerkocinaDegsanasLaiks) {
       serkocinaDeksanasLaikaSkaititajs++;
     } 
     // Citādi ...
@@ -434,19 +435,19 @@ public class VaronaDarbibas {
 
   public static void aprekinatVideokamerasBateriju() {
     /* Aprēķina videokameras bateriju */
-    if (ieslegtaVideokamera) {
+    if (ieslegtaKamera) {
       // 1. Ja kamera ir izlādējusies, tad to izslēdz.
-      if (videokamerasBaterija < 1) {
-        ieslegtaVideokamera = false;
+      if (kamerasBaterija < 1) {
+        ieslegtaKamera = false;
       }
 
       // 2. Atņem n procentus no baterijas.
-      videokamerasBaterija -= 2;
+      kamerasBaterija -= 0.1;
     }
     else {
       // 1. Lādē bateriju līdz 100%.
-      if (videokamerasBaterija < 100) {
-        videokamerasBaterija += 0.4;
+      if (kamerasBaterija < 100) {
+        kamerasBaterija += 0.4;
       }
     }
   }

@@ -11,11 +11,11 @@ import Spele.VeikalaKods;
 import Spele.Enums.Istabas;
 import Spele.Enums.Virzieni;
 import Spele.FailuLietotaji.FailuRedigetajs;
-import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Izskati.IstabuIzskati;
 import Spele.KontaKods.Konts;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.Parklajumi.BildesParklajumi;
+import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Main;
 import Spele.SpelesProcesi.TastaturasKlausitajs;
 
@@ -151,7 +151,7 @@ public class DarbibuIzpilde {
     // Metodes beigas.
     BildesParklajumi.istabasGaismasUnSerkocinaParklajumi(mainamaisMasivs, IstabuIzskati.istabuMasivs[Enums.V_Istaba.CIPARS][Enums.V_Virziens.CIPARS]);
 
-    if (VaronaDarbibas.ieslegtaVideokamera) {
+    if (VaronaDarbibas.ieslegtaKamera) {
       BildesParklajumi.pievienotVideokameru(mainamaisMasivs);
     }
 
@@ -198,7 +198,7 @@ public class DarbibuIzpilde {
         // Jaunas spēles kods:
         else if (izvelnesSkaitlis == 1) {
           // Nodzēš visu nedēļas progresu.
-          IestatijumuDati.spelesNakts = 1;
+          SakumaDati.spelesNakts = 1;
           if (Konts.lietotajsPiesledzies) {
             FailuRedigetajs.mainitFailaMainigaVertibu("spelesNakts", "1", Konts.lietotajaKontaCels);
           }

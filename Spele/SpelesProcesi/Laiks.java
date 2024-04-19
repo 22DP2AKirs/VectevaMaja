@@ -2,8 +2,8 @@ package Spele.SpelesProcesi;
 
 import Spele.PaligMetodes;
 import Spele.FailuLietotaji.SkanasSpeletajs;
-import Spele.Iestatijumi.IestatijumuDati;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
+import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.Spoki.Spoks;
 import Spele.Varonis.VaronaDarbibas;
 import Spele.Varonis.VaronaStatusaEfekti;
@@ -52,11 +52,11 @@ public class Laiks extends Thread {
 
   private void randomIespejaIzslegtKadasIstabasGaismu() {
     // * Metode izslēdz vienu no 4-trām mājas gaismām.
-    if (IestatijumuDati.spokiSledzAraGaismu) { // Spēles iestatījums.
+    if (SakumaDati.spokiSledzAraGaismu) { // Spēles iestatījums.
       int randomIzveletasIstabasCipars = Main.rand.nextInt(4);
       if (Main.rand.nextInt(80) + 1 == 1) { // 1.25 % iespēja.
-        if (IestatijumuDati.istabuGaismasIeslegtas[randomIzveletasIstabasCipars] == true) {
-          IestatijumuDati.istabuGaismasIeslegtas[randomIzveletasIstabasCipars] = false;
+        if (SakumaDati.istabuGaismasIeslegtas[randomIzveletasIstabasCipars] == true) {
+          SakumaDati.istabuGaismasIeslegtas[randomIzveletasIstabasCipars] = false;
           SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-off.wav", 0);
         }
       }
@@ -92,7 +92,7 @@ public class Laiks extends Thread {
       // Mājasdarbu kods.
       MazoSpeluIzvelesKods.apskatitMajasdarbu();
 
-      IestatijumuDati.uzstaditSpokusUzPusnaktsRezimu();
+      SakumaDati.uzstaditSpokusUzPusnaktsRezimu();
     } 
     else if (spelesLaiks == vienaStunda * 4) {
       stundasLaiks = 4;

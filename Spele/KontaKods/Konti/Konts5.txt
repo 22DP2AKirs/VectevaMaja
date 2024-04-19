@@ -1,9 +1,0 @@
-#KontaDati:
-Lietotajvards=S
-Parole=S
-DrosibasVards=S
-
-#SpelesDati:
-spelesNakts=4
-
-#Iestatijumi:

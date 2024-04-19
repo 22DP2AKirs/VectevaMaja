@@ -1,0 +1,4 @@
+# Dati, kurus programma izlasa 'pirms' palaišanas.
+
+atceretiesMani=F
+lietotajaKontaCels=

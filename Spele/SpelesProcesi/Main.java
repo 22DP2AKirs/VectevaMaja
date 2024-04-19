@@ -10,13 +10,13 @@ import Spele.PaligMetodes;
 import Spele.Testi;
 import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.FailuLietotaji.SkanasSpeletajs;
-import Spele.Iestatijumi.IestatijumuDati;
 import Spele.KontaKods.Konts;
 import Spele.Enums.EkranuVeidi;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
 import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
 import Spele.Parklajumi.EkranuParklajumi;
+import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.Spoki.Spoks;
 import Spele.Varonis.DarbibuIzpilde;
 import Spele.Varonis.VaronaDarbibas;
@@ -66,15 +66,11 @@ public class Main {
     
     // Pieslēdz lietotāja kontu, un nolasa galvenos datus.
     if (Konts.atceretiesMani) {
-      Konts.lietotajaKontaCels = FailuRedigetajs.stringDatuAtgriezejs("lietotajaKontaCels", K.SAKUMA_DATU_MAPE);
-      Konts.displejaLietotajvards = PaligMetodes.saliktAtstarpesSimboluVirkne(FailuRedigetajs.stringDatuAtgriezejs("Lietotajvards", Konts.lietotajaKontaCels), 1);
-      Konts.lietotajsPiesledzies = true;
-
-      IestatijumuDati.spelesNakts = FailuRedigetajs.intDatuAtgriezejs("spelesNakts", Konts.lietotajaKontaCels);
+      SakumaDati.nolasitDatusNoKonta();
     }
     // Ja nav konta, tad uzstāda parastās vērtības jeb datus.
     else {
-      IestatijumuDati.spelesNakts = 1;
+      SakumaDati.spelesNakts = 1;
     }
 
     TastaturasKlausitajs.palaistKlaviaturasLasitaju();
@@ -96,8 +92,9 @@ public class Main {
       }
 
       // ? Nolasa iestatījumu datus.
-      IestatijumuDati.naktsDati = FailuRedigetajs.atgriestDaluNoFaila("#Nakts" + IestatijumuDati.spelesNakts, K.NAKTS_DATU_FAILS);
-      IestatijumuDati.sagatavotDatusNaktij();
+      SakumaDati.naktsDati = FailuRedigetajs.atgriestDaluNoFaila("#Nakts" + SakumaDati.spelesNakts, K.NAKTS_DATU_FAILS);
+      SakumaDati.sagatavotDatusNaktij();
+      SakumaDati.sagatavotDatus();
       Spoks.izveidotSpokus(); 
 
       nodzestTerminali();
@@ -144,7 +141,7 @@ public class Main {
     if (!MazoSpeluIzvelesKods.varonisIrMazajaSpele) {
       IzvadeUzTerminalu.salipinataUIIzvade(); // Izvade uz ekrāna.
 
-      if (VaronaDarbibas.ieslegtaVideokamera) {
+      if (VaronaDarbibas.ieslegtaKamera) {
 
       }
     }

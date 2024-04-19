@@ -1,7 +1,6 @@
 package Spele.Varonis;
 
 import Spele.PaligMetodes;
-import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Izskati.EkranuIzskati;
 import Spele.KontaKods.Konts;
 import Spele.Enums;
@@ -10,6 +9,7 @@ import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.MazasSpeles.Karatavas.Karatavas;
 import Spele.Parklajumi.EkranuParklajumi;
+import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Laiks;
 import Spele.SpelesProcesi.Main;
 import Spele.Spoki.DurvjuSpoks;
@@ -21,7 +21,7 @@ public class VaronaStatusaEfekti {
 
   public static void varonaStress() {
     // Viss, kas ietekmē varoņa stresa līmeni.
-    if (!IestatijumuDati.istabuGaismasIeslegtas[Enums.V_Istaba.CIPARS] && !VaronaDarbibas.aizdedzinatsSerkocins) { // Ja istabā, kurā atrodas varonis ir izslēgta gaisma, tad ...
+    if (!SakumaDati.istabuGaismasIeslegtas[Enums.V_Istaba.CIPARS] && !VaronaDarbibas.aizdedzinatsSerkocins) { // Ja istabā, kurā atrodas varonis ir izslēgta gaisma, tad ...
       varonaStresaLimenis += 0.1;
     }
   }
@@ -48,12 +48,12 @@ public class VaronaStatusaEfekti {
       PaligMetodes.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.UZVARAS_EKRANS));
       PaligMetodes.gulet(5);
       // Palielina konta nakts vērtību par vienu (+1).
-      if (IestatijumuDati.spelesNakts != 5) {
-        IestatijumuDati.spelesNakts++;
+      if (SakumaDati.spelesNakts != 5) {
+        SakumaDati.spelesNakts++;
 
         // Ja ir konts, tad saglabā.
         if (Konts.lietotajsPiesledzies) {
-          FailuRedigetajs.mainitFailaMainigaVertibu("spelesNakts", IestatijumuDati.spelesNakts + "", Konts.lietotajaKontaCels);
+          FailuRedigetajs.mainitFailaMainigaVertibu("spelesNakts", SakumaDati.spelesNakts + "", Konts.lietotajaKontaCels);
         }
       }
     }

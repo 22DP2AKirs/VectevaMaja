@@ -2,8 +2,8 @@ package Spele.Spoki;
 
 import Spele.K;
 import Spele.FailuLietotaji.SkanasSpeletajs;
-import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Izskati.SpokuIzskati;
+import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Main;
 import Spele.Varonis.VaronaStatusaEfekti;
 
@@ -19,7 +19,7 @@ public class VirtuvesSpoks extends Spoks {
      stāvoklī nokrist lejā pa kāpnēm uz viņa sākuma pozīciju (To var dzirdēt).
   */
 
-  public static VirtuvesSpoks virtuvesSpoks = new VirtuvesSpoks(IestatijumuDati.virtuvesSpokaAtlautaAgresivitate, IestatijumuDati.virtuvesSpokaAtputasLaiks);
+  public static VirtuvesSpoks virtuvesSpoks = new VirtuvesSpoks(SakumaDati.virtuvesSpokaAtlautaAgresivitate, SakumaDati.virtuvesSpokaAtputasLaiks);
 
   private int ieslegtasGaismasAgresivitate;
 
@@ -36,8 +36,8 @@ public class VirtuvesSpoks extends Spoks {
     ", Virt sp aktivs: " + getSpoksIrAktivs() + 
     ", Atputas gajieni: " + getMainamoAtputasLaiku() + 
     ", Fazes indekss: " + getSpokaFazesIndekss() + " no " + getSpokuFazuSkaitu() +
-    ", Pagraba gaisma ieslegta: " + IestatijumuDati.pagrabaGaisma +
-    ", Spuldzite saplesta: " + IestatijumuDati.spuldziteSaplesta +
+    ", Pagraba gaisma ieslegta: " + SakumaDati.pagrabaGaisma +
+    ", Spuldzite saplesta: " + SakumaDati.spuldziteSaplesta +
     "\033[0K";
   }
 
@@ -46,7 +46,7 @@ public class VirtuvesSpoks extends Spoks {
   }
       
   private int getSpokaAktualoAgresivitati() {
-    if (IestatijumuDati.pagrabaGaisma) {
+    if (SakumaDati.pagrabaGaisma) {
       return ieslegtasGaismasAgresivitate;
     }
     return getSpokaAtlautaAgresivitate();
@@ -55,15 +55,15 @@ public class VirtuvesSpoks extends Spoks {
   // * Citas metodes:
   /// Public:
   public void izveidotJaunuVirtuvesSpokaObjektu() {
-    virtuvesSpoks = new VirtuvesSpoks(IestatijumuDati.virtuvesSpokaAtlautaAgresivitate, IestatijumuDati.virtuvesSpokaAtputasLaiks);
+    virtuvesSpoks = new VirtuvesSpoks(SakumaDati.virtuvesSpokaAtlautaAgresivitate, SakumaDati.virtuvesSpokaAtputasLaiks);
   }
 
   protected void noteiktGajienaRezultatu() {
     // * Metode overwrito super metodi, lai tā atbilsu virtuves spoka unikālajai agresivitātei.
     // Nosaka vai spoks cenšas kustēties vai nē.
     // Iespēja ieslēgt pagraba gaismu.
-    if (!IestatijumuDati.pagrabaGaisma && Main.rand.nextInt(101) <= IestatijumuDati.virtuvesSpokaAtlautaAgresivitate * 0.5 && !IestatijumuDati.spuldziteSaplesta) {
-      IestatijumuDati.pagrabaGaisma = true;
+    if (!SakumaDati.pagrabaGaisma && Main.rand.nextInt(101) <= SakumaDati.virtuvesSpokaAtlautaAgresivitate * 0.5 && !SakumaDati.spuldziteSaplesta) {
+      SakumaDati.pagrabaGaisma = true;
       SkanasSpeletajs.SpeletSkanu("Spele/SkanasFaili/gaismas-sledzis-on.wav", 0);
     }
 
@@ -80,7 +80,7 @@ public class VirtuvesSpoks extends Spoks {
   public String[] izveletiesBildiPecFazes() {
     // Izvēlas labāko bildi.
     if (getSpokaFazesIndekss() < 10) {
-      if (IestatijumuDati.spuldziteSaplesta || !IestatijumuDati.pagrabaGaisma) {
+      if (SakumaDati.spuldziteSaplesta || !SakumaDati.pagrabaGaisma) {
         return SpokuIzskati.virtuvesSpokaFazesBildes[11]; // Izslēgta pagraba gaisma.
       }
       else {
@@ -90,7 +90,7 @@ public class VirtuvesSpoks extends Spoks {
     // Saplēš spuldzīti.
     else if (getSpokaFazesIndekss() == 10) {
       // Skaņa --->
-      IestatijumuDati.spuldziteSaplesta = true;
+      SakumaDati.spuldziteSaplesta = true;
       return SpokuIzskati.virtuvesSpokaFazesBildes[getSpokaFazesIndekss()];
     }
     // Uzbrūk varonim.

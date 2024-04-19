@@ -1,8 +1,8 @@
 package Spele.Spoki;
 
 import Spele.K;
-import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Izskati.SpokuIzskati;
+import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Main;
 import Spele.Varonis.VaronaStatusaEfekti;
 
@@ -15,7 +15,7 @@ public class DurvjuSpoks extends Spoks {
      tad, kad spoks ir pilnībā atvēris durvis.
   */
 
-  public static DurvjuSpoks durvjuSpoks = new DurvjuSpoks(IestatijumuDati.durvjuSpokaAtlautaAgresivitate, IestatijumuDati.durvjuSpokaAtputasLaiks); // Publiskais spoka objekts.
+  public static DurvjuSpoks durvjuSpoks = new DurvjuSpoks(SakumaDati.durvjuSpokaAtlautaAgresivitate, SakumaDati.durvjuSpokaAtputasLaiks); // Publiskais spoka objekts.
 
   public DurvjuSpoks(int spokaAtlautaAgresivitate, int spokaAtputasLaiks) {
     super(spokaAtlautaAgresivitate, spokaAtputasLaiks);
@@ -28,19 +28,19 @@ public class DurvjuSpoks extends Spoks {
     "Durvju sp aktivs: " + durvjuSpoks.getSpoksIrAktivs() + 
     ", Atputas gajieni: " + getMainamoAtputasLaiku() + 
     ", Fazes indekss: " + getSpokaFazesIndekss() + " no " + getSpokuFazuSkaitu() +
-    ", Durvis aizslegtas: " + IestatijumuDati.durvisSlegtas + ", " +
+    ", Durvis aizslegtas: " + SakumaDati.durvisSlegtas + ", " +
     getRandKustibasIespeja() + " < " + getSpokaAtlautaAgresivitate() + "\033[0K";
   }
 
   // * Citas Metodes:
   /// Public:
   public void izveidotJaunuDurvjuSpokaObjektu() {
-    durvjuSpoks = new DurvjuSpoks(IestatijumuDati.durvjuSpokaAtlautaAgresivitate, IestatijumuDati.durvjuSpokaAtputasLaiks);
+    durvjuSpoks = new DurvjuSpoks(SakumaDati.durvjuSpokaAtlautaAgresivitate, SakumaDati.durvjuSpokaAtputasLaiks);
   }
 
   public String[] izveletiesBildiPecFazes() {
     if (getSpokaFazesIndekss() < 9) {
-      if (IestatijumuDati.durvisSlegtas) {
+      if (SakumaDati.durvisSlegtas) {
         return SpokuIzskati.durvjuSpokaFazesBildes[9];
       }
       return SpokuIzskati.durvjuSpokaFazesBildes[getSpokaFazesIndekss()];
@@ -54,7 +54,7 @@ public class DurvjuSpoks extends Spoks {
     // Nosaka vai spoks cenšas kustēties vai nē.
     if (atgrieztRandomKustibasSkaitli() < getSpokaAtlautaAgresivitate()) {
       if (getMainamoAtputasLaiku() == 0) {
-        if (!IestatijumuDati.durvisSlegtas) {
+        if (!SakumaDati.durvisSlegtas) {
           // Ja durvis nebija aizslēgtas, tad ...
           pieietTuvak();
         }
@@ -62,7 +62,7 @@ public class DurvjuSpoks extends Spoks {
           // citādi ...
           if (Main.rand.nextInt(5) + 1 == 5) {
             // Skaņa --->
-            IestatijumuDati.durvisSlegtas = false;
+            SakumaDati.durvisSlegtas = false;
           }
         }
       }

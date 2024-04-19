@@ -1,8 +1,8 @@
 package Spele.Spoki;
 
 import Spele.K;
-import Spele.Iestatijumi.IestatijumuDati;
 import Spele.Izskati.SpokuIzskati;
+import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Main;
 import Spele.Varonis.VaronaStatusaEfekti;
 
@@ -14,7 +14,7 @@ public class LogaSpoks extends Spoks {
   */
 
   // Objekts, kuru var atjaunot (izveidot no jauna n reizes) spēles gaitas laikā.
-  public static LogaSpoks logaSpoks = new LogaSpoks(IestatijumuDati.logaSpokaAtlautaAgresivitate, IestatijumuDati.logaSpokaAtputasLaiks); 
+  public static LogaSpoks logaSpoks = new LogaSpoks(SakumaDati.logaSpokaAtlautaAgresivitate, SakumaDati.logaSpokaAtputasLaiks); 
 
   private String istaba; // Nosaka, kurā istabā parādīsies spoks.
 
@@ -66,7 +66,7 @@ public class LogaSpoks extends Spoks {
   }
   
   public void izveidotJaunuLogaSpokaObjektu() {
-    logaSpoks = new LogaSpoks(IestatijumuDati.logaSpokaAtlautaAgresivitate, IestatijumuDati.logaSpokaAtputasLaiks);
+    logaSpoks = new LogaSpoks(SakumaDati.logaSpokaAtlautaAgresivitate, SakumaDati.logaSpokaAtputasLaiks);
   }
 
   /// Protected:

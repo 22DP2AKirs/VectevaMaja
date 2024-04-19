@@ -58,11 +58,13 @@ public class LietotajaRegistracija {
           /// Konta veidošanas kods:
           if (Konts.ievaditsLietotajvards && Konts.ievaditaParole && Konts.ieavaditsDrosibasVards) {
             // Teksts, kas tiks ievadīts (ierakstīts), katra jaunā konta sākumā.
-            String kontaDati = "#KontaDati:\nLietotajvards=" + Konts.lietotajvards + "\nParole=" + Konts.parole + "\nDrosibasVards=" + Konts.drosibasVards + "\n\n";
-            FailuRedigetajs.failuVeidotajs(kontaDati + FailuRedigetajs.failuParveidotajsParTekstu("Spele/KontaKods/Konti/KontaParaugs.txt"));
-  
+            FailuRedigetajs.failuVeidotajs(FailuRedigetajs.failuParveidotajsParTekstu("Spele/KontaKods/Konti/KontaParaugs.txt"));
+
             // Tiek mainīti svarīgie dati un izveidots ceļš uz konta failu.
-            
+            FailuRedigetajs.mainitFailaMainigaVertibu("Lietotajvards", Konts.lietotajvards, Konts.lietotajaKontaCels);
+            FailuRedigetajs.mainitFailaMainigaVertibu("Parole", Konts.parole, Konts.lietotajaKontaCels);
+            FailuRedigetajs.mainitFailaMainigaVertibu("DrosibasVards", Konts.drosibasVards, Konts.lietotajaKontaCels);
+  
             Konts.lietotajsPiesledzies = true;
             Konts.lietotajaKontaCels = "Spele/KontaKods/Konti/" + Konts.atrastKontuPecLietotajavarda(Konts.lietotajvards);
             Konts.displejaLietotajvards = PaligMetodes.saliktAtstarpesSimboluVirkne(FailuRedigetajs.stringDatuAtgriezejs("Lietotajvards", Konts.lietotajaKontaCels), 1);

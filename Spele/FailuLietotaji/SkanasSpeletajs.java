@@ -7,13 +7,13 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 
 import Spele.PaligMetodes;
-import Spele.Iestatijumi.IestatijumuDati;
+import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Main;
 
 public class SkanasSpeletajs extends Thread {
   @Override
   public void run() {
-    if (IestatijumuDati.ieslegtaSkana) {
+    if (SakumaDati.ieslegtaSkana) {
       while (Main.spelePalaista) {
         SpeletSkanu("Spele\\SkanasFaili\\ambiance-sakana.wav", -3);
         PaligMetodes.gulet(360);
@@ -22,7 +22,7 @@ public class SkanasSpeletajs extends Thread {
   }
 
   public static void SpeletSkanu(String celsUzFailu, float skalumsDecibelosMax6) {
-    if (IestatijumuDati.ieslegtaSkana) {
+    if (SakumaDati.ieslegtaSkana) {
       try {
         File skanasCels = new File(celsUzFailu);
         if (skanasCels.exists()) {

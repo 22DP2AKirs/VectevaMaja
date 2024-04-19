@@ -1,9 +1,31 @@
 #KontaDati:
-Lietotajvards=dsa
-Parole=dsa
-DrosibasVards=dsa
+Lietotajvards=n
+Parole=n
+DrosibasVards=n
 
 #SpelesDati:
 spelesNakts=1
+nauda=0
+ieslegtaSkana=T
 
 #Iestatijumi:
+
+
+
+#Veikals:
+nopirktaFotokamera=F
+nopirktaVideokamera=F
+nopirktiSerkocini=F
+
+fotokamerasUzlabojumaCena=100
+videokamerasUzlabojumaCena=100
+serkocinuUzlabojumaCena=20
+
+fotokamerasLimenis=0
+videokamerasLimenis=0
+serkocinuLimenis=0
+
+durvjuSledzis=F
+
+izveletaFotokamera=F
+izveletaVideokamera=F

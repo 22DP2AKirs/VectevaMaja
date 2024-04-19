@@ -1,9 +1,0 @@
-#KontaDati:
-Lietotajvards=ASD
-Parole=ASD
-DrosibasVards=ASD
-
-#SpelesDati:
-spelesNakts=1
-
-#Iestatijumi:
