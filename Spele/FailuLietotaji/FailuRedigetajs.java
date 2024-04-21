@@ -211,16 +211,22 @@ public class FailuRedigetajs {
   // * Cits:
   //
 
-  public static String failuParveidotajsParTekstu(String celsUzFailu) {
+  public static String failuParveidotajsParTekstu(String celsUzFailu, int lidzKuraiLinijaiIzlaist) {
     // Nolasa un saglabā norādītā faila saturu kā vienu 'String' jeb rakstzīmju virknes līniju.
     String linija; // Uz īsu brīdi saglabā nolasīto līniju.
     String failuTeksts = ""; // Metodes darbības rezultāts, ko atgriezīs.
 
     try (BufferedReader failuLasitajs = new BufferedReader(new FileReader(celsUzFailu))) {
+      // 1. Izlaiž n līnijas no faila sākuma.
+      for (int i = lidzKuraiLinijaiIzlaist ; i > 0 ; i-- ) {
+        linija = failuLasitajs.readLine();
+      }
+      // 2. Pārveido pārējo faila saturu par vienu garu rakstzīmju virkni.
       while ((linija = failuLasitajs.readLine()) != null) { // Lasa kamēr nav ticis līdz faila pēdējai līnijai.
         failuTeksts += linija + "\n";
       }
-    } catch (Exception e) {}
+    } 
+    catch (Exception e) {}
 
     return failuTeksts;
   }
@@ -256,7 +262,7 @@ public class FailuRedigetajs {
     }
     else {
       // Citādi pārkopē pēdējā konta datus uz kontu, kuru vēlējās dzēst, un izdzēš kontu no kuro pārkopēja datus, lai nesabojātu kontu nosaukumu secību.
-      FailuRedigetajs.failuParrakstitajs(FailuRedigetajs.failuParveidotajsParTekstu("Spele/KontaKods/Konti/Konts" + pedejaKontaNosaukumaSkatilis + ".txt"), Konts.lietotajaKontaCels);
+      FailuRedigetajs.failuParrakstitajs(FailuRedigetajs.failuParveidotajsParTekstu("Spele/KontaKods/Konti/Konts" + pedejaKontaNosaukumaSkatilis + ".txt", 0), Konts.lietotajaKontaCels);
       File pedejaisKontaFails = new File("Spele/KontaKods/Konti/Konts" + pedejaKontaNosaukumaSkatilis + ".txt");
       pedejaisKontaFails.delete();
     }

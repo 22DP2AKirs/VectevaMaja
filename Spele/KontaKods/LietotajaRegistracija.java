@@ -5,17 +5,18 @@ import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.K;
 import Spele.PaligMetodes;
 import Spele.Parklajumi.EkranuParklajumi;
-import Spele.SpelesProcesi.Main;
+import Spele.SpelesProcesi.Izvade;
 import Spele.SpelesProcesi.TastaturasKlausitajs;
 import Spele.Varonis.DarbibuIzpilde;
 
 public class LietotajaRegistracija {
   public static void registreties() {
+    DarbibuIzpilde.izvelnesSkaitlis = 0;
+    TastaturasKlausitajs.uzreizNodzestKomandu();
     TastaturasKlausitajs.komandasTekstaRakstisana = false;
 
     while (!TastaturasKlausitajs.komanda.equals("Q")) {
       // 1. Atļauj rakstīt komandas tekstu.
-      TastaturasKlausitajs.ieslegtIespejuRakstitKomandasTekstu();
 
       // 2. Izvēlas, vai 'metīs' lietotāju ārā no šī ekrāna.
       if (!Konts.redigeKontu) {
@@ -27,10 +28,10 @@ public class LietotajaRegistracija {
 
       // 3. Izvēlas, kuru ekrānu izvadīs.
       if (Konts.redigeKontu) {
-        PaligMetodes.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.REDIGESANAS_EKRANS));
+        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.REDIGESANAS_EKRANS);
       }
       else {
-        PaligMetodes.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.REGISTRACIJAS_EKRANS));
+        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.REGISTRACIJAS_EKRANS);
       }
       
       // 4. Kustina izvēlni.
@@ -57,21 +58,18 @@ public class LietotajaRegistracija {
         else {
           /// Konta veidošanas kods:
           if (Konts.ievaditsLietotajvards && Konts.ievaditaParole && Konts.ieavaditsDrosibasVards) {
-            // Teksts, kas tiks ievadīts (ierakstīts), katra jaunā konta sākumā.
-            FailuRedigetajs.failuVeidotajs(FailuRedigetajs.failuParveidotajsParTekstu("Spele/KontaKods/Konti/KontaParaugs.txt"));
-
-            // Tiek mainīti svarīgie dati un izveidots ceļš uz konta failu.
-            FailuRedigetajs.mainitFailaMainigaVertibu("Lietotajvards", Konts.lietotajvards, Konts.lietotajaKontaCels);
-            FailuRedigetajs.mainitFailaMainigaVertibu("Parole", Konts.parole, Konts.lietotajaKontaCels);
-            FailuRedigetajs.mainitFailaMainigaVertibu("DrosibasVards", Konts.drosibasVards, Konts.lietotajaKontaCels);
-  
-            Konts.lietotajsPiesledzies = true;
+            // 1. Izveido konta failu ar ierakstīto tekstu.
+            FailuRedigetajs.failuVeidotajs("#KontaDati:\nLietotajvards=" + Konts.lietotajvards + "\nParole=" + Konts.parole + "\nDrosibasVards=" + Konts.drosibasVards + 
+            "\n" + FailuRedigetajs.failuParveidotajsParTekstu("Spele/KontaKods/Konti/KontaParaugs.txt", 4));
+            // 2. Izveido ceļu uz konta failu.
             Konts.lietotajaKontaCels = "Spele/KontaKods/Konti/" + Konts.atrastKontuPecLietotajavarda(Konts.lietotajvards);
+            // 3. Pieslēdz lietotāja kontu (ieslēdz iespēju to apskatīt un rediģēt).
+            Konts.lietotajsPiesledzies = true;
+            // 4. Atjauno konta lietotājvārda izskatu (Sākuma ekrānā/Galvenajā ekrānā) => [L  I  E  T  O  T  A  J  S].
             Konts.displejaLietotajvards = PaligMetodes.saliktAtstarpesSimboluVirkne(FailuRedigetajs.stringDatuAtgriezejs("Lietotajvards", Konts.lietotajaKontaCels), 1);
           }
         }
         // Nodzēš liekos datus.
-        TastaturasKlausitajs.uzreizNodzestKomandu();
         Konts.notiritLietotajaDatus(); // Nodzēš visu datu vērtības.
       }
 
@@ -88,8 +86,6 @@ public class LietotajaRegistracija {
         /// Drošības vārds.
         drosibasVardaIevade();
       }
-      // --- Cikla beigas. FPS (Frames per second).
-      try {Thread.sleep(Main.framesPerSecond);} catch (Exception e) {}
     }
     DarbibuIzpilde.izvelnesSkaitlis = 0; // Novieto izvēlnes poz. uz pirmo jeb pēc indeksa 0.
     Konts.notiritLietotajaDatus();
@@ -97,7 +93,6 @@ public class LietotajaRegistracija {
 
   private static void lietotajvardaIevade() {
     // Drīkst būt tikai 10 simbolus garš!
-    TastaturasKlausitajs.uzreizNodzestKomandu();
     TastaturasKlausitajs.nodzestKomandasTekstu();
 
     while (!TastaturasKlausitajs.komanda.toUpperCase().equals("ENTER")) {
@@ -107,10 +102,10 @@ public class LietotajaRegistracija {
       Konts.lietotajvards = TastaturasKlausitajs.komandasTeksts;
       // 3. Izvade uz termināli.
       if (Konts.redigeKontu) {
-        PaligMetodes.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.REDIGESANAS_EKRANS));
+        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.REDIGESANAS_EKRANS);
       }
       else {
-        PaligMetodes.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.REGISTRACIJAS_EKRANS));
+        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.REGISTRACIJAS_EKRANS);
       }
 
       // 4. Pārbauda vai vārds atbilst prasībām.
@@ -132,16 +127,12 @@ public class LietotajaRegistracija {
       else {
         Konts.ievaditsLietotajvards = false;
       }
-      // --- Cikla beigas. FPS (Frames per second).
-      try {Thread.sleep(Main.framesPerSecond);} catch (Exception e) {}
     }
-    TastaturasKlausitajs.uzreizNodzestKomandu();
     TastaturasKlausitajs.lielieBurti = true;
   }
 
   private static void parolesIevade() {
     // Drīkst būt 15 simbolus garš!
-    TastaturasKlausitajs.uzreizNodzestKomandu();
     TastaturasKlausitajs.nodzestKomandasTekstu();
 
     while (!TastaturasKlausitajs.komanda.toUpperCase().equals("ENTER")) {
@@ -151,10 +142,10 @@ public class LietotajaRegistracija {
       Konts.parole = TastaturasKlausitajs.komandasTeksts;
       // 3. Izvade uz termināli.
       if (Konts.redigeKontu) {
-        PaligMetodes.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.REDIGESANAS_EKRANS));
+        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.REDIGESANAS_EKRANS);
       }
       else {
-        PaligMetodes.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.REGISTRACIJAS_EKRANS));
+        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.REGISTRACIJAS_EKRANS);
       }
 
       // 4. Pārbauda vai vārds atbilst prasībām.
@@ -184,16 +175,12 @@ public class LietotajaRegistracija {
         // Ja ir tukš lauciņš.
         Konts.ievaditaParole = false;
       }
-      // --- Cikla beigas. FPS (Frames per second).
-      try {Thread.sleep(Main.framesPerSecond);} catch (Exception e) {}
     }
-    TastaturasKlausitajs.uzreizNodzestKomandu();
     TastaturasKlausitajs.lielieBurti = true;
   }
 
   private static void drosibasVardaIevade() {
     // Drīkst būt 15 simbolus garš!
-    TastaturasKlausitajs.uzreizNodzestKomandu();
     TastaturasKlausitajs.nodzestKomandasTekstu();
 
     while (!TastaturasKlausitajs.komanda.toUpperCase().equals("ENTER")) {
@@ -203,10 +190,10 @@ public class LietotajaRegistracija {
       Konts.drosibasVards = TastaturasKlausitajs.komandasTeksts;
       // 3. Izvade uz termināli.
       if (Konts.redigeKontu) {
-        PaligMetodes.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.REDIGESANAS_EKRANS));
+        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.REDIGESANAS_EKRANS);
       }
       else {
-        PaligMetodes.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.REGISTRACIJAS_EKRANS));
+        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.REGISTRACIJAS_EKRANS);
       }
 
       // 4. Pārbauda vai vārds atbilst prasībām.
@@ -236,10 +223,7 @@ public class LietotajaRegistracija {
         // Ja ir tukš lauciņš.
         Konts.ieavaditsDrosibasVards = false;
       }
-      // --- Cikla beigas. FPS (Frames per second).
-      try {Thread.sleep(Main.framesPerSecond);} catch (Exception e) {}
     }
-    TastaturasKlausitajs.uzreizNodzestKomandu();
     TastaturasKlausitajs.lielieBurti = true;
   }
 }

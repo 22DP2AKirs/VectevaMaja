@@ -6,7 +6,7 @@ import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.Izskati.VekalaIzskati;
 import Spele.KontaKods.Konts;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
-import Spele.SpelesProcesi.Main;
+import Spele.SpelesProcesi.Izvade;
 import Spele.SpelesProcesi.TastaturasKlausitajs;
 import Spele.Varonis.DarbibuIzpilde;
 
@@ -38,7 +38,6 @@ public class VeikalaKods {
   public static boolean izveletaFotokamera;
   public static boolean izveletaVideokamera;
 
-  
   private static String[] uzlabojumaApraksts = new String[16];
 
   private static void pievienotLimenaLinijas(String[] mainamaisMasivs, int limenis, int masivaElements) {
@@ -144,7 +143,6 @@ public class VeikalaKods {
   }
 
   public static void veikalaPalaisana() {
-    TastaturasKlausitajs.uzreizNodzestKomandu();
     TastaturasKlausitajs.nodzestKomandasTekstu();
     DarbibuIzpilde.izvelnesSkaitlis = 0;
     String komanda = TastaturasKlausitajs.komanda; // Saglabā komandu.
@@ -152,7 +150,7 @@ public class VeikalaKods {
     while (!komanda.equals("Q")) {
       komanda = TastaturasKlausitajs.komanda;
       DarbibuIzpilde.izvelnesKustiba(komanda, 3); // Izveido izvēlnes opcijas.
-      PaligMetodes.masivuIzvade(veikalaParklasana(VekalaIzskati.VEIKALA_SKATS)); // Izvade uz terminālu.
+      Izvade.izvadesMasivs = veikalaParklasana(VekalaIzskati.VEIKALA_SKATS); // Izvade uz terminālu.
 
       if (DarbibuIzpilde.izvelnesSkaitlis == 0) {
         // Kameras:
@@ -166,9 +164,6 @@ public class VeikalaKods {
         // Durvju slēdzis:
         durvjuSledzaKods(komanda);
       }
-
-      // --- Cikla beigas.
-      try { Thread.sleep(Main.framesPerSecond); } catch (Exception e) {}
     }
   }
 
@@ -194,8 +189,12 @@ public class VeikalaKods {
     // 2. Veic uzlabojumus.
     if (komanda.equals("SPACE") && !durvjuSledzis && SakumaDati.nauda >= Integer.parseInt(durvjuSledzaCena)) {
       durvjuSledzis = true;
+      
+      // Atņem naudas summu.
+      SakumaDati.nauda -= Integer.parseInt(durvjuSledzaCena);
+      FailuRedigetajs.mainitFailaMainigaVertibu("nauda", SakumaDati.nauda+"", Konts.lietotajaKontaCels);
+
       durvjuSledzaCena = "M A X";
-      TastaturasKlausitajs.uzreizNodzestKomandu();
       FailuRedigetajs.mainitFailaMainigaVertibu("durvjuSledzis", "T", Konts.lietotajaKontaCels);
     }
   }
@@ -252,6 +251,10 @@ public class VeikalaKods {
         serkocinuLimenis++;
       }
 
+      // Atņem pirkuma naudas summu.
+      SakumaDati.nauda -= Integer.parseInt(serkocinuUzlabojumaCena);
+      FailuRedigetajs.mainitFailaMainigaVertibu("nauda", SakumaDati.nauda+"", Konts.lietotajaKontaCels);
+
       // Izvēlas nākošā uzlabojuma cenu.
       if (serkocinuLimenis == 0) {
         serkocinuUzlabojumaCena = "30";
@@ -268,7 +271,6 @@ public class VeikalaKods {
       FailuRedigetajs.mainitFailaMainigaVertibu("serkocinuUzlabojumaCena", serkocinuUzlabojumaCena, Konts.lietotajaKontaCels);
       FailuRedigetajs.mainitFailaMainigaVertibu("serkocinuLimenis", serkocinuLimenis+"", Konts.lietotajaKontaCels);
       
-      TastaturasKlausitajs.uzreizNodzestKomandu();
     }
   }
 
@@ -342,6 +344,10 @@ public class VeikalaKods {
           fotokamerasLimenis++;
         }
 
+        // Atņem pirkuma naudas summu.
+        SakumaDati.nauda -= Integer.parseInt(fotokamerasUzlabojumaCena);
+        FailuRedigetajs.mainitFailaMainigaVertibu("nauda", SakumaDati.nauda+"", Konts.lietotajaKontaCels);
+
         // Izvēlas nākošā uzlabojuma cenu.
         if (fotokamerasLimenis == 0) {
           fotokamerasUzlabojumaCena = "75";
@@ -355,7 +361,6 @@ public class VeikalaKods {
         FailuRedigetajs.mainitFailaMainigaVertibu("fotokamerasUzlabojumaCena", fotokamerasUzlabojumaCena, Konts.lietotajaKontaCels);
         FailuRedigetajs.mainitFailaMainigaVertibu("fotokamerasLimenis", fotokamerasLimenis+"", Konts.lietotajaKontaCels);
 
-        TastaturasKlausitajs.uzreizNodzestKomandu();
       }
     }
     else if (videokamera) {
@@ -414,6 +419,10 @@ public class VeikalaKods {
         else {
           videokamerasLimenis++;
         }
+
+        // Atņem pirkuma naudas summu.
+        SakumaDati.nauda -= Integer.parseInt(videokamerasUzlabojumaCena);
+        FailuRedigetajs.mainitFailaMainigaVertibu("nauda", SakumaDati.nauda+"", Konts.lietotajaKontaCels);
         
         // Izvēlas nākošā uzlabojuma cenu.
         if (videokamerasLimenis == 0) {
@@ -428,7 +437,6 @@ public class VeikalaKods {
         FailuRedigetajs.mainitFailaMainigaVertibu("videokamerasUzlabojumaCena", videokamerasUzlabojumaCena, Konts.lietotajaKontaCels);
         FailuRedigetajs.mainitFailaMainigaVertibu("videokamerasLimenis", videokamerasLimenis+"", Konts.lietotajaKontaCels);
         
-        TastaturasKlausitajs.uzreizNodzestKomandu();
       }
     }
   }

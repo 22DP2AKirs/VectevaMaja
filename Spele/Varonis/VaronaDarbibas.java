@@ -180,7 +180,6 @@ public class VaronaDarbibas {
       MazoSpeluIzvelesKods.varonisIrMazajaSpele = true;
       Main.nodzestTerminali();
       TastaturasKlausitajs.nodzestKomandasTekstu();
-      TastaturasKlausitajs.uzreizNodzestKomandu();
     }
   }
 
@@ -433,22 +432,41 @@ public class VaronaDarbibas {
     Enums.V_Istaba = PaligMetodes.atrastIstabasEnumuPecTaCiparaVertibas(istabasCipars);
   }
 
-  public static void aprekinatVideokamerasBateriju() {
-    /* Aprēķina videokameras bateriju */
+  public static void fotokamerasBaterijasAprekins() {
+    // Kamera tur uzlādi aptuveni 5 - 10 sek.
     if (ieslegtaKamera) {
       // 1. Ja kamera ir izlādējusies, tad to izslēdz.
       if (kamerasBaterija < 1) {
         ieslegtaKamera = false;
       }
 
-      // 2. Atņem n procentus no baterijas.
-      kamerasBaterija -= 0.1;
+      // 2. Atņem baterijas uzlādes procentus.
+      kamerasBaterija -= (1.0 / VeikalaKods.fotokamerasLimenis + 1); // + 1, jo visi piederumi sākas no '0' līmeņa.
     }
-    else {
-      // 1. Lādē bateriju līdz 100%.
-      if (kamerasBaterija < 100) {
-        kamerasBaterija += 0.4;
+    else if (!ieslegtaKamera && kamerasBaterija < 100) {
+      kamerasBaterija += 0.5;
+    }
+  }
+
+  public static void videokamerasBaterijasAprekins() {
+    // Kamera tur ļoti ilgu laiku.
+    if (ieslegtaKamera) {
+      // 1. Ja kamera ir izlādējusies, tad to izslēdz.
+      if (kamerasBaterija < 1) {
+        ieslegtaKamera = false;
       }
+
+      // 2. Atņem baterijas uzlādes procentus.
+      kamerasBaterija -= (0.1 / (VeikalaKods.fotokamerasLimenis + 1 * 10)); // + 1, jo visi piederumi sākas no '0' līmeņa.
+    }
+  }
+
+  public static void kamerasBaterijasAprekins() {
+    if (VeikalaKods.izveletaFotokamera) {
+      fotokamerasBaterijasAprekins();
+    }
+    else if (VeikalaKods.izveletaVideokamera) {
+      videokamerasBaterijasAprekins();
     }
   }
 }

@@ -50,6 +50,7 @@ public class DarbibuIzpilde {
     // Mainīgie, kurus apstrādās šī metode.
     String[] mainamaisMasivs = // Šo masīvu pārklās ar pārklājumiem, kuri ir atkarīgi no varoņa konkrētajā vietā.
     BildesParklajumi.izveidotMainamoMasivu(IstabuIzskati.istabuMasivs[Enums.V_Istaba.CIPARS][Enums.V_Virziens.CIPARS]);
+    TastaturasKlausitajs.sagatavotKomanduDzesanai();
     
     
     // Darbības jeb komandas pareizai situācijai.
@@ -58,8 +59,7 @@ public class DarbibuIzpilde {
       
     // Spēles komandas.
     if (!MazoSpeluIzvelesKods.varonisIrMazajaSpele) {
-      TastaturasKlausitajs.sagatavotKomanduDzesanai();
-
+      
       if (!komanda.equals(K.TUKSA_IEVADE)) {
         // 1. Atrod darbību noteiktai komandai.
         if (Arrays.asList(testesanasKomandas).contains(komanda) || Arrays.asList(testesanasKomandas).contains(komandasTeksts) ) { // Testēšanas komands.
@@ -160,15 +160,17 @@ public class DarbibuIzpilde {
 
   public static void izvelnesKustiba(String ievade, int izvelesIespejas) {
     // * Ļauj kontrolēt spēles izvēlnes ar dažādiem lielumiem.
-    if (ievade.equals("W") && izvelnesSkaitlis > 0) {
-      // Pārvieto izvēli uz augšu (^).
-      izvelnesSkaitlis--;
-      TastaturasKlausitajs.uzreizNodzestKomandu();
-    } 
-    else if (ievade.equals("S") && izvelnesSkaitlis < izvelesIespejas - 1) {
-      // Pārvieto izvēli uz leju (v).
-      izvelnesSkaitlis++;
-      TastaturasKlausitajs.uzreizNodzestKomandu();
+    if (!TastaturasKlausitajs.komandasTekstaRakstisana) {
+      if (ievade.equals("W") && izvelnesSkaitlis > 0) {
+        // Pārvieto izvēli uz augšu (^).
+        izvelnesSkaitlis--;
+        TastaturasKlausitajs.uzreizNodzestKomandu();
+      } 
+      else if (ievade.equals("S") && izvelnesSkaitlis < izvelesIespejas - 1) {
+        // Pārvieto izvēli uz leju (v).
+        izvelnesSkaitlis++;
+        TastaturasKlausitajs.uzreizNodzestKomandu();
+      }
     }
   }
 
@@ -186,7 +188,6 @@ public class DarbibuIzpilde {
         4. Konts.
         5. Iziet.
       */
-      TastaturasKlausitajs.sagatavotKomanduDzesanai();
       izvelnesKustiba(komanda, 7);
 
       if (komanda.equals("ENTER")) { // "" = 'ENTER'.
@@ -218,7 +219,6 @@ public class DarbibuIzpilde {
         } 
         // Konta rģistrācijas kods:
         else if (izvelnesSkaitlis == 5) {
-          // Ievade.lietotajaIevade = K.TUKSA_IEVADE;
           Konts.kontaIzvelesDarbibas();
         } 
         // Aizvērt programmu:

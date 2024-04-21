@@ -14,7 +14,7 @@ public class SkanasSpeletajs extends Thread {
   @Override
   public void run() {
     if (SakumaDati.ieslegtaSkana) {
-      while (Main.spelePalaista) {
+      while (Main.programmaPalaista) {
         SpeletSkanu("Spele\\SkanasFaili\\ambiance-sakana.wav", -3);
         PaligMetodes.gulet(360);
       }

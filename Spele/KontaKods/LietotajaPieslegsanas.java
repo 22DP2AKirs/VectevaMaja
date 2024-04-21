@@ -5,27 +5,28 @@ import Spele.K;
 import Spele.PaligMetodes;
 import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.Parklajumi.EkranuParklajumi;
-import Spele.SpelesProcesi.Main;
+import Spele.SpelesProcesi.Izvade;
 import Spele.SpelesProcesi.TastaturasKlausitajs;
 import Spele.Varonis.DarbibuIzpilde;
 
 public class LietotajaPieslegsanas {
 
   public static void pieslegties() {
+    DarbibuIzpilde.izvelnesSkaitlis = 0;
+    TastaturasKlausitajs.uzreizNodzestKomandu();
     Konts.lietotajaKontaCels = ""; // Nodzēš ceļu uz kontu, lai pēdējais ceļš nerādītos visu laiku, kad ieiet konta ekrānā.
+    TastaturasKlausitajs.ieslegtKomandasTekstaFunkciju();
+
     while (!TastaturasKlausitajs.komanda.equals("Q")) {
       // Ja lietotājs ir pieslēdzies, tad viņu aizsūta uz konta apskati.
       if (Konts.lietotajsPiesledzies) {
         break;
       }
-
-      if (TastaturasKlausitajs.komandasTekstaRakstisana) {
-        TastaturasKlausitajs.limetKomandasTekstu();
-        System.out.println(TastaturasKlausitajs.komandasTeksts + "\033[0K");
-      }
+      
+      TastaturasKlausitajs.rakstitKomandasTekstu();
 
       // 1. Izvade uz termināli.
-      PaligMetodes.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.PIESLEGSANAS_EKRANS));
+      Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.PIESLEGSANAS_EKRANS);
       
       // 2. Kustina izvēlni.
       DarbibuIzpilde.izvelnesKustiba(TastaturasKlausitajs.komanda, 2);
@@ -37,11 +38,12 @@ public class LietotajaPieslegsanas {
 
       // 4. Komandas pārbaude.
       /// Lietotājvārds.
-      else if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzpilde.izvelnesSkaitlis == 0) {    
+      else if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzpilde.izvelnesSkaitlis == 0) {
         lietotajvardaIevade();
       }
       /// Parole.
       else if (Konts.ievaditsLietotajvards && TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzpilde.izvelnesSkaitlis == 1) {
+        TastaturasKlausitajs.uzreizNodzestKomandu();
         parolesIevade();
       }
       
@@ -51,11 +53,7 @@ public class LietotajaPieslegsanas {
         Konts.lietotajsPiesledzies = true;
         Konts.displejaLietotajvards = PaligMetodes.saliktAtstarpesSimboluVirkne(Konts.lietotajvards, 1);
       }
-
-      // --- Cikla beigas. FPS (Frames per second).
-      try {Thread.sleep(Main.framesPerSecond);} catch (Exception e) {}
     }
-    TastaturasKlausitajs.uzreizNodzestKomandu(); // Notīra ievadi, lai ieejot iepriekšējā ciklā, momentāli neiziet arī no tā, jo [ Q ] ir kā unikālais 'atpakaļ' taustiņš.
     DarbibuIzpilde.izvelnesSkaitlis = 0; // Novieto izvēlnes poz. uz pirmo jeb pēc indeksa 0.
     Konts.notiritLietotajaDatus();
   }
@@ -64,12 +62,11 @@ public class LietotajaPieslegsanas {
 
   private static void lietotajvardaIevade() {
     // Drīkst būt tikai 10 simbolus garš!
-    TastaturasKlausitajs.nodzestKomandasTekstu();
     TastaturasKlausitajs.uzreizNodzestKomandu();
 
     while (!TastaturasKlausitajs.komanda.toUpperCase().equals("ENTER")) {
       // 1. Izvade uz termināli.
-      PaligMetodes.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.PIESLEGSANAS_EKRANS));
+      Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.PIESLEGSANAS_EKRANS);
       // 1. Veido lietotājvārdu.
       TastaturasKlausitajs.limetKomandasTekstu();
       // 2. Saglabā izveidoto lietotājvārdu.
@@ -89,23 +86,20 @@ public class LietotajaPieslegsanas {
         Konts.lietotajvardaNoteikumuKluda = K.SARKANS + "N A V  T A D A  V A R D A" + K.RESET;
         Konts.ievaditsLietotajvards = false;
       }
-      // --- Cikla beigas.
-      try {Thread.sleep(Main.framesPerSecond);} catch (Exception e) {}
     }
-    TastaturasKlausitajs.uzreizNodzestKomandu();
     TastaturasKlausitajs.lielieBurti = true;
+    TastaturasKlausitajs.uzreizNodzestKomandu();
+
   }
 
   // ? Paroles daļa:
 
   private static void parolesIevade() {
     // Drīkst būt tikai 15 simbolus garš!
-    TastaturasKlausitajs.nodzestKomandasTekstu();
-    TastaturasKlausitajs.uzreizNodzestKomandu();
 
     while (!TastaturasKlausitajs.komanda.toUpperCase().equals("ENTER")) {
       // 1. Izvade uz termināli.
-      PaligMetodes.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.PIESLEGSANAS_EKRANS));
+      Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.PIESLEGSANAS_EKRANS);
       // 1. Veido paroli.
       TastaturasKlausitajs.limetKomandasTekstu();
       // 2. Saglabā izveidoto paroli.
@@ -122,42 +116,36 @@ public class LietotajaPieslegsanas {
         Konts.parolesNoteikumuKluda = K.SARKANS + "N E P A R E I Z A" + K.RESET;
         Konts.ievaditaParole = false;
       }
-      // --- Cikla beigas.
-      try {Thread.sleep(Main.framesPerSecond);} catch (Exception e) {}
     }
-    TastaturasKlausitajs.uzreizNodzestKomandu();
     TastaturasKlausitajs.lielieBurti = true;
+    TastaturasKlausitajs.uzreizNodzestKomandu();
   }
 
   // ? Drošības vārda daļa:
 
   private static void drosibasVardaCikls() {
+    TastaturasKlausitajs.beigtRakstitKomandasTekstu();
     TastaturasKlausitajs.nodzestKomandasTekstu();
-    TastaturasKlausitajs.uzreizNodzestKomandu();
 
     while (!TastaturasKlausitajs.komanda.equals("Q")) {
       
       // 1. Izvade uz termināli.
-      PaligMetodes.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.DROSIBAS_VARDA_EKRANS));
+      Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.DROSIBAS_VARDA_EKRANS);
       // 2. Ievada drosības v..
       if (TastaturasKlausitajs.komanda.equals("ENTER")) {
         drosibasVardaIevade();
       }
-      // --- Cikla beigas. FPS (Frames per second).
-      try {Thread.sleep(Main.framesPerSecond);} catch (Exception e) {}
     }
-    TastaturasKlausitajs.uzreizNodzestKomandu();
     DarbibuIzpilde.izvelnesSkaitlis = 0; // Novieto izvēlnes poz. uz pirmo jeb pēc indeksa 0.
   }
   
   private static void drosibasVardaIevade() {
     // Drīkst būt tikai 15 simbolus garš!
     TastaturasKlausitajs.nodzestKomandasTekstu();
-    TastaturasKlausitajs.uzreizNodzestKomandu();
 
     while (!TastaturasKlausitajs.komanda.toUpperCase().equals("ENTER")) {
       // 1. Izvade uz termināli.
-      PaligMetodes.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.DROSIBAS_VARDA_EKRANS));
+      Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.DROSIBAS_VARDA_EKRANS);
       // 1. Veido drosibas v..
       TastaturasKlausitajs.limetKomandasTekstu();
       // 2. Saglabā izveidoto drosibas v..
@@ -174,10 +162,7 @@ public class LietotajaPieslegsanas {
         Konts.drosibasVardaNoteikumuKluda = K.SARKANS + "N E P A R E I Z S" + K.RESET;
         Konts.ieavaditsDrosibasVards = false;
       }
-      // --- Cikla beigas.
-      try {Thread.sleep(Main.framesPerSecond);} catch (Exception e) {}
     }
-    TastaturasKlausitajs.uzreizNodzestKomandu();
     TastaturasKlausitajs.lielieBurti = true;
   }
 }

@@ -10,6 +10,7 @@ import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.MazasSpeles.Karatavas.Karatavas;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
+import Spele.SpelesProcesi.Izvade;
 import Spele.SpelesProcesi.Laiks;
 import Spele.SpelesProcesi.Main;
 import Spele.Spoki.DurvjuSpoks;
@@ -45,20 +46,22 @@ public class VaronaStatusaEfekti {
 
     // Nosaka spēles gala rezultātu.
     if (iemesls.equals("UZVARA")) { // Uzvaras kods.
-      PaligMetodes.masivuIzvade(EkranuParklajumi.parklatEkranu(EkranuVeidi.UZVARAS_EKRANS));
+      Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.UZVARAS_EKRANS);
       PaligMetodes.gulet(5);
       // Palielina konta nakts vērtību par vienu (+1).
       if (SakumaDati.spelesNakts != 5) {
+        SakumaDati.nauda += 90 * SakumaDati.spelesNakts;
         SakumaDati.spelesNakts++;
 
         // Ja ir konts, tad saglabā.
         if (Konts.lietotajsPiesledzies) {
           FailuRedigetajs.mainitFailaMainigaVertibu("spelesNakts", SakumaDati.spelesNakts + "", Konts.lietotajaKontaCels);
+          FailuRedigetajs.mainitFailaMainigaVertibu("nauda", SakumaDati.nauda + "", Konts.lietotajaKontaCels);
         }
       }
     }
     else {
-      PaligMetodes.masivuIzvade(EkranuParklajumi.parklatZaudesanasEkranu(EkranuIzskati.visiEkrani[2], iemesls));
+      Izvade.izvadesMasivs = EkranuParklajumi.parklatZaudesanasEkranu(EkranuIzskati.visiEkrani[2], iemesls);
       PaligMetodes.gulet(5);
     }
     

@@ -112,7 +112,6 @@ public class Karatavas {
     // [ Q ] - simbols tiek izmantots, lai izietu ārā no minigame.
     if (ievaditaisBurts != K.TUKSA_IEVADE && ievaditaisBurts != "Q" && ievaditaisBurts != "*") {
       apstradatBurtu(ievaditaisBurts);
-      TastaturasKlausitajs.sagatavotKomanduDzesanai();
     }
   }
 

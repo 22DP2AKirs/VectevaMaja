@@ -22,6 +22,5 @@ public class AtrodiPariSavienojums {
     // 6. Pārbauda vai izvēlētās kārtis ir pareizas (vienādas vai nepareizi izvēlētas).
     AtrodiPari.atrodiPariObjekts.abuKarsuKoordinasuParbaude();
     // 7. Atļauj mainīt ievadi galvenā cikla beigās.
-    TastaturasKlausitajs.sagatavotKomanduDzesanai();
   }
 }

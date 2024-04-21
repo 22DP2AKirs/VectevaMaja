@@ -22,7 +22,7 @@ public class SakumaDati {
   public static boolean[] istabuGaismasIeslegtas = new boolean[4]; // Indeksi: 0. Gulta, 1. Dīvāns, 2. Durvis, 3. Virtuve.
   public static ArrayList<String> naktsDati;
 
-  public static boolean durvisSlegtas; 
+  public static boolean durvisSlegtas;
   public static boolean elektribaIeslegta;
   public static boolean pagrabaGaisma;
   public static boolean spuldziteSaplesta;
@@ -42,8 +42,8 @@ public class SakumaDati {
   public static int virtuvesSpokaAtputasLaiks;
 
   // Dati, kurus nolasa no lietotāja konta:
-  public static boolean ieslegtaSkana = FailuRedigetajs.booleanDatuAtgriezejs("ieslegtaSkana", K.IESTATIJUMU_FAILS);
-  public static int nauda = 9000;
+  public static boolean ieslegtaSkana;
+  public static int nauda;
   public static int spelesNakts; // Saglabā spēles nakti.
 
   public static void sagatavotDatus() {
@@ -95,7 +95,6 @@ public class SakumaDati {
   }
 
   public static void sagatavotDatusNaktij() {
-
     // Cits:
     istabuGaismasIeslegtas[0] = FailuRedigetajs.booleanDatuAtgriezejs("gultasGaisma", K.IESTATIJUMU_FAILS);
     istabuGaismasIeslegtas[1] = FailuRedigetajs.booleanDatuAtgriezejs("divanaGaisma", K.IESTATIJUMU_FAILS);
