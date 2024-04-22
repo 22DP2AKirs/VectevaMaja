@@ -45,12 +45,12 @@ public class DarbibuIzpilde {
   // Veiksmīgai un pareizai spēles darbībai, katrā virziena izvēlē pirmajam ir jābūt komandas apstrādei,
   // un tikai tad vizuālajai izvadei.
 
-  public static void izpilditSpelesDarbibas(Istabas istaba, Virzieni virziens, String komanda , String komandasTeksts) {
+  public static void izpilditSpelesDarbibas(Istabas istaba, Virzieni virziens, String komanda , String komandasTeksts , boolean pabeigtsKomTeksts) {
     // * Metode ietekmē tikai un vienīgi komandu apstrādi un bildes izvadi.
     // Mainīgie, kurus apstrādās šī metode.
     String[] mainamaisMasivs = // Šo masīvu pārklās ar pārklājumiem, kuri ir atkarīgi no varoņa konkrētajā vietā.
     BildesParklajumi.izveidotMainamoMasivu(IstabuIzskati.istabuMasivs[Enums.V_Istaba.CIPARS][Enums.V_Virziens.CIPARS]);    
-    
+
     TastaturasKlausitajs.sagatavotKomanduDzesanai();
     
     // Darbības jeb komandas pareizai situācijai.
@@ -60,10 +60,10 @@ public class DarbibuIzpilde {
     // Spēles komandas.
     if (!MazoSpeluIzvelesKods.varonisIrMazajaSpele) {
       
-      if (!komanda.equals(K.TUKSA_IEVADE)) {
+      if (!komanda.equals(K.TUKSA_IEVADE) || pabeigtsKomTeksts) {
         // 1. Atrod darbību noteiktai komandai.
         if (Arrays.asList(testesanasKomandas).contains(komanda) || Arrays.asList(testesanasKomandas).contains(komandasTeksts) ) { // Testēšanas komands.
-          VaronaDarbibas.testesanasDarbibas(komanda, komandasTeksts);
+          VaronaDarbibas.testesanasDarbibas(komandasTeksts, pabeigtsKomTeksts);
         }
         else if (Arrays.asList(parastasKomandas).contains(komanda) || Arrays.asList(parastasKomandas).contains(komandasTeksts)) { // Parastās komandas.
           VaronaDarbibas.parastasDarbibas(komanda);
@@ -89,13 +89,13 @@ public class DarbibuIzpilde {
           BildesParklajumi.uzliktGultasLejasParklajumus(mainamaisMasivs);
         }
         else if (virziens.equals(Virzieni.KREISA_PUSE)) {
-          VaronaDarbibas.gultasKreisasPusesKomandas(komanda, komandasTeksts);
+          VaronaDarbibas.gultasKreisasPusesKomandas(komanda, komandasTeksts, pabeigtsKomTeksts);
           BildesParklajumi.uzliktGultasKreisasPusesParklajumus(mainamaisMasivs);
         }
       }
       else if (istaba.equals(Istabas.DIVANS)) { // ----------------------- Dīvāns.
         if (virziens.equals(Virzieni.PRIEKSA)) {
-          VaronaDarbibas.divanaPrieksasKomandas(komanda , komandasTeksts);
+          VaronaDarbibas.divanaPrieksasKomandas(komanda , komandasTeksts, pabeigtsKomTeksts);
           BildesParklajumi.uzliktDivanaPrieksasParklajumus(mainamaisMasivs);
         }
         else if (virziens.equals(Virzieni.LABA_PUSE)) {
@@ -113,11 +113,11 @@ public class DarbibuIzpilde {
       }
       else if (istaba.equals(Istabas.DURVIS)) { // ----------------------- Durvis.
         if (virziens.equals(Virzieni.PRIEKSA)) {
-          VaronaDarbibas.durvjuPrieksasKomandas(komanda , komandasTeksts);
+          VaronaDarbibas.durvjuPrieksasKomandas(komanda , komandasTeksts, pabeigtsKomTeksts);
           BildesParklajumi.uzliktDurvjuPrieksasParklajumus(mainamaisMasivs);
         }
         else if (virziens.equals(Virzieni.LABA_PUSE)) {
-          VaronaDarbibas.durvjuLabasPusesKomandas(komanda , komandasTeksts);
+          VaronaDarbibas.durvjuLabasPusesKomandas(komanda , komandasTeksts, pabeigtsKomTeksts);
           BildesParklajumi.uzliktDurvjuLabasPusesParklajumus(mainamaisMasivs);
         }
         else if (virziens.equals(Virzieni.LEJA)) {
@@ -135,7 +135,7 @@ public class DarbibuIzpilde {
           BildesParklajumi.uzliktVirtuvesPrieksasParklajumus(mainamaisMasivs);
         }
         else if (virziens.equals(Virzieni.LABA_PUSE)) {
-          VaronaDarbibas.virtuvesLabasPusesKomandas(komanda , komandasTeksts);
+          VaronaDarbibas.virtuvesLabasPusesKomandas(komanda , komandasTeksts, pabeigtsKomTeksts);
           BildesParklajumi.uzliktVirtuvesLabasPusesParklajumus(mainamaisMasivs);
         }
         else if (virziens.equals(Virzieni.LEJA)) {

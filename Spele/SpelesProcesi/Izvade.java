@@ -58,7 +58,7 @@ public class Izvade extends Thread {
         PaligMetodes.izvaditArrayListElementus(spelesIzvadesSaraksts);
 
         // 4. Darbības ar izvades kursoru.
-        // System.out.println("\033[0J"); // Izdzēš visu tekstu līdz ekrāna beigām.
+        System.out.println("\033[0J"); // Izdzēš visu tekstu līdz ekrāna beigām.
         System.out.print("\033[H"); // Noliek kursoru sākuma pozīcijā 0,0 jeb pirmās rindas pirmajā kolonnā.
 
         // 5. Attīra ArrayLists no visiem viņa elementiem, padarot to pilnībā tukšu.
@@ -73,7 +73,6 @@ public class Izvade extends Thread {
   private void izvaditKonsoli() {
     System.out.println(TastaturasKlausitajs.rakstaKomandasTekstu + " >GK> " + 
     TastaturasKlausitajs.komandasTeksts + " >K> " + TastaturasKlausitajs.komanda + " >CK> " + Main.ciklaKomanda + " >Pabeidza> " + TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu + "\033[0K");
-
 
     if (TastaturasKlausitajs.atlautRakstitKomandasTekstu && TastaturasKlausitajs.rakstaKomandasTekstu) {
       System.out.println(">>> " + TastaturasKlausitajs.komandasTeksts + "\033[0K");

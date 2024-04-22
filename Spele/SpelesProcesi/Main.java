@@ -111,7 +111,7 @@ public class Main {
         TastaturasKlausitajs.definetCiklaKomandu();
 
         // 1. Apstrādā lietotāja ievadi.
-        DarbibuIzpilde.izpilditSpelesDarbibas(Enums.V_Istaba, Enums.V_Virziens, ciklaKomanda , TastaturasKlausitajs.komandasTeksts); // Pilnībā aizvieto 'VaronaDarbibas.apstradatKomandu(Ievade.lietotajaIevade);'.
+        DarbibuIzpilde.izpilditSpelesDarbibas(Enums.V_Istaba, Enums.V_Virziens, ciklaKomanda , TastaturasKlausitajs.komandasTeksts , TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu); // Pilnībā aizvieto 'VaronaDarbibas.apstradatKomandu(Ievade.lietotajaIevade);'.
         // 2. Papildus informācijas izvade --Debuging--
         informacijasIzvade();
         // 3. Izvade uz ekrānu jeb termināli.

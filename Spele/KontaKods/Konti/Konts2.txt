@@ -5,7 +5,7 @@ DrosibasVards=A
 
 #SpelesDati:
 spelesNakts=5
-nauda=140
+nauda=900
 ieslegtaSkana=T
 
 #Iestatijumi:

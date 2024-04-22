@@ -86,7 +86,7 @@ public class LietotajaPieslegsanas {
     }
     TastaturasKlausitajs.lielieBurti = true;
     TastaturasKlausitajs.uzreizNodzestKomandu();
-
+    TastaturasKlausitajs.nodzestKomandasTekstu();
   }
 
   // ? Paroles daļa:
@@ -117,6 +117,7 @@ public class LietotajaPieslegsanas {
     }
     TastaturasKlausitajs.lielieBurti = true;
     TastaturasKlausitajs.uzreizNodzestKomandu();
+    TastaturasKlausitajs.nodzestKomandasTekstu();
   }
 
   // ? Drošības vārda daļa:
@@ -163,5 +164,6 @@ public class LietotajaPieslegsanas {
     }
     TastaturasKlausitajs.lielieBurti = true;
     TastaturasKlausitajs.uzreizNodzestKomandu();
+    TastaturasKlausitajs.nodzestKomandasTekstu();
   }
 }
