@@ -49,9 +49,9 @@ public class DarbibuIzpilde {
     // * Metode ietekmē tikai un vienīgi komandu apstrādi un bildes izvadi.
     // Mainīgie, kurus apstrādās šī metode.
     String[] mainamaisMasivs = // Šo masīvu pārklās ar pārklājumiem, kuri ir atkarīgi no varoņa konkrētajā vietā.
-    BildesParklajumi.izveidotMainamoMasivu(IstabuIzskati.istabuMasivs[Enums.V_Istaba.CIPARS][Enums.V_Virziens.CIPARS]);
-    TastaturasKlausitajs.sagatavotKomanduDzesanai();
+    BildesParklajumi.izveidotMainamoMasivu(IstabuIzskati.istabuMasivs[Enums.V_Istaba.CIPARS][Enums.V_Virziens.CIPARS]);    
     
+    TastaturasKlausitajs.sagatavotKomanduDzesanai();
     
     // Darbības jeb komandas pareizai situācijai.
     VaronaDarbibas.izietAraNoMspeles(komanda);
@@ -160,7 +160,7 @@ public class DarbibuIzpilde {
 
   public static void izvelnesKustiba(String ievade, int izvelesIespejas) {
     // * Ļauj kontrolēt spēles izvēlnes ar dažādiem lielumiem.
-    if (!TastaturasKlausitajs.komandasTekstaRakstisana) {
+    if (!TastaturasKlausitajs.rakstaKomandasTekstu) {
       if (ievade.equals("W") && izvelnesSkaitlis > 0) {
         // Pārvieto izvēli uz augšu (^).
         izvelnesSkaitlis--;

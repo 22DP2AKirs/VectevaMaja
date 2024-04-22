@@ -17,7 +17,7 @@ public class Izvade extends Thread {
   public static volatile boolean jaizvadaMasivs = true;
 
   // Iestata tikšķa jeb 1 "refreša" periodu.
-  public static int framesPerSecond = 1000 / 30; // [1000] - Skaitlis, kuru dala, lai iegūtu FPS. [n] - Vēlamais FPS daudzums.
+  public static int framesPerSecond = 1000 / 60; // [1000] - Skaitlis, kuru dala, lai iegūtu FPS. [n] - Vēlamais FPS daudzums.
 
   private ArrayList<String> spelesIzvadesSaraksts = new ArrayList<>(); // Masīvs saturēs visu spēles grafisko informāciju.
 
@@ -26,7 +26,6 @@ public class Izvade extends Thread {
     while(Main.programmaPalaista) {
       // 1. Ja spēles laikā ir jāizvada, kādu specifisku masīvu, tad to izdara.
       while (jaizvadaMasivs) {
-        System.out.println(TastaturasKlausitajs.komandasTekstaRakstisana + " >GK> " + TastaturasKlausitajs.komandasTeksts + " >K> " + TastaturasKlausitajs.komanda + " >CK> " + Main.ciklaKomanda + "\033[0K");
         // Atver >> konsoli, kurā var redzēt rakstīto komandas tekstu.
         izvaditKonsoli();
         PaligMetodes.masivuIzvade(izvadesMasivs);
@@ -37,7 +36,6 @@ public class Izvade extends Thread {
 
       // 2. Izvada spēles bildi.
       while (Main.spelePalaista) {
-        System.out.println(TastaturasKlausitajs.komandasTekstaRakstisana + " >GK> " + TastaturasKlausitajs.komandasTeksts + " >K> " + TastaturasKlausitajs.komanda + "\033[0K");
         izvaditKonsoli();
         
         System.out.println("\r▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\033[0K"); // Ekrāna augšējā daļa.
@@ -73,7 +71,11 @@ public class Izvade extends Thread {
   }
 
   private void izvaditKonsoli() {
-    if (TastaturasKlausitajs.atlautRakstitKomandasTekstu && TastaturasKlausitajs.komandasTekstaRakstisana) {
+    System.out.println(TastaturasKlausitajs.rakstaKomandasTekstu + " >GK> " + 
+    TastaturasKlausitajs.komandasTeksts + " >K> " + TastaturasKlausitajs.komanda + " >CK> " + Main.ciklaKomanda + " >Pabeidza> " + TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu + "\033[0K");
+
+
+    if (TastaturasKlausitajs.atlautRakstitKomandasTekstu && TastaturasKlausitajs.rakstaKomandasTekstu) {
       System.out.println(">>> " + TastaturasKlausitajs.komandasTeksts + "\033[0K");
     }
   }

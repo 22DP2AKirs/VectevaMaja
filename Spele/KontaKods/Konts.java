@@ -38,26 +38,24 @@ public class Konts {
     if (lietotajsPiesledzies) {
       // Cikls turpināsies, kamēr lietotājs neievadīs burtu 'Q'.
       while (!TastaturasKlausitajs.komanda.equals("Q")) {
-        String garaKomanda = TastaturasKlausitajs.komandasTeksts;
-
-        TastaturasKlausitajs.ieslegtKomandasTekstaFunkciju();
+        TastaturasKlausitajs.komandasTekstaFunkcija();
 
         // -------- Izvade uz terminālu.
         Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.KONTA_APSKATES_EKRANS);
         // -------- Izvēles:
-        if (garaKomanda.equals("RED") && TastaturasKlausitajs.komanda.equals("ENTER")) {
+        if (TastaturasKlausitajs.komandasTeksts.equals("RED") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
           Konts.redigeKontu = true;
           DarbibuIzpilde.izvelnesSkaitlis = 0;
           LietotajaRegistracija.registreties();
           Konts.redigeKontu = false;
         }
-        else if (garaKomanda.equals("DEL") && TastaturasKlausitajs.komanda.equals("ENTER")) {
+        else if (TastaturasKlausitajs.komandasTeksts.equals("DEL") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
           // Konta dzēšanas kods:
           FailuRedigetajs.kontuFailuDzesejs();
           displejaLietotajvards = "_ _ _ _ _ _ _ _ _ _";
           break;
         }
-        else if (garaKomanda.equals("ATC") && TastaturasKlausitajs.komanda.equals("ENTER")) {
+        else if (TastaturasKlausitajs.komandasTeksts.equals("ATC") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
           // 'Toggle' slēdzis.
           if (Konts.atceretiesMani) {
             Konts.atceretiesMani = false;
@@ -71,7 +69,7 @@ public class Konts {
           }
           // TastaturasKlausitajs.sagatavotKomanduDzesanai();
         }
-        else if (garaKomanda.equals("IZI") && TastaturasKlausitajs.komanda.equals("ENTER")) {
+        else if (TastaturasKlausitajs.komandasTeksts.equals("IZI") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
           FailuRedigetajs.mainitFailaMainigaVertibu("atceretiesMani", "F", K.SAKUMA_DATU_MAPE);
           FailuRedigetajs.mainitFailaMainigaVertibu("lietotajaKontaCels",  "", K.SAKUMA_DATU_MAPE);
           Konts.atceretiesMani = false;

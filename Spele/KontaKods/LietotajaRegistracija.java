@@ -13,10 +13,11 @@ public class LietotajaRegistracija {
   public static void registreties() {
     DarbibuIzpilde.izvelnesSkaitlis = 0;
     TastaturasKlausitajs.uzreizNodzestKomandu();
-    TastaturasKlausitajs.komandasTekstaRakstisana = false;
+    TastaturasKlausitajs.rakstaKomandasTekstu = false;
 
     while (!TastaturasKlausitajs.komanda.equals("Q")) {
       // 1. Atļauj rakstīt komandas tekstu.
+      TastaturasKlausitajs.komandasTekstaFunkcija();
 
       // 2. Izvēlas, vai 'metīs' lietotāju ārā no šī ekrāna.
       if (!Konts.redigeKontu) {
@@ -38,7 +39,7 @@ public class LietotajaRegistracija {
       DarbibuIzpilde.izvelnesKustiba(TastaturasKlausitajs.komanda, 3);
 
       // 5. Komandas teksta darbības.
-      if (TastaturasKlausitajs.komandasTeksts.equals("SAVE") && TastaturasKlausitajs.komanda.equals("ENTER")) {
+      if (TastaturasKlausitajs.komandasTeksts.equals("SAVE") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
         // Konta datu rediģēšanas kods:
         if (Konts.redigeKontu) {
           // Lietotāja konta dati tiek mainīti uz jaunajiem.
@@ -74,15 +75,15 @@ public class LietotajaRegistracija {
       }
 
       // 6. Komandas darbības.
-      if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzpilde.izvelnesSkaitlis == 0) {    
+      if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzpilde.izvelnesSkaitlis == 0 && !TastaturasKlausitajs.rakstaKomandasTekstu) {    
         /// Lietotājvārds.
         lietotajvardaIevade();
       }
-      else if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzpilde.izvelnesSkaitlis == 1) {
+      else if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzpilde.izvelnesSkaitlis == 1 && !TastaturasKlausitajs.rakstaKomandasTekstu) {
         /// Parole.
         parolesIevade();
       }
-      else if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzpilde.izvelnesSkaitlis == 2) {
+      else if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzpilde.izvelnesSkaitlis == 2 && !TastaturasKlausitajs.rakstaKomandasTekstu) {
         /// Drošības vārds.
         drosibasVardaIevade();
       }
@@ -93,6 +94,7 @@ public class LietotajaRegistracija {
 
   private static void lietotajvardaIevade() {
     // Drīkst būt tikai 10 simbolus garš!
+    TastaturasKlausitajs.uzreizNodzestKomandu();
     TastaturasKlausitajs.nodzestKomandasTekstu();
 
     while (!TastaturasKlausitajs.komanda.toUpperCase().equals("ENTER")) {
@@ -129,10 +131,12 @@ public class LietotajaRegistracija {
       }
     }
     TastaturasKlausitajs.lielieBurti = true;
+    TastaturasKlausitajs.uzreizNodzestKomandu();
   }
 
   private static void parolesIevade() {
     // Drīkst būt 15 simbolus garš!
+    TastaturasKlausitajs.uzreizNodzestKomandu();
     TastaturasKlausitajs.nodzestKomandasTekstu();
 
     while (!TastaturasKlausitajs.komanda.toUpperCase().equals("ENTER")) {
@@ -177,11 +181,13 @@ public class LietotajaRegistracija {
       }
     }
     TastaturasKlausitajs.lielieBurti = true;
+    TastaturasKlausitajs.uzreizNodzestKomandu();
   }
 
   private static void drosibasVardaIevade() {
     // Drīkst būt 15 simbolus garš!
     TastaturasKlausitajs.nodzestKomandasTekstu();
+    TastaturasKlausitajs.uzreizNodzestKomandu();
 
     while (!TastaturasKlausitajs.komanda.toUpperCase().equals("ENTER")) {
       // 1. Ļauj rakstīt komandas tekstu.
@@ -225,5 +231,6 @@ public class LietotajaRegistracija {
       }
     }
     TastaturasKlausitajs.lielieBurti = true;
+    TastaturasKlausitajs.uzreizNodzestKomandu();
   }
 }

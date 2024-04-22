@@ -23,7 +23,7 @@ public class LietotajaPieslegsanas {
         break;
       }
       
-      TastaturasKlausitajs.rakstitKomandasTekstu();
+      TastaturasKlausitajs.komandasTekstaFunkcija();
 
       // 1. Izvade uz termināli.
       Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.PIESLEGSANAS_EKRANS);
@@ -31,24 +31,21 @@ public class LietotajaPieslegsanas {
       // 2. Kustina izvēlni.
       DarbibuIzpilde.izvelnesKustiba(TastaturasKlausitajs.komanda, 2);
 
-      /// 3. Komandas teksta pārbaude.
-      if (Konts.ievaditsLietotajvards && TastaturasKlausitajs.komandasTeksts.equals("AIZMIRSU") && TastaturasKlausitajs.komanda.equals("ENTER")) {
+      // 3. Komandas pārbaude.
+      /// Drošības v..
+      if (Konts.ievaditsLietotajvards && TastaturasKlausitajs.komandasTeksts.equals("AIZMIRSU") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
         drosibasVardaCikls();
       }
-
-      // 4. Komandas pārbaude.
       /// Lietotājvārds.
-      else if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzpilde.izvelnesSkaitlis == 0) {
+      else if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzpilde.izvelnesSkaitlis == 0 && !TastaturasKlausitajs.rakstaKomandasTekstu) {
         lietotajvardaIevade();
       }
       /// Parole.
-      else if (Konts.ievaditsLietotajvards && TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzpilde.izvelnesSkaitlis == 1) {
-        TastaturasKlausitajs.uzreizNodzestKomandu();
+      else if (Konts.ievaditsLietotajvards && TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzpilde.izvelnesSkaitlis == 1 && !TastaturasKlausitajs.rakstaKomandasTekstu) {
         parolesIevade();
       }
       
-
-      // 5. Ja visa informācija ir ievadīta, tad pieslēdz kontam.
+      // 4. Ja visa informācija ir ievadīta, tad pieslēdz kontam.
       if (Konts.ievaditsLietotajvards && (Konts.ievaditaParole || Konts.ieavaditsDrosibasVards)) {
         Konts.lietotajsPiesledzies = true;
         Konts.displejaLietotajvards = PaligMetodes.saliktAtstarpesSimboluVirkne(Konts.lietotajvards, 1);
@@ -96,6 +93,7 @@ public class LietotajaPieslegsanas {
 
   private static void parolesIevade() {
     // Drīkst būt tikai 15 simbolus garš!
+    TastaturasKlausitajs.uzreizNodzestKomandu();
 
     while (!TastaturasKlausitajs.komanda.toUpperCase().equals("ENTER")) {
       // 1. Izvade uz termināli.
@@ -141,7 +139,7 @@ public class LietotajaPieslegsanas {
   
   private static void drosibasVardaIevade() {
     // Drīkst būt tikai 15 simbolus garš!
-    TastaturasKlausitajs.nodzestKomandasTekstu();
+    TastaturasKlausitajs.uzreizNodzestKomandu();
 
     while (!TastaturasKlausitajs.komanda.toUpperCase().equals("ENTER")) {
       // 1. Izvade uz termināli.
@@ -164,5 +162,6 @@ public class LietotajaPieslegsanas {
       }
     }
     TastaturasKlausitajs.lielieBurti = true;
+    TastaturasKlausitajs.uzreizNodzestKomandu();
   }
 }

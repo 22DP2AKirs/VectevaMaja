@@ -8,11 +8,11 @@ import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 import Spele.K;
 
 public class TastaturasKlausitajs implements NativeKeyListener {
-  public static String komanda = K.TUKSA_IEVADE;
-  public static String komandasTeksts = K.TUKSA_IEVADE;
+  public static volatile String komanda = K.TUKSA_IEVADE;
+  public static volatile String komandasTeksts = K.TUKSA_IEVADE;
   public static String ieprieksejaKomanda = K.TUKSA_IEVADE;
 
-  public static volatile boolean komandasTekstaRakstisana;
+  public static volatile boolean rakstaKomandasTekstu;
   public static volatile boolean atlautRakstitKomandasTekstu;
 
   public static boolean lielieBurti = true;
@@ -21,41 +21,14 @@ public class TastaturasKlausitajs implements NativeKeyListener {
   static boolean vaiIzpildijaKomandu;
   private static boolean turTaustinu;
 
-  public static void beigtRakstitKomandasTekstu() {
-    komandasTekstaRakstisana = false;
-    atslegtaIevade = false;
-    nodzestKomandasTekstu();
-  }
-
-  public static void ieslegtKomandasTekstaFunkciju() {
-    atlautRakstitKomandasTekstu = true;
-    beigtRakstitKomandasTekstu();
-  }
-
-  public static void izslegtKomandasTekstaFunkciju() {
-    atlautRakstitKomandasTekstu = false;
-    beigtRakstitKomandasTekstu();
-  }
-
-  public static void rakstitKomandasTekstu() {
-    // Atļauj jebkurā programmas daļā pieņemt 'komandasTekstu' kā ievades opciju.
-    // 1. Ja kTR ir true jeb ir uzspiests 'x'.
-    if (komandasTekstaRakstisana && atlautRakstitKomandasTekstu) {
-      // 1.1 Raksta kT (komandasTekstu), un izsdzēš komandas ja tās nav 'ENTER', bet ja ir, tad izsauc metodi 'izslegtKomandasTekstaRakstisanu()'.
-      limetKomandasTekstu();
-      // 1.2 Saglabā komandas tekstu, kā iepriekšējo ievadi.
-      ieprieksejaKomanda = komandasTeksts; // Saglabā iepriekšējo komandu.
-    }
-    else {
-      // 1b. Nodzēš KomandasTekstu.
-      nodzestKomandasTekstu();
-    }
-  }
+  public static boolean pabeidzaRakstitKomandasTekstu;
 
   public void nativeKeyPressed(NativeKeyEvent e) {
+    // ? Darbības, kad nospiež taustiņu.
+    // 1. Nosaka, kāds taustiņš tika nospiests.
     String taustins = NativeKeyEvent.getKeyText(e.getKeyCode());
 
-    // 1. Izvēlas rakstīšanas režīmu.
+    // 2. Izvēlas rakstīšanas režīmu.
     if (atslegtaIevade) {
       komandasApstrade(taustins);
     }
@@ -66,13 +39,13 @@ public class TastaturasKlausitajs implements NativeKeyListener {
       }
     }
 
-    // 2. Paziņo, ka ir jauna komanda, kura ir gatava izpildei.
+    // 3. Paziņo, ka ir jauna komanda, kura ir gatava izpildei.
     vaiIzpildijaKomandu = false;
 
-    // 3. Saglabā iepriekšējo komandu.
+    // 4. Saglabā iepriekšējo komandu.
     ieprieksejaKomanda = komanda;
 
-    // 4. Iziet no spēles.
+    // 5. Iziet no spēles.
     if (e.getKeyCode() == NativeKeyEvent.VC_ESCAPE) {
       try {
         GlobalScreen.unregisterNativeHook(); // Atāķē klaviatūras klausītāju.
@@ -93,18 +66,6 @@ public class TastaturasKlausitajs implements NativeKeyListener {
         lielieBurti = true;
       }
     }
-    // 2. Ieslēdz/Izslēdz komandasTekstaRakstisana režīmu.
-    else if (taustins.equals("X")) {
-      // Toggle slēdzis.
-      if (komandasTekstaRakstisana) {
-        beigtRakstitKomandasTekstu();
-      } else {
-        komandasTekstaRakstisana = true;
-        atslegtaIevade = true;
-      }
-
-      komanda = K.TUKSA_IEVADE; // Nodzēš ievadi, lai nebūtu konfliktu ar komandām.
-    }
     // 3. Saglabā ievadi jeb komandu.
     else if (lielieBurti) {
       komanda = taustins.toUpperCase();
@@ -114,13 +75,63 @@ public class TastaturasKlausitajs implements NativeKeyListener {
     }
   }
 
- 
-
   public void nativeKeyReleased(NativeKeyEvent e) {
     turTaustinu = false;
+    // uzreizNodzestKomandu();
+  }
+
+  public static void komandasTekstaFunkcija() {
+    TastaturasKlausitajs.komandasTekstaSledzis();
+    TastaturasKlausitajs.rakstitKomandasTekstu();
+  }
+
+  public static void definetCiklaKomandu() {
+    Main.ciklaKomanda = komanda;
     uzreizNodzestKomandu();
   }
-  
+
+  public static void beigtRakstitKomandasTekstu() {
+    rakstaKomandasTekstu = false;
+    atslegtaIevade = false;
+  }
+
+  public static void ieslegtKomandasTekstaFunkciju() {
+    atlautRakstitKomandasTekstu = true;
+    beigtRakstitKomandasTekstu();
+  }
+
+  public static void izslegtKomandasTekstaFunkciju() {
+    atlautRakstitKomandasTekstu = false;
+    beigtRakstitKomandasTekstu();
+  }
+
+  public static void komandasTekstaSledzis() {
+    if (komanda.toUpperCase().equals("X")) {
+      // Ieslēdz/Izslēdz komandasTekstaRakstisana režīmu.
+      if (rakstaKomandasTekstu) { // Ja ieslēgts.
+        atlautRakstitKomandasTekstu = false;
+        beigtRakstitKomandasTekstu();
+      } else { // Ja izslēgts.
+        atlautRakstitKomandasTekstu = true;
+        rakstaKomandasTekstu = true;
+        atslegtaIevade = true;
+      }
+      uzreizNodzestKomandu();
+    }
+  }
+
+  public static void rakstitKomandasTekstu() {
+    // Atļauj jebkurā programmas daļā pieņemt 'komandasTekstu' kā ievades opciju.
+    // 1. Ja kTR ir true jeb ir uzspiests 'x'.
+    if (rakstaKomandasTekstu && atlautRakstitKomandasTekstu) {
+      // 1.1 Raksta kT (komandasTekstu), un izsdzēš komandas ja tās nav 'ENTER', bet ja ir, tad izsauc metodi 'izslegtKomandasTekstaRakstisanu()'.
+      limetKomandasTekstu();
+    }
+    else {
+      // 1b. Nodzēš KomandasTekstu.
+      nodzestKomandasTekstu();
+    }
+  }
 
   public static void nodzestKomandasTekstu() {
     komandasTeksts = K.TUKSA_IEVADE;
@@ -148,14 +159,18 @@ public class TastaturasKlausitajs implements NativeKeyListener {
     // 1. Ļauj līmēt komandasTekstu ar visiem pielāgojumiem programmai.
     komandasTeksts = limetVardu(komandasTeksts);
 
-    // 2. Atļauj programmā veikt 'teksts' + 'Enter' darbības.
-    if (!komanda.toUpperCase().equals("ENTER")) {
-      uzreizNodzestKomandu();
+    // 2. Izslēdz komandas rakstīšanas funkc.
+    if (komanda.toUpperCase().equals("ENTER")) {
+      pabeidzaRakstitKomandasTekstu = true; // Aizvietojums 'ENTER' taustiņam, lai nerastos kļūdas ar komanda='ENTER' programmā.
+      ieprieksejaKomanda = komandasTeksts;
+      beigtRakstitKomandasTekstu();
     }
     else {
       // Izslēdz komandas teksta rakstīšanas funkc..
-      beigtRakstitKomandasTekstu();
+      pabeidzaRakstitKomandasTekstu = false;
     }
+
+    uzreizNodzestKomandu();
   }
 
   public static void palaistKlaviaturasLasitaju() {

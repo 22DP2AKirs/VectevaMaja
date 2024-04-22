@@ -80,8 +80,8 @@ public class Main {
 
       // * ///// S A K U M A   E K R A N A   C I K L S //////
       Izvade.jaizvadaMasivs = true;
-      TastaturasKlausitajs.atslegtaIevade = true;
       while (sakumaEkrans) {
+        TastaturasKlausitajs.komandasTekstaFunkcija();
         // 1. Apstrādā lietotāja ievadi.
         DarbibuIzpilde.izpilditSakumaEkranaDarbibas(TastaturasKlausitajs.komanda);
         // 2. Izvada bildi terminālī.
@@ -90,7 +90,6 @@ public class Main {
         TastaturasKlausitajs.nodzestKomandu();
       }
       Izvade.jaizvadaMasivs = false;
-      TastaturasKlausitajs.atslegtaIevade = false;
       
       // ? Nolasa iestatījumu datus.
       SakumaDati.naktsDati = FailuRedigetajs.atgriestDaluNoFaila("#Nakts" + SakumaDati.spelesNakts, K.NAKTS_DATU_FAILS);
@@ -107,11 +106,12 @@ public class Main {
       // * ///// S P Ē L E S   C I K L S ///////
       while (spelePalaista) { // Kamēr laiks nav beidzies, turpināt ciklu jeb spēli.
         // 0. Atļauj izmantot 'x' taustiņa funkc.
-        TastaturasKlausitajs.rakstitKomandasTekstu();
+        TastaturasKlausitajs.komandasTekstaFunkcija();
+
+        TastaturasKlausitajs.definetCiklaKomandu();
+
         // 1. Apstrādā lietotāja ievadi.
-        if (TastaturasKlausitajs.vaiIzpildijaKomandu) {
-          DarbibuIzpilde.izpilditSpelesDarbibas(Enums.V_Istaba, Enums.V_Virziens, TastaturasKlausitajs.komanda , TastaturasKlausitajs.komandasTeksts); // Pilnībā aizvieto 'VaronaDarbibas.apstradatKomandu(Ievade.lietotajaIevade);'.
-        }
+        DarbibuIzpilde.izpilditSpelesDarbibas(Enums.V_Istaba, Enums.V_Virziens, ciklaKomanda , TastaturasKlausitajs.komandasTeksts); // Pilnībā aizvieto 'VaronaDarbibas.apstradatKomandu(Ievade.lietotajaIevade);'.
         // 2. Papildus informācijas izvade --Debuging--
         informacijasIzvade();
         // 3. Izvade uz ekrānu jeb termināli.
@@ -122,7 +122,6 @@ public class Main {
         
         VaronaStatusaEfekti.parbauditEffektus(); // Varoņa bojāiešanas nosacījumi.
         // 5. Notīra ievadi.
-        TastaturasKlausitajs.nodzestKomandu();
         // ------------------ Papildus.
         if (programmasKluduLasisana) { // Apstādina spēli, lai varētu izlasīt kļūdas aprakstu (parasti vienmēr izslēgts).
           PaligMetodes.gulet(100);
