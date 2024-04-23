@@ -23,7 +23,7 @@ public class VaronaStatusaEfekti {
   public static void varonaStress() {
     // Viss, kas ietekmē varoņa stresa līmeni.
     if (!SakumaDati.istabuGaismasIeslegtas[Enums.V_Istaba.CIPARS] && !VaronaDarbibas.aizdedzinatsSerkocins) { // Ja istabā, kurā atrodas varonis ir izslēgta gaisma, tad ...
-      varonaStresaLimenis += 0.1;
+      varonaStresaLimenis += 0.3;
     }
   }
 
@@ -76,7 +76,5 @@ public class VaronaStatusaEfekti {
     varonaStresaLimenis = 0;
 
     MazoSpeluIzvelesKods.sagatavotMajasdarbusJaunaiSpelei();
-
-    Main.nodzestTerminali();
   }
 }

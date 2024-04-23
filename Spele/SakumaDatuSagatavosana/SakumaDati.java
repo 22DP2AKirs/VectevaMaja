@@ -18,7 +18,6 @@ public class SakumaDati {
   public static String[] kamera = new String[16];
 
   // Parastie dati:
-  public static boolean spokiPusnaktsRezima = false;
   public static boolean[] istabuGaismasIeslegtas = new boolean[4]; // Indeksi: 0. Gulta, 1. Dīvāns, 2. Durvis, 3. Virtuve.
   public static ArrayList<String> naktsDati;
 
@@ -47,7 +46,13 @@ public class SakumaDati {
   public static int spelesNakts; // Saglabā spēles nakti.
 
   public static void sagatavotDatus() {
+    // Nakts datiem ir jābūt pirmajiem, jo pārējie dati tiek ņemti no tā.
+    SakumaDati.naktsDati = FailuRedigetajs.atgriestDaluNoFaila("#Nakts" + SakumaDati.spelesNakts, K.NAKTS_DATU_FAILS);
+
     izveletiesKameru();
+    ieslegtGaismas();
+    sagatavotSpokus();
+    citiSpelesDati();
   }
 
   public static void nolasitDatusNoKonta() {
@@ -94,26 +99,15 @@ public class SakumaDati {
     }
   }
 
-  public static void sagatavotDatusNaktij() {
-    // Cits:
-    istabuGaismasIeslegtas[0] = FailuRedigetajs.booleanDatuAtgriezejs("gultasGaisma", K.IESTATIJUMU_FAILS);
-    istabuGaismasIeslegtas[1] = FailuRedigetajs.booleanDatuAtgriezejs("divanaGaisma", K.IESTATIJUMU_FAILS);
-    istabuGaismasIeslegtas[2] = FailuRedigetajs.booleanDatuAtgriezejs("durvjuGaisma", K.IESTATIJUMU_FAILS);
-    istabuGaismasIeslegtas[3] = FailuRedigetajs.booleanDatuAtgriezejs("virtuvesGaisma", K.IESTATIJUMU_FAILS);
+  private static void ieslegtGaismas() {
+    istabuGaismasIeslegtas[0] = true;
+    istabuGaismasIeslegtas[1] = true;
+    istabuGaismasIeslegtas[2] = true;
+    istabuGaismasIeslegtas[3] = true;
+    pagrabaGaisma = false;
+  }
 
-    durvisSlegtas = FailuRedigetajs.booleanDatuAtgriezejs("durvisSlegtas", K.IESTATIJUMU_FAILS);
-    elektribaIeslegta = FailuRedigetajs.booleanDatuAtgriezejs("elektribaIeslegta", K.IESTATIJUMU_FAILS);
-    pagrabaGaisma = FailuRedigetajs.booleanDatuAtgriezejs("pagrabaGaisma", K.IESTATIJUMU_FAILS);
-    spuldziteSaplesta = FailuRedigetajs.booleanDatuAtgriezejs("spuldziteSaplesta", K.IESTATIJUMU_FAILS);
-
-    // Nakts: 
-    MazoSpeluIzvelesKods.mdPapildusLaikaIespeja = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("mdPapildusLaikaIespeja",  naktsDati);
-
-    spokiSledzAraGaismu = FailuRedigetajs.booleanDatuAtgriezejsNoSaraktsa("spokiSledzAraGaismu", naktsDati);
-
-    atlikusoSerkocinuDaudzums = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("atlikusoSerkocinuDaudzums", naktsDati);
-    maxSerkocinaDegsanasLaiks = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("maxSerkocinaDegsanasLaiks", naktsDati);
-
+  private static void sagatavotSpokus() {
     logaSpokaAtlautaAgresivitate = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("logaSpokaAtlautaAgresivitate", naktsDati);
     durvjuSpokaAtlautaAgresivitate = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("durvjuSpokaAtlautaAgresivitate", naktsDati);
     virtuvesSpokaAtlautaAgresivitate = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("virtuvesSpokaAtlautaAgresivitate", naktsDati);
@@ -121,21 +115,26 @@ public class SakumaDati {
     logaSpokaAtputasLaiks = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("logaSpokaAtputasLaiks", naktsDati);
     durvjuSpokaAtputasLaiks = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("durvjuSpokaAtputasLaiks", naktsDati);
     virtuvesSpokaAtputasLaiks = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("virtuvesSpokaAtputasLaiks", naktsDati);
+
+    spuldziteSaplesta = FailuRedigetajs.booleanDatuAtgriezejs("spuldziteSaplesta", K.IESTATIJUMU_FAILS);
+    spokiSledzAraGaismu = FailuRedigetajs.booleanDatuAtgriezejsNoSaraktsa("spokiSledzAraGaismu", naktsDati);
+  }
+
+  private static void citiSpelesDati() {
+    durvisSlegtas = FailuRedigetajs.booleanDatuAtgriezejs("durvisSlegtas", K.IESTATIJUMU_FAILS);
+    MazoSpeluIzvelesKods.mdPapildusLaikaIespeja = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("mdPapildusLaikaIespeja",  naktsDati);
+    elektribaIeslegta = FailuRedigetajs.booleanDatuAtgriezejs("elektribaIeslegta", K.IESTATIJUMU_FAILS);
   }
 
   public static void uzstaditSpokusUzPusnaktsRezimu() {
     // Pārslēdz spoku datus uz pusnakts režīmu.
-    if (!spokiPusnaktsRezima) {
-      // Atjauno jau aktīvo un topošos spokus.
-      LogaSpoks.logaSpoks.spokaAtlautaAgresivitate = logaSpokaAtlautaAgresivitate = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("pusnaktsLogaSpokaAtlautaAgresivitate", naktsDati);
-      DurvjuSpoks.durvjuSpoks.spokaAtlautaAgresivitate = durvjuSpokaAtlautaAgresivitate = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("pusnaktsDurvjuSpokaAtlautaAgresivitate", naktsDati);
-      VirtuvesSpoks.virtuvesSpoks.spokaAtlautaAgresivitate = virtuvesSpokaAtlautaAgresivitate = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("pusnaktsVirtuvesSpokaAtlautaAgresivitate", naktsDati);
+    // 1. Atjauno jau aktīvo un topošos spokus.
+    LogaSpoks.logaSpoks.spokaAtlautaAgresivitate = logaSpokaAtlautaAgresivitate = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("pusnaktsLogaSpokaAtlautaAgresivitate", naktsDati);
+    DurvjuSpoks.durvjuSpoks.spokaAtlautaAgresivitate = durvjuSpokaAtlautaAgresivitate = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("pusnaktsDurvjuSpokaAtlautaAgresivitate", naktsDati);
+    VirtuvesSpoks.virtuvesSpoks.spokaAtlautaAgresivitate = virtuvesSpokaAtlautaAgresivitate = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("pusnaktsVirtuvesSpokaAtlautaAgresivitate", naktsDati);
 
-      LogaSpoks.logaSpoks.spokaAtputasLaiks = logaSpokaAtputasLaiks = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("pusnaktsLogaSpokaAtputasLaiks", naktsDati);
-      DurvjuSpoks.durvjuSpoks.spokaAtputasLaiks = durvjuSpokaAtputasLaiks = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("pusnaktsDurvjuSpokaAtputasLaiks", naktsDati);
-      VirtuvesSpoks.virtuvesSpoks.spokaAtputasLaiks = virtuvesSpokaAtputasLaiks = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("pusnaktsVirtuvesSpokaAtputasLaiks", naktsDati);
-
-      spokiPusnaktsRezima = true;
-    }
+    LogaSpoks.logaSpoks.spokaAtputasLaiks = logaSpokaAtputasLaiks = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("pusnaktsLogaSpokaAtputasLaiks", naktsDati);
+    DurvjuSpoks.durvjuSpoks.spokaAtputasLaiks = durvjuSpokaAtputasLaiks = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("pusnaktsDurvjuSpokaAtputasLaiks", naktsDati);
+    VirtuvesSpoks.virtuvesSpoks.spokaAtputasLaiks = virtuvesSpokaAtputasLaiks = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("pusnaktsVirtuvesSpokaAtputasLaiks", naktsDati);
   }
 }

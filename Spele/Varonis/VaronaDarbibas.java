@@ -180,7 +180,6 @@ public class VaronaDarbibas {
     else if (komanda.equals("E") && AtrodiPariSavienojums.mSpeleAtrodiPari) {
       Izvade.ieslegtMasivaIzvadi();
       MazoSpeluIzvelesKods.varonisIrMazajaSpele = true;
-      Main.nodzestTerminali();
       TastaturasKlausitajs.nodzestCiklaKomandu();
       TastaturasKlausitajs.nodzestKomandasTekstu();
     }
@@ -317,7 +316,6 @@ public class VaronaDarbibas {
     else {
       Main.mSpeluInfo = true;
     }
-    Main.nodzestTerminali();
   }
 
   private static void ieslegtIzslegtSpokuInformaciju() {
@@ -327,7 +325,6 @@ public class VaronaDarbibas {
     else {
       Main.spokuInfo = true;
     }
-    Main.nodzestTerminali();
   }
 
   private static void aizbiedetLogaSpoku(Istabas istaba) {

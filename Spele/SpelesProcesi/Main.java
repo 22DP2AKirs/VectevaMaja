@@ -2,10 +2,8 @@ package Spele.SpelesProcesi;
 
 import java.util.Random;
 
-import Spele.Enums;
 import Spele.K;
 import Spele.Testi;
-import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.KontaKods.Konts;
 import Spele.Enums.EkranuVeidi;
@@ -74,11 +72,11 @@ public class Main {
     izvade.start();
     TastaturasKlausitajs.palaistKlaviaturasLasitaju();
 
-    // * P R O G R A M M A S   C I K L S //
+    // *P R O G R A M M A S   C I K L S* //
     while (programmaPalaista) {
       nodzestTerminali();
 
-      // * ///// S A K U M A   E K R A N A   C I K L S //////
+      // *S Ā K U M A   E K R Ā N A   C I K L S* //
       Izvade.ieslegtMasivaIzvadi();
       while (sakumaEkrans) {
         TastaturasKlausitajs.komandasTekstaFunkcija();
@@ -91,22 +89,17 @@ public class Main {
       }
       Izvade.ieslegtSpelesIzvadi();
       
-      // ? Nolasa iestatījumu datus.
-      SakumaDati.naktsDati = FailuRedigetajs.atgriestDaluNoFaila("#Nakts" + SakumaDati.spelesNakts, K.NAKTS_DATU_FAILS);
-      SakumaDati.sagatavotDatusNaktij();
+      // Nolasa iestatījumu datus.
       SakumaDati.sagatavotDatus();
-      Spoks.izveidotSpokus(); 
+      Spoks.izveidotSpokus();
       TastaturasKlausitajs.ieslegtKomandasTekstaFunkciju();
 
+      // Thredi, kurus izmantos spēles laikā. Tie beidzas, kad (spelePalaista == false).
+      Laiks laiks = new Laiks(); // Parastais threds.
+      laiks.start(); 
+      Thread blakusProcesuVThreds = izveidotBlakusProcesuThredu(); // Virtuālais threds.  
 
-      nodzestTerminali();
-      Laiks laiks = new Laiks(); // Katru reizi, kad ir palaista spēle, veido jaunu Laika thredu.
-      Thread blakusProcesuVTreds = izveidotBlakusProcesuThredu(); // Virtuālais treds.  
-
-      
-      laiks.start(); // Strādā, kamēr spelePalaista bools ir true.
-
-      // * ///// S P Ē L E S   C I K L S ///////
+      // *S P Ē L E S   C I K L S* //
       while (spelePalaista) { // Kamēr laiks nav beidzies, turpināt ciklu jeb spēli.
         // 1. Atļauj izmantot 'x' taustiņa funkc.
         TastaturasKlausitajs.komandasTekstaFunkcija();
@@ -119,10 +112,9 @@ public class Main {
         // 5. Pārbauda vai uzvarēja, vai zaudēja u.t.t.
         VaronaStatusaEfekti.parbauditEffektus(); // Varoņa bojāiešanas nosacījumi.
       }
-      nodzestTerminali();
-      // * /// L I E K   T H R E D I E M   B E I G T I E S ///////
-      laiks.join(); // wait for the thread to stop // Apstādina Laika thredu un izveido jaunu, kad palaiž spēli no jauna.
-      blakusProcesuVTreds.join();
+      // Beidz jeb apstādina thredus.
+      laiks.join();
+      blakusProcesuVThreds.join();
     }
     skanasSpeletajs.join();
     izvade.join();

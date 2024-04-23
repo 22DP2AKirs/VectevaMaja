@@ -63,7 +63,7 @@ public class Izvade extends Thread {
         }
 
         // 3. Izvade terminālī.
-        PaligMetodes.izvaditArrayListElementus(spelesIzvadesSaraksts);
+        PaligMetodes.izvaditArrayListElementus(spelesIzvadesSaraksts, false);
 
         // 4. Darbības ar izvades kursoru.
         System.out.println("\033[0J"); // Izdzēš visu tekstu līdz ekrāna beigām.

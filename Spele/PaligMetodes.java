@@ -58,11 +58,14 @@ public class PaligMetodes {
     return jaunaisVards;
   }
 
-  public static void izvaditArrayListElementus(ArrayList<?> saraksts) {
+  public static void izvaditArrayListElementus(ArrayList<?> saraksts, boolean izvaditElementuSkaitu) {
     for (Object object : saraksts) {
       System.out.println(object);
     }
-    System.out.println("--Elementu skaits: " + saraksts.size() + "--");
+
+    if (izvaditElementuSkaitu) {
+      System.out.println("--Elementu skaits: " + saraksts.size() + "--");
+    }
   }
 
   public static boolean navTuksasIevades(String ievade) {
