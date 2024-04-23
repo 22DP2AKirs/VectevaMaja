@@ -1,7 +1,7 @@
 #KontaDati:
-Lietotajvards=ABOLITIS
-Parole=OLINA
-DrosibasVards=ABOLS
+Lietotajvards=B
+Parole=ALUTINS
+DrosibasVards=OGAASSS
 
 #SpelesDati:
 spelesNakts=1

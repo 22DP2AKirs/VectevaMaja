@@ -4,7 +4,6 @@ import java.util.Random;
 
 import Spele.Enums;
 import Spele.K;
-import Spele.PaligMetodes;
 import Spele.Testi;
 import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.FailuLietotaji.SkanasSpeletajs;
@@ -34,20 +33,20 @@ public class Main {
   public static boolean sakumaEkrans = true; // Nosaka vai spēles sākumā rādīs sākuma ekrānu vai nē.
   public static volatile boolean spelePalaista = false; // Mainīgais bool, kas pašu spēli.
  
+  public static int spelesIlgums = 360;// 6 min 360;
+
   // Varoņa īpašības.
   public static boolean varonaNemirstiba = true; // Vai varonis var zaudēt spēli vai nē.
   
   // Objekti.
   public static Random rand = new Random(); // Priekš random darbībām.
 
-  public static int spelesIlgums = 360;// 6 min 360;
-  
   // Cits.
-  public static volatile boolean thrediGul; // Apstādina Laiks thredu uz noteiktu laiku.
-  static boolean programmasKluduLasisana = false;
-  public static String ciklaKomanda; // Cikla komanda ir tā, kas tiks definēta cikla sākumā un nodzēsta cikla beigās, lai komanda visās pārbaudēs būtu vienāda.
+  public static volatile boolean laikaTredsGul; // Apstādina Laiks thredu uz noteiktu laiku.
+  static boolean programmasKluduLasisana = false; // Apstādina 
+  public static String ciklaKomanda = K.TUKSA_IEVADE; // Cikla komanda ir tā, kas tiks definēta cikla sākumā un nodzēsta cikla beigās, lai komanda visās pārbaudēs būtu vienāda.
 
-
+  // @SuppressWarnings("null")
   public static void main(String[] args) throws InterruptedException { // throws InterruptedException nozīmē, ka var neizmantot try_catch.
     // * Galvenais programmas process.
 
@@ -68,7 +67,8 @@ public class Main {
     // ? /////// T H R E D I //////////
     // Jaunie rīki jeb thredi, jeb objekti.
     SkanasSpeletajs skanasSpeletajs = new SkanasSpeletajs();
-    Izvade izvade = new Izvade();
+    Izvade izvade = new Izvade();  
+
     // Sākas atsevišķās darbības jeb patstāvīgie procesi.
     skanasSpeletajs.start(); // Strādā, kamēr spelePalaista bools ir true.
     izvade.start();
@@ -79,7 +79,7 @@ public class Main {
       nodzestTerminali();
 
       // * ///// S A K U M A   E K R A N A   C I K L S //////
-      Izvade.jaizvadaMasivs = true;
+      Izvade.ieslegtMasivaIzvadi();
       while (sakumaEkrans) {
         TastaturasKlausitajs.komandasTekstaFunkcija();
         // 1. Apstrādā lietotāja ievadi.
@@ -89,7 +89,7 @@ public class Main {
         // 3. Notīra ievadi.
         TastaturasKlausitajs.nodzestKomandu();
       }
-      Izvade.jaizvadaMasivs = false;
+      Izvade.ieslegtSpelesIzvadi();
       
       // ? Nolasa iestatījumu datus.
       SakumaDati.naktsDati = FailuRedigetajs.atgriestDaluNoFaila("#Nakts" + SakumaDati.spelesNakts, K.NAKTS_DATU_FAILS);
@@ -101,50 +101,40 @@ public class Main {
 
       nodzestTerminali();
       Laiks laiks = new Laiks(); // Katru reizi, kad ir palaista spēle, veido jaunu Laika thredu.
+      Thread blakusProcesuVTreds = izveidotBlakusProcesuThredu(); // Virtuālais treds.  
+
+      
       laiks.start(); // Strādā, kamēr spelePalaista bools ir true.
 
       // * ///// S P Ē L E S   C I K L S ///////
       while (spelePalaista) { // Kamēr laiks nav beidzies, turpināt ciklu jeb spēli.
-        // 0. Atļauj izmantot 'x' taustiņa funkc.
+        // 1. Atļauj izmantot 'x' taustiņa funkc.
         TastaturasKlausitajs.komandasTekstaFunkcija();
-
+        // 2. Definē mainīgo, kas tiks izmantots ciklā kā lietotāja nospiestais taustiņš.
         TastaturasKlausitajs.definetCiklaKomandu();
-
-        // 1. Apstrādā lietotāja ievadi.
-        DarbibuIzpilde.izpilditSpelesDarbibas(Enums.V_Istaba, Enums.V_Virziens, ciklaKomanda , TastaturasKlausitajs.komandasTeksts , TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu); // Pilnībā aizvieto 'VaronaDarbibas.apstradatKomandu(Ievade.lietotajaIevade);'.
-        // 2. Papildus informācijas izvade --Debuging--
-        informacijasIzvade();
-        // 3. Izvade uz ekrānu jeb termināli.
-        izvaditBildiUzEkranu();
-        // 4. Varoņa zaudēšanas nosacījumu pārbaude.
-        VaronaStatusaEfekti.varonaStress();
-        VaronaDarbibas.kamerasBaterijasAprekins();
-        
+        // 3. Apstrādā lietotāja ievadi.
+        DarbibuIzpilde.izpilditSpelesDarbibas(ciklaKomanda , TastaturasKlausitajs.komandasTeksts , TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu); // Pilnībā aizvieto 'VaronaDarbibas.apstradatKomandu(Ievade.lietotajaIevade);'.
+        // 4. Izvade uz ekrānu jeb termināli.
+        izvadesMasivuAtjaunosana();
+        // 5. Pārbauda vai uzvarēja, vai zaudēja u.t.t.
         VaronaStatusaEfekti.parbauditEffektus(); // Varoņa bojāiešanas nosacījumi.
-        // 5. Notīra ievadi.
-        // ------------------ Papildus.
-        if (programmasKluduLasisana) { // Apstādina spēli, lai varētu izlasīt kļūdas aprakstu (parasti vienmēr izslēgts).
-          PaligMetodes.gulet(100);
-        }
       }
-
       nodzestTerminali();
       // * /// L I E K   T H R E D I E M   B E I G T I E S ///////
       laiks.join(); // wait for the thread to stop // Apstādina Laika thredu un izveido jaunu, kad palaiž spēli no jauna.
-      
+      blakusProcesuVTreds.join();
     }
     skanasSpeletajs.join();
     izvade.join();
-    // ievadesLasitajs.join();
   }
 
-  private static void izvaditBildiUzEkranu() {
+  private static void izvadesMasivuAtjaunosana() {
     // Visām fāzēm, bildēm un visam vizuālajam ir jābūt gatavam pirms šīs metodes izsaukšanas!!!
     // Spoku vizuālais atjaunojums notiek Laiks.java Klasē.
     if (!MazoSpeluIzvelesKods.varonisIrMazajaSpele) {
       Izvade.istabasBilde = BildesParklajumi.parklataIstaba;
     }
-    else {
+    else {      
       if (KaratavasSavienojums.mSpeleKaratavas) {
         KaratavasSavienojums.palaistKaratavasMazoSpeli();
       }
@@ -154,34 +144,22 @@ public class Main {
     }
   }
 
-  private static void informacijasIzvade() {
-    // * Metode ievāc info. kategoriju, kuru izvadīt virs ekrana.
-    // * Testeru metode.
-
-    // Izvada informāciju par spokiem.
-    if (Main.spokuInfo) { 
-      Spoks.spokuInfo();
-      izvaditSpelesPapildinformaciju();
-    }
-    // Izvada informāciju par m-spēlēm.
-    else if (Main.mSpeluInfo) {
-      izvaditMSpelesInfo();
-    }
-  }
-
-  private static void izvaditMSpelesInfo() {
-    System.out.println();
-    System.out.println("Ieksa m-spele: " + MazoSpeluIzvelesKods.varonisIrMazajaSpele + ", Izveleta m-spele: " + MazoSpeluIzvelesKods.izveletaMazaSpele + "\033[0K");
-    System.out.println("Izveleta spele: (Karatavas : " + KaratavasSavienojums.mSpeleKaratavas + "), (Atrodi pari : " + AtrodiPariSavienojums.mSpeleAtrodiPari + ")\033[0K");
-    izvaditSpelesPapildinformaciju();
-  }
-
-  private static void izvaditSpelesPapildinformaciju() {
-    System.out.println("Laiks ms: " + Laiks.spelesLaiks + " / " + Laiks.vienaStunda * 6 + K.RESET + ", Stressa limenis: " + VaronaStatusaEfekti.varonaStresaLimenis + "\033[0K");
-  }
-
   public static void nodzestTerminali() {
     System.out.print("\033[H\033[2J"); // Notīra terminālu.
     System.out.flush(); // Kaut kas ar kursora pozīciju.
+  }
+
+  private static Thread izveidotBlakusProcesuThredu() {
+    // Izveido virtuālo tredu, kurš apstrādā visādus blakus procesus uz 0.1 sek. intervāla.
+    return Thread.ofVirtual().start(() -> { // Virtuālais threds.
+      // Darbības, kas notiks threda dzīves laikā.
+      while (Main.spelePalaista) {
+        // 1. Novēro un maina kameras baterijas vērtības.
+        VaronaDarbibas.kamerasBaterijasAprekins();
+        // 2. Palielina varoņa stresu, ja viņš ir tumsā.
+        VaronaStatusaEfekti.varonaStress();
+        try { Thread.sleep(100); } catch (Exception e) {} // 0.1 sec.
+      }
+    });
   }
 }

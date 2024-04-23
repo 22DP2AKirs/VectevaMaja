@@ -17,6 +17,7 @@ import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
 import Spele.MazasSpeles.Karatavas.Karatavas;
 import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
+import Spele.SpelesProcesi.Izvade;
 import Spele.SpelesProcesi.Laiks;
 
 public class VaronaDarbibas {
@@ -25,7 +26,7 @@ public class VaronaDarbibas {
   public static boolean aizdedzinatsSerkocins = false; 
   public static int serkocinaDeksanasLaikaSkaititajs;
   public static int laiksCikIlgiElektribaBusIzslegta;
-  public static boolean ieslegtaKamera;
+  
   public static double kamerasBaterija = 100;
 
   public static void parastasDarbibas(String komanda) {
@@ -177,8 +178,10 @@ public class VaronaDarbibas {
       kustetiesPaMaju(KustibasVirziens.NEGATIVS); ////////////////////////////////////////
     }
     else if (komanda.equals("E") && AtrodiPariSavienojums.mSpeleAtrodiPari) {
+      Izvade.ieslegtMasivaIzvadi();
       MazoSpeluIzvelesKods.varonisIrMazajaSpele = true;
       Main.nodzestTerminali();
+      TastaturasKlausitajs.nodzestCiklaKomandu();
       TastaturasKlausitajs.nodzestKomandasTekstu();
     }
   }
@@ -202,8 +205,8 @@ public class VaronaDarbibas {
       aizslegtDurvis();
     }
     else if (komanda.equals("E") && KaratavasSavienojums.mSpeleKaratavas) {
+      TastaturasKlausitajs.nodzestCiklaKomandu();
       Karatavas.palaistKaratavas();
-      TastaturasKlausitajs.nodzestKomandasTekstu();
     }
   }
 
@@ -260,6 +263,7 @@ public class VaronaDarbibas {
     if (MazoSpeluIzvelesKods.varonisIrMazajaSpele) {
       if (komanda.equals("Q")) {
         MazoSpeluIzvelesKods.varonisIrMazajaSpele = false;
+        Izvade.ieslegtSpelesIzvadi();
       }
       else if (komanda.equals("WIN")) {
         // Kas vēl, lai beigtu m-spēli.
@@ -432,6 +436,8 @@ public class VaronaDarbibas {
     Enums.V_Istaba = PaligMetodes.atrastIstabasEnumuPecTaCiparaVertibas(istabasCipars);
   }
 
+  public static volatile boolean ieslegtaKamera;
+
   public static void fotokamerasBaterijasAprekins() {
     // Kamera tur uzlādi aptuveni 5 - 10 sek.
     if (ieslegtaKamera) {
@@ -447,6 +453,7 @@ public class VaronaDarbibas {
       kamerasBaterija += 0.5;
     }
   }
+
 
   public static void videokamerasBaterijasAprekins() {
     // Kamera tur ļoti ilgu laiku.

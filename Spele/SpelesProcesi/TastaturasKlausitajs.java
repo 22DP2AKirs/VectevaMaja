@@ -92,9 +92,14 @@ public class TastaturasKlausitajs implements NativeKeyListener {
   }
 
   public static void definetCiklaKomandu() {
-    Main.ciklaKomanda = komanda;
+    // 1. Jauna cikla sākumā nodzēš iepriekšējo jeb jau apstrādāto komandu.
+    if (!Main.ciklaKomanda.equals(K.TUKSA_IEVADE)) {
+      Main.ciklaKomanda = K.TUKSA_IEVADE;
+    }
     
+    // 2. Ja komanda nav tukša, tad definē jauno cikla komandu. // ! Šis noņem milzīgo ievades kavēšanos.
     if (!komanda.equals(K.TUKSA_IEVADE)) {
+      Main.ciklaKomanda = komanda;
       ieprieksejaKomanda = komanda;
       uzreizNodzestKomandu();
     }
@@ -144,18 +149,18 @@ public class TastaturasKlausitajs implements NativeKeyListener {
     komandasTeksts = K.TUKSA_IEVADE;
   }
 
-  public static String limetVardu(String vards) {
+  public static String limetVardu(String vards, String ievade) {
     // Līmē nospiestos burtus, lai veidotu vārdu, piem., : <- a ; :a <- b ; : ab <- o ; u.t.t.
 
     // 1. Nosaka, kāda darbība būs veikta ar simbolu virkni.
-    if (komanda.toUpperCase().equals("BACKSPACE") && vards.length() > 0) {
+    if (ievade.toUpperCase().equals("BACKSPACE") && vards.length() > 0) {
       // Atņem pēdējo simbolu.
       vards = vards.substring(0, vards.length() - 1);
     }
     else {
       // Ja komanda ir 1 simbols, tad ... .
-      if (komanda.length() < 2) {
-        vards += komanda;
+      if (ievade.length() < 2) {
+        vards += ievade;
       }
     }
 
@@ -164,7 +169,7 @@ public class TastaturasKlausitajs implements NativeKeyListener {
 
   public static void limetKomandasTekstu() {
     // 1. Ļauj līmēt komandasTekstu ar visiem pielāgojumiem programmai.
-    komandasTeksts = limetVardu(komandasTeksts);
+    komandasTeksts = limetVardu(komandasTeksts, komanda);
 
     // 2. Izslēdz komandas rakstīšanas funkc.
     if (komanda.toUpperCase().equals("ENTER")) {

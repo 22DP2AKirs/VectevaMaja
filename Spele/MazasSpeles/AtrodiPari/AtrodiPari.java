@@ -6,6 +6,7 @@ import java.util.Arrays;
 import Spele.K;
 import Spele.PaligMetodes;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
+import Spele.SpelesProcesi.Izvade;
 import Spele.SpelesProcesi.Main;
 
 // Atrodi pāri algoritms.
@@ -69,6 +70,21 @@ public class AtrodiPari {
 
   // * Metodes:
   /// Public:
+  public String[] uzMasivu(ArrayList<String> saraksts, String koordTeksts) {
+    int elementuSkaits = saraksts.size() + 1;
+    String[] masivs = new String[elementuSkaits];
+
+    // 1. Pievieno konsoli, kur var rakstīt izvēlētās kārts koordinātas.
+    masivs[0] = ">> " + koordTeksts + "\033[0K";
+
+    // 2. Pārveido sarakstu par masīvu.
+    for (int i = 1 ; i != elementuSkaits ; i++) {
+      masivs[i] = saraksts.get(i - 1);
+    }
+
+    return masivs;
+  }
+
   public ArrayList<String> salipinatKartisVienaSaraksta() {
     ArrayList<String> salimetaBilde = new ArrayList<>(); // Saraksts pie kura pievieno, katru salīmēto rindu.
     String[] bildesRinda = new String[9]; // Masīvs, kurā savienos/pievienos tekstu, un pēc tam pieliks to pie saraksta.
@@ -163,6 +179,8 @@ public class AtrodiPari {
 
       MazoSpeluIzvelesKods.varonisIrMazajaSpele = false;
       MazoSpeluIzvelesKods.izveletaMazaSpele = false;
+
+      Izvade.ieslegtSpelesIzvadi();
     }
   }
 
@@ -261,11 +279,8 @@ public class AtrodiPari {
 
   public void parbauditIevadi(String komanda, String koordTeksts) {
     // Ievadei ir jāsastāv no 2 cipariem, piem., '25' vai '91', vai '02' u.t.t.
-
-    // 1. Parāda lietotājam, ko viņš ievada.
-    System.out.println(">> " + koordTeksts + "\033[0K");
    
-    // 2. Pārbauda vai komanda atbilst prasībām.
+    // 1. Pārbauda vai komanda atbilst prasībām.
     if (komanda.equals("ENTER") && PaligMetodes.navTuksasIevades(koordTeksts) && PaligMetodes.irSkaitlis(koordTeksts) && koordTeksts.length() == 2) {
       apstradatIevadi(koordTeksts);
     }

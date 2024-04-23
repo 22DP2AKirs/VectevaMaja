@@ -44,9 +44,9 @@ public class Laiks extends Thread {
 
   private void paguletNoteiktuLaiku() {
     // * Metode apstādina thredu uz noteiktu laiku.
-    if (Main.thrediGul) {
+    if (Main.laikaTredsGul) {
       PaligMetodes.gulet(3);
-      Main.thrediGul = false;
+      Main.laikaTredsGul = false;
     }
   }
 

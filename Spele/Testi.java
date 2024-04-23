@@ -1,24 +1,49 @@
 package Spele;
 
 import Spele.SpelesProcesi.Main;
+import Spele.SpelesProcesi.TastaturasKlausitajs;
+import Spele.Varonis.VaronaDarbibas;
 
 public class Testi {
   public static boolean testesana = false;
+  static int i = 1;
+
+  static Thread kamerasThreds = Thread.ofVirtual().start(() -> {
+    // Darbības, kas notiks threda dzīves laikā.
+    while (Main.spelePalaista) {
+      while (!VaronaDarbibas.ieslegtaKamera) {
+        i++;
+        System.out.println(i);
+        try { Thread.sleep(100); } catch (Exception e) {} // 0.1 sec.
+      }
+    }
+  });
+
+
 
   public static void testaProgramma() { // throws  InterruptedException, Lai varētu izmantot: Thread.sleep(0); bez try_catch.
-
+    TastaturasKlausitajs.palaistKlaviaturasLasitaju();
     while (true) {
-      Main.nodzestTerminali();
-      System.out.println("::::1234567890");
-      System.out.println(PaligMetodes.atgriestProgresaLiniju(100, 1000, 10, true)); 
-      System.out.println(PaligMetodes.atgriestProgresaLiniju(9, 100, 10, true));
-      System.out.println(PaligMetodes.atgriestProgresaLiniju(100, 100, 10, true));
+      if (TastaturasKlausitajs.komanda.equals("W")) {
+        System.out.println("Komanda: W");
+        VaronaDarbibas.ieslegtaKamera = false;
+        TastaturasKlausitajs.uzreizNodzestKomandu();
+      }
 
-      System.out.println(PaligMetodes.atgriestProgresaLiniju(50, 100, 5, true));
-      System.out.println(PaligMetodes.atgriestProgresaLiniju(0, 100, 5, true));
-      System.out.println(PaligMetodes.atgriestProgresaLiniju(10, 100, 5, true));
 
-      PaligMetodes.gulet(10);
+      if (TastaturasKlausitajs.komanda.equals("S")) {
+        System.out.println("Komanda: S");
+        VaronaDarbibas.ieslegtaKamera = true;
+        TastaturasKlausitajs.uzreizNodzestKomandu();
+      }
+
+      if (TastaturasKlausitajs.komanda.equals("E")) {
+        System.out.println("Komanda: E");
+        System.out.println(kamerasThreds.isInterrupted());
+        TastaturasKlausitajs.uzreizNodzestKomandu();
+      }
+
+
     }
   }
 
