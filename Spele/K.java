@@ -5,6 +5,7 @@ public final class K {
   // * Mainīgie, kuriem ir nemainīga vērtība.
   // Folderu jeb mapju lokācijas:
   public static final String KONTU_MAPE = "Spele/KontaKods/Konti";
+  public static final String PARAUGA_KONTS = "Spele/KontaKods/Konti/KontaParaugs.txt";
   public static final String SAKUMA_DATU_MAPE = "Spele/SakumaDatuSagatavosana/SakumaDati.txt";
   public static final String NAKTS_DATU_FAILS = "Spele/Iestatijumi/NaktsDati.txt";
   public static final String IESTATIJUMU_FAILS = "Spele/Iestatijumi/Iestatijumi.csv";

@@ -45,6 +45,14 @@ public class SakumaDati {
   public static int nauda;
   public static int spelesNakts; // Saglabā spēles nakti.
 
+  private static String booleanVertiba(boolean bools) {
+    // Atgriež pirmo burtu no vērtības, lai to varētu saglabāt failos.
+    if (bools) {
+      return "T";
+    }
+    return "F";
+  }
+
   public static void sagatavotDatus() {
     // Nakts datiem ir jābūt pirmajiem, jo pārējie dati tiek ņemti no tā.
     SakumaDati.naktsDati = FailuRedigetajs.atgriestDaluNoFaila("#Nakts" + SakumaDati.spelesNakts, K.NAKTS_DATU_FAILS);
@@ -53,6 +61,49 @@ public class SakumaDati {
     ieslegtGaismas();
     sagatavotSpokus();
     citiSpelesDati();
+  }
+
+  public static void saglabatProgrammasDatusUzKontu() {
+    // 1. Iegūst konta datus (lietotāj v., parole un drošības v.), lai tos nepazaudētu vai nesabojātu.
+    String kontaDati = atgriestKontaDatus();
+    // 2. Iegūst visus saglabājamos programmas datus.
+    String programmasDati = atgriestSpelesDatus() + atgriestIestatijumuDatus() + atgriestVeikalaDatus();
+    // 3. Pārraksta jeb saglabā datus kontā.
+    FailuRedigetajs.failuParrakstitajs(kontaDati + programmasDati, Konts.lietotajaKontaCels);
+  }
+
+  public static void nodzestProgrammasDatus() {
+    // 1. Iegūst konta datus (lietotāj v., parole un drošības v.), lai tos nepazaudētu vai nesabojātu.
+    String kontaDati = atgriestKontaDatus();
+    // 2. Iegūst datu sākumu vērtības.
+    String programmasDati = FailuRedigetajs.failuParveidotajsParTekstu(K.PARAUGA_KONTS, 4);
+    // 3. Pārraksta jeb nodzēš datus kontā.
+    FailuRedigetajs.failuParrakstitajs(kontaDati + programmasDati, Konts.lietotajaKontaCels);
+  }
+
+  private static String atgriestKontaDatus() {
+    // Sagatavo programmas datus kategorijai '#KontaDati'.
+    String kontaDati = FailuRedigetajs.failuParveidotajsParTekstu(Konts.lietotajaKontaCels, 0);
+    return kontaDati.substring(0, kontaDati.indexOf("#SpelesDati"));
+  }
+
+  private static String atgriestSpelesDatus() {
+    // Sagatavo programmas datus kategorijai '#SpelesDati'.
+    return "#SpelesDati:\nspelesNakts=" + spelesNakts + "\nnauda=" + nauda;
+  }
+
+  private static String atgriestIestatijumuDatus() {
+    // Sagatavo programmas datus kategorijai '#Iestatijumi'.
+    return "\n\n#Iestatijumi:\nieslegtaSkana=" + booleanVertiba(ieslegtaSkana);
+  }
+
+  private static String atgriestVeikalaDatus() {
+    // Sagatavo programmas datus kategorijai '#Veikals'.
+    return "\n\n#Veikals:\nnopirktaFotokamera=" + booleanVertiba(VeikalaKods.nopirktaFotokamera) + "\nnopirktaVideokamera=" + booleanVertiba(VeikalaKods.nopirktaVideokamera) +
+    "\nnopirktiSerkocini=" + booleanVertiba(VeikalaKods.nopirktiSerkocini) + "\n\nfotokamerasUzlabojumaCena=" + VeikalaKods.fotokamerasUzlabojumaCena + "\nvideokamerasUzlabojumaCena=" + 
+    VeikalaKods.videokamerasUzlabojumaCena + "\nserkocinuUzlabojumaCena=" + VeikalaKods.serkocinuUzlabojumaCena + "\n\nfotokamerasLimenis=" + VeikalaKods.fotokamerasLimenis + "\nvideokamerasLimenis=" +
+    VeikalaKods.videokamerasLimenis + "\nserkocinuLimenis=" + VeikalaKods.serkocinuLimenis + "\n\ndurvjuSledzis=" + booleanVertiba(VeikalaKods.durvjuSledzis) + "\n\nizveletaFotokamera=" +
+    booleanVertiba(VeikalaKods.izveletaFotokamera) + "\nizveletaVideokamera=" + booleanVertiba(VeikalaKods.izveletaVideokamera);
   }
 
   public static void nolasitDatusNoKonta() {

@@ -1,15 +1,16 @@
 #KontaDati:
-Lietotajvards=S
-Parole=S
-DrosibasVards=S
+Lietotajvards=AAA
+Parole=AAA
+DrosibasVards=AAA
+
+
 
 #SpelesDati:
 spelesNakts=5
-nauda=1000000
+nauda=1000029
 ieslegtaSkana=T
 
 #Iestatijumi:
-
 
 
 #Veikals:
@@ -19,13 +20,14 @@ nopirktiSerkocini=T
 
 fotokamerasUzlabojumaCena=M A X
 videokamerasUzlabojumaCena=M A X
-serkocinuUzlabojumaCena=80
+serkocinuUzlabojumaCena=M A X
 
 fotokamerasLimenis=2
 videokamerasLimenis=2
-serkocinuLimenis=2
+serkocinuLimenis=3
 
-durvjuSledzis=F
+durvjuSledzis=T
 
-izveletaFotokamera=T
-izveletaVideokamera=F
+izveletaFotokamera=F
+izveletaVideokamera=T
+

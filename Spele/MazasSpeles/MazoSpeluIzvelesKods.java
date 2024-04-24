@@ -51,7 +51,6 @@ public class MazoSpeluIzvelesKods {
     // 1. Izvēlas vienu no mājasdarbiem, kurš būs jāpilda varonim.
     int randCipars = Main.rand.nextInt(2); // No 0 ieskaitot, līdz "norādītais" neieskaitot.
     // 2. Uzstāda izvēlēto mājasdarbu.
-    randCipars = 1;
     if (randCipars == 0) {
       // Karātavas.
       Karatavas.izveidotJaunuKaratavasSpeli();

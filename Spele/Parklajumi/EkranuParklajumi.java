@@ -83,20 +83,18 @@ public class EkranuParklajumi {
   }
 
   private static void drosibasVardaParklasana(String[] mainamaisMasivs) {
-    mainamaisMasivs[17] += "\033[37G" + Konts.drosibasVards + "\033[53G" + Konts.drosibasVardaNoteikumuKluda + "\033[106G";
+    mainamaisMasivs[17] += "\033[39G" + Konts.drosibasVards + "\033[56G" + Konts.drosibasVardaNoteikumuKluda + "\033[106G";
   }
 
   private static void kontaApskatesParklasana(String[] mainamaisMasivs) {
     mainamaisMasivs[6] += "\033[47G" + FailuRedigetajs.stringDatuAtgriezejs("Lietotajvards", Konts.lietotajaKontaCels) + "\033[106G";
-    mainamaisMasivs[14] += "\033[47G" + FailuRedigetajs.stringDatuAtgriezejs("Parole", Konts.lietotajaKontaCels) + "\033[106G";
-    mainamaisMasivs[22] += "\033[47G" + FailuRedigetajs.stringDatuAtgriezejs("DrosibasVards", Konts.lietotajaKontaCels) + "\033[106G";
+    mainamaisMasivs[14] += "\033[22G" + FailuRedigetajs.stringDatuAtgriezejs("Parole", Konts.lietotajaKontaCels) + 
+    "\033[75G" + FailuRedigetajs.stringDatuAtgriezejs("DrosibasVards", Konts.lietotajaKontaCels) + "\033[106G";
 
     if (Konts.atceretiesMani) {
-      mainamaisMasivs[24] += K.ZALS + "\033[32G_" + K.RESET + "\033[106G"; 
-      mainamaisMasivs[25] += K.ZALS + "\033[12G[ ATC ] - A T C E R E T I E S   M A N I" + K.RESET + "\033[106G"; 
+      mainamaisMasivs[18] += K.ZALS + "\033[30G_" + K.RESET + "\033[106G"; 
+      mainamaisMasivs[19] += K.ZALS + "\033[10G[ ATC ] - A T C E R E T I E S   M A N I" + K.RESET + "\033[106G"; 
     }
-
-    
   }
 
 private static void pieslegsanasParklasana(String[] mainamaisMasivs) {

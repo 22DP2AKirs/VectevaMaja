@@ -23,6 +23,19 @@ public class TastaturasKlausitajs implements NativeKeyListener {
 
   public static volatile boolean pabeidzaRakstitKomandasTekstu;
 
+  public static void palaistKlaviaturasLasitaju() {
+    try {
+      GlobalScreen.registerNativeHook();
+    }
+    catch (NativeHookException ex) {
+      System.err.println("There was a problem registering the native hook.");
+      System.err.println(ex.getMessage());
+
+      System.exit(1);
+    }
+    GlobalScreen.addNativeKeyListener(new TastaturasKlausitajs());
+  }
+
   public void nativeKeyPressed(NativeKeyEvent e) {
     // ? Darbības, kad nospiež taustiņu.
     // 1. Nosaka, kāds taustiņš tika nospiests.
@@ -149,24 +162,6 @@ public class TastaturasKlausitajs implements NativeKeyListener {
     komandasTeksts = K.TUKSA_IEVADE;
   }
 
-  public static String limetVardu(String vards, String ievade) {
-    // Līmē nospiestos burtus, lai veidotu vārdu, piem., : <- a ; :a <- b ; : ab <- o ; u.t.t.
-
-    // 1. Nosaka, kāda darbība būs veikta ar simbolu virkni.
-    if (ievade.toUpperCase().equals("BACKSPACE") && vards.length() > 0) {
-      // Atņem pēdējo simbolu.
-      vards = vards.substring(0, vards.length() - 1);
-    }
-    else {
-      // Ja komanda ir 1 simbols, tad ... .
-      if (ievade.length() < 2) {
-        vards += ievade;
-      }
-    }
-
-    return vards;
-  }
-
   public static void limetKomandasTekstu() {
     // 1. Ļauj līmēt komandasTekstu ar visiem pielāgojumiem programmai.
     komandasTeksts = limetVardu(komandasTeksts, komanda);
@@ -185,17 +180,44 @@ public class TastaturasKlausitajs implements NativeKeyListener {
     uzreizNodzestKomandu();
   }
 
-  public static void palaistKlaviaturasLasitaju() {
-    try {
-      GlobalScreen.registerNativeHook();
-    }
-    catch (NativeHookException ex) {
-      System.err.println("There was a problem registering the native hook.");
-      System.err.println(ex.getMessage());
+  //
+  // ? Vārdu līmēšanas metodes.
+  //
 
-      System.exit(1);
+  public static String limetVardu(String vards, String ievade) {
+    // Līmē nospiestos burtus, lai veidotu vārdu, piem., : <- a ; :a <- b ; : ab <- o ; u.t.t.
+
+    // 1. Nosaka, kāda darbība būs veikta ar simbolu virkni.
+    if (ievade.toUpperCase().equals("BACKSPACE") && vards.length() > 0) {
+      // Atņem pēdējo simbolu.
+      vards = vards.substring(0, vards.length() - 1);
     }
-    GlobalScreen.addNativeKeyListener(new TastaturasKlausitajs());
+    else {
+      // Ja komanda ir 1 simbols, tad ... .
+      if (ievade.length() < 2) {
+        vards += ievade;
+      }
+    }
+
+    return vards;
+  }
+
+  public static String limetVardu(String vards, String ievade, int maxVardaGarums) {
+    // Līmē nospiestos burtus, lai veidotu vārdu, piem., : <- a ; :a <- b ; : ab <- o ; u.t.t.
+
+    // 1. Nosaka, kāda darbība būs veikta ar simbolu virkni.
+    if (ievade.toUpperCase().equals("BACKSPACE") && vards.length() > 0) {
+      // Atņem pēdējo simbolu.
+      vards = vards.substring(0, vards.length() - 1);
+    }
+    else {
+      // Ja komanda ir 1 simbols un ja vārds nav pāri max garumam, tad ... .
+      if (ievade.length() < 2 && vards.length() < maxVardaGarums) {
+        vards += ievade;
+      }
+    }
+
+    return vards;
   }
 
   //

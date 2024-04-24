@@ -4,6 +4,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import Spele.SpelesProcesi.TastaturasKlausitajs;
+
 public class AutoTesti {
 
   @Test
@@ -22,6 +24,34 @@ public class AutoTesti {
     assertTrue(PaligMetodes.atgriestProgresaLiniju(50, 100, 2, true).equals("50% ▒"));
     assertTrue(PaligMetodes.atgriestProgresaLiniju(25, 100, 4, true).equals("25% ▒"));
     assertTrue(PaligMetodes.atgriestProgresaLiniju(10, 100, 5, true).equals("10% "));
+  }
+
+  @Test
+  public void testetVardaLimesanu() {
+    String vards = "";
+    String ievade = "a";
+
+    int i = 0;
+    int b = 0;
+    while (i++ != 100) { // Cikls atkārtosies 100 reizes.
+      vards = TastaturasKlausitajs.limetVardu(vards, ievade, 5);
+      b++;
+    }
+
+    assertTrue(vards.equals("aaaaa"));
+    assertTrue(b == 100);
+
+    vards = "";
+    ievade = "b";
+    i = 0;
+
+    while (i++ != 100) { // Cikls atkārtosies 100 reizes.
+      vards = TastaturasKlausitajs.limetVardu(vards, ievade, 7);
+      b++;
+    }
+
+    assertTrue(vards.equals("bbbbbbb"));
+
   }
 
 }

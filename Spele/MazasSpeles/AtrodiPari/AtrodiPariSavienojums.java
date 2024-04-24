@@ -11,7 +11,7 @@ public class AtrodiPariSavienojums {
 
   public static void palaistAtrodiPariMazoSpeli() {
     // 1. Ļauj ievadīt koord.
-    ievaditasKoord = TastaturasKlausitajs.limetVardu(ievaditasKoord, Main.ciklaKomanda);
+    ievaditasKoord = TastaturasKlausitajs.limetVardu(ievaditasKoord, Main.ciklaKomanda, 2);
     // 2. Pārbauda vai visas kārtis ir apgriestas (atrastas).
     AtrodiPari.atrodiPariObjekts.parbauditKarsuRezultatu();
     // 3. Iekrāso izvēlēto rindu un komandu.

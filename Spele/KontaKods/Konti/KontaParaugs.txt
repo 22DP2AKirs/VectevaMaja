@@ -11,7 +11,6 @@ ieslegtaSkana=T
 #Iestatijumi:
 
 
-
 #Veikals:
 nopirktaFotokamera=F
 nopirktaVideokamera=F

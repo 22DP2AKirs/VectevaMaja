@@ -8,7 +8,6 @@ import Spele.Spoki.Spoks;
 import Spele.Varonis.VaronaDarbibas;
 import Spele.Varonis.VaronaStatusaEfekti;
 
-
 public class Laiks extends Thread {
   public static volatile int spelesLaiks; // Visiem pieejamais objekts.
   public static int stundasLaiks = 0;

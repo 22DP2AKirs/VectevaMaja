@@ -7,6 +7,7 @@ import Spele.Izskati.VekalaIzskati;
 import Spele.KontaKods.Konts;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Izvade;
+import Spele.SpelesProcesi.Main;
 import Spele.SpelesProcesi.TastaturasKlausitajs;
 import Spele.Varonis.DarbibuIzpilde;
 
@@ -143,28 +144,33 @@ public class VeikalaKods {
   }
 
   public static void veikalaPalaisana() {
+    TastaturasKlausitajs.uzreizNodzestKomandu();
     TastaturasKlausitajs.nodzestKomandasTekstu();
     DarbibuIzpilde.izvelnesSkaitlis = 0;
-    String komanda = TastaturasKlausitajs.komanda; // Saglabā komandu.
     
-    while (!komanda.equals("Q")) {
-      komanda = TastaturasKlausitajs.komanda;
-      DarbibuIzpilde.izvelnesKustiba(komanda, 3); // Izveido izvēlnes opcijas.
+    while (!TastaturasKlausitajs.komanda.equals("Q")) {
+      // 1. Definē cikla komandu.
+      TastaturasKlausitajs.definetCiklaKomandu();
+      // 2. Navigācija starp izvelnēm.
+      DarbibuIzpilde.izvelnesKustiba(Main.ciklaKomanda, 3); // Izveido izvēlnes opcijas.
+      // 3. Izvade uz ekrānu.
       Izvade.izvadesMasivs = veikalaParklasana(VekalaIzskati.VEIKALA_SKATS); // Izvade uz terminālu.
-
+      // 4. Nosaka darbību.
       if (DarbibuIzpilde.izvelnesSkaitlis == 0) {
         // Kameras:
-        kamerasKods(komanda);
+        kamerasKods(Main.ciklaKomanda);
       }
       else if (DarbibuIzpilde.izvelnesSkaitlis == 1) {
         // Sērkociņi:
-        serkocinuKods(komanda);
+        serkocinuKods(Main.ciklaKomanda);
       }
       else if (DarbibuIzpilde.izvelnesSkaitlis == 2) {
         // Durvju slēdzis:
-        durvjuSledzaKods(komanda);
+        durvjuSledzaKods(Main.ciklaKomanda);
       }
     }
+
+    TastaturasKlausitajs.uzreizNodzestKomandu();
   }
 
   private static void durvjuSledzaKods(String komanda) {

@@ -8,7 +8,7 @@ import Spele.SpelesProcesi.Main;
 import Spele.Varonis.VaronaStatusaEfekti;
 
 public class VirtuvesSpoks extends Spoks {
-  /* Spoka apraksts:
+  /** Spoka apraksts:
      Virtuves spoks nāk no pagraba, kas atrodas virtuvē. Tas ir jūtīgs uz gaismu,
      tādēļ, ja pagrabā ir ieslēgta gaisma, tad spoks ātrāk kāps pa kāpnēm, ātrāk
      tuvojoties pie sava mērķa. Mērķis ir novākt varoni. Pagraba gaisma mēdz reizēm

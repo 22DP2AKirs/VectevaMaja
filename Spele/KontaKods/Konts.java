@@ -5,6 +5,7 @@ import Spele.Enums.EkranuVeidi;
 import Spele.K;
 import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.Parklajumi.EkranuParklajumi;
+import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Izvade;
 import Spele.SpelesProcesi.TastaturasKlausitajs;
 import Spele.Varonis.DarbibuIzpilde;
@@ -78,11 +79,18 @@ public class Konts {
 
           break; // Iziet ārā no šī ekrāna.
         }
+        else if (TastaturasKlausitajs.komandasTeksts.equals("SAVE") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
+          SakumaDati.saglabatProgrammasDatusUzKontu();
+        }
+        else if (TastaturasKlausitajs.komandasTeksts.equals("RESET") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
+          SakumaDati.nodzestProgrammasDatus();
+        }
       }
     }
     // Citādi redzēs izvēli starp pieslēgšanos un reģistrēšanos.
     else {
       DarbibuIzpilde.izvelnesSkaitlis = 0; // Uzstāda izvēlni uz 1. pozīciju.
+
       while (!TastaturasKlausitajs.komanda.equals("Q")) {
         // Ja lietotājs ir pieslēdzies, tad viņu aizsūta uz konta apskati.
         if (Konts.lietotajsPiesledzies) { break; }
@@ -103,6 +111,7 @@ public class Konts {
       }
       DarbibuIzpilde.izvelnesSkaitlis = 0;
     }
+
     TastaturasKlausitajs.uzreizNodzestKomandu();
     TastaturasKlausitajs.izslegtKomandasTekstaFunkciju();
   }
@@ -115,6 +124,10 @@ public class Konts {
     lietotajvards = "";
     parole = "";
     drosibasVards = "";
+
+    lietotajvardaNoteikumuKluda = "";
+    parolesNoteikumuKluda = "";
+    drosibasVardaNoteikumuKluda = "";
   }
 
   public static boolean parbauditVaiLietotajvardsIrPieejams(String parbaudesVards) {

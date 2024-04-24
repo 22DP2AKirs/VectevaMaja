@@ -6,6 +6,7 @@ import Spele.K;
 import Spele.PaligMetodes;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SpelesProcesi.Izvade;
+import Spele.SpelesProcesi.Main;
 import Spele.SpelesProcesi.TastaturasKlausitajs;
 import Spele.Varonis.DarbibuIzpilde;
 
@@ -68,10 +69,10 @@ public class LietotajaRegistracija {
             Konts.lietotajsPiesledzies = true;
             // 4. Atjauno konta lietotājvārda izskatu (Sākuma ekrānā/Galvenajā ekrānā) => [L  I  E  T  O  T  A  J  S].
             Konts.displejaLietotajvards = PaligMetodes.saliktAtstarpesSimboluVirkne(FailuRedigetajs.stringDatuAtgriezejs("Lietotajvards", Konts.lietotajaKontaCels), 1);
+            // 5. Nodzēš liekos datus.
+            Konts.notiritLietotajaDatus(); // Nodzēš visu datu vērtības.
           }
         }
-        // Nodzēš liekos datus.
-        Konts.notiritLietotajaDatus(); // Nodzēš visu datu vērtības.
       }
 
       // 6. Komandas darbības.
@@ -88,20 +89,23 @@ public class LietotajaRegistracija {
         drosibasVardaIevade();
       }
     }
+
     DarbibuIzpilde.izvelnesSkaitlis = 0; // Novieto izvēlnes poz. uz pirmo jeb pēc indeksa 0.
+    TastaturasKlausitajs.uzreizNodzestKomandu();
     Konts.notiritLietotajaDatus();
   }
 
   private static void lietotajvardaIevade() {
-    // Drīkst būt tikai 10 simbolus garš!
+    // Drīkst būt tikai 10 simbolus garš! To limitē metode 'limetVardu'.
     TastaturasKlausitajs.uzreizNodzestKomandu();
     TastaturasKlausitajs.nodzestKomandasTekstu();
+    TastaturasKlausitajs.atslegtaIevade = true;
 
     while (!TastaturasKlausitajs.komanda.toUpperCase().equals("ENTER")) {
-      // 1. Ļauj rakstīt komandas tekstu.
-      TastaturasKlausitajs.limetKomandasTekstu();
+      // 1. Iegūst lietotāja ievadi jeb komandu (simbolu).
+      TastaturasKlausitajs.definetCiklaKomandu();
       // 2. Saglabā izveidoto lietotājvārdu.
-      Konts.lietotajvards = TastaturasKlausitajs.komandasTeksts;
+      Konts.lietotajvards = TastaturasKlausitajs.limetVardu(Konts.lietotajvards, Main.ciklaKomanda, 10);
       // 3. Izvade uz termināli.
       if (Konts.redigeKontu) {
         Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.REDIGESANAS_EKRANS);
@@ -111,25 +115,23 @@ public class LietotajaRegistracija {
       }
 
       // 4. Pārbauda vai vārds atbilst prasībām.
-      if (Konts.lietotajvards.length() > 0) {
-        if (Konts.lietotajvards.length() < 11) {
-          if (Konts.parbauditVaiLietotajvardsIrPieejams(Konts.lietotajvards)) {
-            Konts.lietotajvardaNoteikumuKluda = "";
-            Konts.ievaditsLietotajvards = true;
-          }
-          else {
-            Konts.lietotajvardaNoteikumuKluda = K.SARKANS + "V A R D S  A I Z N E M T S" + K.RESET;
-            Konts.ievaditsLietotajvards = false;
-          }
+      if (Konts.lietotajvards.length() > 2) {
+        if (Konts.parbauditVaiLietotajvardsIrPieejams(Konts.lietotajvards)) {
+          Konts.lietotajvardaNoteikumuKluda = "";
+          Konts.ievaditsLietotajvards = true;
         }
         else {
-          Konts.lietotajvardaNoteikumuKluda = K.SARKANS + "M A X  10  S I M B." + K.RESET;
+          Konts.lietotajvardaNoteikumuKluda = K.SARKANS + "V A R D S  A I Z N E M T S" + K.RESET;
+          Konts.ievaditsLietotajvards = false;
         }
       }
       else {
+        Konts.lietotajvardaNoteikumuKluda = K.SARKANS + "M I N  3  S I M B." + K.RESET;
         Konts.ievaditsLietotajvards = false;
       }
     }
+
+    TastaturasKlausitajs.atslegtaIevade = false;
     TastaturasKlausitajs.lielieBurti = true;
     TastaturasKlausitajs.uzreizNodzestKomandu();
   }
@@ -138,12 +140,13 @@ public class LietotajaRegistracija {
     // Drīkst būt 15 simbolus garš!
     TastaturasKlausitajs.uzreizNodzestKomandu();
     TastaturasKlausitajs.nodzestKomandasTekstu();
+    TastaturasKlausitajs.atslegtaIevade = true;
 
     while (!TastaturasKlausitajs.komanda.toUpperCase().equals("ENTER")) {
-      // 1. Ļauj rakstīt komandas tekstu.
-      TastaturasKlausitajs.limetKomandasTekstu();
+      // 1. Iegūst lietotāja ievadi jeb komandu (simbolu).
+      TastaturasKlausitajs.definetCiklaKomandu();
       // 2. Saglabā izveidoto paroli.
-      Konts.parole = TastaturasKlausitajs.komandasTeksts;
+      Konts.parole = TastaturasKlausitajs.limetVardu(Konts.parole, Main.ciklaKomanda, 15);
       // 3. Izvade uz termināli.
       if (Konts.redigeKontu) {
         Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.REDIGESANAS_EKRANS);
@@ -153,33 +156,31 @@ public class LietotajaRegistracija {
       }
 
       // 4. Pārbauda vai vārds atbilst prasībām.
-      if (Konts.parole.length() > 0) {
-        if (Konts.parole.length() < 16) {
-          // 4.1. Izvēlas, kuru pārbaudi veiks.
-          if (Konts.redigeKontu)  {
-            if (!Konts.parole.equals(FailuRedigetajs.stringDatuAtgriezejs("Parole", Konts.lietotajaKontaCels))) {
-              Konts.parolesNoteikumuKluda = "";
-              Konts.ievaditaParole = true;
-            }
-            else {
-              Konts.parolesNoteikumuKluda = K.SARKANS + "V E C A   P A R O L E" + K.RESET;
-              Konts.ievaditaParole = false;
-            }
-          }
-          else {
+      if (Konts.parole.length() > 2) {
+        // Ja rediģē kontu.
+        if (Konts.redigeKontu)  {
+          if (!Konts.parole.equals(FailuRedigetajs.stringDatuAtgriezejs("Parole", Konts.lietotajaKontaCels))) {
             Konts.parolesNoteikumuKluda = "";
             Konts.ievaditaParole = true;
           }
+          else {
+            Konts.parolesNoteikumuKluda = K.SARKANS + "V E C A   P A R O L E" + K.RESET;
+            Konts.ievaditaParole = false;
+          }
         }
+        // Ja veido kontu.
         else {
-          Konts.parolesNoteikumuKluda = K.SARKANS + "M A X  15  S I M B." + K.RESET;
+          Konts.parolesNoteikumuKluda = "";
+          Konts.ievaditaParole = true;
         }
       }
       else {
-        // Ja ir tukš lauciņš.
+        Konts.parolesNoteikumuKluda = K.SARKANS + "M I N  3  S I M B." + K.RESET;
         Konts.ievaditaParole = false;
       }
     }
+
+    TastaturasKlausitajs.atslegtaIevade = false;
     TastaturasKlausitajs.lielieBurti = true;
     TastaturasKlausitajs.uzreizNodzestKomandu();
   }
@@ -188,12 +189,13 @@ public class LietotajaRegistracija {
     // Drīkst būt 15 simbolus garš!
     TastaturasKlausitajs.nodzestKomandasTekstu();
     TastaturasKlausitajs.uzreizNodzestKomandu();
+    TastaturasKlausitajs.atslegtaIevade = true;
 
     while (!TastaturasKlausitajs.komanda.toUpperCase().equals("ENTER")) {
-      // 1. Ļauj rakstīt komandas tekstu.
-      TastaturasKlausitajs.limetKomandasTekstu();
+      // 1. Iegūst lietotāja ievadi jeb komandu (simbolu).
+      TastaturasKlausitajs.definetCiklaKomandu();
       // 2. Saglabā izveidoto drosibas v..
-      Konts.drosibasVards = TastaturasKlausitajs.komandasTeksts;
+      Konts.drosibasVards = TastaturasKlausitajs.limetVardu(Konts.drosibasVards, Main.ciklaKomanda, 15);
       // 3. Izvade uz termināli.
       if (Konts.redigeKontu) {
         Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.REDIGESANAS_EKRANS);
@@ -203,33 +205,30 @@ public class LietotajaRegistracija {
       }
 
       // 4. Pārbauda vai vārds atbilst prasībām.
-      if (Konts.drosibasVards.length() > 0) {
-        if (Konts.drosibasVards.length() < 16) {
-          // 4.1. Izvēlas, kuru pārbaudi veiks.
-          if (Konts.redigeKontu)  {
-            if (!Konts.drosibasVards.equals(FailuRedigetajs.stringDatuAtgriezejs("DrosibasVards", Konts.lietotajaKontaCels))) {
-              Konts.drosibasVardaNoteikumuKluda = "";
-              Konts.ieavaditsDrosibasVards = true;
-            }
-            else {
-              Konts.drosibasVardaNoteikumuKluda = K.SARKANS + "V E C S  D R O S I B. V." + K.RESET;
-              Konts.ieavaditsDrosibasVards = false;
-            }
-          }
-          else {
+      if (Konts.drosibasVards.length() > 2) {
+        // 4.1. Izvēlas, kuru pārbaudi veiks.
+        if (Konts.redigeKontu)  {
+          if (!Konts.drosibasVards.equals(FailuRedigetajs.stringDatuAtgriezejs("DrosibasVards", Konts.lietotajaKontaCels))) {
             Konts.drosibasVardaNoteikumuKluda = "";
             Konts.ieavaditsDrosibasVards = true;
           }
+          else {
+            Konts.drosibasVardaNoteikumuKluda = K.SARKANS + "V E C S  D R O S I B. V." + K.RESET;
+            Konts.ieavaditsDrosibasVards = false;
+          }
         }
         else {
-          Konts.drosibasVardaNoteikumuKluda = K.SARKANS + "M A X  15  S I M B." + K.RESET;
+          Konts.drosibasVardaNoteikumuKluda = "";
+          Konts.ieavaditsDrosibasVards = true;
         }
       }
       else {
-        // Ja ir tukš lauciņš.
+        Konts.drosibasVardaNoteikumuKluda = K.SARKANS + "M I N  3  S I M B." + K.RESET;
         Konts.ieavaditsDrosibasVards = false;
       }
     }
+
+    TastaturasKlausitajs.atslegtaIevade = false;
     TastaturasKlausitajs.lielieBurti = true;
     TastaturasKlausitajs.uzreizNodzestKomandu();
   }
