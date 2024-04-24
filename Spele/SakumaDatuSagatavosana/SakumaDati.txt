@@ -1,4 +1,4 @@
 # Dati, kurus programma izlasa 'pirms' palaišanas.
 
 atceretiesMani=T
-lietotajaKontaCels=Spele/KontaKods/Konti/Konts3.txt
+lietotajaKontaCels=Spele/KontaKods/Konti/Konts1.txt

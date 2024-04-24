@@ -10,6 +10,7 @@ public class Spoks {
   // Spoka limiti. (Nemainīgas vērtības)
   public int spokaAtlautaAgresivitate; // Nosaka cik agresīvs var būt spoks. Max = 20.
   public int spokaAtputasLaiks; // Nosaka cik spoka iespējas gājienus tas stāvēs uz vietas. Glabāšanas mainīgais.
+  public int pecUzbrukumaAtputa = 10; // 
   
   // Spoka progressa vērtības. (Mainīgās vērtības)
   private int spokaAtputasLaikaMainamaKopija; // Šo mainīgo visu laiku maina.

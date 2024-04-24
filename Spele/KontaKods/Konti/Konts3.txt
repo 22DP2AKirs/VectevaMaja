@@ -4,8 +4,8 @@ Parole=ALUTINS
 DrosibasVards=OGAASSS
 
 #SpelesDati:
-spelesNakts=1
-nauda=0
+spelesNakts=2
+nauda=90
 ieslegtaSkana=T
 
 #Iestatijumi:

@@ -15,12 +15,11 @@ import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.Spoki.Spoks;
 import Spele.Varonis.DarbibuIzpilde;
-import Spele.Varonis.VaronaDarbibas;
 import Spele.Varonis.VaronaStatusaEfekti;
 
 public class Main {
   // ? Mainīgie.
-
+  
   // Informācijas booli.
   public static boolean spokuInfo;
   public static boolean mSpeluInfo;
@@ -97,7 +96,9 @@ public class Main {
       // Thredi, kurus izmantos spēles laikā. Tie beidzas, kad (spelePalaista == false).
       Laiks laiks = new Laiks(); // Parastais threds.
       laiks.start(); 
-      Thread blakusProcesuVThreds = izveidotBlakusProcesuThredu(); // Virtuālais threds.  
+      Thread blakusProcesi = new BlakusProcesi();
+      blakusProcesi.start();
+      //  = izveidotBlakusProcesuThredu(); // Virtuālais threds.  
 
       // *S P Ē L E S   C I K L S* //
       while (spelePalaista) { // Kamēr laiks nav beidzies, turpināt ciklu jeb spēli.
@@ -114,7 +115,8 @@ public class Main {
       }
       // Beidz jeb apstādina thredus.
       laiks.join();
-      blakusProcesuVThreds.join();
+      blakusProcesi.join();
+      // blakusProcesuVThreds.join();
     }
     skanasSpeletajs.join();
     izvade.join();
@@ -141,17 +143,18 @@ public class Main {
     System.out.flush(); // Kaut kas ar kursora pozīciju.
   }
 
-  private static Thread izveidotBlakusProcesuThredu() {
-    // Izveido virtuālo tredu, kurš apstrādā visādus blakus procesus uz 0.1 sek. intervāla.
-    return Thread.ofVirtual().start(() -> { // Virtuālais threds.
-      // Darbības, kas notiks threda dzīves laikā.
-      while (Main.spelePalaista) {
-        // 1. Novēro un maina kameras baterijas vērtības.
-        VaronaDarbibas.kamerasBaterijasAprekins();
-        // 2. Palielina varoņa stresu, ja viņš ir tumsā.
-        VaronaStatusaEfekti.varonaStress();
-        try { Thread.sleep(100); } catch (Exception e) {} // 0.1 sec.
-      }
-    });
-  }
+  // ! Priekš virtuālajiem thrediem ir vajadzīgs JDK 21.
+  // private static Thread izveidotBlakusProcesuThredu() {
+  //   // Izveido virtuālo tredu, kurš apstrādā visādus blakus procesus uz 0.1 sek. intervāla.
+  //   return Thread.ofVirtual().start(() -> { // Virtuālais threds.  
+  //     // Darbības, kas notiks threda dzīves laikā.
+  //     while (Main.spelePalaista) {
+  //       // 1. Novēro un maina kameras baterijas vērtības.
+  //       VaronaDarbibas.kamerasBaterijasAprekins();
+  //       // 2. Palielina varoņa stresu, ja viņš ir tumsā.
+  //       VaronaStatusaEfekti.varonaStress();
+  //       try { Thread.sleep(100); } catch (Exception e) {} // 0.1 sec.
+  //     }
+  //   });
+  // }
 }
