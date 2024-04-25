@@ -27,6 +27,7 @@ Komandas bieži būs redzamas uz ekrāna, viss kas Jums ir jādara ir pēc katra
 - [ ] Izskrāsot durvis brūnas un logus zilus (Ādama ideja).
 - [ ] Jāpieiet pie loga. cits spoks?
 - [ ] Aizdedzināt spoku :|?????
+- [ ] Pārveidot spēles mērķi no izdzīvot līdz 6 no rīta, uz izpildīt 'n' uzdevumus/mājasdarbus pirms 6 no rīta.
 
 ### Balansēšana vai uzlabojumi:
 - [ ] Skaņa, kad ieslēdzas mājasdarbs.

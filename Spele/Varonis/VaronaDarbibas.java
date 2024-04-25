@@ -6,9 +6,12 @@ import Spele.SpelesProcesi.TastaturasKlausitajs;
 import Spele.Spoki.DurvjuSpoks;
 import Spele.Spoki.LogaSpoks;
 import Spele.Spoki.VirtuvesSpoks;
+import Spele.Veikals.Fotokamera;
+import Spele.Veikals.Piederumi;
+import Spele.Veikals.VeikalaKods;
+import Spele.Veikals.Videokamera;
 import Spele.Enums;
 import Spele.PaligMetodes;
-import Spele.VeikalaKods;
 import Spele.Enums.KustibasVirziens;
 import Spele.Enums.Istabas;
 import Spele.FailuLietotaji.SkanasSpeletajs;
@@ -53,11 +56,11 @@ public class VaronaDarbibas {
     }
     else if (komanda.equals("SPACE") && (VeikalaKods.izveletaFotokamera || VeikalaKods.izveletaVideokamera)) {
       // Toggle.
-      if (!ieslegtaKamera && kamerasBaterija > 40) {
-        ieslegtaKamera = true;
+      if (!Piederumi.ieslegtaKamera && kamerasBaterija > 40) {
+        Piederumi.ieslegtaKamera = true;
       }
       else {
-        ieslegtaKamera = false;
+        Piederumi.ieslegtaKamera = false;
       }
     }
   }
@@ -433,44 +436,12 @@ public class VaronaDarbibas {
     Enums.V_Istaba = PaligMetodes.atrastIstabasEnumuPecTaCiparaVertibas(istabasCipars);
   }
 
-  public static volatile boolean ieslegtaKamera;
-
-  public static void fotokamerasBaterijasAprekins() {
-    // Kamera tur uzlādi aptuveni 5 - 10 sek.
-    if (ieslegtaKamera) {
-      // 1. Ja kamera ir izlādējusies, tad to izslēdz.
-      if (kamerasBaterija < 1) {
-        ieslegtaKamera = false;
-      }
-
-      // 2. Atņem baterijas uzlādes procentus.
-      kamerasBaterija -= (1.0 / VeikalaKods.fotokamerasLimenis + 1); // + 1, jo visi piederumi sākas no '0' līmeņa.
-    }
-    else if (!ieslegtaKamera && kamerasBaterija < 100) {
-      kamerasBaterija += 0.5;
-    }
-  }
-
-
-  public static void videokamerasBaterijasAprekins() {
-    // Kamera tur ļoti ilgu laiku.
-    if (ieslegtaKamera) {
-      // 1. Ja kamera ir izlādējusies, tad to izslēdz.
-      if (kamerasBaterija < 1) {
-        ieslegtaKamera = false;
-      }
-
-      // 2. Atņem baterijas uzlādes procentus.
-      kamerasBaterija -= (0.1 / (VeikalaKods.fotokamerasLimenis + 1 * 10)); // + 1, jo visi piederumi sākas no '0' līmeņa.
-    }
-  }
-
   public static void kamerasBaterijasAprekins() {
     if (VeikalaKods.izveletaFotokamera) {
-      fotokamerasBaterijasAprekins();
+      Fotokamera.fotokamera.baterijasAprekins();
     }
     else if (VeikalaKods.izveletaVideokamera) {
-      videokamerasBaterijasAprekins();
+      Videokamera.videokamera.baterijasAprekins();
     }
   }
 }

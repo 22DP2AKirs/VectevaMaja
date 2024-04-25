@@ -28,6 +28,6 @@ serkocinuLimenis=3
 
 durvjuSledzis=T
 
-izveletaFotokamera=F
-izveletaVideokamera=T
+izveletaFotokamera=T
+izveletaVideokamera=F
 

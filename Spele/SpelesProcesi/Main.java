@@ -16,6 +16,7 @@ import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.Spoki.Spoks;
 import Spele.Varonis.DarbibuIzpilde;
 import Spele.Varonis.VaronaStatusaEfekti;
+import Spele.Veikals.Piederumi;
 
 public class Main {
   // ? Mainīgie.
@@ -43,7 +44,6 @@ public class Main {
   static boolean programmasKluduLasisana = false; // Apstādina 
   public static String ciklaKomanda = K.TUKSA_IEVADE; // Cikla komanda ir tā, kas tiks definēta cikla sākumā un nodzēsta cikla beigās, lai komanda visās pārbaudēs būtu vienāda.
 
-  // @SuppressWarnings("null")
   public static void main(String[] args) throws InterruptedException { // throws InterruptedException nozīmē, ka var neizmantot try_catch.
     // * Galvenais programmas process.
 
@@ -71,7 +71,8 @@ public class Main {
     izvade.start();
     TastaturasKlausitajs.palaistKlaviaturasLasitaju();
 
-    // *P R O G R A M M A S   C I K L S* //
+    //#region
+    // *P R O G R A M M A S   C I K L S* // 
     while (programmaPalaista) {
       nodzestTerminali();
 
@@ -92,6 +93,7 @@ public class Main {
       SakumaDati.sagatavotDatus();
       Spoks.izveidotSpokus();
       TastaturasKlausitajs.ieslegtKomandasTekstaFunkciju();
+      Piederumi.definetKameru();
 
       // Thredi, kurus izmantos spēles laikā. Tie beidzas, kad (spelePalaista == false).
       Laiks laiks = new Laiks(); // Parastais threds.
@@ -118,6 +120,7 @@ public class Main {
       blakusProcesi.join();
       // blakusProcesuVThreds.join();
     }
+    //#endregion
     skanasSpeletajs.join();
     izvade.join();
   }

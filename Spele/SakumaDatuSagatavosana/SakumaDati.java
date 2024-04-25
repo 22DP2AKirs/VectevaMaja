@@ -4,14 +4,13 @@ import java.util.ArrayList;
 
 import Spele.K;
 import Spele.PaligMetodes;
-import Spele.VeikalaKods;
 import Spele.FailuLietotaji.FailuRedigetajs;
-import Spele.Izskati.IstabuIzskati;
 import Spele.KontaKods.Konts;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.Spoki.DurvjuSpoks;
 import Spele.Spoki.LogaSpoks;
 import Spele.Spoki.VirtuvesSpoks;
+import Spele.Veikals.VeikalaKods;
 
 public class SakumaDati {
   // ? Visi iestatījumi, kuri tiek lietoti spēlē:
@@ -45,19 +44,10 @@ public class SakumaDati {
   public static int nauda;
   public static int spelesNakts; // Saglabā spēles nakti.
 
-  private static String booleanVertiba(boolean bools) {
-    // Atgriež pirmo burtu no vērtības, lai to varētu saglabāt failos.
-    if (bools) {
-      return "T";
-    }
-    return "F";
-  }
-
   public static void sagatavotDatus() {
     // Nakts datiem ir jābūt pirmajiem, jo pārējie dati tiek ņemti no tā.
     SakumaDati.naktsDati = FailuRedigetajs.atgriestDaluNoFaila("#Nakts" + SakumaDati.spelesNakts, K.NAKTS_DATU_FAILS);
 
-    izveletiesKameru();
     ieslegtGaismas();
     sagatavotSpokus();
     citiSpelesDati();
@@ -94,16 +84,12 @@ public class SakumaDati {
 
   private static String atgriestIestatijumuDatus() {
     // Sagatavo programmas datus kategorijai '#Iestatijumi'.
-    return "\n\n#Iestatijumi:\nieslegtaSkana=" + booleanVertiba(ieslegtaSkana);
+    return "\n\n#Iestatijumi:\nieslegtaSkana=" + PaligMetodes.booleanVertiba(ieslegtaSkana);
   }
 
   private static String atgriestVeikalaDatus() {
     // Sagatavo programmas datus kategorijai '#Veikals'.
-    return "\n\n#Veikals:\nnopirktaFotokamera=" + booleanVertiba(VeikalaKods.nopirktaFotokamera) + "\nnopirktaVideokamera=" + booleanVertiba(VeikalaKods.nopirktaVideokamera) +
-    "\nnopirktiSerkocini=" + booleanVertiba(VeikalaKods.nopirktiSerkocini) + "\n\nfotokamerasUzlabojumaCena=" + VeikalaKods.fotokamerasUzlabojumaCena + "\nvideokamerasUzlabojumaCena=" + 
-    VeikalaKods.videokamerasUzlabojumaCena + "\nserkocinuUzlabojumaCena=" + VeikalaKods.serkocinuUzlabojumaCena + "\n\nfotokamerasLimenis=" + VeikalaKods.fotokamerasLimenis + "\nvideokamerasLimenis=" +
-    VeikalaKods.videokamerasLimenis + "\nserkocinuLimenis=" + VeikalaKods.serkocinuLimenis + "\n\ndurvjuSledzis=" + booleanVertiba(VeikalaKods.durvjuSledzis) + "\n\nizveletaFotokamera=" +
-    booleanVertiba(VeikalaKods.izveletaFotokamera) + "\nizveletaVideokamera=" + booleanVertiba(VeikalaKods.izveletaVideokamera);
+    return "";
   }
 
   public static void nolasitDatusNoKonta() {
@@ -116,18 +102,8 @@ public class SakumaDati {
     
     // Veikala dati.
     failaDala = FailuRedigetajs.atgriestDaluNoFaila("#Veikals", Konts.lietotajaKontaCels);    
-    VeikalaKods.fotokamerasLimenis = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("fotokamerasLimenis", failaDala);
-    VeikalaKods.videokamerasLimenis = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("videokamerasLimenis", failaDala);
-    VeikalaKods.serkocinuLimenis = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("serkocinuLimenis", failaDala);
-
-    VeikalaKods.fotokamerasUzlabojumaCena = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("fotokamerasUzlabojumaCena", failaDala);
-    VeikalaKods.videokamerasUzlabojumaCena = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("videokamerasUzlabojumaCena", failaDala);
-    VeikalaKods.serkocinuUzlabojumaCena = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("serkocinuUzlabojumaCena", failaDala);
   
     VeikalaKods.durvjuSledzis = FailuRedigetajs.booleanDatuAtgriezejsNoSaraktsa("durvjuSledzis", failaDala);
-    VeikalaKods.nopirktaFotokamera = FailuRedigetajs.booleanDatuAtgriezejsNoSaraktsa("nopirktaFotokamera", failaDala);
-    VeikalaKods.nopirktaVideokamera = FailuRedigetajs.booleanDatuAtgriezejsNoSaraktsa("nopirktaVideokamera", failaDala);
-    VeikalaKods.nopirktiSerkocini = FailuRedigetajs.booleanDatuAtgriezejsNoSaraktsa("nopirktiSerkocini", failaDala);
 
     VeikalaKods.izveletaFotokamera = FailuRedigetajs.booleanDatuAtgriezejsNoSaraktsa("izveletaFotokamera", failaDala);;
     VeikalaKods.izveletaVideokamera = FailuRedigetajs.booleanDatuAtgriezejsNoSaraktsa("izveletaVideokamera", failaDala);
@@ -139,15 +115,6 @@ public class SakumaDati {
     ieslegtaSkana = FailuRedigetajs.booleanDatuAtgriezejs("ieslegtaSkana", Konts.lietotajaKontaCels);
     nauda = FailuRedigetajs.intDatuAtgriezejs("nauda", Konts.lietotajaKontaCels);
     spelesNakts = FailuRedigetajs.intDatuAtgriezejs("spelesNakts", Konts.lietotajaKontaCels);
-  }
-
-  private static void izveletiesKameru() {
-    if (VeikalaKods.izveletaFotokamera) {
-      kamera = IstabuIzskati.fotokamera;
-    }
-    else if (VeikalaKods.izveletaVideokamera) {
-      kamera = IstabuIzskati.videokamera;
-    }
   }
 
   private static void ieslegtGaismas() {

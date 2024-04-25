@@ -7,7 +7,6 @@ import com.github.kwhat.jnativehook.NativeHookException;
 
 import Spele.Enums;
 import Spele.K;
-import Spele.VeikalaKods;
 import Spele.Enums.Istabas;
 import Spele.Enums.Virzieni;
 import Spele.FailuLietotaji.FailuRedigetajs;
@@ -18,6 +17,8 @@ import Spele.Parklajumi.BildesParklajumi;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Main;
 import Spele.SpelesProcesi.TastaturasKlausitajs;
+import Spele.Veikals.Piederumi;
+import Spele.Veikals.VeikalaKods;
 
 
 public class DarbibuIzpilde {
@@ -151,8 +152,8 @@ public class DarbibuIzpilde {
     // Metodes beigas.
     BildesParklajumi.istabasGaismasUnSerkocinaParklajumi(mainamaisMasivs, IstabuIzskati.istabuMasivs[Enums.V_Istaba.CIPARS][Enums.V_Virziens.CIPARS]);
 
-    if (VaronaDarbibas.ieslegtaKamera) {
-      BildesParklajumi.pievienotVideokameru(mainamaisMasivs);
+    if (Piederumi.ieslegtaKamera) {
+      BildesParklajumi.pievienotVideokameru(Piederumi.kamerasIzskats);
     }
 
     BildesParklajumi.atjaunotParklatoIstabu(mainamaisMasivs);

@@ -39,6 +39,10 @@ public class Izvade extends Thread {
         
         // --- Cikla beigas jeb 1 freims 'fps'.
         try { Thread.sleep(framesPerSecond); } catch (Exception e) {}
+        // ------------------ Papildus.
+        if (Main.programmasKluduLasisana) { // Apstādina spēli, lai varētu izlasīt kļūdas aprakstu (parasti vienmēr izslēgts).
+          PaligMetodes.gulet(100);
+        }
       }
 
       // 2. Izvada spēles bildi.

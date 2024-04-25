@@ -6,7 +6,7 @@ import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Main;
 import Spele.Varonis.VaronaStatusaEfekti;
 
-public class DurvjuSpoks extends Spoks {
+public final class DurvjuSpoks extends Spoks {
   /* Spoka apraksts:
      Durvju spoks vienmēr nāk no vienas un tās pašas vietas - mājas āras durvīm.
      Durvis var aizvērt aizbiedējot spoku, kā arī tās var aizslēgt, lai spokam

@@ -11,6 +11,15 @@ import Spele.SpelesProcesi.TastaturasKlausitajs;
 import Spele.Varonis.DarbibuIzpilde;
 
 public class Konts {
+  /** Konta doma un darbības.
+   * Doma:
+   * Konts ļauj lietotājam saglabāt datus teksta failā, uz un no kura programma ieraksta vai nolasa datus, kurus pēc tam izmantos tālākās
+   * programmas darbības daļā.
+   * 
+   * Darbības:
+   * Lietotājam ir liela izvēle no darbībām, kuras viņš var izmantot uz sava konta, piem., datu dzēšana, konta dzēšana, datu rediģēšana,
+   * funkcija atcerēties viņu, lai katru reizi, kad palaiž porgrammu, lietotājam nebūtu manuāli jāpieslēdzas pie tā, u.c.
+   */
   // Lietotāja dati:
   public static String lietotajaKontaCels;
 
@@ -32,6 +41,13 @@ public class Konts {
   public static String lietotajvardaNoteikumuKluda = "";
   public static String parolesNoteikumuKluda = "";
   public static String drosibasVardaNoteikumuKluda = "";
+
+  /** Saglabāt veikala datus uz lietotāja konta:
+   * Datu saglabāšanās tiek 'izsaukta' katru reizi, kad lietotājs iziet no veikala.
+   * Datu lasīšana no konta tiek izsaukta tikai tad, kad lietotājs palaiž programmu vai, kad pieslēdzas pie sava konta.
+   * 
+   * 
+  */
 
   public static void kontaIzvelesDarbibas() {
     TastaturasKlausitajs.uzreizNodzestKomandu();
@@ -68,7 +84,6 @@ public class Konts {
             FailuRedigetajs.mainitFailaMainigaVertibu("atceretiesMani", "T", K.SAKUMA_DATU_MAPE);
             FailuRedigetajs.mainitFailaMainigaVertibu("lietotajaKontaCels",  Konts.lietotajaKontaCels, K.SAKUMA_DATU_MAPE);
           }
-          // TastaturasKlausitajs.sagatavotKomanduDzesanai();
         }
         else if (TastaturasKlausitajs.komandasTeksts.equals("IZI") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
           FailuRedigetajs.mainitFailaMainigaVertibu("atceretiesMani", "F", K.SAKUMA_DATU_MAPE);
@@ -157,4 +172,12 @@ public class Konts {
     // Vārds ir unikāls.
     return null;
   }
+
+  public static void kontaSaglabatVeikalaDatus() {
+    // Kontā saglabā veikala datus.
+    if (lietotajsPiesledzies) {
+      FailuRedigetajs.mainitFailaMainigaVertibu(drosibasVards, drosibasVardaNoteikumuKluda, lietotajaKontaCels);
+    }
+  }
+
 }

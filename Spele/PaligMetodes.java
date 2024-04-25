@@ -7,6 +7,15 @@ import Spele.Enums.Virzieni;
 
 public class PaligMetodes {
   // Šeit ir metodes, kuras atvieglos koda saprašanu un manu dzīvi.
+
+  public static String booleanVertiba(boolean bools) {
+    // Atgriež pirmo burtu no vērtības, lai to varētu saglabāt failos.
+    if (bools) {
+      return "T";
+    }
+    return "F";
+  }
+  
   public static String atgriestProgresaLiniju(double tagadejaisSkaitlis, int lielakaisSkaitlis, int kolonnuSkaits, boolean raditProcentus) {
     String progLinija = "";
     // 1. Aprēķina skaitli, kurš apzīmēs 1 iedaļu.

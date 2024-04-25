@@ -1,7 +1,9 @@
-package Spele;
+package Spele.Veikals;
 
 import java.util.Arrays;
 
+import Spele.K;
+import Spele.PaligMetodes;
 import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.Izskati.VekalaIzskati;
 import Spele.KontaKods.Konts;
@@ -16,28 +18,14 @@ public class VeikalaKods {
   public static boolean fotoKamera = true;
   public static boolean videokamera;
 
-  // Līmeņi: (0 nozīmē, ka piederums nav vēl nopirkts)
-  public static int fotokamerasLimenis = 0;
-  public static int videokamerasLimenis = 0;
-  public static int serkocinuLimenis = 0;
+  // Paņemti/Izvēlētie piederumi.
+  public static boolean izveletaFotokamera;
+  public static boolean izveletaVideokamera;
 
-  // Cenas: (Definētas pirmā pirkuma cena)
-  public static String fotokamerasUzlabojumaCena = "100";
-  public static String videokamerasUzlabojumaCena = "100";
-  public static String serkocinuUzlabojumaCena = "20";
   public static String durvjuSledzaCena = "50";
 
   // Viena pirkuma uzlabojumi:
   public static boolean durvjuSledzis;
-
-  // Pirkšanas booli:
-  public static boolean nopirktaFotokamera;
-  public static boolean nopirktaVideokamera;
-  public static boolean nopirktiSerkocini;
-
-  // Paņemti/Izvēlētie piederumi.
-  public static boolean izveletaFotokamera;
-  public static boolean izveletaVideokamera;
 
   private static String[] uzlabojumaApraksts = new String[16];
 
@@ -60,14 +48,14 @@ public class VeikalaKods {
     String[] parklajamaisMasivs = Arrays.copyOf(origMasivs, 30);
     // 1. Uzliek veikala piedāvājumus, to līmeņus un cenas.
     parklajamaisMasivs[5] += "\033[15GK A M E R A S" + K.EKRANA_GARUMA_IZMERS;
-    parklajamaisMasivs[10] += "\033[15GS E R K O C I N I,   C E N A : " + serkocinuUzlabojumaCena + K.EKRANA_GARUMA_IZMERS;
+    parklajamaisMasivs[10] += "\033[15GS E R K O C I N I,   C E N A : " + Serkocini.serkocini.piederumaUzlabojumaCena + K.EKRANA_GARUMA_IZMERS;
     parklajamaisMasivs[15] += "\033[15GD U R V J U   S L E D Z I S,   C E N A : " + durvjuSledzaCena + K.EKRANA_GARUMA_IZMERS;
 
     if (fotoKamera) {
-      parklajamaisMasivs[6] += "\033[20GF O T O   K A M E R A,   C E N A : " + fotokamerasUzlabojumaCena + K.EKRANA_GARUMA_IZMERS;
+      parklajamaisMasivs[6] += "\033[20GF O T O   K A M E R A,   C E N A : " + Fotokamera.fotokamera.piederumaUzlabojumaCena + K.EKRANA_GARUMA_IZMERS;
       // Pievieno līmeņa līniju.
-      pievienotLimenaLinijas(parklajamaisMasivs, fotokamerasLimenis, 8);
-      if (nopirktaFotokamera) {
+      pievienotLimenaLinijas(parklajamaisMasivs, Fotokamera.fotokamera.piederumaLimenis, 8);
+      if (Fotokamera.fotokamera.nopirkaPiederumu) {
         for (int i = 0 ; i < 3 ; i++) {
           parklajamaisMasivs[7 + i] += "\033[15G" + VekalaIzskati.LIMENI[i] + "\033[25G" + VekalaIzskati.LIMENI[3 + i] + "\033[35G" + VekalaIzskati.LIMENI[6 + i] + K.EKRANA_GARUMA_IZMERS;
         }
@@ -78,10 +66,10 @@ public class VeikalaKods {
       }
     }
     else {
-      parklajamaisMasivs[6] += "\033[20GV I D E O   K A M E R A,   C E N A : " + videokamerasUzlabojumaCena + K.EKRANA_GARUMA_IZMERS;
+      parklajamaisMasivs[6] += "\033[20GV I D E O   K A M E R A,   C E N A : " + Videokamera.videokamera.piederumaUzlabojumaCena + K.EKRANA_GARUMA_IZMERS;
       // Pievieno līmeņa līniju.
-      pievienotLimenaLinijas(parklajamaisMasivs, videokamerasLimenis, 8);
-      if (nopirktaVideokamera) {
+      pievienotLimenaLinijas(parklajamaisMasivs, Videokamera.videokamera.piederumaLimenis, 8);
+      if (Videokamera.videokamera.nopirkaPiederumu) {
         for (int i = 0 ; i < 3 ; i++) {
           parklajamaisMasivs[7 + i] += "\033[15G" + VekalaIzskati.LIMENI[i] + "\033[25G" + VekalaIzskati.LIMENI[3 + i] + "\033[35G" + VekalaIzskati.LIMENI[6 + i] + K.EKRANA_GARUMA_IZMERS;
         }
@@ -92,14 +80,14 @@ public class VeikalaKods {
       }
     }
 
-    if (nopirktiSerkocini) {
+    if (Serkocini.serkocini.nopirkaPiederumu) {
       for (int i = 0 ; i < 3 ; i++) {
         parklajamaisMasivs[11 + i] += "\033[15G" + VekalaIzskati.LIMENI[i] + "\033[25G" + VekalaIzskati.LIMENI[3 + i] + "\033[35G" + VekalaIzskati.LIMENI[6 + i] + "\033[45G" + VekalaIzskati.LIMENI[9 + i] + K.EKRANA_GARUMA_IZMERS;
       }
     }
     
     // Pievieno sērkociņu līmeņu līniju.
-    pievienotLimenaLinijas(parklajamaisMasivs, serkocinuLimenis, 12);
+    pievienotLimenaLinijas(parklajamaisMasivs, Serkocini.serkocini.piederumaLimenis, 12);
 
     // 2. Iekrāso izvēlēto izvēli un izvada uzlabojuma bildi.
     if (DarbibuIzpilde.izvelnesSkaitlis == 0) {
@@ -107,21 +95,21 @@ public class VeikalaKods {
 
       // Izvada priekšmeta bildi.
       if (fotoKamera) {
-        for (int i = 0; i < VekalaIzskati.kamerasMasivi[fotokamerasLimenis].length ; i++) {
-          parklajamaisMasivs[21 + i] += "\033[72G" + VekalaIzskati.kamerasMasivi[fotokamerasLimenis][i] + K.EKRANA_GARUMA_IZMERS;
+        for (int i = 0; i < VekalaIzskati.kamerasMasivi[Fotokamera.fotokamera.piederumaLimenis].length ; i++) {
+          parklajamaisMasivs[21 + i] += "\033[72G" + VekalaIzskati.kamerasMasivi[Fotokamera.fotokamera.piederumaLimenis][i] + K.EKRANA_GARUMA_IZMERS;
         }
       }
       else {
-        for (int i = 0; i < VekalaIzskati.videokamerasMasivi[videokamerasLimenis].length ; i++) {
-          parklajamaisMasivs[21 + i] += "\033[72G" + VekalaIzskati.videokamerasMasivi[videokamerasLimenis][i] + K.EKRANA_GARUMA_IZMERS;
+        for (int i = 0; i < VekalaIzskati.videokamerasMasivi[Videokamera.videokamera.piederumaLimenis].length ; i++) {
+          parklajamaisMasivs[21 + i] += "\033[72G" + VekalaIzskati.videokamerasMasivi[Videokamera.videokamera.piederumaLimenis][i] + K.EKRANA_GARUMA_IZMERS;
         }
       }
     }
     else if (DarbibuIzpilde.izvelnesSkaitlis == 1) {
       parklajamaisMasivs[10] += K.ORANZS + "\033[15GS E R K O C I N I" + K.RESET + K.EKRANA_GARUMA_IZMERS;
       // Izvada priekšmeta bildi.
-      for (int i = 0; i < VekalaIzskati.serkocinuMasivi[serkocinuLimenis].length ; i++) {
-        parklajamaisMasivs[21 + i] += "\033[72G" + VekalaIzskati.serkocinuMasivi[serkocinuLimenis][i] + K.EKRANA_GARUMA_IZMERS;
+      for (int i = 0; i < VekalaIzskati.serkocinuMasivi[Serkocini.serkocini.piederumaLimenis].length ; i++) {
+        parklajamaisMasivs[21 + i] += "\033[72G" + VekalaIzskati.serkocinuMasivi[Serkocini.serkocini.piederumaLimenis][i] + K.EKRANA_GARUMA_IZMERS;
       }
     }
     else if (DarbibuIzpilde.izvelnesSkaitlis == 2){
@@ -170,6 +158,7 @@ public class VeikalaKods {
       }
     }
 
+    Piederumi.saglabatKontaVisuPiederumuDatus();
     TastaturasKlausitajs.uzreizNodzestKomandu();
   }
 
@@ -207,7 +196,7 @@ public class VeikalaKods {
 
   private static void serkocinuKods(String komanda) {
     // 1. Izvēlas aprakstu.
-    if (serkocinuLimenis == 3) {
+    if (Serkocini.serkocini.piederumaLimenis == 3) {
       // 1.1. Saglabā aprakstu.
       uzlabojumaApraksts[0] = "               _     _              ";
       uzlabojumaApraksts[1] = "   G A R A N T E   S E R K O C I N A";
@@ -247,36 +236,19 @@ public class VeikalaKods {
     }
 
     // 2. Veic uzlabojumus.
-    if (komanda.equals("SPACE") && serkocinuLimenis < 3 && SakumaDati.nauda >= Integer.parseInt(serkocinuUzlabojumaCena)) {
+    if (komanda.equals("SPACE") && Serkocini.serkocini.piederumaLimenis < 3 && SakumaDati.nauda >= Integer.parseInt(Serkocini.serkocini.piederumaUzlabojumaCena)) {
       // Iegādājas piederumu.
-      if (!nopirktiSerkocini) {
-        nopirktiSerkocini = true;
+      if (!Serkocini.serkocini.nopirkaPiederumu) {
+        Serkocini.serkocini.nopirkaPiederumu = true;
         FailuRedigetajs.mainitFailaMainigaVertibu("nopirktiSerkocini", "T", Konts.lietotajaKontaCels);
       }
       else {
-        serkocinuLimenis++;
+        Serkocini.serkocini.piederumaLimenis++;
       }
 
       // Atņem pirkuma naudas summu.
-      SakumaDati.nauda -= Integer.parseInt(serkocinuUzlabojumaCena);
-      FailuRedigetajs.mainitFailaMainigaVertibu("nauda", SakumaDati.nauda+"", Konts.lietotajaKontaCels);
-
-      // Izvēlas nākošā uzlabojuma cenu.
-      if (serkocinuLimenis == 0) {
-        serkocinuUzlabojumaCena = "30";
-      }
-      else if (serkocinuLimenis == 1) {
-        serkocinuUzlabojumaCena = "60";
-      }
-      else if (serkocinuLimenis == 2) {
-        serkocinuUzlabojumaCena = "80";
-      }
-      else if (serkocinuLimenis == 3) {
-        serkocinuUzlabojumaCena = "M A X";
-      }
-      FailuRedigetajs.mainitFailaMainigaVertibu("serkocinuUzlabojumaCena", serkocinuUzlabojumaCena, Konts.lietotajaKontaCels);
-      FailuRedigetajs.mainitFailaMainigaVertibu("serkocinuLimenis", serkocinuLimenis+"", Konts.lietotajaKontaCels);
-      
+      SakumaDati.nauda -= Integer.parseInt(Serkocini.serkocini.piederumaUzlabojumaCena);
+      Serkocini.serkocini.atjauninatLimenaVertibas();
     }
   }
 
@@ -294,7 +266,7 @@ public class VeikalaKods {
 
     // 2. Izvēlas atbilstošos datus.
     if (fotoKamera) {
-      if (fotokamerasLimenis < 2) {
+      if (Fotokamera.fotokamera.piederumaLimenis < 2) {
         // 2.1. Saglabā aprakstu.
         uzlabojumaApraksts[0] = "                           _        ";
         uzlabojumaApraksts[1] = "   K A M E R A,  K U R A   A T R I  ";
@@ -333,45 +305,31 @@ public class VeikalaKods {
       }
 
       // 2.2. Apstrādā komandu.
-      if (komanda.equals("E") && nopirktaFotokamera) {
+      if (komanda.equals("E") && Fotokamera.fotokamera.nopirkaPiederumu) {
         // Paņem/Izvēlas šo kameru.
         izveletaFotokamera = true;
         izveletaVideokamera = false;
         FailuRedigetajs.mainitFailaMainigaVertibu("izveletaFotokamera", "T", Konts.lietotajaKontaCels);
         FailuRedigetajs.mainitFailaMainigaVertibu("izveletaVideokamera", "F", Konts.lietotajaKontaCels);
       }
-      else if (komanda.equals("SPACE") && fotokamerasLimenis < 2 && SakumaDati.nauda >= Integer.parseInt(fotokamerasUzlabojumaCena)) {
+      else if (komanda.equals("SPACE") && Fotokamera.fotokamera.piederumaLimenis < 2 && SakumaDati.nauda >= Integer.parseInt(Fotokamera.fotokamera.piederumaUzlabojumaCena)) {
         // Iegādājas piederumu.
-        if (!nopirktaFotokamera) {
-          nopirktaFotokamera = true;
+        if (!Fotokamera.fotokamera.nopirkaPiederumu) {
+          Fotokamera.fotokamera.nopirkaPiederumu = true;
           FailuRedigetajs.mainitFailaMainigaVertibu("nopirktaFotokamera", "T", Konts.lietotajaKontaCels);
         }
         else {
-          fotokamerasLimenis++;
+          Fotokamera.fotokamera.piederumaLimenis++;
         }
 
         // Atņem pirkuma naudas summu.
-        SakumaDati.nauda -= Integer.parseInt(fotokamerasUzlabojumaCena);
-        FailuRedigetajs.mainitFailaMainigaVertibu("nauda", SakumaDati.nauda+"", Konts.lietotajaKontaCels);
-
-        // Izvēlas nākošā uzlabojuma cenu.
-        if (fotokamerasLimenis == 0) {
-          fotokamerasUzlabojumaCena = "75";
-        }
-        else if (fotokamerasLimenis == 1) {
-          fotokamerasUzlabojumaCena = "140";
-        }
-        else if (fotokamerasLimenis == 2) {
-          fotokamerasUzlabojumaCena = "M A X";
-        }
-        FailuRedigetajs.mainitFailaMainigaVertibu("fotokamerasUzlabojumaCena", fotokamerasUzlabojumaCena, Konts.lietotajaKontaCels);
-        FailuRedigetajs.mainitFailaMainigaVertibu("fotokamerasLimenis", fotokamerasLimenis+"", Konts.lietotajaKontaCels);
-
+        SakumaDati.nauda -= Integer.parseInt(Fotokamera.fotokamera.piederumaUzlabojumaCena);
+        Fotokamera.fotokamera.atjauninatLimenaVertibas();
       }
     }
     else if (videokamera) {
       // 2.1. Saglabā aprakstu.
-      if (videokamerasLimenis < 2) {
+      if (Videokamera.videokamera.piederumaLimenis < 2) {
         uzlabojumaApraksts[0] = "                                    ";
         uzlabojumaApraksts[1] = "   V I D E O K A M E R A,  K U R A  ";
         uzlabojumaApraksts[2] = "    _               _               ";
@@ -409,40 +367,26 @@ public class VeikalaKods {
       }
 
       // 2.2. Apstrādā komandu.
-      if (komanda.equals("E") && nopirktaVideokamera) {
+      if (komanda.equals("E") && Videokamera.videokamera.nopirkaPiederumu) {
         // Paņem/Izvēlas šo kameru.
         izveletaVideokamera = true;
         izveletaFotokamera = false;
         FailuRedigetajs.mainitFailaMainigaVertibu("izveletaVideokamera", "T", Konts.lietotajaKontaCels);
         FailuRedigetajs.mainitFailaMainigaVertibu("izveletaFotokamera", "F", Konts.lietotajaKontaCels);
       }
-      else if (komanda.equals("SPACE") && videokamerasLimenis < 2 && SakumaDati.nauda >= Integer.parseInt(videokamerasUzlabojumaCena)) {
+      else if (komanda.equals("SPACE") && Videokamera.videokamera.piederumaLimenis < 2 && SakumaDati.nauda >= Integer.parseInt(Videokamera.videokamera.piederumaUzlabojumaCena)) {
         // Iegādājas piederumu.
-        if (!nopirktaVideokamera) {
-          nopirktaVideokamera = true;
+        if (!Videokamera.videokamera.nopirkaPiederumu) {
+          Videokamera.videokamera.nopirkaPiederumu = true;
           FailuRedigetajs.mainitFailaMainigaVertibu("nopirktaVideokamera", "T", Konts.lietotajaKontaCels);
         }
         else {
-          videokamerasLimenis++;
+          Videokamera.videokamera.piederumaLimenis++;
         }
 
         // Atņem pirkuma naudas summu.
-        SakumaDati.nauda -= Integer.parseInt(videokamerasUzlabojumaCena);
-        FailuRedigetajs.mainitFailaMainigaVertibu("nauda", SakumaDati.nauda+"", Konts.lietotajaKontaCels);
-        
-        // Izvēlas nākošā uzlabojuma cenu.
-        if (videokamerasLimenis == 0) {
-          videokamerasUzlabojumaCena = "75";
-        }
-        else if (videokamerasLimenis == 1) {
-          videokamerasUzlabojumaCena = "140";
-        }
-        else if (videokamerasLimenis == 2) {
-          videokamerasUzlabojumaCena = "M A X";
-        }
-        FailuRedigetajs.mainitFailaMainigaVertibu("videokamerasUzlabojumaCena", videokamerasUzlabojumaCena, Konts.lietotajaKontaCels);
-        FailuRedigetajs.mainitFailaMainigaVertibu("videokamerasLimenis", videokamerasLimenis+"", Konts.lietotajaKontaCels);
-        
+        SakumaDati.nauda -= Integer.parseInt(Videokamera.videokamera.piederumaUzlabojumaCena);
+        Videokamera.videokamera.atjauninatLimenaVertibas();
       }
     }
   }
