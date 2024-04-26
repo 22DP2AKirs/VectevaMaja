@@ -26,10 +26,6 @@ public class SakumaDati {
   public static boolean spuldziteSaplesta;
   public static boolean spokiSledzAraGaismu;
 
-  // Sērkociņa dati.
-  public static int atlikusoSerkocinuDaudzums;
-  public static int maxSerkocinaDegsanasLaiks;
-
   // Spoku dati.
   public static int logaSpokaAtlautaAgresivitate;
   public static int durvjuSpokaAtlautaAgresivitate;
@@ -74,7 +70,7 @@ public class SakumaDati {
   private static String atgriestKontaDatus() {
     // Sagatavo programmas datus kategorijai '#KontaDati'.
     String kontaDati = FailuRedigetajs.failuParveidotajsParTekstu(Konts.lietotajaKontaCels, 0);
-    return kontaDati.substring(0, kontaDati.indexOf("#SpelesDati"));
+    return kontaDati.substring(0, kontaDati.indexOf("#SpelesDati") - 1);
   }
 
   private static String atgriestSpelesDatus() {
@@ -102,11 +98,7 @@ public class SakumaDati {
     
     // Veikala dati.
     failaDala = FailuRedigetajs.atgriestDaluNoFaila("#Veikals", Konts.lietotajaKontaCels);    
-  
-    VeikalaKods.durvjuSledzis = FailuRedigetajs.booleanDatuAtgriezejsNoSaraktsa("durvjuSledzis", failaDala);
-
-    VeikalaKods.izveletaFotokamera = FailuRedigetajs.booleanDatuAtgriezejsNoSaraktsa("izveletaFotokamera", failaDala);;
-    VeikalaKods.izveletaVideokamera = FailuRedigetajs.booleanDatuAtgriezejsNoSaraktsa("izveletaVideokamera", failaDala);
+    VeikalaKods.nolasitNoKontaVeikalaDatus(failaDala);
   
     // Iestatījumu dati.
     failaDala = FailuRedigetajs.atgriestDaluNoFaila("#Iestatijumi", Konts.lietotajaKontaCels);
@@ -139,7 +131,12 @@ public class SakumaDati {
   }
 
   private static void citiSpelesDati() {
-    durvisSlegtas = FailuRedigetajs.booleanDatuAtgriezejs("durvisSlegtas", K.IESTATIJUMU_FAILS);
+    if (VeikalaKods.durvjuSledzis) {
+      durvisSlegtas = true;
+    }
+    else {
+      durvisSlegtas = false;
+    }
     MazoSpeluIzvelesKods.mdPapildusLaikaIespeja = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("mdPapildusLaikaIespeja",  naktsDati);
     elektribaIeslegta = FailuRedigetajs.booleanDatuAtgriezejs("elektribaIeslegta", K.IESTATIJUMU_FAILS);
   }

@@ -3,11 +3,9 @@ Lietotajvards=AAA
 Parole=AAA
 DrosibasVards=AAA
 
-
-
 #SpelesDati:
-spelesNakts=5
-nauda=1000029
+spelesNakts=2
+nauda=999210
 ieslegtaSkana=T
 
 #Iestatijumi:
@@ -18,16 +16,16 @@ nopirktaFotokamera=T
 nopirktaVideokamera=T
 nopirktiSerkocini=T
 
-fotokamerasUzlabojumaCena=M A X
+fotokamerasUzlabojumaCena=140
 videokamerasUzlabojumaCena=M A X
 serkocinuUzlabojumaCena=M A X
 
-fotokamerasLimenis=2
+fotokamerasLimenis=1
 videokamerasLimenis=2
 serkocinuLimenis=3
 
 durvjuSledzis=T
 
-izveletaFotokamera=T
-izveletaVideokamera=F
+izveletaFotokamera=F
+izveletaVideokamera=T
 

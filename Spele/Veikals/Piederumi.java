@@ -1,5 +1,7 @@
 package Spele.Veikals;
 
+import java.util.ArrayList;
+
 import Spele.PaligMetodes;
 import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.KontaKods.Konts;
@@ -25,8 +27,19 @@ public class Piederumi {
   public static volatile boolean ieslegtaKamera;
   public static boolean izveletaKamera;
   public static String[] kamerasIzskats;
+  public static double baterija = 100;
 
   public Piederumi() {}
+
+  // GETTERS
+
+  public boolean getNopirkaPiederumu() {
+    return nopirkaPiederumu;
+  }
+
+  public boolean getMaxLimenis() {
+    return maxLimenis;
+  }
 
   public static void definetKameru() {
     izveletaKamera = true;
@@ -40,21 +53,39 @@ public class Piederumi {
       izveletaKamera = false;
       kamerasIzskats = null;
     }
-  }
-
-  public void atjaunotPiederumus() {
-    Fotokamera.fotokamera.atjauninatLimenaVertibas();
-    Videokamera.videokamera.atjauninatLimenaVertibas();
-    Serkocini.serkocini.atjauninatLimenaVertibas();
+    // Atjauno baterijas līmeni.
+    baterija = 100;
   }
 
   public void kontaSaglabatDatus() {
-    // Kontā kategorijā 'veikals' saglabās piederuma datus.
+    /** Kontā kategorijā 'veikals' saglabās piederuma datus, piem.:
+     * nopirkaPiederumu,
+     * piederumaUzlabojumaCena,
+     * piederumaLimenis
+    */
     if (Konts.lietotajsPiesledzies) {
       FailuRedigetajs.mainitFailaMainigaVertibu(nopirkaPiederumuNosauk, PaligMetodes.booleanVertiba(nopirkaPiederumu), Konts.lietotajaKontaCels);
       FailuRedigetajs.mainitFailaMainigaVertibu(piederumaUzlabojumaCenasNosaukums, piederumaUzlabojumaCena, Konts.lietotajaKontaCels);
       FailuRedigetajs.mainitFailaMainigaVertibu(piederumaLimenaNosaukums, piederumaLimenis+"", Konts.lietotajaKontaCels);
     }
+  }
+
+  public void nolasaKontaPiederumaDatus(ArrayList<String> saraksts) {
+    nopirkaPiederumu = FailuRedigetajs.booleanDatuAtgriezejsNoSaraktsa(nopirkaPiederumuNosauk, saraksts);
+    piederumaUzlabojumaCena = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa(piederumaUzlabojumaCenasNosaukums, saraksts);
+    piederumaLimenis = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa(piederumaLimenaNosaukums, saraksts);
+  }
+
+  public static void nolasitNoKontaVisuPiederumuDatus(ArrayList<String> saraksts) {
+    Fotokamera.fotokamera.nolasaKontaPiederumaDatus(saraksts);
+    Videokamera.videokamera.nolasaKontaPiederumaDatus(saraksts);
+    Serkocini.serkocini.nolasaKontaPiederumaDatus(saraksts);
+  }
+
+  public static void atjaunotPiederumus() {
+    Fotokamera.fotokamera.atjauninatLimenaVertibas();
+    Videokamera.videokamera.atjauninatLimenaVertibas();
+    Serkocini.serkocini.atjauninatLimenaVertibas();
   }
 
   public static void saglabatKontaVisuPiederumuDatus() {

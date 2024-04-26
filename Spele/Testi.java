@@ -1,50 +1,27 @@
 package Spele;
 
+import Spele.SpelesProcesi.Main;
 import Spele.SpelesProcesi.TastaturasKlausitajs;
 
 public class Testi {
   public static boolean testesana = false;
   static int i = 1;
 
-  // static Thread kamerasThreds = Thread.ofVirtual().start(() -> {
-  //   // Darbības, kas notiks threda dzīves laikā.
-  //   while (Main.spelePalaista) {
-  //     while (!VaronaDarbibas.ieslegtaKamera) {
-  //       i++;
-  //       System.out.println(i);
-  //       try { Thread.sleep(100); } catch (Exception e) {} // 0.1 sec.
-  //     }
-  //   }
-  // });
-
-
-
-  public static void testaProgramma() { // throws  InterruptedException, Lai varētu izmantot: Thread.sleep(0); bez try_catch.
+  public static void testaProgramma() throws InterruptedException { // throws  InterruptedException, Lai varētu izmantot: Thread.sleep(0); bez try_catch.
     TastaturasKlausitajs.palaistKlaviaturasLasitaju();
+    float i = 0;
     while (true) {
-      // if (TastaturasKlausitajs.komanda.equals("W")) {
-      //   System.out.println("Komanda: W");
-      //   VaronaDarbibas.ieslegtaKamera = false;
-      //   TastaturasKlausitajs.uzreizNodzestKomandu();
-      // }
+      System.out.println("123456789012345");
+      System.out.println(PaligMetodes.atgriestProgresaLiniju(i, 100, 15, false));
 
+      if (i > 100) {
+        Thread.sleep(50000);
+      }
 
-      // if (TastaturasKlausitajs.komanda.equals("S")) {
-      //   System.out.println("Komanda: S");
-      //   VaronaDarbibas.ieslegtaKamera = true;
-      //   TastaturasKlausitajs.uzreizNodzestKomandu();
-      // }
-
-      // if (TastaturasKlausitajs.komanda.equals("E")) {
-      //   System.out.println("Komanda: E");
-      //   System.out.println(kamerasThreds.isInterrupted());
-      //   TastaturasKlausitajs.uzreizNodzestKomandu();
-      // }
-
-
+      i += 0.4;
+      Thread.sleep(30);
+      
+      Main.nodzestTerminali();
     }
   }
-
-      
-  
 }

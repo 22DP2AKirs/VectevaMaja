@@ -1,5 +1,6 @@
 package Spele.Veikals;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import Spele.K;
@@ -158,7 +159,7 @@ public class VeikalaKods {
       }
     }
 
-    Piederumi.saglabatKontaVisuPiederumuDatus();
+    saglabatVisusVeikalaDatus();
     TastaturasKlausitajs.uzreizNodzestKomandu();
   }
 
@@ -187,10 +188,7 @@ public class VeikalaKods {
       
       // Atņem naudas summu.
       SakumaDati.nauda -= Integer.parseInt(durvjuSledzaCena);
-      FailuRedigetajs.mainitFailaMainigaVertibu("nauda", SakumaDati.nauda+"", Konts.lietotajaKontaCels);
-
       durvjuSledzaCena = "M A X";
-      FailuRedigetajs.mainitFailaMainigaVertibu("durvjuSledzis", "T", Konts.lietotajaKontaCels);
     }
   }
 
@@ -240,7 +238,6 @@ public class VeikalaKods {
       // Iegādājas piederumu.
       if (!Serkocini.serkocini.nopirkaPiederumu) {
         Serkocini.serkocini.nopirkaPiederumu = true;
-        FailuRedigetajs.mainitFailaMainigaVertibu("nopirktiSerkocini", "T", Konts.lietotajaKontaCels);
       }
       else {
         Serkocini.serkocini.piederumaLimenis++;
@@ -309,14 +306,11 @@ public class VeikalaKods {
         // Paņem/Izvēlas šo kameru.
         izveletaFotokamera = true;
         izveletaVideokamera = false;
-        FailuRedigetajs.mainitFailaMainigaVertibu("izveletaFotokamera", "T", Konts.lietotajaKontaCels);
-        FailuRedigetajs.mainitFailaMainigaVertibu("izveletaVideokamera", "F", Konts.lietotajaKontaCels);
       }
       else if (komanda.equals("SPACE") && Fotokamera.fotokamera.piederumaLimenis < 2 && SakumaDati.nauda >= Integer.parseInt(Fotokamera.fotokamera.piederumaUzlabojumaCena)) {
         // Iegādājas piederumu.
         if (!Fotokamera.fotokamera.nopirkaPiederumu) {
           Fotokamera.fotokamera.nopirkaPiederumu = true;
-          FailuRedigetajs.mainitFailaMainigaVertibu("nopirktaFotokamera", "T", Konts.lietotajaKontaCels);
         }
         else {
           Fotokamera.fotokamera.piederumaLimenis++;
@@ -371,14 +365,11 @@ public class VeikalaKods {
         // Paņem/Izvēlas šo kameru.
         izveletaVideokamera = true;
         izveletaFotokamera = false;
-        FailuRedigetajs.mainitFailaMainigaVertibu("izveletaVideokamera", "T", Konts.lietotajaKontaCels);
-        FailuRedigetajs.mainitFailaMainigaVertibu("izveletaFotokamera", "F", Konts.lietotajaKontaCels);
       }
       else if (komanda.equals("SPACE") && Videokamera.videokamera.piederumaLimenis < 2 && SakumaDati.nauda >= Integer.parseInt(Videokamera.videokamera.piederumaUzlabojumaCena)) {
         // Iegādājas piederumu.
         if (!Videokamera.videokamera.nopirkaPiederumu) {
           Videokamera.videokamera.nopirkaPiederumu = true;
-          FailuRedigetajs.mainitFailaMainigaVertibu("nopirktaVideokamera", "T", Konts.lietotajaKontaCels);
         }
         else {
           Videokamera.videokamera.piederumaLimenis++;
@@ -389,5 +380,45 @@ public class VeikalaKods {
         Videokamera.videokamera.atjauninatLimenaVertibas();
       }
     }
+  }
+
+  public static void saglabatVisusVeikalaDatus() {
+    Piederumi.saglabatKontaVisuPiederumuDatus();
+    // Saglabā kameras izvēles.
+    if (izveletaFotokamera) {
+      FailuRedigetajs.mainitFailaMainigaVertibu("izveletaFotokamera", "T", Konts.lietotajaKontaCels);
+      FailuRedigetajs.mainitFailaMainigaVertibu("izveletaVideokamera", "F", Konts.lietotajaKontaCels);
+    }
+    else if (izveletaVideokamera){
+      FailuRedigetajs.mainitFailaMainigaVertibu("izveletaFotokamera", "F", Konts.lietotajaKontaCels);
+      FailuRedigetajs.mainitFailaMainigaVertibu("izveletaVideokamera", "T", Konts.lietotajaKontaCels);
+    }
+    else {
+      FailuRedigetajs.mainitFailaMainigaVertibu("izveletaFotokamera", "F", Konts.lietotajaKontaCels);
+      FailuRedigetajs.mainitFailaMainigaVertibu("izveletaVideokamera", "F", Konts.lietotajaKontaCels);
+    }
+
+    // Saglabā vienreizējos pirkumus.
+    if (durvjuSledzis) {
+      FailuRedigetajs.mainitFailaMainigaVertibu("durvjuSledzis", "T", Konts.lietotajaKontaCels);
+    }
+    else {
+      FailuRedigetajs.mainitFailaMainigaVertibu("durvjuSledzis", "F", Konts.lietotajaKontaCels);
+    }
+
+    // Saglabā atlikušo naudu.
+    FailuRedigetajs.mainitFailaMainigaVertibu("nauda", SakumaDati.nauda+"", Konts.lietotajaKontaCels);
+  }
+
+  public static void nolasitNoKontaVeikalaDatus(ArrayList<String> saraksts) {
+    // 1. Nolasa visu piederumu datus.
+    Piederumi.nolasitNoKontaVisuPiederumuDatus(saraksts);
+
+    // 2. Nolasa izvēles datus.
+    izveletaFotokamera = FailuRedigetajs.booleanDatuAtgriezejsNoSaraktsa("izveletaFotokamera", saraksts);
+    izveletaVideokamera = FailuRedigetajs.booleanDatuAtgriezejsNoSaraktsa("izveletaVideokamera", saraksts);
+
+    // 3. Nolasa vienreizējo pirkumu datus.
+    durvjuSledzis = FailuRedigetajs.booleanDatuAtgriezejsNoSaraktsa("durvjuSledzis", saraksts);
   }
 }

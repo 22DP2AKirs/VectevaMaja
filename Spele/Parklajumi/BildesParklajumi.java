@@ -12,7 +12,8 @@ import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.Spoki.DurvjuSpoks;
 import Spele.Spoki.LogaSpoks;
 import Spele.Spoki.VirtuvesSpoks;
-import Spele.Varonis.VaronaDarbibas;
+import Spele.Veikals.Piederumi;
+import Spele.Veikals.Serkocini;
 
 // * Pārklāj bildes.
 public class BildesParklajumi {
@@ -422,13 +423,13 @@ public class BildesParklajumi {
 
   public static void istabasGaismasUnSerkocinaParklajumi(String[] mainamaisMasivs, String[] originalaisMasivs) {
     // * Pārbauda istabu, kurā ir varonis, un nosaka vai gaisma tanī būs ieslēgta vai izslēgta, tas pats ar sērkociņu.
-    if (!SakumaDati.istabuGaismasIeslegtas[Enums.V_Istaba.CIPARS] && !VaronaDarbibas.aizdedzinatsSerkocins) { // Ja gaismas nav, un sērkocins nav aizdedzināts. 0 0
+    if (!SakumaDati.istabuGaismasIeslegtas[Enums.V_Istaba.CIPARS] && !Serkocini.serkocini.getAizdedzinatsSerkocins()) { // Ja gaismas nav, un sērkocins nav aizdedzināts. 0 0
       istabaArIzslegtuGaismu(mainamaisMasivs);
     }
-    else if (!SakumaDati.istabuGaismasIeslegtas[Enums.V_Istaba.CIPARS] && VaronaDarbibas.aizdedzinatsSerkocins) { // Ja gaismas nav, un aizdedzināts sērkocins. 0 1
+    else if (!SakumaDati.istabuGaismasIeslegtas[Enums.V_Istaba.CIPARS] && Serkocini.serkocini.getAizdedzinatsSerkocins()) { // Ja gaismas nav, un aizdedzināts sērkocins. 0 1
       tumsaIstabaArAizdedzinatuSerkocinu(mainamaisMasivs, originalaisMasivs);
     }
-    else if (SakumaDati.istabuGaismasIeslegtas[Enums.V_Istaba.CIPARS] && VaronaDarbibas.aizdedzinatsSerkocins) { // Ja ir gaisma, un aizdedzināts sērkocins. 1 1
+    else if (SakumaDati.istabuGaismasIeslegtas[Enums.V_Istaba.CIPARS] && Serkocini.serkocini.getAizdedzinatsSerkocins()) { // Ja ir gaisma, un aizdedzināts sērkocins. 1 1
       serkocinaPieliksanaPieBildes(mainamaisMasivs);
     }
   }
@@ -468,11 +469,11 @@ public class BildesParklajumi {
   public static String[] pievienotVideokameru(String[] apstradajamaisMasivs) {
     /** Doto 16 elementu masīvu pārklāj ar kameras masīvu.*/
     for (int i = 0 ; i < K.BILDES_MASIVA_IZMERS ; i++) {
-      apstradajamaisMasivs[i] += "\033[2G" + SakumaDati.kamera[i];
+      apstradajamaisMasivs[i] += "\033[2G" + Piederumi.kamerasIzskats[i];
     }
 
     // 2. Pievieno kameras baterijas daudzumu.
-    apstradajamaisMasivs[13] += "\033[65G" + PaligMetodes.atgriestProgresaLiniju(VaronaDarbibas.kamerasBaterija, 100, 10, true) + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+    apstradajamaisMasivs[13] += "\033[64G" + PaligMetodes.atgriestProgresaLiniju(Piederumi.baterija, 100, 10, true) + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
     return apstradajamaisMasivs;
   }
 }

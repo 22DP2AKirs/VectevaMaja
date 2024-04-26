@@ -12,6 +12,8 @@ import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Laiks;
 import Spele.SpelesProcesi.TastaturasKlausitajs;
 import Spele.Varonis.VaronaDarbibas;
+import Spele.Varonis.VaronaStatusaEfekti;
+import Spele.Veikals.Serkocini;
 
 public class UIizskats {
     // static String[] ievadesMasivs = Ievade.ieprieksejaIevade("");
@@ -91,8 +93,8 @@ public class UIizskats {
           "                     ", 
           "                     ",
           "                     ",
-          "                     ",
-          "                     ",
+          "     S T R E S S     ",
+          "   " + PaligMetodes.atgriestProgresaLiniju(VaronaStatusaEfekti.varonaStresaLimenis, 100, 15, false) + "   ",
           "_____________________"
       };
       
@@ -108,10 +110,10 @@ public class UIizskats {
         gatavsLabasPusesUI[13] = "                     ";
       }
 
-      if (SakumaDati.atlikusoSerkocinuDaudzums > 9) { // Nomaina atlikušo sērkociņu daudzuma rindu.
-        gatavsLabasPusesUI[20] = " Serkocini : " + SakumaDati.atlikusoSerkocinuDaudzums + "      ";
+      if (Serkocini.serkocini.getSerkocinuDaudzums() > 9) { // Nomaina atlikušo sērkociņu daudzuma rindu.
+        gatavsLabasPusesUI[20] = " Serkocini : " + Serkocini.serkocini.getSerkocinuDaudzums() + "      ";
       } else {
-        gatavsLabasPusesUI[20] = " Serkocini : " + SakumaDati.atlikusoSerkocinuDaudzums + "       ";
+        gatavsLabasPusesUI[20] = " Serkocini : " + Serkocini.serkocini.getSerkocinuDaudzums() + "       ";
       }
 
       // Mapes varoņa bultiņas pozīcijas noteicējs.

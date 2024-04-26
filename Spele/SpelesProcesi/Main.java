@@ -55,6 +55,7 @@ public class Main {
     // Pieslēdz lietotāja kontu, un nolasa galvenos datus.
     if (Konts.atceretiesMani) {
       SakumaDati.nolasitDatusNoKonta();
+      Piederumi.atjaunotPiederumus(); // Atjauno, lai, kad sāk spēli, būtu atjaunināti uz maxLīmeni.
     }
     else {
       // Ja nav konta, tad uzstāda parastās vērtības jeb datus.

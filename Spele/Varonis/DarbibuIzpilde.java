@@ -38,7 +38,7 @@ public class DarbibuIzpilde {
 
   // Šie masīvi tiek pārbaudīti, lai labāk spētu noteikt, kāda darbība ir, kādai metodei.
   private static final String[] testesanasKomandas = { "I", "O", "P" , "SI", "MI", "EXIT", "POWER OFF", "KILL", "WIN", "H1", "H2", "H3", "H4", "H5", "MS"};
-  private static final String[] parastasKomandas = {"F", "A", "D", "1", "2", "3", "4", "SPACE"};
+  private static final String[] parastasKomandas = {"F", "A", "D", "1", "2", "3", "4", "SPACE", "FOTO"};
 
   // Izvelnes skaitlis (Izmantots, lai kustinātu dažāda veida 'main menus').
   public static int izvelnesSkaitlis = 0;
@@ -67,7 +67,7 @@ public class DarbibuIzpilde {
           VaronaDarbibas.testesanasDarbibas(komandasTeksts, pabeigtsKomTeksts);
         }
         else if (Arrays.asList(parastasKomandas).contains(komanda) || Arrays.asList(parastasKomandas).contains(komandasTeksts)) { // Parastās komandas.
-          VaronaDarbibas.parastasDarbibas(komanda);
+          VaronaDarbibas.parastasDarbibas(komanda, komandasTeksts, pabeigtsKomTeksts);
         }
       }
 
@@ -153,7 +153,7 @@ public class DarbibuIzpilde {
     BildesParklajumi.istabasGaismasUnSerkocinaParklajumi(mainamaisMasivs, IstabuIzskati.istabuMasivs[Enums.V_Istaba.CIPARS][Enums.V_Virziens.CIPARS]);
 
     if (Piederumi.ieslegtaKamera) {
-      BildesParklajumi.pievienotVideokameru(Piederumi.kamerasIzskats);
+      BildesParklajumi.pievienotVideokameru(mainamaisMasivs);
     }
 
     BildesParklajumi.atjaunotParklatoIstabu(mainamaisMasivs);
@@ -235,6 +235,4 @@ public class DarbibuIzpilde {
       }
     }
   }
-
-  
 }

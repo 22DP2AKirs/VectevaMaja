@@ -52,7 +52,7 @@ public final class DurvjuSpoks extends Spoks {
 
   public void noteiktGajienaRezultatu() {
     // Nosaka vai spoks cenšas kustēties vai nē.
-    if (atgrieztRandomKustibasSkaitli() < getSpokaAtlautaAgresivitate()) {
+    if (atgrieztRandomKustibasSkaitli() <= getSpokaAtlautaAgresivitate()) {
       if (getMainamoAtputasLaiku() == 0) {
         if (!SakumaDati.durvisSlegtas) {
           // Ja durvis nebija aizslēgtas, tad ...

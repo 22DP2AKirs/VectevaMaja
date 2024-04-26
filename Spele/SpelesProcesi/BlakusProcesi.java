@@ -2,6 +2,7 @@ package Spele.SpelesProcesi;
 
 import Spele.Varonis.VaronaDarbibas;
 import Spele.Varonis.VaronaStatusaEfekti;
+import Spele.Veikals.Serkocini;
 
 public class BlakusProcesi extends Thread {
   
@@ -12,6 +13,8 @@ public class BlakusProcesi extends Thread {
       VaronaDarbibas.kamerasBaterijasAprekins();
       // 2. Palielina varoņa stresu, ja viņš ir tumsā.
       VaronaStatusaEfekti.varonaStress();
+      // 3. Ieslēdz izslēgtās istabas gaismu.
+      Serkocini.serkocini.ieslegtIstabasGaismu();
       try { Thread.sleep(100); } catch (Exception e) {} // 0.1 sec.
     }
   }

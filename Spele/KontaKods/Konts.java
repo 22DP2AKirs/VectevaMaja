@@ -99,6 +99,7 @@ public class Konts {
         }
         else if (TastaturasKlausitajs.komandasTeksts.equals("RESET") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
           SakumaDati.nodzestProgrammasDatus();
+          SakumaDati.nolasitDatusNoKonta();
         }
       }
     }
@@ -172,12 +173,4 @@ public class Konts {
     // Vārds ir unikāls.
     return null;
   }
-
-  public static void kontaSaglabatVeikalaDatus() {
-    // Kontā saglabā veikala datus.
-    if (lietotajsPiesledzies) {
-      FailuRedigetajs.mainitFailaMainigaVertibu(drosibasVards, drosibasVardaNoteikumuKluda, lietotajaKontaCels);
-    }
-  }
-
 }

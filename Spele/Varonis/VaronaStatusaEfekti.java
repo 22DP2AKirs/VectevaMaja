@@ -16,20 +16,24 @@ import Spele.SpelesProcesi.Main;
 import Spele.Spoki.DurvjuSpoks;
 import Spele.Spoki.LogaSpoks;
 import Spele.Spoki.VirtuvesSpoks;
+import Spele.Veikals.Piederumi;
+import Spele.Veikals.Serkocini;
+import Spele.Veikals.VeikalaKods;
+import Spele.Veikals.Videokamera;
 
 public class VaronaStatusaEfekti {
   public static float varonaStresaLimenis;
 
   public static void varonaStress() {
     // Viss, kas ietekmē varoņa stresa līmeni.
-    if (!SakumaDati.istabuGaismasIeslegtas[Enums.V_Istaba.CIPARS] && !VaronaDarbibas.aizdedzinatsSerkocins) { // Ja istabā, kurā atrodas varonis ir izslēgta gaisma, tad ...
-      varonaStresaLimenis += 0.3;
+    if (!(VeikalaKods.izveletaVideokamera && Videokamera.videokamera.getMaxLimenis() && Piederumi.ieslegtaKamera) && !SakumaDati.istabuGaismasIeslegtas[Enums.V_Istaba.CIPARS] && !Serkocini.serkocini.getAizdedzinatsSerkocins()) { // Ja istabā, kurā atrodas varonis ir izslēgta gaisma, tad ...
+      varonaStresaLimenis += 0.4;
     }
   }
 
   public static void parbauditEffektus() {
     // Ja varona stresa līmenis pārsniedz 100.
-    if (VaronaStatusaEfekti.varonaStresaLimenis > 100.0) {
+    if (VaronaStatusaEfekti.varonaStresaLimenis > 100) {
       VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("STRESS");
     }
     // Ja zaudē karātavas.

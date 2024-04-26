@@ -15,6 +15,7 @@ import Spele.SpelesProcesi.Laiks;
 import Spele.SpelesProcesi.Main;
 import Spele.Varonis.DarbibuIzpilde;
 import Spele.Varonis.VaronaStatusaEfekti;
+import Spele.Veikals.Serkocini;
 
 // * Pārklāj Ekrānus jeb 31 elementu masīvus.
 public class EkranuParklajumi {
@@ -184,7 +185,7 @@ private static void pieslegsanasParklasana(String[] mainamaisMasivs) {
 
   private static void uzvarasEkranaParklasana(String[] mainamaisMasivs) {
     mainamaisMasivs[15] += "\033[37G" + VaronaStatusaEfekti.varonaStresaLimenis + "\033[106G";
-    mainamaisMasivs[17] += "\033[59G" + SakumaDati.atlikusoSerkocinuDaudzums + "\033[106G";
+    mainamaisMasivs[17] += "\033[59G" + Serkocini.serkocini.getSerkocinuDaudzums() + "\033[106G";
   }
 
   private static String[] zaudesanasInformacijasNoteiksana(String iemesls) {

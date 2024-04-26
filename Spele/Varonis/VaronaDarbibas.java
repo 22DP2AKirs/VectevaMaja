@@ -8,6 +8,7 @@ import Spele.Spoki.LogaSpoks;
 import Spele.Spoki.VirtuvesSpoks;
 import Spele.Veikals.Fotokamera;
 import Spele.Veikals.Piederumi;
+import Spele.Veikals.Serkocini;
 import Spele.Veikals.VeikalaKods;
 import Spele.Veikals.Videokamera;
 import Spele.Enums;
@@ -26,14 +27,11 @@ import Spele.SpelesProcesi.Laiks;
 public class VaronaDarbibas {
   public static int infoLapasSecibasSkaitlis = 1; // Nosaka vai varoņa ievade būs ar kustību saistīta vai ar darbu darbību saistīta.
 
-  public static boolean aizdedzinatsSerkocins = false; 
   public static int serkocinaDeksanasLaikaSkaititajs;
   public static int laiksCikIlgiElektribaBusIzslegta;
   
-  public static double kamerasBaterija = 100;
-
-  public static void parastasDarbibas(String komanda) {
-    if (komanda.equals("F") && SakumaDati.atlikusoSerkocinuDaudzums != 0 && !aizdedzinatsSerkocins) {
+  public static void parastasDarbibas(String komanda, String komandasTeksts , boolean pabeigtsKomTeksts) {
+    if (komanda.equals("F") && Serkocini.serkocini.getSerkocinuDaudzums() != 0 && !Serkocini.serkocini.getAizdedzinatsSerkocins()) {
       meginatAizdedzinatSerkocinu();
     } 
     else if (komanda.equals("A")) { // Pagriezties pa kreisi.
@@ -56,12 +54,17 @@ public class VaronaDarbibas {
     }
     else if (komanda.equals("SPACE") && (VeikalaKods.izveletaFotokamera || VeikalaKods.izveletaVideokamera)) {
       // Toggle.
-      if (!Piederumi.ieslegtaKamera && kamerasBaterija > 40) {
+      if (!Piederumi.ieslegtaKamera && Piederumi.baterija > 40) {
         Piederumi.ieslegtaKamera = true;
       }
       else {
         Piederumi.ieslegtaKamera = false;
       }
+    }
+    else if (komandasTeksts.equals("FOTO") && pabeigtsKomTeksts && VeikalaKods.izveletaFotokamera && Piederumi.ieslegtaKamera && Fotokamera.fotokamera.getMaxLimenis()) {
+      Piederumi.ieslegtaKamera = false;
+      Piederumi.baterija = 0;
+      VirtuvesSpoks.virtuvesSpoks.deaktivizetSpoku();
     }
   }
 
@@ -203,7 +206,7 @@ public class VaronaDarbibas {
     if (komandasTeksts.equals("DURVIS") && pabeigtsKomTeksts) {
       aizbiedetDurvjuSpoku();
     }
-    else if (komandasTeksts.equals("SLEGT") && pabeigtsKomTeksts) {
+    else if (komandasTeksts.equals("SLEGT") && pabeigtsKomTeksts && VeikalaKods.durvjuSledzis) {
       aizslegtDurvis();
     }
     else if (komanda.equals("E") && KaratavasSavienojums.mSpeleKaratavas) {
@@ -280,8 +283,7 @@ public class VaronaDarbibas {
   private static void meginatAizdedzinatSerkocinu() {
     if (Main.rand.nextInt(2) == 0) { // 50 % iespēja aizdedzināt sērkociņu.
       SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\lighting-matches.wav", 0);
-      aizdedzinatsSerkocins = true;
-      SakumaDati.atlikusoSerkocinuDaudzums--;
+      Serkocini.serkocini.aizdedzinat();
     } 
     else {
       SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\failing-to-lit-matches.wav", 0);
@@ -388,12 +390,12 @@ public class VaronaDarbibas {
   public static void skaititCikIlgiDegsSerkocins() {
     // * Metode skaita, cik ilgi līdz sērkociņš izdegs, un pēc tam izdzēš to.
     // Ja sērkociņš ir aizdedzināts un tagadējais degšanas laiks nav vienāds ar iestatījumos uzstādīto laiku, tad ...
-    if (aizdedzinatsSerkocins && serkocinaDeksanasLaikaSkaititajs != SakumaDati.maxSerkocinaDegsanasLaiks) {
+    if (Serkocini.serkocini.getAizdedzinatsSerkocins() && serkocinaDeksanasLaikaSkaititajs != Serkocini.serkocini.getDegsanasLaiku()) {
       serkocinaDeksanasLaikaSkaititajs++;
     } 
     // Citādi ...
     else {
-      aizdedzinatsSerkocins = false;
+      Serkocini.serkocini.setAizdedzinatsSerkocins(false);
       serkocinaDeksanasLaikaSkaititajs = 0;
     }
   }

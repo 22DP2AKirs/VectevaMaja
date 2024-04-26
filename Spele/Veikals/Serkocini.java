@@ -1,11 +1,17 @@
 package Spele.Veikals;
 
+import Spele.Enums;
+import Spele.FailuLietotaji.SkanasSpeletajs;
+import Spele.SakumaDatuSagatavosana.SakumaDati;
+
 public class Serkocini extends Piederumi {
   // Klases objekts.
   public static Serkocini serkocini = new Serkocini();
 
   int serkocinuDaudzums;
   int serkocinuDegsanasLaiks;
+  boolean aizdedzinatsSerkocins; 
+
 
   public Serkocini() {
     nopirkaPiederumuNosauk = "nopirktiSerkocini";
@@ -43,5 +49,35 @@ public class Serkocini extends Piederumi {
     else {
       piederumaUzlabojumaCena = "20";
     }
+  }
+
+  public void ieslegtIstabasGaismu() {
+    if (aizdedzinatsSerkocins && maxLimenis && !SakumaDati.istabuGaismasIeslegtas[Enums.V_Istaba.CIPARS]) {
+      SakumaDati.istabuGaismasIeslegtas[Enums.V_Istaba.CIPARS] = true;
+      SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-on.wav", 0);
+    }
+  }
+
+  public int getSerkocinuDaudzums() {
+    return serkocinuDaudzums;
+  }
+
+  public void aizdedzinat() {
+    if (serkocinuDaudzums > 0) {
+      serkocinuDaudzums--;
+      aizdedzinatsSerkocins = true;
+    }
+  }
+
+  public int getDegsanasLaiku() {
+    return serkocinuDegsanasLaiks;
+  }
+
+  public boolean getAizdedzinatsSerkocins() {
+    return aizdedzinatsSerkocins;
+  }
+
+  public void setAizdedzinatsSerkocins(boolean b) {
+    aizdedzinatsSerkocins = b;
   }
 }

@@ -4,9 +4,7 @@ public class Videokamera extends Piederumi {
   // Klases objekts.
   public static Videokamera videokamera = new Videokamera();
 
-  private double baterija;
-  private double izladesanasDaudzums;
-
+  private double izladesanasDaudzums = 0.5 / (piederumaLimenis + 1 * 10);
   private String[] kamerasIzskats = {
     // Ansi esc. sequences veido 'tukšus logus' jeb caurumus šinī bildē, kuros var redzēt iepriekšējā masīva elementus.
 
@@ -32,7 +30,6 @@ public class Videokamera extends Piederumi {
     nopirkaPiederumuNosauk = "nopirktaVideokamera";
     piederumaUzlabojumaCenasNosaukums = "videokamerasUzlabojumaCena";
     piederumaLimenaNosaukums = "videokamerasLimenis";
-    baterija = 100;
     atjauninatLimenaVertibas();
   }
 
@@ -64,7 +61,7 @@ public class Videokamera extends Piederumi {
 
   public void baterijasAprekins() {
     // Kamera tur ļoti ilgu laiku.
-    if (ieslegtaKamera) {
+    if (ieslegtaKamera && !maxLimenis) {
       // 1. Ja kamera ir izlādējusies, tad to izslēdz.
       if (baterija < 1) {
         ieslegtaKamera = false;

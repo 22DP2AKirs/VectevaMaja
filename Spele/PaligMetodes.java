@@ -19,12 +19,26 @@ public class PaligMetodes {
   public static String atgriestProgresaLiniju(double tagadejaisSkaitlis, int lielakaisSkaitlis, int kolonnuSkaits, boolean raditProcentus) {
     String progLinija = "";
     // 1. Aprēķina skaitli, kurš apzīmēs 1 iedaļu.
-    int vienaIedala = lielakaisSkaitlis / kolonnuSkaits;
+    double vienaIedala = lielakaisSkaitlis * 1.0 / kolonnuSkaits;
     // 2. Pieliek 'baterijas iedaļas', kamēr tagadējais sk. nav mazāks par 1 iedaļu.
-    for (int i = (int) tagadejaisSkaitlis ; i >= vienaIedala ; i -= vienaIedala) {
+    if (tagadejaisSkaitlis <= lielakaisSkaitlis) {
+      for (double i = tagadejaisSkaitlis ; i >= vienaIedala ; i -= vienaIedala) {
+        progLinija += "▒";
+      }
+    }
+    else {
+      for (int i = 0; i < kolonnuSkaits; i++) {
+        progLinija += "▒";
+      }
+    }
+    int progressaGarums = progLinija.length(); // Lai noteiktu, cik tumšās līnijas pielikt pie progressa.
+    // 3. Pievieno atlikušās kolonnas ar tumšu krāsu (lai vizuāli varētu redzēt, cik līdz beigām).
+    progLinija += K.TPELEKS; // Nokrāso atlikuša progressa līniju pelēku.
+    for (int i = progressaGarums + 1; i <= kolonnuSkaits ; i++)  {
       progLinija += "▒";
     }
-    // 3. Pievieno procentus pirms progress līnijas.
+    progLinija += K.RESET; // Atjauno progress līnijas krāsu.
+    // 4. Pievieno procentus pirms progress līnijas.
     if (raditProcentus) {
       progLinija = (int) (tagadejaisSkaitlis / lielakaisSkaitlis * 100) + "% " + progLinija;
     }

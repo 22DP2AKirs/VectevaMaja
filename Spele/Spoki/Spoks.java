@@ -97,7 +97,7 @@ public class Spoks {
 
   protected void noteiktGajienaRezultatu() {
     // Nosaka vai spoks cenšas kustēties vai nē.
-    if (atgrieztRandomKustibasSkaitli() < spokaAtlautaAgresivitate) {
+    if (atgrieztRandomKustibasSkaitli() <= spokaAtlautaAgresivitate) {
       if (spokaAtputasLaikaMainamaKopija == 0) {
         pieietTuvak();
       }

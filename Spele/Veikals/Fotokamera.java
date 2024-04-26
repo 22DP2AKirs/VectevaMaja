@@ -4,8 +4,7 @@ public final class Fotokamera extends Piederumi {
   // Klases objekts.
   public static Fotokamera fotokamera = new Fotokamera();
 
-  private double baterija;
-  private double izladesanasDaudzums;
+  private double izladesanasDaudzums = 2.0 / (piederumaLimenis + 1);
   private String[] kamerasIzskats = {
     // Ansi esc. sequences veido 'tukšus logus' jeb caurumus šinī bildē, kuros var redzēt iepriekšējā masīva elementus.
 
@@ -31,7 +30,6 @@ public final class Fotokamera extends Piederumi {
     nopirkaPiederumuNosauk = "nopirktaFotokamera";
     piederumaUzlabojumaCenasNosaukums = "fotokamerasUzlabojumaCena";
     piederumaLimenaNosaukums = "fotokamerasLimenis";
-    baterija = 100;
     atjauninatLimenaVertibas();
   }
 
@@ -50,7 +48,7 @@ public final class Fotokamera extends Piederumi {
           break;
       }
 
-      izladesanasDaudzums = 1.0 / piederumaLimenis + 1;
+      izladesanasDaudzums = 1.0 / (piederumaLimenis + 1);
     }
     else {
       piederumaUzlabojumaCena = "100";
@@ -59,6 +57,10 @@ public final class Fotokamera extends Piederumi {
 
   public String[] atgriestIzskatu() {
     return kamerasIzskats;
+  } 
+
+  public double atgriestBateriju() {
+    return baterija;
   } 
 
   public void baterijasAprekins() {

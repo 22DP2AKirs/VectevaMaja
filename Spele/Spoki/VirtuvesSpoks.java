@@ -67,7 +67,7 @@ public final class VirtuvesSpoks extends Spoks {
       SkanasSpeletajs.SpeletSkanu("Spele/SkanasFaili/gaismas-sledzis-on.wav", 0);
     }
 
-    if (atgrieztRandomKustibasSkaitli() < getSpokaAktualoAgresivitati()) {
+    if (atgrieztRandomKustibasSkaitli() <= getSpokaAktualoAgresivitati()) {
       if (getMainamoAtputasLaiku() == 0) {
         pieietTuvak();
       }
