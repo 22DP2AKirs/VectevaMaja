@@ -17,6 +17,7 @@ public class TastaturasKlausitajs implements NativeKeyListener {
 
   public static boolean lielieBurti = true;
   public static boolean atslegtaIevade; // Atļauj spiest un turēt jebkurus taustiņus vienlaicīgi.
+  public static boolean bijaEnter;
 
   static boolean vaiIzpildijaKomandu;
   private static boolean turTaustinu;
@@ -116,6 +117,10 @@ public class TastaturasKlausitajs implements NativeKeyListener {
       ieprieksejaKomanda = komanda;
       uzreizNodzestKomandu();
     }
+  }
+
+  public static boolean komandaNavTuksa() {
+    return !komanda.equals(K.TUKSA_IEVADE);
   }
 
   public static void beigtRakstitKomandasTekstu() {
@@ -248,6 +253,13 @@ public class TastaturasKlausitajs implements NativeKeyListener {
 
   public static void nodzestKomanduJaNeENTER() {
     if (!komanda.toUpperCase().equals("ENTER")) {
+      uzreizNodzestKomandu();
+    }
+  }
+
+  public static void enterSledzis() {
+    if (komanda.toUpperCase().equals("ENTER")) {
+      bijaEnter = (bijaEnter) ? false : true; // Toggle slēdzis.
       uzreizNodzestKomandu();
     }
   }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Spele.K;
 import Spele.PaligMetodes;
 import Spele.FailuLietotaji.FailuRedigetajs;
+import Spele.Iestatijumi.Iestatijumi;
 import Spele.KontaKods.Konts;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.Spoki.DurvjuSpoks;
@@ -89,7 +90,7 @@ public class SakumaDati {
   }
 
   public static void nolasitDatusNoKonta() {
-    // Nolasa un uzstāda visus datus no spēlētāja koda.
+    // Nolasa un uzstāda visus datus no spēlētāja konta.
     ArrayList<String> failaDala;
 
     Konts.lietotajaKontaCels = FailuRedigetajs.stringDatuAtgriezejs("lietotajaKontaCels", K.SAKUMA_DATU_MAPE);
@@ -100,10 +101,10 @@ public class SakumaDati {
     failaDala = FailuRedigetajs.atgriestDaluNoFaila("#Veikals", Konts.lietotajaKontaCels);    
     VeikalaKods.nolasitNoKontaVeikalaDatus(failaDala);
     
-  
     // Iestatījumu dati.
     failaDala = FailuRedigetajs.atgriestDaluNoFaila("#Iestatijumi", Konts.lietotajaKontaCels);
-    
+    Iestatijumi.nolasitKontaDatus(failaDala);
+
     // Spēles dati.
     ieslegtaSkana = FailuRedigetajs.booleanDatuAtgriezejs("ieslegtaSkana", Konts.lietotajaKontaCels);
     nauda = FailuRedigetajs.intDatuAtgriezejs("nauda", Konts.lietotajaKontaCels);
@@ -132,12 +133,7 @@ public class SakumaDati {
   }
 
   private static void citiSpelesDati() {
-    if (VeikalaKods.durvjuSledzis) {
-      durvisSlegtas = true;
-    }
-    else {
-      durvisSlegtas = false;
-    }
+    durvisSlegtas = (VeikalaKods.durvjuSledzis) ? true : false;
     MazoSpeluIzvelesKods.mdPapildusLaikaIespeja = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("mdPapildusLaikaIespeja",  naktsDati);
     elektribaIeslegta = FailuRedigetajs.booleanDatuAtgriezejs("elektribaIeslegta", K.IESTATIJUMU_FAILS);
   }

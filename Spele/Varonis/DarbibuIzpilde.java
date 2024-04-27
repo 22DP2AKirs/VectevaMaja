@@ -162,7 +162,7 @@ public class DarbibuIzpilde {
 
   public static void izvelnesKustiba(String ievade, int izvelesIespejas) {
     // * Ļauj kontrolēt spēles izvēlnes ar dažādiem lielumiem.
-    if (!TastaturasKlausitajs.rakstaKomandasTekstu) {
+    if (!TastaturasKlausitajs.rakstaKomandasTekstu && !TastaturasKlausitajs.bijaEnter) {
       if (ievade.equals("W") && izvelnesSkaitlis > 0) {
         // Pārvieto izvēli uz augšu (^).
         izvelnesSkaitlis--;

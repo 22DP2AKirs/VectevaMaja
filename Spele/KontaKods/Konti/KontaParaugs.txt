@@ -9,7 +9,16 @@ nauda=0
 ieslegtaSkana=T
 
 #Iestatijumi:
-
+ietUzPrieksu=W
+griestiesPaLabi=D
+griestiesPaKreisi=A
+izmantotObj=E
+izmantotGaismu=G
+izmantotKameru=SPACE
+izietNoMD=Q
+aizdedzinatSerkocinu=F
+parslegtBurtuIzmeru=Tab
+parslegtRakstisanasRezimu=X
 
 #Veikals:
 nopirktaFotokamera=F

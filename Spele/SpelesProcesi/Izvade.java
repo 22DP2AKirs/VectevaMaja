@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Spele.K;
 import Spele.PaligMetodes;
+import Spele.Iestatijumi.Iestatijumi;
 import Spele.Izskati.UIizskats;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
@@ -35,6 +36,7 @@ public class Izvade extends Thread {
       while (jaizvadaMasivs) {
         // Atver >> konsoli, kurā var redzēt rakstīto komandas tekstu.
         izvaditKonsoli();
+        Iestatijumi.izvaditMainigos();
         PaligMetodes.masivuIzvade(izvadesMasivs);
         
         // --- Cikla beigas jeb 1 freims 'fps'.

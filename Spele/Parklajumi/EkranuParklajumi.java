@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.FailuLietotaji.SkanasSpeletajs;
+import Spele.Iestatijumi.Iestatijumi;
 import Spele.Izskati.EkranuIzskati;
 import Spele.KontaKods.Konts;
 import Spele.K;
@@ -13,6 +14,7 @@ import Spele.MazasSpeles.Karatavas.KaratavuIzskati;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Laiks;
 import Spele.SpelesProcesi.Main;
+import Spele.SpelesProcesi.TastaturasKlausitajs;
 import Spele.Varonis.DarbibuIzpilde;
 import Spele.Varonis.VaronaStatusaEfekti;
 import Spele.Veikals.Serkocini;
@@ -62,17 +64,28 @@ public class EkranuParklajumi {
   }
 
   private static void iestatijumuParklasana(String[] mainamaisMasivs) {
+    String bultina = (TastaturasKlausitajs.bijaEnter) ? K.DEBESU_ZILS + "\033[10G---->" : K.DEBESU_ZILS + "\033[5G---->";
+
     mainamaisMasivs[4] += "\033[10GT A U S T I N U   N O Z I M E   J E B   F U N K C I J A S :" + K.EKRANA_GARUMA_IZMERS;
-    mainamaisMasivs[6] += "\033[15GI E T   U Z   P R I E K S U >>> " + K.EKRANA_GARUMA_IZMERS;
-    mainamaisMasivs[8] += "\033[15GP A G R I E S T I E S   P A   L A B I >>> " + K.EKRANA_GARUMA_IZMERS;
-    mainamaisMasivs[10] += "\033[15GP A G R I E S T I E S   P A   K R E I S I >>> " + K.EKRANA_GARUMA_IZMERS;
-    mainamaisMasivs[12] += "\033[15GI Z M A N T O T   O B J E K T U >>> " + K.EKRANA_GARUMA_IZMERS;
-    mainamaisMasivs[14] += "\033[15GA I Z D E D Z I N A T   S E R K O C I N U >>> " + K.EKRANA_GARUMA_IZMERS;
-    mainamaisMasivs[16] += "\033[15GI Z I E T   N O   M A J A S D A R B A >>> " + K.EKRANA_GARUMA_IZMERS;
-    mainamaisMasivs[18] += "\033[15GO N / O F F   K A M E R U >>> " + K.EKRANA_GARUMA_IZMERS;
-    mainamaisMasivs[20] += "\033[15GO N / O F F   G A I S M U >>> " + K.EKRANA_GARUMA_IZMERS;
-    mainamaisMasivs[22] += "\033[15GO N / O F F   R A K S T I S A N A S   R E Z I M U >>> " + K.EKRANA_GARUMA_IZMERS;
-    mainamaisMasivs[24] += "\033[15GO N / O F F   L I E L O S,  M A Z O S   B U R T U S >>> " + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[6] += "\033[15GI E T   U Z   P R I E K S U >>> " + Iestatijumi.kontrole[0] + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[8] += "\033[15GP A G R I E S T I E S   P A   L A B I >>> " + Iestatijumi.kontrole[1] + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[10] += "\033[15GP A G R I E S T I E S   P A   K R E I S I >>> " + Iestatijumi.kontrole[2] + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[12] += "\033[15GI Z M A N T O T   O B J E K T U >>> " + Iestatijumi.kontrole[3] + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[14] += "\033[15GA I Z D E D Z I N A T   S E R K O C I N U >>> " + Iestatijumi.kontrole[4] + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[16] += "\033[15GI Z I E T   N O   M A J A S D A R B A >>> " + Iestatijumi.kontrole[5] + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[18] += "\033[15GO N / O F F   K A M E R U >>> " + Iestatijumi.kontrole[6] + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[20] += "\033[15GO N / O F F   G A I S M U >>> " + Iestatijumi.kontrole[7] + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[22] += "\033[15GO N / O F F   R A K S T I S A N A S   R E Z I M U >>> " + Iestatijumi.kontrole[8] + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[24] += "\033[15GO N / O F F   L I E L O S,  M A Z O S   B U R T U S >>> " + Iestatijumi.kontrole[9] + K.EKRANA_GARUMA_IZMERS;
+
+    mainamaisMasivs[6 + DarbibuIzpilde.izvelnesSkaitlis * 2] += bultina + K.RESET + "\033[50G" + K.EKRANA_GARUMA_IZMERS;
+    
+    if (TastaturasKlausitajs.bijaEnter && TastaturasKlausitajs.komandaNavTuksa()) {
+      Iestatijumi.kontrole[DarbibuIzpilde.izvelnesSkaitlis] = TastaturasKlausitajs.komanda;
+      Iestatijumi.atjauninatKontrolesMainigos();
+      TastaturasKlausitajs.bijaEnter = false;
+      TastaturasKlausitajs.uzreizNodzestKomandu();
+    }
   }
 
   private static void redigesanasParklasana(String[] mainamaisMasivs) {
