@@ -384,7 +384,39 @@ public class EkranuIzskati {
     "\r|______________________________________________________________________________________________________|",
   };
 
-  
+  private static final String[] IESTATIJUMU_EKRANS = {
+
+    "\r▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|______________________________________________________________________________________________________|",
+  };
 
   public static String[] [] visiEkrani = { // String[] - masīvs, String[] [] - viendimensijas masīvs, kurš satur masīvus, String[][] [] - divdimensiju masīvs, kurš satur masīvus.
     GALVENAIS_EKRANS,
@@ -398,5 +430,6 @@ public class EkranuIzskati {
     DROSIBAS_VARDA_EKRANS,
     REDIGESANAS_EKRANS,
     TUKS_EKRANS,
+    IESTATIJUMU_EKRANS
   };
 }

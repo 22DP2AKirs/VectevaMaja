@@ -99,6 +99,7 @@ public class SakumaDati {
     // Veikala dati.
     failaDala = FailuRedigetajs.atgriestDaluNoFaila("#Veikals", Konts.lietotajaKontaCels);    
     VeikalaKods.nolasitNoKontaVeikalaDatus(failaDala);
+    
   
     // Iestatījumu dati.
     failaDala = FailuRedigetajs.atgriestDaluNoFaila("#Iestatijumi", Konts.lietotajaKontaCels);

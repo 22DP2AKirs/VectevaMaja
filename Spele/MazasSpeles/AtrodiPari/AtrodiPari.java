@@ -281,7 +281,7 @@ public class AtrodiPari {
     // Ievadei ir jāsastāv no 2 cipariem, piem., '25' vai '91', vai '02' u.t.t.
    
     // 1. Pārbauda vai komanda atbilst prasībām.
-    if (komanda.equals("ENTER") && PaligMetodes.navTuksasIevades(koordTeksts) && PaligMetodes.irSkaitlis(koordTeksts) && koordTeksts.length() == 2) {
+    if (komanda.equals("ENTER") && PaligMetodes.irSkaitlis(koordTeksts) && koordTeksts.length() == 2) {
       apstradatIevadi(koordTeksts);
     }
   }

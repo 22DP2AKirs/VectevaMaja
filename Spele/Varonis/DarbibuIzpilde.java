@@ -10,6 +10,7 @@ import Spele.K;
 import Spele.Enums.Istabas;
 import Spele.Enums.Virzieni;
 import Spele.FailuLietotaji.FailuRedigetajs;
+import Spele.Iestatijumi.Iestatijumi;
 import Spele.Izskati.IstabuIzskati;
 import Spele.KontaKods.Konts;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
@@ -212,18 +213,19 @@ public class DarbibuIzpilde {
           // Veikala kods.
           VeikalaKods.veikalaPalaisana();
         }
-        // Iestatījumu kods:
         else if (izvelnesSkaitlis == 3) {
+          // Iestatījumu kods:
+          Iestatijumi.IestatijumuKods();
         } 
-        // Pamācības kods:
         else if (izvelnesSkaitlis == 4) {
+          // Pamācības kods:
         } 
-        // Konta rģistrācijas kods:
         else if (izvelnesSkaitlis == 5) {
+          // Konta rģistrācijas kods:
           Konts.kontaIzvelesDarbibas();
         } 
-        // Aizvērt programmu:
         else if (izvelnesSkaitlis == 6) {
+          // Aizvērt programmu:
           Main.programmaPalaista = false;
           try {
             GlobalScreen.unregisterNativeHook(); // Atāķē klaviatūras klausītāju.

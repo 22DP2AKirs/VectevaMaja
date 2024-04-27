@@ -54,8 +54,25 @@ public class EkranuParklajumi {
     else if (EKRANA_TIPS.equals(EkranuVeidi.REDIGESANAS_EKRANS)) {
       redigesanasParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[9], EkranuIzskati.visiEkrani[9].length));
     }
+    else if (EKRANA_TIPS.equals(EkranuVeidi.IESTATIJUMI)) {
+      iestatijumuParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[10], EkranuIzskati.visiEkrani[10].length));
+    }
 
     return ekranaKopija;
+  }
+
+  private static void iestatijumuParklasana(String[] mainamaisMasivs) {
+    mainamaisMasivs[4] += "\033[10GT A U S T I N U   N O Z I M E   J E B   F U N K C I J A S :" + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[6] += "\033[15GI E T   U Z   P R I E K S U >>> " + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[8] += "\033[15GP A G R I E S T I E S   P A   L A B I >>> " + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[10] += "\033[15GP A G R I E S T I E S   P A   K R E I S I >>> " + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[12] += "\033[15GI Z M A N T O T   O B J E K T U >>> " + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[14] += "\033[15GA I Z D E D Z I N A T   S E R K O C I N U >>> " + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[16] += "\033[15GI Z I E T   N O   M A J A S D A R B A >>> " + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[18] += "\033[15GO N / O F F   K A M E R U >>> " + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[20] += "\033[15GO N / O F F   G A I S M U >>> " + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[22] += "\033[15GO N / O F F   R A K S T I S A N A S   R E Z I M U >>> " + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[24] += "\033[15GO N / O F F   L I E L O S,  M A Z O S   B U R T U S >>> " + K.EKRANA_GARUMA_IZMERS;
   }
 
   private static void redigesanasParklasana(String[] mainamaisMasivs) {

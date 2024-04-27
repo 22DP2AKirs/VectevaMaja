@@ -4,28 +4,28 @@ Parole=AAA
 DrosibasVards=AAA
 
 #SpelesDati:
-spelesNakts=2
-nauda=999210
+spelesNakts=1
+nauda=99949
 ieslegtaSkana=T
 
 #Iestatijumi:
 
 
 #Veikals:
-nopirktaFotokamera=T
-nopirktaVideokamera=T
-nopirktiSerkocini=T
+nopirktaFotokamera=F
+nopirktaVideokamera=F
+nopirktiSerkocini=F
 
-fotokamerasUzlabojumaCena=140
-videokamerasUzlabojumaCena=M A X
-serkocinuUzlabojumaCena=M A X
+fotokamerasUzlabojumaCena=100
+videokamerasUzlabojumaCena=100
+serkocinuUzlabojumaCena=20
 
-fotokamerasLimenis=1
-videokamerasLimenis=2
-serkocinuLimenis=3
+fotokamerasLimenis=0
+videokamerasLimenis=0
+serkocinuLimenis=0
 
 durvjuSledzis=T
 
 izveletaFotokamera=F
-izveletaVideokamera=T
+izveletaVideokamera=F
 

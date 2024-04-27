@@ -23,7 +23,7 @@ public class VeikalaKods {
   public static boolean izveletaFotokamera;
   public static boolean izveletaVideokamera;
 
-  public static String durvjuSledzaCena = "50";
+  public static String durvjuSledzaCena;
 
   // Viena pirkuma uzlabojumi:
   public static boolean durvjuSledzis;
@@ -420,5 +420,8 @@ public class VeikalaKods {
 
     // 3. Nolasa vienreizējo pirkumu datus.
     durvjuSledzis = FailuRedigetajs.booleanDatuAtgriezejsNoSaraktsa("durvjuSledzis", saraksts);
+
+    // Ir tas pats, kas šis: if (durvjuSledzis) { durvjuSledzaCena = "M A X"; } else { durvjuSledzaCena = "50"; }
+    durvjuSledzaCena = (durvjuSledzis) ? "M A X" : "50";
   }
 }

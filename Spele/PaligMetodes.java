@@ -10,10 +10,7 @@ public class PaligMetodes {
 
   public static String booleanVertiba(boolean bools) {
     // Atgriež pirmo burtu no vērtības, lai to varētu saglabāt failos.
-    if (bools) {
-      return "T";
-    }
-    return "F";
+    return (bools) ? "T" : "F"; // Tas pats, kas // if (bools) { return "T"; } else { return "F"; }
   }
   
   public static String atgriestProgresaLiniju(double tagadejaisSkaitlis, int lielakaisSkaitlis, int kolonnuSkaits, boolean raditProcentus) {
@@ -48,8 +45,7 @@ public class PaligMetodes {
 
   public static String saliktAtstarpesSimboluVirkne(String vards, int atstarpes) {
     // Atgriež vārdu ar atstarpēm starp burtiem jeb simboliem.
-    String atstarpe = "";
-    String apstradataVirkne = "";
+    String atstarpe = "", apstradataVirkne = "";
     char[] virknesSimboli = vards.toCharArray();
 
     // 1. Izveido atstarpi pēc pieprasījuma.
@@ -91,22 +87,6 @@ public class PaligMetodes {
     }
   }
 
-  public static boolean navTuksasIevades(String ievade) {
-    // * Pārbauda vai ievadē ir 'tukšas ievades' simbols [ } ].
-    if (ievade.equals(K.TUKSA_IEVADE) || ievade.equals("")) {
-      return false;
-    }
-    return true;
-  }
-
-  public static boolean navTuksaisIevadesSimbols(String ievade) {
-    // * Pārbauda vai ievadē ir 'tukšas ievades' simbols [ } ].
-    if (ievade.equals(K.TUKSA_IEVADE)) {
-      return false;
-    }
-    return true;
-  }
-
   public static boolean irSkaitlis(String ievade) {
     // * Pārbauda vai ievadi var pārveidot par skaitli.
     try {
@@ -141,7 +121,6 @@ public class PaligMetodes {
       Thread.sleep(sekundes * 1000);
     } catch (Exception e) {}
   }
-
 
   public static Istabas atrastIstabasEnumuPecTaCiparaVertibas(int vertiba) {
     // * Metode atrod no Istabas enumiem enumu, kura vērtība atbilsts norādītajai

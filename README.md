@@ -36,16 +36,17 @@ Komandas bieži būs redzamas uz ekrāna, viss kas Jums ir jādara ir pēc katra
 ### Balansēšana vai uzlabojumi
 
 - [ ] Skaņa, kad ieslēdzas mājasdarbs.
-- [ ] Nomainīt 3. nakts grūtību uz vieglāku.
+- [x] Nomainīt 3. nakts grūtību uz vieglāku.
 - [ ] Vairāk m-spēles.
 - [x] Samazināt kāršu spēles kāršu daudzumu (līdz 8).
 - [x] Samazināt iespēju izslēgt gaismu istabās.
-- [ ] Pievienot 'stressa' līniju pie labās UI puses (Lai spēlētājam nevajadzētu minēt cik liels tas tam ir).
+- [x] Pievienot 'stressa' līniju pie labās UI puses (Lai spēlētājam nevajadzētu minēt cik liels tas tam ir).
 - [ ] Pievienot spoku 'Čill' stadiju (stadija, kur spoks gulēs n gājienus).
 
 ### TODO (fixi)
 
 - [x] Pievienot atpakaļ 'iepriekšējā komanda' lodziņu spēlē.
+- [ ] Spokus var redzēt caur kamerām.
 - ...
 
 ## Spēles nobeiguma stress
