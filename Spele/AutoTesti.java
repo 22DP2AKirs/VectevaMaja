@@ -1,5 +1,6 @@
 package Spele;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -7,6 +8,15 @@ import org.junit.Test;
 import Spele.SpelesProcesi.TastaturasKlausitajs;
 
 public class AutoTesti {
+
+
+  @Test
+  public void testetMasivuElementuDuplkatus() {
+    String[] masivsBezDuplikatiem = {"a", "b", "c", "d", "e", "f"};
+    String[] masivsArDuplikatiem = {"a", "b", "c", "d", "c", "f"};
+    assertFalse(PaligMetodes.masivaIrElementuDuplikati(masivsBezDuplikatiem));
+    assertTrue(PaligMetodes.masivaIrElementuDuplikati(masivsArDuplikatiem));
+  }
 
   @Test
   public void testetBooleanVertibasAtgriesanu() {

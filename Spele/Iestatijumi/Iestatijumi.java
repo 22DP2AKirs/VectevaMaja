@@ -2,6 +2,8 @@ package Spele.Iestatijumi;
 
 import java.util.ArrayList;
 
+import Spele.K;
+import Spele.PaligMetodes;
 import Spele.Enums.EkranuVeidi;
 import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.KontaKods.Konts;
@@ -16,6 +18,8 @@ public class Iestatijumi {
   izmantotObj, aizdedzinatSerkocinu, izietNoMD , izmantotKameru,
   izmantotGaismu, parslegtRakstisanasRezimu, parslegtBurtuIzmeru;
 
+  public static int kadriSekunde = 30;
+
   public static String[] kontrole = new String[10];
 
   public static void IestatijumuKods() {
@@ -24,12 +28,48 @@ public class Iestatijumi {
     DarbibuIzpilde.izvelnesSkaitlis = 0;
 
     while (!TastaturasKlausitajs.komanda.equals("Q")) {
-      TastaturasKlausitajs.komandasTekstaFunkcija();
-      TastaturasKlausitajs.enterSledzis();
-      DarbibuIzpilde.izvelnesKustiba(TastaturasKlausitajs.komanda, 10);
+      // 1. Izvade uz termināli.
       Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.IESTATIJUMI);
+      // 2. Ieslēdz komandas teksta rakstīšanu.
+      TastaturasKlausitajs.komandasTekstaFunkcija();
+      // 3. Ieslēdz 'toggle' pogu uz taustiņa 'ENTER'.
+      TastaturasKlausitajs.enterSledzis();
+      // 4. Pārvietošanās pār izvelnēm.
+      DarbibuIzpilde.izvelnesKustiba(TastaturasKlausitajs.komanda, 10);
+      // 5. Nomaina masīva elementu uz tiko ievadīto.
+      if (TastaturasKlausitajs.bijaEnter && TastaturasKlausitajs.komandaNavTuksa()) {
+        kontrole[DarbibuIzpilde.izvelnesSkaitlis] = TastaturasKlausitajs.komanda;
+        TastaturasKlausitajs.bijaEnter = false;
+        TastaturasKlausitajs.uzreizNodzestKomandu();
+      }
+
+      // 6. Darbību apstrāde.
       if (TastaturasKlausitajs.komandasTeksts.equals("SAVE") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
-        kontaSaglabatIestatijumus();
+        if (!PaligMetodes.masivaIrElementuDuplikati(kontrole)) {
+          // Saglabā izmaiņas.
+          atjauninatKontrolesMainigos();
+          kontaSaglabatIestatijumus();
+        }
+        else {
+          // Atjauno uz iepriekšējiem datiem.
+          if (Konts.lietotajsPiesledzies) {
+            nolasitKontaDatus(FailuRedigetajs.atgriestDaluNoFaila("#Iestatijumi:", Konts.lietotajaKontaCels));
+          }
+          else {
+            nolasitKontaDatus(FailuRedigetajs.atgriestDaluNoFaila("#Iestatijumi:", K.PARAUGA_KONTS));
+          }
+        }
+      }
+      else if (TastaturasKlausitajs.komandasTeksts.equals("RESET") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
+        // Atjauno uz noklusējumu.
+        nolasitKontaDatus(FailuRedigetajs.atgriestDaluNoFaila("#Iestatijumi:", K.PARAUGA_KONTS));
+        atjauninatKontrolesMasivu();
+      }
+      else if (TastaturasKlausitajs.komandasTeksts.equals("FPS") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
+        // Pārslēdz kadruSekundē vērtības.
+        kadriSekunde = (kadriSekunde == 30) ? 60 : 30;
+        // Atjauno spēles fps.
+        Izvade.framesPerSecond = 1000 / kadriSekunde;
       }
     }
 
@@ -48,6 +88,8 @@ public class Iestatijumi {
     izmantotGaismu = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("izmantotGaismu", datuDala);
     parslegtRakstisanasRezimu = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("parslegtRakstisanasRezimu", datuDala);
     parslegtBurtuIzmeru = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("parslegtBurtuIzmeru", datuDala);
+    kadriSekunde = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("kadriSekunde", datuDala);
+    Izvade.framesPerSecond = 1000 / kadriSekunde;
 
     atjauninatKontrolesMasivu();
   }
@@ -75,28 +117,31 @@ public class Iestatijumi {
   }
 
   public static void izvaditMainigos() {
-    System.out.println(ietUzPrieksu);
-    System.out.println(griestiesPaLabi);
-    System.out.println(griestiesPaKreisi);
-    System.out.println(izmantotObj);
-    System.out.println(aizdedzinatSerkocinu);
-    System.out.println(izietNoMD);
-    System.out.println(izmantotKameru);
-    System.out.println(izmantotGaismu);
-    System.out.println(parslegtRakstisanasRezimu);
-    System.out.println(parslegtBurtuIzmeru);
+    System.out.println("ietUzPrieksu : " + ietUzPrieksu + "\033[0K");
+    System.out.println("griestiesPaLabi : " + griestiesPaLabi + "\033[0K");
+    System.out.println("griestiesPaKreisi : " + griestiesPaKreisi + "\033[0K");
+    System.out.println("izmantotObj : " + izmantotObj + "\033[0K");
+    System.out.println("aizdedzinatSerkocinu : " + aizdedzinatSerkocinu + "\033[0K");
+    System.out.println("izietNoMD : " + izietNoMD + "\033[0K");
+    System.out.println("izmantotKameru : " + izmantotKameru + "\033[0K");
+    System.out.println("izmantotGaismu : " + izmantotGaismu + "\033[0K");
+    System.out.println("parslegtRakstisanasRezimu : " + parslegtRakstisanasRezimu + "\033[0K");
+    System.out.println("parslegtBurtuIzmeru : " + parslegtBurtuIzmeru + "\033[0K");
   }
 
   public static void kontaSaglabatIestatijumus() {
-    FailuRedigetajs.mainitFailaMainigaVertibu("ietUzPrieksu", ietUzPrieksu, Konts.lietotajaKontaCels);
-    FailuRedigetajs.mainitFailaMainigaVertibu("griestiesPaLabi", griestiesPaLabi, Konts.lietotajaKontaCels);
-    FailuRedigetajs.mainitFailaMainigaVertibu("griestiesPaKreisi", griestiesPaKreisi, Konts.lietotajaKontaCels);
-    FailuRedigetajs.mainitFailaMainigaVertibu("izmantotObj", izmantotObj, Konts.lietotajaKontaCels);
-    FailuRedigetajs.mainitFailaMainigaVertibu("izmantotGaismu", izmantotGaismu, Konts.lietotajaKontaCels);
-    FailuRedigetajs.mainitFailaMainigaVertibu("izmantotKameru", izmantotKameru, Konts.lietotajaKontaCels);
-    FailuRedigetajs.mainitFailaMainigaVertibu("izietNoMD", izietNoMD, Konts.lietotajaKontaCels);
-    FailuRedigetajs.mainitFailaMainigaVertibu("aizdedzinatSerkocinu", aizdedzinatSerkocinu, Konts.lietotajaKontaCels);
-    FailuRedigetajs.mainitFailaMainigaVertibu("parslegtBurtuIzmeru", parslegtBurtuIzmeru, Konts.lietotajaKontaCels);
-    FailuRedigetajs.mainitFailaMainigaVertibu("parslegtRakstisanasRezimu", parslegtRakstisanasRezimu, Konts.lietotajaKontaCels);
+    if (Konts.lietotajsPiesledzies) {
+      FailuRedigetajs.mainitFailaMainigaVertibu("ietUzPrieksu", ietUzPrieksu, Konts.lietotajaKontaCels);
+      FailuRedigetajs.mainitFailaMainigaVertibu("griestiesPaLabi", griestiesPaLabi, Konts.lietotajaKontaCels);
+      FailuRedigetajs.mainitFailaMainigaVertibu("griestiesPaKreisi", griestiesPaKreisi, Konts.lietotajaKontaCels);
+      FailuRedigetajs.mainitFailaMainigaVertibu("izmantotObj", izmantotObj, Konts.lietotajaKontaCels);
+      FailuRedigetajs.mainitFailaMainigaVertibu("izmantotGaismu", izmantotGaismu, Konts.lietotajaKontaCels);
+      FailuRedigetajs.mainitFailaMainigaVertibu("izmantotKameru", izmantotKameru, Konts.lietotajaKontaCels);
+      FailuRedigetajs.mainitFailaMainigaVertibu("izietNoMD", izietNoMD, Konts.lietotajaKontaCels);
+      FailuRedigetajs.mainitFailaMainigaVertibu("aizdedzinatSerkocinu", aizdedzinatSerkocinu, Konts.lietotajaKontaCels);
+      FailuRedigetajs.mainitFailaMainigaVertibu("parslegtBurtuIzmeru", parslegtBurtuIzmeru, Konts.lietotajaKontaCels);
+      FailuRedigetajs.mainitFailaMainigaVertibu("parslegtRakstisanasRezimu", parslegtRakstisanasRezimu, Konts.lietotajaKontaCels);
+      FailuRedigetajs.mainitFailaMainigaVertibu("kadriSekunde", kadriSekunde+"", Konts.lietotajaKontaCels);
+    }
   }
 }

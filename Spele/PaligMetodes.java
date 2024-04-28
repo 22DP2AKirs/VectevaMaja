@@ -8,6 +8,23 @@ import Spele.Enums.Virzieni;
 public class PaligMetodes {
   // Šeit ir metodes, kuras atvieglos koda saprašanu un manu dzīvi.
 
+  public static boolean masivaIrElementuDuplikati(String[] masivs) {
+    // piem { 1 , 2 , 4 , 4 }
+    for (int i = 0 ; i < masivs.length ; i++) {
+      for (int j = 0 ; j < masivs.length ; j++) {
+        // 1. Ja pārbauda to pašu elementu.
+        if (j == i) {
+          continue;
+        }
+        // 2. Pārbauda vai ir duplikāti.
+        if (masivs[i].equals(masivs[j])) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   public static String booleanVertiba(boolean bools) {
     // Atgriež pirmo burtu no vērtības, lai to varētu saglabāt failos.
     return (bools) ? "T" : "F"; // Tas pats, kas // if (bools) { return "T"; } else { return "F"; }

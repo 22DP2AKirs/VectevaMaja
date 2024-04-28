@@ -6,6 +6,7 @@ import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 
 import Spele.K;
+import Spele.Iestatijumi.Iestatijumi;
 
 public class TastaturasKlausitajs implements NativeKeyListener {
   public static volatile String komanda = K.TUKSA_IEVADE;
@@ -69,7 +70,7 @@ public class TastaturasKlausitajs implements NativeKeyListener {
 
   private void komandasApstrade(String taustins) {
     // 1. Izvēlas vai komanda būs ar lielajiem vai mazajiem burtiem.
-    if (taustins.equals("Tab")) {
+    if (taustins.toUpperCase().equals(Iestatijumi.parslegtBurtuIzmeru)) {
       // Toggle slēdzis.
       if (lielieBurti) {
         lielieBurti = false;
@@ -139,7 +140,7 @@ public class TastaturasKlausitajs implements NativeKeyListener {
   }
 
   public static void komandasTekstaSledzis() {
-    if (komanda.toUpperCase().equals("X")) {
+    if (komanda.toUpperCase().equals(Iestatijumi.parslegtRakstisanasRezimu)) {
       // Ieslēdz/Izslēdz komandasTekstaRakstisana režīmu.
       if (rakstaKomandasTekstu) { // Ja ieslēgts.
         atlautRakstitKomandasTekstu = false;

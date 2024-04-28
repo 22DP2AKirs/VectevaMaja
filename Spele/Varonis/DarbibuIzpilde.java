@@ -1,7 +1,5 @@
 package Spele.Varonis;
 
-import java.util.Arrays;
-
 import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.NativeHookException;
 
@@ -37,10 +35,6 @@ public class DarbibuIzpilde {
   public static int varonaIstabasCipars = 2; // 0, no gultas istabas. 2, jo testā sāku no durvju istabas. 3, no virtuves istabas.
   public static int varonaVirzienaCipars = 1;
 
-  // Šie masīvi tiek pārbaudīti, lai labāk spētu noteikt, kāda darbība ir, kādai metodei.
-  private static final String[] testesanasKomandas = { "I", "O", "P" , "SI", "MI", "EXIT", "POWER OFF", "KILL", "WIN", "H1", "H2", "H3", "H4", "H5", "MS"};
-  private static final String[] parastasKomandas = {"F", "A", "D", "1", "2", "3", "4", "SPACE", "FOTO"};
-
   // Izvelnes skaitlis (Izmantots, lai kustinātu dažāda veida 'main menus').
   public static int izvelnesSkaitlis = 0;
 
@@ -64,12 +58,9 @@ public class DarbibuIzpilde {
       
       if (!komanda.equals(K.TUKSA_IEVADE) || pabeigtsKomTeksts) {
         // 1. Atrod darbību noteiktai komandai.
-        if (Arrays.asList(testesanasKomandas).contains(komanda) || Arrays.asList(testesanasKomandas).contains(komandasTeksts) ) { // Testēšanas komands.
-          VaronaDarbibas.testesanasDarbibas(komandasTeksts, pabeigtsKomTeksts);
-        }
-        else if (Arrays.asList(parastasKomandas).contains(komanda) || Arrays.asList(parastasKomandas).contains(komandasTeksts)) { // Parastās komandas.
-          VaronaDarbibas.parastasDarbibas(komanda, komandasTeksts, pabeigtsKomTeksts);
-        }
+        VaronaDarbibas.testesanasDarbibas(komandasTeksts, pabeigtsKomTeksts);
+       
+        VaronaDarbibas.parastasDarbibas(komanda, komandasTeksts, pabeigtsKomTeksts);
       }
 
       // Pārējās komandas, kuras ir saistītas ar istabas poz. un vir..

@@ -14,8 +14,10 @@ import Spele.Veikals.Videokamera;
 import Spele.Enums;
 import Spele.PaligMetodes;
 import Spele.Enums.KustibasVirziens;
+import Spele.Enums.Virzieni;
 import Spele.Enums.Istabas;
 import Spele.FailuLietotaji.SkanasSpeletajs;
+import Spele.Iestatijumi.Iestatijumi;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
 import Spele.MazasSpeles.Karatavas.Karatavas;
@@ -31,13 +33,13 @@ public class VaronaDarbibas {
   public static int laiksCikIlgiElektribaBusIzslegta;
   
   public static void parastasDarbibas(String komanda, String komandasTeksts , boolean pabeigtsKomTeksts) {
-    if (komanda.equals("F") && Serkocini.serkocini.getSerkocinuDaudzums() != 0 && !Serkocini.serkocini.getAizdedzinatsSerkocins()) {
+    if (komanda.equals(Iestatijumi.aizdedzinatSerkocinu) && Serkocini.serkocini.getSerkocinuDaudzums() != 0 && !Serkocini.serkocini.getAizdedzinatsSerkocins()) {
       meginatAizdedzinatSerkocinu();
     } 
-    else if (komanda.equals("A")) { // Pagriezties pa kreisi.
+    else if (komanda.equals(Iestatijumi.griestiesPaKreisi)) { // Pagriezties pa kreisi.
       pagrieztGalvu(KustibasVirziens.NEGATIVS);
     } 
-    else if (komanda.equals("D")) { // Pagriezties pa labi.
+    else if (komanda.equals(Iestatijumi.griestiesPaLabi)) { // Pagriezties pa labi.
       pagrieztGalvu(KustibasVirziens.POZITIVS);
     } 
     else if (komanda.equals("1")) { // Pārslēdz režīmu.
@@ -52,7 +54,7 @@ public class VaronaDarbibas {
     else if (komanda.equals("4")) {
       infoLapasSecibasSkaitlis = 4;
     }
-    else if (komanda.equals("SPACE") && (VeikalaKods.izveletaFotokamera || VeikalaKods.izveletaVideokamera)) {
+    else if (komanda.equals(Iestatijumi.izmantotKameru) && (VeikalaKods.izveletaFotokamera || VeikalaKods.izveletaVideokamera)) {
       // Toggle.
       if (!Piederumi.ieslegtaKamera && Piederumi.baterija > 40) {
         Piederumi.ieslegtaKamera = true;
@@ -61,7 +63,7 @@ public class VaronaDarbibas {
         Piederumi.ieslegtaKamera = false;
       }
     }
-    else if (komandasTeksts.equals("FOTO") && pabeigtsKomTeksts && VeikalaKods.izveletaFotokamera && Piederumi.ieslegtaKamera && Fotokamera.fotokamera.getMaxLimenis()) {
+    else if (komandasTeksts.equals("FOTO") && pabeigtsKomTeksts && (VeikalaKods.izveletaFotokamera && Piederumi.ieslegtaKamera && Fotokamera.fotokamera.getMaxLimenis()) && Enums.V_Istaba == Istabas.VIRTUVE && Enums.V_Virziens == Virzieni.LEJA) {
       Piederumi.ieslegtaKamera = false;
       Piederumi.baterija = 0;
       VirtuvesSpoks.virtuvesSpoks.deaktivizetSpoku();
@@ -136,19 +138,19 @@ public class VaronaDarbibas {
   // * Darbības izsauktas pēc komandas:
   /// * Gultas darbības:
   public static void gultasPrieksasKomandas(String komanda) {
-    if (komanda.equals("W")) {
+    if (komanda.equals(Iestatijumi.ietUzPrieksu)) {
       kustetiesPaMaju(KustibasVirziens.POZITIVS); ////////////////////////////////////////
     }
-    else if (komanda.equals("G")) {
+    else if (komanda.equals(Iestatijumi.izmantotGaismu)) {
       ieslegtIzslegtIstabasGaismu(Istabas.GULTA);
     }
   }
 
   public static void gultasLabasPusesKomandas(String komanda) {
-    if (komanda.equals("W")) {
+    if (komanda.equals(Iestatijumi.ietUzPrieksu)) {
       kustetiesPaMaju(KustibasVirziens.NEGATIVS); ////////////////////////////////////////
     }
-    else if (komanda.equals("E")) {
+    else if (komanda.equals(Iestatijumi.izmantotObj)) {
       izslegtElektribu();
     }
   }
@@ -171,19 +173,19 @@ public class VaronaDarbibas {
   }
 
   public static void divanaLabasPusesKomandas(String komanda) {
-    if (komanda.equals("W")) {
+    if (komanda.equals(Iestatijumi.ietUzPrieksu)) {
       kustetiesPaMaju(KustibasVirziens.POZITIVS); ////////////////////////////////////////
     }
-    else if (komanda.equals("G")) {
+    else if (komanda.equals(Iestatijumi.izmantotGaismu)) {
       ieslegtIzslegtIstabasGaismu(Istabas.DIVANS);
     }
   }
 
   public static void divanaLejasKomandas(String komanda) {
-    if (komanda.equals("W")) {
+    if (komanda.equals(Iestatijumi.ietUzPrieksu)) {
       kustetiesPaMaju(KustibasVirziens.NEGATIVS); ////////////////////////////////////////
     }
-    else if (komanda.equals("E") && AtrodiPariSavienojums.mSpeleAtrodiPari) {
+    else if (komanda.equals(Iestatijumi.izmantotObj) && AtrodiPariSavienojums.mSpeleAtrodiPari) {
       Izvade.ieslegtMasivaIzvadi();
       MazoSpeluIzvelesKods.varonisIrMazajaSpele = true;
       TastaturasKlausitajs.nodzestCiklaKomandu();
@@ -209,30 +211,30 @@ public class VaronaDarbibas {
     else if (komandasTeksts.equals("SLEGT") && pabeigtsKomTeksts && VeikalaKods.durvjuSledzis) {
       aizslegtDurvis();
     }
-    else if (komanda.equals("E") && KaratavasSavienojums.mSpeleKaratavas) {
+    else if (komanda.equals(Iestatijumi.izmantotObj) && KaratavasSavienojums.mSpeleKaratavas) {
       TastaturasKlausitajs.nodzestCiklaKomandu();
       Karatavas.palaistKaratavas();
     }
   }
 
   public static void durvjuLejasKomandas(String komanda) {
-    if (komanda.equals("W")) {
+    if (komanda.equals(Iestatijumi.ietUzPrieksu)) {
       kustetiesPaMaju(KustibasVirziens.POZITIVS); ////////////////////////////////////////
     }
-    else if (komanda.equals("G")) {
+    else if (komanda.equals(Iestatijumi.izmantotGaismu)) {
       ieslegtIzslegtIstabasGaismu(Istabas.DURVIS);
     }
   }
 
   public static void durvjuKreisasPusesKomandas(String komanda) {
-    if (komanda.equals("W")) {
+    if (komanda.equals(Iestatijumi.ietUzPrieksu)) {
       kustetiesPaMaju(KustibasVirziens.NEGATIVS); ////////////////////////////////////////
     }
   }
 
   /// * Virtuves darbības.
   public static void virtuvesPrieksasKomandas(String komanda) {
-    if (komanda.equals("W")) {
+    if (komanda.equals(Iestatijumi.ietUzPrieksu)) {
       kustetiesPaMaju(KustibasVirziens.NEGATIVS); ////////////////////////////////////////
     }
   }
@@ -245,16 +247,16 @@ public class VaronaDarbibas {
 
   public static void virtuvesLejasKomandas(String komanda) {
     // Ieslēgt izslēgt pagraba gaismu uz kom. 'G'.
-    if (komanda.equals("G")) {
+    if (komanda.equals(Iestatijumi.izmantotGaismu)) {
       ieslegtIzslegtPagrabaGaismu();
     }
   }
 
   public static void virtuvesKreisaPuseKomandas(String komanda) {
-    if (komanda.equals("W")) {
+    if (komanda.equals(Iestatijumi.ietUzPrieksu)) {
       kustetiesPaMaju(KustibasVirziens.POZITIVS); ////////////////////////////////////////
     }
-    else if (komanda.equals("G")) {
+    else if (komanda.equals(Iestatijumi.izmantotGaismu)) {
       ieslegtIzslegtIstabasGaismu(Istabas.VIRTUVE);
     }
   }
@@ -266,7 +268,7 @@ public class VaronaDarbibas {
   /// Public:
   public static void izietAraNoMspeles(String komanda) {
     if (MazoSpeluIzvelesKods.varonisIrMazajaSpele) {
-      if (komanda.equals("Q")) {
+      if (komanda.equals(Iestatijumi.izietNoMD)) {
         MazoSpeluIzvelesKods.varonisIrMazajaSpele = false;
         Izvade.ieslegtSpelesIzvadi();
       }

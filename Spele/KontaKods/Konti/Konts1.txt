@@ -4,8 +4,8 @@ Parole=AAA
 DrosibasVards=AAA
 
 #SpelesDati:
-spelesNakts=2
-nauda=99759
+spelesNakts=3
+nauda=99939
 ieslegtaSkana=T
 
 #Iestatijumi:
@@ -19,6 +19,7 @@ izietNoMD=Q
 aizdedzinatSerkocinu=F
 parslegtBurtuIzmeru=Tab
 parslegtRakstisanasRezimu=X
+kadriSekunde=30
 
 #Veikals:
 nopirktaFotokamera=T

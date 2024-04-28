@@ -57,7 +57,7 @@ public class EkranuParklajumi {
       redigesanasParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[9], EkranuIzskati.visiEkrani[9].length));
     }
     else if (EKRANA_TIPS.equals(EkranuVeidi.IESTATIJUMI)) {
-      iestatijumuParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[10], EkranuIzskati.visiEkrani[10].length));
+      iestatijumuParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[11], EkranuIzskati.visiEkrani[11].length));
     }
 
     return ekranaKopija;
@@ -66,26 +66,20 @@ public class EkranuParklajumi {
   private static void iestatijumuParklasana(String[] mainamaisMasivs) {
     String bultina = (TastaturasKlausitajs.bijaEnter) ? K.DEBESU_ZILS + "\033[10G---->" : K.DEBESU_ZILS + "\033[5G---->";
 
-    mainamaisMasivs[4] += "\033[10GT A U S T I N U   N O Z I M E   J E B   F U N K C I J A S :" + K.EKRANA_GARUMA_IZMERS;
-    mainamaisMasivs[6] += "\033[15GI E T   U Z   P R I E K S U >>> " + Iestatijumi.kontrole[0] + K.EKRANA_GARUMA_IZMERS;
-    mainamaisMasivs[8] += "\033[15GP A G R I E S T I E S   P A   L A B I >>> " + Iestatijumi.kontrole[1] + K.EKRANA_GARUMA_IZMERS;
-    mainamaisMasivs[10] += "\033[15GP A G R I E S T I E S   P A   K R E I S I >>> " + Iestatijumi.kontrole[2] + K.EKRANA_GARUMA_IZMERS;
-    mainamaisMasivs[12] += "\033[15GI Z M A N T O T   O B J E K T U >>> " + Iestatijumi.kontrole[3] + K.EKRANA_GARUMA_IZMERS;
-    mainamaisMasivs[14] += "\033[15GA I Z D E D Z I N A T   S E R K O C I N U >>> " + Iestatijumi.kontrole[4] + K.EKRANA_GARUMA_IZMERS;
-    mainamaisMasivs[16] += "\033[15GI Z I E T   N O   M A J A S D A R B A >>> " + Iestatijumi.kontrole[5] + K.EKRANA_GARUMA_IZMERS;
-    mainamaisMasivs[18] += "\033[15GO N / O F F   K A M E R U >>> " + Iestatijumi.kontrole[6] + K.EKRANA_GARUMA_IZMERS;
-    mainamaisMasivs[20] += "\033[15GO N / O F F   G A I S M U >>> " + Iestatijumi.kontrole[7] + K.EKRANA_GARUMA_IZMERS;
-    mainamaisMasivs[22] += "\033[15GO N / O F F   R A K S T I S A N A S   R E Z I M U >>> " + Iestatijumi.kontrole[8] + K.EKRANA_GARUMA_IZMERS;
-    mainamaisMasivs[24] += "\033[15GO N / O F F   L I E L O S,  M A Z O S   B U R T U S >>> " + Iestatijumi.kontrole[9] + K.EKRANA_GARUMA_IZMERS;
-
-    mainamaisMasivs[6 + DarbibuIzpilde.izvelnesSkaitlis * 2] += bultina + K.RESET + "\033[50G" + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[6] += "\033[48G" + Iestatijumi.kontrole[0] + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[8] += "\033[58G" + Iestatijumi.kontrole[1] + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[10] += "\033[62G" + Iestatijumi.kontrole[2] + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[12] += "\033[52G" + Iestatijumi.kontrole[3] + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[14] += "\033[62G" + Iestatijumi.kontrole[4] + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[16] += "\033[58G" + Iestatijumi.kontrole[5] + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[18] += "\033[46G" + Iestatijumi.kontrole[6] + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[20] += "\033[46G" + Iestatijumi.kontrole[7] + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[22] += "\033[70G" + Iestatijumi.kontrole[8] + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[24] += "\033[72G" + Iestatijumi.kontrole[9] + K.EKRANA_GARUMA_IZMERS;
     
-    if (TastaturasKlausitajs.bijaEnter && TastaturasKlausitajs.komandaNavTuksa()) {
-      Iestatijumi.kontrole[DarbibuIzpilde.izvelnesSkaitlis] = TastaturasKlausitajs.komanda;
-      Iestatijumi.atjauninatKontrolesMainigos();
-      TastaturasKlausitajs.bijaEnter = false;
-      TastaturasKlausitajs.uzreizNodzestKomandu();
-    }
+    mainamaisMasivs[7] += "\033[90G" + Iestatijumi.kadriSekunde + K.EKRANA_GARUMA_IZMERS;
+    
+    mainamaisMasivs[6 + DarbibuIzpilde.izvelnesSkaitlis * 2] += bultina + K.RESET + "\033[50G" + K.EKRANA_GARUMA_IZMERS;
   }
 
   private static void redigesanasParklasana(String[] mainamaisMasivs) {
@@ -310,7 +304,7 @@ private static void pieslegsanasParklasana(String[] mainamaisMasivs) {
     "  T U R P I N A T ",
     "  J A U N A   S P E L E ",
     "  V E I K A L S ",
-    "  I E S T A T I J U M I   X ",
+    "  I E S T A T I J U M I ",
     "  P A M A C I B A   X ",
     "  K O N T S ",
     "  I Z I E T "
@@ -321,7 +315,6 @@ private static void pieslegsanasParklasana(String[] mainamaisMasivs) {
 
     // 1. Pie izvelnes teksta/opcijas pievieno bultiņas, kuras nokrāso to elementu.
     sakumaEkranaIzvelesNosauk[DarbibuIzpilde.izvelnesSkaitlis] = izvelnesBultinas[0] + sakumaEkranaIzvelesNosauk[DarbibuIzpilde.izvelnesSkaitlis].substring(1) + izvelnesBultinas[1];
-
     // 2. Uzliek izvelnes iespējas.
     mainamaisMasivs[11] += "\033[13G" + sakumaEkranaIzvelesNosauk[0] + "   " + SakumaDati.spelesNakts + ".  N A K T I " + "\033[106G"; // Turpinat.
     mainamaisMasivs[13] += "\033[10G" + sakumaEkranaIzvelesNosauk[1] + "\033[106G"; // Jauna spēle.
@@ -330,10 +323,8 @@ private static void pieslegsanasParklasana(String[] mainamaisMasivs) {
     mainamaisMasivs[19] += "\033[13G" + sakumaEkranaIzvelesNosauk[4] + "\033[106G"; // Pamācība.
     mainamaisMasivs[21] += "\033[16G" + sakumaEkranaIzvelesNosauk[5] + "\033[106G"; // Konts.
     mainamaisMasivs[23] += "\033[16G" + sakumaEkranaIzvelesNosauk[6] + "\033[106G"; // Iziet.
-
     // 3. No teksta/izvelnes noņem pieliktās bultiņas, lai kad spēlētājs pārslēdzas uz citu izvēlni, tad izvelne nepaliktu nokrāsota.
     sakumaEkranaIzvelesNosauk[DarbibuIzpilde.izvelnesSkaitlis] = " " + sakumaEkranaIzvelesNosauk[DarbibuIzpilde.izvelnesSkaitlis].substring(12, sakumaEkranaIzvelesNosauk[DarbibuIzpilde.izvelnesSkaitlis].length() - 5);
-    
     // 4. Pievieno konta nosaukumu.
     mainamaisMasivs[27] += "\033[26G" + Konts.displejaLietotajvards + "\033[106G";
   }

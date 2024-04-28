@@ -25,7 +25,7 @@ public class Izvade extends Thread {
   public static volatile boolean jaizvadaSpele = true;
 
   // Iestata tikšķa jeb 1 "refreša" periodu.
-  public static int framesPerSecond = 1000 / 60; // [1000] - Skaitlis, kuru dala, lai iegūtu FPS. [n] - Vēlamais FPS daudzums.
+  public static int framesPerSecond = 1000 / Iestatijumi.kadriSekunde; // [1000] - Skaitlis, kuru dala, lai iegūtu FPS. [n] - Vēlamais FPS daudzums.
 
   private ArrayList<String> spelesIzvadesSaraksts = new ArrayList<>(); // Masīvs saturēs visu spēles grafisko informāciju.
 
@@ -36,7 +36,6 @@ public class Izvade extends Thread {
       while (jaizvadaMasivs) {
         // Atver >> konsoli, kurā var redzēt rakstīto komandas tekstu.
         izvaditKonsoli();
-        Iestatijumi.izvaditMainigos();
         PaligMetodes.masivuIzvade(izvadesMasivs);
         
         // --- Cikla beigas jeb 1 freims 'fps'.
@@ -51,7 +50,7 @@ public class Izvade extends Thread {
       while (jaizvadaSpele) {
         informacijasIzvade();
         izvaditKonsoli();
-        
+
         System.out.println("\r▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\033[0K"); // Ekrāna augšējā daļa.
 
         // 2. Salīmē jeb sagatavo spēles izvadi.

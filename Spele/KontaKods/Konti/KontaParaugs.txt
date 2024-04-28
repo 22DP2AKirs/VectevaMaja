@@ -19,6 +19,7 @@ izietNoMD=Q
 aizdedzinatSerkocinu=F
 parslegtBurtuIzmeru=Tab
 parslegtRakstisanasRezimu=X
+kadriSekunde=30
 
 #Veikals:
 nopirktaFotokamera=F
