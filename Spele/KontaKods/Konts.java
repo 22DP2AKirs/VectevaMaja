@@ -58,7 +58,7 @@ public class Konts {
         TastaturasKlausitajs.komandasTekstaFunkcija();
 
         // -------- Izvade uz terminālu.
-        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.KONTA_APSKATES_EKRANS);
+        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.KONTA_APSKATE);
         // -------- Izvēles:
         if (TastaturasKlausitajs.komandasTeksts.equals("RED") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
           Konts.redigeKontu = true;
@@ -112,7 +112,7 @@ public class Konts {
         if (Konts.lietotajsPiesledzies) { break; }
 
         // 1. Izvade uz termināli.
-        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.KONTA_IZVELES_EKRANS);
+        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.KONTA_IZVELE);
         // 2. Izveido n izvēles opcijas starp kurām var pārslēgties.
         DarbibuIzpilde.izvelnesKustiba(TastaturasKlausitajs.komanda, 2);
         // 3. Visas izvēles jeb darbības, kuras var veikt šinī ekrānā.

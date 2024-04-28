@@ -91,19 +91,15 @@ public class SakumaDati {
 
   public static void nolasitDatusNoKonta() {
     // Nolasa un uzstāda visus datus no spēlētāja konta.
-    ArrayList<String> failaDala;
-
     Konts.lietotajaKontaCels = FailuRedigetajs.stringDatuAtgriezejs("lietotajaKontaCels", K.SAKUMA_DATU_MAPE);
     Konts.displejaLietotajvards = PaligMetodes.saliktAtstarpesSimboluVirkne(FailuRedigetajs.stringDatuAtgriezejs("Lietotajvards", Konts.lietotajaKontaCels), 1);
     Konts.lietotajsPiesledzies = true;
     
-    // Veikala dati.
-    failaDala = FailuRedigetajs.atgriestDaluNoFaila("#Veikals", Konts.lietotajaKontaCels);    
-    VeikalaKods.nolasitNoKontaVeikalaDatus(failaDala);
+    // Veikala dati. 
+    VeikalaKods.nolasitNoKontaVeikalaDatus(FailuRedigetajs.atgriestDaluNoFaila("#Veikals", Konts.lietotajaKontaCels));
     
     // Iestatījumu dati.
-    failaDala = FailuRedigetajs.atgriestDaluNoFaila("#Iestatijumi", Konts.lietotajaKontaCels);
-    Iestatijumi.nolasitKontaDatus(failaDala);
+    Iestatijumi.nolasitKontaDatus(FailuRedigetajs.atgriestDaluNoFaila("#Iestatijumi", Konts.lietotajaKontaCels));
 
     // Spēles dati.
     ieslegtaSkana = FailuRedigetajs.booleanDatuAtgriezejs("ieslegtaSkana", Konts.lietotajaKontaCels);
@@ -128,14 +124,14 @@ public class SakumaDati {
     durvjuSpokaAtputasLaiks = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("durvjuSpokaAtputasLaiks", naktsDati);
     virtuvesSpokaAtputasLaiks = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("virtuvesSpokaAtputasLaiks", naktsDati);
 
-    spuldziteSaplesta = FailuRedigetajs.booleanDatuAtgriezejs("spuldziteSaplesta", K.IESTATIJUMU_FAILS);
+    spuldziteSaplesta = false;
     spokiSledzAraGaismu = FailuRedigetajs.booleanDatuAtgriezejsNoSaraktsa("spokiSledzAraGaismu", naktsDati);
   }
 
   private static void citiSpelesDati() {
     durvisSlegtas = (VeikalaKods.durvjuSledzis) ? true : false;
     MazoSpeluIzvelesKods.mdPapildusLaikaIespeja = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("mdPapildusLaikaIespeja",  naktsDati);
-    elektribaIeslegta = FailuRedigetajs.booleanDatuAtgriezejs("elektribaIeslegta", K.IESTATIJUMU_FAILS);
+    elektribaIeslegta = true;
   }
 
   public static void uzstaditSpokusUzPusnaktsRezimu() {
@@ -148,5 +144,18 @@ public class SakumaDati {
     LogaSpoks.logaSpoks.spokaAtputasLaiks = logaSpokaAtputasLaiks = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("pusnaktsLogaSpokaAtputasLaiks", naktsDati);
     DurvjuSpoks.durvjuSpoks.spokaAtputasLaiks = durvjuSpokaAtputasLaiks = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("pusnaktsDurvjuSpokaAtputasLaiks", naktsDati);
     VirtuvesSpoks.virtuvesSpoks.spokaAtputasLaiks = virtuvesSpokaAtputasLaiks = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("pusnaktsVirtuvesSpokaAtputasLaiks", naktsDati);
+  }
+
+  public static void parastieDati() {
+    // ? Parauga kontā ir 'default' jeb noklusējuma dati.
+    // Veikala dati. 
+    VeikalaKods.nolasitNoKontaVeikalaDatus(FailuRedigetajs.atgriestDaluNoFaila("#Veikals", K.PARAUGA_KONTS));
+    // Iestatījumu dati.
+    Iestatijumi.nolasitKontaDatus(FailuRedigetajs.atgriestDaluNoFaila("#Iestatijumi", K.PARAUGA_KONTS));
+
+    // Spēles dati.
+    ieslegtaSkana = true;
+    nauda = 0;
+    spelesNakts = 1;
   }
 }

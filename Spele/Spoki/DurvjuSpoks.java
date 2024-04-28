@@ -5,6 +5,7 @@ import Spele.Izskati.SpokuIzskati;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Main;
 import Spele.Varonis.VaronaStatusaEfekti;
+import Spele.Veikals.Piederumi;
 
 public final class DurvjuSpoks extends Spoks {
   /* Spoka apraksts:
@@ -39,15 +40,24 @@ public final class DurvjuSpoks extends Spoks {
   }
 
   public String[] izveletiesBildiPecFazes() {
-    if (getSpokaFazesIndekss() < 9) {
-      if (SakumaDati.durvisSlegtas) {
-        return SpokuIzskati.durvjuSpokaFazesBildes[9];
+    if (getSpokaFazesIndekss() <= 7) {
+      if (spokaFazesIndekss <= 4) { // Fāzes, kur spokam ir identiski izskati.
+        return SpokuIzskati.durvjuSpokaFazesBezKameras[spokaFazesIndekss];
       }
-      return SpokuIzskati.durvjuSpokaFazesBildes[getSpokaFazesIndekss()];
+      else {
+        // - n, lai iegūto nulto indeksu citam masīvam.
+        if (Piederumi.ieslegtaKamera) {
+          return SpokuIzskati.durvjuSpokaFazesKamera[spokaFazesIndekss - 5];
+        }
+        else {
+          return SpokuIzskati.durvjuSpokaFazesBezKameras[spokaFazesIndekss];
+        }
+      }
     }
-    else {
-      return SpokuIzskati.durvjuSpokaFazesBildes[0];
-    }
+
+    // Atgriež tukšu masīvu, lai nekrašotu spēli.
+    String[] n = new String[14];
+    return n;
   }
 
   public void noteiktGajienaRezultatu() {

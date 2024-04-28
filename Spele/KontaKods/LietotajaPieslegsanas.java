@@ -27,7 +27,7 @@ public class LietotajaPieslegsanas {
       TastaturasKlausitajs.komandasTekstaFunkcija();
 
       // 1. Izvade uz termināli.
-      Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.PIESLEGSANAS_EKRANS);
+      Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.PIESLEGSANAS);
       
       // 2. Kustina izvēlni.
       DarbibuIzpilde.izvelnesKustiba(TastaturasKlausitajs.komanda, 2);
@@ -67,7 +67,7 @@ public class LietotajaPieslegsanas {
 
     while (!TastaturasKlausitajs.komanda.toUpperCase().equals("ENTER")) {
       // 1. Izvade uz termināli.
-      Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.PIESLEGSANAS_EKRANS);
+      Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.PIESLEGSANAS);
       // 2. Ievāc ievadi.
       TastaturasKlausitajs.definetCiklaKomandu();
       // 2. Saglabā izveidoto lietotājvārdu.
@@ -100,7 +100,7 @@ public class LietotajaPieslegsanas {
 
     while (!TastaturasKlausitajs.komanda.toUpperCase().equals("ENTER")) {
       // 1. Izvade uz termināli.
-      Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.PIESLEGSANAS_EKRANS);
+      Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.PIESLEGSANAS);
       // 2. Ievāc ievadi.
       TastaturasKlausitajs.definetCiklaKomandu();
       // 3. Saglabā izveidoto paroli, un limitē paroli uz 15 simb..
@@ -133,7 +133,7 @@ public class LietotajaPieslegsanas {
         break;
       }
       // 2. Izvade uz termināli.
-      Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.DROSIBAS_VARDA_EKRANS);
+      Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.KONTA_DROSIBAS_V);
       // 3. Ievada drosības v..
       if (TastaturasKlausitajs.komanda.equals("ENTER")) {
         drosibasVardaIevade();
@@ -151,7 +151,7 @@ public class LietotajaPieslegsanas {
 
     while (!TastaturasKlausitajs.komanda.toUpperCase().equals("ENTER")) {
       // 1. Izvade uz termināli.
-      Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.DROSIBAS_VARDA_EKRANS);
+      Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.KONTA_DROSIBAS_V);
       // 2. Ievāc ievadi.
       TastaturasKlausitajs.definetCiklaKomandu();
       // 2. Saglabā izveidoto drosibas v..

@@ -383,31 +383,33 @@ public class VeikalaKods {
   }
 
   public static void saglabatVisusVeikalaDatus() {
-    Piederumi.saglabatKontaVisuPiederumuDatus();
-    // Saglabā kameras izvēles.
-    if (izveletaFotokamera) {
-      FailuRedigetajs.mainitFailaMainigaVertibu("izveletaFotokamera", "T", Konts.lietotajaKontaCels);
-      FailuRedigetajs.mainitFailaMainigaVertibu("izveletaVideokamera", "F", Konts.lietotajaKontaCels);
-    }
-    else if (izveletaVideokamera){
-      FailuRedigetajs.mainitFailaMainigaVertibu("izveletaFotokamera", "F", Konts.lietotajaKontaCels);
-      FailuRedigetajs.mainitFailaMainigaVertibu("izveletaVideokamera", "T", Konts.lietotajaKontaCels);
-    }
-    else {
-      FailuRedigetajs.mainitFailaMainigaVertibu("izveletaFotokamera", "F", Konts.lietotajaKontaCels);
-      FailuRedigetajs.mainitFailaMainigaVertibu("izveletaVideokamera", "F", Konts.lietotajaKontaCels);
-    }
+    if (Konts.lietotajsPiesledzies) {
+      Piederumi.saglabatKontaVisuPiederumuDatus();
+      // Saglabā kameras izvēles.
+      if (izveletaFotokamera) {
+        FailuRedigetajs.mainitFailaMainigaVertibu("izveletaFotokamera", "T", Konts.lietotajaKontaCels);
+        FailuRedigetajs.mainitFailaMainigaVertibu("izveletaVideokamera", "F", Konts.lietotajaKontaCels);
+      }
+      else if (izveletaVideokamera){
+        FailuRedigetajs.mainitFailaMainigaVertibu("izveletaFotokamera", "F", Konts.lietotajaKontaCels);
+        FailuRedigetajs.mainitFailaMainigaVertibu("izveletaVideokamera", "T", Konts.lietotajaKontaCels);
+      }
+      else {
+        FailuRedigetajs.mainitFailaMainigaVertibu("izveletaFotokamera", "F", Konts.lietotajaKontaCels);
+        FailuRedigetajs.mainitFailaMainigaVertibu("izveletaVideokamera", "F", Konts.lietotajaKontaCels);
+      }
 
-    // Saglabā vienreizējos pirkumus.
-    if (durvjuSledzis) {
-      FailuRedigetajs.mainitFailaMainigaVertibu("durvjuSledzis", "T", Konts.lietotajaKontaCels);
-    }
-    else {
-      FailuRedigetajs.mainitFailaMainigaVertibu("durvjuSledzis", "F", Konts.lietotajaKontaCels);
-    }
+      // Saglabā vienreizējos pirkumus.
+      if (durvjuSledzis) {
+        FailuRedigetajs.mainitFailaMainigaVertibu("durvjuSledzis", "T", Konts.lietotajaKontaCels);
+      }
+      else {
+        FailuRedigetajs.mainitFailaMainigaVertibu("durvjuSledzis", "F", Konts.lietotajaKontaCels);
+      }
 
-    // Saglabā atlikušo naudu.
-    FailuRedigetajs.mainitFailaMainigaVertibu("nauda", SakumaDati.nauda+"", Konts.lietotajaKontaCels);
+      // Saglabā atlikušo naudu.
+      FailuRedigetajs.mainitFailaMainigaVertibu("nauda", SakumaDati.nauda+"", Konts.lietotajaKontaCels);
+    }
   }
 
   public static void nolasitNoKontaVeikalaDatus(ArrayList<String> saraksts) {

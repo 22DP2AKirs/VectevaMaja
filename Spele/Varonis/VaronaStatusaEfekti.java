@@ -50,7 +50,7 @@ public class VaronaStatusaEfekti {
 
     // Nosaka spēles gala rezultātu.
     if (iemesls.equals("UZVARA")) { // Uzvaras kods.
-      Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.UZVARAS_EKRANS);
+      Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.UZVARA);
       PaligMetodes.gulet(5);
       // Palielina konta nakts vērtību par vienu (+1).
       if (SakumaDati.spelesNakts != 5) {

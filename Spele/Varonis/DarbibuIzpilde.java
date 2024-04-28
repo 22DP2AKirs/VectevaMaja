@@ -5,8 +5,8 @@ import com.github.kwhat.jnativehook.NativeHookException;
 
 import Spele.Enums;
 import Spele.K;
-import Spele.Enums.Istabas;
-import Spele.Enums.Virzieni;
+import Spele.Enums.Istaba;
+import Spele.Enums.Virziens;
 import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.Iestatijumi.Iestatijumi;
 import Spele.Izskati.IstabuIzskati;
@@ -68,74 +68,74 @@ public class DarbibuIzpilde {
           Pārbaude atrod, kurā istabā atrodas varonis un uz, kuru pusi viņš skatās.
           Tālāk tiek izpildītas visas tās 'lokācijas' vajadzīgās darbības.
       */
-      if (Enums.V_Istaba.equals(Istabas.GULTA)) { // ----------------------------- Gulta.
-        if (Enums.V_Virziens.equals(Virzieni.PRIEKSA)) {
+      if (Enums.V_Istaba.equals(Istaba.GULTA)) { // ----------------------------- Gulta.
+        if (Enums.V_Virziens.equals(Virziens.PRIEKSA)) {
           VaronaDarbibas.gultasPrieksasKomandas(komanda);
           BildesParklajumi.uzliktGultasPrieksasParklajumus(mainamaisMasivs);
         }
-        else if (Enums.V_Virziens.equals(Virzieni.LABA_PUSE)) {
+        else if (Enums.V_Virziens.equals(Virziens.LABA_PUSE)) {
           VaronaDarbibas.gultasLabasPusesKomandas(komanda);
           BildesParklajumi.uzliktGultasLabasPusesParklajumus(mainamaisMasivs);
         }
-        else if (Enums.V_Virziens.equals(Virzieni.LEJA)) {
+        else if (Enums.V_Virziens.equals(Virziens.LEJA)) {
           VaronaDarbibas.gultasLejasKomandas(komanda);
           BildesParklajumi.uzliktGultasLejasParklajumus(mainamaisMasivs);
         }
-        else if (Enums.V_Virziens.equals(Virzieni.KREISA_PUSE)) {
+        else if (Enums.V_Virziens.equals(Virziens.KREISA_PUSE)) {
           VaronaDarbibas.gultasKreisasPusesKomandas(komanda, komandasTeksts, pabeigtsKomTeksts);
           BildesParklajumi.uzliktGultasKreisasPusesParklajumus(mainamaisMasivs);
         }
       }
-      else if (Enums.V_Istaba.equals(Istabas.DIVANS)) { // ----------------------- Dīvāns.
-        if (Enums.V_Virziens.equals(Virzieni.PRIEKSA)) {
+      else if (Enums.V_Istaba.equals(Istaba.DIVANS)) { // ----------------------- Dīvāns.
+        if (Enums.V_Virziens.equals(Virziens.PRIEKSA)) {
           VaronaDarbibas.divanaPrieksasKomandas(komanda , komandasTeksts, pabeigtsKomTeksts);
           BildesParklajumi.uzliktDivanaPrieksasParklajumus(mainamaisMasivs);
         }
-        else if (Enums.V_Virziens.equals(Virzieni.LABA_PUSE)) {
+        else if (Enums.V_Virziens.equals(Virziens.LABA_PUSE)) {
           VaronaDarbibas.divanaLabasPusesKomandas(komanda);
           BildesParklajumi.uzliktDivanaLabasPusesParklajumus(mainamaisMasivs);
         }
-        else if (Enums.V_Virziens.equals(Virzieni.LEJA)) {
+        else if (Enums.V_Virziens.equals(Virziens.LEJA)) {
           VaronaDarbibas.divanaLejasKomandas(komanda);
           BildesParklajumi.uzliktDivanaLejasParklajumus(mainamaisMasivs);
         }
-        else if (Enums.V_Virziens.equals(Virzieni.KREISA_PUSE)) {
+        else if (Enums.V_Virziens.equals(Virziens.KREISA_PUSE)) {
           VaronaDarbibas.divanaKreisasPusesKomandas(komanda);
           BildesParklajumi.uzliktDivanaKreisasPusesParklajumus(mainamaisMasivs);
         }
       }
-      else if (Enums.V_Istaba.equals(Istabas.DURVIS)) { // ----------------------- Durvis.
-        if (Enums.V_Virziens.equals(Virzieni.PRIEKSA)) {
+      else if (Enums.V_Istaba.equals(Istaba.DURVIS)) { // ----------------------- Durvis.
+        if (Enums.V_Virziens.equals(Virziens.PRIEKSA)) {
           VaronaDarbibas.durvjuPrieksasKomandas(komanda , komandasTeksts, pabeigtsKomTeksts);
           BildesParklajumi.uzliktDurvjuPrieksasParklajumus(mainamaisMasivs);
         }
-        else if (Enums.V_Virziens.equals(Virzieni.LABA_PUSE)) {
+        else if (Enums.V_Virziens.equals(Virziens.LABA_PUSE)) {
           VaronaDarbibas.durvjuLabasPusesKomandas(komanda , komandasTeksts, pabeigtsKomTeksts);
           BildesParklajumi.uzliktDurvjuLabasPusesParklajumus(mainamaisMasivs);
         }
-        else if (Enums.V_Virziens.equals(Virzieni.LEJA)) {
+        else if (Enums.V_Virziens.equals(Virziens.LEJA)) {
           VaronaDarbibas.durvjuLejasKomandas(komanda);
           BildesParklajumi.uzliktDurvjuLejasParklajumus(mainamaisMasivs);
         }
-        else if (Enums.V_Virziens.equals(Virzieni.KREISA_PUSE)) {
+        else if (Enums.V_Virziens.equals(Virziens.KREISA_PUSE)) {
           VaronaDarbibas.durvjuKreisasPusesKomandas(komanda);
           BildesParklajumi.uzliktDurvjuKreisasPusesParklajumus(mainamaisMasivs);
         }
       }
-      else if (Enums.V_Istaba.equals(Istabas.VIRTUVE)) { // ---------------------- Virtuve.
-        if (Enums.V_Virziens.equals(Virzieni.PRIEKSA)) {
+      else if (Enums.V_Istaba.equals(Istaba.VIRTUVE)) { // ---------------------- Virtuve.
+        if (Enums.V_Virziens.equals(Virziens.PRIEKSA)) {
           VaronaDarbibas.virtuvesPrieksasKomandas(komanda);
           BildesParklajumi.uzliktVirtuvesPrieksasParklajumus(mainamaisMasivs);
         }
-        else if (Enums.V_Virziens.equals(Virzieni.LABA_PUSE)) {
+        else if (Enums.V_Virziens.equals(Virziens.LABA_PUSE)) {
           VaronaDarbibas.virtuvesLabasPusesKomandas(komanda , komandasTeksts, pabeigtsKomTeksts);
           BildesParklajumi.uzliktVirtuvesLabasPusesParklajumus(mainamaisMasivs);
         }
-        else if (Enums.V_Virziens.equals(Virzieni.LEJA)) {
+        else if (Enums.V_Virziens.equals(Virziens.LEJA)) {
           VaronaDarbibas.virtuvesLejasKomandas(komanda);
           BildesParklajumi.uzliktVirtuvesLejasParklajumus(mainamaisMasivs);
         }
-        else if (Enums.V_Virziens.equals(Virzieni.KREISA_PUSE)) {
+        else if (Enums.V_Virziens.equals(Virziens.KREISA_PUSE)) {
           VaronaDarbibas.virtuvesKreisaPuseKomandas(komanda);
           BildesParklajumi.uzliktVirtuvesKreisasPusesParklajumus(mainamaisMasivs);
         }

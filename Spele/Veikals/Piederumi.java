@@ -12,15 +12,12 @@ public class Piederumi {
    */
 
   // Piederuma vērtības.
-  protected boolean nopirkaPiederumu;
-  protected boolean maxLimenis;
+  protected boolean nopirkaPiederumu, maxLimenis;
   protected String piederumaUzlabojumaCena;
   protected int piederumaLimenis;
 
   // Pēc kāda nosaukuma varētu atrast mainīgo konta failā.
-  protected String nopirkaPiederumuNosauk;
-  protected String piederumaUzlabojumaCenasNosaukums;
-  protected String piederumaLimenaNosaukums;
+  protected String nopirkaPiederumuNosauk, piederumaUzlabojumaCenasNosaukums, piederumaLimenaNosaukums;
 
   // STATIC
   // Kameras:

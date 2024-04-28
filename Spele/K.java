@@ -8,7 +8,7 @@ public final class K {
   public static final String PARAUGA_KONTS = "Spele/KontaKods/Konti/KontaParaugs.txt";
   public static final String SAKUMA_DATU_MAPE = "Spele/SakumaDatuSagatavosana/SakumaDati.txt";
   public static final String NAKTS_DATU_FAILS = "Spele/Iestatijumi/NaktsDati.txt";
-  public static final String IESTATIJUMU_FAILS = "Spele/Iestatijumi/Iestatijumi.csv";
+  // public static final String IESTATIJUMU_FAILS = "Spele/Iestatijumi/Iestatijumi.csv";
 
   // Krāsas:
   public static final String RESET = "\u001B[0m";

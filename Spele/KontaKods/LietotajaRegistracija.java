@@ -30,10 +30,10 @@ public class LietotajaRegistracija {
 
       // 3. Izvēlas, kuru ekrānu izvadīs.
       if (Konts.redigeKontu) {
-        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.REDIGESANAS_EKRANS);
+        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.KONTA_REDIGESANA);
       }
       else {
-        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.REGISTRACIJAS_EKRANS);
+        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.REGISTRACIJA);
       }
       
       // 4. Kustina izvēlni.
@@ -108,10 +108,10 @@ public class LietotajaRegistracija {
       Konts.lietotajvards = TastaturasKlausitajs.limetVardu(Konts.lietotajvards, Main.ciklaKomanda, 10);
       // 3. Izvade uz termināli.
       if (Konts.redigeKontu) {
-        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.REDIGESANAS_EKRANS);
+        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.KONTA_REDIGESANA);
       }
       else {
-        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.REGISTRACIJAS_EKRANS);
+        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.REGISTRACIJA);
       }
 
       // 4. Pārbauda vai vārds atbilst prasībām.
@@ -149,10 +149,10 @@ public class LietotajaRegistracija {
       Konts.parole = TastaturasKlausitajs.limetVardu(Konts.parole, Main.ciklaKomanda, 15);
       // 3. Izvade uz termināli.
       if (Konts.redigeKontu) {
-        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.REDIGESANAS_EKRANS);
+        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.KONTA_REDIGESANA);
       }
       else {
-        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.REGISTRACIJAS_EKRANS);
+        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.REGISTRACIJA);
       }
 
       // 4. Pārbauda vai vārds atbilst prasībām.
@@ -198,10 +198,10 @@ public class LietotajaRegistracija {
       Konts.drosibasVards = TastaturasKlausitajs.limetVardu(Konts.drosibasVards, Main.ciklaKomanda, 15);
       // 3. Izvade uz termināli.
       if (Konts.redigeKontu) {
-        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.REDIGESANAS_EKRANS);
+        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.KONTA_REDIGESANA);
       }
       else {
-        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.REGISTRACIJAS_EKRANS);
+        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.REGISTRACIJA);
       }
 
       // 4. Pārbauda vai vārds atbilst prasībām.

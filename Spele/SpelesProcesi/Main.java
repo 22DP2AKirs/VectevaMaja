@@ -22,14 +22,11 @@ public class Main {
   // ? Mainīgie.
   
   // Informācijas booli.
-  public static boolean spokuInfo;
-  public static boolean mSpeluInfo;
+  public static boolean spokuInfo, mSpeluInfo;
 
   // Lai noteiktu darbības, kādā no programmas fāzēm.
-  public static volatile boolean programmaPalaista = true; // booleans, kas palaiž visu programmu.
-  
+  public static volatile boolean programmaPalaista = true, spelePalaista = false; // booleans, kas palaiž visu programmu.
   public static boolean sakumaEkrans = true; // Nosaka vai spēles sākumā rādīs sākuma ekrānu vai nē.
-  public static volatile boolean spelePalaista = false; // Mainīgais bool, kas pašu spēli.
  
   public static int spelesIlgums = 360;// 6 min 360;
 
@@ -40,8 +37,8 @@ public class Main {
   public static Random rand = new Random(); // Priekš random darbībām.
 
   // Cits.
-  public static volatile boolean laikaTredsGul; // Apstādina Laiks thredu uz noteiktu laiku.
   static boolean programmasKluduLasisana = false; // Apstādina 
+  public static volatile boolean laikaTredsGul; // Apstādina Laiks thredu uz noteiktu laiku.
   public static String ciklaKomanda = K.TUKSA_IEVADE; // Cikla komanda ir tā, kas tiks definēta cikla sākumā un nodzēsta cikla beigās, lai komanda visās pārbaudēs būtu vienāda.
 
   public static void main(String[] args) throws InterruptedException { // throws InterruptedException nozīmē, ka var neizmantot try_catch.
@@ -59,7 +56,7 @@ public class Main {
     }
     else {
       // Ja nav konta, tad uzstāda parastās vērtības jeb datus.
-      SakumaDati.spelesNakts = 1;
+      SakumaDati.parastieDati();
     }
     
     // ? /////// T H R E D I //////////
@@ -84,7 +81,7 @@ public class Main {
         // 1. Apstrādā lietotāja ievadi.
         DarbibuIzpilde.izpilditSakumaEkranaDarbibas(TastaturasKlausitajs.komanda);
         // 2. Izvada bildi terminālī.
-        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.GALVENAIS_EKRANS);
+        Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.SAKUMA);
         // 3. Notīra ievadi.
         TastaturasKlausitajs.nodzestKomandu();
       }

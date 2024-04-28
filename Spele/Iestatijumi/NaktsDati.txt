@@ -9,8 +9,8 @@ maxSerkocinaDegsanasLaiks=4
 logaSpokaAtlautaAgresivitate=0
 logaSpokaAtputasLaiks=0
 
-durvjuSpokaAtlautaAgresivitate=3
-durvjuSpokaAtputasLaiks=2
+durvjuSpokaAtlautaAgresivitate=20
+durvjuSpokaAtputasLaiks=0
 
 virtuvesSpokaAtlautaAgresivitate=0
 virtuvesSpokaAtputasLaiks=0

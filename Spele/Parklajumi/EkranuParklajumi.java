@@ -29,31 +29,31 @@ public class EkranuParklajumi {
     String[] ekranaKopija = null;
 
     // Caur iesniegto enum "EKRANA_TIPS", šī metode var viegli noteikt, kurus ekrānus un to pārklājumus izmantot.
-    if (EKRANA_TIPS.equals(EkranuVeidi.GALVENAIS_EKRANS)) {
+    if (EKRANA_TIPS.equals(EkranuVeidi.SAKUMA)) {
       sakumaEkranaPar(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[0], EkranuIzskati.visiEkrani[0].length));
     }
-    else if (EKRANA_TIPS.equals(EkranuVeidi.UZVARAS_EKRANS)) {
+    else if (EKRANA_TIPS.equals(EkranuVeidi.UZVARA)) {
       uzvarasEkranaParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[1], EkranuIzskati.visiEkrani[1].length));
     }
-    else if (EKRANA_TIPS.equals(EkranuVeidi.KARATAVU_EKRANS)) {
+    else if (EKRANA_TIPS.equals(EkranuVeidi.KARATAVAS)) {
       gramatasParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[3], EkranuIzskati.visiEkrani[3].length));
     }
-    else if (EKRANA_TIPS.equals(EkranuVeidi.KONTA_IZVELES_EKRANS)) {
+    else if (EKRANA_TIPS.equals(EkranuVeidi.KONTA_IZVELE)) {
       kontaIzvelesParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[4], EkranuIzskati.visiEkrani[4].length));
     }
-    else if (EKRANA_TIPS.equals(EkranuVeidi.KONTA_APSKATES_EKRANS)) {
+    else if (EKRANA_TIPS.equals(EkranuVeidi.KONTA_APSKATE)) {
       kontaApskatesParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[5], EkranuIzskati.visiEkrani[5].length));
     }
-    else if (EKRANA_TIPS.equals(EkranuVeidi.REGISTRACIJAS_EKRANS)) {
+    else if (EKRANA_TIPS.equals(EkranuVeidi.REGISTRACIJA)) {
       registracijasParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[6], EkranuIzskati.visiEkrani[6].length));
     }
-    else if (EKRANA_TIPS.equals(EkranuVeidi.PIESLEGSANAS_EKRANS)) {
+    else if (EKRANA_TIPS.equals(EkranuVeidi.PIESLEGSANAS)) {
       pieslegsanasParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[7], EkranuIzskati.visiEkrani[7].length));
     }
-    else if (EKRANA_TIPS.equals(EkranuVeidi.DROSIBAS_VARDA_EKRANS)) {
+    else if (EKRANA_TIPS.equals(EkranuVeidi.KONTA_DROSIBAS_V)) {
       drosibasVardaParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[8], EkranuIzskati.visiEkrani[8].length));
     }
-    else if (EKRANA_TIPS.equals(EkranuVeidi.REDIGESANAS_EKRANS)) {
+    else if (EKRANA_TIPS.equals(EkranuVeidi.KONTA_REDIGESANA)) {
       redigesanasParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[9], EkranuIzskati.visiEkrani[9].length));
     }
     else if (EKRANA_TIPS.equals(EkranuVeidi.IESTATIJUMI)) {

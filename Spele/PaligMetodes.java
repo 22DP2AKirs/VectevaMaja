@@ -2,8 +2,8 @@ package Spele;
 
 import java.util.ArrayList;
 
-import Spele.Enums.Istabas;
-import Spele.Enums.Virzieni;
+import Spele.Enums.Istaba;
+import Spele.Enums.Virziens;
 
 public class PaligMetodes {
   // Šeit ir metodes, kuras atvieglos koda saprašanu un manu dzīvi.
@@ -139,10 +139,10 @@ public class PaligMetodes {
     } catch (Exception e) {}
   }
 
-  public static Istabas atrastIstabasEnumuPecTaCiparaVertibas(int vertiba) {
+  public static Istaba atrastIstabasEnumuPecTaCiparaVertibas(int vertiba) {
     // * Metode atrod no Istabas enumiem enumu, kura vērtība atbilsts norādītajai
     // * vērtībai, un pēc tam atgriež to.
-    for (Istabas istaba : Istabas.values()) {
+    for (Istaba istaba : Istaba.values()) {
       if (istaba.CIPARS == vertiba) {
         return istaba;
       }
@@ -150,10 +150,10 @@ public class PaligMetodes {
     throw new RuntimeException(" Istabas enums ar norādīto vērtību " + vertiba + " neeksistē! ");
   }
 
-  public static Virzieni atrastVirzienaEnumuPecTaCiparaVertibas(int vertiba) {
+  public static Virziens atrastVirzienaEnumuPecTaCiparaVertibas(int vertiba) {
     // * Metode atrod no Virziena enumiem enumu, kura vērtība atbilsts norādītajai
     // * vērtībai, un pēc tam atgriež to.
-    for (Virzieni virziens : Virzieni.values()) {
+    for (Virziens virziens : Virziens.values()) {
       if (virziens.CIPARS == vertiba) {
         return virziens;
       }

@@ -5,245 +5,254 @@ import Spele.K;
 public class SpokuIzskati {
   // ==================================================================================== Loga spoks ===================================================================================== //
   // ----------------------------------------------------------------------------- Loga spoks pie virtuves -------------------------------------------------------------------------------- //
-  // Normāla virt. loga izskats.
-  public static final String[] virtuvesLogsCiet = {
-      "| | .   \\                || |",
-      "| | \\       .  /    \\  / || |",
-      "| |    .  \\      .       || |",
-      "| |           \\   /    . || |",
-      "| | .   /   .        \\   || |",
-      "| |______________________|| |",
+  // ?  ---------------------------------------------------------------------- Loga spoks virtuvē.
+  public static final String[] 
+  logaSpoksKameraVirtuve0 = {
+    "| | .   \\                || |",
+    "| | \\       .  /    \\  / || |",
+    "| |    .  \\      .       || |",
+    "| | ..        \\   /    . || |",
+    "| | .   /   .        \\   || |",
+    "| |______________________|| |",
+  },
+  logaSpoksKameraVirtuve1 = {
+    "| | .   \\                || |",
+    "| | \\       .  /    \\  / || |",
+    "| |    .  \\      .       || |",
+    "| | o o       \\   /    . || |",
+    "| | .   /   .        \\   || |",
+    "| |______________________|| |"
+  },
+  logaSpoksKameraVirtuve2 = {
+    "| | .   \\                || |",
+    "| | \\       .  /    \\  / || |",
+    "| |    .  \\      .       || |",
+    "| |  O     O  \\   /    . || |",
+    "| | .   /   .        \\   || |",
+    "| |______________________|| |"
+  },
+  logaSpoksKameraVirtuve3 = {
+    "| | .   \\                || |",
+    "| | \\       .  /    \\  / || |",
+    "| |    .  \\      .      (|| |",
+    "| |           \\   /    .(|| |",
+    "| | .   /   .        \\   || |",
+    "| |______________________|| |",
+  },
+  logaSpoksKameraVirtuve4 = {
+    "| | .   \\             ||  | |",
+    "| | \\       .  /    \\ ||  | |",
+    "| |    .  \\      .   (||) | |",
+    "| |           \\   /  (||  | |",
+    "| | .   /   .        \\||  | |",
+    "| |___________________||__| |"
+  },
+  logaSpoksKameraVirtuve5 = {
+    "| | .   \\        ||       | |",
+    "| | \\       .  / ||^ ^    | |",
+    "| |    .  \\     (||)O _O  | |",
+    "| |           \\ (||  v-v  | |",
+    "| | .   /   .    ||       | |",
+    "| |______________||_______| |"
+  },
+  logaSpoksKameraVirtuve6 = {
+    "| | .   \\  ||  ^       ^  | |",
+    "| | \\      || / \\ ___ / \\ | |",
+    "| |    .  (||)\\ (0)_(0) / | |",
+    "| |       (||  -\\ _V_ /-  | |",
+    "| | .   /  ||   ^V-~-V^  (| |",
+    "| |________||____^___^___(| |"
   };
 
-  // Virtuves loga spoka fāzes.
-  public static final String[] logaSpPieVirtuves0 = {
-      "| | .   \\                || |",
-      "| | \\       .  /    \\  / || |",
-      "| |    .  \\      .       || |",
-      "| | ..        \\   /    . || |",
-      "| | .   /   .        \\   || |",
-      "| |______________________|| |",
-  };
-  
-  public static final String[] logaSpPieVirtuves1 = {
-      "| | .   \\                || |",
-      "| | \\       .  /    \\  / || |",
-      "| |    .  \\      .       || |",
-      "| | o o       \\   /    . || |",
-      "| | .   /   .        \\   || |",
-      "| |______________________|| |"
-  };
-
-  public static final String[] logaSpPieVirtuves2 = {
-      "| | .   \\                || |",
-      "| | \\       .  /    \\  / || |",
-      "| |    .  \\      .       || |",
-      "| |  O     O  \\   /    . || |",
-      "| | .   /   .        \\   || |",
-      "| |______________________|| |"
-  };
-
-  public static final String[] logaSpPieVirtuves3 = {
-      "| | .   \\                || |",
-      "| | \\       .  /    \\  / || |",
-      "| |    .  \\      .      (|| |",
-      "| |           \\   /    .(|| |",
-      "| | .   /   .        \\   || |",
-      "| |______________________|| |",
+  public static final String[] 
+  virtuvesLogsCiet = {
+    "| | .   \\                || |",
+    "| | \\       .  /    \\  / || |",
+    "| |    .  \\      .       || |",
+    "| |           \\   /    . || |",
+    "| | .   /   .        \\   || |",
+    "| |______________________|| |",
+  },
+  logaSpoksBezKamerasVirtuve0 = { 
+    "| | .   \\             ||  | |",
+    "| | \\       .  /    \\ ||  | |",
+    "| |    .  \\      .    ||  | |",
+    "| |           \\   /   ||  | |",
+    "| | .   /   .        \\||  | |",
+    "| |___________________||__| |"
+  },
+  logaSpoksBezKamerasVirtuve1 = {
+    "| | .   \\        ||       | |",
+    "| | \\       .  / ||       | |",
+    "| |    .  \\      ||       | |",
+    "| |           \\  ||       | |",
+    "| | .   /   .    ||       | |",
+    "| |______________||_______| |"
+  },
+  logaSpoksBezKamerasVirtuve2 = {
+    "| | .   \\  ||             | |",
+    "| | \\      ||             | |",
+    "| |    .  \\||             | |",
+    "| |        ||             | |",
+    "| | .   /  ||             | |",
+    "| |________||_____________| |"
   };
 
-  public static final String[] logaSpPieVirtuves4 = { // ? Parastā redze (bez kameras) 1.
-      "| | .   \\             ||  | |",
-      "| | \\       .  /    \\ ||  | |",
-      "| |    .  \\      .   (||) | |",
-      "| |           \\   /  (||  | |",
-      "| | .   /   .        \\||  | |",
-      "| |___________________||__| |"
+  // ? ---------------------------------------------------------------------- Loga spoks guļamistabā.
+  public static final String[]
+  logaSpoksKameraGulamistaba0 = {
+    "| ||  .      ||.       | |",
+    "| ||   ..  \\ ||    \\   | |",
+    "| ||   /  .  ||\\     . | |",
+    "| ||  .      ||.       | |",
+    "| ||     .   ||   /    | |",
+    "| || /       ||      . | |",
+    "| ||_________||________| |"
+  },
+  logaSpoksKameraGulamistaba1 = {
+    "| ||  .      ||.       | |",
+    "| ||  o o  \\ ||    \\   | |",
+    "| ||   /  .  ||\\     . | |",
+    "| ||  .      ||.       | |",
+    "| ||     .   ||   /    | |",
+    "| || /       ||      . | |",
+    "| ||_________||________| |"
+  },
+  logaSpoksKameraGulamistaba2 = {
+    "| ||  .      ||.       | |",
+    "| ||  O _ O\\ ||    \\   | |",
+    "| ||   /-v . ||\\     . | |",
+    "| ||  .      ||.       | |",
+    "| ||     .   ||   /    | |",
+    "| || /       ||      . | |",
+    "| ||_________||________| |"
+  },
+  logaSpoksKameraGulamistaba3 = {
+    "| ||  .      ||.       | |",
+    "| ||       \\ ||    \\   | |",
+    "| ||   /  .  ||\\     . | |",
+    "| ||  .      ||.       | |",
+    "| ||     .   ||   /    | |",
+    "| || /       ||      . | |",
+    "| ||_mn___nm_||________| |"
+  },
+  logaSpoksKameraGulamistaba4 = {
+    "| ||  .      ||.       | |",
+    "| ||       \\ ||    \\   | |",
+    "| ||   /  .  ||\\     . | |",
+    "| ||  .      ||.       | |",
+    "| ||     .   ||   /    | |",
+    "| ||_mn___nm_||      . | |",
+    "| |_/_/___\\_\\_|________| |"
+  },
+  logaSpoksKameraGulamistaba5 = {
+    "| ||  .      ||.       | |",
+    "| ||       \\ ||    \\   | |",
+    "| ||   /  .  ||\\     . | |",
+    "| ||_nnnn____||.       | |",
+    "| |----       |   /    | |",
+    "| | ^       ^ |      . | |",
+    "| |/_\\_____/_\\|________| |"
+  },
+  logaSpoksKameraGulamistaba6 = { 
+    "| ||  .      ||.       | |",
+    "| ||_________||    \\   | |",
+    "| | ^       ^ |\\     . | |",
+    "| |/ \\ ___ / \\|.       | |",
+    "| |\\ (0)_(0) /|   /    | |",
+    "| |  \\ _V_ /  |      . | |",
+    "| |nm^V-~-V^_(|________| |"
   };
 
-  public static final String[] logaSpPieVirtuves5 = { // ? Parastā redze (bez kameras) 1.
-      "| | .   \\        ||       | |",
-      "| | \\       .  / ||^ ^    | |",
-      "| |    .  \\     (||)O _O  | |",
-      "| |           \\ (||  v-v  | |",
-      "| | .   /   .    ||       | |",
-      "| |______________||_______| |"
+  public static final String[] 
+  gulamistabasLogsCiet = {  
+    "| ||  .      ||.       | |",
+    "| ||       \\ ||    \\   | |",
+    "| ||   /  .  ||\\     . | |",
+    "| ||  .      ||.       | |",
+    "| ||     .   ||   /    | |",
+    "| || /       ||      . | |",
+    "| ||_________||________| |"
+  },
+  logaSpoksBezKamerasGulamistaba0 = {
+    "| ||  .      ||.       | |",
+    "| ||       \\ ||    \\   | |",
+    "| ||   /  .  ||\\     . | |",
+    "| ||  .      ||.       | |",
+    "| ||     .   ||   /    | |",
+    "| ||_________||      . | |",
+    "| |___________|________| |"
+  },
+  logaSpoksBezKamerasGulamistaba1 = {
+    "| ||  .      ||.       | |",
+    "| ||       \\ ||    \\   | |",
+    "| ||   /  .  ||\\     . | |",
+    "| ||_________||.       | |",
+    "| |           |   /    | |",
+    "| |           |      . | |",
+    "| |___________|________| |"
+  },
+  logaSpoksBezKamerasGulamistaba2 = { 
+    "| ||  .      ||.       | |",
+    "| ||_________||    \\   | |",
+    "| |           |\\     . | |",
+    "| |           |.       | |",
+    "| |           |   /    | |",
+    "| |           |      . | |",
+    "| |___________|________| |"
   };
 
-  public static final String[] logaSpPieVirtuves6 = {
-      "| | .   \\  ||  ^       ^  | |",
-      "| | \\      || / \\ ___ / \\ | |",
-      "| |    .  (||)\\ (0)_(0) / | |",
-      "| |       (||  -\\ _V_ /-  | |",
-      "| | .   /  ||   ^V-~-V^  (| |",
-      "| |________||____^___^___(| |"
-  };
-
-  public static final String[] virtuvesLogsVala = {
-      "| | .   \\  ||             | |",
-      "| | \\      ||             | |",
-      "| |    .  \\||             | |",
-      "| |        ||             | |",
-      "| | .   /  ||             | |",
-      "| |________||_____________| |"
-  };
-
-  // -------------------------------------------------------------------------------- Loga spoks pie gultas -------------------------------------------------------------------------------- //
-  public static final String[] gultasLogsCiet = {  // ? Parastā redze (bez kameras) 1.
-      "| ||  .      ||.       | |",
-      "| ||       \\ ||    \\   | |",
-      "| ||   /  .  ||\\     . | |",
-      "| ||  .      ||.       | |",
-      "| ||     .   ||   /    | |",
-      "| || /       ||      . | |",
-      "| ||_________||________| |"
-  };
-
-  public static final String[] logaSpPieGultas0 = {
-      "| ||  .      ||.       | |",
-      "| ||   ..  \\ ||    \\   | |",
-      "| ||   /  .  ||\\     . | |",
-      "| ||  .      ||.       | |",
-      "| ||     .   ||   /    | |",
-      "| || /       ||      . | |",
-      "| ||_________||________| |"
-  };
-
-  public static final String[] logaSpPieGultas1 = {
-      "| ||  .      ||.       | |",
-      "| ||  o o  \\ ||    \\   | |",
-      "| ||   /  .  ||\\     . | |",
-      "| ||  .      ||.       | |",
-      "| ||     .   ||   /    | |",
-      "| || /       ||      . | |",
-      "| ||_________||________| |"
-  };
-
-  public static final String[] logaSpPieGultas2 = {
-      "| ||  .      ||.       | |",
-      "| ||  O _ O\\ ||    \\   | |",
-      "| ||   /-v . ||\\     . | |",
-      "| ||  .      ||.       | |",
-      "| ||     .   ||   /    | |",
-      "| || /       ||      . | |",
-      "| ||_________||________| |"
-  };
-
-  public static final String[] logaSpPieGultas3 = {
-      "| ||  .      ||.       | |",
-      "| ||       \\ ||    \\   | |",
-      "| ||   /  .  ||\\     . | |",
-      "| ||  .      ||.       | |",
-      "| ||     .   ||   /    | |",
-      "| || /       ||      . | |",
-      "| ||_mn___nm_||________| |"
-  };
-
-  public static final String[] logaSpPieGultas4 = {  // ? Parastā redze (bez kameras) 1.
-      "| ||  .      ||.       | |",
-      "| ||       \\ ||    \\   | |",
-      "| ||   /  .  ||\\     . | |",
-      "| ||  .      ||.       | |",
-      "| ||     .   ||   /    | |",
-      "| ||_mn___nm_||      . | |",
-      "| |_/_/___\\_\\_|________| |"
-  };
-
-  public static final String[] logaSpPieGultas5 = {  // ? Parastā redze (bez kameras) 1.
-      "| ||  .      ||.       | |",
-      "| ||       \\ ||    \\   | |",
-      "| ||   /  .  ||\\     . | |",
-      "| ||_nnnn____||.       | |",
-      "| |----       |   /    | |",
-      "| | ^       ^ |      . | |",
-      "| |/_\\_____/_\\|________| |"
-  };
-
-  public static final String[] logaSpPieGultas6 = { 
-      "| ||  .      ||.       | |",
-      "| ||_________||    \\   | |",
-      "| | ^       ^ |\\     . | |",
-      "| |/ \\ ___ / \\|.       | |",
-      "| |\\ (0)_(0) /|   /    | |",
-      "| |  \\ _V_ /  |      . | |",
-      "| |nm^V-~-V^_(|________| |"
-  };
-
-  public static final String[] gultasLogsVala = {
-      "| ||  .      ||.       | |",
-      "| ||_________||    \\   | |",
-      "| |           |\\     . | |",
-      "| |           |.       | |",
-      "| |           |   /    | |",
-      "| |           |      . | |",
-      "| |___________|________| |"
-  };
-
-  // -------------------------------------------------------------------------------- Loga spoks pie dīvāna -------------------------------------------------------------------------------- //
-  private static final String[] divanaLogsCiet = { // ? Parastā redze (bez kameras) 1.
-    "| | .  \\        .     /   || |",
-    "| |    .     .   /        || |",
-    "| |    \\         .  /  /  || |",
-    "| |     .               . || |",
-    "| |. /     /        .  \\  || |",
-    "| |_______________________|| |"
-  };
-
-  private static final String[] logaSpPieDivana0 = {
+  // ? ---------------------------------------------------------------------- Loga spoks Dīvāna istabā.
+  private static final String[] 
+  logaSpoksKameraDivanaIstaba0 = {
     "| | .  \\        .     /   || |",
     "| |    .     .   /        || |",
     "| |    \\         .  /  /  || |",
     "| |     .      ..       . || |",
     "| |. /     /        .  \\  || |",
     "| |_______________________|| |"
-  };
-
-  private static final String[] logaSpPieDivana1 = {
+  },
+  logaSpoksKameraDivanaIstaba1 = {
     "| | .  \\        .     /   || |",
     "| |    .     .   /        || |",
     "| |    \\         .  /  /  || |",
     "| |     .    o   o      . || |",
     "| |. /     /        .  \\  || |",
     "| |_______________________|| |"
-  };
-
-  private static final String[] logaSpPieDivana2 = {
+  },
+  logaSpoksKameraDivanaIstaba2 = {
     "| | .  \\        .     /   || |",
     "| |    .     .   /        || |",
     "| |    \\   ^   ^ .  /  /  || |",
     "| |     .    O  _O      . || |",
     "| |. /     /   v-v  .  \\  || |",
     "| |_______________________|| |"
-  };
-
-  private static final String[] logaSpPieDivana3 = {
+  },
+  logaSpoksKameraDivanaIstaba3 = {
     "| | .  \\        .     /   || |",
     "| |    .     .   /        || |",
     "| |    \\       ^  .^/  /  || |",
     "| |     .       ( )_( ) .(|| |",
     "| |. /     /      V--V \\ (|| |",
     "| |_______________________|| |"
-  };
-
-  private static final String[] logaSpPieDivana4 = {  // ? Parastā redze (bez kameras) 1.
+  },
+  logaSpoksKameraDivanaIstaba4 = {  // ? Parastā redze (bez kameras) 1.
     "| | .  \\        .     |    | |",
     "| |    .     .   /    |    | |",
     "| |    \\          . / |(O) | |",
     "| |     .            (|    | |",
     "| |. /     /         (|    | |",
     "| |___________________|____| |"
-  };
-
-  private static final String[] logaSpPieDivana5 = {  // ? Parastā redze (bez kameras) 1.
+  },
+  logaSpoksKameraDivanaIstaba5 = {  // ? Parastā redze (bez kameras) 1.
     "| | .  \\        .  |       | |",
     "| |    .     .   / |       | |",
     "| |    \\          .|(O) (O)| |",
     "| |     .         (|       | |",
     "| |. /     /      (|       | |",
     "| |________________|_______| |"
-  };
-
-  private static final String[] logaSpPieDivana6 = {
+  },
+  logaSpoksKameraDivanaIstaba6 = {
     "| | .  \\     |  ^       ^  | |",
     "| |    .     | / \\ ___ / \\ | |",
     "| |    \\     | \\ (O)_(O) / | |",
@@ -252,7 +261,32 @@ public class SpokuIzskati {
     "| |__________|_mn_^___^_nm_| |"
   };
 
-  private static final String[] divanaLogsVala = {
+  private static final String[] 
+  divanaLogsCiet = {
+    "| | .  \\        .     /   || |",
+    "| |    .     .   /        || |",
+    "| |    \\         .  /  /  || |",
+    "| |     .               . || |",
+    "| |. /     /        .  \\  || |",
+    "| |_______________________|| |"
+  },
+  logaSpoksBezKamerasDivanaIstaba0 = { 
+    "| | .  \\        .     |    | |",
+    "| |    .     .   /    |    | |",
+    "| |    \\          . / |    | |",
+    "| |     .             |    | |",
+    "| |. /     /          |    | |",
+    "| |___________________|____| |"
+  },
+  logaSpoksBezKamerasDivanaIstaba1 = {  
+    "| | .  \\        .  |       | |",
+    "| |    .     .   / |       | |",
+    "| |    \\          .|       | |",
+    "| |     .          |       | |",
+    "| |. /     /       |       | |",
+    "| |________________|_______| |"
+  },
+  logaSpoksBezKamerasDivanaIstaba2 = {
     "| | .  \\     |             | |",
     "| |    .     |             | |",
     "| |    \\     |             | |",
@@ -261,18 +295,9 @@ public class SpokuIzskati {
     "| |__________|_____________| |"
   };
 
-  // -------------------------------------------------------------------------------- Loga spoks pie durvīm -------------------------------------------------------------------------------- //
-  private static final String[] durvjuLogsCiet = {
-    "| |       /            \\\\     || |",
-    "| |          |           .    || |",
-    "| |   \\\\                      || |",
-    "| |      .   \\         /      || |",
-    "| |           .          /    || |",
-    "| |     /           \\         || |",
-    "| |___________________________|| |"
-  };
-
-  private static final String[] logaSpPieDurvim0 = {
+  // ?  ---------------------------------------------------------------------- Loga spoks Durvju istabā.
+  private static final String[] 
+  logaSpoksKameraDurvjuIstaba0 = {
     "| |       /            \\\\     || |",
     "| |          |           .    || |",
     "| |   \\\\                      || |",
@@ -280,9 +305,8 @@ public class SpokuIzskati {
     "| |           .          /    || |",
     "| |     /       ..  \\         || |",
     "| |___________________________|| |"
-  };
-
-  private static final String[] logaSpPieDurvim1 = {
+  },
+  logaSpoksKameraDurvjuIstaba1 = {
     "| |       /            \\\\     || |",
     "| |          |           .    || |",
     "| |   \\\\                      || |",
@@ -290,9 +314,8 @@ public class SpokuIzskati {
     "| |           .          /    || |",
     "| |     /       o o \\         || |",
     "| |___________________________|| |"
-  };
-
-  private static final String[] logaSpPieDurvim2 = {
+  },
+  logaSpoksKameraDurvjuIstaba2 = {
     "| |       /            \\\\     || |",
     "| |          |           .    || |",
     "| |   \\\\                      || |",
@@ -300,9 +323,8 @@ public class SpokuIzskati {
     "| |           .          /    || |",
     "| |     /       O  O\\         || |",
     "| |___________________________|| |"
-  };
-
-  private static final String[] logaSpPieDurvim3 = {
+  },
+  logaSpoksKameraDurvjuIstaba3 = {
     "| |       /            \\\\     || |",
     "| |          |           .    || |",
     "| |   \\\\       ^   ^          || |",
@@ -310,9 +332,8 @@ public class SpokuIzskati {
     "| |           .   v v    /    || |",
     "| |     /           \\         || |",
     "| |___________________________|| |"
-  };
-
-  private static final String[] logaSpPieDurvim4 = {  // ? Parastā redze (bez kameras) 1.
+  },
+  logaSpoksKameraDurvjuIstaba4 = {  
     "| |       /            \\\\    | | |",
     "| |          |           .   | | |",
     "| |   \\\\              ( ) ( )| | |",
@@ -320,9 +341,8 @@ public class SpokuIzskati {
     "| |           .          /  (|>| |",
     "| |     /           \\       (|>| |",
     "| |__________________________|_| |"
-  };
-
-  private static final String[] logaSpPieDurvim5 = {  // ? Parastā redze (bez kameras) 1.
+  },
+  logaSpoksKameraDurvjuIstaba5 = { 
     "| |       /            \\\\ |  ^ | |",
     "| |          |           .|   \\| |",
     "| |   \\\\              ( ) |(O) | |",
@@ -330,9 +350,8 @@ public class SpokuIzskati {
     "| |           .          (| ^  | |",
     "| |     /           \\    (|    | |",
     "| |_______________________|____| |"
-  };
-
-  private static final String[] logaSpPieDurvim6 = {
+  },
+  logaSpoksKameraDurvjuIstaba6 = {
     "| |       /      |  ^       ^  | |",
     "| |          |   | / \\ ___ / \\ | |",
     "| |   \\\\         | \\ (O)_(O) / | |",
@@ -342,7 +361,35 @@ public class SpokuIzskati {
     "| |______________|_|_|_____|_|_| |"
   };
 
-  private static final String[] durvjuLogsVala = {
+  private static final String[]
+  durvjuIstabasLogsCiet = {
+    "| |       /            \\\\     || |",
+    "| |          |           .    || |",
+    "| |   \\\\                      || |",
+    "| |      .   \\         /      || |",
+    "| |           .          /    || |",
+    "| |     /           \\         || |",
+    "| |___________________________|| |"
+  },
+  logaSpoksBezKamerasDurvjuIstaba0 = {
+    "| |       /            \\\\    | | |",
+    "| |          |           .   | | |",
+    "| |   \\\\                     | | |",
+    "| |      .   \\         /     | | |",
+    "| |           .          /   | | |",
+    "| |     /           \\        | | |",
+    "| |__________________________|_| |"
+  },
+  logaSpoksBezKamerasDurvjuIstaba1 = {
+    "| |       /            \\\\ |    | |",
+    "| |          |           .|    | |",
+    "| |   \\\\                  |    | |",
+    "| |      .   \\         /  |    | |",
+    "| |           .           |    | |",
+    "| |     /           \\     |    | |",
+    "| |_______________________|____| |"
+  },
+  logaSpoksBezKamerasDurvjuIstaba2 = {
     "| |       /      |             | |",
     "| |          |   |             | |",
     "| |   \\\\         |             | |",
@@ -352,8 +399,9 @@ public class SpokuIzskati {
     "| |______________|_____________| |"
   };
 
-  // =============================================================================== Durvju spoks ======================================================================================= //
-  private static final String[] durvisCiet = {
+  // ?  ---------------------------------------------------------------------- Durvju spoks.
+  private static final String[] 
+  aizslegtasDurvis = {
     "     |                  | ",
     "     |                  | ",
     "     |                  | ",
@@ -368,9 +416,8 @@ public class SpokuIzskati {
     "                          ",
     "                          ",
     "                          "
-  };
-
-  private static final String[] durvjuSp0 = {
+  },
+  atslegtasDurvis = {
     "     |                  | ",
     "     |                  | ",
     "     |                  | ",
@@ -387,75 +434,8 @@ public class SpokuIzskati {
     "                          "
   };
 
-  private static final String[] durvjuSp1 = {
-    "     |                  | ",
-    "     |                  | ",
-    "     |                  | ",
-    "     |                  | ",
-    "     |                _ | ",
-    "     |             _-(+)| ",
-    "     |           -   |_|| ",
-    "     |                  | ",
-    "     |                  | ",
-    "     |                  | ",
-    "_____|__________________|_",
-    "                          ",
-    "                          ",
-    "                          "
-  };
-
-  private static final String[] durvjuSp2 = {
-    "     |                  | ",
-    "     |                  | ",
-    "     |                  | ",
-    "     |                  | ",
-    "     |                _ | ",
-    "     |               (+)| ",
-    "     |              /|_|| ",
-    "     |                  | ",
-    "     |                  | ",
-    "     |                  | ",
-    "_____|__________________|_",
-    "                          ",
-    "                          ",
-    "                          "
-  };
-
-  private static final String[] durvjuSp3 = {
-    "     |    ------______  | ",
-    "     |                | | ",
-    "     |                | | ",
-    "     |                | | ",
-    "     |                | | ",
-    "     |              _ | | ",
-    "     |             (+)| | ",
-    "     |            /|_|| | ",
-    "     |                | | ",
-    "     |                | | ",
-    "_____|____            | |_",
-    "          ------______|   ",
-    "                          ",
-    "                          "
-  };
-  
-  private static final String[] durvjuSp4 = {
-    "     |  --__            | ",
-    "     |      --__        | ",
-    "     |          --__    | ",
-    "     |              |   | ",
-    "     |              |   | ",
-    "     |              |   | ",
-    "     |              |   | ",
-    "     |              |   | ",
-    "     |            ()|   | ",
-    "     |           /  |   | ",
-    "_____|__            |   |_",
-    "        --__        |     ",
-    "            --__    |     ",
-    "                --__|     "
-  };
-
-  private static final String[] durvjuSp5 = {  // ? Parastā redze (bez kameras) 1.
+  private static final String[]
+  durvjuSpokaFazeKamera3 = { 
       "     |  --__            | ",
       "     |      --__        | ",
       "     |          --__    | ",
@@ -470,9 +450,8 @@ public class SpokuIzskati {
       "        --__        |     ",
       "            --__    |     ",
       "                --__|     ",
-  };
-
-  private static final String[] durvjuSp6 = {  // ? Parastā redze (bez kameras) 1.
+  },
+  durvjuSpokaFazeKamera4 = {
     "     | -_               | ",
     "     |   -_             | ",
     "     |     -_     ___   | ",
@@ -487,9 +466,8 @@ public class SpokuIzskati {
     "       -_      |          ",
     "         -_    |          ",
     "           -_  |          "
-  };
-
-  private static final String[] durvjuSp7 = {  // ? Parastā redze (bez kameras) 1.
+  },
+  durvjuSpokaFazeKamera5 = { 
     "    /|                  | ",
     "   / |                  | ",
     "  /  |                  | ",
@@ -506,7 +484,88 @@ public class SpokuIzskati {
     "| /                       "
   };
 
-  private static final String[] durvisVala = {
+  private static final String[] 
+  durvjuSpoksBezKameras0 = {
+    "     |                  | ",
+    "     |                  | ",
+    "     |                  | ",
+    "     |                  | ",
+    "     |                _ | ",
+    "     |             _-(+)| ",
+    "     |           -   |_|| ",
+    "     |                  | ",
+    "     |                  | ",
+    "     |                  | ",
+    "_____|__________________|_",
+    "                          ",
+    "                          ",
+    "                          "
+  },
+  durvjuSpoksBezKameras1 = {
+    "     |                  | ",
+    "     |                  | ",
+    "     |                  | ",
+    "     |                  | ",
+    "     |                _ | ",
+    "     |               (+)| ",
+    "     |              /|_|| ",
+    "     |                  | ",
+    "     |                  | ",
+    "     |                  | ",
+    "_____|__________________|_",
+    "                          ",
+    "                          ",
+    "                          "
+  },
+  durvjuSpoksBezKameras2 = {
+    "     |    ------______  | ",
+    "     |                | | ",
+    "     |                | | ",
+    "     |                | | ",
+    "     |                | | ",
+    "     |              _ | | ",
+    "     |             (+)| | ",
+    "     |            /|_|| | ",
+    "     |                | | ",
+    "     |                | | ",
+    "_____|____            | |_",
+    "          ------______|   ",
+    "                          ",
+    "                          "
+  },
+  durvjuSpoksBezKameras3 = {
+    "     |  --__            | ",
+    "     |      --__        | ",
+    "     |          --__    | ",
+    "     |              |   | ",
+    "     |              |   | ",
+    "     |              |   | ",
+    "     |              |   | ",
+    "     |              |   | ",
+    "     |            ()|   | ",
+    "     |           /  |   | ",
+    "_____|__            |   |_",
+    "        --__        |     ",
+    "            --__    |     ",
+    "                --__|     ",
+  },
+  durvjuSpoksBezKameras4 = {
+    "     | -_               | ",
+    "     |   -_             | ",
+    "     |     -_           | ",
+    "     |       -_         | ",
+    "     |         |        | ",
+    "     |         |        | ",
+    "     |         |        | ",
+    "     |         |        | ",
+    "     |         |        | ",
+    "     |     _-()|        | ",
+    "_____|_        |        |_",
+    "       -_      |          ",
+    "         -_    |          ",
+    "           -_  |          "
+  },
+  durvjuSpoksBezKameras5 = {
     "    /|                  | ",
     "   / |                  | ",
     "  /  |                  | ",
@@ -537,9 +596,8 @@ public class SpokuIzskati {
     K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET,
     K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET,
     K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET
-  };
-  
-  private static final String[] virtuvesSp0 = {
+  },
+  tuksPagrabs = {
     "---------------",
     "|---------------|",
     "| |-----------| |",
@@ -554,7 +612,8 @@ public class SpokuIzskati {
     "/               \\"
   };
 
-  private static final String[] virtuvesSp1 = { 
+  private static final String[] 
+  pagrabaSpoksKamera0 = { 
     "---------------",
     "|---------------|",
     "| |-----------| |",
@@ -567,9 +626,8 @@ public class SpokuIzskati {
     "| |_/_______\\_| |",
     "|_/___________\\_|",
     "/               \\"
-  };
-
-  private static final String[] virtuvesSp2 = {
+  },
+  pagrabaSpoksKamera1 = {
     "---------------",
     "|---------------|",
     "| |-----------| |",
@@ -582,9 +640,8 @@ public class SpokuIzskati {
     "| |_/_______\\_| |",
     "|_/___________\\_|",
     "/               \\"
-  };
-
-  private static final String[] virtuvesSp3 = {
+  },
+  pagrabaSpoksKamera2 = {
     "---------------",
     "|---------------|",
     "| |-----------| |",
@@ -597,9 +654,8 @@ public class SpokuIzskati {
     "| |_/_______\\_| |",
     "|_/___________\\_|",
     "/               \\"
-  };
-
-  private static final String[] virtuvesSp4 = {
+  },
+  pagrabaSpoksKamera3 = {
     "---------------",
     "|---------------|",
     "| |-----------| |",
@@ -612,9 +668,8 @@ public class SpokuIzskati {
     "| |_/_______\\_| |",
     "|_/___________\\_|",
     "/               \\"
-  };
-
-  private static final String[] virtuvesSp5 = {
+  },
+  pagrabaSpoksKamera4 = {
     "---------------",
     "|---------------|",
     "| |-----------| |",
@@ -627,9 +682,8 @@ public class SpokuIzskati {
     "| |_/_______\\_| |",
     "|_/___________\\_|",
     "/               \\"
-  };
-
-  private static final String[] virtuvesSp6 = {
+  },
+  pagrabaSpoksKamera5 = {
     "---------------",
     "|---------------|",
     "| |-----------| |",
@@ -642,9 +696,8 @@ public class SpokuIzskati {
     "| |_/_______\\_| |",
     "|_/___________\\_|",
     "/               \\"
-  };
-
-  private static final String[] virtuvesSp7 = {
+  },
+  pagrabaSpoksKamera6 = {
     "---------------",
     "|---------------|",
     "| |-----------| |",
@@ -657,9 +710,8 @@ public class SpokuIzskati {
     "| |_/_______\\_| |",
     "|_/___________\\_|",
     "/               \\"
-  };
-
-  private static final String[] virtuvesSp8 = {
+  },
+  pagrabaSpoksKamera7 = {
     "---------------",
     "|---------------|",
     "| ^          ^  |",
@@ -672,9 +724,8 @@ public class SpokuIzskati {
     "|  _v_v_______ (>",
     "|_/___________\\_|",
     "/               \\"
-  };
-
-  private static final String[] virtuvesSp9 = {
+  },
+  pagrabaSpoksKamera8 = {
     "             ",
     "  \\           /  ",
     " ___\\       /___ ",
@@ -687,9 +738,8 @@ public class SpokuIzskati {
     "  ___       ___  ",
     " _|||_______|||_ ",
     "/ v v       v v \\"
-  };
-
-  private static final String[] virtuvesSp10 = {
+  },
+  pagrabaSpoksKamera9 = {
     K.TPELEKS + "░░░░░░░░░░░░░" + K.RESET,
     K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET,
     K.TPELEKS + "░░░░░░░░░░░░░░░░░" + K.RESET,
@@ -705,25 +755,24 @@ public class SpokuIzskati {
   };
 
   // * Visu spoku fāzes izskatu masīvi.
-  // Loga.
-  public static final String[] [] logaSpokaBildesDurvjuIstaba = {durvjuLogsCiet, logaSpPieDurvim0, logaSpPieDurvim1, logaSpPieDurvim2, logaSpPieDurvim3, logaSpPieDurvim4, logaSpPieDurvim5, logaSpPieDurvim6, durvjuLogsVala};
-  public static final String[] [] logaSpokaBildesDivanaIstaba = {divanaLogsCiet, logaSpPieDivana0, logaSpPieDivana1, logaSpPieDivana2, logaSpPieDivana3, logaSpPieDivana4, logaSpPieDivana5, logaSpPieDivana6, divanaLogsVala};
-  public static final String[] [] logaSpokaBildesGultasIstaba = {gultasLogsCiet, logaSpPieGultas0, logaSpPieGultas1, logaSpPieGultas2, logaSpPieGultas3, logaSpPieGultas4, logaSpPieGultas5, logaSpPieGultas6, gultasLogsVala};
-  public static final String[] [] logaSpokaBildesVirtuve = {virtuvesLogsCiet, logaSpPieVirtuves0, logaSpPieVirtuves1, logaSpPieVirtuves2, logaSpPieVirtuves3, logaSpPieVirtuves4, logaSpPieVirtuves5, logaSpPieVirtuves6, virtuvesLogsVala};
+  public static final String[][]
+  // Loga spoks.
+  gulamistabasLogaSpokaFazesKamera = {logaSpoksKameraGulamistaba0,logaSpoksKameraGulamistaba1,logaSpoksKameraGulamistaba2,logaSpoksKameraGulamistaba3,logaSpoksKameraGulamistaba4,logaSpoksKameraGulamistaba5,logaSpoksKameraGulamistaba6},
+  gulamistabasLogaSpokaFazesBezKameras = {gulamistabasLogsCiet,logaSpoksBezKamerasGulamistaba0,logaSpoksBezKamerasGulamistaba1,logaSpoksBezKamerasGulamistaba2},
 
-  // Durvju un virtuves.
-  public static final String[] [] durvjuSpokaFazesBildes = {durvjuSp0, durvjuSp1, durvjuSp2, durvjuSp3, durvjuSp4, durvjuSp5, durvjuSp6, durvjuSp7, durvisVala , durvisCiet };
-  public static final String[] [] virtuvesSpokaFazesBildes = {virtuvesSp0 , virtuvesSp1 , virtuvesSp2 , virtuvesSp3 , virtuvesSp4 , virtuvesSp5 , virtuvesSp6 , virtuvesSp7 , virtuvesSp8 , virtuvesSp9 , virtuvesSp10 , izslegtsPagrabs };
+  divanaIstabasLogaSpokaFazesKamera = {logaSpoksKameraDivanaIstaba0,logaSpoksKameraDivanaIstaba1,logaSpoksKameraDivanaIstaba2,logaSpoksKameraDivanaIstaba3,logaSpoksKameraDivanaIstaba4,logaSpoksKameraDivanaIstaba5,logaSpoksKameraDivanaIstaba6},
+  divanaIstabasLogaSpokaFazesBezKameras = {divanaLogsCiet , logaSpoksBezKamerasDivanaIstaba0 , logaSpoksBezKamerasDivanaIstaba1 , logaSpoksBezKamerasDivanaIstaba2},
 
-  // * Izveido masīvus, un liek tiem cita masīva ceļu, lai kad to izmanto, viņš neatgriež vērtību "null".
-  // Loga spoka masīvi, kurus pielieto, katru savā istabā.
-  public static String[] virtuvesLogaSpokaFazesBilde = SpokuIzskati.virtuvesLogsCiet; 
-  public static String[] divanaLogaSpokaFazesBilde = SpokuIzskati.divanaLogsCiet; 
-  public static String[] gultasLogaSpokaFazesBilde = SpokuIzskati.gultasLogsCiet; 
-  public static String[] durvjuLogaSpokaFazesBilde = SpokuIzskati.durvjuLogsCiet; 
+  durvjuIstabasLogaSpokaFazesKamera = {logaSpoksKameraDurvjuIstaba0,logaSpoksKameraDurvjuIstaba1,logaSpoksKameraDurvjuIstaba2,logaSpoksKameraDurvjuIstaba3,logaSpoksKameraDurvjuIstaba4,logaSpoksKameraDurvjuIstaba5,logaSpoksKameraDurvjuIstaba6},
+  durvjuIstabasLogaSpokaFazesBezKameras = {durvjuIstabasLogsCiet,logaSpoksBezKamerasDurvjuIstaba0,logaSpoksBezKamerasDurvjuIstaba1,logaSpoksBezKamerasDurvjuIstaba2},
 
-  // Durvju un virtuves spoka izskata masīvi.
-  public static String[] virtPrieksasPagrabaBildesArSpoku = SpokuIzskati.virtuvesSp0;
-  public static String[] durvjuSpokaFazesBilde = SpokuIzskati.durvisCiet;
+  virtuvesLogaSpokaFazesKamera = {logaSpoksKameraVirtuve0,logaSpoksKameraVirtuve1,logaSpoksKameraVirtuve2,logaSpoksKameraVirtuve3,logaSpoksKameraVirtuve4,logaSpoksKameraVirtuve5,logaSpoksKameraVirtuve6},
+  virtuvesLogaSpokaFazesBezKameras = {virtuvesLogsCiet,logaSpoksBezKamerasVirtuve0,logaSpoksBezKamerasVirtuve1,logaSpoksBezKamerasVirtuve2},
+  // Durvju spoks.
+  durvjuSpokaFazesKamera = {durvjuSpokaFazeKamera3,durvjuSpokaFazeKamera4,durvjuSpokaFazeKamera5},
+  durvjuSpokaFazesBezKameras = {aizslegtasDurvis,atslegtasDurvis,durvjuSpoksBezKameras0,durvjuSpoksBezKameras1,durvjuSpoksBezKameras2,durvjuSpoksBezKameras3,durvjuSpoksBezKameras4,durvjuSpoksBezKameras5 },
+
+  // Pagraba spoks.
+  pagrabaSpokaFazesKamera = {pagrabaSpoksKamera0,pagrabaSpoksKamera1,pagrabaSpoksKamera2,pagrabaSpoksKamera3,pagrabaSpoksKamera4,pagrabaSpoksKamera5,pagrabaSpoksKamera6,pagrabaSpoksKamera7,pagrabaSpoksKamera8,pagrabaSpoksKamera9},
+  pagrabaSpokaFazesBezKameras = {izslegtsPagrabs,tuksPagrabs};
 }
-  

@@ -150,13 +150,13 @@ public class VekalaIzskati {
   };
 
   private static final String[] SLEDZIS = {
-    "| _____'''. |",
-    "| | |  '''  |",
-    "|     ---(+)|",
-    "|    .--.   |",
-    "|   |----|  |",
-    "|   | 0= |  |",
-    "|   '----'  |"
+    "|           |  _____.''. ",
+    "|           |  |  |  ''  ",
+    "|     ---(+)|            ",
+    "|           |    _.._    ",
+    "|           |   |____|   ",
+    "|           |   |LOCK|   ",
+    "|           |   ''''''   ",
   };
 
   public static final String[] [] kamerasMasivi = { KAMERAS_IZSKATS0 , KAMERAS_IZSKATS1 , KAMERAS_IZSKATS2 };

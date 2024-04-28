@@ -18,7 +18,7 @@ public class KaratavasSavienojums {
     // -------- Izveido vārdu, kuru rādīs grāmatas lejā.
     Karatavas.karatavasObjekts.saliktCentretuVardaSkeletu();
     // -------- Izvade terminālī.
-    Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.KARATAVU_EKRANS);
+    Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.KARATAVAS);
     // Izslēgšanas jeb uzvaras kods:
     if (Karatavas.karatavasObjekts.irAtminetsVards()) {
       PaligMetodes.gulet(2); // Ļauj spēlētājam redzēt atminēto vārdu.

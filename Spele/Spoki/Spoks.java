@@ -13,10 +13,10 @@ public class Spoks {
   public int pecUzbrukumaAtputa = 10; // 
   
   // Spoka progressa vērtības. (Mainīgās vērtības)
-  private int spokaAtputasLaikaMainamaKopija; // Šo mainīgo visu laiku maina.
-  private int SPOKA_FAZU_SKAITS;
-  private int spokaFazesIndekss; // Nosaka, kādu bildi rādīs spēlē. (Progress līdz mērķa izpildei)
-  private int randKustibasIespeja; // Skaitlis, kuru salīdzina ar spoka agresivitāti, lai tas spētu kustēties. Vērtība no 1 - 20 aktīvs, 0 neaktīvs.
+  protected int spokaAtputasLaikaMainamaKopija; // Šo mainīgo visu laiku maina.
+  protected int SPOKA_FAZU_SKAITS;
+  protected int spokaFazesIndekss; // Nosaka, kādu bildi rādīs spēlē. (Progress līdz mērķa izpildei)
+  protected int randKustibasIespeja; // Skaitlis, kuru salīdzina ar spoka agresivitāti, lai tas spētu kustēties. Vērtība no 1 - 20 aktīvs, 0 neaktīvs.
 
 
   // Spoka stāvoklis. (ON vai OFF)

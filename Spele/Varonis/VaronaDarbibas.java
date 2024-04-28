@@ -14,8 +14,8 @@ import Spele.Veikals.Videokamera;
 import Spele.Enums;
 import Spele.PaligMetodes;
 import Spele.Enums.KustibasVirziens;
-import Spele.Enums.Virzieni;
-import Spele.Enums.Istabas;
+import Spele.Enums.Virziens;
+import Spele.Enums.Istaba;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Iestatijumi.Iestatijumi;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
@@ -63,7 +63,7 @@ public class VaronaDarbibas {
         Piederumi.ieslegtaKamera = false;
       }
     }
-    else if (komandasTeksts.equals("FOTO") && pabeigtsKomTeksts && (VeikalaKods.izveletaFotokamera && Piederumi.ieslegtaKamera && Fotokamera.fotokamera.getMaxLimenis()) && Enums.V_Istaba == Istabas.VIRTUVE && Enums.V_Virziens == Virzieni.LEJA) {
+    else if (komandasTeksts.equals("FOTO") && pabeigtsKomTeksts && (VeikalaKods.izveletaFotokamera && Piederumi.ieslegtaKamera && Fotokamera.fotokamera.getMaxLimenis()) && Enums.V_Istaba == Istaba.VIRTUVE && Enums.V_Virziens == Virziens.LEJA) {
       Piederumi.ieslegtaKamera = false;
       Piederumi.baterija = 0;
       VirtuvesSpoks.virtuvesSpoks.deaktivizetSpoku();
@@ -142,7 +142,7 @@ public class VaronaDarbibas {
       kustetiesPaMaju(KustibasVirziens.POZITIVS); ////////////////////////////////////////
     }
     else if (komanda.equals(Iestatijumi.izmantotGaismu)) {
-      ieslegtIzslegtIstabasGaismu(Istabas.GULTA);
+      ieslegtIzslegtIstabasGaismu(Istaba.GULTA);
     }
   }
 
@@ -161,14 +161,14 @@ public class VaronaDarbibas {
 
   public static void gultasKreisasPusesKomandas(String komanda , String komandasTeksts , boolean pabeigtsKomTeksts) {
     if (komandasTeksts.equals("LOGS") && pabeigtsKomTeksts) {
-      aizbiedetLogaSpoku(Istabas.GULTA);
+      aizbiedetLogaSpoku(Istaba.GULTA);
     }
   }
 
   /// * Dīvāna darbības:
   public static void divanaPrieksasKomandas(String komanda , String komandasTeksts , boolean pabeigtsKomTeksts) {
     if (komandasTeksts.equals("LOGS") && pabeigtsKomTeksts) {
-      aizbiedetLogaSpoku(Istabas.DIVANS);
+      aizbiedetLogaSpoku(Istaba.DIVANS);
     }
   }
 
@@ -177,7 +177,7 @@ public class VaronaDarbibas {
       kustetiesPaMaju(KustibasVirziens.POZITIVS); ////////////////////////////////////////
     }
     else if (komanda.equals(Iestatijumi.izmantotGaismu)) {
-      ieslegtIzslegtIstabasGaismu(Istabas.DIVANS);
+      ieslegtIzslegtIstabasGaismu(Istaba.DIVANS);
     }
   }
 
@@ -200,7 +200,7 @@ public class VaronaDarbibas {
   /// * Durvju darbības:
   public static void durvjuPrieksasKomandas(String komanda , String komandasTeksts , boolean pabeigtsKomTeksts) {
     if (komandasTeksts.equals("LOGS") && pabeigtsKomTeksts) {
-      aizbiedetLogaSpoku(Istabas.DURVIS);
+      aizbiedetLogaSpoku(Istaba.DURVIS);
     }
   }
 
@@ -222,7 +222,7 @@ public class VaronaDarbibas {
       kustetiesPaMaju(KustibasVirziens.POZITIVS); ////////////////////////////////////////
     }
     else if (komanda.equals(Iestatijumi.izmantotGaismu)) {
-      ieslegtIzslegtIstabasGaismu(Istabas.DURVIS);
+      ieslegtIzslegtIstabasGaismu(Istaba.DURVIS);
     }
   }
 
@@ -241,7 +241,7 @@ public class VaronaDarbibas {
 
   public static void virtuvesLabasPusesKomandas(String komanda , String komandasTeksts , boolean pabeigtsKomTeksts) {
     if (komandasTeksts.equals("LOGS") && pabeigtsKomTeksts) {
-      aizbiedetLogaSpoku(Istabas.VIRTUVE);
+      aizbiedetLogaSpoku(Istaba.VIRTUVE);
     }
   }
 
@@ -257,7 +257,7 @@ public class VaronaDarbibas {
       kustetiesPaMaju(KustibasVirziens.POZITIVS); ////////////////////////////////////////
     }
     else if (komanda.equals(Iestatijumi.izmantotGaismu)) {
-      ieslegtIzslegtIstabasGaismu(Istabas.VIRTUVE);
+      ieslegtIzslegtIstabasGaismu(Istaba.VIRTUVE);
     }
   }
   
@@ -292,7 +292,7 @@ public class VaronaDarbibas {
     }
   }
 
-  private static void ieslegtIzslegtIstabasGaismu(Istabas istaba) {
+  private static void ieslegtIzslegtIstabasGaismu(Istaba istaba) {
     // Ja ir ieslēgta elektrība, tad var aiztikt lampas/istabu gaismas.
     if (SakumaDati.elektribaIeslegta) {
       if (SakumaDati.istabuGaismasIeslegtas[istaba.CIPARS]) {
@@ -334,7 +334,7 @@ public class VaronaDarbibas {
     }
   }
 
-  private static void aizbiedetLogaSpoku(Istabas istaba) {
+  private static void aizbiedetLogaSpoku(Istaba istaba) {
     // Metode var būt izsaukta tikai tad, kad varonis skatās uz iespējamo loga spoka vietu (Visi logi).
     // 1. Pārbauda vai loga spoks ir varoņa aktuālajā istabā. 2. Pārbauda vai spoks ir ieslēgts jeb aktīvs.
     if (LogaSpoks.logaSpoks.getLSIstabu().equals(istaba.ISTABA) && LogaSpoks.logaSpoks.getSpoksIrAktivs()) {

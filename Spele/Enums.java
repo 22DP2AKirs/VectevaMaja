@@ -3,19 +3,19 @@ package Spele;
 public class Enums {
   // * Šī klase satur sevī visas enum klases, priekš vieglākas atrašanas un organizēšanas.
 
-  public static Istabas V_Istaba = Istabas.GULTA;
-  public static Virzieni V_Virziens = Virzieni.PRIEKSA;
+  public static Istaba V_Istaba = Istaba.DURVIS;
+  public static Virziens V_Virziens = Virziens.LABA_PUSE;
 
   public enum EkranuVeidi {
-    GALVENAIS_EKRANS,
-    KARATAVU_EKRANS,
-    UZVARAS_EKRANS,
-    KONTA_IZVELES_EKRANS, // 
-    KONTA_APSKATES_EKRANS,
-    REGISTRACIJAS_EKRANS,
-    PIESLEGSANAS_EKRANS,
-    DROSIBAS_VARDA_EKRANS,
-    REDIGESANAS_EKRANS,
+    SAKUMA,
+    KARATAVAS,
+    UZVARA,
+    KONTA_IZVELE,
+    KONTA_APSKATE,
+    REGISTRACIJA,
+    PIESLEGSANAS,
+    KONTA_DROSIBAS_V,
+    KONTA_REDIGESANA,
     IESTATIJUMI
   }
   // Konta apskates ekrāns (apskata visus konta datus).
@@ -24,7 +24,11 @@ public class Enums {
   // Pieslēgšanās ekrāns (pieslēdzas jau izveidotam kontam).
 
   public enum NavesIemesli {
-
+    LOGA_SPOKS,
+    DURVJU_SPOKS,
+    VIRTUVES_SPOKS,
+    PULKSTENIS,
+    STRESS,
   }
 
   public enum KustibasVirziens {
@@ -38,7 +42,7 @@ public class Enums {
     }
   }
 
-  public enum Istabas {
+  public enum Istaba {
     GULTA(0 , "GULTA"),
     DIVANS(1 , "DIVANS"),
     DURVIS(2 , "DURVIS"),
@@ -48,7 +52,7 @@ public class Enums {
     public final int CIPARS;
     public final String ISTABA;
 
-    private Istabas (int CIPARS, String ISTABA) {
+    private Istaba (int CIPARS, String ISTABA) {
       // Šie dati ir vajadzīgi, lai šo enum varētu salīdzināt ne tikai ar citiem enumiem,
       // bet arī ar citiem String un int tipiem, kuri atbilst to lietotai secībai un vērtībām.
       // Lai būtu ērtāk lietot.
@@ -57,7 +61,7 @@ public class Enums {
     }
   }
 
-  public enum Virzieni {
+  public enum Virziens {
     PRIEKSA(0),
     LABA_PUSE(1),
     LEJA(2),
@@ -66,7 +70,7 @@ public class Enums {
     // Ļauj enumiem piešķirt vērtību.
     public final int CIPARS;
 
-    private Virzieni (int CIPARS) {
+    private Virziens (int CIPARS) {
       this.CIPARS = CIPARS;
     }
   }
