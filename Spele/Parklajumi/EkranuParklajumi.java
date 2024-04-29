@@ -9,6 +9,7 @@ import Spele.Izskati.EkranuIzskati;
 import Spele.KontaKods.Konts;
 import Spele.K;
 import Spele.Enums.EkranuVeidi;
+import Spele.Enums.NavesIemesli;
 import Spele.MazasSpeles.Karatavas.Karatavas;
 import Spele.MazasSpeles.Karatavas.KaratavuIzskati;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
@@ -31,9 +32,6 @@ public class EkranuParklajumi {
     // Caur iesniegto enum "EKRANA_TIPS", šī metode var viegli noteikt, kurus ekrānus un to pārklājumus izmantot.
     if (EKRANA_TIPS.equals(EkranuVeidi.SAKUMA)) {
       sakumaEkranaPar(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[0], EkranuIzskati.visiEkrani[0].length));
-    }
-    else if (EKRANA_TIPS.equals(EkranuVeidi.UZVARA)) {
-      uzvarasEkranaParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[1], EkranuIzskati.visiEkrani[1].length));
     }
     else if (EKRANA_TIPS.equals(EkranuVeidi.KARATAVAS)) {
       gramatasParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[3], EkranuIzskati.visiEkrani[3].length));
@@ -61,6 +59,114 @@ public class EkranuParklajumi {
     }
 
     return ekranaKopija;
+  }
+
+  public static String[] parklatSpelesBeigas(NavesIemesli iemesls) {
+    if (iemesls == NavesIemesli.UZVARA) {
+      return uzvarasEkranaParklasana(Arrays.copyOf(EkranuIzskati.visiEkrani[1], EkranuIzskati.visiEkrani[1].length));
+    }
+    else {
+      return zaudesanasEkranaParklasana(Arrays.copyOf(EkranuIzskati.visiEkrani[2], EkranuIzskati.visiEkrani[2].length), zaudesanasInformacijasNoteiksana(iemesls));
+    }
+  }
+
+  private static String[] uzvarasEkranaParklasana(String[] mainamaisMasivs) {
+    mainamaisMasivs[15] += "\033[37G" + VaronaStatusaEfekti.varonaStresaLimenis + "\033[106G";
+    mainamaisMasivs[17] += "\033[59G" + Serkocini.serkocini.getSerkocinuDaudzums() + "\033[106G";
+    return mainamaisMasivs;
+  }
+
+  private static String[] zaudesanasInformacijasNoteiksana(NavesIemesli iemesls) {
+    // * Metode sagatavo visu informāciju, par nāves iemeslu.
+
+    // Informācijas elementu saturs.
+    // 0 - Nāves iemesls;
+    // 1 - Laiks līdz 6 AM;
+    // 2 - Ieteikums.
+    // 3 - Ieteikums.
+    // 4 - Ieteikums.
+    // 5 - Ieteikums.
+    // 6 - Ieteikums.
+    // 7 - Ieteikums.
+
+    String[] informacija = new String[8];
+
+    informacija[0] = iemesls.name();
+    informacija[1] = "" + (Main.spelesIlgums - Laiks.spelesLaiks); // Pārveido int uz String.
+    if (iemesls == NavesIemesli.KARATAVAS) {
+      informacija[2] = "";
+      informacija[3] = "";
+      informacija[4] = "";
+      informacija[5] = "";
+      informacija[6] = "";
+      informacija[7] = "";
+      // Papildus darbības:
+      SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\karatavas_pakarts.wav", 6);
+    } 
+    else if (iemesls == NavesIemesli.ATRODI_PARI) {
+      informacija[2] = "";
+      informacija[3] = "";
+      informacija[4] = "";
+      informacija[5] = "";
+      informacija[6] = "";
+      informacija[7] = "";
+    }
+    else if (iemesls == NavesIemesli.LOGA_SPOKS) {
+      informacija[2] = "                                    _   _                   _               _";
+      informacija[3] = "L O G A   S P O K S   V A R   P A R A D I T I E S   V I E N A   N O   4   M A J A S   L O G I E M .";
+      informacija[4] = "        _                                 _";
+      informacija[5] = "P I E V E R S I E T   T I E M   U Z M A N I B U !";
+      informacija[6] = "";
+      informacija[7] = "";
+    }
+    else if (iemesls == NavesIemesli.DURVJU_SPOKS) {
+      informacija[2] = "                                      _   _               _             _       _             _";
+      informacija[3] = "D U R V J U   S P O K S   L I E N   M A J A   C A U R   T A S   V I E N I G A J A M   D U R V I M .";
+      informacija[4] = "  _       _       V _       _";
+      informacija[5] = "T A S   M E D Z   C I K S T E T .";
+      informacija[6] = "                                _                               _           _   _       _                 _";
+      informacija[7] = "D U R V I S   V A R   A I Z S L E G T,  L A I   S P O K A M   B U T U   G R U T A K   T A S   A T T A I S I T .";
+    }
+    else if (iemesls == NavesIemesli.PAGRABA_SPOKS) {
+      informacija[2] = "                                                      _";
+      informacija[3] = "P A G R A B A   S P O K S   P A L I E K   A G R E S I V S,";
+      informacija[4] = "                    _                 _";
+      informacija[5] = "K A D   P A G R A B A   I R   I E S L E G T A   G A I S M A .";
+      informacija[6] = "        _               _                     _                                   _";
+      informacija[7] = "I Z S L E D Z I E T   M A J A S   E L E K T R I B U,  L A I   T O   A I Z B I E D E T U !";
+    }
+    else if (iemesls == NavesIemesli.STRESS) {
+      informacija[2] = "                                    _                                     v _             _";
+      informacija[3] = "J U M S   N A V   B A I G I   P A T I K A M I   A T R A S T I E S   T U M S A   I S T A B A . . .";
+      informacija[4] = "        _             _                   _";
+      informacija[5] = "V A R B U T   I E S L E D Z I E T   T A J A   G A I S M U ?";
+      informacija[6] = "";
+      informacija[7] = "";
+    }
+    else if (iemesls == NavesIemesli.PULKSTENIS) {
+      informacija[2] = "                      _                                       _                           _";
+      informacija[3] = "I Z P I L D I E T   M A J A S D A R B U S   N O T E I K T A J A   L A I K A   P E R I O D A !";
+      informacija[4] = "";
+      informacija[5] = "";
+      informacija[6] = "";
+      informacija[7] = "";
+    }
+
+    return informacija;
+  }
+
+  private static String[] zaudesanasEkranaParklasana(String[] mainamaisMasivs, String[] informacija) {
+    // * Metode saliek visu sagatavoto informāciju nāves jeb Zaudesanas ekrānā.
+    mainamaisMasivs[15] += "\033[41G" + informacija[0] + "\033[106G";
+    mainamaisMasivs[17] += "\033[43G" + informacija[1] + "\033[106G";
+    mainamaisMasivs[20] += "\033[7G" + informacija[2] + "\033[106G";
+    mainamaisMasivs[21] += "\033[7G" + informacija[3] + "\033[106G";
+    mainamaisMasivs[22] += "\033[7G" + informacija[4] + "\033[106G";
+    mainamaisMasivs[23] += "\033[7G" + informacija[5] + "\033[106G";
+    mainamaisMasivs[24] += "\033[7G" + informacija[6] + "\033[106G";
+    mainamaisMasivs[25] += "\033[7G" + informacija[7] + "\033[106G";
+
+    return mainamaisMasivs;
   }
 
   private static void iestatijumuParklasana(String[] mainamaisMasivs) {
@@ -196,103 +302,6 @@ private static void pieslegsanasParklasana(String[] mainamaisMasivs) {
       mainamaisMasivs[21] += K.DEBESU_ZILS + "\033[31G/" + "\033[73G\\" + K.RESET + "\033[106G";
       mainamaisMasivs[22] += K.DEBESU_ZILS + "\033[30G/" + "\033[74G\\" + K.RESET + "\033[106G";
     }
-  }
-
-
-  public static String[] parklatZaudesanasEkranu(String[] originalaisEkrans, String iemesls) {
-    String[] ekranaKopija = Arrays.copyOf(originalaisEkrans, originalaisEkrans.length);
-
-    zaudesanasEkranaParklasana(ekranaKopija, zaudesanasInformacijasNoteiksana(iemesls));
-
-    return ekranaKopija;
-  }
-
-  private static void uzvarasEkranaParklasana(String[] mainamaisMasivs) {
-    mainamaisMasivs[15] += "\033[37G" + VaronaStatusaEfekti.varonaStresaLimenis + "\033[106G";
-    mainamaisMasivs[17] += "\033[59G" + Serkocini.serkocini.getSerkocinuDaudzums() + "\033[106G";
-  }
-
-  private static String[] zaudesanasInformacijasNoteiksana(String iemesls) {
-    // * Metode sagatavo visu informāciju, par nāves iemeslu.
-
-    // Informācijas elementu saturs.
-    // 0 - Nāves iemesls;
-    // 1 - Laiks līdz 6 AM;
-    // 2 - Ieteikums.
-    // 3 - Ieteikums.
-    // 4 - Ieteikums.
-    // 5 - Ieteikums.
-    // 6 - Ieteikums.
-    // 7 - Ieteikums.
-
-    String[] informacija = new String[8];
-
-    informacija[0] = iemesls;
-    informacija[1] = "" + (Main.spelesIlgums - Laiks.spelesLaiks); // Pārveido int uz String.
-    if (iemesls.equals("KARATAVAS")) {
-      informacija[2] = "G E T   G U D.";
-      informacija[3] = "";
-      informacija[4] = "";
-      informacija[5] = "";
-      informacija[6] = "";
-      informacija[7] = "";
-      // Papildus darbības:
-      SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\karatavas_pakarts.wav", 6);
-    } 
-    else if (iemesls.equals("L O G A   S P O K S")) {
-      informacija[2] = "                                    _   _                   _               _";
-      informacija[3] = "L O G A   S P O K S   V A R   P A R A D I T I E S   V I E N A   N O   4   M A J A S   L O G I E M .";
-      informacija[4] = "        _                                 _";
-      informacija[5] = "P I E V E R S I E T   T I E M   U Z M A N I B U !";
-      informacija[6] = "";
-      informacija[7] = "";
-    }
-    else if (iemesls.equals("D U R V J U   S P O K S")) {
-      informacija[2] = "                                      _   _               _             _       _             _";
-      informacija[3] = "D U R V J U   S P O K S   L I E N   M A J A   C A U R   T A S   V I E N I G A J A M   D U R V I M .";
-      informacija[4] = "  _       _       V _       _";
-      informacija[5] = "T A S   M E D Z   C I K S T E T .";
-      informacija[6] = "                                _                               _           _   _       _                 _";
-      informacija[7] = "D U R V I S   V A R   A I Z S L E G T,  L A I   S P O K A M   B U T U   G R U T A K   T A S   A T T A I S I T .";
-    }
-    else if (iemesls.equals("V I R T U V E S   S P O K S")) {
-      informacija[2] = "                                                      _";
-      informacija[3] = "V I R T U V E S   S P O K S   P A L I E K   A G R E S I V S,";
-      informacija[4] = "                    _                 _";
-      informacija[5] = "K A D   P A G R A B A   I R   I E S L E G T A   G A I S M A .";
-      informacija[6] = "        _               _                     _                                   _";
-      informacija[7] = "I Z S L E D Z I E T   M A J A S   E L E K T R I B U,  L A I   T O   A I Z B I E D E T U !";
-    }
-    else if (iemesls.equals("STRESS")) {
-      informacija[2] = "                                    _                                     v _             _";
-      informacija[3] = "J U M S   N A V   B A I G I   P A T I K A M I   A T R A S T I E S   T U M S A   I S T A B A . . .";
-      informacija[4] = "        _             _                   _";
-      informacija[5] = "V A R B U T   I E S L E D Z I E T   T A J A   G A I S M U ?";
-      informacija[6] = "";
-      informacija[7] = "";
-    }
-    else if (iemesls.equals("MAJASDARBA_LAIKS")) {
-      informacija[2] = "                      _                                       _                           _";
-      informacija[3] = "I Z P I L D I E T   M A J A S D A R B U S   N O T E I K T A J A   L A I K A   P E R I O D A !";
-      informacija[4] = "";
-      informacija[5] = "";
-      informacija[6] = "";
-      informacija[7] = "";
-    }
-
-    return informacija;
-  }
-
-  private static void zaudesanasEkranaParklasana(String[] mainamaisMasivs, String[] informacija) {
-    // * Metode saliek visu sagatavoto informāciju nāves jeb Zaudesanas ekrānā.
-    mainamaisMasivs[15] += "\033[41G" + informacija[0] + "\033[106G";
-    mainamaisMasivs[17] += "\033[43G" + informacija[1] + "\033[106G";
-    mainamaisMasivs[20] += "\033[7G" + informacija[2] + "\033[106G";
-    mainamaisMasivs[21] += "\033[7G" + informacija[3] + "\033[106G";
-    mainamaisMasivs[22] += "\033[7G" + informacija[4] + "\033[106G";
-    mainamaisMasivs[23] += "\033[7G" + informacija[5] + "\033[106G";
-    mainamaisMasivs[24] += "\033[7G" + informacija[6] + "\033[106G";
-    mainamaisMasivs[25] += "\033[7G" + informacija[7] + "\033[106G";
   }
 
   //

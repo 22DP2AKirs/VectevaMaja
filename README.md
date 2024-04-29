@@ -7,8 +7,7 @@ Lai palaistu programmu, lietotājam vajadzēs instalēt programmu "Visual Studio
 Vēlamā lejupielādes secība:
 1. Java 8;
 2. JDK 17;
-3. VScode;
-4. jnativehook-2.2.2.jar.
+3. VScode.
 
 ### Java 8
 1. Aizejiet uz Oficiālo Java mājaslapu un spiediet uz lielo, zaļo pogu "Download Java". Tas sāks lejupielādēt Java 8 priekš operētājsistēmas "Windows": https://www.java.com/download/ie_manual.jsp . <br> 
@@ -85,7 +84,7 @@ Komandas bieži būs redzamas uz ekrāna, viss kas Jums ir jādara ir pēc katra
 - [x] Mājas darbību pienākošais laiks, piem., tīrīt traukus 2 AM, pildīt mājas darbus no 4 - 5 AM.
 - [x] Lietotāja UI - User interface.
 - [ ] Sienas pulksteņa darbības???
-- [ ] Skaņa.
+- [x] Skaņa.
 - [ ] Izskrāsot durvis brūnas un logus zilus (Ādama ideja).
 - [ ] Jāpieiet pie loga. cits spoks?
 - [ ] Aizdedzināt spoku :|?????
@@ -99,13 +98,13 @@ Komandas bieži būs redzamas uz ekrāna, viss kas Jums ir jādara ir pēc katra
 - [x] Samazināt kāršu spēles kāršu daudzumu (līdz 8).
 - [x] Samazināt iespēju izslēgt gaismu istabās.
 - [x] Pievienot 'stressa' līniju pie labās UI puses (Lai spēlētājam nevajadzētu minēt cik liels tas tam ir).
-- [ ] Pievienot spoku 'Čill' stadiju (stadija, kur spoks gulēs n gājienus).
+- [x] Pievienot spoku 'Čill' stadiju (stadija, kur spoks gulēs n gājienus).
 
 ### TODO (fixi)
 
 - [x] Pievienot atpakaļ 'iepriekšējā komanda' lodziņu spēlē.
 - [x] Spokus var redzēt caur kamerām.
-- [ ] Jāsalabo 'GAME OVER' ekrāni.
+- [x] Jāsalabo 'GAME OVER' ekrāni.
 - ...
 
 ## Spēles nobeiguma stress

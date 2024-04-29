@@ -43,7 +43,6 @@ public class Main {
 
   public static void main(String[] args) throws InterruptedException { // throws InterruptedException nozīmē, ka var neizmantot try_catch.
     // * Galvenais programmas process.
-
     // Dažādu metožu un ideju testēšana.
     if (Testi.testesana) {
       Testi.testaProgramma();
@@ -68,7 +67,7 @@ public class Main {
     skanasSpeletajs.start(); // Strādā, kamēr spelePalaista bools ir true.
     izvade.start();
     TastaturasKlausitajs.palaistKlaviaturasLasitaju();
-
+    
     //#region
     // *P R O G R A M M A S   C I K L S* // 
     while (programmaPalaista) {

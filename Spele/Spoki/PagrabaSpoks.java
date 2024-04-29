@@ -1,6 +1,7 @@
 package Spele.Spoki;
 
 import Spele.K;
+import Spele.Enums.NavesIemesli;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Izskati.SpokuIzskati;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
@@ -112,7 +113,7 @@ public final class PagrabaSpoks extends Spoks {
   protected void noteiktRezultatu() {
     if (spokaFazesIndekss >= SPOKA_FAZU_SKAITS) {
       deaktivizetSpoku();
-      VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("V I R T U V E S   S P O K S");
+      VaronaStatusaEfekti.spelesRezultats(NavesIemesli.PAGRABA_SPOKS);
     }
   }
 

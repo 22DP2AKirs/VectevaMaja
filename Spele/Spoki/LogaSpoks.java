@@ -3,6 +3,7 @@ package Spele.Spoki;
 import Spele.K;
 import Spele.PaligMetodes;
 import Spele.Enums.Istaba;
+import Spele.Enums.NavesIemesli;
 import Spele.Izskati.SpokuIzskati;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Main;
@@ -63,7 +64,7 @@ public class LogaSpoks extends Spoks {
     // Pārbauda vai spoks ir savā beigu jeb uzbrukuma fāzē.
     if (spokaFazesIndekss >= SPOKA_FAZU_SKAITS) {
       deaktivizetSpoku();
-      VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("L O G A   S P O K S");
+      VaronaStatusaEfekti.spelesRezultats(NavesIemesli.LOGA_SPOKS);
     }
   }
 

@@ -1,6 +1,7 @@
 package Spele.SpelesProcesi;
 
 import Spele.PaligMetodes;
+import Spele.Enums.NavesIemesli;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
@@ -112,7 +113,7 @@ public class Laiks extends Thread {
         MazoSpeluIzvelesKods.parbauditVaiVaronisPaspejaIzpilditMajasdarbu(); // Pārbauda vai varonis izpildīja pēdējo mājasdarbu.
       }
       else {
-        VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("UZVARA");
+        VaronaStatusaEfekti.spelesRezultats(NavesIemesli.UZVARA);
       }
     }
   }

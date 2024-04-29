@@ -1,6 +1,7 @@
 package Spele.Spoki;
 
 import Spele.K;
+import Spele.Enums.NavesIemesli;
 import Spele.Izskati.SpokuIzskati;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Main;
@@ -36,7 +37,7 @@ public final class DurvjuSpoks extends Spoks {
     // Pārbauda vai spoks ir savā beigu jeb uzbrukuma fāzē.
     if (spokaFazesIndekss >= SPOKA_FAZU_SKAITS) {
       deaktivizetSpoku();
-      VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("D U R V J U   S P O K S");
+      VaronaStatusaEfekti.spelesRezultats(NavesIemesli.DURVJU_SPOKS);
     }
   }
 

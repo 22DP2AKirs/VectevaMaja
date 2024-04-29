@@ -1,5 +1,6 @@
 package Spele.MazasSpeles;
 
+import Spele.Enums.NavesIemesli;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPari;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
 import Spele.MazasSpeles.Karatavas.Karatavas;
@@ -38,7 +39,7 @@ public class MazoSpeluIzvelesKods {
     // * Pārbauda vai varonis ir izpildījis mājasdarbu noteiktajā laikā, ja nav, tad viņš zaudē.
     // Ja m-spēle nav uzvarēta, un varonis ir mirstīgais, tad viņš zaudē.
     if (izveletaMazaSpele && !Main.varonaNemirstiba) {
-      VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("MAJASDARBA_LAIKS");
+      VaronaStatusaEfekti.spelesRezultats(NavesIemesli.PULKSTENIS);
       return false;
     }
 

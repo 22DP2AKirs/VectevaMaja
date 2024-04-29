@@ -4,8 +4,8 @@ Parole=OLAS
 DrosibasVards=OGAO
 
 #SpelesDati:
-spelesNakts=1
-nauda=99399
+spelesNakts=5
+nauda=99229
 ieslegtaSkana=T
 
 #Iestatijumi:
@@ -28,11 +28,11 @@ nopirktiSerkocini=T
 
 fotokamerasUzlabojumaCena=M A X
 videokamerasUzlabojumaCena=M A X
-serkocinuUzlabojumaCena=30
+serkocinuUzlabojumaCena=M A X
 
 fotokamerasLimenis=2
 videokamerasLimenis=2
-serkocinuLimenis=0
+serkocinuLimenis=3
 
 durvjuSledzis=T
 

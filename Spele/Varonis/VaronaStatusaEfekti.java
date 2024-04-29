@@ -1,10 +1,9 @@
 package Spele.Varonis;
 
 import Spele.PaligMetodes;
-import Spele.Izskati.EkranuIzskati;
 import Spele.KontaKods.Konts;
 import Spele.Enums;
-import Spele.Enums.EkranuVeidi;
+import Spele.Enums.NavesIemesli;
 import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.MazasSpeles.Karatavas.Karatavas;
@@ -34,42 +33,42 @@ public class VaronaStatusaEfekti {
   public static void parbauditEffektus() {
     // Ja varona stresa līmenis pārsniedz 100.
     if (VaronaStatusaEfekti.varonaStresaLimenis > 100) {
-      VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("STRESS");
+      VaronaStatusaEfekti.spelesRezultats(NavesIemesli.STRESS);
     }
     // Ja zaudē karātavas.
     else if (Karatavas.karatavuKluduSkaits > 7) {
-      VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("KARATAVAS");
+      VaronaStatusaEfekti.spelesRezultats(NavesIemesli.KARATAVAS);
     }
   }
 
-  public static void noteiktSpelesGalaRezultatu(String iemesls) {
-    // * Metode beigs spēles procesu un izvadīs noteikto spēles rezultātu.
-    // Pārtrauc spēli.
+  public static void spelesRezultats(NavesIemesli iemesls) {
+    // Beidz spēli parādot uzvaru vai nāves/zaudēšanas iemeslu.
+    // 1. Pārtrauc spēli.
     Main.sakumaEkrans = true;
     Main.spelePalaista = false;
 
-    // Nosaka spēles gala rezultātu.
-    if (iemesls.equals("UZVARA")) { // Uzvaras kods.
-      Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.UZVARA);
-      PaligMetodes.gulet(5);
+    // 2. Izvade uz termināli.
+    Izvade.ieslegtMasivaIzvadi();
+    Izvade.izvadesMasivs = EkranuParklajumi.parklatSpelesBeigas(iemesls);
+
+    // 3. Rezultāta apstrāde.
+    if (iemesls == NavesIemesli.UZVARA) {
       // Palielina konta nakts vērtību par vienu (+1).
       if (SakumaDati.spelesNakts != 5) {
-        SakumaDati.nauda += 90 * SakumaDati.spelesNakts;
+        SakumaDati.nauda += 100 * SakumaDati.spelesNakts;
         SakumaDati.spelesNakts++;
-
-        // Ja ir konts, tad saglabā.
-        if (Konts.lietotajsPiesledzies) {
-          FailuRedigetajs.mainitFailaMainigaVertibu("spelesNakts", SakumaDati.spelesNakts + "", Konts.lietotajaKontaCels);
-          FailuRedigetajs.mainitFailaMainigaVertibu("nauda", SakumaDati.nauda + "", Konts.lietotajaKontaCels);
-        }
+      }
+      // Ja ir konts, tad saglabā.
+      if (Konts.lietotajsPiesledzies) {
+        FailuRedigetajs.mainitFailaMainigaVertibu("spelesNakts", SakumaDati.spelesNakts+"", Konts.lietotajaKontaCels);
+        FailuRedigetajs.mainitFailaMainigaVertibu("nauda", SakumaDati.nauda+"", Konts.lietotajaKontaCels);
       }
     }
-    else {
-      Izvade.izvadesMasivs = EkranuParklajumi.parklatZaudesanasEkranu(EkranuIzskati.visiEkrani[2], iemesls);
-      PaligMetodes.gulet(5);
-    }
-    
-    // Spēles beigu kods.
+
+    // 4. Izvade uz termināli ilgst 5 sec.
+    PaligMetodes.gulet(5);
+
+    // 5. Sagatavo datus nākošai spēlei.
     LogaSpoks.logaSpoks.deaktivizetSpoku();
     DurvjuSpoks.durvjuSpoks.deaktivizetSpoku();
     PagrabaSpoks.pagrabaSpoks.deaktivizetSpoku();

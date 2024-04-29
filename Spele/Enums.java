@@ -26,9 +26,13 @@ public class Enums {
   public enum NavesIemesli {
     LOGA_SPOKS,
     DURVJU_SPOKS,
-    VIRTUVES_SPOKS,
+    PAGRABA_SPOKS,
     PULKSTENIS,
     STRESS,
+    KARATAVAS,
+    ATRODI_PARI,
+    UZVARA,
+    PASNAVIBA;
   }
 
   public enum KustibasVirziens {

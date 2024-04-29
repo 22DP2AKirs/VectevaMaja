@@ -14,6 +14,7 @@ import Spele.Veikals.Videokamera;
 import Spele.Enums;
 import Spele.PaligMetodes;
 import Spele.Enums.KustibasVirziens;
+import Spele.Enums.NavesIemesli;
 import Spele.Enums.Virziens;
 import Spele.Enums.Istaba;
 import Spele.FailuLietotaji.SkanasSpeletajs;
@@ -107,11 +108,12 @@ public class VaronaDarbibas {
     }
     // Novāc varoni.
     else if (komandasTeksts.equals("KILL") && pabeigtsKomTeksts) {
-      VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("PASNAVIBA");
+      VaronaStatusaEfekti.spelesRezultats(NavesIemesli.PASNAVIBA);
     }
     // Uzvar spēli.
     else if (komandasTeksts.equals("WIN") && pabeigtsKomTeksts) {
-      Laiks.spelesLaiks = 1000;
+      VaronaStatusaEfekti.spelesRezultats(NavesIemesli.UZVARA);
+      // Laiks.spelesLaiks = 1000;
     }
     else if (komandasTeksts.equals("H1") && pabeigtsKomTeksts) {
       Laiks.spelesLaiks = Laiks.vienaStunda - 1;
