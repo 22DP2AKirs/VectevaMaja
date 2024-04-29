@@ -1,5 +1,57 @@
 # VectevaMaja
 
+## Kā palaist programmu uz cita datora
+
+Lai palaistu programmu, lietotājam vajadzēs instalēt programmu "Visual Studio Code" jeb VScode un 2 programmatūras - "Java" (versija 8) un "Java Development Kit" jeb JDK (versija 17).
+
+Vēlamā lejupielādes secība:
+1. Java 8;
+2. JDK 17;
+3. VScode.
+
+### Java 8
+1. Aizejiet uz Oficiālo Java mājaslapu un spiediet uz lielo, zaļo pogu "Download Java". Tas sāks lejupielādēt Java 8 priekš operētājsistēmas "Windows": https://www.java.com/download/ie_manual.jsp . <br> 
+![alt text](image-2.png)
+![alt text](image-1.png)
+2. Kad beigsies Java lejupielāde. Uzpiediet uz tās, lai to atvērtu. <br> 
+![alt text](image-3.png)
+3. Spiežiet uz pogas "install", lai sāktu Java uzstādīšanu uz datora. <br>
+![alt text](image-4.png)
+4. Gaidiet līdz beigsies uzstādīšana. <br>
+![alt text](image-5.png)
+5. Pēc tam spiežiet pogu "Close". <br>
+![alt text](image-6.png)
+
+### JDK 17
+1. Atveriet Oficiālo Java mājaslapu un spiediet uz pogu "Java SE Development Kit": https://www.java.com/en/ . <br>
+![alt text](image-7.png)
+2. Izvēlaties versiju JDK 17. <br>
+![alt text](image-8.png)
+3. Izvēlaties priekš operētājsistēmas "Windows" un spiežiet uz "x64 MSI Installer" saites. <br>
+![alt text](image-9.png)
+4. Atveriet to un spiediet pogu "next". <br>
+![alt text](image-10.png)
+5. Spiediet pogu "next", lai sāktu uzstādīšanu uz datora. <br>
+![alt text](image-11.png)
+6. Atveriet vietu, kur tika instalēts JDK 17, un nokopējiet to. <br>
+![alt text](image-12.png)
+7. Datora meklēšanā ierakstiet un atveriet "Environment Variables". <br>
+![alt text](image-13.png)
+8. Spiediet pogu "new". <br>
+![alt text](image-14.png)
+9. Ievadiet ceļu un nosaukumu, un spiediet pogu "OK". <br>
+![alt text](image-15.png)
+
+### VScode
+1. Atveriet Oficiālo VScode mājaslapu, un pēc tam spiežiet uz pogu "Download for Windows" : https://code.visualstudio.com/ . <br>
+![alt text](image-16.png)
+2. Spiediet pogu "next", līdz viņš prasīs, lai Jūs spiežat pogu "install". Nospiežiet to. <br>
+
+### Programmas palaišana
+1. Ievietojiet šo saiti uz programmu Source Control lodziņā. https://github.com/22DP2AKirs/VectevaMaja.git <br>
+
+
+
 ## Stāsts
 
 Viendien Jūs staigājāt pa veikalu un pamanījāt, ka uz pārdošanu ir izlikta jauna videokarte, kura spēj pavilkt jebkuru spēli uz maksimālo kvalitāti.
