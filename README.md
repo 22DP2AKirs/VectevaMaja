@@ -46,7 +46,8 @@ Komandas bieži būs redzamas uz ekrāna, viss kas Jums ir jādara ir pēc katra
 ### TODO (fixi)
 
 - [x] Pievienot atpakaļ 'iepriekšējā komanda' lodziņu spēlē.
-- [ ] Spokus var redzēt caur kamerām.
+- [x] Spokus var redzēt caur kamerām.
+- [ ] Jāsalabo 'GAME OVER' ekrāni.
 - ...
 
 ## Spēles nobeiguma stress

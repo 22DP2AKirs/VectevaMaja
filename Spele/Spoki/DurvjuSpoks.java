@@ -6,6 +6,7 @@ import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Main;
 import Spele.Varonis.VaronaStatusaEfekti;
 import Spele.Veikals.Piederumi;
+import Spele.Veikals.VeikalaKods;
 
 public final class DurvjuSpoks extends Spoks {
   /* Spoka apraksts:
@@ -21,52 +22,87 @@ public final class DurvjuSpoks extends Spoks {
   public DurvjuSpoks(int spokaAtlautaAgresivitate, int spokaAtputasLaiks) {
     super(spokaAtlautaAgresivitate, spokaAtputasLaiks);
     setSpokuFazuSkaitu(K.DURVJU_SPOKA_FAZES);
+    pecUzbrukumaAtputa = 10;
   }
 
-  // * Getters:
   public String toString() {
-    return 
-    "Durvju sp aktivs: " + durvjuSpoks.getSpoksIrAktivs() + 
-    ", Atputas gajieni: " + getMainamoAtputasLaiku() + 
-    ", Fazes indekss: " + getSpokaFazesIndekss() + " no " + getSpokuFazuSkaitu() +
-    ", Durvis aizslegtas: " + SakumaDati.durvisSlegtas + ", " +
-    getRandKustibasIespeja() + " < " + getSpokaAtlautaAgresivitate() + "\033[0K";
+    return "F. " + spokaFazesIndekss + " no " + SPOKA_FAZU_SKAITS + " : Aktivs? " + spoksAtnacis +
+    " atp. gaj. " + spokaAtputasLaikaMainamaKopija + " : Aizslegtas " + SakumaDati.durvisSlegtas + 
+    " rand " + randKustibasIespeja + " <= " + spokaAtlautaAgresivitate + "\033[0K";
   }
 
-  // * Citas Metodes:
-  /// Public:
+  /// Protected:
+  protected void noteiktRezultatu() {
+    // Pārbauda vai spoks ir savā beigu jeb uzbrukuma fāzē.
+    if (spokaFazesIndekss >= SPOKA_FAZU_SKAITS) {
+      deaktivizetSpoku();
+      VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("D U R V J U   S P O K S");
+    }
+  }
+
+  protected void censtiesAtnakt() {
+    // Apskata iespēju atnākt uz māju jeb spēli.
+
+    // 1. Neļauj spokam nāk pirmās 'n' sekundes pēc aizbiedēšanas.
+    if (pecUzbrukumaAtputa <= 0) {
+      // 1.1. Rand. iespēja atnakt uz māju.
+      if (!spoksAtnacis && Main.rand.nextInt(7) == 0) {
+        izveidotJaunuDurvjuSpokaObjektu();
+      }
+    }
+    else {
+      pecUzbrukumaAtputa--;
+    }
+  }
+
   public void izveidotJaunuDurvjuSpokaObjektu() {
+    // Pārdefinē mainīgo ar jaunu vērtību mainīgo.
     durvjuSpoks = new DurvjuSpoks(SakumaDati.durvjuSpokaAtlautaAgresivitate, SakumaDati.durvjuSpokaAtputasLaiks);
   }
 
-  public String[] izveletiesBildiPecFazes() {
-    if (getSpokaFazesIndekss() <= 7) {
-      if (spokaFazesIndekss <= 4) { // Fāzes, kur spokam ir identiski izskati.
-        return SpokuIzskati.durvjuSpokaFazesBezKameras[spokaFazesIndekss];
+  public String[] getIzskats() {
+    // 'Override' vecāka metodi.
+
+    // 1. Atjauno spoka izskatu.
+    if (spokaFazesIndekss <= 6) { // 7. fāzē spoks uzbrūk (šis aizliedz izmantot indeksu, kas ir ārpus masīva robežām.)
+      atjaunotIzskatu();
+    }
+    // 2. Atgriež izskatu.
+    return izskats;
+  }
+
+  public void atjaunotIzskatu() {
+    if (spokaFazesIndekss > 0) {
+      if (spokaFazesIndekss <= 3) { // Fāzes, kur spokam ir identiski izskati.
+        izskats = SpokuIzskati.durvjuSpokaFazesBezKameras[spokaFazesIndekss + 1];
       }
       else {
         // - n, lai iegūto nulto indeksu citam masīvam.
         if (Piederumi.ieslegtaKamera) {
-          return SpokuIzskati.durvjuSpokaFazesKamera[spokaFazesIndekss - 5];
+          izskats = SpokuIzskati.durvjuSpokaFazesKamera[spokaFazesIndekss - 4];
         }
         else {
-          return SpokuIzskati.durvjuSpokaFazesBezKameras[spokaFazesIndekss];
+          izskats = SpokuIzskati.durvjuSpokaFazesBezKameras[spokaFazesIndekss + 1];
         }
       }
     }
-
-    // Atgriež tukšu masīvu, lai nekrašotu spēli.
-    String[] n = new String[14];
-    return n;
+    else {
+      if (VeikalaKods.durvjuSledzis) {
+        izskats = SpokuIzskati.durvjuSpokaFazesBezKameras[0];
+      }
+      else {
+        izskats = SpokuIzskati.durvjuSpokaFazesBezKameras[1];
+      }
+    }
   }
 
   public void noteiktGajienaRezultatu() {
     // Nosaka vai spoks cenšas kustēties vai nē.
-    if (atgrieztRandomKustibasSkaitli() <= getSpokaAtlautaAgresivitate()) {
-      if (getMainamoAtputasLaiku() == 0) {
+    if (randKustibasIespeja <= spokaAtlautaAgresivitate) {
+      if (spokaAtputasLaikaMainamaKopija == 0) {
         if (!SakumaDati.durvisSlegtas) {
           // Ja durvis nebija aizslēgtas, tad ...
-          pieietTuvak();
+          pieietTuvak(); // Palielina fāzi par 1.
         }
         else {
           // citādi ...
@@ -81,19 +117,4 @@ public final class DurvjuSpoks extends Spoks {
       }
     }
   }
-
-  /// Protected:
-  protected void parbauditSpokaFazi() {
-    if (getSpokaFazesIndekss() == getSpokuFazuSkaitu()) {
-      VaronaStatusaEfekti.noteiktSpelesGalaRezultatu("D U R V J U   S P O K S");
-    }
-  }
-
-  protected void meginatIzveidotDurvjuSpoku() {
-    if (!getSpoksIrAktivs() && Main.rand.nextInt(5) + 1 == 5) {
-      izveidotJaunuDurvjuSpokaObjektu();
-    }
-  }
-
-
 }

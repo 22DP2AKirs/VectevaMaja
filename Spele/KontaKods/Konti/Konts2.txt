@@ -5,7 +5,7 @@ DrosibasVards=OGAO
 
 #SpelesDati:
 spelesNakts=1
-nauda=30
+nauda=99399
 ieslegtaSkana=T
 
 #Iestatijumi:
@@ -19,19 +19,19 @@ izietNoMD=Q
 aizdedzinatSerkocinu=F
 parslegtBurtuIzmeru=Tab
 parslegtRakstisanasRezimu=X
-kadriSekunde=30
+kadriSekunde=60
 
 #Veikals:
 nopirktaFotokamera=T
-nopirktaVideokamera=F
-nopirktiSerkocini=F
+nopirktaVideokamera=T
+nopirktiSerkocini=T
 
-fotokamerasUzlabojumaCena=75
-videokamerasUzlabojumaCena=100
-serkocinuUzlabojumaCena=20
+fotokamerasUzlabojumaCena=M A X
+videokamerasUzlabojumaCena=M A X
+serkocinuUzlabojumaCena=30
 
-fotokamerasLimenis=0
-videokamerasLimenis=0
+fotokamerasLimenis=2
+videokamerasLimenis=2
 serkocinuLimenis=0
 
 durvjuSledzis=T

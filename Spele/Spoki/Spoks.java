@@ -10,17 +10,18 @@ public class Spoks {
   // Spoka limiti. (Nemainīgas vērtības)
   public int spokaAtlautaAgresivitate; // Nosaka cik agresīvs var būt spoks. Max = 20.
   public int spokaAtputasLaiks; // Nosaka cik spoka iespējas gājienus tas stāvēs uz vietas. Glabāšanas mainīgais.
-  public int pecUzbrukumaAtputa = 10; // 
+  public int pecUzbrukumaAtputa; // 
   
   // Spoka progressa vērtības. (Mainīgās vērtības)
   protected int spokaAtputasLaikaMainamaKopija; // Šo mainīgo visu laiku maina.
   protected int SPOKA_FAZU_SKAITS;
-  protected int spokaFazesIndekss; // Nosaka, kādu bildi rādīs spēlē. (Progress līdz mērķa izpildei)
   protected int randKustibasIespeja; // Skaitlis, kuru salīdzina ar spoka agresivitāti, lai tas spētu kustēties. Vērtība no 1 - 20 aktīvs, 0 neaktīvs.
+  
+  protected int spokaFazesIndekss; // Nosaka, kādu bildi rādīs spēlē. (Progress līdz mērķa izpildei)
+  protected boolean spoksAtnacis; // Ja spoks ir aktīvs, tad tas var kustēties, savādāk tas stāvēs netiks atjaunināts. // Spoka stāvoklis. (ON vai OFF)
 
-
-  // Spoka stāvoklis. (ON vai OFF)
-  private boolean spoksIrAktivs; // Ja spoks ir aktīvs, tad tas var kustēties, savādāk tas stāvēs netiks atjaunināts.
+  protected String[] izskats;
+ 
 
   public Spoks(int spokaAtlautaAgresivitate, int spokaAtputasLaiks) {
     this.spokaAtlautaAgresivitate = spokaAtlautaAgresivitate;
@@ -29,10 +30,14 @@ public class Spoks {
     spokaFazesIndekss = 0; // Visi spoki sāk no nultās (sākuma) pozīcijas.
 
     if (spokaAtlautaAgresivitate != 0) {
-      spoksIrAktivs = true;
+      spoksAtnacis = true;
     }
 
     atnakusoSpokuSkaits++; // + 1.
+  }
+
+  public String[] getIzskats() {
+    return izskats;
   }
 
   // * setters:
@@ -41,13 +46,14 @@ public class Spoks {
     this.spokaAtputasLaikaMainamaKopija = spokaAtputasLaikaMainamaKopija;
   }
 
-  public void setSpoksIrAktivs(boolean vertiba) {
-    spoksIrAktivs = vertiba;
+  public void setSpoksAtnacis(boolean vertiba) {
+    spoksAtnacis = vertiba;
   }
 
   public void deaktivizetSpoku() {
-    setSpoksIrAktivs(false);
+    spoksAtnacis = false;
     spokaFazesIndekss = 0;
+    pecUzbrukumaAtputa = 10;
   }
 
   /// Protected:
@@ -57,6 +63,7 @@ public class Spoks {
   
   // * Getters:
   /// Protected (Izmantojami tikai starp inheritējamiem bērniem (children)):
+
   protected int getSpokuFazuSkaitu() {
     return SPOKA_FAZU_SKAITS;
   }
@@ -74,8 +81,8 @@ public class Spoks {
   }
 
   /// Public (Izmantojami jebkurā failā):
-  public boolean getSpoksIrAktivs() {
-    return spoksIrAktivs;
+  public boolean getSpoksAtnacis() {
+    return spoksAtnacis;
   }
   
   public int getAtnakusoSpokuSkaits() {
@@ -90,7 +97,7 @@ public class Spoks {
   /// Protected:
   protected void atjauninatSpoku() {
     // Ja spoks ir aktīvs, tad tam atļauj kustēties.
-    if (spoksIrAktivs) {
+    if (spoksAtnacis) {
       noteiktGajienaRezultatu();
     }
   }
@@ -125,48 +132,50 @@ public class Spoks {
     // Izveido spoku objektus.
     LogaSpoks.logaSpoks.izveidotJaunuLogaSpokaObjektu();
     DurvjuSpoks.durvjuSpoks.izveidotJaunuDurvjuSpokaObjektu();
-    VirtuvesSpoks.virtuvesSpoks.izveidotJaunuVirtuvesSpokaObjektu();
+    PagrabaSpoks.pagrabaSpoks.izveidotJaunuPagrabaSpokaObjektu();
+
+    deaktivizetSpokus();
   }
 
   public static void atjauninatSpokus() {
-    if (LogaSpoks.logaSpoks.getSpoksIrAktivs()) {
+    if (LogaSpoks.logaSpoks.getSpoksAtnacis()) {
       LogaSpoks.logaSpoks.atjauninatSpoku();
     }
     
-    if (DurvjuSpoks.durvjuSpoks.getSpoksIrAktivs()) {
+    if (DurvjuSpoks.durvjuSpoks.getSpoksAtnacis()) {
       DurvjuSpoks.durvjuSpoks.atjauninatSpoku();
     }
 
-    if (VirtuvesSpoks.virtuvesSpoks.getSpoksIrAktivs()) {
-      VirtuvesSpoks.virtuvesSpoks.atjauninatSpoku();
+    if (PagrabaSpoks.pagrabaSpoks.getSpoksAtnacis()) {
+      PagrabaSpoks.pagrabaSpoks.atjauninatSpoku();
     }
   }
   
   public static void meginatIeslegtSpokus() {
     // Ja spoks ir neaktīvs, tad ir rand iespēja to aktivizēt.
-    LogaSpoks.logaSpoks.meginatIzveidotLogaSpoku();
-    DurvjuSpoks.durvjuSpoks.meginatIzveidotDurvjuSpoku();
-    VirtuvesSpoks.virtuvesSpoks.meginatIzveidotVirtuvesSpoku();
+    LogaSpoks.logaSpoks.censtiesAtnakt();
+    DurvjuSpoks.durvjuSpoks.censtiesAtnakt();
+    PagrabaSpoks.pagrabaSpoks.censtiesAtnakt();
   }
 
-  public static void izslegtSpokus() {
+  public static void deaktivizetSpokus() {
     // Izslēdz visus spokus.
     LogaSpoks.logaSpoks.deaktivizetSpoku();
     DurvjuSpoks.durvjuSpoks.deaktivizetSpoku();
-    VirtuvesSpoks.virtuvesSpoks.deaktivizetSpoku();
+    PagrabaSpoks.pagrabaSpoks.deaktivizetSpoku();
   }
 
   public static void spokuInfo() {
     System.out.println(); // Vieta priekš ievades.
     System.out.println(LogaSpoks.logaSpoks.toString());
     System.out.println(DurvjuSpoks.durvjuSpoks.toString());
-    System.out.println(VirtuvesSpoks.virtuvesSpoks.toString());
+    System.out.println(PagrabaSpoks.pagrabaSpoks.toString());
   }
 
   public static void parbauditSpokuFazes() {
     // Metode pārbauda visu spoku fāzes, lai tie varētu uzbrukt spēlētājam.
-    LogaSpoks.logaSpoks.parbauditSpokaFazi();
-    DurvjuSpoks.durvjuSpoks.parbauditSpokaFazi();
-    VirtuvesSpoks.virtuvesSpoks.parbauditSpokaFazi();
+    LogaSpoks.logaSpoks.noteiktRezultatu();
+    DurvjuSpoks.durvjuSpoks.noteiktRezultatu();
+    PagrabaSpoks.pagrabaSpoks.noteiktRezultatu();
   }
 }

@@ -15,7 +15,7 @@ import Spele.SpelesProcesi.Laiks;
 import Spele.SpelesProcesi.Main;
 import Spele.Spoki.DurvjuSpoks;
 import Spele.Spoki.LogaSpoks;
-import Spele.Spoki.VirtuvesSpoks;
+import Spele.Spoki.PagrabaSpoks;
 import Spele.Veikals.Piederumi;
 import Spele.Veikals.Serkocini;
 import Spele.Veikals.VeikalaKods;
@@ -72,7 +72,7 @@ public class VaronaStatusaEfekti {
     // Spēles beigu kods.
     LogaSpoks.logaSpoks.deaktivizetSpoku();
     DurvjuSpoks.durvjuSpoks.deaktivizetSpoku();
-    VirtuvesSpoks.virtuvesSpoks.deaktivizetSpoku();
+    PagrabaSpoks.pagrabaSpoks.deaktivizetSpoku();
 
     Laiks.spelesLaiks = 0; // Lai laika threads momentāli neapstātos pēc tā pališanas, atjauno spēles laiku.
     Laiks.stundasLaiks = 0;

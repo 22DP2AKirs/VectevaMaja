@@ -46,7 +46,8 @@ public class Enums {
     GULTA(0 , "GULTA"),
     DIVANS(1 , "DIVANS"),
     DURVIS(2 , "DURVIS"),
-    VIRTUVE(3 , "VIRTUVE");
+    VIRTUVE(3 , "VIRTUVE"),
+    NAV(-1 , "NAV");
 
     // Ļauj enumiem piešķirt vērtību.
     public final int CIPARS;

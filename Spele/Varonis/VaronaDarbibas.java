@@ -5,7 +5,7 @@ import Spele.SpelesProcesi.Main;
 import Spele.SpelesProcesi.TastaturasKlausitajs;
 import Spele.Spoki.DurvjuSpoks;
 import Spele.Spoki.LogaSpoks;
-import Spele.Spoki.VirtuvesSpoks;
+import Spele.Spoki.PagrabaSpoks;
 import Spele.Veikals.Fotokamera;
 import Spele.Veikals.Piederumi;
 import Spele.Veikals.Serkocini;
@@ -66,7 +66,7 @@ public class VaronaDarbibas {
     else if (komandasTeksts.equals("FOTO") && pabeigtsKomTeksts && (VeikalaKods.izveletaFotokamera && Piederumi.ieslegtaKamera && Fotokamera.fotokamera.getMaxLimenis()) && Enums.V_Istaba == Istaba.VIRTUVE && Enums.V_Virziens == Virziens.LEJA) {
       Piederumi.ieslegtaKamera = false;
       Piederumi.baterija = 0;
-      VirtuvesSpoks.virtuvesSpoks.deaktivizetSpoku();
+      PagrabaSpoks.pagrabaSpoks.deaktivizetSpoku();
     }
   }
 
@@ -337,21 +337,21 @@ public class VaronaDarbibas {
   private static void aizbiedetLogaSpoku(Istaba istaba) {
     // Metode var būt izsaukta tikai tad, kad varonis skatās uz iespējamo loga spoka vietu (Visi logi).
     // 1. Pārbauda vai loga spoks ir varoņa aktuālajā istabā. 2. Pārbauda vai spoks ir ieslēgts jeb aktīvs.
-    if (LogaSpoks.logaSpoks.getLSIstabu().equals(istaba.ISTABA) && LogaSpoks.logaSpoks.getSpoksIrAktivs()) {
+    if (LogaSpoks.logaSpoks.getIstabu().CIPARS == istaba.CIPARS && LogaSpoks.logaSpoks.getSpoksAtnacis()) {
       // Skaņa -->
       LogaSpoks.logaSpoks.deaktivizetSpoku();
     }
   }
 
   private static void aizbiedetVirtuvesSpoku() {
-    if (VirtuvesSpoks.virtuvesSpoks.getSpoksIrAktivs()) {
-      SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\spoks_krit_leja_pa_kapnem.wav", VirtuvesSpoks.virtuvesSpoks.getSpokaFazesIndekss() - 17);
-      VirtuvesSpoks.virtuvesSpoks.deaktivizetSpoku();
+    if (PagrabaSpoks.pagrabaSpoks.getSpoksAtnacis()) {
+      SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\spoks_krit_leja_pa_kapnem.wav", PagrabaSpoks.pagrabaSpoks.getSpokaFazesIndekss() - 17);
+      PagrabaSpoks.pagrabaSpoks.deaktivizetSpoku();
     }
   }
 
   private static void aizbiedetDurvjuSpoku() {
-    if (DurvjuSpoks.durvjuSpoks.getSpoksIrAktivs()) {
+    if (DurvjuSpoks.durvjuSpoks.getSpoksAtnacis()) {
       // Skaņa -->
       DurvjuSpoks.durvjuSpoks.deaktivizetSpoku();
     }

@@ -164,6 +164,7 @@ public class SpokuIzskati {
     "| |nm^V-~-V^_(|________| |"
   };
 
+  // ? Bez kameras.
   public static final String[] 
   gulamistabasLogsCiet = {  
     "| ||  .      ||.       | |",
@@ -362,7 +363,7 @@ public class SpokuIzskati {
   };
 
   private static final String[]
-  durvjuIstabasLogsCiet = {
+  logaSpoksBezKamerasDurvjuIstaba0 = {
     "| |       /            \\\\     || |",
     "| |          |           .    || |",
     "| |   \\\\                      || |",
@@ -371,7 +372,7 @@ public class SpokuIzskati {
     "| |     /           \\         || |",
     "| |___________________________|| |"
   },
-  logaSpoksBezKamerasDurvjuIstaba0 = {
+  logaSpoksBezKamerasDurvjuIstaba1 = {
     "| |       /            \\\\    | | |",
     "| |          |           .   | | |",
     "| |   \\\\                     | | |",
@@ -380,7 +381,7 @@ public class SpokuIzskati {
     "| |     /           \\        | | |",
     "| |__________________________|_| |"
   },
-  logaSpoksBezKamerasDurvjuIstaba1 = {
+  logaSpoksBezKamerasDurvjuIstaba2 = {
     "| |       /            \\\\ |    | |",
     "| |          |           .|    | |",
     "| |   \\\\                  |    | |",
@@ -389,7 +390,7 @@ public class SpokuIzskati {
     "| |     /           \\     |    | |",
     "| |_______________________|____| |"
   },
-  logaSpoksBezKamerasDurvjuIstaba2 = {
+  logaSpoksBezKamerasDurvjuIstaba3 = {
     "| |       /      |             | |",
     "| |          |   |             | |",
     "| |   \\\\         |             | |",
@@ -764,7 +765,7 @@ public class SpokuIzskati {
   divanaIstabasLogaSpokaFazesBezKameras = {divanaLogsCiet , logaSpoksBezKamerasDivanaIstaba0 , logaSpoksBezKamerasDivanaIstaba1 , logaSpoksBezKamerasDivanaIstaba2},
 
   durvjuIstabasLogaSpokaFazesKamera = {logaSpoksKameraDurvjuIstaba0,logaSpoksKameraDurvjuIstaba1,logaSpoksKameraDurvjuIstaba2,logaSpoksKameraDurvjuIstaba3,logaSpoksKameraDurvjuIstaba4,logaSpoksKameraDurvjuIstaba5,logaSpoksKameraDurvjuIstaba6},
-  durvjuIstabasLogaSpokaFazesBezKameras = {durvjuIstabasLogsCiet,logaSpoksBezKamerasDurvjuIstaba0,logaSpoksBezKamerasDurvjuIstaba1,logaSpoksBezKamerasDurvjuIstaba2},
+  durvjuIstabasLogaSpokaFazesBezKameras = {logaSpoksBezKamerasDurvjuIstaba0,logaSpoksBezKamerasDurvjuIstaba1,logaSpoksBezKamerasDurvjuIstaba2,logaSpoksBezKamerasDurvjuIstaba3},
 
   virtuvesLogaSpokaFazesKamera = {logaSpoksKameraVirtuve0,logaSpoksKameraVirtuve1,logaSpoksKameraVirtuve2,logaSpoksKameraVirtuve3,logaSpoksKameraVirtuve4,logaSpoksKameraVirtuve5,logaSpoksKameraVirtuve6},
   virtuvesLogaSpokaFazesBezKameras = {virtuvesLogsCiet,logaSpoksBezKamerasVirtuve0,logaSpoksBezKamerasVirtuve1,logaSpoksBezKamerasVirtuve2},
