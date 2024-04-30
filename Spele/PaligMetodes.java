@@ -2,11 +2,61 @@ package Spele;
 
 import java.util.ArrayList;
 
+import javax.management.RuntimeErrorException;
+
 import Spele.Enums.Istaba;
 import Spele.Enums.Virziens;
 
 public class PaligMetodes {
   // Šeit ir metodes, kuras atvieglos koda saprašanu un manu dzīvi.
+
+  public static ArrayList<ArrayList<Object>> apmainitSarakstaElementu(ArrayList<Object> pirmaisElements, ArrayList<Object> otraisElements, ArrayList<ArrayList<Object>> saraksts) {
+    // * Metode pareizi izpildās tikai tad, ja masīvā nav identisku elementu.
+    // * Apmaina ar vietām norādītos elementus. Nav domāts milzīgiem sarakstiem.
+    
+    int pirmaIndekss = -1, otraIndekss = -1;
+    // 1. Atrod sarakstā meklējamo elementu.
+    for (int i = 0; i < saraksts.size(); i++) {
+      // 1.1. Atrod jau elementu.
+      if (saraksts.get(i).equals(pirmaisElements)) {
+        pirmaIndekss = i;
+        continue;
+      }
+
+      // 1.2. Atrod maināmo elementu.
+      if (saraksts.get(i).equals(otraisElements)) {
+        otraIndekss = i;
+        continue;
+      }
+    }
+
+    // 2. Pārbauda vai atrada abus elementus.
+    if (pirmaIndekss == -1 || otraIndekss == -1) {
+      throw new RuntimeErrorException(null);
+    }
+
+    // 3. Apmaina elementus.
+    saraksts.set(pirmaIndekss, otraisElements);
+    saraksts.set(otraIndekss, pirmaisElements);
+
+    // Atgriež sarakstu ar nomainīto elementu.
+    return saraksts;
+  }
+  
+  public static String[] nomainitMasivaElementu(String[] masivs, String mainamaisElements, String jaunaisElements) {
+    // * Metode pareizi izpildās tikai tad, ja masīvā nav identisku elementu.
+    // Atrod masīvā meklējamo elementu.
+    for (int i = 0; i < masivs.length; i++) {
+      // Kad atrod elementu, tad to nomaina.
+      if (masivs[i].equals(mainamaisElements)) {
+        // Ja nomaina elementu, tad iet ārā no cikla.
+        masivs[i] = jaunaisElements;
+        break;
+      }
+    }
+    // Atgriež masīvu ar nomainīto elementu.
+    return masivs;
+  }
 
   public static boolean masivaIrElementuDuplikati(String[] masivs) {
     // piem { 1 , 2 , 4 , 4 }
@@ -115,20 +165,7 @@ public class PaligMetodes {
     }
   }
   
-  public static String[] nomainitMasivaElementu(String[] masivs, String mainamaisElements, String jaunaisElements) {
-    // * Metode pareizi izpildās tikai tad, ja masīvā nav identisku elementu.
-    // Atrod masīvā meklējamo elementu.
-    for (int i = 0; i < masivs.length; i++) {
-      // Kad atrod elementu, tad to nomaina.
-      if (masivs[i].equals(mainamaisElements)) {
-        // Ja nomaina elementu, tad iet ārā no cikla.
-        masivs[i] = jaunaisElements;
-        break;
-      }
-    }
-    // Atgriež masīvu ar nomainīto elementu.
-    return masivs;
-  }
+  
 
   public static void gulet(int sekundes) {
     // * Metode atvieglo dzīvi visu laiku, kad man vajag izmantot

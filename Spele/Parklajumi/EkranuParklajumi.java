@@ -8,6 +8,7 @@ import Spele.Iestatijumi.Iestatijumi;
 import Spele.Izskati.EkranuIzskati;
 import Spele.KontaKods.Konts;
 import Spele.K;
+import Spele.Statistika;
 import Spele.Enums.EkranuVeidi;
 import Spele.Enums.NavesIemesli;
 import Spele.MazasSpeles.Karatavas.Karatavas;
@@ -57,8 +58,35 @@ public class EkranuParklajumi {
     else if (EKRANA_TIPS.equals(EkranuVeidi.IESTATIJUMI)) {
       iestatijumuParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[11], EkranuIzskati.visiEkrani[11].length));
     }
+    else if (EKRANA_TIPS.equals(EkranuVeidi.STATISTIKA)) {
+      statistikasParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[12], EkranuIzskati.visiEkrani[12].length));
+    }
 
     return ekranaKopija;
+  }
+
+  public static void statistikasParklasana(String[] ekranaMasivs) {
+    // 1. Iegūst lietotāju skaitu, kurus būs jāattēlo tabulā.
+    int lietotajuSkaits = Statistika.lietotajuTabula.size();
+    String[] elementuAtrasanasVietas = {"\033[14G" , "\033[25G", "\033[45G", "\033[65G", "\033[85G"};
+    String ierakstaLinija = "";
+
+    // 2. Saliek lietotāju datus tabulā.
+    for (int i = 0; i < lietotajuSkaits; i++) {
+      // Kontrolē, lai tabulas elementi neiziet ārpus tabulas.
+      if (i > 6) {
+        break;
+      }
+
+      // Sagatavo ierakstu.
+      for (int j = 0 ; j < Statistika.lietotajuTabula.get(i).size() ; j++) {
+        ierakstaLinija += elementuAtrasanasVietas[j] + Statistika.lietotajuTabula.get(i).get(j);
+      }
+
+      // Pievieno ierakstu.
+      ekranaMasivs[9 + i * 2] += ierakstaLinija + K.EKRANA_GARUMA_IZMERS;
+      ierakstaLinija = "";
+    }
   }
 
   public static String[] parklatSpelesBeigas(NavesIemesli iemesls) {
@@ -315,6 +343,7 @@ private static void pieslegsanasParklasana(String[] mainamaisMasivs) {
     "  V E I K A L S ",
     "  I E S T A T I J U M I ",
     "  P A M A C I B A   X ",
+    "  S T A T I S T I K A ",
     "  K O N T S ",
     "  I Z I E T "
   };
@@ -325,13 +354,14 @@ private static void pieslegsanasParklasana(String[] mainamaisMasivs) {
     // 1. Pie izvelnes teksta/opcijas pievieno bultiņas, kuras nokrāso to elementu.
     sakumaEkranaIzvelesNosauk[DarbibuIzpilde.izvelnesSkaitlis] = izvelnesBultinas[0] + sakumaEkranaIzvelesNosauk[DarbibuIzpilde.izvelnesSkaitlis].substring(1) + izvelnesBultinas[1];
     // 2. Uzliek izvelnes iespējas.
-    mainamaisMasivs[11] += "\033[13G" + sakumaEkranaIzvelesNosauk[0] + "   " + SakumaDati.spelesNakts + ".  N A K T I " + "\033[106G"; // Turpinat.
-    mainamaisMasivs[13] += "\033[10G" + sakumaEkranaIzvelesNosauk[1] + "\033[106G"; // Jauna spēle.
-    mainamaisMasivs[15] += "\033[14G" + sakumaEkranaIzvelesNosauk[2] + "\033[106G"; // Veikals.
-    mainamaisMasivs[17] += "\033[10G" + sakumaEkranaIzvelesNosauk[3] + "\033[106G"; // Iestatījumi.
-    mainamaisMasivs[19] += "\033[13G" + sakumaEkranaIzvelesNosauk[4] + "\033[106G"; // Pamācība.
-    mainamaisMasivs[21] += "\033[16G" + sakumaEkranaIzvelesNosauk[5] + "\033[106G"; // Konts.
-    mainamaisMasivs[23] += "\033[16G" + sakumaEkranaIzvelesNosauk[6] + "\033[106G"; // Iziet.
+    mainamaisMasivs[9] += "\033[13G" + sakumaEkranaIzvelesNosauk[0] + "   " + SakumaDati.spelesNakts + ".  N A K T I " + "\033[106G"; // Turpinat.
+    mainamaisMasivs[11] += "\033[10G" + sakumaEkranaIzvelesNosauk[1] + "\033[106G"; // Jauna spēle.
+    mainamaisMasivs[13] += "\033[14G" + sakumaEkranaIzvelesNosauk[2] + "\033[106G"; // Veikals.
+    mainamaisMasivs[15] += "\033[10G" + sakumaEkranaIzvelesNosauk[3] + "\033[106G"; // Iestatījumi.
+    mainamaisMasivs[17] += "\033[13G" + sakumaEkranaIzvelesNosauk[4] + "\033[106G"; // Pamācība.
+    mainamaisMasivs[19] += "\033[11G" + sakumaEkranaIzvelesNosauk[5] + "\033[106G"; // Statistika.
+    mainamaisMasivs[21] += "\033[16G" + sakumaEkranaIzvelesNosauk[6] + "\033[106G"; // Konts.
+    mainamaisMasivs[23] += "\033[16G" + sakumaEkranaIzvelesNosauk[7] + "\033[106G"; // Iziet.
     // 3. No teksta/izvelnes noņem pieliktās bultiņas, lai kad spēlētājs pārslēdzas uz citu izvēlni, tad izvelne nepaliktu nokrāsota.
     sakumaEkranaIzvelesNosauk[DarbibuIzpilde.izvelnesSkaitlis] = " " + sakumaEkranaIzvelesNosauk[DarbibuIzpilde.izvelnesSkaitlis].substring(12, sakumaEkranaIzvelesNosauk[DarbibuIzpilde.izvelnesSkaitlis].length() - 5);
     // 4. Pievieno konta nosaukumu.

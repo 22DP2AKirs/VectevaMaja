@@ -5,6 +5,7 @@ import com.github.kwhat.jnativehook.NativeHookException;
 
 import Spele.Enums;
 import Spele.K;
+import Spele.Statistika;
 import Spele.Enums.Istaba;
 import Spele.Enums.Virziens;
 import Spele.FailuLietotaji.FailuRedigetajs;
@@ -181,7 +182,7 @@ public class DarbibuIzpilde {
         4. Konts.
         5. Iziet.
       */
-      izvelnesKustiba(komanda, 7);
+      izvelnesKustiba(komanda, 8);
 
       if (komanda.equals("ENTER")) { // "" = 'ENTER'.
         // Turpinājuma kods:
@@ -212,10 +213,14 @@ public class DarbibuIzpilde {
           // Pamācības kods:
         } 
         else if (izvelnesSkaitlis == 5) {
+          // Statistikas kods:
+          Statistika.statistikasKods();
+        } 
+        else if (izvelnesSkaitlis == 6) {
           // Konta rģistrācijas kods:
           Konts.kontaIzvelesDarbibas();
         } 
-        else if (izvelnesSkaitlis == 6) {
+        else if (izvelnesSkaitlis == 7) {
           // Aizvērt programmu:
           Main.programmaPalaista = false;
           try {

@@ -5,8 +5,9 @@ DrosibasVards=n
 
 #SpelesDati:
 spelesNakts=1
-nauda=0
+nauda=1
 ieslegtaSkana=T
+naves=1
 
 #Iestatijumi:
 ietUzPrieksu=W

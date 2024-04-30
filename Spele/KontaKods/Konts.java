@@ -20,6 +20,7 @@ public class Konts {
    * Lietotājam ir liela izvēle no darbībām, kuras viņš var izmantot uz sava konta, piem., datu dzēšana, konta dzēšana, datu rediģēšana,
    * funkcija atcerēties viņu, lai katru reizi, kad palaiž porgrammu, lietotājam nebūtu manuāli jāpieslēdzas pie tā, u.c.
    */
+  
   // Lietotāja dati:
   public static String lietotajaKontaCels;
 

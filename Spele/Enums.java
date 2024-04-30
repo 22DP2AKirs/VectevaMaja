@@ -16,7 +16,8 @@ public class Enums {
     PIESLEGSANAS,
     KONTA_DROSIBAS_V,
     KONTA_REDIGESANA,
-    IESTATIJUMI
+    IESTATIJUMI,
+    STATISTIKA
   }
   // Konta apskates ekrāns (apskata visus konta datus).
   // Konta izvēles ekrāns (pieslēgties, reģistrēties).

@@ -10,19 +10,17 @@ public class Testi {
   public static void testaProgramma() throws InterruptedException { // throws  InterruptedException, Lai varētu izmantot: Thread.sleep(0); bez try_catch.
     TastaturasKlausitajs.palaistKlaviaturasLasitaju();
     Main.nodzestTerminali();
-    int i = 0;
+
+    Statistika.aizpilditLietotajuTabulu();
+    Statistika.kartotAugosaSeciba(4);
+    int kolonnasIndekss;
+    String txt = "1ABC";
+
     while (true) {
-      
-      int b = i++;
-      System.out.println(b);
-      System.out.println(i);
-      i = 0;
+      kolonnasIndekss = txt.charAt(0);
+      System.out.println(kolonnasIndekss);
 
-      b = ++i;
-      System.out.println(b);
-      System.out.println(i);
-
-      Thread.sleep(99999);
+      PaligMetodes.gulet(1000);
     }
   }
 }

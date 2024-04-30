@@ -9,7 +9,6 @@ import Spele.SpelesProcesi.TastaturasKlausitajs;
 
 public class AutoTesti {
 
-
   @Test
   public void testetMasivuElementuDuplkatus() {
     String[] masivsBezDuplikatiem = {"a", "b", "c", "d", "e", "f"};
@@ -67,7 +66,5 @@ public class AutoTesti {
     }
 
     assertTrue(vards.equals("bbbbbbb"));
-
   }
-
 }

@@ -52,7 +52,7 @@ public class Serkocini extends Piederumi {
   }
 
   public void ieslegtIstabasGaismu() {
-    if (aizdedzinatsSerkocins && maxLimenis && !SakumaDati.istabuGaismasIeslegtas[Enums.V_Istaba.CIPARS]) {
+    if (aizdedzinatsSerkocins && maxLimenis && !SakumaDati.istabuGaismasIeslegtas[Enums.V_Istaba.CIPARS] && SakumaDati.elektribaIeslegta) {
       SakumaDati.istabuGaismasIeslegtas[Enums.V_Istaba.CIPARS] = true;
       SkanasSpeletajs.SpeletSkanu("Spele\\SkanasFaili\\gaismas-sledzis-on.wav", 0);
     }

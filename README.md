@@ -105,6 +105,7 @@ Komandas bieži būs redzamas uz ekrāna, viss kas Jums ir jādara ir pēc katra
 - [x] Pievienot atpakaļ 'iepriekšējā komanda' lodziņu spēlē.
 - [x] Spokus var redzēt caur kamerām.
 - [x] Jāsalabo 'GAME OVER' ekrāni.
+- [ ] Programma nolasa datus no tiko pieslēgtā konta.
 - ...
 
 ## Spēles nobeiguma stress

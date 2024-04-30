@@ -1,13 +1,13 @@
 #KontaDati:
-Lietotajvards=BBB
-Parole=BBB
-DrosibasVards=BBB
+Lietotajvards=SSS
+Parole=SSS
+DrosibasVards=SSS
 
 #SpelesDati:
-spelesNakts=2
-nauda=20
+spelesNakts=4
+nauda=0
 ieslegtaSkana=T
-naves=2
+naves=611
 
 #Iestatijumi:
 ietUzPrieksu=W
@@ -39,4 +39,3 @@ durvjuSledzis=F
 
 izveletaFotokamera=F
 izveletaVideokamera=F
-
