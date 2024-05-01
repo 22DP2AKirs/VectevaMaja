@@ -4,10 +4,9 @@ Parole=BBB
 DrosibasVards=BBB
 
 #SpelesDati:
-spelesNakts=2
-nauda=20
-ieslegtaSkana=T
-naves=2
+spelesNakts=3
+nauda=220
+naves=4
 
 #Iestatijumi:
 ietUzPrieksu=W
@@ -20,7 +19,9 @@ izietNoMD=Q
 aizdedzinatSerkocinu=F
 parslegtBurtuIzmeru=Tab
 parslegtRakstisanasRezimu=X
+
 kadriSekunde=30
+ieslegtaSkana=T
 
 #Veikals:
 nopirktaFotokamera=F
@@ -39,4 +40,3 @@ durvjuSledzis=F
 
 izveletaFotokamera=F
 izveletaVideokamera=F
-

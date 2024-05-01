@@ -38,6 +38,14 @@ public class Piederumi {
     return maxLimenis;
   }
 
+  public String getUzlabojumaCenu() { 
+    return piederumaUzlabojumaCena; 
+  }
+
+  public int getLimeni() { 
+    return piederumaLimenis; 
+  }
+
   public static void definetKameru() {
     izveletaKamera = true;
     if (VeikalaKods.izveletaFotokamera) {

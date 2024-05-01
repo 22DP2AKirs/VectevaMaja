@@ -5,6 +5,7 @@ import Spele.K;
 import Spele.PaligMetodes;
 import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.Parklajumi.EkranuParklajumi;
+import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Izvade;
 import Spele.SpelesProcesi.Main;
 import Spele.SpelesProcesi.TastaturasKlausitajs;
@@ -50,6 +51,7 @@ public class LietotajaPieslegsanas {
       if (Konts.ievaditsLietotajvards && (Konts.ievaditaParole || Konts.ieavaditsDrosibasVards)) {
         Konts.lietotajsPiesledzies = true;
         Konts.displejaLietotajvards = PaligMetodes.saliktAtstarpesSimboluVirkne(Konts.lietotajvards, 1);
+        SakumaDati.nolasitDatusNoKonta();
       }
     }
 

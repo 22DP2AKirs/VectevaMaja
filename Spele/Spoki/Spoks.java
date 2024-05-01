@@ -98,13 +98,14 @@ public class Spoks {
   protected void atjauninatSpoku() {
     // Ja spoks ir aktīvs, tad tam atļauj kustēties.
     if (spoksAtnacis) {
+      atjaunotRandomKustibasIespeju();
       noteiktGajienaRezultatu();
     }
   }
 
   protected void noteiktGajienaRezultatu() {
     // Nosaka vai spoks cenšas kustēties vai nē.
-    if (atgrieztRandomKustibasSkaitli() <= spokaAtlautaAgresivitate) {
+    if (randKustibasIespeja <= spokaAtlautaAgresivitate) {
       if (spokaAtputasLaikaMainamaKopija == 0) {
         pieietTuvak();
       }
@@ -123,8 +124,8 @@ public class Spoks {
     spokaAtputasLaikaMainamaKopija--;
   }
 
-  protected int atgrieztRandomKustibasSkaitli() {
-    return randKustibasIespeja = Main.rand.nextInt(20) + 1; // Vērtības no 1 - 20.
+  protected void atjaunotRandomKustibasIespeju() {
+    randKustibasIespeja = Main.rand.nextInt(20) + 1; // Vērtības no 1 - 20.
   }
   
   /// Statiskās metodes (Izmantojamas main programmā vai citās metodēs, vai thredos, kuri ir aktivizēti vai izmantoti main metodē):

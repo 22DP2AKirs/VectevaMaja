@@ -3,9 +3,6 @@ Satur spoku datus priekš katras nakts.
 mdPapildusLaikaIespeja=100
 spokiSledzAraGaismu=F
 
-atlikusoSerkocinuDaudzums=10
-maxSerkocinaDegsanasLaiks=4
-
 logaSpokaAtlautaAgresivitate=0
 logaSpokaAtputasLaiks=0
 
@@ -30,9 +27,6 @@ pusnaktsVirtuvesSpokaAtputasLaiks=0
 mdPapildusLaikaIespeja=90
 spokiSledzAraGaismu=F
 
-atlikusoSerkocinuDaudzums=10
-maxSerkocinaDegsanasLaiks=4
-
 logaSpokaAtlautaAgresivitate=2
 logaSpokaAtputasLaiks=2
 
@@ -56,9 +50,6 @@ pusnaktsVirtuvesSpokaAtputasLaiks=0
 #Nakts3
 mdPapildusLaikaIespeja=80
 spokiSledzAraGaismu=T
-
-atlikusoSerkocinuDaudzums=10
-maxSerkocinaDegsanasLaiks=4
 
 logaSpokaAtlautaAgresivitate=5
 logaSpokaAtputasLaiks=0
@@ -85,9 +76,6 @@ pusnaktsVirtuvesSpokaAtputasLaiks=0
 mdPapildusLaikaIespeja=70
 spokiSledzAraGaismu=T
 
-atlikusoSerkocinuDaudzums=10
-maxSerkocinaDegsanasLaiks=4
-
 logaSpokaAtlautaAgresivitate=0
 logaSpokaAtputasLaiks=0
 
@@ -111,9 +99,6 @@ pusnaktsVirtuvesSpokaAtputasLaiks=2
 #Nakts5
 mdPapildusLaikaIespeja=60
 spokiSledzAraGaismu=T
-
-atlikusoSerkocinuDaudzums=10
-maxSerkocinaDegsanasLaiks=4
 
 logaSpokaAtlautaAgresivitate=10
 logaSpokaAtputasLaiks=5

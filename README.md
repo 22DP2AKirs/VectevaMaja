@@ -85,7 +85,7 @@ Komandas bieži būs redzamas uz ekrāna, viss kas Jums ir jādara ir pēc katra
 - [x] Lietotāja UI - User interface.
 - [ ] Sienas pulksteņa darbības???
 - [x] Skaņa.
-- [ ] Izskrāsot durvis brūnas un logus zilus (Ādama ideja).
+- [ ] Izskrāsot durvis brūnas un logus zilus.
 - [ ] Jāpieiet pie loga. cits spoks?
 - [ ] Aizdedzināt spoku :|?????
 - [ ] Pārveidot spēles mērķi no izdzīvot līdz 6 no rīta, uz izpildīt 'n' uzdevumus/mājasdarbus pirms 6 no rīta.
@@ -99,13 +99,15 @@ Komandas bieži būs redzamas uz ekrāna, viss kas Jums ir jādara ir pēc katra
 - [x] Samazināt iespēju izslēgt gaismu istabās.
 - [x] Pievienot 'stressa' līniju pie labās UI puses (Lai spēlētājam nevajadzētu minēt cik liels tas tam ir).
 - [x] Pievienot spoku 'Čill' stadiju (stadija, kur spoks gulēs n gājienus).
+- [ ] Apakšas UI daļā rādīt aktuālo taustiņu darbības (kurus uzlika lietotājs iestatījumos). 
 
 ### TODO (fixi)
 
 - [x] Pievienot atpakaļ 'iepriekšējā komanda' lodziņu spēlē.
 - [x] Spokus var redzēt caur kamerām.
 - [x] Jāsalabo 'GAME OVER' ekrāni.
-- [ ] Programma nolasa datus no tiko pieslēgtā konta.
+- [x] Programma nolasa datus no tiko pieslēgtā konta.
+- [ ] Spoku rand kustības cipars ir vienmēr 0 (viņi kustās katru sekundi).
 - ...
 
 ## Spēles nobeiguma stress

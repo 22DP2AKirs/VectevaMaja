@@ -64,6 +64,15 @@ public class VaronaStatusaEfekti {
         FailuRedigetajs.mainitFailaMainigaVertibu("nauda", SakumaDati.nauda+"", Konts.lietotajaKontaCels);
       }
     }
+    else {
+      // Palielina miršanas jeb zaudēšanas skaitu.
+      SakumaDati.naves++;
+
+      // Saglabā kontā.
+      if (Konts.lietotajsPiesledzies) {
+        FailuRedigetajs.mainitFailaMainigaVertibu("naves", SakumaDati.naves+"", Konts.lietotajaKontaCels);
+      }
+    }
 
     // 4. Izvade uz termināli ilgst 5 sec.
     PaligMetodes.gulet(5);

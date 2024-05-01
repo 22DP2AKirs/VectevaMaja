@@ -102,7 +102,6 @@ public class DarbibuIzpilde {
         }
         else if (Enums.V_Virziens.equals(Virziens.KREISA_PUSE)) {
           VaronaDarbibas.divanaKreisasPusesKomandas(komanda);
-          BildesParklajumi.uzliktDivanaKreisasPusesParklajumus(mainamaisMasivs);
         }
       }
       else if (Enums.V_Istaba.equals(Istaba.DURVIS)) { // ----------------------- Durvis.

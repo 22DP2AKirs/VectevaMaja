@@ -1,13 +1,12 @@
 #KontaDati:
-Lietotajvards=OGA
+Lietotajvards=PPP
 Parole=OGA
 DrosibasVards=OGA
 
 #SpelesDati:
 spelesNakts=1
 nauda=1
-ieslegtaSkana=T
-naves=1
+naves=3
 
 #Iestatijumi:
 ietUzPrieksu=W
@@ -20,7 +19,9 @@ izietNoMD=Q
 aizdedzinatSerkocinu=F
 parslegtBurtuIzmeru=Tab
 parslegtRakstisanasRezimu=X
-kadriSekunde=30
+
+kadriSekunde=60
+ieslegtaSkana=T
 
 #Veikals:
 nopirktaFotokamera=F
@@ -39,4 +40,3 @@ durvjuSledzis=T
 
 izveletaFotokamera=F
 izveletaVideokamera=F
-

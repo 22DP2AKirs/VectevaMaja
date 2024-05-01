@@ -7,7 +7,6 @@ import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Main;
 import Spele.Varonis.VaronaStatusaEfekti;
 import Spele.Veikals.Piederumi;
-import Spele.Veikals.VeikalaKods;
 
 public final class DurvjuSpoks extends Spoks {
   /* Spoka apraksts:
@@ -73,26 +72,16 @@ public final class DurvjuSpoks extends Spoks {
   }
 
   public void atjaunotIzskatu() {
-    if (spokaFazesIndekss > 0) {
-      if (spokaFazesIndekss <= 3) { // Fāzes, kur spokam ir identiski izskati.
-        izskats = SpokuIzskati.durvjuSpokaFazesBezKameras[spokaFazesIndekss + 1];
-      }
-      else {
-        // - n, lai iegūto nulto indeksu citam masīvam.
-        if (Piederumi.ieslegtaKamera) {
-          izskats = SpokuIzskati.durvjuSpokaFazesKamera[spokaFazesIndekss - 4];
-        }
-        else {
-          izskats = SpokuIzskati.durvjuSpokaFazesBezKameras[spokaFazesIndekss + 1];
-        }
-      }
+    if (spokaFazesIndekss <= 3) { // Fāzes, kur spokam ir identiski izskati.
+      izskats = SpokuIzskati.durvjuSpokaFazesBezKameras[spokaFazesIndekss + 1];
     }
     else {
-      if (VeikalaKods.durvjuSledzis) {
-        izskats = SpokuIzskati.durvjuSpokaFazesBezKameras[0];
+      // - n, lai iegūto nulto indeksu citam masīvam.
+      if (Piederumi.ieslegtaKamera) {
+        izskats = SpokuIzskati.durvjuSpokaFazesKamera[spokaFazesIndekss - 4];
       }
       else {
-        izskats = SpokuIzskati.durvjuSpokaFazesBezKameras[1];
+        izskats = SpokuIzskati.durvjuSpokaFazesBezKameras[spokaFazesIndekss + 1];
       }
     }
   }

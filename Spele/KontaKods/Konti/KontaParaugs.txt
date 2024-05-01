@@ -6,7 +6,6 @@ DrosibasVards=n
 #SpelesDati:
 spelesNakts=1
 nauda=1
-ieslegtaSkana=T
 naves=1
 
 #Iestatijumi:
@@ -20,7 +19,9 @@ izietNoMD=Q
 aizdedzinatSerkocinu=F
 parslegtBurtuIzmeru=Tab
 parslegtRakstisanasRezimu=X
+
 kadriSekunde=30
+ieslegtaSkana=T
 
 #Veikals:
 nopirktaFotokamera=F
