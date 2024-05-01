@@ -27,13 +27,13 @@ public class LogaSpoks extends Spoks {
 
   public LogaSpoks(int spokaAtlautaAgresivitate, int spokaAtputasLaiks) {
     super(spokaAtlautaAgresivitate, spokaAtputasLaiks);
-    SPOKA_FAZU_SKAITS = K.LOGA_SPOKA_FAZES;
-    izveletiesIstabu(Main.rand.nextInt(4));
+    maxSpokaFazuSkaits = K.LOGA_SPOKA_FAZES;
     pecUzbrukumaAtputa = 10;
+    izveletiesIstabu(Main.rand.nextInt(4));
   }
 
   public String toString() {
-    return "F. " + spokaFazesIndekss + " no " + SPOKA_FAZU_SKAITS + " : Aktivs? " + spoksAtnacis +
+    return "F. " + spokaFazesIndekss + " no " + maxSpokaFazuSkaits + " : Aktivs? " + spoksAtnacis +
     " atp. gaj. " + spokaAtputasLaikaMainamaKopija + " : Istaba " + istaba.ISTABA + 
     " rand " + randKustibasIespeja + " <= " + spokaAtlautaAgresivitate + "\033[0K";
   }
@@ -62,7 +62,7 @@ public class LogaSpoks extends Spoks {
 
   protected void noteiktRezultatu() {
     // Pārbauda vai spoks ir savā beigu jeb uzbrukuma fāzē.
-    if (spokaFazesIndekss >= SPOKA_FAZU_SKAITS) {
+    if (spokaFazesIndekss >= maxSpokaFazuSkaits) {
       deaktivizetSpoku();
       VaronaStatusaEfekti.spelesRezultats(NavesIemesli.LOGA_SPOKS);
     }
@@ -83,9 +83,8 @@ public class LogaSpoks extends Spoks {
     }
   }
 
+  @Override
   public String[] getIzskats() {
-    // 'Override' vecāka metodi.
-
     // 1. Atjauno spoka izskatu.
     if (spokaFazesIndekss <= 6) { // 7. fāzē spoks uzbrūk (šis aizliedz izmantot indeksu, kas ir ārpus masīva robežām.)
       atjaunotIzskatu();

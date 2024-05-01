@@ -21,12 +21,12 @@ public final class DurvjuSpoks extends Spoks {
 
   public DurvjuSpoks(int spokaAtlautaAgresivitate, int spokaAtputasLaiks) {
     super(spokaAtlautaAgresivitate, spokaAtputasLaiks);
-    setSpokuFazuSkaitu(K.DURVJU_SPOKA_FAZES);
+    maxSpokaFazuSkaits = K.DURVJU_SPOKA_FAZES;
     pecUzbrukumaAtputa = 10;
   }
 
   public String toString() {
-    return "F. " + spokaFazesIndekss + " no " + SPOKA_FAZU_SKAITS + " : Aktivs? " + spoksAtnacis +
+    return "F. " + spokaFazesIndekss + " no " + maxSpokaFazuSkaits + " : Aktivs? " + spoksAtnacis +
     " atp. gaj. " + spokaAtputasLaikaMainamaKopija + " : Aizslegtas " + SakumaDati.durvisSlegtas + 
     " rand " + randKustibasIespeja + " <= " + spokaAtlautaAgresivitate + "\033[0K";
   }
@@ -34,7 +34,7 @@ public final class DurvjuSpoks extends Spoks {
   /// Protected:
   protected void noteiktRezultatu() {
     // Pārbauda vai spoks ir savā beigu jeb uzbrukuma fāzē.
-    if (spokaFazesIndekss >= SPOKA_FAZU_SKAITS) {
+    if (spokaFazesIndekss >= maxSpokaFazuSkaits) {
       deaktivizetSpoku();
       VaronaStatusaEfekti.spelesRezultats(NavesIemesli.DURVJU_SPOKS);
     }
@@ -60,9 +60,8 @@ public final class DurvjuSpoks extends Spoks {
     durvjuSpoks = new DurvjuSpoks(SakumaDati.durvjuSpokaAtlautaAgresivitate, SakumaDati.durvjuSpokaAtputasLaiks);
   }
 
+  @Override
   public String[] getIzskats() {
-    // 'Override' vecāka metodi.
-
     // 1. Atjauno spoka izskatu.
     if (spokaFazesIndekss <= 6) { // 7. fāzē spoks uzbrūk (šis aizliedz izmantot indeksu, kas ir ārpus masīva robežām.)
       atjaunotIzskatu();
@@ -86,6 +85,7 @@ public final class DurvjuSpoks extends Spoks {
     }
   }
 
+  @Override
   public void noteiktGajienaRezultatu() {
     // Nosaka vai spoks cenšas kustēties vai nē.
     if (randKustibasIespeja <= spokaAtlautaAgresivitate) {

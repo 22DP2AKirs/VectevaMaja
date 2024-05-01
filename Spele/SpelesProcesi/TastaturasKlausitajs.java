@@ -9,21 +9,23 @@ import Spele.K;
 import Spele.Iestatijumi.Iestatijumi;
 
 public class TastaturasKlausitajs implements NativeKeyListener {
-  public static volatile String komanda = K.TUKSA_IEVADE;
-  public static volatile String komandasTeksts = K.TUKSA_IEVADE;
-  public static volatile String ieprieksejaKomanda = K.TUKSA_IEVADE;
+  public static volatile String 
+  komanda = K.TUKSA_IEVADE,
+  komandasTeksts = K.TUKSA_IEVADE,
+  ieprieksejaKomanda = K.TUKSA_IEVADE;
 
-  public static volatile boolean rakstaKomandasTekstu;
-  public static volatile boolean atlautRakstitKomandasTekstu;
+  public static volatile boolean 
+  rakstaKomandasTekstu, 
+  atlautRakstitKomandasTekstu,
+  pabeidzaRakstitKomandasTekstu;
 
-  public static boolean lielieBurti = true;
-  public static boolean atslegtaIevade; // Atļauj spiest un turēt jebkurus taustiņus vienlaicīgi.
-  public static boolean bijaEnter;
+  public static boolean 
+  lielieBurti = true, 
+  atslegtaIevade, // Atļauj spiest un turēt jebkurus taustiņus vienlaicīgi.
+  bijaEnter;
 
   static boolean vaiIzpildijaKomandu;
   private static boolean turTaustinu;
-
-  public static volatile boolean pabeidzaRakstitKomandasTekstu;
 
   public static void palaistKlaviaturasLasitaju() {
     try {
@@ -89,7 +91,6 @@ public class TastaturasKlausitajs implements NativeKeyListener {
 
   public void nativeKeyReleased(NativeKeyEvent e) {
     turTaustinu = false;
-    // uzreizNodzestKomandu();
   }
 
   public static void komandasTekstaFunkcija() {
@@ -250,12 +251,6 @@ public class TastaturasKlausitajs implements NativeKeyListener {
     
   public static void nodzestCiklaKomandu() {
     Main.ciklaKomanda = K.TUKSA_IEVADE;
-  }
-
-  public static void nodzestKomanduJaNeENTER() {
-    if (!komanda.toUpperCase().equals("ENTER")) {
-      uzreizNodzestKomandu();
-    }
   }
 
   public static void enterSledzis() {

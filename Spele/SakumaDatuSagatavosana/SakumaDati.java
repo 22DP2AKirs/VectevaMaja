@@ -24,26 +24,16 @@ public class SakumaDati {
   public static boolean[] istabuGaismasIeslegtas = new boolean[4]; // Indeksi: 0. Gulta, 1. Dīvāns, 2. Durvis, 3. Virtuve.
   public static ArrayList<String> naktsDati;
 
-  public static boolean durvisSlegtas;
-  public static boolean elektribaIeslegta;
-  public static boolean pagrabaGaisma;
-  public static boolean spuldziteSaplesta;
-  public static boolean spokiSledzAraGaismu;
+  public static boolean durvisSlegtas, elektribaIeslegta, pagrabaGaisma, spuldziteSaplesta, spokiSledzAraGaismu;
 
   // Spoku dati.
-  public static int logaSpokaAtlautaAgresivitate;
-  public static int durvjuSpokaAtlautaAgresivitate;
-  public static int virtuvesSpokaAtlautaAgresivitate;
-
-  public static int logaSpokaAtputasLaiks;
-  public static int durvjuSpokaAtputasLaiks;
-  public static int virtuvesSpokaAtputasLaiks;
+  public static int 
+  logaSpokaAtlautaAgresivitate, durvjuSpokaAtlautaAgresivitate, virtuvesSpokaAtlautaAgresivitate,
+  logaSpokaAtputasLaiks, durvjuSpokaAtputasLaiks, virtuvesSpokaAtputasLaiks;
 
   // Dati, kurus nolasa no lietotāja konta:
   public static boolean ieslegtaSkana;
-  public static int nauda;
-  public static int spelesNakts; // Saglabā spēles nakti.
-  public static int naves;
+  public static int nauda, spelesNakts, naves;
 
   public static void sagatavotDatus() {
     // Nakts datiem ir jābūt pirmajiem, jo pārējie dati tiek ņemti no tā.
@@ -55,6 +45,7 @@ public class SakumaDati {
   }
 
   public static void saglabatProgrammasDatusUzKontu() {
+    // * Izmanto, lai saglabātu spēles datus lietotāja kontā.
     // 1. Iegūst konta datus (lietotāj v., parole un drošības v.), lai tos nepazaudētu vai nesabojātu.
     String kontaDati = savaktKontaDatus();
     // 2. Iegūst visus saglabājamos programmas datus.
@@ -64,6 +55,7 @@ public class SakumaDati {
   }
 
   public static void nodzestProgrammasDatus() {
+    // * Šo izmanto, lai nodzēstu visus lietotāja konta datus.
     // 1. Iegūst konta datus (lietotāj v., parole un drošības v.), lai tos nepazaudētu vai nesabojātu.
     String kontaDati = savaktKontaDatus();
     // 2. Iegūst datu sākumu vērtības.
@@ -143,6 +135,7 @@ public class SakumaDati {
   }
 
   private static void ieslegtGaismas() {
+    // Ieslēdz visas spēles gaismas.
     istabuGaismasIeslegtas[0] = true;
     istabuGaismasIeslegtas[1] = true;
     istabuGaismasIeslegtas[2] = true;

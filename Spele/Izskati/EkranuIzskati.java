@@ -444,7 +444,7 @@ public class EkranuIzskati {
     "\r|         |      |                   |                |                   |                 |          |",
     "\r|         [------|-------------------|----------------|-------------------|-----------------]          |",
     "\r|                                                                                                      |",
-    "\r|    K O M A N D A S   P I E M E R S [<Kolonnas kartas sk.> <Kartosanas Kriterijs>] => [3 AUG]         |",
+    "\r|    K O M A N D A S   P I E M E R S [<Kolonnas kartas sk.><Kartosanas Kriterijs>] => [3AUG]           |",
     "\r|                                                                                                      |",
     "\r|    K A R T O S A N A S   K R I T E R I J I :                                                         |",
     "\r|                      v _                          v _                                                |",

@@ -4,23 +4,22 @@ import Spele.SpelesProcesi.Main;
 
 public class Spoks {
   // ? Katra spoka mērķis ir vainu traucēt, vainu novākt varoni.
-  // Statistika.
-  private int atnakusoSpokuSkaits = 0; // Statu mainīgias, kurš skaita cik spoka objekti ir izveidoti spēles laikā.
-
   // Spoka limiti. (Nemainīgas vērtības)
-  public int spokaAtlautaAgresivitate; // Nosaka cik agresīvs var būt spoks. Max = 20.
-  public int spokaAtputasLaiks; // Nosaka cik spoka iespējas gājienus tas stāvēs uz vietas. Glabāšanas mainīgais.
-  public int pecUzbrukumaAtputa; // 
+  public int 
+  spokaAtlautaAgresivitate, // Nosaka cik agresīvs var būt spoks. Max = 20.
+  spokaAtputasLaiks, // Nosaka cik spoka iespējas gājienus tas stāvēs uz vietas. Glabāšanas mainīgais.
+  pecUzbrukumaAtputa; // Kad spoku aizbiedē, spoks gaidīs n sekundes, pirms tas varēs palikt aktīvs.
   
   // Spoka progressa vērtības. (Mainīgās vērtības)
-  protected int spokaAtputasLaikaMainamaKopija; // Šo mainīgo visu laiku maina.
-  protected int SPOKA_FAZU_SKAITS;
-  protected int randKustibasIespeja; // Skaitlis, kuru salīdzina ar spoka agresivitāti, lai tas spētu kustēties. Vērtība no 1 - 20 aktīvs, 0 neaktīvs.
-  
-  protected int spokaFazesIndekss; // Nosaka, kādu bildi rādīs spēlē. (Progress līdz mērķa izpildei)
+  protected int 
+  spokaAtputasLaikaMainamaKopija, // Šo mainīgo visu laiku maina.
+  maxSpokaFazuSkaits,
+  randKustibasIespeja, // Skaitlis, kuru salīdzina ar spoka agresivitāti, lai tas spētu kustēties. Vērtība no 1 - 20 aktīvs, 0 neaktīvs.
+  spokaFazesIndekss; // Nosaka, kādu bildi rādīs spēlē. (Progress līdz mērķa izpildei)
+
   protected boolean spoksAtnacis; // Ja spoks ir aktīvs, tad tas var kustēties, savādāk tas stāvēs netiks atjaunināts. // Spoka stāvoklis. (ON vai OFF)
 
-  protected String[] izskats;
+  protected String[] izskats; // Bilde jeb masīvs, kuru izmantos, lai vizualizētu spoka fāzes.
  
 
   public Spoks(int spokaAtlautaAgresivitate, int spokaAtputasLaiks) {
@@ -32,8 +31,6 @@ public class Spoks {
     if (spokaAtlautaAgresivitate != 0) {
       spoksAtnacis = true;
     }
-
-    atnakusoSpokuSkaits++; // + 1.
   }
 
   public String[] getIzskats() {
@@ -49,44 +46,26 @@ public class Spoks {
   public void setSpoksAtnacis(boolean vertiba) {
     spoksAtnacis = vertiba;
   }
-
-  public void deaktivizetSpoku() {
-    spoksAtnacis = false;
-    spokaFazesIndekss = 0;
-    pecUzbrukumaAtputa = 10;
-  }
-
-  /// Protected:
-  protected void setSpokuFazuSkaitu(int vertiba) {
-    SPOKA_FAZU_SKAITS = vertiba;
-  }
   
   // * Getters:
-  /// Protected (Izmantojami tikai starp inheritējamiem bērniem (children)):
-
-  protected int getSpokuFazuSkaitu() {
-    return SPOKA_FAZU_SKAITS;
+  public int getSpokuFazuSkaitu() {
+    return maxSpokaFazuSkaits;
   }
 
-  protected int getSpokaAtlautaAgresivitate() {
+  public int getSpokaAtlautaAgresivitate() {
     return spokaAtlautaAgresivitate;
   }
 
-  protected int getMainamoAtputasLaiku() {
+  public int getMainamoAtputasLaiku() {
     return spokaAtputasLaikaMainamaKopija;
   }
 
-  protected int getRandKustibasIespeja() {
+  public int getRandKustibasIespeja() {
     return randKustibasIespeja;
   }
 
-  /// Public (Izmantojami jebkurā failā):
   public boolean getSpoksAtnacis() {
     return spoksAtnacis;
-  }
-  
-  public int getAtnakusoSpokuSkaits() {
-    return atnakusoSpokuSkaits;
   }
 
   public int getSpokaFazesIndekss() {
@@ -94,6 +73,13 @@ public class Spoks {
   }
   
   // * Citas metodes:
+
+  public void deaktivizetSpoku() {
+    spoksAtnacis = false;
+    spokaFazesIndekss = 0;
+    pecUzbrukumaAtputa = 10;
+  }
+
   /// Protected:
   protected void atjauninatSpoku() {
     // Ja spoks ir aktīvs, tad tam atļauj kustēties.
@@ -167,6 +153,7 @@ public class Spoks {
   }
 
   public static void spokuInfo() {
+    // Izvada uz termināli, katra spoka informāciju.
     System.out.println(); // Vieta priekš ievades.
     System.out.println(LogaSpoks.logaSpoks.toString());
     System.out.println(DurvjuSpoks.durvjuSpoks.toString());
@@ -174,7 +161,7 @@ public class Spoks {
   }
 
   public static void parbauditSpokuFazes() {
-    // Metode pārbauda visu spoku fāzes, lai tie varētu uzbrukt spēlētājam.
+    // Pārbauda visu spoku fāzes, lai tie varētu uzbrukt spēlētājam.
     LogaSpoks.logaSpoks.noteiktRezultatu();
     DurvjuSpoks.durvjuSpoks.noteiktRezultatu();
     PagrabaSpoks.pagrabaSpoks.noteiktRezultatu();

@@ -15,14 +15,15 @@ import Spele.Varonis.VaronaStatusaEfekti;
 public class Izvade extends Thread {
   // Atbildīga par spēles izvadi uz konsoli.
 
-  public static volatile String[] izvadesMasivs = new String[30]; // Visi ekrāni, piem., veikala ekrāns, karatavu grāmata, u.t.t.
-  public static volatile String[] istabasBilde = new String[16]; // Tas, ko redz lietotājs staigājot pa māju (pati māja).
-  public static volatile String[] apaksasUI = new String[14]; // Tas, kur ir rakstītas visas iespējamās komandas un kur var pārslēgties starp tām ar '1', '2', '3' un '4'.
-  public static volatile String[] labasPusesUI = new String[30]; // Tas, kur rāda mājas mapi, laiku un mājasdarbus.
+  public static volatile String[] 
+  izvadesMasivs = new String[30], // Visi ekrāni, piem., veikala ekrāns, karatavu grāmata, u.t.t.
+  istabasBilde = new String[16], // Tas, ko redz lietotājs staigājot pa māju (pati māja).
+  apaksasUI = new String[14], // Tas, kur ir rakstītas visas iespējamās komandas un kur var pārslēgties starp tām ar '1', '2', '3' un '4'.
+  labasPusesUI = new String[30]; // Tas, kur rāda mājas mapi, laiku un mājasdarbus.
 
   // Būli, kuri nosaka programmas darbību.
-  public static volatile boolean jaizvadaMasivs = true;
-  public static volatile boolean jaizvadaSpele = true;
+  public static volatile boolean 
+  jaizvadaMasivs = true, jaizvadaSpele = true;
 
   // Iestata tikšķa jeb 1 "refreša" periodu.
   public static int framesPerSecond = 1000 / Iestatijumi.kadriSekunde; // [1000] - Skaitlis, kuru dala, lai iegūtu FPS. [n] - Vēlamais FPS daudzums.
@@ -109,7 +110,7 @@ public class Izvade extends Thread {
   }
 
   private static void informacijasIzvade() {
-    // * Metode ievāc info. kategoriju, kuru izvadīt virs ekrana.
+    // * Ievāc info. kategoriju, kuru izvadīt virs ekrana.
     // * Testeru metode.
 
     // Izvada informāciju par spokiem.
@@ -133,5 +134,4 @@ public class Izvade extends Thread {
   private static void izvaditSpelesPapildinformaciju() {
     System.out.println("Laiks ms: " + Laiks.spelesLaiks + " / " + Laiks.vienaStunda * 6 + K.RESET + ", Stressa limenis: " + VaronaStatusaEfekti.varonaStresaLimenis + "\033[0K");
   }
-  
 }

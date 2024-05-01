@@ -30,30 +30,31 @@ public final class PagrabaSpoks extends Spoks {
 
   public PagrabaSpoks(int spokaAtlautaAgresivitate, int spokaAtputasLaiks) {
     super(spokaAtlautaAgresivitate, spokaAtputasLaiks);
-    setSpokuFazuSkaitu(K.PAGRABA_SPOKA_FAZES);
-    ieslegtasGaismasAgresivitate = spokaAtlautaAgresivitate + 5;
+    maxSpokaFazuSkaits = K.PAGRABA_SPOKA_FAZES;
     pecUzbrukumaAtputa = 10;
+    ieslegtasGaismasAgresivitate = spokaAtlautaAgresivitate + 5;
   }
 
   public String toString() {
-    return "F. " + spokaFazesIndekss + " no " + SPOKA_FAZU_SKAITS + " : Aktivs? " + spoksAtnacis +
+    return "F. " + spokaFazesIndekss + " no " + maxSpokaFazuSkaits + " : Aktivs? " + spoksAtnacis +
     " atp. gaj. " + spokaAtputasLaikaMainamaKopija + " : Saplesta " + SakumaDati.spuldziteSaplesta + " Pagraba G. " + SakumaDati.pagrabaGaisma +
     " rand " + randKustibasIespeja + " <= " + getSpokaAktualoAgresivitati() + "\033[0K";
   }
       
   private int getSpokaAktualoAgresivitati() {
-    if (SakumaDati.pagrabaGaisma) {
-      return ieslegtasGaismasAgresivitate;
-    }
-    return getSpokaAtlautaAgresivitate();
+    /* Spokam ir divas agresivitātes.
+      1. Kad pagrabam ir izslēgta gaisma.
+      2. Kad pagrabam ir ieslēgta gaisma.
+    */ 
+
+    return (SakumaDati.pagrabaGaisma) ? ieslegtasGaismasAgresivitate : spokaAtlautaAgresivitate;
   }
   
-  // * Citas metodes:
-  /// Public:
   public void izveidotJaunuPagrabaSpokaObjektu() {
     pagrabaSpoks = new PagrabaSpoks(SakumaDati.virtuvesSpokaAtlautaAgresivitate, SakumaDati.virtuvesSpokaAtputasLaiks);
   }
 
+  @Override
   protected void noteiktGajienaRezultatu() {
     // * Metode override super metodi, lai tā atbilsu virtuves spoka unikālajai agresivitātei.
     // Nosaka vai spoks cenšas kustēties vai nē.
@@ -73,9 +74,8 @@ public final class PagrabaSpoks extends Spoks {
     }
   }
 
+  @Override
   public String[] getIzskats() {
-    // 'Override' vecāka metodi.
-
     // 1. Atjauno spoka izskatu.
     if (spokaFazesIndekss <= 9) { // 7. fāzē spoks uzbrūk (šis aizliedz izmantot indeksu, kas ir ārpus masīva robežām.)
       atjaunotIzskatu();
@@ -111,7 +111,7 @@ public final class PagrabaSpoks extends Spoks {
 
   /// Protected:
   protected void noteiktRezultatu() {
-    if (spokaFazesIndekss >= SPOKA_FAZU_SKAITS) {
+    if (spokaFazesIndekss >= maxSpokaFazuSkaits) {
       deaktivizetSpoku();
       VaronaStatusaEfekti.spelesRezultats(NavesIemesli.PAGRABA_SPOKS);
     }
