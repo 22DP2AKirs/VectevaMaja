@@ -11,53 +11,52 @@ Vēlamā lejupielādes secība:
 
 ### Java 8
 1. Aizejiet uz Oficiālo Java mājaslapu un spiediet uz lielo, zaļo pogu "Download Java". Tas sāks lejupielādēt Java 8 priekš operētājsistēmas "Windows": https://www.java.com/download/ie_manual.jsp . <br> 
-https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-1.png?raw=true
 
-![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-2.png?raw=true)
-![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-1.png?raw=true)
+![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-2.png?raw=true)<br> 
+![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-1.png?raw=true)<br> 
 2. Kad beigsies Java lejupielāde. Uzpiediet uz tās, lai to atvērtu. <br> 
-![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-3.png?raw=true)
+![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-3.png?raw=true)<br> 
 3. Spiežiet uz pogas "install", lai sāktu Java uzstādīšanu uz datora. <br>
-![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-4.png?raw=true)
+![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-4.png?raw=true)<br> 
 4. Gaidiet līdz beigsies uzstādīšana. <br>
-![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-5.png?raw=true)
+![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-5.png?raw=true)<br> 
 5. Pēc tam spiežiet pogu "Close". <br>
-![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-6.png?raw=true)
+![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-6.png?raw=true)<br> 
 
 ### JDK 17
 1. Atveriet Oficiālo Java mājaslapu un spiediet uz pogu "Java SE Development Kit": https://www.java.com/en/ . <br>
-![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-7.png?raw=true)
+![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-7.png?raw=true)<br> 
 2. Izvēlaties versiju JDK 17. <br>
-![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-8.png?raw=true)
+![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-8.png?raw=true)<br> 
 3. Izvēlaties priekš operētājsistēmas "Windows" un spiežiet uz "x64 MSI Installer" saites. <br>
-![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-9.png?raw=true)
+![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-9.png?raw=true)<br> 
 4. Atveriet to un spiediet pogu "next". <br>
-![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-10.png?raw=true)
+![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-10.png?raw=true)<br> 
 5. Spiediet pogu "next", lai sāktu uzstādīšanu uz datora. <br>
-![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-11.png?raw=true)
+![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-11.png?raw=true)<br> 
 6. Atveriet vietu, kur tika instalēts JDK 17, un nokopējiet to. <br>
-![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-12.png?raw=true)
+![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-12.png?raw=true)<br> 
 7. Datora meklēšanā ierakstiet un atveriet "Environment Variables". <br>
-![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-13.png?raw=true)
+![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-13.png?raw=true)<br> 
 8. Spiediet pogu "new". <br>
-![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-14.png?raw=true)
+![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-14.png?raw=true)<br> 
 9. Ievadiet ceļu un nosaukumu, un spiediet pogu "OK". <br>
-![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-15.png?raw=true)
+![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-15.png?raw=true)<br> 
 
 ### VScode
 1. Atveriet Oficiālo VScode mājaslapu, un pēc tam spiežiet uz pogu "Download for Windows" : https://code.visualstudio.com/ . <br>
-![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-16.png?raw=true)
+![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-16.png?raw=true)<br> 
 2. Spiediet pogu "next", līdz viņš prasīs, lai Jūs spiežat pogu "install". Nospiežiet to. <br>
 
 ### Programmas palaišana
 1. Ievietojiet šo saiti VScode Source Control lodziņā. https://github.com/22DP2AKirs/VectevaMaja.git <br>
-![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-17.png?raw=true)
+![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-17.png?raw=true)<br> 
 2. Spiediet taustiņu "ENTER", un izvēlaties lokāciju, kur Jūs vēlaties saglabāt programmas kodu. <br>
 3. Spiediet uz "Trust these Authors", lai varētu palaist programmu. <br>
 4. Labā augšējā stūrī izvēlaties izvēli "Run Java". <br>
-![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-18.png?raw=true)
+![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-18.png?raw=true)<br> 
 5. Izvēlaties Spele.SpelesProcesi.Main. Tas ir "Main" jeb galvenais programmas fails. <br>
-![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-19.png?raw=true)
+![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-19.png?raw=true)<br> 
 
 ## Stāsts
 
