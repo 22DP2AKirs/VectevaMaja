@@ -23,7 +23,7 @@ public class FailuRedigetajs {
     // ! new FileWriter(celsUzFailu, *append*) - append nodzēš visu failu saturu momentāli, kā viņš ieiet failā, tādēļ visas vēlamās darbības ar failu ir jādara pirms viņš ir 'appendots'.
     // ! Ja append ir 'true', tad rakstītājs rakstīs pa virsu failam.
     try (BufferedWriter failuRakstitajs = new BufferedWriter(new FileWriter(celsUzFailu))) { // FileWriter(x, y) x - Faila nosaukums, y - append režīms (true - pieraksta, false - pārraksta).
-      // Pārraksta visu failu ar jaunu vērtību.
+      // Pārraksta visu failu ar jaunu vērtību sarakstu.
       for (String linija : failuSaturs) {
         failuRakstitajs.write(linija + "\n");
       }
@@ -151,6 +151,7 @@ public class FailuRedigetajs {
       
       // Atrastās līnijas apstrāde.
       String tekstaDala = linija.substring(linija.indexOf("=") + 1);
+
       if (tekstaDala.equals("T")) {
         return true;
       } 
@@ -275,7 +276,11 @@ public class FailuRedigetajs {
     // ? Izveidots, lai veidotu konta failus.
     // Izveido failu norādītajā vietā.
     System.out.println(new File("Spele/KontaKods/Konti").list().length);
-    try (BufferedWriter rakstitajs = new BufferedWriter(new FileWriter("Spele/KontaKods/Konti/Konts" + new File("Spele/KontaKods/Konti").list().length + ".txt", false))) { // FileWriter(x, y) x - Faila nosaukums, y - append režīms (true - pieraksta, false - pārraksta).
+    try (BufferedWriter rakstitajs = 
+      new BufferedWriter(
+      new FileWriter("Spele/KontaKods/Konti/Konts" + 
+      new File("Spele/KontaKods/Konti").list().length + ".txt", false))) { // FileWriter(x, y) x - Faila nosaukums, y - append režīms (true - pieraksta, false - pārraksta).
+
       rakstitajs.write(rakstamaisTeksts);
       rakstitajs.close();
     } catch (Exception e) {}

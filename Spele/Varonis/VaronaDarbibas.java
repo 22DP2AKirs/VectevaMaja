@@ -157,10 +157,6 @@ public class VaronaDarbibas {
     }
   }
 
-  public static void gultasLejasKomandas(String komanda) {
-    // Kods:
-  }
-
   public static void gultasKreisasPusesKomandas(String komanda , String komandasTeksts , boolean pabeigtsKomTeksts) {
     if (komandasTeksts.equals("LOGS") && pabeigtsKomTeksts) {
       aizbiedetLogaSpoku(Istaba.GULTA);
@@ -193,10 +189,6 @@ public class VaronaDarbibas {
       TastaturasKlausitajs.nodzestCiklaKomandu();
       TastaturasKlausitajs.nodzestKomandasTekstu();
     }
-  }
-
-  public static void divanaKreisasPusesKomandas(String komanda) {
-    // Kods:
   }
 
   /// * Durvju darbības:

@@ -1,6 +1,16 @@
 # VectevaMaja
 
-## Kā palaist programmu uz cita datora
+# Par šo programmu
+
+Šī programma ir mana pirmā programmēšanas valodas "Python" projekta pārveidojums un uzlabojums programmēšanas valodā "Java".
+Programma ir domāta kā spēle, kurā lietotājam 5 līmeņos ir jāpārvar dažādi izaicinājumi, cenšoties aizsargāt savu spēlējamo varoni.
+Katrs līmenis ir grūtāks par iepriekšējo, ieviešot jaunas mehānikas un izaicinājumus, kurus lietotājam ir jāiemācas pārvarēt.
+
+Programmas veidošanas mērķis bija attīstīt manas zināšanas programmēšanas valodā "Java". 
+Mērķī arī iekļāvās pirmā projekta papildināšana un uzlabošana, lai tā izskatītos kā pabeigta programma.
+Tas nozīmē, kad es atradu jaunu tēmu, piem., ArrayLists, Enums, Threds, Inheritence, es mēģināju to iemācīties un iesaistīt savā programmā.
+
+# Kā palaist programmu uz cita datora
 
 Lai palaistu programmu, lietotājam vajadzēs instalēt programmu "Visual Studio Code" jeb VScode un 2 programmatūras - "Java" (versija 8) un "Java Development Kit" jeb JDK (versija 17).
 

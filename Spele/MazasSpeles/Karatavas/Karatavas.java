@@ -59,7 +59,7 @@ public class Karatavas {
 
   public static void izveidotJaunuKaratavasSpeli() {
     // * Izveido jaunu karātavas objektu, lai to varētu izmantot spēlē ar citām vērtībām.
-    karatavasObjekts = new Karatavas(Main.rand.nextInt(4), Main.rand.nextInt(7)); // old (4, 7)
+    karatavasObjekts = new Karatavas(Main.rand.nextInt(4), Main.rand.nextInt(7));
     karatavasObjekts.sagatavotGramatuSpelesanai();
   }
 

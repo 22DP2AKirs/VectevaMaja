@@ -1,7 +1,7 @@
 #KontaDati:
-Lietotajvards=n
-Parole=n
-DrosibasVards=n
+Lietotajvards=JANIS
+Parole=OGA
+DrosibasVards=LABRADORS
 
 #SpelesDati:
 spelesNakts=1

@@ -79,7 +79,6 @@ public class DarbibuIzpilde {
           BildesParklajumi.uzliktGultasLabasPusesParklajumus(mainamaisMasivs);
         }
         else if (Enums.V_Virziens.equals(Virziens.LEJA)) {
-          VaronaDarbibas.gultasLejasKomandas(komanda);
           BildesParklajumi.uzliktGultasLejasParklajumus(mainamaisMasivs);
         }
         else if (Enums.V_Virziens.equals(Virziens.KREISA_PUSE)) {
@@ -101,7 +100,6 @@ public class DarbibuIzpilde {
           BildesParklajumi.uzliktDivanaLejasParklajumus(mainamaisMasivs);
         }
         else if (Enums.V_Virziens.equals(Virziens.KREISA_PUSE)) {
-          VaronaDarbibas.divanaKreisasPusesKomandas(komanda);
         }
       }
       else if (Enums.V_Istaba.equals(Istaba.DURVIS)) { // ----------------------- Durvis.
@@ -183,7 +181,7 @@ public class DarbibuIzpilde {
       */
       izvelnesKustiba(komanda, 8);
 
-      if (komanda.equals("ENTER")) { // "" = 'ENTER'.
+      if (komanda.equals("ENTER")) {
         // Turpinājuma kods:
         if (izvelnesSkaitlis == 0) {
           Main.sakumaEkrans = false;
@@ -193,8 +191,10 @@ public class DarbibuIzpilde {
         else if (izvelnesSkaitlis == 1) {
           // Nodzēš visu nedēļas progresu.
           SakumaDati.spelesNakts = 1;
+          SakumaDati.nauda = 0;
           if (Konts.lietotajsPiesledzies) {
             FailuRedigetajs.mainitFailaMainigaVertibu("spelesNakts", "1", Konts.lietotajaKontaCels);
+            FailuRedigetajs.mainitFailaMainigaVertibu("nauda", "0", Konts.lietotajaKontaCels);
           }
 
           Main.sakumaEkrans = false;
