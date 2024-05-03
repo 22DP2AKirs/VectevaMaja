@@ -17,7 +17,7 @@ izmantotGaismu=G
 izmantotKameru=SPACE
 izietNoMD=Q
 aizdedzinatSerkocinu=F
-parslegtBurtuIzmeru=Tab
+parslegtBurtuIzmeru=TAB
 parslegtRakstisanasRezimu=X
 
 kadriSekunde=30

@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.FailuLietotaji.SkanasSpeletajs;
-import Spele.Iestatijumi.Iestatijumi;
 import Spele.Izskati.EkranuIzskati;
 import Spele.KontaKods.Konts;
+import Spele.Iestatijumi;
 import Spele.K;
 import Spele.Statistika;
 import Spele.Enums.EkranuVeidi;
@@ -120,7 +120,7 @@ public class EkranuParklajumi {
     String[] informacija = new String[8];
 
     informacija[0] = iemesls.name();
-    informacija[1] = "" + (Main.spelesIlgums - Laiks.spelesLaiks); // Pārveido int uz String.
+    informacija[1] = "" + (Laiks.spelesIlgums - Laiks.spelesLaiks); // Pārveido int uz String.
     if (iemesls == NavesIemesli.KARATAVAS) {
       informacija[2] = "";
       informacija[3] = "";

@@ -2,9 +2,9 @@ package Spele.SpelesProcesi;
 
 import java.util.ArrayList;
 
+import Spele.Iestatijumi;
 import Spele.K;
 import Spele.PaligMetodes;
-import Spele.Iestatijumi.Iestatijumi;
 import Spele.Izskati.UIizskats;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
@@ -128,6 +128,7 @@ public class Izvade extends Thread {
     System.out.println();
     System.out.println("Ieksa m-spele: " + MazoSpeluIzvelesKods.varonisIrMazajaSpele + ", Izveleta m-spele: " + MazoSpeluIzvelesKods.izveletaMazaSpele + "\033[0K");
     System.out.println("Izveleta spele: (Karatavas : " + KaratavasSavienojums.mSpeleKaratavas + "), (Atrodi pari : " + AtrodiPariSavienojums.mSpeleAtrodiPari + ")\033[0K");
+    System.out.println("Laiks lidz majasdarbam: " + MazoSpeluIzvelesKods.laiksLidzJaunamMajasdarbamMainigais + " no " + MazoSpeluIzvelesKods.laiksLidzJaunamMajasdarbamNemainigais + "\033[0K");
     izvaditSpelesPapildinformaciju();
   }
 

@@ -4,8 +4,8 @@ Parole=OGA
 DrosibasVards=LABRADORS
 
 #SpelesDati:
-spelesNakts=1
-nauda=1
+spelesNakts=2
+nauda=26
 naves=1
 
 #Iestatijumi:
@@ -17,7 +17,7 @@ izmantotGaismu=G
 izmantotKameru=SPACE
 izietNoMD=Q
 aizdedzinatSerkocinu=F
-parslegtBurtuIzmeru=Tab
+parslegtBurtuIzmeru=TAB
 parslegtRakstisanasRezimu=X
 
 kadriSekunde=30
@@ -28,11 +28,11 @@ nopirktaFotokamera=T
 nopirktaVideokamera=F
 nopirktiSerkocini=F
 
-fotokamerasUzlabojumaCena=75
+fotokamerasUzlabojumaCena=140
 videokamerasUzlabojumaCena=100
 serkocinuUzlabojumaCena=20
 
-fotokamerasLimenis=0
+fotokamerasLimenis=1
 videokamerasLimenis=0
 serkocinuLimenis=0
 

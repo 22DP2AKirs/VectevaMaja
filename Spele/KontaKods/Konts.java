@@ -69,20 +69,19 @@ public class Konts {
     DarbibuIzpilde.izvelnesSkaitlis = 0; // Uzstāda izvēlni uz 1. pozīciju.
 
     while (!TastaturasKlausitajs.komanda.equals("Q")) {
-      // Ja lietotājs ir pieslēdzies, tad viņu aizsūta uz konta apskati.
-      if (Konts.lietotajsPiesledzies) { break; }
+      if (Konts.lietotajsPiesledzies) { break; } // Ja lietotājs ir pieslēdzies, tad viņu aizsūta uz konta apskati.
 
       // 1. Izvade uz termināli.
       Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.KONTA_IZVELE);
       // 2. Izveido n izvēles opcijas starp kurām var pārslēgties.
       DarbibuIzpilde.izvelnesKustiba(TastaturasKlausitajs.komanda, 2);
       // 3. Visas izvēles jeb darbības, kuras var veikt šinī ekrānā.
-      /// Pieslēgšanās kods.
       if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzpilde.izvelnesSkaitlis == 0) {
+        /// Pieslēgšanās kods.
         LietotajaPieslegsanas.pieslegties();
       }
-      /// Reģistrēšanās kods.
       else if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzpilde.izvelnesSkaitlis == 1) {
+        /// Reģistrēšanās kods.
         LietotajaRegistracija.registreties();
       }
     }
@@ -92,27 +91,27 @@ public class Konts {
 
   private static void kontaApskatesCikls() {
     // Rāda lietotāja konta informāciju.
-    // Cikls turpināsies, kamēr lietotājs neievadīs burtu 'Q'.
-    while (!TastaturasKlausitajs.komanda.equals("Q")) {
+    while (!TastaturasKlausitajs.komanda.equals("Q")) { // Cikls turpināsies, kamēr lietotājs neievadīs burtu 'Q'.
+      // 1. Ieslēdz iespēju rakstīt un apstrādāt komandas tekstu.
       TastaturasKlausitajs.komandasTekstaFunkcija();
-
-      // -------- Izvade uz terminālu.
+      // 2. Izvade uz termināli.
       Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.KONTA_APSKATE);
-      // -------- Izvēles:
+      // 3. Komandas teksta filtrēšana.
       if (TastaturasKlausitajs.komandasTeksts.equals("RED") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
+        // Rediģē konta datus.
         Konts.redigeKontu = true;
         DarbibuIzpilde.izvelnesSkaitlis = 0;
         LietotajaRegistracija.registreties();
         Konts.redigeKontu = false;
       }
       else if (TastaturasKlausitajs.komandasTeksts.equals("DEL") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
-        // Konta dzēšanas kods:
+        // Izdzēš konta failu.
         FailuRedigetajs.kontuFailuDzesejs();
         displejaLietotajvards = "_ _ _ _ _ _ _ _ _ _";
         break;
       }
       else if (TastaturasKlausitajs.komandasTeksts.equals("ATC") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
-        // 'Toggle' slēdzis.
+        // Liek programmai pierakstīt datus failā, kuru izlasa katru reizi, kad to palaiž. // 'Toggle' slēdzis.
         if (Konts.atceretiesMani) {
           Konts.atceretiesMani = false;
           FailuRedigetajs.mainitFailaMainigaVertibu("atceretiesMani", "F", K.SAKUMA_DATU_MAPE);
@@ -125,6 +124,7 @@ public class Konts {
         }
       }
       else if (TastaturasKlausitajs.komandasTeksts.equals("IZI") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
+        // Iziet no konta.
         FailuRedigetajs.mainitFailaMainigaVertibu("atceretiesMani", "F", K.SAKUMA_DATU_MAPE);
         FailuRedigetajs.mainitFailaMainigaVertibu("lietotajaKontaCels",  "", K.SAKUMA_DATU_MAPE);
         Konts.atceretiesMani = false;
@@ -134,9 +134,11 @@ public class Konts {
         break; // Iziet ārā no šī ekrāna.
       }
       else if (TastaturasKlausitajs.komandasTeksts.equals("SAVE") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
+        // Saglabā datus lietotāja kontā.
         SakumaDati.saglabatProgrammasDatusUzKontu();
       }
       else if (TastaturasKlausitajs.komandasTeksts.equals("RESET") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
+        // Nodzēš visus konta datus uz sākuma datiem.
         SakumaDati.nodzestProgrammasDatus();
         SakumaDati.nolasitDatusNoKonta();
       }

@@ -93,13 +93,12 @@ public class LietotajaRegistracija {
     DarbibuIzpilde.izvelnesSkaitlis = 0; // Novieto izvēlnes poz. uz pirmo jeb pēc indeksa 0.
     TastaturasKlausitajs.uzreizNodzestKomandu();
     Konts.notiritLietotajaDatus();
+    TastaturasKlausitajs.izslegtKomandasTekstaFunkciju();
   }
 
   private static void lietotajvardaIevade() {
     // Drīkst būt tikai 10 simbolus garš! To limitē metode 'limetVardu'.
-    TastaturasKlausitajs.uzreizNodzestKomandu();
-    TastaturasKlausitajs.nodzestKomandasTekstu();
-    TastaturasKlausitajs.atslegtaIevade = true;
+    TastaturasKlausitajs.brivasIevadesRezims();
 
     while (!TastaturasKlausitajs.komanda.toUpperCase().equals("ENTER")) {
       // 1. Iegūst lietotāja ievadi jeb komandu (simbolu).
@@ -131,16 +130,12 @@ public class LietotajaRegistracija {
       }
     }
 
-    TastaturasKlausitajs.atslegtaIevade = false;
-    TastaturasKlausitajs.lielieBurti = true;
-    TastaturasKlausitajs.uzreizNodzestKomandu();
+    TastaturasKlausitajs.ievadeUzNoklusejumu();
   }
 
   private static void parolesIevade() {
     // Drīkst būt 15 simbolus garš!
-    TastaturasKlausitajs.uzreizNodzestKomandu();
-    TastaturasKlausitajs.nodzestKomandasTekstu();
-    TastaturasKlausitajs.atslegtaIevade = true;
+    TastaturasKlausitajs.brivasIevadesRezims();
 
     while (!TastaturasKlausitajs.komanda.toUpperCase().equals("ENTER")) {
       // 1. Iegūst lietotāja ievadi jeb komandu (simbolu).
@@ -180,16 +175,12 @@ public class LietotajaRegistracija {
       }
     }
 
-    TastaturasKlausitajs.atslegtaIevade = false;
-    TastaturasKlausitajs.lielieBurti = true;
-    TastaturasKlausitajs.uzreizNodzestKomandu();
+    TastaturasKlausitajs.ievadeUzNoklusejumu();
   }
 
   private static void drosibasVardaIevade() {
     // Drīkst būt 15 simbolus garš!
-    TastaturasKlausitajs.nodzestKomandasTekstu();
-    TastaturasKlausitajs.uzreizNodzestKomandu();
-    TastaturasKlausitajs.atslegtaIevade = true;
+    TastaturasKlausitajs.brivasIevadesRezims();
 
     while (!TastaturasKlausitajs.komanda.toUpperCase().equals("ENTER")) {
       // 1. Iegūst lietotāja ievadi jeb komandu (simbolu).
@@ -228,8 +219,6 @@ public class LietotajaRegistracija {
       }
     }
 
-    TastaturasKlausitajs.atslegtaIevade = false;
-    TastaturasKlausitajs.lielieBurti = true;
-    TastaturasKlausitajs.uzreizNodzestKomandu();
+    TastaturasKlausitajs.ievadeUzNoklusejumu();
   }
 }

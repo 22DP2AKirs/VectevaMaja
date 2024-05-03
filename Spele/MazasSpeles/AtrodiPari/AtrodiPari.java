@@ -6,7 +6,6 @@ import java.util.Arrays;
 import Spele.K;
 import Spele.PaligMetodes;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
-import Spele.SpelesProcesi.Izvade;
 import Spele.SpelesProcesi.Main;
 
 // Atrodi pāri algoritms.
@@ -176,11 +175,7 @@ public class AtrodiPari {
     if (karsuPari == 0) {
       AtrodiPariSavienojums.mSpeleAtrodiPari = false;
       AtrodiPariSavienojums.ievaditasKoord = "";
-
-      MazoSpeluIzvelesKods.varonisIrMazajaSpele = false;
-      MazoSpeluIzvelesKods.izveletaMazaSpele = false;
-
-      Izvade.ieslegtSpelesIzvadi();
+      MazoSpeluIzvelesKods.izpildijaMajasdarbu();
     }
   }
 

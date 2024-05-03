@@ -81,8 +81,8 @@ public class UIizskats {
         "                     ",
         "                     ",
         "      _________      ",
-        "    IZPILDIT LIDZ:   ", 
-        "        " + MazoSpeluIzvelesKods.majasdarbaIzpildesTermins + "  A M       ", 
+        "      IZPILDITI      ", 
+        "                     ",
         "_____________________",
         "      INVENTARS:     ",
         "                     ", 
@@ -109,6 +109,8 @@ public class UIizskats {
       gatavsLabasPusesUI[12] = "                     ";
       gatavsLabasPusesUI[13] = "                     ";
     }
+
+    gatavsLabasPusesUI[16] = "     " + MazoSpeluIzvelesKods.izpilditoMajasdarbuSkaits + "   N O   " + MazoSpeluIzvelesKods.majasdarbuSkaits + "     ";
 
     if (Serkocini.serkocini.getSerkocinuDaudzums() > 9) { // Nomaina atlikušo sērkociņu daudzuma rindu.
       gatavsLabasPusesUI[20] = " Serkocini : " + Serkocini.serkocini.getSerkocinuDaudzums() + "      ";

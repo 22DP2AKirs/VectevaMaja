@@ -1,9 +1,7 @@
-package Spele.Iestatijumi;
+package Spele;
 
 import java.util.ArrayList;
 
-import Spele.K;
-import Spele.PaligMetodes;
 import Spele.Enums.EkranuVeidi;
 import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.KontaKods.Konts;
@@ -14,13 +12,14 @@ import Spele.Varonis.DarbibuIzpilde;
 
 public class Iestatijumi {
   // Kontrole.
-  public static String ietUzPrieksu, griestiesPaLabi, griestiesPaKreisi, 
+  public static String // Mainīgie, kurus izmanto, lai pārbaudītu lietotāja ievadi. Var saukt par filtriem.
+  ietUzPrieksu, griestiesPaLabi, griestiesPaKreisi, 
   izmantotObj, aizdedzinatSerkocinu, izietNoMD , izmantotKameru,
   izmantotGaismu, parslegtRakstisanasRezimu, parslegtBurtuIzmeru;
 
   public static int kadriSekunde = 30;
 
-  public static String[] kontrole = new String[10];
+  public static String[] kontrole = new String[10]; // Šī masīva elementus izmanto, lai izvadītu (rādītu lietotājam) aktuālos iestatījumus.
 
   public static void IestatijumuKods() {
     TastaturasKlausitajs.uzreizNodzestKomandu();
@@ -76,24 +75,7 @@ public class Iestatijumi {
     TastaturasKlausitajs.bijaEnter = false;
     DarbibuIzpilde.izvelnesSkaitlis = 0;
   }
-
-  public static void nolasitKontaDatus(ArrayList<String> datuDala) {
-    ietUzPrieksu = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("ietUzPrieksu", datuDala);
-    griestiesPaLabi = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("griestiesPaLabi", datuDala);
-    griestiesPaKreisi = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("griestiesPaKreisi", datuDala);
-    izmantotObj = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("izmantotObj", datuDala);
-    aizdedzinatSerkocinu = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("aizdedzinatSerkocinu", datuDala);
-    izietNoMD = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("izietNoMD", datuDala);
-    izmantotKameru = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("izmantotKameru", datuDala);
-    izmantotGaismu = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("izmantotGaismu", datuDala);
-    parslegtRakstisanasRezimu = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("parslegtRakstisanasRezimu", datuDala);
-    parslegtBurtuIzmeru = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("parslegtBurtuIzmeru", datuDala);
-    kadriSekunde = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("kadriSekunde", datuDala);
-    Izvade.framesPerSecond = 1000 / kadriSekunde;
-
-    atjauninatKontrolesMasivu();
-  }
-
+  
   public static void atjauninatKontrolesMainigos() {
     ietUzPrieksu = kontrole[0];
     griestiesPaLabi = kontrole[1];
@@ -127,6 +109,27 @@ public class Iestatijumi {
     System.out.println("izmantotGaismu : " + izmantotGaismu + "\033[0K");
     System.out.println("parslegtRakstisanasRezimu : " + parslegtRakstisanasRezimu + "\033[0K");
     System.out.println("parslegtBurtuIzmeru : " + parslegtBurtuIzmeru + "\033[0K");
+  }
+
+  //
+  // ? Darbības ar kontu.
+  //
+
+  public static void nolasitKontaDatus(ArrayList<String> datuDala) {
+    ietUzPrieksu = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("ietUzPrieksu", datuDala);
+    griestiesPaLabi = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("griestiesPaLabi", datuDala);
+    griestiesPaKreisi = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("griestiesPaKreisi", datuDala);
+    izmantotObj = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("izmantotObj", datuDala);
+    aizdedzinatSerkocinu = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("aizdedzinatSerkocinu", datuDala);
+    izietNoMD = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("izietNoMD", datuDala);
+    izmantotKameru = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("izmantotKameru", datuDala);
+    izmantotGaismu = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("izmantotGaismu", datuDala);
+    parslegtRakstisanasRezimu = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("parslegtRakstisanasRezimu", datuDala);
+    parslegtBurtuIzmeru = FailuRedigetajs.stringDatuAtgriezejsNoSaraktsa("parslegtBurtuIzmeru", datuDala);
+    kadriSekunde = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("kadriSekunde", datuDala);
+    Izvade.framesPerSecond = 1000 / kadriSekunde;
+
+    atjauninatKontrolesMasivu();
   }
 
   public static void kontaSaglabatIestatijumus() {

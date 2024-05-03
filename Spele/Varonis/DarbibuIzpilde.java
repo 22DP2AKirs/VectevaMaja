@@ -4,12 +4,12 @@ import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.NativeHookException;
 
 import Spele.Enums;
+import Spele.Iestatijumi;
 import Spele.K;
 import Spele.Statistika;
 import Spele.Enums.Istaba;
 import Spele.Enums.Virziens;
 import Spele.FailuLietotaji.FailuRedigetajs;
-import Spele.Iestatijumi.Iestatijumi;
 import Spele.Izskati.IstabuIzskati;
 import Spele.KontaKods.Konts;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;

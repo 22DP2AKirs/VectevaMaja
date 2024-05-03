@@ -12,9 +12,7 @@ import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Izvade;
 import Spele.SpelesProcesi.Laiks;
 import Spele.SpelesProcesi.Main;
-import Spele.Spoki.DurvjuSpoks;
-import Spele.Spoki.LogaSpoks;
-import Spele.Spoki.PagrabaSpoks;
+import Spele.Spoki.Spoks;
 import Spele.Veikals.Piederumi;
 import Spele.Veikals.Serkocini;
 import Spele.Veikals.VeikalaKods;
@@ -74,13 +72,11 @@ public class VaronaStatusaEfekti {
       }
     }
 
-    // 4. Izvade uz termināli ilgst 5 sec.
+    // 4. Izvade uz termināli ilgst 5 sec. (Rāda zaudēšnas vai uzvaras ekrānu).
     PaligMetodes.gulet(5);
 
     // 5. Sagatavo datus nākošai spēlei.
-    LogaSpoks.logaSpoks.deaktivizetSpoku();
-    DurvjuSpoks.durvjuSpoks.deaktivizetSpoku();
-    PagrabaSpoks.pagrabaSpoks.deaktivizetSpoku();
+    Spoks.deaktivizetSpokus();
 
     Laiks.spelesLaiks = 0; // Lai laika threads momentāli neapstātos pēc tā pališanas, atjauno spēles laiku.
     Laiks.stundasLaiks = 0;

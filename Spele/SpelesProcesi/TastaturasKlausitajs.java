@@ -5,8 +5,8 @@ import com.github.kwhat.jnativehook.NativeHookException;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 
+import Spele.Iestatijumi;
 import Spele.K;
-import Spele.Iestatijumi.Iestatijumi;
 
 public class TastaturasKlausitajs implements NativeKeyListener {
   public static volatile String 
@@ -119,6 +119,18 @@ public class TastaturasKlausitajs implements NativeKeyListener {
       ieprieksejaKomanda = komanda;
       uzreizNodzestKomandu();
     }
+  }
+
+  public static void brivasIevadesRezims() {
+    TastaturasKlausitajs.uzreizNodzestKomandu();
+    TastaturasKlausitajs.nodzestKomandasTekstu();
+    TastaturasKlausitajs.atslegtaIevade = true;
+  }
+
+  public static void ievadeUzNoklusejumu() {
+    atslegtaIevade = false;
+    lielieBurti = true;
+    uzreizNodzestKomandu();
   }
 
   public static boolean komandaNavTuksa() {

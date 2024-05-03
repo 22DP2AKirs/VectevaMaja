@@ -99,7 +99,7 @@ Komandas bieži būs redzamas uz ekrāna, viss kas Jums ir jādara ir pēc katra
 - [ ] Izskrāsot durvis brūnas un logus zilus.
 - [ ] Jāpieiet pie loga. cits spoks?
 - [ ] Aizdedzināt spoku :|?????
-- [ ] Pārveidot spēles mērķi no izdzīvot līdz 6 no rīta, uz izpildīt 'n' uzdevumus/mājasdarbus pirms 6 no rīta.
+- [x] Pārveidot spēles mērķi no izdzīvot līdz 6 no rīta, uz izpildīt 'n' uzdevumus/mājasdarbus pirms 6 no rīta.
 
 ### Balansēšana vai uzlabojumi
 
@@ -118,7 +118,7 @@ Komandas bieži būs redzamas uz ekrāna, viss kas Jums ir jādara ir pēc katra
 - [x] Spokus var redzēt caur kamerām.
 - [x] Jāsalabo 'GAME OVER' ekrāni.
 - [x] Programma nolasa datus no tiko pieslēgtā konta.
-- [ ] Spoku rand kustības cipars ir vienmēr 0 (viņi kustās katru sekundi).
+- [x] Spoku rand kustības cipars ir vienmēr 0 (viņi kustās katru sekundi). SALABOTS!!
 - ...
 
 ## Spēles nobeiguma stress

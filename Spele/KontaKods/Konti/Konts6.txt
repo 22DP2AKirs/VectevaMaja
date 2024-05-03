@@ -1,12 +1,12 @@
 #KontaDati:
-Lietotajvards=PPP
-Parole=OGA
-DrosibasVards=OGA
+Lietotajvards=1234567890
+Parole=AAA
+DrosibasVards=AAA
 
 #SpelesDati:
-spelesNakts=1
-nauda=1
-naves=3
+spelesNakts=5
+nauda=231
+naves=4
 
 #Iestatijumi:
 ietUzPrieksu=W
@@ -24,19 +24,19 @@ kadriSekunde=60
 ieslegtaSkana=T
 
 #Veikals:
-nopirktaFotokamera=F
-nopirktaVideokamera=F
+nopirktaFotokamera=T
+nopirktaVideokamera=T
 nopirktiSerkocini=T
 
-fotokamerasUzlabojumaCena=100
-videokamerasUzlabojumaCena=100
+fotokamerasUzlabojumaCena=M A X
+videokamerasUzlabojumaCena=M A X
 serkocinuUzlabojumaCena=M A X
 
-fotokamerasLimenis=0
-videokamerasLimenis=0
+fotokamerasLimenis=2
+videokamerasLimenis=2
 serkocinuLimenis=3
 
 durvjuSledzis=T
 
-izveletaFotokamera=F
+izveletaFotokamera=T
 izveletaVideokamera=F

@@ -5,8 +5,8 @@ DrosibasVards=n
 
 #SpelesDati:
 spelesNakts=1
-nauda=1
-naves=1
+nauda=0
+naves=0
 
 #Iestatijumi:
 ietUzPrieksu=W
@@ -17,7 +17,7 @@ izmantotGaismu=G
 izmantotKameru=SPACE
 izietNoMD=Q
 aizdedzinatSerkocinu=F
-parslegtBurtuIzmeru=Tab
+parslegtBurtuIzmeru=TAB
 parslegtRakstisanasRezimu=X
 
 kadriSekunde=30

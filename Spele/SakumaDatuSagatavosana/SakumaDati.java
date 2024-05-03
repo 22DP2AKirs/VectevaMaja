@@ -2,16 +2,18 @@ package Spele.SakumaDatuSagatavosana;
 
 import java.util.ArrayList;
 
+import Spele.Iestatijumi;
 import Spele.K;
 import Spele.PaligMetodes;
 import Spele.FailuLietotaji.FailuRedigetajs;
-import Spele.Iestatijumi.Iestatijumi;
 import Spele.KontaKods.Konts;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.Spoki.DurvjuSpoks;
 import Spele.Spoki.LogaSpoks;
 import Spele.Spoki.PagrabaSpoks;
+import Spele.Spoki.Spoks;
 import Spele.Veikals.Fotokamera;
+import Spele.Veikals.Piederumi;
 import Spele.Veikals.Serkocini;
 import Spele.Veikals.VeikalaKods;
 import Spele.Veikals.Videokamera;
@@ -23,6 +25,7 @@ public class SakumaDati {
   // Parastie dati:
   public static boolean[] istabuGaismasIeslegtas = new boolean[4]; // Indeksi: 0. Gulta, 1. Dīvāns, 2. Durvis, 3. Virtuve.
   public static ArrayList<String> naktsDati;
+  
 
   public static boolean durvisSlegtas, elektribaIeslegta, pagrabaGaisma, spuldziteSaplesta, spokiSledzAraGaismu;
 
@@ -40,8 +43,10 @@ public class SakumaDati {
     SakumaDati.naktsDati = FailuRedigetajs.atgriestDaluNoFaila("#Nakts" + SakumaDati.spelesNakts, K.NAKTS_DATU_FAILS);
 
     ieslegtGaismas();
-    sagatavotSpokus();
     citiSpelesDati();
+    sagatavotSpokus();
+    Spoks.izveidotSpokus();
+    Piederumi.definetKameru();
   }
 
   public static void saglabatProgrammasDatusUzKontu() {
@@ -157,8 +162,9 @@ public class SakumaDati {
   }
 
   private static void citiSpelesDati() {
+    MazoSpeluIzvelesKods.majasdarbuSkaits = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("majasdarbuSkaits",  naktsDati);
+    MazoSpeluIzvelesKods.laiksLidzJaunamMajasdarbamNemainigais = MazoSpeluIzvelesKods.laiksLidzJaunamMajasdarbamMainigais = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("laiksLidzJaunamMajasdarbamNemainigais",  naktsDati);
     durvisSlegtas = (VeikalaKods.durvjuSledzis) ? true : false;
-    MazoSpeluIzvelesKods.mdPapildusLaikaIespeja = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("mdPapildusLaikaIespeja",  naktsDati);
     elektribaIeslegta = true;
   }
 

@@ -5,7 +5,7 @@ import Spele.MazasSpeles.AtrodiPari.AtrodiPari;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
 import Spele.MazasSpeles.Karatavas.Karatavas;
 import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
-import Spele.SpelesProcesi.Laiks;
+import Spele.SpelesProcesi.Izvade;
 import Spele.SpelesProcesi.Main;
 import Spele.Varonis.VaronaStatusaEfekti;
 
@@ -14,41 +14,45 @@ public class MazoSpeluIzvelesKods {
   // Priekš minigames.
   public static volatile boolean varonisIrMazajaSpele = false; // true, ja varonis ir iegājis mazajā spēlē, false, ja nav.
   public static volatile boolean izveletaMazaSpele; // true, ja spēle izvēlējās, kādu no iespējamajām spēlēm, paratsti, katru stundu. 
-  
-  public static int mdPapildusLaikaIespeja; // Procentu iespēja, ka būs ilgāks mājasdarbu izpildes termiņš.
-  public static int majasdarbaIzpildesTermins; // Spēles laiks, līdz cikiem varonis var pildīt mājasdarbu.
 
-  public static void sagatavotMajasdarbusJaunaiSpelei() {
-    // Izslēdz visus MD datus.
-    varonisIrMazajaSpele = false;
-    izveletaMazaSpele = false;
-    majasdarbaIzpildesTermins = 0;
-    izslegtVisasMazasSpeles();
-  }
+  public static int 
+  majasdarbuSkaits, // Majasdarbu skaits, kuri varonim ir JĀIZPILDA nakts garumā.
+  izpilditoMajasdarbuSkaits = 0, // Majasdarbu skaits, kurus varonis IR izpildījis.
 
-  public static void apskatitMajasdarbu() {
-    // * Pārbauda un ieslēdz mājasdarbu.
-    if (Laiks.stundasLaiks == majasdarbaIzpildesTermins) {
-      if (parbauditVaiVaronisPaspejaIzpilditMajasdarbu()) {
+  laiksLidzJaunamMajasdarbamMainigais, // Laiks, kuru pamazinās katru sekundi.
+  laiksLidzJaunamMajasdarbamNemainigais; // Laiks, no kura laiksLidzJaunamMajasdarbamMainigais ņems sākuma vērtību, kad viņš tiek līdz nullei.
+
+  public static void pamazinatLaikuLidzMajasdarbam() {
+    if (!izveletaMazaSpele) {
+      // 1. Beidz skaitīšanu un izvēlas mājasdarbu.
+      if (laiksLidzJaunamMajasdarbamMainigais == 0) {
+        laiksLidzJaunamMajasdarbamMainigais = laiksLidzJaunamMajasdarbamNemainigais;
         ieslegtKaduMajasdarbu();
+      }
+      // 2. Pamazina laiku.
+      else if (laiksLidzJaunamMajasdarbamMainigais > 0) {
+        laiksLidzJaunamMajasdarbamMainigais--;
       }
     }
   }
 
-  public static boolean parbauditVaiVaronisPaspejaIzpilditMajasdarbu() {
-    // * Pārbauda vai varonis ir izpildījis mājasdarbu noteiktajā laikā, ja nav, tad viņš zaudē.
-    // Ja m-spēle nav uzvarēta, un varonis ir mirstīgais, tad viņš zaudē.
-    if (izveletaMazaSpele && !Main.varonaNemirstiba) {
-      VaronaStatusaEfekti.spelesRezultats(NavesIemesli.PULKSTENIS);
-      return false;
+  public static void izpildijaVisusMajasdarbus() {
+    if (izpilditoMajasdarbuSkaits == majasdarbuSkaits) {
+      VaronaStatusaEfekti.spelesRezultats(NavesIemesli.UZVARA);
     }
+  }
 
-    return true;
+  public static void izpildijaMajasdarbu() {
+    // Kods, kas tiks izpildīts, kad kāds no mājasdarbiem tiek izpildīts.
+    // 1. Iziet no mājasdarba.
+    MazoSpeluIzvelesKods.varonisIrMazajaSpele = false;
+    MazoSpeluIzvelesKods.izveletaMazaSpele = false;
+    // 2. Pārslēdz izvades režīmu.
+    Izvade.ieslegtSpelesIzvadi();
+    izpilditoMajasdarbuSkaits++;
   }
 
   private static void ieslegtKaduMajasdarbu() {
-    // * Ieslēdz vienu no mājasdarbiem.
-
     // 1. Izvēlas vienu no mājasdarbiem, kurš būs jāpilda varonim.
     int randCipars = Main.rand.nextInt(2); // No 0 ieskaitot, līdz "norādītais" neieskaitot.
     // 2. Uzstāda izvēlēto mājasdarbu.
@@ -62,29 +66,15 @@ public class MazoSpeluIzvelesKods {
       AtrodiPari.izveidotJaunuKarsuSpeli();
       AtrodiPariSavienojums.mSpeleAtrodiPari = true;
     }
-    
-    // 3. Izvēlas cik stundas būs varonim, lai izpildītu mājasdarbus.
-    randCipars = Main.rand.nextInt(mdPapildusLaikaIespeja - 50, mdPapildusLaikaIespeja) + 1;
-  
-    if (randCipars > 50) { 
-      if (randCipars > 80) {
-        majasdarbaIzpildesTermins += 3;
-      }
-      else {
-        majasdarbaIzpildesTermins += 2;
-      }
-    }
-    else {
-      majasdarbaIzpildesTermins++;
-    }
-
-    // 4. Pamazina mājasdarba izpildes termiņu, lai tas nepārsniegtu 6 AM laiku.
-    while (majasdarbaIzpildesTermins > 6) {
-      majasdarbaIzpildesTermins--;
-    }
-
-    // 5. Apstiprina, ka mājasdarbs ir ieslēgts.
+    // 3. Apstiprina, ka mājasdarbs ir ieslēgts.
     izveletaMazaSpele = true; // Ļauj pārbaudīt vai varonis ir uzvarējis m-spēli.
+  }
+
+  public static void sagatavotMajasdarbusJaunaiSpelei() {
+    // Izslēdz visus MD datus.
+    varonisIrMazajaSpele = false;
+    izveletaMazaSpele = false;
+    izslegtVisasMazasSpeles();
   }
 
   public static void izslegtVisasMazasSpeles() {

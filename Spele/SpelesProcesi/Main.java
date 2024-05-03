@@ -13,7 +13,6 @@ import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
 import Spele.Parklajumi.BildesParklajumi;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
-import Spele.Spoki.Spoks;
 import Spele.Varonis.DarbibuIzpilde;
 import Spele.Varonis.VaronaStatusaEfekti;
 import Spele.Veikals.Piederumi;
@@ -28,7 +27,6 @@ public class Main {
   public static volatile boolean programmaPalaista = true, spelePalaista = false; // booleans, kas palaiž visu programmu.
   public static boolean sakumaEkrans = true; // Nosaka vai spēles sākumā rādīs sākuma ekrānu vai nē.
  
-  public static int spelesIlgums = 360;// 6 min 360;
 
   // Varoņa īpašības.
   public static boolean varonaNemirstiba = true; // Vai varonis var zaudēt spēli vai nē.
@@ -38,9 +36,14 @@ public class Main {
 
   // Cits.
   static boolean programmasKluduLasisana = false; // Apstādina 
-  public static volatile boolean laikaTredsGul; // Apstādina Laiks thredu uz noteiktu laiku.
   public static String ciklaKomanda = K.TUKSA_IEVADE; // Cikla komanda ir tā, kas tiks definēta cikla sākumā un nodzēsta cikla beigās, lai komanda visās pārbaudēs būtu vienāda.
 
+  // ? /////// T H R E D I //////////
+  private static SkanasSpeletajs skanasSpeletajs;
+  private static Izvade izvade;
+  private static Laiks laiks;
+  private static BlakusProcesi blakusProcesi;
+ 
   public static void main(String[] args) throws InterruptedException { // throws InterruptedException nozīmē, ka var neizmantot try_catch.
     // * Galvenais programmas process.
     // Dažādu metožu un ideju testēšana.
@@ -58,23 +61,15 @@ public class Main {
       SakumaDati.parastieDati();
     }
     
-    // ? /////// T H R E D I //////////
-    // Jaunie rīki jeb thredi, jeb objekti.
-    SkanasSpeletajs skanasSpeletajs = new SkanasSpeletajs();
-    Izvade izvade = new Izvade();  
+    palaistProgrammasThredus();
 
-    // Sākas atsevišķās darbības jeb patstāvīgie procesi.
-    skanasSpeletajs.start(); // Strādā, kamēr spelePalaista bools ir true.
-    izvade.start();
-    TastaturasKlausitajs.palaistKlaviaturasLasitaju();
-    
     //#region
     // *P R O G R A M M A S   C I K L S* // 
     while (programmaPalaista) {
       nodzestTerminali();
+      Izvade.ieslegtMasivaIzvadi();
 
       // *S Ā K U M A   E K R Ā N A   C I K L S* //
-      Izvade.ieslegtMasivaIzvadi();
       while (sakumaEkrans) {
         TastaturasKlausitajs.komandasTekstaFunkcija();
         // 1. Apstrādā lietotāja ievadi.
@@ -84,20 +79,12 @@ public class Main {
         // 3. Notīra ievadi.
         TastaturasKlausitajs.nodzestKomandu();
       }
-      Izvade.ieslegtSpelesIzvadi();
       
-      // Nolasa iestatījumu datus.
+      // Sagatavo datus līmenim.
+      Izvade.ieslegtSpelesIzvadi();
       SakumaDati.sagatavotDatus();
-      Spoks.izveidotSpokus();
       TastaturasKlausitajs.ieslegtKomandasTekstaFunkciju();
-      Piederumi.definetKameru();
-
-      // Thredi, kurus izmantos spēles laikā. Tie beidzas, kad (spelePalaista == false).
-      Laiks laiks = new Laiks(); // Parastais threds.
-      laiks.start(); 
-      Thread blakusProcesi = new BlakusProcesi();
-      blakusProcesi.start();
-      //  = izveidotBlakusProcesuThredu(); // Virtuālais threds.  
+      palaistSpelesThredus();
 
       // *S P Ē L E S   C I K L S* //
       while (spelePalaista) { // Kamēr laiks nav beidzies, turpināt ciklu jeb spēli.
@@ -115,7 +102,6 @@ public class Main {
       // Beidz jeb apstādina thredus.
       laiks.join();
       blakusProcesi.join();
-      // blakusProcesuVThreds.join();
     }
     //#endregion
     skanasSpeletajs.join();
@@ -136,6 +122,29 @@ public class Main {
         AtrodiPariSavienojums.palaistAtrodiPariMazoSpeli();
       }
     }
+  }
+
+  private static void palaistSpelesThredus() {
+    // Thredi, kurus izmantos spēles laikā. Tie beidzas, kad (spelePalaista == false).
+    // 1. Izveido thredus.
+    laiks = new Laiks();
+    blakusProcesi = new BlakusProcesi();
+    // 2. Palaiž thredus.
+    laiks.start(); 
+    blakusProcesi.start();
+  }
+
+  private static void palaistProgrammasThredus() {
+    // 1. Izveido jaunos programmas procesus (Thredus).
+    skanasSpeletajs = new SkanasSpeletajs();
+    izvade = new Izvade();  
+
+    // 2. Palaiž izveidotos processus.
+    skanasSpeletajs.start(); // Strādā, kamēr spelePalaista bools ir true.
+    izvade.start();
+
+    // 3. Pieslēdz klaviatūras lasītāju (lai iegūtu momentālu taustiņu ievadi).
+    TastaturasKlausitajs.palaistKlaviaturasLasitaju();
   }
 
   public static void nodzestTerminali() {

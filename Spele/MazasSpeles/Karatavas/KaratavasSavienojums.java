@@ -23,9 +23,7 @@ public class KaratavasSavienojums {
     if (Karatavas.karatavasObjekts.irAtminetsVards()) {
       PaligMetodes.gulet(2); // Ļauj spēlētājam redzēt atminēto vārdu.
       mSpeleKaratavas = false;
-      Izvade.ieslegtSpelesIzvadi();
-      MazoSpeluIzvelesKods.varonisIrMazajaSpele = false;
-      MazoSpeluIzvelesKods.izveletaMazaSpele = false;
+      MazoSpeluIzvelesKods.izpildijaMajasdarbu();
     }
   }
 }
