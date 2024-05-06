@@ -44,11 +44,8 @@ public class DarbibuIzpilde {
 
   public static void izpilditSpelesDarbibas(String komanda , String komandasTeksts , boolean pabeigtsKomTeksts) {
     // * Metode ietekmē tikai un vienīgi komandu apstrādi un bildes izvadi.
-    // Mainīgie, kurus apstrādās šī metode.
-    String[] mainamaisMasivs = // Šo masīvu pārklās ar pārklājumiem, kuri ir atkarīgi no varoņa konkrētajā vietā.
+    String[] mainamaisMasivs = // Šis masīvs ir aizmugures fons, kuru 'apkrāsos' ar vajadzīgajiem pārklājumiem.
     BildesParklajumi.izveidotMainamoMasivu(IstabuIzskati.istabuMasivs[Enums.V_Istaba.CIPARS][Enums.V_Virziens.CIPARS]);    
-
-    TastaturasKlausitajs.sagatavotKomanduDzesanai();
     
     // Darbības jeb komandas pareizai situācijai.
     VaronaDarbibas.izietAraNoMspeles(komanda);
@@ -164,6 +161,10 @@ public class DarbibuIzpilde {
       }
     }
   }
+
+  // 
+  // ? Sākuma ekrāna darbības.
+  // 
 
   public static void izpilditSakumaEkranaDarbibas(String komanda) {
     // * Šī metode nosaka, kādas darbības būs pieejamas sākuma ekrānā (Main screen), un to darbību izpilde.

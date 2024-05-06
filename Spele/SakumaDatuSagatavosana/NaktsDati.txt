@@ -1,7 +1,6 @@
 Satur spoku datus priekš katras nakts.
 #Nakts1
 majasdarbuSkaits=5
-laiksLidzJaunamMajasdarbamNemainigais=10
 
 mdPapildusLaikaIespeja=100
 spokiSledzAraGaismu=F
@@ -28,7 +27,6 @@ pusnaktsVirtuvesSpokaAtputasLaiks=0
 
 #Nakts2
 majasdarbuSkaits=6
-laiksLidzJaunamMajasdarbamNemainigais=9
 
 mdPapildusLaikaIespeja=90
 spokiSledzAraGaismu=F
@@ -55,7 +53,6 @@ pusnaktsVirtuvesSpokaAtputasLaiks=0
 
 #Nakts3
 majasdarbuSkaits=7
-laiksLidzJaunamMajasdarbamNemainigais=8
 
 mdPapildusLaikaIespeja=80
 spokiSledzAraGaismu=T
@@ -83,7 +80,6 @@ pusnaktsVirtuvesSpokaAtputasLaiks=0
 
 #Nakts4
 majasdarbuSkaits=8
-laiksLidzJaunamMajasdarbamNemainigais=6
 
 mdPapildusLaikaIespeja=70
 spokiSledzAraGaismu=T
@@ -110,7 +106,6 @@ pusnaktsVirtuvesSpokaAtputasLaiks=2
 
 #Nakts5
 majasdarbuSkaits=9
-laiksLidzJaunamMajasdarbamNemainigais=5
 
 mdPapildusLaikaIespeja=60
 spokiSledzAraGaismu=T

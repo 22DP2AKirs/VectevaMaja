@@ -1,12 +1,12 @@
 #KontaDati:
-Lietotajvards=1234567890
-Parole=AAA
-DrosibasVards=AAA
+Lietotajvards=ABOLS
+Parole=ARssdasdAS
+DrosibasVards=ASD
 
 #SpelesDati:
-spelesNakts=5
-nauda=231
-naves=5
+spelesNakts=2
+nauda=0
+naves=1
 
 #Iestatijumi:
 ietUzPrieksu=W
@@ -20,21 +20,21 @@ aizdedzinatSerkocinu=F
 parslegtBurtuIzmeru=TAB
 parslegtRakstisanasRezimu=X
 
-kadriSekunde=60
+kadriSekunde=30
 ieslegtaSkana=T
 
 #Veikals:
 nopirktaFotokamera=T
-nopirktaVideokamera=T
+nopirktaVideokamera=F
 nopirktiSerkocini=T
 
-fotokamerasUzlabojumaCena=M A X
-videokamerasUzlabojumaCena=M A X
-serkocinuUzlabojumaCena=M A X
+fotokamerasUzlabojumaCena=75
+videokamerasUzlabojumaCena=100
+serkocinuUzlabojumaCena=60
 
-fotokamerasLimenis=2
-videokamerasLimenis=2
-serkocinuLimenis=3
+fotokamerasLimenis=0
+videokamerasLimenis=0
+serkocinuLimenis=1
 
 durvjuSledzis=T
 

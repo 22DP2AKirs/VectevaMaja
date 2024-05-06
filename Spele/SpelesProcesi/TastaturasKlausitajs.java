@@ -177,10 +177,6 @@ public class TastaturasKlausitajs implements NativeKeyListener {
     }
   }
 
-  public static void nodzestKomandasTekstu() {
-    komandasTeksts = K.TUKSA_IEVADE;
-  }
-
   public static void limetKomandasTekstu() {
     // 1. Ļauj līmēt komandasTekstu ar visiem pielāgojumiem programmai.
     komandasTeksts = limetVardu(komandasTeksts, komanda);
@@ -243,22 +239,12 @@ public class TastaturasKlausitajs implements NativeKeyListener {
   //? Komandu jeb ievažu dzēšanas varianti:
   //
 
-  public static void uzreizNodzestKomandu() {
-    komanda = K.TUKSA_IEVADE;
-  }
-  
-  public static void sagatavotKomanduDzesanai() {
-    // Atļauj metodei 'nodzēstKomandu' pildīt savu darbu.
-    if (!vaiIzpildijaKomandu) { 
-      vaiIzpildijaKomandu = true;
-    }
+  public static void nodzestKomandasTekstu() {
+    komandasTeksts = K.TUKSA_IEVADE;
   }
 
-  public static void nodzestKomandu() {
-    // Nodzēš komandu, ja visas darbības ar to tika paveiktas.
-    if (vaiIzpildijaKomandu) { 
-      komanda = K.TUKSA_IEVADE;
-    }
+  public static void uzreizNodzestKomandu() {
+    komanda = K.TUKSA_IEVADE;
   }
     
   public static void nodzestCiklaKomandu() {

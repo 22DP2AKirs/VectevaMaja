@@ -46,11 +46,6 @@ public class Main {
  
   public static void main(String[] args) throws InterruptedException { // throws InterruptedException nozīmē, ka var neizmantot try_catch.
     // * Galvenais programmas process.
-    // Dažādu metožu un ideju testēšana.
-    if (Testi.testesana) {
-      Testi.testaProgramma();
-    }
-    
     // Pieslēdz lietotāja kontu, un nolasa galvenos datus.
     if (Konts.atceretiesMani) {
       SakumaDati.nolasitDatusNoKonta();
@@ -58,10 +53,15 @@ public class Main {
     }
     else {
       // Ja nav konta, tad uzstāda parastās vērtības jeb datus.
-      SakumaDati.parastieDati();
+      SakumaDati.uzstaditSpeliUzNoklusejumaDatiem();
     }
     
     palaistProgrammasThredus();
+
+    // Dažādu metožu un ideju testēšana.
+    if (Testi.testesana) {
+      Testi.testaProgramma();
+    }
 
     //#region
     // *P R O G R A M M A S   C I K L S* // 
@@ -71,18 +71,17 @@ public class Main {
 
       // *S Ā K U M A   E K R Ā N A   C I K L S* //
       while (sakumaEkrans) {
+        // 1. Atļauj rakstīt tekstu.
         TastaturasKlausitajs.komandasTekstaFunkcija();
-        // 1. Apstrādā lietotāja ievadi.
+        // 2. Apstrādā lietotāja ievadi.
         DarbibuIzpilde.izpilditSakumaEkranaDarbibas(TastaturasKlausitajs.komanda);
-        // 2. Izvada bildi terminālī.
+        // 3. Izvada bildi terminālī.
         Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.SAKUMA);
-        // 3. Notīra ievadi.
-        TastaturasKlausitajs.nodzestKomandu();
       }
       
       // Sagatavo datus līmenim.
       Izvade.ieslegtSpelesIzvadi();
-      SakumaDati.sagatavotDatus();
+      SakumaDati.sagatavotSpelesDatus();
       TastaturasKlausitajs.ieslegtKomandasTekstaFunkciju();
       palaistSpelesThredus();
 

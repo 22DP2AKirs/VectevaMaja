@@ -19,8 +19,8 @@ public class MazoSpeluIzvelesKods {
   majasdarbuSkaits, // Majasdarbu skaits, kuri varonim ir JĀIZPILDA nakts garumā.
   izpilditoMajasdarbuSkaits = 0, // Majasdarbu skaits, kurus varonis IR izpildījis.
 
-  laiksLidzJaunamMajasdarbamMainigais, // Laiks, kuru pamazinās katru sekundi.
-  laiksLidzJaunamMajasdarbamNemainigais; // Laiks, no kura laiksLidzJaunamMajasdarbamMainigais ņems sākuma vērtību, kad viņš tiek līdz nullei.
+  laiksLidzJaunamMajasdarbamMainigais = 10, // Laiks, kuru pamazinās katru sekundi.
+  laiksLidzJaunamMajasdarbamNemainigais = 10; // Laiks, no kura laiksLidzJaunamMajasdarbamMainigais ņems sākuma vērtību, kad viņš tiek līdz nullei.
 
   public static void pamazinatLaikuLidzMajasdarbam() {
     if (!izveletaMazaSpele) {

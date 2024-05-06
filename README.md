@@ -119,6 +119,7 @@ Komandas bieži būs redzamas uz ekrāna, viss kas Jums ir jādara ir pēc katra
 - [x] Jāsalabo 'GAME OVER' ekrāni.
 - [x] Programma nolasa datus no tiko pieslēgtā konta.
 - [x] Spoku rand kustības cipars ir vienmēr 0 (viņi kustās katru sekundi). SALABOTS!!
+- [ ] Reseto datus, kad izlogojas no viena konta un ielogojas citā.
 - ...
 
 ## Spēles nobeiguma stress

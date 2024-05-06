@@ -131,6 +131,8 @@ public class Konts {
         Konts.lietotajsPiesledzies = false;
         displejaLietotajvards = "_ _ _ _ _ _ _ _ _ _";
 
+        SakumaDati.uzstaditSpeliUzNoklusejumaDatiem();
+
         break; // Iziet ārā no šī ekrāna.
       }
       else if (TastaturasKlausitajs.komandasTeksts.equals("SAVE") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {

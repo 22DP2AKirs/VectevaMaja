@@ -26,7 +26,6 @@ public class SakumaDati {
   public static boolean[] istabuGaismasIeslegtas = new boolean[4]; // Indeksi: 0. Gulta, 1. Dīvāns, 2. Durvis, 3. Virtuve.
   public static ArrayList<String> naktsDati;
   
-
   public static boolean durvisSlegtas, elektribaIeslegta, pagrabaGaisma, spuldziteSaplesta, spokiSledzAraGaismu;
 
   // Spoku dati.
@@ -38,7 +37,7 @@ public class SakumaDati {
   public static boolean ieslegtaSkana;
   public static int nauda, spelesNakts, naves;
 
-  public static void sagatavotDatus() {
+  public static void sagatavotSpelesDatus() {
     // Nakts datiem ir jābūt pirmajiem, jo pārējie dati tiek ņemti no tā.
     SakumaDati.naktsDati = FailuRedigetajs.atgriestDaluNoFaila("#Nakts" + SakumaDati.spelesNakts, K.NAKTS_DATU_FAILS);
 
@@ -54,7 +53,7 @@ public class SakumaDati {
     // 1. Iegūst konta datus (lietotāj v., parole un drošības v.), lai tos nepazaudētu vai nesabojātu.
     String kontaDati = savaktKontaDatus();
     // 2. Iegūst visus saglabājamos programmas datus.
-    String programmasDati = savaktSpelesDatus() + savaktIestatijumuDatusNoSpeles() + savaktVeikalaDatusNoSpeles();
+    String programmasDati = atgriestSpelesDatus() + atgriestIestatijumuDatusNoSpeles() + atgriestVeikalaDatusNoSpeles();
     // 3. Pārraksta jeb saglabā datus kontā.
     FailuRedigetajs.failuParrakstitajs(kontaDati + programmasDati, Konts.lietotajaKontaCels);
   }
@@ -69,53 +68,6 @@ public class SakumaDati {
     FailuRedigetajs.failuParrakstitajs(kontaDati + programmasDati, Konts.lietotajaKontaCels);
   }
 
-  private static String savaktKontaDatus() {
-    // Sagatavo programmas datus kategorijai '#KontaDati'.
-    String kontaDati = FailuRedigetajs.failuParveidotajsParTekstu(Konts.lietotajaKontaCels, 0);
-    return kontaDati.substring(0, kontaDati.indexOf("#SpelesDati") - 1);
-  }
-
-  private static String savaktSpelesDatus() {
-    // Sagatavo programmas datus kategorijai '#SpelesDati'.
-    return 
-    "\n#SpelesDati:\nspelesNakts=" + spelesNakts + 
-    "\nnauda=" + nauda + 
-    "\nnaves=" + naves;
-  }
-
-  private static String savaktIestatijumuDatusNoSpeles() {
-    // Sagatavo programmas datus kategorijai '#Iestatijumi'.
-    return 
-    "\n\n#Iestatijumi:\nietUzPrieksu=" + Iestatijumi.ietUzPrieksu + 
-    "\ngriestiesPaLabi=" + Iestatijumi.griestiesPaLabi + 
-    "\ngriestiesPaKreisi=" + Iestatijumi.griestiesPaKreisi +
-    "\nizmantotObj=" + Iestatijumi.izmantotObj + 
-    "\nizmantotGaismu=" + Iestatijumi.izmantotGaismu + 
-    "\nizmantotKameru=" + Iestatijumi.izmantotKameru + 
-    "\nizietNoMD=" + Iestatijumi.izietNoMD +
-    "\naizdedzinatSerkocinu=" + Iestatijumi.aizdedzinatSerkocinu + 
-    "\nparslegtBurtuIzmeru=" + Iestatijumi.parslegtBurtuIzmeru + 
-    "\nparslegtRakstisanasRezimu=" + Iestatijumi.parslegtRakstisanasRezimu +
-    "\n\nkadriSekunde=" + Iestatijumi.kadriSekunde + 
-    "\nieslegtaSkana=" + PaligMetodes.booleanVertiba(SakumaDati.ieslegtaSkana);
-  }
-
-  private static String savaktVeikalaDatusNoSpeles() {
-    // Sagatavo programmas datus kategorijai '#Veikals'.
-    return 
-    "\n\n#Veikals:\nnopirktaFotokamera=" + PaligMetodes.booleanVertiba(Fotokamera.fotokamera.getNopirkaPiederumu()) + 
-    "\nnopirktaVideokamera=" + PaligMetodes.booleanVertiba(Videokamera.videokamera.getNopirkaPiederumu()) + 
-    "\nnopirktiSerkocini=" + PaligMetodes.booleanVertiba(Serkocini.serkocini.getNopirkaPiederumu()) + 
-    "\n\nfotokamerasUzlabojumaCena=" + Fotokamera.fotokamera.getUzlabojumaCenu() + 
-    "\nvideokamerasUzlabojumaCena=" + Videokamera.videokamera.getUzlabojumaCenu() + 
-    "\nserkocinuUzlabojumaCena=" + Serkocini.serkocini.getUzlabojumaCenu() + 
-    "\n\nfotokamerasLimenis=" + Fotokamera.fotokamera.getLimeni() + 
-    "\nvideokamerasLimenis=" + Videokamera.videokamera.getLimeni() + 
-    "\nserkocinuLimenis=" + Serkocini.serkocini.getLimeni() + 
-    "\n\ndurvjuSledzis=" + PaligMetodes.booleanVertiba(VeikalaKods.durvjuSledzis) + 
-    "\n\nizveletaFotokamera=" + PaligMetodes.booleanVertiba(VeikalaKods.izveletaFotokamera) + 
-    "\nizveletaVideokamera=" + PaligMetodes.booleanVertiba(VeikalaKods.izveletaVideokamera);
-  }
 
   public static void nolasitDatusNoKonta() {
     // Nolasa un uzstāda visus datus no spēlētāja konta.
@@ -163,7 +115,6 @@ public class SakumaDati {
 
   private static void citiSpelesDati() {
     MazoSpeluIzvelesKods.majasdarbuSkaits = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("majasdarbuSkaits",  naktsDati);
-    MazoSpeluIzvelesKods.laiksLidzJaunamMajasdarbamNemainigais = MazoSpeluIzvelesKods.laiksLidzJaunamMajasdarbamMainigais = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("laiksLidzJaunamMajasdarbamNemainigais",  naktsDati);
     durvisSlegtas = (VeikalaKods.durvjuSledzis) ? true : false;
     elektribaIeslegta = true;
   }
@@ -180,7 +131,7 @@ public class SakumaDati {
     PagrabaSpoks.pagrabaSpoks.spokaAtputasLaiks = virtuvesSpokaAtputasLaiks = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("pusnaktsVirtuvesSpokaAtputasLaiks", naktsDati);
   }
 
-  public static void parastieDati() {
+  public static void uzstaditSpeliUzNoklusejumaDatiem() {
     // ? Parauga kontā ir 'default' jeb noklusējuma dati.
     // Veikala dati. 
     VeikalaKods.nolasitNoKontaVeikalaDatus(FailuRedigetajs.atgriestDaluNoFaila("#Veikals", K.PARAUGA_KONTS));
@@ -192,5 +143,57 @@ public class SakumaDati {
     nauda = 0;
     spelesNakts = 1;
     naves = 0;
+  }
+
+  //
+  // Atgriež programmas datus kā tekstu.
+  //
+
+  private static String savaktKontaDatus() {
+    // Atgriež kā faila saturu Konta lietotāja datus.
+    String kontaDati = FailuRedigetajs.failuParveidotajsParTekstu(Konts.lietotajaKontaCels, 0);
+    return kontaDati.substring(0, kontaDati.indexOf("#SpelesDati") - 1);
+  }
+
+  private static String atgriestSpelesDatus() {
+    // Atgriež kā faila saturu Spēles datus.
+    return 
+    "\n#SpelesDati:\nspelesNakts=" + spelesNakts + 
+    "\nnauda=" + nauda + 
+    "\nnaves=" + naves;
+  }
+
+  private static String atgriestIestatijumuDatusNoSpeles() {
+    // Atgriež kā faila saturu Iestatījumu datus.
+    return 
+    "\n\n#Iestatijumi:\nietUzPrieksu=" + Iestatijumi.ietUzPrieksu + 
+    "\ngriestiesPaLabi=" + Iestatijumi.griestiesPaLabi + 
+    "\ngriestiesPaKreisi=" + Iestatijumi.griestiesPaKreisi +
+    "\nizmantotObj=" + Iestatijumi.izmantotObj + 
+    "\nizmantotGaismu=" + Iestatijumi.izmantotGaismu + 
+    "\nizmantotKameru=" + Iestatijumi.izmantotKameru + 
+    "\nizietNoMD=" + Iestatijumi.izietNoMD +
+    "\naizdedzinatSerkocinu=" + Iestatijumi.aizdedzinatSerkocinu + 
+    "\nparslegtBurtuIzmeru=" + Iestatijumi.parslegtBurtuIzmeru + 
+    "\nparslegtRakstisanasRezimu=" + Iestatijumi.parslegtRakstisanasRezimu +
+    "\n\nkadriSekunde=" + Iestatijumi.kadriSekunde + 
+    "\nieslegtaSkana=" + PaligMetodes.booleanVertiba(SakumaDati.ieslegtaSkana);
+  }
+
+  private static String atgriestVeikalaDatusNoSpeles() {
+    // Atgriež kā faila saturu Veikala datus.
+    return 
+    "\n\n#Veikals:\nnopirktaFotokamera=" + PaligMetodes.booleanVertiba(Fotokamera.fotokamera.getNopirkaPiederumu()) + 
+    "\nnopirktaVideokamera=" + PaligMetodes.booleanVertiba(Videokamera.videokamera.getNopirkaPiederumu()) + 
+    "\nnopirktiSerkocini=" + PaligMetodes.booleanVertiba(Serkocini.serkocini.getNopirkaPiederumu()) + 
+    "\n\nfotokamerasUzlabojumaCena=" + Fotokamera.fotokamera.getUzlabojumaCenu() + 
+    "\nvideokamerasUzlabojumaCena=" + Videokamera.videokamera.getUzlabojumaCenu() + 
+    "\nserkocinuUzlabojumaCena=" + Serkocini.serkocini.getUzlabojumaCenu() + 
+    "\n\nfotokamerasLimenis=" + Fotokamera.fotokamera.getLimeni() + 
+    "\nvideokamerasLimenis=" + Videokamera.videokamera.getLimeni() + 
+    "\nserkocinuLimenis=" + Serkocini.serkocini.getLimeni() + 
+    "\n\ndurvjuSledzis=" + PaligMetodes.booleanVertiba(VeikalaKods.durvjuSledzis) + 
+    "\n\nizveletaFotokamera=" + PaligMetodes.booleanVertiba(VeikalaKods.izveletaFotokamera) + 
+    "\nizveletaVideokamera=" + PaligMetodes.booleanVertiba(VeikalaKods.izveletaVideokamera);
   }
 }
