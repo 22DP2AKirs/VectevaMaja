@@ -21,8 +21,8 @@ import Spele.Enums.Istaba;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
-import Spele.MazasSpeles.Karatavas.Karatavas;
 import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
+import Spele.MazasSpeles.SamaisitieVardi.SMSavienojums;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Izvade;
 import Spele.SpelesProcesi.Laiks;
@@ -207,7 +207,7 @@ public class VaronaDarbibas {
     }
     else if (komanda.equals(Iestatijumi.izmantotObj) && KaratavasSavienojums.mSpeleKaratavas) {
       TastaturasKlausitajs.nodzestCiklaKomandu();
-      Karatavas.palaistKaratavas();
+      MazoSpeluIzvelesKods.palaistMajasdarbu();
     }
   }
 
@@ -252,6 +252,11 @@ public class VaronaDarbibas {
     }
     else if (komanda.equals(Iestatijumi.izmantotGaismu)) {
       ieslegtIzslegtIstabasGaismu(Istaba.VIRTUVE);
+    }
+    else if (komanda.equals(Iestatijumi.izmantotObj) && SMSavienojums.MDSamaisitieVardi) {
+      // Palaiž mājasdarbu samaisitie vardi.
+      TastaturasKlausitajs.nodzestCiklaKomandu();
+      MazoSpeluIzvelesKods.palaistMajasdarbu();
     }
   }
   

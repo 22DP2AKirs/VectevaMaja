@@ -10,6 +10,7 @@ import Spele.Enums.EkranuVeidi;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
 import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
+import Spele.MazasSpeles.SamaisitieVardi.SMSavienojums;
 import Spele.Parklajumi.BildesParklajumi;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
@@ -46,6 +47,12 @@ public class Main {
  
   public static void main(String[] args) throws InterruptedException { // throws InterruptedException nozīmē, ka var neizmantot try_catch.
     // * Galvenais programmas process.
+
+    // Dažādu metožu un ideju testēšana.
+    if (Testi.testesana) {
+      Testi.testaProgramma();
+    }
+
     // Pieslēdz lietotāja kontu, un nolasa galvenos datus.
     if (Konts.atceretiesMani) {
       SakumaDati.nolasitDatusNoKonta();
@@ -57,11 +64,6 @@ public class Main {
     }
     
     palaistProgrammasThredus();
-
-    // Dažādu metožu un ideju testēšana.
-    if (Testi.testesana) {
-      Testi.testaProgramma();
-    }
 
     //#region
     // *P R O G R A M M A S   C I K L S* // 
@@ -119,6 +121,9 @@ public class Main {
       }
       else if (AtrodiPariSavienojums.mSpeleAtrodiPari) {
         AtrodiPariSavienojums.palaistAtrodiPariMazoSpeli();
+      }
+      else if (SMSavienojums.MDSamaisitieVardi) {
+        SMSavienojums.palaistSamaisitosVardus();
       }
     }
   }

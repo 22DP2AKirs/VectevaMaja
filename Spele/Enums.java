@@ -9,6 +9,7 @@ public class Enums {
   public enum EkranuVeidi {
     SAKUMA,
     KARATAVAS,
+    SAMAISITIE_VARDI,
     UZVARA,
     KONTA_IZVELE,
     KONTA_APSKATE,

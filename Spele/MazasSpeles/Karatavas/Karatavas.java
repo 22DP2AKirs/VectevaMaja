@@ -5,12 +5,8 @@ import java.util.Arrays;
 
 import Spele.K;
 import Spele.PaligMetodes;
-import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.Parklajumi.EkranuParklajumi;
-import Spele.SpelesProcesi.Izvade;
 import Spele.SpelesProcesi.Main;
-import Spele.SpelesProcesi.TastaturasKlausitajs;
-
 
 // Karātavas algoritms jeb spēle.
 public class Karatavas {
@@ -63,11 +59,7 @@ public class Karatavas {
     karatavasObjekts.sagatavotGramatuSpelesanai();
   }
 
-  public static void palaistKaratavas() {    
-    Izvade.ieslegtMasivaIzvadi();
-    MazoSpeluIzvelesKods.varonisIrMazajaSpele = true;
-    TastaturasKlausitajs.komanda = K.TUKSA_IEVADE;
-  }
+  
 
   private void sagatavotGramatuSpelesanai() {
     restartetKaratavas();

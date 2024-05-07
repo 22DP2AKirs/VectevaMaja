@@ -9,6 +9,7 @@ import Spele.Izskati.IstabuIzskati;
 import Spele.Izskati.SpokuIzskati;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
 import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
+import Spele.MazasSpeles.SamaisitieVardi.SMSavienojums;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.Spoki.DurvjuSpoks;
 import Spele.Spoki.LogaSpoks;
@@ -99,6 +100,7 @@ public class BildesParklajumi {
   }
 
   public static void uzliktVirtuvesKreisasPusesParklajumus(String[] mainamaisMasivs) {
+    uzliktSamaisitoVarduKladi(mainamaisMasivs);
     uzliktVirtuvesKreisasPusesApgaismojumaParklajumus(mainamaisMasivs);
   }
 
@@ -227,6 +229,10 @@ public class BildesParklajumi {
     }
   }
 
+  //
+  // ? Divana istaba.
+  //
+
   public static void uzliktDivanaLabasPusesApgaismojumaParklajumus(String[] mainamaisMasivs) {
     if (!SakumaDati.istabuGaismasIeslegtas[2]) {
       mainamaisMasivs[2] += "\033[57G" + K.TPELEKS + ParklajumuIzskati.arkuGaismasAizpilditajs[1] + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
@@ -264,6 +270,10 @@ public class BildesParklajumi {
     }
   }
 
+  //
+  // ? Durvju istaba.
+  //
+
   private static void uzliktDurvjuLabasPusesApgaismojumaParklajumus(String[] mainamaisMasivs) {
     // Saliek durvju arkas gaismu ekrāna labajā pusē.
     if (!SakumaDati.istabuGaismasIeslegtas[3]) {
@@ -298,6 +308,10 @@ public class BildesParklajumi {
       }
     }
   }
+
+  //
+  // ? Virtuves istaba.
+  //
 
   /// Virtuves pārklājumi:
   private static void uzliktVirtuvesPrieksasApgaismojumaParklajumus(String[] mainamaisMasivs) {
@@ -401,6 +415,17 @@ public class BildesParklajumi {
     else {
       mainamaisMasivs[9] += "\033[21G/  ~~ /" + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
       mainamaisMasivs[10] += "\033[20G/_____/" + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+    }
+  }
+
+  private static void uzliktSamaisitoVarduKladi(String[] mainamaisMasivs) {
+    if (SMSavienojums.MDSamaisitieVardi) {
+      mainamaisMasivs[7] += "\033[53G" + K.OBJEKTS + "/ ~  '" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+      mainamaisMasivs[8] += "\033[52G" + K.OBJEKTS + "/____'" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+    }
+    else {
+      mainamaisMasivs[7] += "\033[53G/ ~  '" + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
+      mainamaisMasivs[8] += "\033[52G/____'" + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
     }
   }
 

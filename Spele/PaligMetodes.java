@@ -10,6 +10,14 @@ import Spele.Enums.Virziens;
 public class PaligMetodes {
   // Šeit ir metodes, kuras atvieglos koda saprašanu un manu dzīvi.
 
+  public static char[] mainitCharElementusArVietam(char[] masivs, int pirmaElementaIndeks, int otraElementaIndeks) {
+    // Apmaina elementus ar vietām.
+    char pirmaisElements = masivs[pirmaElementaIndeks];
+    masivs[pirmaElementaIndeks] = masivs[otraElementaIndeks];
+    masivs[otraElementaIndeks] = pirmaisElements;
+    return masivs;
+  }
+
   public static ArrayList<ArrayList<Object>> apmainitSarakstaElementu(ArrayList<Object> pirmaisElements, ArrayList<Object> otraisElements, ArrayList<ArrayList<Object>> saraksts) {
     // * Metode pareizi izpildās tikai tad, ja masīvā nav identisku elementu.
     // * Apmaina ar vietām norādītos elementus. Nav domāts milzīgiem sarakstiem.

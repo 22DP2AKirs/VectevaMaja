@@ -1,26 +1,29 @@
 package Spele;
 
+import Spele.MazasSpeles.SamaisitieVardi.SMSavienojums;
+import Spele.MazasSpeles.SamaisitieVardi.SamaisitieVardi;
 import Spele.SpelesProcesi.Main;
 import Spele.SpelesProcesi.TastaturasKlausitajs;
 
 public class Testi {
   public static boolean testesana = false;
-  static int i = 1;
 
   public static void testaProgramma() throws InterruptedException { // throws  InterruptedException, Lai varētu izmantot: Thread.sleep(0); bez try_catch.
     TastaturasKlausitajs.palaistKlaviaturasLasitaju();
     Main.nodzestTerminali();
 
-    Statistika.aizpilditLietotajuTabulu();
-    Statistika.kartotAugosaSeciba(4);
-    int kolonnasIndekss;
-    String txt = "1ABC";
+    SamaisitieVardi.izveidotJaunuSVObjektu();
 
     while (true) {
-      kolonnasIndekss = txt.charAt(0);
-      System.out.println(kolonnasIndekss);
+      TastaturasKlausitajs.definetCiklaKomandu();
 
-      PaligMetodes.gulet(1000);
+      SMSavienojums.palaistSamaisitosVardus();
+      System.out.println( SamaisitieVardi.samaisitieVardi.samaisitoBurtuVirkne);
+      System.out.println( SamaisitieVardi.samaisitieVardi.lietotajaVards);
+      System.out.println( Main.ciklaKomanda);
+
+      try {Thread.sleep(100);} catch (Exception e) {}
+      Main.nodzestTerminali();
     }
   }
 }

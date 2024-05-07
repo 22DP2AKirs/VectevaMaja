@@ -8,11 +8,13 @@ import Spele.Izskati.EkranuIzskati;
 import Spele.KontaKods.Konts;
 import Spele.Iestatijumi;
 import Spele.K;
+import Spele.PaligMetodes;
 import Spele.Statistika;
 import Spele.Enums.EkranuVeidi;
 import Spele.Enums.NavesIemesli;
 import Spele.MazasSpeles.Karatavas.Karatavas;
 import Spele.MazasSpeles.Karatavas.KaratavuIzskati;
+import Spele.MazasSpeles.SamaisitieVardi.SamaisitieVardi;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Laiks;
 import Spele.SpelesProcesi.Main;
@@ -36,6 +38,9 @@ public class EkranuParklajumi {
     }
     else if (EKRANA_TIPS.equals(EkranuVeidi.KARATAVAS)) {
       gramatasParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[3], EkranuIzskati.visiEkrani[3].length));
+    }
+    else if (EKRANA_TIPS.equals(EkranuVeidi.SAMAISITIE_VARDI)) {
+      MDSamaisitoVarduParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[13], EkranuIzskati.visiEkrani[13].length));
     }
     else if (EKRANA_TIPS.equals(EkranuVeidi.KONTA_IZVELE)) {
       kontaIzvelesParklasana(ekranaKopija = Arrays.copyOf(EkranuIzskati.visiEkrani[4], EkranuIzskati.visiEkrani[4].length));
@@ -63,6 +68,11 @@ public class EkranuParklajumi {
     }
 
     return ekranaKopija;
+  }
+
+  private static void MDSamaisitoVarduParklasana(String[] ekranaMasivs) {
+    ekranaMasivs[8] += "\033[37G" + SamaisitieVardi.samaisitieVardi.samaisitoBurtuVirkne + K.EKRANA_GARUMA_IZMERS;
+    ekranaMasivs[16] += "\033[37G" + PaligMetodes.saliktAtstarpesSimboluVirkne(SamaisitieVardi.samaisitieVardi.lietotajaVards, 2) + K.EKRANA_GARUMA_IZMERS;
   }
 
   public static void statistikasParklasana(String[] ekranaMasivs) {

@@ -452,6 +452,40 @@ public class EkranuIzskati {
     "\r|______________________________________________________________________________________________________|",
   };
 
+  private static final String[] SAMAINITOVARDU_EKRANS = {
+
+    "\r▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓",
+    "\r|                                                                                                      |",
+    "\r|                                                                                                      |",
+    "\r|                    .---------------------------------------------['''']                              |",
+    "\r|                    |                                              ||                                 |",
+    "\r|                    |     B U R T I :                             ['''']                              |",
+    "\r|                    |                                              ||                                 |",
+    "\r|                    |                                             ['''']                              |",
+    "\r|                    |    [---->>                                   ||                                 |",
+    "\r|                    |                                             ['''']                              |",
+    "\r|                    |                                              ||                                 |",
+    "\r|                    |                                             ['''']                              |",
+    "\r|                    |                                              ||                                 |",
+    "\r|                    |     V A R D S :                             ['''']                              |",
+    "\r|                    |                                              ||                                 |",
+    "\r|                    |                                             ['''']                              |",
+    "\r|                    |    [---->>                                   ||                                 |",
+    "\r|                    |                                             ['''']                              |",
+    "\r|                    |                                              ||                                 |",
+    "\r|                    |                                             ['''']                              |",
+    "\r|                    |                                              ||                                 |",
+    "\r|                    |                                             ['''']                              |",
+    "\r|                    |                                              ||                                 |",
+    "\r|                    |                                             ['''']                              |",
+    "\r|                    |                                              ||                                 |",
+    "\r|                    '---------------------------------------------['''']                              |",
+    "\r|                                                                                                      |",
+    "\r|   [ Q ] - A T P A K A L                                                                              |",
+    "\r|                       '                                                                              |",
+    "\r|______________________________________________________________________________________________________|",
+  };
+
   public static String[] [] visiEkrani = { // String[] - masīvs, String[] [] - viendimensijas masīvs, kurš satur masīvus, String[][] [] - divdimensiju masīvs, kurš satur masīvus.
     GALVENAIS_EKRANS,
     UZVARAS_EKRANS,
@@ -465,6 +499,7 @@ public class EkranuIzskati {
     REDIGESANAS_EKRANS,
     TUKS_EKRANS,
     IESTATIJUMU_EKRANS,
-    STATISTIKAS_EKRANS
+    STATISTIKAS_EKRANS,
+    SAMAINITOVARDU_EKRANS
   };
 }

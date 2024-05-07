@@ -8,6 +8,7 @@ import Spele.Enums.Virziens;
 import Spele.MazasSpeles.MazoSpeluIzvelesKods;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
 import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
+import Spele.MazasSpeles.SamaisitieVardi.SMSavienojums;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Laiks;
 import Spele.SpelesProcesi.TastaturasKlausitajs;
@@ -105,6 +106,10 @@ public class UIizskats {
     else if (AtrodiPariSavienojums.mSpeleAtrodiPari) {
       gatavsLabasPusesUI[12] = "     A T R O D I     ";
       gatavsLabasPusesUI[13] = "       P A R I       ";
+    }
+    else if (SMSavienojums.MDSamaisitieVardi) {
+      gatavsLabasPusesUI[12] = " S A M A I S I T I E ";
+      gatavsLabasPusesUI[13] = "      V A R D I      ";
     } else {
       gatavsLabasPusesUI[12] = "                     ";
       gatavsLabasPusesUI[13] = "                     ";

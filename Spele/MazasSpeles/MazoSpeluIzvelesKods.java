@@ -1,12 +1,16 @@
 package Spele.MazasSpeles;
 
 import Spele.Enums.NavesIemesli;
+import Spele.K;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPari;
 import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
 import Spele.MazasSpeles.Karatavas.Karatavas;
 import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
+import Spele.MazasSpeles.SamaisitieVardi.SMSavienojums;
+import Spele.MazasSpeles.SamaisitieVardi.SamaisitieVardi;
 import Spele.SpelesProcesi.Izvade;
 import Spele.SpelesProcesi.Main;
+import Spele.SpelesProcesi.TastaturasKlausitajs;
 import Spele.Varonis.VaronaStatusaEfekti;
 
 // Šinī klasē tiks veiktas visas m-spēlu izvēles.
@@ -21,6 +25,13 @@ public class MazoSpeluIzvelesKods {
 
   laiksLidzJaunamMajasdarbamMainigais = 10, // Laiks, kuru pamazinās katru sekundi.
   laiksLidzJaunamMajasdarbamNemainigais = 10; // Laiks, no kura laiksLidzJaunamMajasdarbamMainigais ņems sākuma vērtību, kad viņš tiek līdz nullei.
+
+  public static void palaistMajasdarbu() {
+    // Ieslēdz mājasdarba skatu.
+    Izvade.ieslegtMasivaIzvadi();
+    MazoSpeluIzvelesKods.varonisIrMazajaSpele = true;
+    TastaturasKlausitajs.komanda = K.TUKSA_IEVADE;
+  }
 
   public static void pamazinatLaikuLidzMajasdarbam() {
     if (!izveletaMazaSpele) {
@@ -55,6 +66,7 @@ public class MazoSpeluIzvelesKods {
   private static void ieslegtKaduMajasdarbu() {
     // 1. Izvēlas vienu no mājasdarbiem, kurš būs jāpilda varonim.
     int randCipars = Main.rand.nextInt(2); // No 0 ieskaitot, līdz "norādītais" neieskaitot.
+    randCipars = 2;
     // 2. Uzstāda izvēlēto mājasdarbu.
     if (randCipars == 0) {
       // Karātavas.
@@ -65,6 +77,10 @@ public class MazoSpeluIzvelesKods {
       // Kāršu spēle "Atrodi pāri".
       AtrodiPari.izveidotJaunuKarsuSpeli();
       AtrodiPariSavienojums.mSpeleAtrodiPari = true;
+    }
+    else if (randCipars == 2) {
+      SamaisitieVardi.izveidotJaunuSVObjektu();
+      SMSavienojums.MDSamaisitieVardi = true;
     }
     // 3. Apstiprina, ka mājasdarbs ir ieslēgts.
     izveletaMazaSpele = true; // Ļauj pārbaudīt vai varonis ir uzvarējis m-spēli.
