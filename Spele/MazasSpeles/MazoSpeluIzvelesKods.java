@@ -66,7 +66,6 @@ public class MazoSpeluIzvelesKods {
   private static void ieslegtKaduMajasdarbu() {
     // 1. Izvēlas vienu no mājasdarbiem, kurš būs jāpilda varonim.
     int randCipars = Main.rand.nextInt(2); // No 0 ieskaitot, līdz "norādītais" neieskaitot.
-    randCipars = 2;
     // 2. Uzstāda izvēlēto mājasdarbu.
     if (randCipars == 0) {
       // Karātavas.

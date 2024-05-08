@@ -17,6 +17,5 @@ public class SMSavienojums {
     Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.SAMAISITIE_VARDI);
     // 3. Pārbauda vai lietotāja izveidotais vārds atbilst pareizajam vārdam.
     SamaisitieVardi.samaisitieVardi.parbauditVardu();
-    
   }
 }
