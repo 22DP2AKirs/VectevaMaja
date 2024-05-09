@@ -51,20 +51,18 @@ public class Karatavas {
     // Izveido char masīvu, kuru izmantos, lai noteiktu vai visi burti ir atminēti, piem., atrastā burta indekss
     // šim masīvam tiks aizvietots ar '*' simbolu. Vārds būs atminēts, kad viss šis masīvs būs aizpildīts ar '*'.
     neatminetieBurti = izveletaisVards.toCharArray();
+
+
+    karatavuKluduSkaits = 0;
+    burti = "A B C D E F G H I J K L M N O P R S T U V Z".split(" ");
+
+    EkranuParklajumi.saliktRandAtstarpesKaratavuGramata();
+    atklatDazusBurtus();
   }
 
   public static void izveidotJaunuKaratavasSpeli() {
     // * Izveido jaunu karātavas objektu, lai to varētu izmantot spēlē ar citām vērtībām.
     karatavasObjekts = new Karatavas(Main.rand.nextInt(4), Main.rand.nextInt(7));
-    karatavasObjekts.sagatavotGramatuSpelesanai();
-  }
-
-  
-
-  private void sagatavotGramatuSpelesanai() {
-    restartetKaratavas();
-    EkranuParklajumi.saliktRandAtstarpesKaratavuGramata();
-    atklatDazusBurtus();
   }
 
   // Grāmatas vārda salikšana.
@@ -180,11 +178,5 @@ public class Karatavas {
       // Sadala izvēlēto vārdu pa burtiem, un paņem random indeksa elementu jeb vienu burtu.
       apstradatBurtu(izveletaisVards.split("")[Main.rand.nextInt(izveletaisVards.length())]);
     }
-  }
-
-  public void restartetKaratavas() {
-    // * Metode restartē visus karātavas datus, lai sākot jaunu spēli varētu spēlēt no jauna.
-    Karatavas.karatavuKluduSkaits = 0;
-    burti = "A B C D E F G H I J K L M N O P R S T U V Z".split(" ");
   }
 }

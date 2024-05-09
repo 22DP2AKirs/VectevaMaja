@@ -89,6 +89,7 @@ public class MajasdarbuIzvelesKods {
     // Izslēdz visus MD datus.
     varonisIrMajasdarba = false;
     izveletsMajasdarbs = false;
+    izpilditoMajasdarbuSkaits = 0;
     izslegtVisasMazasSpeles();
   }
 

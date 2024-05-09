@@ -137,6 +137,9 @@ Spēles kontrole:
 - [x] Programma nolasa datus no tiko pieslēgtā konta.
 - [x] Spoku rand kustības cipars ir vienmēr 0 (viņi kustās katru sekundi). SALABOTS!!
 - [x] Reseto datus, kad izlogojas no viena konta un ielogojas citā.
+- [x] Fixot karātavas killing spree.
+- [x] Nodzēst mājasdarbu progressu, kad zaudē, kad uzvar.
+
 - ...
 
 ### Spēles nobeiguma stress
