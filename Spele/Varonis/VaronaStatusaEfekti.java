@@ -82,6 +82,7 @@ public class VaronaStatusaEfekti {
     Laiks.stundasLaiks = 0;
     
     varonaStresaLimenis = 0;
+    Karatavas.karatavuKluduSkaits = 0;
 
     MajasdarbuIzvelesKods.sagatavotMajasdarbusJaunaiSpelei();
   }

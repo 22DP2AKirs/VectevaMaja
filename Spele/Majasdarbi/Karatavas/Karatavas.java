@@ -41,6 +41,7 @@ public class Karatavas {
   public static Karatavas karatavasObjekts;
 
   public Karatavas(int vardaGrutiba, int vardsPecKartas) {
+    karatavuKluduSkaits = 0;
     // Konstruktors izvēlas vārdu, izveido vārdam skeleta izmēru un aizpilda to ar tukša burta simbolu "_ ".
     izveletaisVards = karatavasVardi[vardaGrutiba][vardsPecKartas];
     // Izveido vārda skeleta masīvu pēc izvēlētā vārda garuma, kur vēlāk parādīsies atminētie burti. 
@@ -53,7 +54,6 @@ public class Karatavas {
     neatminetieBurti = izveletaisVards.toCharArray();
 
 
-    karatavuKluduSkaits = 0;
     burti = "A B C D E F G H I J K L M N O P R S T U V Z".split(" ");
 
     EkranuParklajumi.saliktRandAtstarpesKaratavuGramata();
