@@ -1,4 +1,4 @@
-package Spele.MazasSpeles.AtrodiPari;
+package Spele.Majasdarbi.AtrodiPari;
 
 import Spele.SpelesProcesi.Izvade;
 import Spele.SpelesProcesi.Main;
@@ -6,7 +6,7 @@ import Spele.SpelesProcesi.TastaturasKlausitajs;
 
 // Šinī klasē būs m-spēles algoritms apvienots ar galveno spēles programmu.
 public class AtrodiPariSavienojums {
-  public static boolean mSpeleAtrodiPari = false;
+  public static boolean MDAtrodiPari = false;
   public static String ievaditasKoord = "";
 
   public static void palaistAtrodiPariMazoSpeli() {

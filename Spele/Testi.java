@@ -1,7 +1,7 @@
 package Spele;
 
-import Spele.MazasSpeles.SamaisitieVardi.SMSavienojums;
-import Spele.MazasSpeles.SamaisitieVardi.SamaisitieVardi;
+import Spele.Majasdarbi.SamaisitieVardi.SMSavienojums;
+import Spele.Majasdarbi.SamaisitieVardi.SamaisitieVardi;
 import Spele.SpelesProcesi.Main;
 import Spele.SpelesProcesi.TastaturasKlausitajs;
 
@@ -22,7 +22,7 @@ public class Testi {
       System.out.println( SamaisitieVardi.samaisitieVardi.lietotajaVards);
       System.out.println( Main.ciklaKomanda);
 
-      try {Thread.sleep(100);} catch (Exception e) {}
+      Thread.sleep(100);
       Main.nodzestTerminali();
     }
   }

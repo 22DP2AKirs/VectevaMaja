@@ -7,7 +7,7 @@ import Spele.K;
 import Spele.PaligMetodes;
 import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.KontaKods.Konts;
-import Spele.MazasSpeles.MazoSpeluIzvelesKods;
+import Spele.Majasdarbi.MajasdarbuIzvelesKods;
 import Spele.Spoki.DurvjuSpoks;
 import Spele.Spoki.LogaSpoks;
 import Spele.Spoki.PagrabaSpoks;
@@ -114,8 +114,8 @@ public class SakumaDati {
   }
 
   private static void citiSpelesDati() {
-    MazoSpeluIzvelesKods.majasdarbuSkaits = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("majasdarbuSkaits",  naktsDati);
-    durvisSlegtas = (VeikalaKods.durvjuSledzis) ? true : false;
+    MajasdarbuIzvelesKods.majasdarbuSkaits = FailuRedigetajs.intDatuAtgriezejsNoSaraktsa("majasdarbuSkaits",  naktsDati);
+    durvisSlegtas = (VeikalaKods.durvjuSledzis) ? true : false; // Ternary Operator.
     elektribaIeslegta = true;
   }
 

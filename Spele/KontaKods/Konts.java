@@ -8,7 +8,7 @@ import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Izvade;
 import Spele.SpelesProcesi.TastaturasKlausitajs;
-import Spele.Varonis.DarbibuIzpilde;
+import Spele.Varonis.DarbibuIzvlele;
 
 public class Konts {
   /** Konta doma un darbības.
@@ -19,19 +19,25 @@ public class Konts {
    * Darbības:
    * Lietotājam ir liela izvēle no darbībām, kuras viņš var izmantot uz sava konta, piem., datu dzēšana, konta dzēšana, datu rediģēšana,
    * funkcija atcerēties viņu, lai katru reizi, kad palaiž porgrammu, lietotājam nebūtu manuāli jāpieslēdzas pie tā, u.c.
-   */
+   * 
+   * Saglabāt veikala datus uz lietotāja konta:
+   * Datu saglabāšanās tiek 'izsaukta' katru reizi, kad lietotājs iziet no veikala.
+   * Datu lasīšana no konta tiek izsaukta tikai tad, kad lietotājs palaiž programmu vai, kad pieslēdzas pie sava konta.
+  */
   
   // Lietotāja dati:
   public static String lietotajaKontaCels;
 
-  public static String lietotajvards = ""; // (Username).
-  public static String parole = ""; 
-  public static String drosibasVards = ""; // Vārds ar kā palīdzību var pieslēgties kontā, ja ir aizmirsta parole.
-  public static String displejaLietotajvards = "_ _ _ _ _ _ _ _ _ _";
+  public static String 
+  lietotajvards = "", // (Username).
+  parole = "", 
+  drosibasVards = "", // Vārds ar kā palīdzību var pieslēgties kontā, ja ir aizmirsta parole.
+  displejaLietotajvards = "_ _ _ _ _ _ _ _ _ _";
 
-  public static boolean ievaditsLietotajvards;
-  public static boolean ievaditaParole;
-  public static boolean ieavaditsDrosibasVards;
+  public static boolean 
+  ievaditsLietotajvards, 
+  ievaditaParole,
+  ieavaditsDrosibasVards;
 
   public static boolean lietotajsPiesledzies;
   public static boolean atceretiesMani = FailuRedigetajs.booleanDatuAtgriezejs("atceretiesMani", K.SAKUMA_DATU_MAPE);
@@ -39,16 +45,10 @@ public class Konts {
   public static boolean redigeKontu;
 
   // Errori vai nosacījumu neievērošanas teksti:
-  public static String lietotajvardaNoteikumuKluda = "";
-  public static String parolesNoteikumuKluda = "";
-  public static String drosibasVardaNoteikumuKluda = "";
-
-  /** Saglabāt veikala datus uz lietotāja konta:
-   * Datu saglabāšanās tiek 'izsaukta' katru reizi, kad lietotājs iziet no veikala.
-   * Datu lasīšana no konta tiek izsaukta tikai tad, kad lietotājs palaiž programmu vai, kad pieslēdzas pie sava konta.
-   * 
-   * 
-  */
+  public static String 
+  lietotajvardaNoteikumuKluda = "",
+  parolesNoteikumuKluda = "",
+  drosibasVardaNoteikumuKluda = "";
 
   public static void kontaIzvelesDarbibas() {
     TastaturasKlausitajs.uzreizNodzestKomandu();
@@ -66,7 +66,7 @@ public class Konts {
 
   private static void kontaDarbibuIzvele() {
     // Rāda izvēli starp pieslēgšanos un reģistrēšanos.
-    DarbibuIzpilde.izvelnesSkaitlis = 0; // Uzstāda izvēlni uz 1. pozīciju.
+    DarbibuIzvlele.izvelnesSkaitlis = 0; // Uzstāda izvēlni uz 1. pozīciju.
 
     while (!TastaturasKlausitajs.komanda.equals("Q")) {
       if (Konts.lietotajsPiesledzies) { break; } // Ja lietotājs ir pieslēdzies, tad viņu aizsūta uz konta apskati.
@@ -74,19 +74,19 @@ public class Konts {
       // 1. Izvade uz termināli.
       Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.KONTA_IZVELE);
       // 2. Izveido n izvēles opcijas starp kurām var pārslēgties.
-      DarbibuIzpilde.izvelnesKustiba(TastaturasKlausitajs.komanda, 2);
+      DarbibuIzvlele.izvelnesKustiba(TastaturasKlausitajs.komanda, 2);
       // 3. Visas izvēles jeb darbības, kuras var veikt šinī ekrānā.
-      if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzpilde.izvelnesSkaitlis == 0) {
+      if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzvlele.izvelnesSkaitlis == 0) {
         /// Pieslēgšanās kods.
         LietotajaPieslegsanas.pieslegties();
       }
-      else if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzpilde.izvelnesSkaitlis == 1) {
+      else if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzvlele.izvelnesSkaitlis == 1) {
         /// Reģistrēšanās kods.
         LietotajaRegistracija.registreties();
       }
     }
 
-    DarbibuIzpilde.izvelnesSkaitlis = 0;
+    DarbibuIzvlele.izvelnesSkaitlis = 0;
   }
 
   private static void kontaApskatesCikls() {
@@ -100,14 +100,15 @@ public class Konts {
       if (TastaturasKlausitajs.komandasTeksts.equals("RED") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
         // Rediģē konta datus.
         Konts.redigeKontu = true;
-        DarbibuIzpilde.izvelnesSkaitlis = 0;
+        DarbibuIzvlele.izvelnesSkaitlis = 0;
         LietotajaRegistracija.registreties();
         Konts.redigeKontu = false;
       }
       else if (TastaturasKlausitajs.komandasTeksts.equals("DEL") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
         // Izdzēš konta failu.
         FailuRedigetajs.kontuFailuDzesejs();
-        displejaLietotajvards = "_ _ _ _ _ _ _ _ _ _";
+        
+        notiritPieslegsanasDatus();
         break;
       }
       else if (TastaturasKlausitajs.komandasTeksts.equals("ATC") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
@@ -125,14 +126,7 @@ public class Konts {
       }
       else if (TastaturasKlausitajs.komandasTeksts.equals("IZI") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
         // Iziet no konta.
-        FailuRedigetajs.mainitFailaMainigaVertibu("atceretiesMani", "F", K.SAKUMA_DATU_MAPE);
-        FailuRedigetajs.mainitFailaMainigaVertibu("lietotajaKontaCels",  "", K.SAKUMA_DATU_MAPE);
-        Konts.atceretiesMani = false;
-        Konts.lietotajsPiesledzies = false;
-        displejaLietotajvards = "_ _ _ _ _ _ _ _ _ _";
-
-        SakumaDati.uzstaditSpeliUzNoklusejumaDatiem();
-
+        notiritPieslegsanasDatus();
         break; // Iziet ārā no šī ekrāna.
       }
       else if (TastaturasKlausitajs.komandasTeksts.equals("SAVE") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
@@ -145,6 +139,17 @@ public class Konts {
         SakumaDati.nolasitDatusNoKonta();
       }
     }
+  }
+
+  private static void notiritPieslegsanasDatus() {
+    // Notīra visu, kas tika vizuāli lietots no konta faila.
+    FailuRedigetajs.mainitFailaMainigaVertibu("atceretiesMani", "F", K.SAKUMA_DATU_MAPE);
+    FailuRedigetajs.mainitFailaMainigaVertibu("lietotajaKontaCels",  "", K.SAKUMA_DATU_MAPE);
+    Konts.atceretiesMani = false;
+    Konts.lietotajsPiesledzies = false;
+    displejaLietotajvards = "_ _ _ _ _ _ _ _ _ _";
+
+    SakumaDati.uzstaditSpeliUzNoklusejumaDatiem();
   }
 
   public static void notiritLietotajaDatus() {

@@ -9,12 +9,12 @@ import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Izvade;
 import Spele.SpelesProcesi.Main;
 import Spele.SpelesProcesi.TastaturasKlausitajs;
-import Spele.Varonis.DarbibuIzpilde;
+import Spele.Varonis.DarbibuIzvlele;
 
 public class LietotajaPieslegsanas {
 
   public static void pieslegties() {
-    DarbibuIzpilde.izvelnesSkaitlis = 0;
+    DarbibuIzvlele.izvelnesSkaitlis = 0;
     Konts.lietotajaKontaCels = ""; // Nodzēš ceļu uz kontu, lai pēdējais ceļš nerādītos visu laiku, kad ieiet konta ekrānā.
     TastaturasKlausitajs.uzreizNodzestKomandu();
     TastaturasKlausitajs.ieslegtKomandasTekstaFunkciju();
@@ -27,17 +27,17 @@ public class LietotajaPieslegsanas {
       // 2. Izvade uz termināli.
       Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.PIESLEGSANAS);
       // 3. Kustina izvēlni.
-      DarbibuIzpilde.izvelnesKustiba(TastaturasKlausitajs.komanda, 2);
+      DarbibuIzvlele.izvelnesKustiba(TastaturasKlausitajs.komanda, 2);
       // 4. Komandas pārbaude.
       if (Konts.ievaditsLietotajvards && TastaturasKlausitajs.komandasTeksts.equals("AIZMIRSU") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
         /// Drošības v..
         drosibasVardaCikls();
       }
-      else if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzpilde.izvelnesSkaitlis == 0 && !TastaturasKlausitajs.rakstaKomandasTekstu) {
+      else if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzvlele.izvelnesSkaitlis == 0 && !TastaturasKlausitajs.rakstaKomandasTekstu) {
         /// Lietotājvārds.
         lietotajvardaIevade();
       }
-      else if (Konts.ievaditsLietotajvards && TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzpilde.izvelnesSkaitlis == 1 && !TastaturasKlausitajs.rakstaKomandasTekstu) {
+      else if (Konts.ievaditsLietotajvards && TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzvlele.izvelnesSkaitlis == 1 && !TastaturasKlausitajs.rakstaKomandasTekstu) {
         /// Parole.
         parolesIevade();
       }
@@ -50,7 +50,7 @@ public class LietotajaPieslegsanas {
       }
     }
 
-    DarbibuIzpilde.izvelnesSkaitlis = 0; // Novieto izvēlnes poz. uz pirmo jeb pēc indeksa 0.
+    DarbibuIzvlele.izvelnesSkaitlis = 0; // Novieto izvēlnes poz. uz pirmo jeb pēc indeksa 0.
     Konts.notiritLietotajaDatus();
     TastaturasKlausitajs.uzreizNodzestKomandu();
     TastaturasKlausitajs.izslegtKomandasTekstaFunkciju();
@@ -130,7 +130,7 @@ public class LietotajaPieslegsanas {
       }
     }
 
-    DarbibuIzpilde.izvelnesSkaitlis = 0; // Novieto izvēlnes poz. uz pirmo jeb pēc indeksa 0.
+    DarbibuIzvlele.izvelnesSkaitlis = 0; // Novieto izvēlnes poz. uz pirmo jeb pēc indeksa 0.
     TastaturasKlausitajs.uzreizNodzestKomandu();
   }
   

@@ -5,10 +5,10 @@ import Spele.K;
 import Spele.PaligMetodes;
 import Spele.Enums.Istaba;
 import Spele.Enums.Virziens;
-import Spele.MazasSpeles.MazoSpeluIzvelesKods;
-import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
-import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
-import Spele.MazasSpeles.SamaisitieVardi.SMSavienojums;
+import Spele.Majasdarbi.MajasdarbuIzvelesKods;
+import Spele.Majasdarbi.AtrodiPari.AtrodiPariSavienojums;
+import Spele.Majasdarbi.Karatavas.KaratavasSavienojums;
+import Spele.Majasdarbi.SamaisitieVardi.SMSavienojums;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Laiks;
 import Spele.SpelesProcesi.TastaturasKlausitajs;
@@ -100,10 +100,10 @@ public class UIizskats {
     };
     
     // Izvēlas mājasdarba nosaukumu.
-    if (KaratavasSavienojums.mSpeleKaratavas) {
+    if (KaratavasSavienojums.MDKaratavas) {
       gatavsLabasPusesUI[12] = "  K A R A T A V A S  ";
     }
-    else if (AtrodiPariSavienojums.mSpeleAtrodiPari) {
+    else if (AtrodiPariSavienojums.MDAtrodiPari) {
       gatavsLabasPusesUI[12] = "     A T R O D I     ";
       gatavsLabasPusesUI[13] = "       P A R I       ";
     }
@@ -115,7 +115,7 @@ public class UIizskats {
       gatavsLabasPusesUI[13] = "                     ";
     }
 
-    gatavsLabasPusesUI[16] = "     " + MazoSpeluIzvelesKods.izpilditoMajasdarbuSkaits + "   N O   " + MazoSpeluIzvelesKods.majasdarbuSkaits + "     ";
+    gatavsLabasPusesUI[16] = "     " + MajasdarbuIzvelesKods.izpilditoMajasdarbuSkaits + "   N O   " + MajasdarbuIzvelesKods.majasdarbuSkaits + "     ";
 
     if (Serkocini.serkocini.getSerkocinuDaudzums() > 9) { // Nomaina atlikušo sērkociņu daudzuma rindu.
       gatavsLabasPusesUI[20] = " Serkocini : " + Serkocini.serkocini.getSerkocinuDaudzums() + "      ";

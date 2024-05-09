@@ -3,7 +3,7 @@ package Spele.SpelesProcesi;
 import Spele.PaligMetodes;
 import Spele.Enums.NavesIemesli;
 import Spele.FailuLietotaji.SkanasSpeletajs;
-import Spele.MazasSpeles.MazoSpeluIzvelesKods;
+import Spele.Majasdarbi.MajasdarbuIzvelesKods;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.Spoki.Spoks;
 import Spele.Varonis.VaronaDarbibas;
@@ -31,13 +31,13 @@ public class Laiks extends Thread {
     while (Main.spelePalaista) {
       // 1. Skaita laiku un nosaka, kad spēle ir beigusies.
       laikaVadiba(); 
-      MazoSpeluIzvelesKods.izpildijaVisusMajasdarbus();
+      MajasdarbuIzvelesKods.izpildijaVisusMajasdarbus();
       // 2. Izpilda spoku darbības.
       spokuDarbibas();
       // 3. Skaitītāji.
       VaronaDarbibas.skaititCikIlgiLidzElektribasPieslegsanas();
       VaronaDarbibas.skaititCikIlgiDegsSerkocins();
-      MazoSpeluIzvelesKods.pamazinatLaikuLidzMajasdarbam();
+      MajasdarbuIzvelesKods.pamazinatLaikuLidzMajasdarbam();
       // 4. Citas darbības.
       randomIespejaIzslegtKadasIstabasGaismu(); // Iestatījums.
       // Gulēšana līdz nākamam kadram.

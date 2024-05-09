@@ -1,4 +1,4 @@
-package Spele.MazasSpeles.Karatavas;
+package Spele.Majasdarbi.Karatavas;
 
 import java.util.ArrayList;
 import java.util.Arrays;

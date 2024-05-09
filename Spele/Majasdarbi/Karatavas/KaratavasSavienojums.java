@@ -1,15 +1,15 @@
-package Spele.MazasSpeles.Karatavas;
+package Spele.Majasdarbi.Karatavas;
 
 import Spele.PaligMetodes;
 import Spele.Enums.EkranuVeidi;
-import Spele.MazasSpeles.MazoSpeluIzvelesKods;
+import Spele.Majasdarbi.MajasdarbuIzvelesKods;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SpelesProcesi.Izvade;
 import Spele.SpelesProcesi.Main;
 
 // Karātavu kods savienots izmantojamā jeb spēlējamā stāvoklī:
 public class KaratavasSavienojums {
-  public static boolean mSpeleKaratavas = false;
+  public static boolean MDKaratavas = false;
 
   // Metode caur kuru spēlē strādā karātavu kods.
   public static void palaistKaratavasMazoSpeli() {
@@ -22,8 +22,8 @@ public class KaratavasSavienojums {
     // Izslēgšanas jeb uzvaras kods:
     if (Karatavas.karatavasObjekts.irAtminetsVards()) {
       PaligMetodes.gulet(2); // Ļauj spēlētājam redzēt atminēto vārdu.
-      mSpeleKaratavas = false;
-      MazoSpeluIzvelesKods.izpildijaMajasdarbu();
+      MDKaratavas = false;
+      MajasdarbuIzvelesKods.izpildijaMajasdarbu();
     }
   }
 }

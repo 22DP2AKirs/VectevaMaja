@@ -11,19 +11,18 @@ import Spele.Veikals.Piederumi;
 
 public final class PagrabaSpoks extends Spoks {
   /** Spoka apraksts:
-     Pagraba spoks nāk no pagraba, kas atrodas virtuvē. Tas ir jūtīgs uz gaismu,
-     tādēļ, ja pagrabā ir ieslēgta gaisma, tad spoks ātrāk kāps pa kāpnēm, ātrāk
-     tuvojoties pie sava mērķa. Mērķis ir novākt varoni. Pagraba gaisma mēdz reizēm
-     pati ieslēgties, to var izslēgt ar komandu "G". Kad pagraba spoks ir pie virtuves
-     (Pirmspēdējā fāze), tad viņš saplēsīs pagraba gaismu, padarot to par neizmantojamu.
-
-     Lai spoku aizbiedētu varonim ir jāizslēdz mājas elektrība, liekot spokam šoka
-     stāvoklī nokrist lejā pa kāpnēm uz viņa sākuma pozīciju (To var dzirdēt).
-
-     Dati:
-     Spoks uzbrūk uz 10 fāzes.
-  */
-
+   * Pagraba spoks nāk no pagraba, kas atrodas virtuvē. Tas ir jūtīgs uz gaismu,
+   * tādēļ, ja pagrabā ir ieslēgta gaisma, tad spoks ātrāk kāps pa kāpnēm, ātrāk
+   * tuvojoties pie sava mērķa. Mērķis ir novākt varoni. Pagraba gaisma mēdz reizēm
+   * pati ieslēgties, to var izslēgt ar komandu "G". Kad pagraba spoks ir pie virtuves
+   * (Pirmspēdējā fāze), tad viņš saplēsīs pagraba gaismu, padarot to par neizmantojamu.
+   *
+   * Lai spoku aizbiedētu varonim ir jāizslēdz mājas elektrība, liekot spokam šoka
+   * stāvoklī nokrist lejā pa kāpnēm uz viņa sākuma pozīciju (To var dzirdēt).
+   *
+   * Dati:
+   * Spoks uzbrūk uz 10 fāzes.
+   */
   public static PagrabaSpoks pagrabaSpoks = new PagrabaSpoks(SakumaDati.virtuvesSpokaAtlautaAgresivitate, SakumaDati.virtuvesSpokaAtputasLaiks);
 
   private int ieslegtasGaismasAgresivitate;

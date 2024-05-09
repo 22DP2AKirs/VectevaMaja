@@ -6,15 +6,15 @@ import Spele.K;
 import Spele.Testi;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.KontaKods.Konts;
+import Spele.Majasdarbi.MajasdarbuIzvelesKods;
+import Spele.Majasdarbi.AtrodiPari.AtrodiPariSavienojums;
+import Spele.Majasdarbi.Karatavas.KaratavasSavienojums;
+import Spele.Majasdarbi.SamaisitieVardi.SMSavienojums;
 import Spele.Enums.EkranuVeidi;
-import Spele.MazasSpeles.MazoSpeluIzvelesKods;
-import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
-import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
-import Spele.MazasSpeles.SamaisitieVardi.SMSavienojums;
 import Spele.Parklajumi.BildesParklajumi;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
-import Spele.Varonis.DarbibuIzpilde;
+import Spele.Varonis.DarbibuIzvlele;
 import Spele.Varonis.VaronaStatusaEfekti;
 import Spele.Veikals.Piederumi;
 
@@ -76,7 +76,7 @@ public class Main {
         // 1. Atļauj rakstīt tekstu.
         TastaturasKlausitajs.komandasTekstaFunkcija();
         // 2. Apstrādā lietotāja ievadi.
-        DarbibuIzpilde.izpilditSakumaEkranaDarbibas(TastaturasKlausitajs.komanda);
+        DarbibuIzvlele.izpilditSakumaEkranaDarbibas(TastaturasKlausitajs.komanda);
         // 3. Izvada bildi terminālī.
         Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.SAKUMA);
       }
@@ -94,7 +94,7 @@ public class Main {
         // 2. Definē mainīgo, kas tiks izmantots ciklā kā lietotāja nospiestais taustiņš.
         TastaturasKlausitajs.definetCiklaKomandu();
         // 3. Apstrādā lietotāja ievadi.
-        DarbibuIzpilde.izpilditSpelesDarbibas(ciklaKomanda , TastaturasKlausitajs.komandasTeksts , TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu); // Pilnībā aizvieto 'VaronaDarbibas.apstradatKomandu(Ievade.lietotajaIevade);'.
+        DarbibuIzvlele.izpilditSpelesDarbibas(ciklaKomanda , TastaturasKlausitajs.komandasTeksts , TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu); // Pilnībā aizvieto 'VaronaDarbibas.apstradatKomandu(Ievade.lietotajaIevade);'.
         // 4. Izvade uz ekrānu jeb termināli.
         izvadesMasivuAtjaunosana();
         // 5. Pārbauda vai uzvarēja, vai zaudēja u.t.t.
@@ -112,14 +112,14 @@ public class Main {
   private static void izvadesMasivuAtjaunosana() {
     // Visām fāzēm, bildēm un visam vizuālajam ir jābūt gatavam pirms šīs metodes izsaukšanas!!!
     // Spoku vizuālais atjaunojums notiek Laiks.java Klasē.
-    if (!MazoSpeluIzvelesKods.varonisIrMazajaSpele) {
+    if (!MajasdarbuIzvelesKods.varonisIrMajasdarba) {
       Izvade.istabasBilde = BildesParklajumi.parklataIstaba;
     }
     else {      
-      if (KaratavasSavienojums.mSpeleKaratavas) {
+      if (KaratavasSavienojums.MDKaratavas) {
         KaratavasSavienojums.palaistKaratavasMazoSpeli();
       }
-      else if (AtrodiPariSavienojums.mSpeleAtrodiPari) {
+      else if (AtrodiPariSavienojums.MDAtrodiPari) {
         AtrodiPariSavienojums.palaistAtrodiPariMazoSpeli();
       }
       else if (SMSavienojums.MDSamaisitieVardi) {

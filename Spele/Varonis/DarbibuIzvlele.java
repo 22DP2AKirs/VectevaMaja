@@ -12,7 +12,7 @@ import Spele.Enums.Virziens;
 import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.Izskati.IstabuIzskati;
 import Spele.KontaKods.Konts;
-import Spele.MazasSpeles.MazoSpeluIzvelesKods;
+import Spele.Majasdarbi.MajasdarbuIzvelesKods;
 import Spele.Parklajumi.BildesParklajumi;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Main;
@@ -21,8 +21,8 @@ import Spele.Veikals.Piederumi;
 import Spele.Veikals.VeikalaKods;
 
 
-public class DarbibuIzpilde {
-  /* Clases doma jeb jēga: 
+public class DarbibuIzvlele {
+  /* Klases doma jeb jēga: 
      Lai katrā klasē nevajadzētu veidot vairākus if-else_if nosacījumus, specifiskām
      pārbaudēm. Šī klases saturēs vienu lielu if-else_if nosacījumu, kurš izsauks visas
      nepieciešamās metodes atkarīgi no tā, kur atrodas un uz kurieni skatās varonis.
@@ -52,7 +52,7 @@ public class DarbibuIzpilde {
 
       
     // Spēles komandas.
-    if (!MazoSpeluIzvelesKods.varonisIrMazajaSpele) {
+    if (!MajasdarbuIzvelesKods.varonisIrMajasdarba) {
       
       if (!komanda.equals(K.TUKSA_IEVADE) || pabeigtsKomTeksts) {
         // 1. Atrod darbību noteiktai komandai.

@@ -6,9 +6,9 @@ import Spele.Iestatijumi;
 import Spele.K;
 import Spele.PaligMetodes;
 import Spele.Izskati.UIizskats;
-import Spele.MazasSpeles.MazoSpeluIzvelesKods;
-import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
-import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
+import Spele.Majasdarbi.MajasdarbuIzvelesKods;
+import Spele.Majasdarbi.AtrodiPari.AtrodiPariSavienojums;
+import Spele.Majasdarbi.Karatavas.KaratavasSavienojums;
 import Spele.Spoki.Spoks;
 import Spele.Varonis.VaronaStatusaEfekti;
 
@@ -126,9 +126,9 @@ public class Izvade extends Thread {
 
   private static void izvaditMSpelesInfo() {
     System.out.println();
-    System.out.println("Ieksa m-spele: " + MazoSpeluIzvelesKods.varonisIrMazajaSpele + ", Izveleta m-spele: " + MazoSpeluIzvelesKods.izveletaMazaSpele + "\033[0K");
-    System.out.println("Izveleta spele: (Karatavas : " + KaratavasSavienojums.mSpeleKaratavas + "), (Atrodi pari : " + AtrodiPariSavienojums.mSpeleAtrodiPari + ")\033[0K");
-    System.out.println("Laiks lidz majasdarbam: " + MazoSpeluIzvelesKods.laiksLidzJaunamMajasdarbamMainigais + " no " + MazoSpeluIzvelesKods.laiksLidzJaunamMajasdarbamNemainigais + "\033[0K");
+    System.out.println("Ieksa m-spele: " + MajasdarbuIzvelesKods.varonisIrMajasdarba + ", Izveleta m-spele: " + MajasdarbuIzvelesKods.izveletsMajasdarbs + "\033[0K");
+    System.out.println("Izveleta spele: (Karatavas : " + KaratavasSavienojums.MDKaratavas + "), (Atrodi pari : " + AtrodiPariSavienojums.MDAtrodiPari + ")\033[0K");
+    System.out.println("Laiks lidz majasdarbam: " + MajasdarbuIzvelesKods.laiksLidzJaunamMajasdarbamMainigais + " no " + MajasdarbuIzvelesKods.laiksLidzJaunamMajasdarbamNemainigais + "\033[0K");
     izvaditSpelesPapildinformaciju();
   }
 

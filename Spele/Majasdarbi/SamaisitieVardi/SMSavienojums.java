@@ -1,4 +1,4 @@
-package Spele.MazasSpeles.SamaisitieVardi;
+package Spele.Majasdarbi.SamaisitieVardi;
 
 import Spele.Enums.EkranuVeidi;
 import Spele.Parklajumi.EkranuParklajumi;

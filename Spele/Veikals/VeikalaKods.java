@@ -12,7 +12,7 @@ import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Izvade;
 import Spele.SpelesProcesi.Main;
 import Spele.SpelesProcesi.TastaturasKlausitajs;
-import Spele.Varonis.DarbibuIzpilde;
+import Spele.Varonis.DarbibuIzvlele;
 
 public class VeikalaKods {
   // Kameras varianti.
@@ -91,7 +91,7 @@ public class VeikalaKods {
     pievienotLimenaLinijas(parklajamaisMasivs, Serkocini.serkocini.piederumaLimenis, 12);
 
     // 2. Iekrāso izvēlēto izvēli un izvada uzlabojuma bildi.
-    if (DarbibuIzpilde.izvelnesSkaitlis == 0) {
+    if (DarbibuIzvlele.izvelnesSkaitlis == 0) {
       parklajamaisMasivs[5] += K.ORANZS + "\033[15GK A M E R A S" + K.RESET + K.EKRANA_GARUMA_IZMERS;
 
       // Izvada priekšmeta bildi.
@@ -106,14 +106,14 @@ public class VeikalaKods {
         }
       }
     }
-    else if (DarbibuIzpilde.izvelnesSkaitlis == 1) {
+    else if (DarbibuIzvlele.izvelnesSkaitlis == 1) {
       parklajamaisMasivs[10] += K.ORANZS + "\033[15GS E R K O C I N I" + K.RESET + K.EKRANA_GARUMA_IZMERS;
       // Izvada priekšmeta bildi.
       for (int i = 0; i < VekalaIzskati.serkocinuMasivi[Serkocini.serkocini.piederumaLimenis].length ; i++) {
         parklajamaisMasivs[21 + i] += "\033[72G" + VekalaIzskati.serkocinuMasivi[Serkocini.serkocini.piederumaLimenis][i] + K.EKRANA_GARUMA_IZMERS;
       }
     }
-    else if (DarbibuIzpilde.izvelnesSkaitlis == 2){
+    else if (DarbibuIzvlele.izvelnesSkaitlis == 2){
       parklajamaisMasivs[15] += K.ORANZS + "\033[15GD U R V J U   S L E D Z I S" + K.RESET + K.EKRANA_GARUMA_IZMERS;
       // Izvada priekšmeta bildi.
       for (int i = 0; i < VekalaIzskati.spelesUzlabojumuMasivi[0].length ; i++) {
@@ -135,25 +135,25 @@ public class VeikalaKods {
   public static void veikalaPalaisana() {
     TastaturasKlausitajs.uzreizNodzestKomandu();
     TastaturasKlausitajs.nodzestKomandasTekstu();
-    DarbibuIzpilde.izvelnesSkaitlis = 0;
+    DarbibuIzvlele.izvelnesSkaitlis = 0;
     
     while (!TastaturasKlausitajs.komanda.equals("Q")) {
       // 1. Definē cikla komandu.
       TastaturasKlausitajs.definetCiklaKomandu();
       // 2. Navigācija starp izvelnēm.
-      DarbibuIzpilde.izvelnesKustiba(Main.ciklaKomanda, 3); // Izveido izvēlnes opcijas.
+      DarbibuIzvlele.izvelnesKustiba(Main.ciklaKomanda, 3); // Izveido izvēlnes opcijas.
       // 3. Izvade uz ekrānu.
       Izvade.izvadesMasivs = veikalaParklasana(VekalaIzskati.VEIKALA_SKATS); // Izvade uz terminālu.
       // 4. Nosaka darbību.
-      if (DarbibuIzpilde.izvelnesSkaitlis == 0) {
+      if (DarbibuIzvlele.izvelnesSkaitlis == 0) {
         // Kameras:
         kamerasKods(Main.ciklaKomanda);
       }
-      else if (DarbibuIzpilde.izvelnesSkaitlis == 1) {
+      else if (DarbibuIzvlele.izvelnesSkaitlis == 1) {
         // Sērkociņi:
         serkocinuKods(Main.ciklaKomanda);
       }
-      else if (DarbibuIzpilde.izvelnesSkaitlis == 2) {
+      else if (DarbibuIzvlele.izvelnesSkaitlis == 2) {
         // Durvju slēdzis:
         durvjuSledzaKods(Main.ciklaKomanda);
       }

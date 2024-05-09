@@ -1,6 +1,6 @@
 #KontaDati:
-Lietotajvards=BBB
-Parole=BBB
+Lietotajvards=OLA
+Parole=cepta123
 DrosibasVards=BBB
 
 #SpelesDati:

@@ -24,7 +24,7 @@ public class Statistika {
       Izvade.izvadesMasivs = EkranuParklajumi.parklatEkranu(EkranuVeidi.STATISTIKA);
 
       if (TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu && TastaturasKlausitajs.komandasTeksts.length() == 4) { //  && PaligMetodes.nonemtAtstarpes(TastaturasKlausitajs.komandasTeksts).length()
-        if (TastaturasKlausitajs.komandasTeksts.matches("[0-5]{1}[A-Z]{3}")) { // pirmais ir cipars [0-5] {n} reizes, pēc tam ir lielie burti [A-Z] {n} reizes pēc kārtas.
+        if (TastaturasKlausitajs.komandasTeksts.matches("[0-4]{1}[A-Z]{3}")) { // pirmais ir cipars [0-5] {n} reizes, pēc tam ir lielie burti [A-Z] {n} reizes pēc kārtas.
           // 1. Paņem pirmo teksta ciparu.
           kolonnasIndekss = Integer.parseInt(TastaturasKlausitajs.komandasTeksts.substring(0, 1));
           // 2. Paņem ievadīto komandu jeb filtru.

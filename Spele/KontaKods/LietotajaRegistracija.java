@@ -8,11 +8,11 @@ import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SpelesProcesi.Izvade;
 import Spele.SpelesProcesi.Main;
 import Spele.SpelesProcesi.TastaturasKlausitajs;
-import Spele.Varonis.DarbibuIzpilde;
+import Spele.Varonis.DarbibuIzvlele;
 
 public class LietotajaRegistracija {
   public static void registreties() {
-    DarbibuIzpilde.izvelnesSkaitlis = 0;
+    DarbibuIzvlele.izvelnesSkaitlis = 0;
     TastaturasKlausitajs.uzreizNodzestKomandu();
     TastaturasKlausitajs.rakstaKomandasTekstu = false;
 
@@ -37,7 +37,7 @@ public class LietotajaRegistracija {
       }
       
       // 4. Kustina izvēlni.
-      DarbibuIzpilde.izvelnesKustiba(TastaturasKlausitajs.komanda, 3);
+      DarbibuIzvlele.izvelnesKustiba(TastaturasKlausitajs.komanda, 3);
 
       // 5. Komandas teksta darbības.
       if (TastaturasKlausitajs.komandasTeksts.equals("SAVE") && TastaturasKlausitajs.pabeidzaRakstitKomandasTekstu) {
@@ -76,21 +76,21 @@ public class LietotajaRegistracija {
       }
 
       // 6. Komandas darbības.
-      if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzpilde.izvelnesSkaitlis == 0 && !TastaturasKlausitajs.rakstaKomandasTekstu) {    
+      if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzvlele.izvelnesSkaitlis == 0 && !TastaturasKlausitajs.rakstaKomandasTekstu) {    
         /// Lietotājvārds.
         lietotajvardaIevade();
       }
-      else if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzpilde.izvelnesSkaitlis == 1 && !TastaturasKlausitajs.rakstaKomandasTekstu) {
+      else if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzvlele.izvelnesSkaitlis == 1 && !TastaturasKlausitajs.rakstaKomandasTekstu) {
         /// Parole.
         parolesIevade();
       }
-      else if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzpilde.izvelnesSkaitlis == 2 && !TastaturasKlausitajs.rakstaKomandasTekstu) {
+      else if (TastaturasKlausitajs.komanda.equals("ENTER") && DarbibuIzvlele.izvelnesSkaitlis == 2 && !TastaturasKlausitajs.rakstaKomandasTekstu) {
         /// Drošības vārds.
         drosibasVardaIevade();
       }
     }
 
-    DarbibuIzpilde.izvelnesSkaitlis = 0; // Novieto izvēlnes poz. uz pirmo jeb pēc indeksa 0.
+    DarbibuIzvlele.izvelnesSkaitlis = 0; // Novieto izvēlnes poz. uz pirmo jeb pēc indeksa 0.
     TastaturasKlausitajs.uzreizNodzestKomandu();
     Konts.notiritLietotajaDatus();
     TastaturasKlausitajs.izslegtKomandasTekstaFunkciju();

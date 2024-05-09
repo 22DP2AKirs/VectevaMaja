@@ -1,8 +1,8 @@
-package Spele.MazasSpeles.SamaisitieVardi;
+package Spele.Majasdarbi.SamaisitieVardi;
 
 import Spele.K;
 import Spele.PaligMetodes;
-import Spele.MazasSpeles.MazoSpeluIzvelesKods;
+import Spele.Majasdarbi.MajasdarbuIzvelesKods;
 import Spele.SpelesProcesi.Main;
 
 public class SamaisitieVardi {
@@ -60,7 +60,7 @@ public class SamaisitieVardi {
       // Uzvaras kods.
       PaligMetodes.gulet(1);
       SMSavienojums.MDSamaisitieVardi = false;
-      MazoSpeluIzvelesKods.izpildijaMajasdarbu();
+      MajasdarbuIzvelesKods.izpildijaMajasdarbu();
     }
   }
 }

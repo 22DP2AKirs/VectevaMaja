@@ -1,4 +1,4 @@
-package Spele.MazasSpeles.AtrodiPari;
+package Spele.Majasdarbi.AtrodiPari;
 
 // Viss vizuālais priekš šīs m-spēles.
 public class AtrodiPariIzskati {

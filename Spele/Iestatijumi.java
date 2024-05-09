@@ -8,7 +8,7 @@ import Spele.KontaKods.Konts;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SpelesProcesi.Izvade;
 import Spele.SpelesProcesi.TastaturasKlausitajs;
-import Spele.Varonis.DarbibuIzpilde;
+import Spele.Varonis.DarbibuIzvlele;
 
 public class Iestatijumi {
   // Kontrole.
@@ -24,7 +24,7 @@ public class Iestatijumi {
   public static void IestatijumuKods() {
     TastaturasKlausitajs.uzreizNodzestKomandu();
     TastaturasKlausitajs.ieslegtKomandasTekstaFunkciju();
-    DarbibuIzpilde.izvelnesSkaitlis = 0;
+    DarbibuIzvlele.izvelnesSkaitlis = 0;
 
     while (!TastaturasKlausitajs.komanda.equals("Q")) {
       // 1. Izvade uz termināli.
@@ -34,10 +34,10 @@ public class Iestatijumi {
       // 3. Ieslēdz 'toggle' pogu uz taustiņa 'ENTER'.
       TastaturasKlausitajs.enterSledzis();
       // 4. Pārvietošanās pār izvelnēm.
-      DarbibuIzpilde.izvelnesKustiba(TastaturasKlausitajs.komanda, 10);
+      DarbibuIzvlele.izvelnesKustiba(TastaturasKlausitajs.komanda, 10);
       // 5. Nomaina masīva elementu uz tiko ievadīto.
       if (TastaturasKlausitajs.bijaEnter && TastaturasKlausitajs.komandaNavTuksa()) {
-        kontrole[DarbibuIzpilde.izvelnesSkaitlis] = TastaturasKlausitajs.komanda;
+        kontrole[DarbibuIzvlele.izvelnesSkaitlis] = TastaturasKlausitajs.komanda;
         TastaturasKlausitajs.bijaEnter = false;
         TastaturasKlausitajs.uzreizNodzestKomandu();
       }
@@ -73,7 +73,7 @@ public class Iestatijumi {
     }
 
     TastaturasKlausitajs.bijaEnter = false;
-    DarbibuIzpilde.izvelnesSkaitlis = 0;
+    DarbibuIzvlele.izvelnesSkaitlis = 0;
   }
   
   public static void atjauninatKontrolesMainigos() {

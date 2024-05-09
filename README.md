@@ -68,28 +68,44 @@ Vēlamā lejupielādes secība:
 5. Izvēlaties Spele.SpelesProcesi.Main. Tas ir "Main" jeb galvenais programmas fails. <br>
 ![alt text](https://github.com/22DP2AKirs/VectevaMaja/blob/main/CitiFaili/image-19.png?raw=true)<br> 
 
-## Stāsts
+# Spēles stāsts
 
 Viendien Jūs staigājāt pa veikalu un pamanījāt, ka uz pārdošanu ir izlikta jauna videokarte, kura spēj pavilkt jebkuru spēli uz maksimālo kvalitāti.
 Tās cena bija gandrīz tāda pati kā citām videokartēm, 700 Eiro. Jūs tik ļoti gribējāt iegādāties to videokarti, bet zinājāt, ka ar tehnikuma stipendiju to nopirkt nebūs iespējams.
 Tādēļ Jūs vērsāties pie vecākiem, lai censtos iegūt viņu finansiālo atbalstu. No visiem pieaugušajiem atsaucās tikai Vectēvs, bet viņš būs gatavs dot Jums naudu ar mazu nosacījumu.
 "Tā kā es šovakar braucu uz savu nedēļas atvaļinājumu Tev būs pa vakariem jāpieskata mana lauku māja. Kāpēc? Tādēļ ka esmu pamanījis, ka kaimiņi pakluso staigā pa manu īpašumu un zog burkānus.
-Man ir bail, ka kamēr es būšu atvaļinājumā viņi ielavīsies mājā un kaut ko nozags. Es vēl neesu uzstādījis signalizācijas sistēmu tādēļ man vajadzēs kādu, uz kura es varētu paļauties 7 dienas.
-Kā pateicība par Tavu smago darbu, es Tev katru vakaru pārskaitīšu 100 eiro, un nedēļas beigās tu varēsi atļauties to mantu kuru Tu tik ļoti gribēji." Jūs dzirdot šo informāciju momentāli
-piekrītat un sarunājat, kā Jūs tur varat nokļūt. Beigu beigās pieskatīt mazu māju nav nekas grūts, vai tad ne..?
+Man ir bail, ka kamēr es būšu atvaļinājumā viņi ielavīsies mājā un kaut ko nozags. Es vēl neesu uzstādījis signalizācijas sistēmu tādēļ man vajadzēs kādu, uz kura es varētu paļauties 5 dienas.
+Kā pateicība par Tavu smago darbu, es Tev katru vakaru pārskaitīšu nelielu naudas summu, un nedēļas beigās tu varēsi atļauties to mantu kuru Tu tik ļoti gribēji." Jūs dzirdot šo informāciju uzreiz piekrītat un sarunājat, kā Jūs tur varat nokļūt. Beigu beigās pieskatīt mazu māju nav nekas grūts, vai tad ne..?
 
 ## Kontrole
 
-Komandas bieži būs redzamas uz ekrāna, viss kas Jums ir jādara ir pēc katras komandas jāspiež \<ENTER> taustiņš, lai aizsūtītu programmai komandu.<br> **Piemēri:**<br>Komanda pēctam ENTER: <br> >>> W -> ENTER <br>>>> abols -> ENTER <br>>>> tirit -> ENTER
+Komandas bieži būs redzamas uz ekrāna. 
 
-## Idejas
+Sākuma ekrāna kontrole:
+[ ENTER ] - Ieiet.
+[ W ] - Kustināt izvelni uz augšu.
+[ S ] - Kustināt izvelni uz leju.
+[ TAB ] - Pārslēgt burtu izmēru.
+[ X ] - Pārslēgt rakstīšanas režīmu.
+
+Spēles kontrole:
+[ W ] - Iet uz priekšu.
+[ D ] - Pagriest galvu pa labi.
+[ A ] - Pagriest galvu pa kreisi.
+[ E ] - Izmantot izcelto objektu.
+[ G ] - Izslēgt / Ieslēgt gaismu (skatoties uz gaismas slēdzi).
+[ SPACE ] - Izslēgt / Ieslēgt kameru.
+[ Q ] - Iziet no mājasdarba.
+[ F ] - Aizdedzināt sērkociņu.
+[ TAB ] - Pārslēgt burtu izmēru.
+[ X ] - Pārslēgt rakstīšanas režīmu.
+
+### Idejas
 
 - [x] Iespēja mierīgi staigāt apkārt pa māju.
 - [x] Ielikt iepriekšējās spēles spokus.
 - [x] Jaunas mehānikas vecajiem spokiem. {Loga spoks var izvēlēties savu istabu.}
-- [ ] Jauni spoki:
-- [ ] Mājas arku jeb durvju monstrs.
-- [ ] Papildus loga spoks.
+- [ ] Jauni spoki (Mājas arku jeb durvju monstrs, Papildus loga spoks)
 - [x] Strādājošs laiks.
 - [x] Mājas darbības. {Karātavas , skill check , }
 - [x] Mājas darbību pienākošais laiks, piem., tīrīt traukus 2 AM, pildīt mājas darbus no 4 - 5 AM.
@@ -97,20 +113,21 @@ Komandas bieži būs redzamas uz ekrāna, viss kas Jums ir jādara ir pēc katra
 - [ ] Sienas pulksteņa darbības???
 - [x] Skaņa.
 - [ ] Izskrāsot durvis brūnas un logus zilus.
-- [ ] Jāpieiet pie loga. cits spoks?
 - [ ] Aizdedzināt spoku :|?????
 - [x] Pārveidot spēles mērķi no izdzīvot līdz 6 no rīta, uz izpildīt 'n' uzdevumus/mājasdarbus pirms 6 no rīta.
+- ...
 
 ### Balansēšana vai uzlabojumi
 
 - [ ] Skaņa, kad ieslēdzas mājasdarbs.
 - [x] Nomainīt 3. nakts grūtību uz vieglāku.
-- [ ] Vairāk m-spēles.
+- [x] Vairāk mājasdarbu.
 - [x] Samazināt kāršu spēles kāršu daudzumu (līdz 8).
 - [x] Samazināt iespēju izslēgt gaismu istabās.
 - [x] Pievienot 'stressa' līniju pie labās UI puses (Lai spēlētājam nevajadzētu minēt cik liels tas tam ir).
 - [x] Pievienot spoku 'Čill' stadiju (stadija, kur spoks gulēs n gājienus).
 - [ ] Apakšas UI daļā rādīt aktuālo taustiņu darbības (kurus uzlika lietotājs iestatījumos). 
+- ...
 
 ### TODO (fixi)
 
@@ -119,10 +136,10 @@ Komandas bieži būs redzamas uz ekrāna, viss kas Jums ir jādara ir pēc katra
 - [x] Jāsalabo 'GAME OVER' ekrāni.
 - [x] Programma nolasa datus no tiko pieslēgtā konta.
 - [x] Spoku rand kustības cipars ir vienmēr 0 (viņi kustās katru sekundi). SALABOTS!!
-- [ ] Reseto datus, kad izlogojas no viena konta un ielogojas citā.
+- [x] Reseto datus, kad izlogojas no viena konta un ielogojas citā.
 - ...
 
-## Spēles nobeiguma stress
+### Spēles nobeiguma stress
 
 1. Istabās sprāgst lampas, padarot to tumšu (sprāgst ar skaņu).
 2. Mūzika?

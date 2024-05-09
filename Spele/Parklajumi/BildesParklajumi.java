@@ -7,9 +7,9 @@ import Spele.PaligMetodes;
 import Spele.Enums.Istaba;
 import Spele.Izskati.IstabuIzskati;
 import Spele.Izskati.SpokuIzskati;
-import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
-import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
-import Spele.MazasSpeles.SamaisitieVardi.SMSavienojums;
+import Spele.Majasdarbi.AtrodiPari.AtrodiPariSavienojums;
+import Spele.Majasdarbi.Karatavas.KaratavasSavienojums;
+import Spele.Majasdarbi.SamaisitieVardi.SMSavienojums;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.Spoki.DurvjuSpoks;
 import Spele.Spoki.LogaSpoks;
@@ -372,7 +372,7 @@ public class BildesParklajumi {
   // * Objektu pārklāja metodes.
 
   private static void uzliktAtrodiPariKasti(String[] mainamaisMasivs) {
-    if (AtrodiPariSavienojums.mSpeleAtrodiPari) {
+    if (AtrodiPariSavienojums.MDAtrodiPari) {
       mainamaisMasivs[10] += "\033[42G" + K.OBJEKTS + "_______________" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
       mainamaisMasivs[11] += "\033[41G" + K.OBJEKTS + "/___/_____/___/ |" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
       mainamaisMasivs[12] += "\033[41G" + K.OBJEKTS + "|   $     $   | |" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
@@ -408,7 +408,7 @@ public class BildesParklajumi {
   }
 
   private static void uzliktKaratavuGramatu(String[] mainamaisMasivs) {
-    if (KaratavasSavienojums.mSpeleKaratavas) {
+    if (KaratavasSavienojums.MDKaratavas) {
       mainamaisMasivs[9] += "\033[21G" + K.OBJEKTS + "/  ~~ /" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
       mainamaisMasivs[10] += "\033[20G" + K.OBJEKTS + "/_____/" + K.RESET + K.BILDES_MASIVA_BEIGU_KURSORA_POZICIJA;
     }

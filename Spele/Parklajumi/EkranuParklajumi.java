@@ -6,20 +6,20 @@ import Spele.FailuLietotaji.FailuRedigetajs;
 import Spele.FailuLietotaji.SkanasSpeletajs;
 import Spele.Izskati.EkranuIzskati;
 import Spele.KontaKods.Konts;
+import Spele.Majasdarbi.Karatavas.Karatavas;
+import Spele.Majasdarbi.Karatavas.KaratavuIzskati;
+import Spele.Majasdarbi.SamaisitieVardi.SamaisitieVardi;
 import Spele.Iestatijumi;
 import Spele.K;
 import Spele.PaligMetodes;
 import Spele.Statistika;
 import Spele.Enums.EkranuVeidi;
 import Spele.Enums.NavesIemesli;
-import Spele.MazasSpeles.Karatavas.Karatavas;
-import Spele.MazasSpeles.Karatavas.KaratavuIzskati;
-import Spele.MazasSpeles.SamaisitieVardi.SamaisitieVardi;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Laiks;
 import Spele.SpelesProcesi.Main;
 import Spele.SpelesProcesi.TastaturasKlausitajs;
-import Spele.Varonis.DarbibuIzpilde;
+import Spele.Varonis.DarbibuIzvlele;
 import Spele.Varonis.VaronaStatusaEfekti;
 import Spele.Veikals.Serkocini;
 
@@ -223,23 +223,23 @@ public class EkranuParklajumi {
     
     mainamaisMasivs[7] += "\033[90G" + Iestatijumi.kadriSekunde + K.EKRANA_GARUMA_IZMERS;
     
-    mainamaisMasivs[6 + DarbibuIzpilde.izvelnesSkaitlis * 2] += bultina + K.RESET + "\033[50G" + K.EKRANA_GARUMA_IZMERS;
+    mainamaisMasivs[6 + DarbibuIzvlele.izvelnesSkaitlis * 2] += bultina + K.RESET + "\033[50G" + K.EKRANA_GARUMA_IZMERS;
   }
 
   private static void redigesanasParklasana(String[] mainamaisMasivs) {
-    if (DarbibuIzpilde.izvelnesSkaitlis == 0) {
+    if (DarbibuIzvlele.izvelnesSkaitlis == 0) {
       mainamaisMasivs[4] += K.DEBESU_ZILS + "\033[68G.:" + K.RESET + "\033[106G";
       mainamaisMasivs[5] += K.DEBESU_ZILS + "\033[64G. '  :" + K.RESET + "\033[106G";
       mainamaisMasivs[6] += K.DEBESU_ZILS + "\033[64G' .  :" + K.RESET + "\033[106G";
       mainamaisMasivs[7] += K.DEBESU_ZILS + "\033[68G':" + K.RESET + "\033[106G";
     }
-    else if (DarbibuIzpilde.izvelnesSkaitlis == 1) {
+    else if (DarbibuIzvlele.izvelnesSkaitlis == 1) {
       mainamaisMasivs[12] += K.DEBESU_ZILS + "\033[68G.:" + K.RESET + "\033[106G";
       mainamaisMasivs[13] += K.DEBESU_ZILS + "\033[64G. '  :" + K.RESET + "\033[106G";
       mainamaisMasivs[14] += K.DEBESU_ZILS + "\033[64G' .  :" + K.RESET + "\033[106G";
       mainamaisMasivs[15] += K.DEBESU_ZILS + "\033[68G':" + K.RESET + "\033[106G";
     }
-    else if (DarbibuIzpilde.izvelnesSkaitlis == 2) {
+    else if (DarbibuIzvlele.izvelnesSkaitlis == 2) {
       mainamaisMasivs[20] += K.DEBESU_ZILS + "\033[68G.:" + K.RESET + "\033[106G";
       mainamaisMasivs[21] += K.DEBESU_ZILS + "\033[64G. '  :" + K.RESET + "\033[106G";
       mainamaisMasivs[22] += K.DEBESU_ZILS + "\033[64G' .  :" + K.RESET + "\033[106G";
@@ -281,13 +281,13 @@ private static void pieslegsanasParklasana(String[] mainamaisMasivs) {
     
 
     // Pārvieto bultiņu.
-    if (DarbibuIzpilde.izvelnesSkaitlis == 0) {
+    if (DarbibuIzvlele.izvelnesSkaitlis == 0) {
       mainamaisMasivs[11] += K.DEBESU_ZILS + "\033[23G\\" + "\033[82G/" + K.RESET + "\033[106G";
       mainamaisMasivs[12] += K.DEBESU_ZILS + "\033[24G\\" + "\033[81G/" + K.RESET + "\033[106G";
       mainamaisMasivs[13] += K.DEBESU_ZILS + "\033[24G/" + "\033[81G\\" + K.RESET + "\033[106G";
       mainamaisMasivs[14] += K.DEBESU_ZILS + "\033[23G/" + "\033[82G\\" + K.RESET + "\033[106G";
     }
-    else if (DarbibuIzpilde.izvelnesSkaitlis == 1) {
+    else if (DarbibuIzvlele.izvelnesSkaitlis == 1) {
       mainamaisMasivs[19] += K.DEBESU_ZILS + "\033[23G\\" + "\033[82G/" + K.RESET + "\033[106G";
       mainamaisMasivs[20] += K.DEBESU_ZILS + "\033[24G\\" + "\033[81G/" + K.RESET + "\033[106G";
       mainamaisMasivs[21] += K.DEBESU_ZILS + "\033[24G/" + "\033[81G\\" + K.RESET + "\033[106G";
@@ -301,19 +301,19 @@ private static void pieslegsanasParklasana(String[] mainamaisMasivs) {
 
   private static void registracijasParklasana(String[] mainamaisMasivs) {
     // Pārvieto bultiņu.
-    if (DarbibuIzpilde.izvelnesSkaitlis == 0) {
+    if (DarbibuIzvlele.izvelnesSkaitlis == 0) {
       mainamaisMasivs[4] += K.DEBESU_ZILS + "\033[72G.:" + K.RESET + "\033[106G";
       mainamaisMasivs[5] += K.DEBESU_ZILS + "\033[68G. '  :.............." + K.RESET + "\033[106G";
       mainamaisMasivs[6] += K.DEBESU_ZILS + "\033[68G' .  :''''''''''''''" + K.RESET + "\033[106G";
       mainamaisMasivs[7] += K.DEBESU_ZILS + "\033[72G':" + K.RESET + "\033[106G";
     }
-    else if (DarbibuIzpilde.izvelnesSkaitlis == 1) {
+    else if (DarbibuIzvlele.izvelnesSkaitlis == 1) {
       mainamaisMasivs[12] += K.DEBESU_ZILS + "\033[72G.:" + K.RESET + "\033[106G";
       mainamaisMasivs[13] += K.DEBESU_ZILS + "\033[68G. '  :.............." + K.RESET + "\033[106G";
       mainamaisMasivs[14] += K.DEBESU_ZILS + "\033[68G' .  :''''''''''''''" + K.RESET + "\033[106G";
       mainamaisMasivs[15] += K.DEBESU_ZILS + "\033[72G':" + K.RESET + "\033[106G";
     }
-    else if (DarbibuIzpilde.izvelnesSkaitlis == 2) {
+    else if (DarbibuIzvlele.izvelnesSkaitlis == 2) {
       mainamaisMasivs[20] += K.DEBESU_ZILS + "\033[72G.:" + K.RESET + "\033[106G";
       mainamaisMasivs[21] += K.DEBESU_ZILS + "\033[68G. '  :.............." + K.RESET + "\033[106G";
       mainamaisMasivs[22] += K.DEBESU_ZILS + "\033[68G' .  :''''''''''''''" + K.RESET + "\033[106G";
@@ -328,13 +328,13 @@ private static void pieslegsanasParklasana(String[] mainamaisMasivs) {
 
   private static void kontaIzvelesParklasana(String[] mainamaisMasivs) {
     // Pārvieto bultiņu.
-    if (DarbibuIzpilde.izvelnesSkaitlis == 0) {
+    if (DarbibuIzvlele.izvelnesSkaitlis == 0) {
       mainamaisMasivs[13] += K.DEBESU_ZILS + "\033[30G\\" + "\033[74G/" + K.RESET + "\033[106G";
       mainamaisMasivs[14] += K.DEBESU_ZILS + "\033[31G\\" + "\033[73G/" + K.RESET + "\033[106G";
       mainamaisMasivs[15] += K.DEBESU_ZILS + "\033[31G/" + "\033[73G\\" + K.RESET + "\033[106G";
       mainamaisMasivs[16] += K.DEBESU_ZILS + "\033[30G/" + "\033[74G\\" + K.RESET + "\033[106G";
     }
-    else if (DarbibuIzpilde.izvelnesSkaitlis == 1) {
+    else if (DarbibuIzvlele.izvelnesSkaitlis == 1) {
       mainamaisMasivs[19] += K.DEBESU_ZILS + "\033[30G\\" + "\033[74G/" + K.RESET + "\033[106G";
       mainamaisMasivs[20] += K.DEBESU_ZILS + "\033[31G\\" + "\033[73G/" + K.RESET + "\033[106G";
       mainamaisMasivs[21] += K.DEBESU_ZILS + "\033[31G/" + "\033[73G\\" + K.RESET + "\033[106G";
@@ -362,7 +362,7 @@ private static void pieslegsanasParklasana(String[] mainamaisMasivs) {
     // * Metode pārklās galveno ekrānu.
 
     // 1. Pie izvelnes teksta/opcijas pievieno bultiņas, kuras nokrāso to elementu.
-    sakumaEkranaIzvelesNosauk[DarbibuIzpilde.izvelnesSkaitlis] = izvelnesBultinas[0] + sakumaEkranaIzvelesNosauk[DarbibuIzpilde.izvelnesSkaitlis].substring(1) + izvelnesBultinas[1];
+    sakumaEkranaIzvelesNosauk[DarbibuIzvlele.izvelnesSkaitlis] = izvelnesBultinas[0] + sakumaEkranaIzvelesNosauk[DarbibuIzvlele.izvelnesSkaitlis].substring(1) + izvelnesBultinas[1];
     // 2. Uzliek izvelnes iespējas.
     mainamaisMasivs[9] += "\033[13G" + sakumaEkranaIzvelesNosauk[0] + "   " + SakumaDati.spelesNakts + ".  N A K T I " + "\033[106G"; // Turpinat.
     mainamaisMasivs[11] += "\033[10G" + sakumaEkranaIzvelesNosauk[1] + "\033[106G"; // Jauna spēle.
@@ -373,7 +373,7 @@ private static void pieslegsanasParklasana(String[] mainamaisMasivs) {
     mainamaisMasivs[21] += "\033[16G" + sakumaEkranaIzvelesNosauk[6] + "\033[106G"; // Konts.
     mainamaisMasivs[23] += "\033[16G" + sakumaEkranaIzvelesNosauk[7] + "\033[106G"; // Iziet.
     // 3. No teksta/izvelnes noņem pieliktās bultiņas, lai kad spēlētājs pārslēdzas uz citu izvēlni, tad izvelne nepaliktu nokrāsota.
-    sakumaEkranaIzvelesNosauk[DarbibuIzpilde.izvelnesSkaitlis] = " " + sakumaEkranaIzvelesNosauk[DarbibuIzpilde.izvelnesSkaitlis].substring(12, sakumaEkranaIzvelesNosauk[DarbibuIzpilde.izvelnesSkaitlis].length() - 5);
+    sakumaEkranaIzvelesNosauk[DarbibuIzvlele.izvelnesSkaitlis] = " " + sakumaEkranaIzvelesNosauk[DarbibuIzvlele.izvelnesSkaitlis].substring(12, sakumaEkranaIzvelesNosauk[DarbibuIzvlele.izvelnesSkaitlis].length() - 5);
     // 4. Pievieno konta nosaukumu.
     mainamaisMasivs[27] += "\033[26G" + Konts.displejaLietotajvards + "\033[106G";
   }

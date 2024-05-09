@@ -19,10 +19,10 @@ import Spele.Enums.NavesIemesli;
 import Spele.Enums.Virziens;
 import Spele.Enums.Istaba;
 import Spele.FailuLietotaji.SkanasSpeletajs;
-import Spele.MazasSpeles.MazoSpeluIzvelesKods;
-import Spele.MazasSpeles.AtrodiPari.AtrodiPariSavienojums;
-import Spele.MazasSpeles.Karatavas.KaratavasSavienojums;
-import Spele.MazasSpeles.SamaisitieVardi.SMSavienojums;
+import Spele.Majasdarbi.MajasdarbuIzvelesKods;
+import Spele.Majasdarbi.AtrodiPari.AtrodiPariSavienojums;
+import Spele.Majasdarbi.Karatavas.KaratavasSavienojums;
+import Spele.Majasdarbi.SamaisitieVardi.SMSavienojums;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Izvade;
 import Spele.SpelesProcesi.Laiks;
@@ -131,8 +131,8 @@ public class VaronaDarbibas {
       Laiks.spelesLaiks = (Laiks.vienaStunda * 5) - 1;
     } 
     else if (komandasTeksts.equals("MS") && pabeigtsKomTeksts) {
-      MazoSpeluIzvelesKods.izslegtVisasMazasSpeles();
-      MazoSpeluIzvelesKods.izveletaMazaSpele = false;
+      MajasdarbuIzvelesKods.izslegtVisasMazasSpeles();
+      MajasdarbuIzvelesKods.izveletsMajasdarbs = false;
     } 
   }
 
@@ -183,9 +183,9 @@ public class VaronaDarbibas {
     if (komanda.equals(Iestatijumi.ietUzPrieksu)) {
       kustetiesPaMaju(KustibasVirziens.NEGATIVS); ////////////////////////////////////////
     }
-    else if (komanda.equals(Iestatijumi.izmantotObj) && AtrodiPariSavienojums.mSpeleAtrodiPari) {
+    else if (komanda.equals(Iestatijumi.izmantotObj) && AtrodiPariSavienojums.MDAtrodiPari) {
       Izvade.ieslegtMasivaIzvadi();
-      MazoSpeluIzvelesKods.varonisIrMazajaSpele = true;
+      MajasdarbuIzvelesKods.varonisIrMajasdarba = true;
       TastaturasKlausitajs.nodzestCiklaKomandu();
       TastaturasKlausitajs.nodzestKomandasTekstu();
     }
@@ -205,9 +205,9 @@ public class VaronaDarbibas {
     else if (komandasTeksts.equals("SLEGT") && pabeigtsKomTeksts && VeikalaKods.durvjuSledzis) {
       aizslegtDurvis();
     }
-    else if (komanda.equals(Iestatijumi.izmantotObj) && KaratavasSavienojums.mSpeleKaratavas) {
+    else if (komanda.equals(Iestatijumi.izmantotObj) && KaratavasSavienojums.MDKaratavas) {
       TastaturasKlausitajs.nodzestCiklaKomandu();
-      MazoSpeluIzvelesKods.palaistMajasdarbu();
+      MajasdarbuIzvelesKods.palaistMajasdarbu();
     }
   }
 
@@ -256,7 +256,7 @@ public class VaronaDarbibas {
     else if (komanda.equals(Iestatijumi.izmantotObj) && SMSavienojums.MDSamaisitieVardi) {
       // Palaiž mājasdarbu samaisitie vardi.
       TastaturasKlausitajs.nodzestCiklaKomandu();
-      MazoSpeluIzvelesKods.palaistMajasdarbu();
+      MajasdarbuIzvelesKods.palaistMajasdarbu();
     }
   }
   
@@ -266,16 +266,16 @@ public class VaronaDarbibas {
   // * Darbības kā metodes:
   /// Public:
   public static void izietAraNoMspeles(String komanda) {
-    if (MazoSpeluIzvelesKods.varonisIrMazajaSpele) {
+    if (MajasdarbuIzvelesKods.varonisIrMajasdarba) {
       if (komanda.equals(Iestatijumi.izietNoMD)) {
-        MazoSpeluIzvelesKods.varonisIrMazajaSpele = false;
+        MajasdarbuIzvelesKods.varonisIrMajasdarba = false;
         Izvade.ieslegtSpelesIzvadi();
       }
       else if (komanda.equals("WIN")) {
         // Kas vēl, lai beigtu m-spēli.
-        MazoSpeluIzvelesKods.varonisIrMazajaSpele = false;
-        MazoSpeluIzvelesKods.izveletaMazaSpele = false;
-        AtrodiPariSavienojums.mSpeleAtrodiPari = false;
+        MajasdarbuIzvelesKods.varonisIrMajasdarba = false;
+        MajasdarbuIzvelesKods.izveletsMajasdarbs = false;
+        AtrodiPariSavienojums.MDAtrodiPari = false;
       }
     }
   }

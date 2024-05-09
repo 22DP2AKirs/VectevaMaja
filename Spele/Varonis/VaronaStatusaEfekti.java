@@ -2,11 +2,11 @@ package Spele.Varonis;
 
 import Spele.PaligMetodes;
 import Spele.KontaKods.Konts;
+import Spele.Majasdarbi.MajasdarbuIzvelesKods;
+import Spele.Majasdarbi.Karatavas.Karatavas;
 import Spele.Enums;
 import Spele.Enums.NavesIemesli;
 import Spele.FailuLietotaji.FailuRedigetajs;
-import Spele.MazasSpeles.MazoSpeluIzvelesKods;
-import Spele.MazasSpeles.Karatavas.Karatavas;
 import Spele.Parklajumi.EkranuParklajumi;
 import Spele.SakumaDatuSagatavosana.SakumaDati;
 import Spele.SpelesProcesi.Izvade;
@@ -83,6 +83,6 @@ public class VaronaStatusaEfekti {
     
     varonaStresaLimenis = 0;
 
-    MazoSpeluIzvelesKods.sagatavotMajasdarbusJaunaiSpelei();
+    MajasdarbuIzvelesKods.sagatavotMajasdarbusJaunaiSpelei();
   }
 }

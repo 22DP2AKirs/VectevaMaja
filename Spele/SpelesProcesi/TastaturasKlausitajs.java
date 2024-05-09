@@ -69,6 +69,10 @@ public class TastaturasKlausitajs implements NativeKeyListener {
       }
     }
   }
+  
+  // public void nativeKeyTyped(NativeKeyEvent e) {
+  //     System.out.println("Key Typed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
+  // }
 
   private void komandasApstrade(String taustins) {
     // 1. Izvēlas vai komanda būs ar lielajiem vai mazajiem burtiem.
@@ -257,8 +261,4 @@ public class TastaturasKlausitajs implements NativeKeyListener {
       uzreizNodzestKomandu();
     }
   }
-
-  // public void nativeKeyTyped(NativeKeyEvent e) {
-  //     System.out.println("Key Typed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
-  // }
 }
